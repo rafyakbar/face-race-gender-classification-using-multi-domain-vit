@@ -1,0 +1,25 @@
+TITLE-ABS-KEY(
+    (
+        "race classification"
+        OR "gender classification"
+        OR "ethnicity classification"
+        OR "demographic classification"
+        OR "race and gender"
+        OR "gender and race"
+        OR "facial attribute*"
+        OR "demographic bias"
+        OR demogpairs*
+    )
+    AND
+    (
+        face
+        OR facial
+        OR "face recognition"
+    )
+)
+AND PUBYEAR > 2021
+AND PUBYEAR < 2027
+AND (LIMIT-TO(SRCTYPE, "j"))
+AND (LIMIT-TO(OA, "all"))
+AND (LIMIT-TO(LANGUAGE, "English"))
+AND (LIMIT-TO(PUBSTAGE, "final"))

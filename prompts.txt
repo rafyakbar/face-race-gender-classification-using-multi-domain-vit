@@ -1,0 +1,53 @@
+tolong buat summary dari paper:
+- 'research\related_works\pdf\2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.pdf'
+template ada pada research\related_works\summaries\TEMPLATE.md. baca paper secara langsung dan buat summary nya!
+
+saya sudah menambahkan rangkuman paper dari dataset asli pada research\experiment\dataset_demogpairs.md. pelajari dengan baik dan perhatikan:
+- buat 'research\references\2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib'
+- kemudian perbaiki research\experiment\dataset_demogpairs.md agar seperti 'G:\My Drive\Research\BIMA\CXR Captioning\research\experiment\dataset_iu-xray.md'
+
+pelajari:
+- semua yang ada pada project ini
+- 'G:\My Drive\Research\BIMA\CXR Captioning\research\experiment' (selain folder: code dan images)
+
+sekarang eksplorasi semua yang ada pada:
+- 'D:\Research\Face Race Gender' (selain folder: code_unused)
+jika sudah paham, buatkan:
+- 'G:\My Drive\Research\BIMA\Face Race Gender 3 Fitur\research\experiment\00_overview.md'
+- dan seterusnya (sesuaikan dengan kode yang ada pada 'D:\Research\Face Race Gender')
+lakukan dengan amat teliti
+
+bantu saya audit apakah:
+- 'G:\My Drive\Research\BIMA\Face Race Gender 3 Fitur\research\experiment\00_overview.md'
+sudah sesuai dengan yang ada pada 'D:\Research\Face Race Gender' (selain folder: code_unused)! audit dengan sangat amat teliti!
+
+jika sederhana, jangan menggunakan '$2 \times 3', seharusnya cukup '2 × 3', update research\experiment
+
+tolong buatkan scopus_query.txt untuk mendapatkan paper penelitian-penelitian sebelumnya. contoh:
+TITLE-ABS-KEY(
+    (
+        caption*
+        OR "image captioning"
+        OR "medical image captioning"
+        OR "radiology report generation"
+        OR "medical report generation"
+        OR "report generation"
+        OR "image-to-text"
+    )
+    AND
+    (
+        radiolog*
+        OR "chest x-ray"
+        OR "chest x ray"
+        OR "chest radiograph*"
+        OR "chest radiography"
+        OR CXR
+    )
+)
+AND PUBYEAR > 2024
+AND PUBYEAR < 2027
+AND (LIMIT-TO(SRCTYPE, "j"))
+AND (LIMIT-TO(OA, "all"))
+AND (LIMIT-TO(DOCTYPE, "ar"))
+AND (LIMIT-TO(LANGUAGE, "English"))
+AND (LIMIT-TO(PUBSTAGE, "final"))
