@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Large binary files (regenerable via notebooks)
+experiment/code/features/*.pkl
+experiment/code/models/*.pkl
+
+# Dataset images (too large for git, download separately)
+experiment/code/dataset/demogpairs/images/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
