@@ -208,9 +208,9 @@ Input Vektor Fitur (X_train, shape [8640, D])
 └─────────────────────┬────────────────────┘
               │
               ▼
-   Prediksi Kelas Demografis (0..5)
-   (6 kelas: Asian_Females, Asian_Males, Black_Females,
-    Black_Males, White_Females, White_Males)
+   Prediksi Kelas Demografis (0..5) — sesuai DEMOGPairs_LABEL_TO_IDX
+   0=Black_Males, 1=White_Females, 2=Asian_Males,
+   3=White_Males, 4=Black_Females, 5=Asian_Females
 ```
 
 Implementasi pipeline (identik di seluruh notebook `2.1.*`, `2.2.*`, `2.4.*`, `2.5.*`):
@@ -347,7 +347,8 @@ Untuk setiap kelas demografis, dihitung metrik *One-vs-Rest* secara eksplisit da
 
 ```python
 # code/utils/evaluation.py :: _compute_class_metrics
-cm = confusion_matrix(y_test, y_pred)  # [6, 6]
+labels = [DEMOGPairs_LABEL_TO_IDX[n] for n in target_names]
+cm = confusion_matrix(y_test, y_pred, labels=labels)  # selaras target_names
 total = cm.sum()  # 2160 (ukuran test set)
 
 for idx, label in enumerate(target_names):  # 6 kelas

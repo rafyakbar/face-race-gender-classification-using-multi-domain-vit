@@ -151,7 +151,7 @@ grid_params_svm = [
 - **`kernel`** — `rbf` (non-linear radial), `poly` (polinomial), `linear` (hiperplane linear). Menguji apakah data demografis pada ruang ViT sudah linear atau memerlukan pemetaan non-linear.
 - **`gamma`** — koefisien kernel `rbf`/`poly`; `'scale'` = 1/(n_features·Var(X)), `'auto'` = 1/n_features.
 - **`degree`** — hanya relevan untuk `poly`; derajat 2 vs 3 menguji kompleksitas batas keputusan polinomial.
-- **`tol`** dan **`probability`** dikunci untuk stabilitas konvergensi dan kebutuhan `predict_proba` pada evaluasi ROC-AUC OvR.
+- **`tol`** dan **`probability`** dikunci untuk stabilitas konvergensi dan kompatibilitas `predict_proba` pada `GridSearchCV` (scoring tidak memakai ROC-AUC).
 
 **Beban komputasi SVM:** 288 × 5 = **1.440 fits** per konfigurasi fitur.
 
@@ -336,7 +336,6 @@ Evaluasi dilakukan pada dua lapisan, diimplementasikan pada `experiment/code/uti
 | **Macro Precision** | `(1/K) Σ Precision_i` | Rata-rata presisi 6 kelas tanpa bobot |
 | **Macro Recall** | `(1/K) Σ Recall_i` | Rata-rata recall 6 kelas tanpa bobot |
 | **Macro F1-Score** | `(1/K) Σ 2·Prec_i·Rec_i/(Prec_i+Rec_i)` | Harmonik macro precision & recall |
-| **ROC-AUC OvR** | `roc_auc_score(ovr)` | Area di bawah kurva ROC one-vs-rest makro |
 
 `K = 6` kelas. Semua metrik macro memberi bobot identik kepada setiap kelompok demografis — sejalan dengan prinsip *demographic parity*.
 
