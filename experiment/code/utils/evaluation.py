@@ -17,6 +17,7 @@ from sklearn.metrics import (
     recall_score,
 )
 
+from .constants import DEMOGPairs_LABEL_TO_IDX
 from .display import h, html_br, display_table
 from .serialization import save_json, save_object, load_object
 
@@ -37,7 +38,9 @@ def _compute_class_metrics(
     y_test: np.ndarray, y_pred: np.ndarray, target_names: list[str]
 ) -> list[dict]:
     """Compute per-class metrics from confusion matrix (OvR approach)."""
-    cm = confusion_matrix(y_test, y_pred)
+    # Align CM rows/cols to target_names order via explicit labels
+    labels = [DEMOGPairs_LABEL_TO_IDX[n] for n in target_names] if target_names else None
+    cm = confusion_matrix(y_test, y_pred, labels=labels)
     total = cm.sum()
     class_metrics = []
     for idx, label in enumerate(target_names):
@@ -127,7 +130,8 @@ def evaluate_models(
         test_prec = precision_score(y_test, y_pred, average="macro")
         test_rec = recall_score(y_test, y_pred, average="macro")
         test_f1 = f1_score(y_test, y_pred, average="macro")
-        cls_report = classification_report(y_test, y_pred, output_dict=True, target_names=target_names)
+        labels = [DEMOGPairs_LABEL_TO_IDX[n] for n in target_names] if target_names else None
+        cls_report = classification_report(y_test, y_pred, output_dict=True, target_names=target_names, labels=labels)
 
         # CV results
         cv_df = pd.DataFrame(trained_model.cv_results_)
@@ -161,7 +165,7 @@ def evaluate_models(
         print(f"Precision : {test_prec}")
         print(f"Recall    : {test_rec}")
         print(f"F1 Score  : {test_f1}")
-        print(classification_report(y_test, y_pred, target_names=target_names, digits=4))
+        print(classification_report(y_test, y_pred, target_names=target_names, labels=labels, digits=4))
 
         html_br()
         class_metrics = _compute_class_metrics(y_test, y_pred, target_names)
@@ -169,7 +173,7 @@ def evaluate_models(
 
         # Confusion matrix - save to images/
         html_br()
-        cm = confusion_matrix(y_test, y_pred)
+        cm = confusion_matrix(y_test, y_pred, labels=labels)
         fig, ax = plt.subplots(figsize=(8, 6))
         sns.heatmap(
             cm,

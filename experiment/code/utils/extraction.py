@@ -11,7 +11,7 @@ from transformers import AutoImageProcessor, AutoModelForImageClassification
 def extract_vit_features(
     img: str | np.ndarray,
     model: Optional[AutoModelForImageClassification] = None,
-    model_path: str = "models/codewithdark/vit-chest-xray",
+    model_path: str | None = None,
     device: Optional[torch.device] = None,
     feature_type: str = "cls",
 ) -> np.ndarray:
@@ -21,7 +21,7 @@ def extract_vit_features(
     Args:
         img: File path (str) or NumPy array (H x W x C).
         model: Pre-loaded model. If None, loads from model_path.
-        model_path: HuggingFace model path or local directory.
+        model_path: HuggingFace model path or local directory. Must be provided if model is None.
         device: torch device. Auto-detects CUDA if None.
         feature_type: 'cls' for [CLS] token, 'pool' for mean pooling.
 
@@ -32,6 +32,8 @@ def extract_vit_features(
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     if model is None:
+        if model_path is None:
+            raise ValueError("model_path must be provided if model is None (e.g., 'skutaada/VIT-VGGFace').")
         model = AutoModelForImageClassification.from_pretrained(model_path)
     model = model.to(device)
     model.eval()
