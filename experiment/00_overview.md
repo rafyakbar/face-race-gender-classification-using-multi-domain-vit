@@ -10,7 +10,7 @@ Penelitian mengklasifikasikan **6 kelas interseksional** (3 Ras × 2 Gender: Asi
 
 Konkatenasi tri-domain = **2.304 dimensi**. Dataset **DemogPairs** — **10.800 citra** (600 identitas ×18, 1.800 per kelas, seimbang), split **80/20 stratified** (8.640 latih / 2.160 uji, 360 per kelas).
 
-**28 eksperimen** = 7 konfigurasi fitur × 4 classifier (GridSearchCV 5-Fold):
+**28 eksperimen** = 7 konfigurasi fitur × 4 classifier — hyperparameter optimization using Grid Search with Cross-Validation (GridSearchCV):
 
 | Classifier | Kombinasi | Tri-domain Akurasi | F1 |
 |:---|:---:|:---:|:---:|
@@ -26,7 +26,7 @@ Konkatenasi tri-domain = **2.304 dimensi**. Dataset **DemogPairs** — **10.800 
 ```
 DemogPairs 10.800 (6×1.800) → Normalisasi citra 224×224 → 3 ViT → fitur 768 dimensi → arsip fitur
   → Fusi fitur 768 / 1.536 / 2.304 dimensi (7 skema) → Split 8640/2160 → Pipeline penskalaan dan reduksi dimensi → Klasifikasi
-  → GridSearchCV 5-Fold (1.086 kombinasi, 5.430 fitting per fitur) → evaluasi 2.160 uji → metrik global + per kelas + matriks konfusi
+  → Grid Search with 5-Fold Cross-Validation (GridSearchCV, 1.086 kombinasi, 5.430 fitting per fitur) → evaluasi 2.160 uji → metrik global + per kelas + matriks konfusi
 ```
 
 7 skema konfigurasi fitur:
