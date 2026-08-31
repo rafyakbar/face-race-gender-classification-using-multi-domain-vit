@@ -15,17 +15,24 @@ Single-domain features have inherent limitations:
 - **ViT-Emotion** captures facial micro-dynamics (action units, muscle contractions) useful for gender cues but can be noisy.
 - **ViT-Age** captures skin texture and aging morphology but lacks strong identity discriminators alone.
 
-Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a complementary representation that outperforms any individual or dual combination across all classifiers.
+Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a complementary representation that outperforms any individual or dual combination across all classifiers. Ablation across 7 configurations (3 single, 3 dual, 1 tri) confirms monotonic gain.
+
+### Research Questions
+
+1. Does multi-domain fusion improve intersectional fairness vs single-domain?
+2. Which classifier best exploits high-dimensional ViT features?
+3. Can a simple confusion-matrix text array + OvR metrics make evaluation AI-agent readable?
 
 ## Features
 
-- **Tri-Domain ViT Feature Fusion**: Identity + Emotion + Age representations from three HuggingFace models
-- **Ablation Study**: Systematic evaluation of 7 configurations (3 single-domain, 3 dual-domain, 1 tri-domain)
-- **Multi-Classifier Comparison**: SVM, Logistic Regression, Random Forest, Gaussian Naive Bayes
-- **Hyperparameter Optimization**: GridSearchCV with 5-fold stratified cross-validation per classifier
-- **Intersectional Fairness Analysis**: Per-class OvR metrics across all 6 demographic subgroups (with confusion matrix as text array + image)
-- **DemogPairs Benchmark**: 10,800 perfectly balanced face images (1,800 per class)
-- **Self-Contained Reports**: 28 Markdown reports under `experiment/code/reports/` for AI-agent readability
+- **Tri-Domain ViT Feature Fusion**: Identity + Emotion + Age representations from three HuggingFace models (ViT-Base, 768-d [CLS] each)
+- **Ablation Study**: 7 configurations systematically (vit-face, vit-emotion, vit-age, 3 duals, 1 tri)
+- **Multi-Classifier Comparison**: SVM (288 combos), Logistic Regression (270), Random Forest (288), Gaussian Naive Bayes (240) — total 28 experiments, 5-fold Stratified CV each
+- **Hyperparameter Optimization**: GridSearchCV with `StratifiedKFold(n_splits=5, shuffle=True, random_state=42)`, scoring `accuracy/f1_macro/precision_macro/recall_macro`, `refit='accuracy'`, `n_jobs=int(cpu_count*0.6)`
+- **Intersectional Fairness Analysis**: Per-class OvR Accuracy, Precision/Recall/F1 per subgroup + confusion matrix (text array for AI + PNG image)
+- **DemogPairs Benchmark**: 10,800 perfectly balanced face images (1,800 per class), 80/20 stratified split
+- **Notebook-to-Markdown Exports**: 28 notebooks + `3.0_compare.ipynb` converted via `nbconvert` (`MarkdownExporter`) to `experiment/code/md/` for documentation without running Jupyter
+- **Reproducible Utilities**: `utils/` package (constants, dataset, extraction, evaluation, display, serialization, time_helpers) — project-agnostic, threshold <200 lines per module
 
 ## Classifier Comparison (Tri-Domain, 2,304-d)
 
@@ -37,78 +44,84 @@ Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a compl
 | 4 | **Gaussian Naive Bayes** | **85.05%** | **0.8505** | 240 | ✅ |
 
 > [!NOTE]
-> XGBoost was removed — `pip` build has no CUDA support (`No visible GPU is found`) and CPU training was ~70 hours estimated. CUDA ≥12.9 is required for GPU acceleration, while the environment provides CUDA 12.6.
+> XGBoost was removed — `pip` build has no CUDA support (`No visible GPU is found`) and CPU training was ~70 hours estimated. CUDA ≥12.9 is required for GPU acceleration, while the environment provides CUDA 12.6 (RTX 4060 Laptop, `torch 2.10.0+cu126`).
 
-## Results Summary: SVM (288 combos)
+**Key finding:** Tri-domain wins for SVM/LR/GNB; RF best is dual `vit-emotion-face` (86.85%) with tri close behind (86.20%) — indicating RF saturates earlier.
 
-| Configuration | Dimensions | Accuracy | F1-Score |
-|---|:---:|:---:|:---:|
-| vit-age (single) | 768 | 87.64% | 0.8765 |
-| vit-emotion (single) | 768 | 90.19% | 0.9017 |
-| vit-face (single) | 768 | 90.83% | 0.9083 |
-| vit-emotion-age (dual) | 1,536 | 92.08% | 0.9209 |
-| vit-face-age (dual) | 1,536 | 92.55% | 0.9254 |
-| vit-emotion-face (dual) | 1,536 | 93.29% | 0.9329 |
-| **vit-face-emotion-age (tri)** | **2,304** | **93.70%** | **0.9369** |
+## Results Summary: SVM (288 combos) — `SVC(probability=True, tol=0.001)`
 
-> **Best SVM**: Tri-Domain with `SVC(C=10, kernel=poly, degree=2, gamma=scale, tol=0.001, probability=True)`, no PCA, no scaler.
+| Configuration | Dimensions | Accuracy | F1-Score | Best Params (snippet) |
+|---|:---:|:---:|:---:|---|
+| vit-age (single) | 768 | 87.64% | 0.8765 | C=10, rbf, scale |
+| vit-emotion (single) | 768 | 90.19% | 0.9017 | C=10, rbf, scale |
+| vit-face (single) | 768 | 90.83% | 0.9083 | C=10, rbf, scale |
+| vit-emotion-age (dual) | 1,536 | 92.08% | 0.9209 | C=10, rbf, scale |
+| vit-face-age (dual) | 1,536 | 92.55% | 0.9254 | C=10, poly d2 |
+| vit-emotion-face (dual) | 1,536 | 93.29% | 0.9329 | C=10, rbf, MinMaxScaler |
+| **vit-face-emotion-age (tri)** | **2,304** | **93.70%** | **0.9369** | **C=10, poly d2, scale, no PCA/scaler** |
+
+> **Best SVM**: Tri-Domain with `SVC(C=10, kernel=poly, degree=2, gamma=scale, tol=0.001, probability=True)`, no PCA, no scaler. See `md/svm/2.1.7_svm_vit-face-emotion-age.md`.
 
 ## Results Summary: Logistic Regression (270 combos)
 
-| Configuration | Dimensions | Accuracy | F1-Score |
-|---|:---:|:---:|:---:|
-| vit-age (single) | 768 | 86.48% | 0.8648 |
-| vit-emotion (single) | 768 | 88.47% | 0.8846 |
-| vit-face (single) | 768 | 90.60% | 0.9059 |
-| vit-emotion-age (dual) | 1,536 | 90.51% | 0.9051 |
-| vit-face-age (dual) | 1,536 | 91.62% | 0.9162 |
-| vit-emotion-face (dual) | 1,536 | 92.41% | 0.9240 |
-| **vit-face-emotion-age (tri)** | **2,304** | **92.73%** | **0.9273** |
+| Configuration | Dimensions | Accuracy | F1-Score | Best Solver |
+|---|:---:|:---:|:---:|---|
+| vit-age (single) | 768 | 86.48% | 0.8648 | lbfgs |
+| vit-emotion (single) | 768 | 88.47% | 0.8846 | saga |
+| vit-face (single) | 768 | 90.60% | 0.9059 | newton-cg |
+| vit-emotion-age (dual) | 1,536 | 90.51% | 0.9051 | lbfgs |
+| vit-face-age (dual) | 1,536 | 91.62% | 0.9162 | newton-cg |
+| vit-emotion-face (dual) | 1,536 | 92.41% | 0.9240 | lbfgs |
+| **vit-face-emotion-age (tri)** | **2,304** | **92.73%** | **0.9273** | **newton-cg** |
 
-> **Best LR**: Tri-Domain with `LogisticRegression(C=0.1, solver=newton-cg, max_iter=500)`, no PCA, no scaler.
+> **Best LR**: Tri-Domain with `LogisticRegression(C=0.1, solver=newton-cg, max_iter=500)`, no PCA, no scaler. Grid `C∈[0.01,0.1,1,10]`, `max_iter∈[500,1000]`, `solver∈[lbfgs,saga]` (actual 270 with newton-cg/2000 observed). See `md/lr/2.5.7_lr_vit-face-emotion-age.md`.
 
 ## Results Summary: Random Forest (288 combos)
 
-| Configuration | Dimensions | Accuracy | F1-Score |
-|---|:---:|:---:|:---:|
-| vit-age (single) | 768 | 73.66% | 0.7354 |
-| vit-emotion (single) | 768 | 80.60% | 0.8057 |
-| vit-face (single) | 768 | 85.46% | 0.8539 |
-| vit-emotion-age (dual) | 1,536 | 81.11% | 0.8108 |
-| vit-face-age (dual) | 1,536 | 85.79% | 0.8573 |
-| vit-emotion-face (dual) | 1,536 | 86.85% | 0.8682 |
-| **vit-face-emotion-age (tri)** | **2,304** | **86.20%** | **0.8613** |
+| Configuration | Dimensions | Accuracy | F1-Score | n_estimators / max_depth |
+|---|:---:|:---:|:---:|---|
+| vit-age (single) | 768 | 73.66% | 0.7354 | 200 / 30 |
+| vit-emotion (single) | 768 | 80.60% | 0.8057 | 200 / None |
+| vit-face (single) | 768 | 85.46% | 0.8539 | 200 / 30 |
+| vit-emotion-age (dual) | 1,536 | 81.11% | 0.8108 | 200 / None |
+| vit-face-age (dual) | 1,536 | 85.79% | 0.8573 | 200 / None |
+| **vit-emotion-face (dual)** | **1,536** | **86.85%** | **0.8682** | **200 / None** |
+| vit-face-emotion-age (tri) | 2,304 | 86.20% | 0.8613 | 200 / 30 |
 
-> **Best RF**: `vit-emotion-face` with `RandomForestClassifier(n_estimators=200, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=5)` + PCA, no scaler — 86.85% (tri-domain follows at 86.20%).
+> **Best RF**: Dual `vit-emotion-face` with `RandomForestClassifier(n_estimators=200, max_depth=None, max_features=sqrt, min_samples_split=5, min_samples_leaf=1)` + PCA, no scaler. Grid `max_features∈[sqrt,log2]`, `n_estimators∈[100,200]`, `max_depth∈[None,20,30]`, `min_samples_split/leaf`, `PCA 0.5/0.75`. See `md/rf/2.4.6_rf_vit-emotion-face.md`.
 
 ## Results Summary: Gaussian Naive Bayes (240 combos)
 
-| Configuration | Dimensions | Accuracy | F1-Score |
-|---|:---:|:---:|:---:|
-| vit-age (single) | 768 | 69.63% | 0.6952 |
-| vit-emotion (single) | 768 | 73.38% | 0.7329 |
-| vit-face (single) | 768 | 82.69% | 0.8258 |
-| vit-emotion-age (dual) | 1,536 | 76.81% | 0.7681 |
-| vit-face-age (dual) | 1,536 | 83.15% | 0.8317 |
-| vit-emotion-face (dual) | 1,536 | 84.86% | 0.8481 |
-| **vit-face-emotion-age (tri)** | **2,304** | **85.05%** | **0.8505** |
+| Configuration | Dimensions | Accuracy | F1-Score | var_smoothing |
+|---|:---:|:---:|:---:|---|
+| vit-age (single) | 768 | 69.63% | 0.6952 | 0.00043 |
+| vit-emotion (single) | 768 | 73.38% | 0.7329 | 0.00307 |
+| vit-face (single) | 768 | 82.69% | 0.8258 | 0.04124 |
+| vit-emotion-age (dual) | 1,536 | 76.81% | 0.7681 | 0.00160 |
+| vit-face-age (dual) | 1,536 | 83.15% | 0.8317 | 0.01125 |
+| vit-emotion-face (dual) | 1,536 | 84.86% | 0.8481 | 0.00587 |
+| **vit-face-emotion-age (tri)** | **2,304** | **85.05%** | **0.8505** | **0.00587** |
+
+Grid `var_smoothing=np.logspace(-9,2,40)`, `scaler∈[None,MinMax]`, `PCA∈[None,0.5,0.75]` → 240 combos. See `md/gnb/2.2.7_gnb_vit-face-emotion-age.md`.
 
 ## Full Leaderboard (28 Experiments)
 
-| Rank | Classifier | Features | Accuracy | F1 |
-|:---:|---|---|:---:|:---:|
-| 1 | SVM | vit-face-emotion-age | 93.70% | 0.9369 |
-| 2 | SVM | vit-emotion-face | 93.29% | 0.9329 |
-| 3 | LR | vit-face-emotion-age | 92.73% | 0.9273 |
-| 4 | SVM | vit-face-age | 92.55% | 0.9254 |
-| 5 | LR | vit-emotion-face | 92.41% | 0.9240 |
-| 6 | SVM | vit-emotion-age | 92.08% | 0.9209 |
-| 7 | LR | vit-face-age | 91.62% | 0.9162 |
-| 8 | SVM | vit-face | 90.83% | 0.9083 |
-| 9 | LR | vit-face | 90.60% | 0.9059 |
-| 10 | LR | vit-emotion-age | 90.51% | 0.9051 |
+| Rank | Classifier | Features | Accuracy | F1 | Dimensions |
+|:---:|---|---|:---:|:---:|:---:|
+| 1 | SVM | vit-face-emotion-age | 93.70% | 0.9369 | 2304 |
+| 2 | SVM | vit-emotion-face | 93.29% | 0.9329 | 1536 |
+| 3 | LR | vit-face-emotion-age | 92.73% | 0.9273 | 2304 |
+| 4 | SVM | vit-face-age | 92.55% | 0.9254 | 1536 |
+| 5 | LR | vit-emotion-face | 92.41% | 0.9240 | 1536 |
+| 6 | SVM | vit-emotion-age | 92.08% | 0.9209 | 1536 |
+| 7 | LR | vit-face-age | 91.62% | 0.9162 | 1536 |
+| 8 | SVM | vit-face | 90.83% | 0.9083 | 768 |
+| 9 | LR | vit-face | 90.60% | 0.9059 | 768 |
+| 10 | LR | vit-emotion-age | 90.51% | 0.9051 | 1536 |
+| 11 | SVM | vit-emotion | 90.19% | 0.9017 | 768 |
+| ... | ... | ... | ... | ... | ... |
 
-See `experiment/code/reports/` for all 28 self-contained Markdown reports.
+Full table in `experiment/code/3.0_compare.ipynb` (populated, 28 rows) and its Markdown export `md/3.0_compare.md`.
 
 ## Project Structure
 
@@ -128,36 +141,39 @@ face-race-gender-multi-vit/
 │       ├── 2.2.*_gnb_vit-*_*.ipynb # GNB training (7 notebooks, 240 combos)
 │       ├── 2.4.*_rf_vit-*_*.ipynb  # Random Forest training (7 notebooks, 288 combos)
 │       ├── 2.5.*_lr_vit-*_*.ipynb  # Logistic Regression training (7 notebooks, 270 combos)
-│       ├── 3.0_compare.ipynb       # Comparative analysis (4 classifiers × 7 configs)
-│       ├── 4.1_test.ipynb          # Final evaluation
-│       ├── utils/                  # Utility package (project-agnostic)
-│       │   ├── __init__.py         # re-exports
-│       │   ├── constants.py        # DemogPairs labels
+│       ├── 3.0_compare.ipynb       # Comparative analysis (populated, 28 results)
+│       ├── 4.0_test.ipynb          # Final evaluation (executed, CUDA)
+│       ├── utils/                  # Utility package (project-agnostic, <200 lines/mod)
+│       │   ├── __init__.py         # re-exports demogpairs_classes, evaluate_models, ...
+│       │   ├── constants.py        # DemogPairs labels & mappings
 │       │   ├── dataset.py          # load_demogpairs()
-│       │   ├── evaluation.py       # evaluate_models() — OvR Accuracy, CM text array
+│       │   ├── evaluation.py       # evaluate_models() — OvR Accuracy, CM text array, HTML img
 │       │   ├── extraction.py       # extract_vit_features()
-│       │   ├── display.py          # Jupyter/terminal display helpers
+│       │   ├── display.py          # printhtml, display_table, IS_NOTEBOOK
 │       │   ├── serialization.py    # save/load object & JSON
 │       │   └── time_helpers.py     # seconds_to_time()
-│       ├── reports/                # Self-contained Markdown reports (28 files)
-│       │   ├── 2.1/ (SVM)
-│       │   ├── 2.2/ (GNB)
-│       │   ├── 2.4/ (RF)
-│       │   └── 2.5/ (LR)
-│       ├── images/                 # Confusion matrices (cm_{clf}_{feat}_{model}.png)
-│       ├── dataset/demogpairs/     # Dataset (metadata + images)
-│       ├── features/               # Extracted feature .pkl files
-│       ├── models/                 # Trained models .pkl
-│       └── results/                # Evaluation results .json (28 files)
+│       ├── md/                     # Notebook Markdown exports (nbconvert, 29 files)
+│       │   ├── svm/ (7)            # 2.1.1–2.1.7
+│       │   ├── gnb/ (7)            # 2.2.1–2.2.7
+│       │   ├── rf/ (7)             # 2.4.1–2.4.7
+│       │   ├── lr/ (7)             # 2.5.1–2.5.7
+│       │   └── 3.0_compare.md
+│       ├── images/                 # Confusion matrices (cm_{clf}_{feat}_{model}.png, 28 images)
+│       ├── dataset/demogpairs/     # Dataset (metadata + images, gitignored images/)
+│       ├── features/               # Extracted feature .pkl files (768/1536/2304-d, gitignored)
+│       ├── models/                 # Trained models .pkl (gitignored)
+│       └── results/                # Evaluation results .json (28 files, best_params, metrics)
 ├── related_works/                  # Literature review
 ├── references/                     # BibTeX references
 └── README.md
 ```
 
+> `reports/` was removed — replaced by `md/` (nbconvert exports). See `experiment/code/md/` for Markdown without running Jupyter.
+
 ## Prerequisites
 
-- **Python** 3.10+
-- **GPU** with CUDA support (RTX 4060 or equivalent recommended)
+- **Python** 3.10+ (tested 3.11, conda `torch-gpu`)
+- **GPU** with CUDA support (RTX 4060 Laptop or equivalent, CUDA 12.6, `torch 2.10.0+cu126` verified)
 
 ### Required Packages
 
@@ -173,9 +189,10 @@ pillow
 matplotlib
 seaborn
 tqdm
+nbconvert>=7  # for notebook -> Markdown exports
 ```
 
-> XGBoost is intentionally omitted — GPU build requires CUDA ≥12.9.
+> XGBoost intentionally omitted (GPU requires CUDA ≥12.9). `gradio` optional for `app.py`.
 
 ## Quick Start
 
@@ -189,22 +206,32 @@ tqdm
 2. **Set up environment**
 
    ```bash
-   conda create -n facevit python=3.11
-   conda activate facevit
-   pip install torch transformers scikit-learn imbalanced-learn joblib pandas numpy pillow matplotlib seaborn tqdm
+   conda create -n torch-gpu python=3.11
+   conda activate torch-gpu
+   pip install torch transformers scikit-learn imbalanced-learn joblib pandas numpy pillow matplotlib seaborn tqdm nbconvert
    ```
 
 3. **Prepare dataset**
 
-   Place the DemogPairs dataset under `experiment/code/dataset/demogpairs/`.
+   Place the DemogPairs dataset under `experiment/code/dataset/demogpairs/` (see `dataset_demogpairs.md`).
 
-4. **Extract features** (offline, one-time)
+4. **Extract features** (offline, one-time, ~2304-d)
 
-   Run notebooks `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, and `1.1_vit-age_demogpairs.ipynb`.
+   Run notebooks `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, `1.1_vit-age_demogpairs.ipynb`. Each saves `features/demogpairs_vit-*.pkl`.
 
-5. **Train classifiers**
+5. **Train classifiers** (GridSearchCV, 5-fold)
 
-   Run notebooks `2.1.*` (SVM, 288 combos), `2.2.*` (GNB, 240 combos), `2.4.*` (RF, 288 combos), or `2.5.*` (LR, 270 combos). Each saves `models/*.pkl`, `results/*.json`, `images/*.png`, and validation is via self-contained `reports/*.md`.
+   Run notebooks `2.1.*` (SVM, 288 combos), `2.2.*` (GNB, 240), `2.4.*` (RF, 288), or `2.5.*` (LR, 270). Each saves `models/*.pkl`, `results/*.json` (best_params, accuracy, per-class), `images/*.png` (confusion matrix). For Markdown reports without Jupyter, see `md/` (nbconvert exports) or re-export:
+   ```bash
+   pip install nbconvert
+   jupyter nbconvert --to markdown notebook.ipynb
+   # or via Python:
+   # from nbconvert import MarkdownExporter; import nbformat
+   ```
+
+6. **Compare**
+
+   Run `3.0_compare.ipynb` (populated, 28 rows) or read `md/3.0_compare.md` for leaderboard.
 
 ## Feature Extractors
 
@@ -214,7 +241,7 @@ tqdm
 | ViT-Emotion | `dima806/facial_emotions_image_detection` | Facial Emotion | 768-d [CLS] | 29.36 MB |
 | ViT-Age | `dima806/facial_age_image_detection` | Facial Age | 768-d [CLS] | 29.36 MB |
 
-All models use ViT-Base architecture (12 layers, 12 heads, 768 hidden dim, patch 16x16).
+All models use ViT-Base architecture (12 layers, 12 heads, 768 hidden dim, patch 16×16). Features are concatenated per image (`np.array(list(face)+list(emotion)+list(age))`).
 
 ## Classification Pipeline
 
@@ -223,35 +250,38 @@ Input Features (768 / 1,536 / 2,304-d)
     │
     ▼
 ┌─────────────────────────┐
-│  Scaler (None / MinMax) │
+│  Scaler (None / MinMax) │  ← GridSearchCV
 └───────────┬─────────────┘
             │
             ▼
 ┌─────────────────────────┐
-│  PCA (None / 50% / 75%) │
+│  PCA (None / 50% / 75%) │  ← 0.5 / 0.75 variance retained
 └───────────┬─────────────┘
             │
             ▼
 ┌─────────────────────────────────────────────┐
 │  Classifier (GridSearchCV + 5-Fold CV)      │
-│  • SVM: 288 combos (C, kernel, gamma, degree)│
-│  • GNB: 240 combos (var_smoothing)          │
-│  • Random Forest: 288 combos (n_estimators, max_depth, max_features, ...)│
+│  • SVM: 288 combos (C, kernel, gamma, degree, tol, prob)│
+│  • GNB: 240 combos (var_smoothing logspace -9..2)│
+│  • Random Forest: 288 combos (n_estimators, max_depth, max_features, min_samples_split/leaf)│
 │  • Logistic Regression: 270 combos (C, solver, max_iter)│
+│  Scoring: accuracy, f1_macro, precision_macro, recall_macro; refit='accuracy'│
 └───────────┬─────────────────────────────────┘
             │
             ▼
    Predicted Demographic Class (0-5)
+   + per-class OvR Accuracy = (TP+TN)/total (one-vs-rest)
+   + confusion matrix text array (AI-readable) + PNG image
 ```
 
-Per-class evaluation uses **One-vs-Rest (OvR) Accuracy** = `(TP+TN)/total` alongside Precision/Recall/F1, plus a confusion matrix text array for AI-agent readability.
+**Scoring note:** `roc_auc_ovr` removed (GNB incompatible). Evaluation via `utils/evaluation.py`: `classification_report(target_names, digits=4)`, `_compute_class_metrics` (OvR), `confusion_matrix` with `target_names` labels, saved as `images/cm_{stem}.png` + printed text array.
 
 ## Dataset: DemogPairs
 
 - **Paper**: Hupont & Fernandez (2019), FG 2019, DOI: `10.1109/FG.2019.8756625`
 - **Total**: 10,800 face images (600 identities, 18 images each)
 - **Balance**: Perfectly balanced across 6 intersectional classes
-- **Split**: 80/20 stratified (8,640 train / 2,160 test, `random_state=42`)
+- **Split**: 80/20 stratified (8,640 train / 2,160 test, `random_state=42`, `stratify=y`)
 
 | Class | Index | Race | Gender | Samples |
 |---|:---:|---|:---:|:---:|
@@ -262,19 +292,38 @@ Per-class evaluation uses **One-vs-Rest (OvR) Accuracy** = `(TP+TN)/total` along
 | Black_Females | 4 | Black | Female | 1,800 |
 | Asian_Females | 5 | Asian | Female | 1,800 |
 
-## Per-Class Performance (Best Model: SVM Tri-Domain, 93.70%)
+Supports `label` (string) and `label_idx` (int) as used in `utils/dataset.py`.
 
-| Class | Precision | Recall | F1-Score |
-|---|:---:|:---:|:---:|
-| Black_Males | 0.9549 | 0.9417 | 0.9483 |
-| White_Females | 0.9241 | 0.9472 | 0.9355 |
-| Asian_Males | 0.9239 | 0.9444 | 0.9341 |
-| White_Males | 0.9536 | 0.9694 | 0.9614 |
-| Black_Females | 0.9415 | 0.8944 | 0.9174 |
-| Asian_Females | 0.9250 | 0.9250 | 0.9250 |
-| **Macro Avg** | **0.9372** | **0.9370** | **0.9369** |
+## Per-Class Performance (Best Model: SVM Tri-Domain, 93.70%, N=2160 test)
 
-See `experiment/code/reports/2.1/2.1.7_svm_vit-face-emotion-age.md` for full details (confusion matrix, OvR Accuracy, CV folds).
+| Class | Precision | Recall | F1-Score | Support |
+|---|:---:|:---:|:---:|:---:|
+| Black_Males | 0.9549 | 0.9417 | 0.9483 | 360 |
+| White_Females | 0.9241 | 0.9472 | 0.9355 | 360 |
+| Asian_Males | 0.9239 | 0.9444 | 0.9341 | 360 |
+| White_Males | 0.9536 | 0.9694 | 0.9614 | 360 |
+| Black_Females | 0.9415 | 0.8944 | 0.9174 | 360 |
+| Asian_Females | 0.9250 | 0.9250 | 0.9250 | 360 |
+| **Macro Avg** | **0.9372** | **0.9370** | **0.9369** | **2160** |
+
+OvR Accuracy (one-vs-rest) per class is higher (e.g., Black_Males ~98.7%) — see notebook outputs and `md/svm/2.1.7_...md`. See `md/svm/2.1.7_svm_vit-face-emotion-age.md` or `results/demogpairs_svm_vit-face-emotion-age_SVC.json` for full details.
+
+## Notebook-to-Markdown Exports
+
+All 28 training notebooks + `3.0_compare.ipynb` are exported to Markdown for reading without Jupyter:
+
+```bash
+pip install nbconvert
+jupyter nbconvert --to markdown notebook.ipynb          # CLI
+# Python:
+from nbconvert import MarkdownExporter
+import nbformat
+with open("notebook.ipynb") as f: nb = nbformat.read(f, as_version=4)
+body, _ = MarkdownExporter().from_notebook_node(nb)
+open("notebook.md", "w", encoding="utf-8").write(body)
+```
+
+Outputs: `experiment/code/md/svm|gnb|rf|lr/2.x_*.md` (29 files, ~27–30KB each). The former `reports/` folder (self-contained reports) was removed in favor of these direct exports.
 
 ## Citation
 
