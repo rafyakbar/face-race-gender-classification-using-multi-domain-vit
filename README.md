@@ -15,13 +15,7 @@ Single-domain features have inherent limitations:
 - **ViT-Emotion** captures facial micro-dynamics (action units, muscle contractions) useful for gender cues but can be noisy.
 - **ViT-Age** captures skin texture and aging morphology but lacks strong identity discriminators alone.
 
-Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a complementary representation that outperforms any individual or dual combination across all classifiers. Ablation across 7 configurations (3 single, 3 dual, 1 tri) confirms monotonic gain.
-
-### Research Questions
-
-1. Does multi-domain fusion improve intersectional fairness vs single-domain?
-2. Which classifier best exploits high-dimensional ViT features?
-3. Can a simple confusion-matrix text array + OvR metrics make evaluation AI-agent readable?
+Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a complementary representation that outperforms any individual or dual combination across all classifiers.
 
 ## Features
 
@@ -46,82 +40,7 @@ Concatenating all three (768 + 768 + 768 = **2,304 dimensions**) creates a compl
 > [!NOTE]
 > XGBoost was removed — `pip` build has no CUDA support (`No visible GPU is found`) and CPU training was ~70 hours estimated. CUDA ≥12.9 is required for GPU acceleration, while the environment provides CUDA 12.6 (RTX 4060 Laptop, `torch 2.10.0+cu126`).
 
-**Key finding:** Tri-domain wins for SVM/LR/GNB; RF best is dual `vit-emotion-face` (86.85%) with tri close behind (86.20%) — indicating RF saturates earlier.
-
-## Results Summary: SVM (288 combos) — `SVC(probability=True, tol=0.001)`
-
-| Configuration | Dimensions | Accuracy | F1-Score | Best Params (snippet) |
-|---|:---:|:---:|:---:|---|
-| vit-age (single) | 768 | 87.64% | 0.8765 | C=10, rbf, scale |
-| vit-emotion (single) | 768 | 90.19% | 0.9017 | C=10, rbf, scale |
-| vit-face (single) | 768 | 90.83% | 0.9083 | C=10, rbf, scale |
-| vit-emotion-age (dual) | 1,536 | 92.08% | 0.9209 | C=10, rbf, scale |
-| vit-face-age (dual) | 1,536 | 92.55% | 0.9254 | C=10, poly d2 |
-| vit-emotion-face (dual) | 1,536 | 93.29% | 0.9329 | C=10, rbf, MinMaxScaler |
-| **vit-face-emotion-age (tri)** | **2,304** | **93.70%** | **0.9369** | **C=10, poly d2, scale, no PCA/scaler** |
-
-> **Best SVM**: Tri-Domain with `SVC(C=10, kernel=poly, degree=2, gamma=scale, tol=0.001, probability=True)`, no PCA, no scaler. See `md/svm/2.1.7_svm_vit-face-emotion-age.md`.
-
-## Results Summary: Logistic Regression (270 combos)
-
-| Configuration | Dimensions | Accuracy | F1-Score | Best Solver |
-|---|:---:|:---:|:---:|---|
-| vit-age (single) | 768 | 86.48% | 0.8648 | lbfgs |
-| vit-emotion (single) | 768 | 88.47% | 0.8846 | saga |
-| vit-face (single) | 768 | 90.60% | 0.9059 | newton-cg |
-| vit-emotion-age (dual) | 1,536 | 90.51% | 0.9051 | lbfgs |
-| vit-face-age (dual) | 1,536 | 91.62% | 0.9162 | newton-cg |
-| vit-emotion-face (dual) | 1,536 | 92.41% | 0.9240 | lbfgs |
-| **vit-face-emotion-age (tri)** | **2,304** | **92.73%** | **0.9273** | **newton-cg** |
-
-> **Best LR**: Tri-Domain with `LogisticRegression(C=0.1, solver=newton-cg, max_iter=500)`, no PCA, no scaler. Grid `C∈[0.01,0.1,1,10]`, `max_iter∈[500,1000]`, `solver∈[lbfgs,saga]` (actual 270 with newton-cg/2000 observed). See `md/lr/2.5.7_lr_vit-face-emotion-age.md`.
-
-## Results Summary: Random Forest (288 combos)
-
-| Configuration | Dimensions | Accuracy | F1-Score | n_estimators / max_depth |
-|---|:---:|:---:|:---:|---|
-| vit-age (single) | 768 | 73.66% | 0.7354 | 200 / 30 |
-| vit-emotion (single) | 768 | 80.60% | 0.8057 | 200 / None |
-| vit-face (single) | 768 | 85.46% | 0.8539 | 200 / 30 |
-| vit-emotion-age (dual) | 1,536 | 81.11% | 0.8108 | 200 / None |
-| vit-face-age (dual) | 1,536 | 85.79% | 0.8573 | 200 / None |
-| **vit-emotion-face (dual)** | **1,536** | **86.85%** | **0.8682** | **200 / None** |
-| vit-face-emotion-age (tri) | 2,304 | 86.20% | 0.8613 | 200 / 30 |
-
-> **Best RF**: Dual `vit-emotion-face` with `RandomForestClassifier(n_estimators=200, max_depth=None, max_features=sqrt, min_samples_split=5, min_samples_leaf=1)` + PCA, no scaler. Grid `max_features∈[sqrt,log2]`, `n_estimators∈[100,200]`, `max_depth∈[None,20,30]`, `min_samples_split/leaf`, `PCA 0.5/0.75`. See `md/rf/2.4.6_rf_vit-emotion-face.md`.
-
-## Results Summary: Gaussian Naive Bayes (240 combos)
-
-| Configuration | Dimensions | Accuracy | F1-Score | var_smoothing |
-|---|:---:|:---:|:---:|---|
-| vit-age (single) | 768 | 69.63% | 0.6952 | 0.00043 |
-| vit-emotion (single) | 768 | 73.38% | 0.7329 | 0.00307 |
-| vit-face (single) | 768 | 82.69% | 0.8258 | 0.04124 |
-| vit-emotion-age (dual) | 1,536 | 76.81% | 0.7681 | 0.00160 |
-| vit-face-age (dual) | 1,536 | 83.15% | 0.8317 | 0.01125 |
-| vit-emotion-face (dual) | 1,536 | 84.86% | 0.8481 | 0.00587 |
-| **vit-face-emotion-age (tri)** | **2,304** | **85.05%** | **0.8505** | **0.00587** |
-
-Grid `var_smoothing=np.logspace(-9,2,40)`, `scaler∈[None,MinMax]`, `PCA∈[None,0.5,0.75]` → 240 combos. See `md/gnb/2.2.7_gnb_vit-face-emotion-age.md`.
-
-## Full Leaderboard (28 Experiments)
-
-| Rank | Classifier | Features | Accuracy | F1 | Dimensions |
-|:---:|---|---|:---:|:---:|:---:|
-| 1 | SVM | vit-face-emotion-age | 93.70% | 0.9369 | 2304 |
-| 2 | SVM | vit-emotion-face | 93.29% | 0.9329 | 1536 |
-| 3 | LR | vit-face-emotion-age | 92.73% | 0.9273 | 2304 |
-| 4 | SVM | vit-face-age | 92.55% | 0.9254 | 1536 |
-| 5 | LR | vit-emotion-face | 92.41% | 0.9240 | 1536 |
-| 6 | SVM | vit-emotion-age | 92.08% | 0.9209 | 1536 |
-| 7 | LR | vit-face-age | 91.62% | 0.9162 | 1536 |
-| 8 | SVM | vit-face | 90.83% | 0.9083 | 768 |
-| 9 | LR | vit-face | 90.60% | 0.9059 | 768 |
-| 10 | LR | vit-emotion-age | 90.51% | 0.9051 | 1536 |
-| 11 | SVM | vit-emotion | 90.19% | 0.9017 | 768 |
-| ... | ... | ... | ... | ... | ... |
-
-Full table in `experiment/code/3.0_compare.ipynb` (populated, 28 rows) and its Markdown export `md/3.0_compare.md`.
+**Key finding:** Tri-domain wins for SVM/LR/GNB; RF best is dual `vit-emotion-face` (86.85%) with tri close behind (86.20%).
 
 ## Project Structure
 
