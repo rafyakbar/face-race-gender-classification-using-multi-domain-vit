@@ -54,7 +54,7 @@ DemogPairs 10.800 (6×1.800) → Normalisasi citra 224×224 → 3 ViT → fitur 
 Fitur 768/1.536/2.304 dimensi → Penskalaan → Reduksi dimensi → Klasifikasi → Kelas 0–5
 ```
 
-Pipeline anti-kebocoran data (penskalaan dan reduksi hanya dipelajari dari data latih tiap fold), evaluasi dengan validasi silang 5-Fold dan pemeringkatan berdasarkan akurasi. Evaluasi per kelas memakai akurasi One-vs-Rest dan matriks konfusi.
+Pipeline dirancang untuk mencegah kebocoran data, di mana penskalaan dan reduksi dimensi hanya dipelajari dari data latih pada setiap fold. Evaluasi dilakukan dengan 5-Fold Cross-Validation dan pemeringkatan berdasarkan akurasi. Evaluasi per kelas memakai akurasi One-vs-Rest dan matriks konfusi.
 
 ---
 
