@@ -129,7 +129,7 @@ VGGFace2 zachary_quinto/177.jpg
 
 | Kolom | Tipe | Deskripsi |
 |-------|------|-----------|
-| `db_code` | `string` | Kode basis data asal citra: `CWF` (*Celebrities in the Wild Faces*) atau `VGGFace2`. Digunakan untuk audit provenance, **tidak dipakai sebagai fitur**. |
+| `db_code` | `string` | Kode basis data asal citra: `CWF` (*Celebrities in the Wild Faces*), `VGGFace` atau `VGGFace2`. Digunakan untuk audit provenance, **tidak dipakai sebagai fitur**. Varian `VGGFace` tanpa '2' adalah legacy dan diperlakukan identik. |
 | `image_path` | `string` | Jalur relatif terhadap `images/` (format `{identitas}/{nomor}.jpg`). Menjadi **kunci utama** untuk mencocokkan citra dengan vektor fitur pada `features/demogpairs_vit-*.pkl`. |
 
 Pemuatan memakai `pd.read_csv(meta_file, sep=r"\s+")` sehingga spasi/tab ganda tetap ditangani dengan benar. Baris header `db_code image_path` otomatis menjadi nama kolom DataFrame.
@@ -347,7 +347,7 @@ Verifikasi dapat dilakukan dengan `grep -r "random_state=42" experiment/code/2*.
       ▼
 [02] Preprocessing — ViT AutoImageProcessor (Resize 224x224, Normalisasi)
       │
-[03] Feature Extraction — 3x ViT [CLS] (768-d) -> features/*.pkl (29,37 / 29,36 / 29,36 MB)
+[03] Feature Extraction — 3x ViT [CLS] (768-d) -> features/*.pkl (≈30 MB, joblib compress=9; 30,78–30,79 MB on-disk, bervariasi ±1 MB tergantung FS)
       │
 [04] Methods — 7 skema fusion (768 / 1.536 / 2.304-d) x 4 classifier x GridSearchCV 5-Fold CV
       │
