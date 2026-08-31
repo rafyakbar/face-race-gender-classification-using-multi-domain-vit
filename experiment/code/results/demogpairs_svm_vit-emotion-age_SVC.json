@@ -4341,37 +4341,37 @@
     "test_recall": 0.9208333333333334,
     "test_f1": 0.9208503214302706,
     "classification_metrics": {
-        "0": {
+        "Asian_Females": {
             "precision": 0.9551820728291317,
             "recall": 0.9472222222222222,
             "f1-score": 0.9511854951185496,
             "support": 360.0
         },
-        "1": {
+        "Asian_Males": {
             "precision": 0.9100817438692098,
             "recall": 0.9277777777777778,
             "f1-score": 0.9188445667125172,
             "support": 360.0
         },
-        "2": {
+        "Black_Females": {
             "precision": 0.9013698630136986,
             "recall": 0.9138888888888889,
             "f1-score": 0.9075862068965517,
             "support": 360.0
         },
-        "3": {
+        "Black_Males": {
             "precision": 0.9523809523809523,
             "recall": 0.9444444444444444,
             "f1-score": 0.9483960948396095,
             "support": 360.0
         },
-        "4": {
+        "White_Females": {
             "precision": 0.9085714285714286,
             "recall": 0.8833333333333333,
             "f1-score": 0.895774647887324,
             "support": 360.0
         },
-        "5": {
+        "White_Males": {
             "precision": 0.8983516483516484,
             "recall": 0.9083333333333333,
             "f1-score": 0.9033149171270718,
