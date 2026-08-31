@@ -17,7 +17,6 @@ from sklearn.metrics import (
     recall_score,
 )
 
-from .constants import DEMOGPairs_IDX_TO_LABEL
 from .display import h, html_br, display_table
 from .serialization import save_json, save_object, load_object
 
@@ -35,22 +34,29 @@ def _serialize_dict(d: dict) -> dict:
 
 
 def _compute_class_metrics(
-    y_test: np.ndarray, y_pred: np.ndarray
+    y_test: np.ndarray, y_pred: np.ndarray, target_names: list[str]
 ) -> list[dict]:
-    """Compute per-class One-vs-Rest metrics."""
+    """Compute per-class metrics from confusion matrix (OvR approach)."""
+    cm = confusion_matrix(y_test, y_pred)
+    total = cm.sum()
     class_metrics = []
-    for idx, label in DEMOGPairs_IDX_TO_LABEL.items():
-        y_true_bin = y_test == idx
-        y_pred_bin = y_pred == idx
-        class_metrics.append(
-            {
-                "Class": label,
-                "Accuracy": accuracy_score(y_true_bin, y_pred_bin),
-                "Precision": precision_score(y_true_bin, y_pred_bin),
-                "Recall": recall_score(y_true_bin, y_pred_bin),
-                "F1-Score": f1_score(y_true_bin, y_pred_bin),
-            }
-        )
+    for idx, label in enumerate(target_names):
+        tp = cm[idx, idx]
+        fn = cm[idx].sum() - tp
+        fp = cm[:, idx].sum() - tp
+        tn = total - tp - fp - fn
+        ovr_acc = (tp + tn) / total
+        class_prec = tp / (tp + fp) if (tp + fp) > 0 else 0
+        class_rec = tp / (tp + fn) if (tp + fn) > 0 else 0
+        class_f1 = 2 * class_prec * class_rec / (class_prec + class_rec) if (class_prec + class_rec) > 0 else 0
+        class_metrics.append({
+            "Class": label,
+            "OvR Accuracy": ovr_acc,
+            "Precision": class_prec,
+            "Recall": class_rec,
+            "F1-Score": class_f1,
+            "Support": int(tp + fn),
+        })
     return class_metrics
 
 
@@ -155,10 +161,10 @@ def evaluate_models(
         print(f"Precision : {test_prec}")
         print(f"Recall    : {test_rec}")
         print(f"F1 Score  : {test_f1}")
-        print(classification_report(y_test, y_pred))
+        print(classification_report(y_test, y_pred, target_names=target_names, digits=4))
 
         html_br()
-        class_metrics = _compute_class_metrics(y_test, y_pred)
+        class_metrics = _compute_class_metrics(y_test, y_pred, target_names)
         display_table(class_metrics)
 
         # Confusion matrix - save to images/
@@ -170,8 +176,8 @@ def evaluate_models(
             annot=True,
             fmt="d",
             cmap="Blues",
-            xticklabels=list(DEMOGPairs_IDX_TO_LABEL.values()),
-            yticklabels=list(DEMOGPairs_IDX_TO_LABEL.values()),
+            xticklabels=target_names,
+            yticklabels=target_names,
             ax=ax,
         )
         ax.set_xlabel("Predicted Labels")
@@ -186,6 +192,23 @@ def evaluate_models(
         fig.savefig(fig_path, dpi=150, bbox_inches="tight")
         plt.close(fig)
         print(f"Confusion matrix saved: {fig_path}")
+
+        # Display image inline (Jupyter: HTML img, terminal: path only)
+        from .display import printhtml, IS_NOTEBOOK
+        if IS_NOTEBOOK:
+            printhtml(f'<img src="{fig_path}" width="600">')
+
+        # Print confusion matrix as text array with labels
+        print("\nConfusion Matrix:")
+        print(f"{'':>20s}", end="")
+        for name in target_names:
+            print(f"{name:>18s}", end="")
+        print()
+        for i, row_label in enumerate(target_names):
+            print(f"{row_label:>20s}", end="")
+            for j in range(len(target_names)):
+                print(f"{cm[i][j]:>18d}", end="")
+            print()
 
         evaluation_results.append(
             {
