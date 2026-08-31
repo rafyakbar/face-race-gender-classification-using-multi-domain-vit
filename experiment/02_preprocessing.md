@@ -80,72 +80,10 @@ last_hidden_state [1, 197, 768] → [CLS] token [1, 768]
 
 Fungsi inti `extract_vit_features()` menangani seluruh tingkat citra:
 
-```python
-# code/utils/extraction.py
-from transformers import AutoImageProcessor, AutoModelForImageClassification
-from PIL import Image
-import torch, numpy as np
-
-def extract_vit_features(img, model=None, model_path='...', device=None, feature_type='cls'):
-    # 1. Konfigurasi device — auto-deteksi CUDA
-    if device is None:
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-    # 2. Pemuatan model (jika belum di-cache) & set eval mode
-    if model is None:
-        model = AutoModelForImageClassification.from_pretrained(model_path)
-    model = model.to(device)
-    model.eval()
-
-    # 3. Processor spesifik checkpoint — memuat mean/std/size dari config model
-    processor = AutoImageProcessor.from_pretrained(model_path)
-
-    # 4. Pemuatan & verifikasi format citra
-    if isinstance(img, str):
-        image = Image.open(img)
-    elif isinstance(img, np.ndarray):
-        image = Image.fromarray(img.astype('uint8'))
-    else:
-        raise ValueError("img must be a file path or NumPy array.")
-
-    if image.mode != 'RGB':
-        image = image.convert('RGB')  # wajib 3-channel
-
-    # 5. Preprocessing standar ViT: resize 224×224 + rescale + normalize + to tensor
-    inputs = processor(images=image, return_tensors="pt").to(device)
-
-    # 6. Inferensi & ekstraksi token
-    with torch.no_grad():
-        vit_outputs = model.vit(**inputs)
-        hidden_states = vit_outputs.last_hidden_state  # [1, 197, 768]
-
-    if feature_type == 'cls':
-        features = hidden_states[:, 0, :]   # token [CLS] — representasi global
-    elif feature_type == 'pool':
-        features = hidden_states.mean(dim=1)  # mean pooling alternatif
-    else:
-        raise ValueError("feature_type must be 'cls' or 'pool'.")
-
-    return features.squeeze(0).cpu().numpy()  # vektor 1-D (768,)
-```
-
 **Catatan penting:**
 - `processor(images=image, return_tensors="pt")` secara atomik melakukan resize, rescale, dan normalisasi — tidak ada langkah manual `transforms.Resize`/`Normalize` terpisah.
 - `model.vit(**inputs)` mengakses *backbone* ViT tanpa *classification head*, sehingga `last_hidden_state` berisi *hidden state* murni encoder, bukan logit.
 - Pemanggilan di notebook ekstraksi selalu dengan `feature_type='cls'` (default) dan `model` yang sudah di-*preload* untuk efisiensi *batch loop*:
-
-```python
-# code/1.1_vit-*_demogpairs.ipynb
-model_path = 'skutaada/VIT-VGGFace'  # atau dima806/facial_emotions_image_detection / facial_age_image_detection
-model = AutoModelForImageClassification.from_pretrained(model_path).to(device)
-
-features = {}
-for d in tqdm(data):
-    features[d['image_path']] = u.extract_vit_features(
-        d['full_path'], model=model, model_path=model_path, device=device
-    )
-joblib.dump(features, 'features/demogpairs_vit-face.pkl', compress=9)
-```
 
 ### 1.4 Tiga Checkpoint yang Digunakan
 
@@ -215,34 +153,6 @@ Input Vektor Fitur (X_train, shape [8640, D])
 
 Implementasi pipeline (identik di seluruh notebook `2.1.*`, `2.2.*`, `2.4.*`, `2.5.*`):
 
-```python
-from imblearn.pipeline import Pipeline
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.decomposition import PCA
-from sklearn.svm import SVC  # / GaussianNB / RandomForest / LogisticRegression
-
-pipeline = Pipeline(steps=[
-    ('scaler', None),      # scaler opsional — diisi GridSearchCV
-    ('pca', None),         # PCA opsional — diisi GridSearchCV
-    ('classifier', None)   # model klasifikasi
-])
-
-grid_params = [
-    {
-        'scaler': [None, MinMaxScaler()],
-        'pca': [None, PCA(n_components=0.5), PCA(n_components=0.75)],
-        'classifier': [SVC()],
-        'classifier__C': [0.01, 0.1, 1, 10],
-        'classifier__kernel': ['rbf', 'poly', 'linear'],
-        'classifier__gamma': ['scale', 'auto'],
-        'classifier__degree': [2, 3],
-        'classifier__tol': [1e-3],
-        'classifier__probability': [True],
-    }
-]
-# Total kombinasi: 2 × 3 × 4 × 3 × 2 × 2 = 288
-```
-
 ### 3.2 A. Penskalaan Fitur (*Feature Scaling*)
 
 Eksperimen membandingkan **dua opsi** yang dieksplorasi sebagai *hyperparameter* `scaler` dalam *grid*:
@@ -281,32 +191,6 @@ Dari **288 kombinasi** yang dievaluasi per model (× 5 *fold* = 1.440 *fits*):
 
 Seluruh eksperimen (SVM, GNB, RF, LR — total 28 notebook `2.*`) menggunakan **skor yang identik dan sengaja tanpa `roc_auc_ovr`**:
 
-```python
-from sklearn.model_selection import StratifiedKFold, GridSearchCV
-import joblib
-
-skv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-
-scoring = {
-    'accuracy': 'accuracy',
-    'f1': 'f1_macro',
-    'precision': 'precision_macro',
-    'recall': 'recall_macro'
-}
-
-grid_search = GridSearchCV(
-    estimator=pipeline,
-    param_grid=grid_params,
-    cv=skv,
-    refit='accuracy',            # model terbaik dipilih berdasar accuracy
-    scoring=scoring,             # 4 metrik di atas — tanpa roc_auc_ovr
-    n_jobs=int(joblib.cpu_count() * 0.6),  # 60% core logis
-    verbose=1,
-    error_score='raise',
-    return_train_score=True
-)
-```
-
 **Alasan tidak memakai `roc_auc_ovr`:**
 - Metrik ROC-AUC *one-vs-rest* memerlukan `predict_proba` / `decision_function` yang tidak konsisten lintas *classifier* (mis. SVM memerlukan `probability=True` yang mahal; GNB/RF/LR memiliki kalibrasi probabilitas berbeda), sehingga perbandingan antar-algoritma menjadi tidak adil.
 - Fokus penelitian adalah **klasifikasi 6 kelas demografis** dengan evaluasi berbasis *hard prediction* (akurasi dan F1 makro) serta analisis *fairness* per-kelas via OvR Accuracy dan *confusion matrix*, bukan peringkat probabilitas.
@@ -315,12 +199,6 @@ grid_search = GridSearchCV(
 > **Koreksi terhadap dokumen sebelumnya:** Jika dokumen `04_methods.md` atau `05_results.md` masih menyebut `roc_auc_ovr` / `ROC-AUC OvR` sebagai bagian dari `scoring` GridSearchCV, hal tersebut **tidak sesuai dengan implementasi aktual** di notebook dan `code/utils/evaluation.py`. Scoring aktual hanya 4 metrik di atas.
 
 ### 4.2 Paralelisasi — `n_jobs = 60%` CPU Logis
-
-```python
-n_jobs=int(joblib.cpu_count() * 0.6)
-# Contoh: pada mesin 10 core → n_jobs=6; pada 8 core → n_jobs=4
-joblib.parallel_backend('threading')  # backend threading (baris pertama notebook)
-```
 
 - Nilai dihitung dinamis dari `joblib.cpu_count()` (jumlah *logical cores*), dikali 0,6 dan di-*cast* ke `int`.
 - Backend `threading` dipilih agar kompatibel dengan *thread-safety* scikit-learn dan menghindari *overhead fork* pada Windows.
@@ -332,36 +210,9 @@ Evaluasi akhir dilakukan di `code/utils/evaluation.py` oleh fungsi `evaluate_mod
 
 #### a) Metrik Global (Makro)
 
-```python
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-
-test_acc  = accuracy_score(y_test, y_pred)
-test_prec = precision_score(y_test, y_pred, average="macro")
-test_rec  = recall_score(y_test, y_pred, average="macro")
-test_f1   = f1_score(y_test, y_pred, average="macro")
-```
-
 #### b) Metrik Per-Kelas — OvR Accuracy (`_compute_class_metrics`)
 
 Untuk setiap kelas demografis, dihitung metrik *One-vs-Rest* secara eksplisit dari *confusion matrix* 6×6:
-
-```python
-# code/utils/evaluation.py :: _compute_class_metrics
-labels = [DEMOGPairs_LABEL_TO_IDX[n] for n in target_names]
-cm = confusion_matrix(y_test, y_pred, labels=labels)  # selaras target_names
-total = cm.sum()  # 2160 (ukuran test set)
-
-for idx, label in enumerate(target_names):  # 6 kelas
-    tp = cm[idx, idx]
-    fn = cm[idx].sum() - tp        # baris idx minus diagonal
-    fp = cm[:, idx].sum() - tp     # kolom idx minus diagonal
-    tn = total - tp - fp - fn
-    ovr_acc    = (tp + tn) / total
-    class_prec = tp / (tp + fp) if (tp + fp) > 0 else 0
-    class_rec  = tp / (tp + fn) if (tp + fn) > 0 else 0
-    class_f1   = 2*class_prec*class_rec/(class_prec+class_rec) if (class_prec+class_rec)>0 else 0
-    # → disimpan sebagai {"Class": label, "OvR Accuracy": ovr_acc, "Precision": ..., "Recall": ..., "F1-Score": ..., "Support": tp+fn}
-```
 
 Kolom **`OvR Accuracy`** yang tampil di tabel evaluasi (via `display_table()` dari `code/utils/display.py`) adalah `(TP + TN) / Total` — mengukur seberapa baik model membedakan **satu kelas vs. lima kelas lainnya** secara biner. Nilai ini sangat informatif untuk mendeteksi *disparitas demografis* (mis. apakah kelas tertentu lebih sering salah diklasifikasikan).
 
@@ -371,29 +222,10 @@ Kolom **`OvR Accuracy`** yang tampil di tabel evaluasi (via `display_table()` da
 
 1. **Heatmap PNG** (`seaborn.heatmap`, `annot=True`, `fmt="d"`, `cmap="Blues"`) yang disimpan ke `images/cm_<model>.png` dan ditampilkan *inline* di Jupyter via `printhtml('<img ...>')`:
 
-   ```python
-   fig, ax = plt.subplots(figsize=(8, 6))
-   sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
-               xticklabels=target_names, yticklabels=target_names, ax=ax)
-   ax.set_xlabel("Predicted Labels"); ax.set_ylabel("True Labels")
-   fig.savefig(f"images/cm_{stem}.png", dpi=150, bbox_inches="tight")
-   ```
-
+   
 2. **Text array berlabel** yang dicetak ke *stdout* (berguna saat notebook dijalankan sebagai skrip / di terminal tanpa *display* grafis) — diimplementasikan sebagai *loop* manual yang mencetak header kolom dan setiap baris dengan *padding* rata kanan:
 
-   ```python
-   print("\nConfusion Matrix:")
-   print(f"{'':>20s}", end="")
-   for name in target_names:
-       print(f"{name:>18s}", end="")
-   print()
-   for i, row_label in enumerate(target_names):
-       print(f"{row_label:>20s}", end="")
-       for j in range(len(target_names)):
-           print(f"{cm[i][j]:>18d}", end="")
-       print()
-   ```
-
+   
    Contoh keluaran (6×6, nilai integer cacah prediksi):
 
    ```
