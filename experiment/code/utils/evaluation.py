@@ -186,7 +186,6 @@ def evaluate_models(
         )
         ax.set_xlabel("Predicted Labels")
         ax.set_ylabel("True Labels")
-        ax.set_title("Confusion Matrix")
 
         # Save to images/ folder with descriptive name
         os.makedirs("images", exist_ok=True)

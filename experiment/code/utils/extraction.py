@@ -38,7 +38,11 @@ def extract_vit_features(
     model = model.to(device)
     model.eval()
 
-    processor = AutoImageProcessor.from_pretrained(model_path)
+    if model_path is not None:
+        processor = AutoImageProcessor.from_pretrained(model_path)
+    else:
+        # Fallback ke config model jika model sudah pre-loaded
+        processor = AutoImageProcessor.from_pretrained(model.config.name_or_path)
 
     # Load image
     if isinstance(img, str):
