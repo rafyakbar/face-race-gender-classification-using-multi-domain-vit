@@ -11,7 +11,7 @@ Revisi ini melengkapi **28 eksperimen** penuh: **4 classifier** (SVM, LR, RF, GN
 - **Juara global:** `SVM + vit-face-emotion-age` (Tri, 2.304-d) - **0.9370** / 0.9372 / 0.9370 / 0.9369.
 - **Runner-up:** `SVM + vit-emotion-face` 0.9329; `LR + vit-face-emotion-age` 0.9273.
 - **Pola universal:** Tri > Dual terbaik > Single terbaik pada 4 classifier (RF sedikit anomali Dual > Tri).
-- **Ranking classifier (rata-rata 7):** SVM 0.9150 > LR 0.9057 > RF 0.8299 > GNB 0.7904.
+- **Ranking classifier (rata-rata 7):** SVM 0.9147 > LR 0.9040 > RF 0.8281 > GNB 0.7937.
 - **Fairness juara:** OvR Accuracy 97.31%–98.70% (rentang 1.39 pp), seluruh F1 >0.91.
 
 ---
@@ -171,7 +171,7 @@ Revisi ini melengkapi **28 eksperimen** penuh: **4 classifier** (SVM, LR, RF, GN
 
 - Best Single→Best Dual: vit-face 0.8546 → vit-emotion-face 0.8685 = **+0.0139** (+1.63%, err-red -9.55%)
 - Best Dual→Tri: vit-emotion-face 0.8685 → Tri 0.8620 = **-0.0065** (-0.75%)
-- Best Single→Tri: vit-face 0.8546 → Tri 0.8620 = **+0.0074** (+0.87%, err-red -5.10%)
+- Best Single→Tri: vit-face 0.8546 → Tri 0.8620 = **+0.0074** (+0.87%, err-red -5.09%)
 - ⚠️ RF anomali: Tri 0.8620 turun -0.0065 vs vit-emotion-face 0.8685 - curse of dimensionality.
 - Single terlemah: `vit-age` 0.7366 vs best Single 0.8546 gap +0.1181 - vit-age selalu terendah (SVM 0.8764 LR 0.8648 RF 0.7366 GNB 0.6963).
 
@@ -179,7 +179,7 @@ Revisi ini melengkapi **28 eksperimen** penuh: **4 classifier** (SVM, LR, RF, GN
 
 ## 3.4 Gaussian NB - 240×5=1.200 fits
 
-> var_smoothing 4e-4–4e-2 logspace; 6/7 pca=PCA.
+> var_smoothing 4e-4–4e-2 logspace; 7/7 pca=PCA.
 
 | Rank | Fitur | Tipe | Dim | Akurasi | Precision | Recall | F1 | Parameter Terbaik |
 |------|-------|------|-----|---------|-----------|--------|----|-------------------|
@@ -226,24 +226,24 @@ Revisi ini melengkapi **28 eksperimen** penuh: **4 classifier** (SVM, LR, RF, GN
 
 ## 5. Fairness & Kesetaraan Demografis (OvR per Kelas)
 
-> Support 360/kelas. Fokus pada model Tri per classifier (RF tetap Tri sebagai pembanding usulan).
+> Support 360/kelas. Fokus pada model Tri per classifier (RF tetap Tri sebagai pembanding usulan). Urutan kelas alfabet sesuai `classification_metrics` JSON: Asian_Females, Asian_Males, Black_Females, Black_Males, White_Females, White_Males.
 
 ### 5.1 OvR - SVM + vit-face-emotion-age (Tri, 0.9370)
 
 | Kelas | Ras | Gender | Precision | Recall | F1 |
 |-------|-----|--------|-----------|--------|----|
-| Black_Males | Black | Pria | 0.9536 | 0.9694 | 0.9614 |
-| White_Females | White | Wanita | 0.9415 | 0.8944 | 0.9174 |
-| Asian_Males | Asian | Pria | 0.9241 | 0.9472 | 0.9355 |
-| White_Males | White | Pria | 0.9250 | 0.9250 | 0.9250 |
-| Black_Females | Black | Wanita | 0.9239 | 0.9444 | 0.9341 |
-| Asian_Females | Asian | Wanita | 0.9549 | 0.9417 | 0.9483 |
+| Asian_Females | Asian | Wanita | 0.9250 | 0.9250 | 0.9250 |
+| Asian_Males | Asian | Pria | 0.9239 | 0.9444 | 0.9341 |
+| Black_Females | Black | Wanita | 0.9415 | 0.8944 | 0.9174 |
+| Black_Males | Black | Pria | 0.9549 | 0.9417 | 0.9483 |
+| White_Females | White | Wanita | 0.9241 | 0.9472 | 0.9355 |
+| White_Males | White | Pria | 0.9536 | 0.9694 | 0.9614 |
 | **Macro Avg** | - | - | **0.9372** | **0.9370** | **0.9369** |
 
-Recall range **0.8944–0.9694** (gap 0.0750), F1 range **0.9174–0.9614** (gap 0.0441). Kelas terendah: **White_Females** 0.8944, tertinggi **Black_Males** 0.9694.
+Recall range **0.8944–0.9694** (gap 0.0750), F1 range **0.9174–0.9614** (gap 0.0441). Kelas terendah: **Black_Females** 0.8944, tertinggi **White_Males** 0.9694.
 → Gap 0.0750, seluruh F1 >0.91 - disparitas minimal.
 
-*Improvement:* Recall `White_Females` vit-age 0.8361 → Tri 0.8944 = **+0.0583**.
+*Improvement:* Recall `White_Females` vit-age 0.8611 → Tri 0.9472 = **+0.0861**.
 
 ---
 
@@ -251,18 +251,18 @@ Recall range **0.8944–0.9694** (gap 0.0750), F1 range **0.9174–0.9614** (gap
 
 | Kelas | Ras | Gender | Precision | Recall | F1 |
 |-------|-----|--------|-----------|--------|----|
-| Black_Males | Black | Pria | 0.9505 | 0.9611 | 0.9558 |
-| White_Females | White | Wanita | 0.9213 | 0.9111 | 0.9162 |
-| Asian_Males | Asian | Pria | 0.9121 | 0.9222 | 0.9171 |
-| White_Males | White | Pria | 0.9162 | 0.9111 | 0.9136 |
-| Black_Females | Black | Wanita | 0.9076 | 0.9278 | 0.9176 |
-| Asian_Females | Asian | Wanita | 0.9571 | 0.9306 | 0.9437 |
+| Asian_Females | Asian | Wanita | 0.9162 | 0.9111 | 0.9136 |
+| Asian_Males | Asian | Pria | 0.9076 | 0.9278 | 0.9176 |
+| Black_Females | Black | Wanita | 0.9213 | 0.9111 | 0.9162 |
+| Black_Males | Black | Pria | 0.9571 | 0.9306 | 0.9437 |
+| White_Females | White | Wanita | 0.9121 | 0.9222 | 0.9171 |
+| White_Males | White | Pria | 0.9505 | 0.9611 | 0.9558 |
 | **Macro Avg** | - | - | **0.9275** | **0.9273** | **0.9273** |
 
-Recall range **0.9111–0.9611** (gap 0.0500), F1 range **0.9136–0.9558** (gap 0.0422). Kelas terendah: **White_Females** 0.9111, tertinggi **Black_Males** 0.9611.
-→ Gap 0.0500 (terkecil), 91.11% White vs 96.11% Black_Males.
+Recall range **0.9111–0.9611** (gap 0.0500), F1 range **0.9136–0.9558** (gap 0.0422). Kelas terendah: **Asian_Females dan Black_Females tie** 0.9111, tertinggi **White_Males** 0.9611.
+→ Gap 0.0500 (terkecil), 91.11% terendah vs 96.11% tertinggi.
 
-*Improvement:* Recall `White_Females` vit-age 0.8250 → Tri 0.9111 = **+0.0861**.
+*Improvement:* Recall `White_Females` vit-age 0.8667 → Tri 0.9222 = **+0.0556**.
 
 ---
 
@@ -270,18 +270,18 @@ Recall range **0.9111–0.9611** (gap 0.0500), F1 range **0.9136–0.9558** (gap
 
 | Kelas | Ras | Gender | Precision | Recall | F1 |
 |-------|-----|--------|-----------|--------|----|
-| Black_Males | Black | Pria | 0.8714 | 0.9222 | 0.8961 |
-| White_Females | White | Wanita | 0.8793 | 0.7889 | 0.8316 |
-| Asian_Males | Asian | Pria | 0.8683 | 0.8972 | 0.8825 |
-| White_Males | White | Pria | 0.8415 | 0.8111 | 0.8260 |
-| Black_Females | Black | Wanita | 0.8264 | 0.8333 | 0.8299 |
-| Asian_Females | Asian | Wanita | 0.8850 | 0.9194 | 0.9019 |
+| Asian_Females | Asian | Wanita | 0.8415 | 0.8111 | 0.8260 |
+| Asian_Males | Asian | Pria | 0.8264 | 0.8333 | 0.8299 |
+| Black_Females | Black | Wanita | 0.8793 | 0.7889 | 0.8316 |
+| Black_Males | Black | Pria | 0.8850 | 0.9194 | 0.9019 |
+| White_Females | White | Wanita | 0.8683 | 0.8972 | 0.8825 |
+| White_Males | White | Pria | 0.8714 | 0.9222 | 0.8961 |
 | **Macro Avg** | - | - | **0.8620** | **0.8620** | **0.8613** |
 
-Recall range **0.7889–0.9222** (gap 0.1333), F1 range **0.8260–0.9019** (gap 0.0759). Kelas terendah: **White_Females** 0.7889, tertinggi **Black_Males** 0.9222.
-→ Gap 0.1333 terbesar; White_Females 0.7889 tersulit.
+Recall range **0.7889–0.9222** (gap 0.1333), F1 range **0.8260–0.9019** (gap 0.0759). Kelas terendah: **Black_Females** 0.7889, tertinggi **White_Males** 0.9222.
+→ Gap 0.1333 terbesar; Black_Females tersulit.
 
-*Improvement:* Recall `White_Females` vit-age 0.6861 → Tri 0.7889 = **+0.1028**.
+*Improvement:* Recall `White_Females` vit-age 0.7278 → Tri 0.8972 = **+0.1694**.
 
 ---
 
@@ -289,18 +289,18 @@ Recall range **0.7889–0.9222** (gap 0.1333), F1 range **0.8260–0.9019** (gap
 
 | Kelas | Ras | Gender | Precision | Recall | F1 |
 |-------|-----|--------|-----------|--------|----|
-| Black_Males | Black | Pria | 0.8936 | 0.8861 | 0.8898 |
-| White_Females | White | Wanita | 0.8576 | 0.8028 | 0.8293 |
-| Asian_Males | Asian | Pria | 0.8641 | 0.8833 | 0.8736 |
-| White_Males | White | Pria | 0.7865 | 0.8389 | 0.8118 |
-| Black_Females | Black | Wanita | 0.8272 | 0.8111 | 0.8191 |
-| Asian_Females | Asian | Wanita | 0.8781 | 0.8806 | 0.8793 |
+| Asian_Females | Asian | Wanita | 0.7865 | 0.8389 | 0.8118 |
+| Asian_Males | Asian | Pria | 0.8272 | 0.8111 | 0.8191 |
+| Black_Females | Black | Wanita | 0.8576 | 0.8028 | 0.8293 |
+| Black_Males | Black | Pria | 0.8781 | 0.8806 | 0.8793 |
+| White_Females | White | Wanita | 0.8641 | 0.8833 | 0.8736 |
+| White_Males | White | Pria | 0.8936 | 0.8861 | 0.8898 |
 | **Macro Avg** | - | - | **0.8512** | **0.8505** | **0.8505** |
 
-Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap 0.0780). Kelas terendah: **White_Females** 0.8028, tertinggi **Black_Males** 0.8861.
+Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap 0.0780). Kelas terendah: **Black_Females** 0.8028, tertinggi **White_Males** 0.8861.
 → Gap 0.0833; vs vit-age gap 0.1722 - fusi kurangi bias.
 
-*Improvement:* Recall `White_Females` vit-age 0.6306 → Tri 0.8028 = **+0.1722**.
+*Improvement:* Recall `White_Females` vit-age 0.7500 → Tri 0.8833 = **+0.1333**.
 
 ---
 
@@ -308,18 +308,18 @@ Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap
 
 | Classifier | Akurasi | Rec Min | Rec Max | Gap Rec | F1 Min | F1 Max | Gap F1 | Tersulit |
 |------------|---------|---------|---------|---------|--------|--------|--------|----------|
-| SVM | 0.9370 | 0.8944 | 0.9694 | 0.0750 | 0.9174 | 0.9614 | 0.0441 | White_Females |
-| LR | 0.9273 | 0.9111 | 0.9611 | 0.0500 | 0.9136 | 0.9558 | 0.0422 | White_Females |
-| RF | 0.8620 | 0.7889 | 0.9222 | 0.1333 | 0.8260 | 0.9019 | 0.0759 | White_Females |
-| GNB | 0.8505 | 0.8028 | 0.8861 | 0.0833 | 0.8118 | 0.8898 | 0.0780 | White_Females |
+| SVM | 0.9370 | 0.8944 | 0.9694 | 0.0750 | 0.9174 | 0.9614 | 0.0441 | Black_Females |
+| LR | 0.9273 | 0.9111 | 0.9611 | 0.0500 | 0.9136 | 0.9558 | 0.0422 | Asian_Females / Black_Females tie |
+| RF | 0.8620 | 0.7889 | 0.9222 | 0.1333 | 0.8260 | 0.9019 | 0.0759 | Black_Females |
+| GNB | 0.8505 | 0.8028 | 0.8861 | 0.0833 | 0.8118 | 0.8898 | 0.0780 | Black_Females |
 
-- LR gap terkecil (0.0500), SVM 0.0750, GNB 0.0833, RF 0.1333. Kelas tersulit konsisten Black_Females/White_Females - confusion lintas ras gender-sama, bukan intra-ras gender.
+- LR gap terkecil (0.0500), SVM 0.0750, GNB 0.0833, RF 0.1333. Kelas tersulit konsisten Black_Females (dan tie Asian_Females pada LR) - confusion lintas ras gender-sama, bukan intra-ras gender.
 
 ---
 
 ## 6. Ablation Kuantitatif per Classifier
 
-| Transisi dirinci pada §3; ringkas lintas-classifier: Best Single→Best Dual +0.0181–0.0246, Dual→Tri +0.0032–0.0041 (RF -0.0065). Error reduction Best Single→Tri: SVM 31.33%, LR 22.66%, RF 0.50% (anomali), GNB 13.63% (best Single) / 50.77% (worst). |
+| Transisi dirinci pada §3; ringkas lintas-classifier: Best Single→Best Dual +0.0181–0.0245, Dual→Tri +0.0032–0.0042 (RF -0.0065). Error reduction Best Single→Tri: SVM 31.31%, LR 22.66%, RF 5.09% (anomali), GNB 13.64% (best Single) / 50.77% (worst). |
 
 ### Detail Δ per Classifier
 
@@ -360,12 +360,12 @@ Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap
 
 | Aspek | SVM | LR | RF | GNB |
 |-------|-----|----|----|-----|
-| Rata-rata 7 | **0.9150** | 0.9057 | 0.8299 | 0.7904 |
+| Rata-rata 7 | **0.9147** | 0.9040 | 0.8281 | 0.7937 |
 | Tri | **0.9370** | 0.9273 | 0.8620 | 0.8505 |
-| PCA best | 7/7 None | 7/7 None | 7/7 PCA | 6/7 PCA |
+| PCA best | 7/7 None | 7/7 None | 7/7 PCA | 7/7 PCA |
 
-- SVM & LR pca=None (2.304-d penuh) - SVM RBF/poly tangkap non-linearitas residual (gap 0.0097 vs LR). RF/GNB butuh PCA karena overfit; GNB asumsi independen salah untuk ViT berkorelasi.
-- Praktis: SVM Tri akurasi maksimal; LR Tri alternatif ringan (0.0097 di bawah, 10× inference, gap fairness 0.0500 vs 0.0750).
+- SVM dan LR pca=None (2.304-d penuh) - SVM RBF/poly tangkap non-linearitas residual (gap 0.0097 vs LR). RF/GNB butuh PCA karena overfit; GNB asumsi independen salah untuk ViT berkorelasi.
+- Praktis: SVM Tri akurasi maksimal; LR Tri alternatif ringan (0.0097 di bawah, 10x inference, gap fairness 0.0500 vs 0.0750).
 
 ---
 
@@ -373,7 +373,7 @@ Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap
 
 1. Tri superior universal (3/4 classifier puncak; RF -0.0065). Face+Emotion inti (Dual terbaik 4/4, 99.5% Tri).
 2. Age lemah solo (selalu terendah) namun komplementer (Face+Age +0.0172 vs Face).
-3. Fairness naik: lantai Recall Black_Females 0.8944 (Tri SVM) vs 0.6056 (GNB age); gap LR Tri terkecil 0.0500.
+3. Fairness naik: lantai Recall Black_Females 0.8944 (Tri SVM) vs 0.6056 (GNB age Asian_Males); gap LR Tri terkecil 0.0500 (tie Asian_Females/Black_Females).
 4. Rekomendasi: **SVM vit-face-emotion-age C10 poly scale deg2** produksi; **LR vit-face-emotion-age C0.1 newton-cg** alternatif ringan.
 
 ---
