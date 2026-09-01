@@ -1,16 +1,16 @@
-# Framework Penelitian — Multi-Domain ViT + 4 Classifier untuk Klasifikasi Ras & Gender
+# Framework Penelitian - Multi-Domain ViT + 4 Classifier untuk Klasifikasi Ras & Gender
 
 ## Ringkasan
 
 Penelitian mengklasifikasikan **6 kelas interseksional** (3 Ras × 2 Gender: Asian/Black/White × Female/Male) pada citra wajah dengan **Cross-Domain Feature Fusion**. Tiga Vision Transformer sebagai ekstraktor fitur offline:
 
-- **ViT-Face** — 768 dimensi
-- **ViT-Emotion** — 768 dimensi
-- **ViT-Age** — 768 dimensi
+- **ViT-Face** - 768 dimensi
+- **ViT-Emotion** - 768 dimensi
+- **ViT-Age** - 768 dimensi
 
-Konkatenasi tri-domain = **2.304 dimensi**. Dataset **DemogPairs** — **10.800 citra** (600 identitas ×18, 1.800 per kelas, seimbang), split **80/20 stratified** (8.640 latih / 2.160 uji, 360 per kelas).
+Konkatenasi tri-domain = **2.304 dimensi**. Dataset **DemogPairs** - **10.800 citra** (600 identitas ×18, 1.800 per kelas, seimbang), split **80/20 stratified** (8.640 latih / 2.160 uji, 360 per kelas).
 
-**28 eksperimen** = 7 konfigurasi fitur × 4 classifier — hyperparameter optimization using Grid Search with Cross-Validation (GridSearchCV):
+**28 eksperimen** = 7 konfigurasi fitur × 4 classifier - hyperparameter optimization using Grid Search with Cross-Validation (GridSearchCV):
 
 | Classifier | Kombinasi | Tri-domain Akurasi | F1 |
 |:---|:---:|:---:|:---:|
@@ -30,13 +30,13 @@ DemogPairs 10.800 (6×1.800) → Normalisasi citra 224×224 → 3 ViT → fitur 
 ```
 
 7 skema konfigurasi fitur:
-- `vit-face` — 768 dimensi (single-domain)
-- `vit-emotion` — 768 dimensi (single-domain)
-- `vit-age` — 768 dimensi (single-domain)
-- `vit-face-age` — 1.536 dimensi (dual-domain)
-- `vit-emotion-age` — 1.536 dimensi (dual-domain)
-- `vit-emotion-face` — 1.536 dimensi (dual-domain)
-- `vit-face-emotion-age` — 2.304 dimensi (tri-domain, usulan utama)
+- `vit-face` - 768 dimensi (single-domain)
+- `vit-emotion` - 768 dimensi (single-domain)
+- `vit-age` - 768 dimensi (single-domain)
+- `vit-face-age` - 1.536 dimensi (dual-domain)
+- `vit-emotion-age` - 1.536 dimensi (dual-domain)
+- `vit-emotion-face` - 1.536 dimensi (dual-domain)
+- `vit-face-emotion-age` - 2.304 dimensi (tri-domain, usulan utama)
 
 ---
 
@@ -67,14 +67,14 @@ Pipeline dirancang untuk mencegah kebocoran data, di mana penskalaan dan reduksi
 
 ## Struktur Dokumen
 
-- `00_overview.md` — ringkasan ini
-- `01_prepare-data.md` — dataset & split
-- `02_preprocessing.md` — dua tingkat preprocessing
-- `03_feature-extraction.md` — ekstraksi ViT & fusi
-- `04_methods.md` — empat classifier & optimasi
-- `05_results.md` — 28 eksperimen & fairness
-- `dataset_demogpairs.md` — spesifikasi DemogPairs
-- `code/` — notebook, utilitas, arsip markdown, gambar, dan hasil
+- `00_overview.md` - ringkasan ini
+- `01_prepare-data.md` - dataset & split
+- `02_preprocessing.md` - dua tingkat preprocessing
+- `03_feature-extraction.md` - ekstraksi ViT & fusi
+- `04_methods.md` - empat classifier & optimasi
+- `05_results.md` - 28 eksperimen & fairness
+- `dataset_demogpairs.md` - spesifikasi DemogPairs
+- `code/` - notebook, utilitas, arsip markdown, gambar, dan hasil
 
 ---
 

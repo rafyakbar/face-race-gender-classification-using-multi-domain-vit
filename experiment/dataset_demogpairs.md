@@ -1,4 +1,4 @@
-# Dataset DemogPairs — Rangkuman & Spesifikasi Lengkap
+# Dataset DemogPairs - Rangkuman & Spesifikasi Lengkap
 
 > Dokumen ini merangkum dataset **DemogPairs** yang digunakan dalam penelitian klasifikasi ras–gender multi-kelas berbasis Vision Transformer (ViT) multi-domain. Semua angka telah diverifikasi langsung terhadap file metadata (`dataset/demogpairs/metadata/*.txt`), folder citra (`dataset/demogpairs/images/`), dan artefak fitur (`.pkl`) di `experiment/code/`.
 
@@ -21,14 +21,14 @@
 
 ### Fokus & Kontribusi Paper
 
-1. **Kuantifikasi bias demografis** — untuk pertama kalinya mengukur ketidakseimbangan identitas, gender, dan etnis pada dataset wajah publik populer (LFW, VGGFace, VGGFace2, IJB-B, CWF, dll.).
-2. **Merilis DemogPairs** — *validation set* baru berisi **10.800 citra wajah** (*10.8K*) dan **58,3 juta pasangan verifikasi identitas** (*58.3M identity verification pairs*), yang didistribusikan dalam *fold* seimbang secara demografis: *Asian, Black, White × Female, Male*.
-3. **Benchmark model SOTA** — evaluasi perilaku lintas-demografis pada model *deep face recognition* ternama (SphereFace, FaceNet, ResNet50) dan menunjukkan bahwa model-model tersebut menderita bias demografis yang sangat terstruktur dan merugikan.
-4. **Protokol pengujian baru** — mengusulkan protokol validasi yang lebih tepat untuk menguji kemampuan generalisasi model pengenalan wajah lintas kelompok demografis.
+1. **Kuantifikasi bias demografis** - untuk pertama kalinya mengukur ketidakseimbangan identitas, gender, dan etnis pada dataset wajah publik populer (LFW, VGGFace, VGGFace2, IJB-B, CWF, dll.).
+2. **Merilis DemogPairs** - *validation set* baru berisi **10.800 citra wajah** (*10.8K*) dan **58,3 juta pasangan verifikasi identitas** (*58.3M identity verification pairs*), yang didistribusikan dalam *fold* seimbang secara demografis: *Asian, Black, White × Female, Male*.
+3. **Benchmark model SOTA** - evaluasi perilaku lintas-demografis pada model *deep face recognition* ternama (SphereFace, FaceNet, ResNet50) dan menunjukkan bahwa model-model tersebut menderita bias demografis yang sangat terstruktur dan merugikan.
+4. **Protokol pengujian baru** - mengusulkan protokol validasi yang lebih tepat untuk menguji kemampuan generalisasi model pengenalan wajah lintas kelompok demografis.
 
 ### Abstrak (terjemahan ringkas)
 
-> Meskipun pengenalan wajah berbasis *deep learning* telah mencapai hasil mengesankan, kontroversi muncul terkait bias ras dan gender yang mempertanyakan penerapannya pada skenario sensitif. Karya ini mengukur ketidakseimbangan demografis pada dataset wajah publik populer dan merilis DemogPairs — *validation set* seimbang yang memungkinkan benchmark yang adil antar kelompok demografis. Hasil eksperimen menunjukkan bias demografis yang sistematis pada model SOTA dan perlunya protokol evaluasi yang memperhatikan keseimbangan demografis.
+> Meskipun pengenalan wajah berbasis *deep learning* telah mencapai hasil mengesankan, kontroversi muncul terkait bias ras dan gender yang mempertanyakan penerapannya pada skenario sensitif. Karya ini mengukur ketidakseimbangan demografis pada dataset wajah publik populer dan merilis DemogPairs - *validation set* seimbang yang memungkinkan benchmark yang adil antar kelompok demografis. Hasil eksperimen menunjukkan bias demografis yang sistematis pada model SOTA dan perlunya protokol evaluasi yang memperhatikan keseimbangan demografis.
 
 ---
 
@@ -47,10 +47,10 @@ Temuan utama Hupont & Fernández (2019) adalah dominasi etnis **White** dan keti
 
 **Interpretasi:**
 
-* Pada CWF, VGGFace, dan LFW, lebih dari **83–89%** citra adalah etnis White — Asian dan Black sangat direpresentasikan rendah (< 10%).
+* Pada CWF, VGGFace, dan LFW, lebih dari **83–89%** citra adalah etnis White - Asian dan Black sangat direpresentasikan rendah (< 10%).
 * Gender pada LFW sangat timpang (74,2% Male), sedangkan CWF dan VGGFace2 juga condong ke Male.
 * **DemogPairs** satu-satunya yang **seimbang sempurna**: 50% Female / 50% Male dan 33,3% untuk masing-masing ras (Asian / Black / White), sehingga ideal untuk evaluasi *fairness* dan generalisasi lintas-demografis.
-* Ketidakseimbangan identitas (beberapa selebriti memiliki ratusan citra, lainnya hanya sedikit) memperparah bias pelatihan — DemogPairs mengatasinya dengan jumlah citra seragam per subjek.
+* Ketidakseimbangan identitas (beberapa selebriti memiliki ratusan citra, lainnya hanya sedikit) memperparah bias pelatihan - DemogPairs mengatasinya dengan jumlah citra seragam per subjek.
 
 ---
 
@@ -68,8 +68,8 @@ Temuan utama Hupont & Fernández (2019) adalah dominasi etnis **White** dan keti
 | **Subjek per kelas** | **100** subjek / kelas |
 | **Keseimbangan gender** | **50,0%** Female (5.400 citra) / **50,0%** Male (5.400 citra) |
 | **Keseimbangan ras** | **33,3%** Asian (3.600 citra) / **33,3%** Black (3.600 citra) / **33,3%** White (3.600 citra) |
-| **Pasangan verifikasi** | **58,3 juta** pasangan verifikasi identitas (sesuai paper asli — untuk protokol verifikasi; tidak dipakai pada klasifikasi 6-kelas) |
-| **Sumber citra** | Agregasi dari dataset publik (CWF, VGGFace2, dll. — kolom `db_code` pada metadata, mis. `CWF`, `VGGFace2`) |
+| **Pasangan verifikasi** | **58,3 juta** pasangan verifikasi identitas (sesuai paper asli - untuk protokol verifikasi; tidak dipakai pada klasifikasi 6-kelas) |
+| **Sumber citra** | Agregasi dari dataset publik (CWF, VGGFace2, dll. - kolom `db_code` pada metadata, mis. `CWF`, `VGGFace2`) |
 
 > Verifikasi: `metadata/*.txt` masing-masing 1.800 baris × 6 file = 10.800; `images/**/*.jpg` = 10.800 file; tiap kelas memiliki tepat 100 folder subjek unik dengan 18 citra/subjek.
 
@@ -129,7 +129,7 @@ Saat dimuat melalui `utils.dataset.load_demogpairs()`, setiap baris diperkaya me
 
 ---
 
-## 4. Pemetaan Label (`label_idx`) — Standar Penelitian Ini
+## 4. Pemetaan Label (`label_idx`) - Standar Penelitian Ini
 
 ### 4.1 Urutan Kanonik Kelas
 
@@ -181,7 +181,7 @@ Semua notebook (`1.1_*`, `2.*_*`) dan fungsi `load_demogpairs()` menggunakan map
 
 | Atribut | Detail |
 |---------|--------|
-| **Metode** | *Stratified Split* — `sklearn.model_selection.train_test_split(..., stratify=y)` |
+| **Metode** | *Stratified Split* - `sklearn.model_selection.train_test_split(..., stratify=y)` |
 | **Rasio** | **80% Train / 20% Test** |
 | **Jumlah Train** | **8.640** citra (1.440 per kelas) |
 | **Jumlah Test** | **2.160** citra (360 per kelas) |
@@ -232,7 +232,7 @@ Untuk eksperimen klasifikasi, vektor 768-D dapat digabungkan (konkatenasi) menja
 | `vit-face + vit-age` | 1.536-D | `2.1.4`, dst. |
 | `vit-emotion + vit-age` | 1.536-D | `2.1.5`, dst. |
 | `vit-emotion + vit-face` | 1.536-D | `2.1.6`, dst. |
-| `vit-face + vit-emotion + vit-age` (tri-domain) | **2.304-D** | `2.1.7`, `2.2.7`, `2.4.7`, `2.5.7` — **terbaik 93,70% accuracy (SVM)** |
+| `vit-face + vit-emotion + vit-age` (tri-domain) | **2.304-D** | `2.1.7`, `2.2.7`, `2.4.7`, `2.5.7` - **terbaik 93,70% accuracy (SVM)** |
 
 Semua fitur disimpan sebagai `dict[str, np.ndarray]` terkompresi (`joblib.dump(..., compress=9)`) dengan *key* = `image_path`.
 
@@ -242,35 +242,35 @@ Semua fitur disimpan sebagai `dict[str, np.ndarray]` terkompresi (`joblib.dump(.
 
 ### Tugas
 
-**Klasifikasi interseksional 6-kelas (3 ras × 2 gender)** secara terpadu — memprediksi kombinasi ras dan gender sekaligus dalam satu model, bukan dua tugas terpisah.
+**Klasifikasi interseksional 6-kelas (3 ras × 2 gender)** secara terpadu - memprediksi kombinasi ras dan gender sekaligus dalam satu model, bukan dua tugas terpisah.
 
 ### Alur Eksperimen
 
-1. **Ekstraksi fitur** — setiap citra DemogPairs diproses oleh ketiga ViT untuk menghasilkan vektor 768-D per domain (total 10.800 × 768 per file `.pkl`).
-2. **Split** — 8.640 train / 2.160 test (stratified, `random_state=42`).
-3. **Klasifikasi** — empat keluarga *classifier* dievaluasi dengan *GridSearchCV* + *StratifiedKFold* (5 lipatan):
-   * **SVM** (`SVC` — `2.1.*`, terbaik tri-domain 93,70%),
+1. **Ekstraksi fitur** - setiap citra DemogPairs diproses oleh ketiga ViT untuk menghasilkan vektor 768-D per domain (total 10.800 × 768 per file `.pkl`).
+2. **Split** - 8.640 train / 2.160 test (stratified, `random_state=42`).
+3. **Klasifikasi** - empat keluarga *classifier* dievaluasi dengan *GridSearchCV* + *StratifiedKFold* (5 lipatan):
+   * **SVM** (`SVC` - `2.1.*`, terbaik tri-domain 93,70%),
    * **Gaussian Naive Bayes** (`2.2.*`),
    * **Random Forest** (`2.4.*`),
    * **Logistic Regression** (`2.5.*`).
    * Pipeline opsional: `MinMaxScaler` → `PCA(n_components=0.5/0.75)` → *classifier*.
-4. **Evaluasi** — *accuracy*, *macro F1/precision/recall*, *classification report* per kelas, *confusion matrix*, dan **OvR Accuracy** per kelas (mis. Black_Males ~98,7% OvR) — lihat `md/` dan `results/demogpairs_*.json`.
+4. **Evaluasi** - *accuracy*, *macro F1/precision/recall*, *classification report* per kelas, *confusion matrix*, dan **OvR Accuracy** per kelas (mis. Black_Males ~98,7% OvR) - lihat `md/` dan `results/demogpairs_*.json`.
 
 ### Fokus Penelitian
 
-Menggabungkan representasi multi-domain dari Vision Transformer (Identitas, Emosi, Usia) untuk klasifikasi 6 kelas ras–gender yang **akurat dan seimbang** — memanfaatkan keseimbangan demografis DemogPairs agar model tidak bias terhadap kelompok mayoritas.
+Menggabungkan representasi multi-domain dari Vision Transformer (Identitas, Emosi, Usia) untuk klasifikasi 6 kelas ras–gender yang **akurat dan seimbang** - memanfaatkan keseimbangan demografis DemogPairs agar model tidak bias terhadap kelompok mayoritas.
 
 ---
 
 ## 8. Catatan Rekonstruksi & Reproduksibilitas
 
 * **Dependensi utama:** `transformers` (`AutoImageProcessor`, `AutoModelForImageClassification`), `torch`, `scikit-learn`, `imblearn`, `joblib`, `pandas`.
-* **Perangkat:** `torch.device("cuda" if torch.cuda.is_available() else "cpu")` — ekstraksi ViT otomatis memakai GPU jika tersedia.
+* **Perangkat:** `torch.device("cuda" if torch.cuda.is_available() else "cpu")` - ekstraksi ViT otomatis memakai GPU jika tersedia.
 * **Reproduksibilitas split:** selalu gunakan `stratify=y` dan `random_state=42` agar pembagian 8640/2160 identik antar eksekusi.
-* **Mapping label:** jangan mengasumsikan urutan alfabetis — selalu impor `DEMOGPairs_LABEL_TO_IDX` dari `utils/constants.py`.
+* **Mapping label:** jangan mengasumsikan urutan alfabetis - selalu impor `DEMOGPairs_LABEL_TO_IDX` dari `utils/constants.py`.
 * **Lokasi dataset:** `experiment/code/dataset/demogpairs/` (folder `images/` di-*gitignore* untuk citra; `metadata/` tetap ter-*track*).
 * **Sitiran:** jika memakai DemogPairs, sitir Hupont & Fernández (FG 2019), DOI 10.1109/FG.2019.8756625.
 
 ---
 
-*Dokumen diperbarui: 31 Agustus 2026 — diverifikasi terhadap `metadata/*.txt` (10.800 baris), `images/**/*.jpg` (10.800 file), `features/*.pkl` (768-D, 10.800 entri), dan `utils/constants.py`.*
+*Dokumen diperbarui: 31 Agustus 2026 - diverifikasi terhadap `metadata/*.txt` (10.800 baris), `images/**/*.jpg` (10.800 file), `features/*.pkl` (768-D, 10.800 entri), dan `utils/constants.py`.*

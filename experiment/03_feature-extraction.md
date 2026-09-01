@@ -24,9 +24,9 @@ Ketiga model berbagi arsitektur Vision Transformer Base patch16-224: citra 224×
 
 Ketiga Vision Transformer dipilih karena pre-training pada tugas yang saling melengkapi:
 
-- **ViT-Face** — identitas wajah, menangkap geometri biometrik statis (struktur kraniofasial, proporsi wajah)
-- **ViT-Emotion** — emosi wajah, menangkap dinamika mikro otot dan pola afektif
-- **ViT-Age** — usia wajah, menangkap tekstur penuaan dan morfologi terkait usia
+- **ViT-Face** - identitas wajah, menangkap geometri biometrik statis (struktur kraniofasial, proporsi wajah)
+- **ViT-Emotion** - emosi wajah, menangkap dinamika mikro otot dan pola afektif
+- **ViT-Age** - usia wajah, menangkap tekstur penuaan dan morfologi terkait usia
 
 Ketiga domain bersifat komplementer untuk membedakan ras dan gender. Masing-masing menghasilkan arsip fitur 768 dimensi untuk 10.800 citra yang sama, dengan kunci berupa jalur relatif citra sehingga mudah digabungkan.
 
@@ -42,15 +42,15 @@ Setiap citra diproses secara sekuensial, vektor 768 dimensi disimpan dalam dicti
 
 ---
 
-## Feature Fusion — Concatenation
+## Feature Fusion - Concatenation
 
 Fusi dilakukan dengan concatenation vektor secara berurutan tanpa penjumlahan atau proyeksi, sehingga seluruh informasi asli tiap domain dipertahankan.
 
 | Kategori | Dimensi | Konfigurasi |
 |---|:---:|---|
-| Single-Domain | 768 | `vit-face`, `vit-emotion`, `vit-age` |
-| Dual-Domain | 1.536 | `vit-face-age`, `vit-emotion-age`, `vit-emotion-face` |
-| Tri-Domain | 2.304 | `vit-face-emotion-age` (usulan utama) |
+| Single-Domain | 768 | face, emotion, age |
+| Dual-Domain | 1.536 | face + age, emotion + age, emotion + face |
+| Tri-Domain | 2.304 | face + emotion + age (usulan utama) |
 
 Total 7 konfigurasi. Single-domain mengukur kekuatan tiap domain secara terisolasi, dual-domain menguji sinergi dua domain, dan tri-domain menggabungkan ketiganya untuk representasi paling kaya (geometri + dinamika + tekstur).
 
@@ -66,19 +66,19 @@ Matriks ablation:
 
 ```
               Face  Emotion  Age   Dimensi
-vit-face        ●      ○      ○      768
-vit-emotion     ○      ●      ○      768
-vit-age         ○      ○      ●      768
-vit-face-age    ●      ○      ●     1536
-vit-emotion-age ○      ●      ●     1536
-vit-emotion-face●      ●      ○     1536
-vit-face-emotion-age ● ●      ●     2304 ← usulan utama
+face            ●      ○      ○      768
+emotion         ○      ●      ○      768
+age             ○      ○      ●      768
+face + age      ●      ○      ●     1536
+emotion + age   ○      ●      ●     1536
+emotion + face  ●      ●      ○     1536
+face + emotion + age ● ●      ●     2304 ← usulan utama
 ```
 
 ---
 
 ## Referensi File
 
-- `code/utils/extraction.py` — implementasi ekstraksi token khusus
-- `code/1.1_vit-*_demogpairs.ipynb` — eksekusi ekstraksi per domain
-- `code/features/demogpairs_vit-*.pkl` — arsip fitur terkompresi
+- `code/utils/extraction.py` - implementasi ekstraksi token khusus
+- `code/1.1_vit-*_demogpairs.ipynb` - eksekusi ekstraksi per domain
+- `code/features/demogpairs_vit-*.pkl` - arsip fitur terkompresi

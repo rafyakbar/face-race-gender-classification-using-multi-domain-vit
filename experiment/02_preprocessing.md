@@ -1,4 +1,4 @@
-# Preprocessing Citra — Resize dan Normalisasi untuk Vision Transformer
+# Preprocessing Citra - Resize dan Normalisasi untuk Vision Transformer
 
 ## Ringkasan
 
@@ -28,8 +28,8 @@ Konfigurasi ukuran diambil langsung dari processor config (height 224, width 224
 
 Setelah resizing, dilakukan dua langkah normalisasi oleh AutoImageProcessor:
 
-1. **Rescaling** — piksel uint8 pada rentang [0,255] dibagi 255.0 menjadi float pada rentang [0,1].
-2. **Standardisasi channel-wise** — setiap channel dinormalisasi dengan formula (x − mean) / std, di mana mean dan standard deviation adalah nilai spesifik untuk setiap checkpoint (misalnya konfigurasi VGGFace berbeda dengan Emotion dan Age).
+1. **Rescaling** - piksel uint8 pada rentang [0,255] dibagi 255.0 menjadi float pada rentang [0,1].
+2. **Standardisasi channel-wise** - setiap channel dinormalisasi dengan formula (x − mean) / std, di mana mean dan standard deviation adalah nilai spesifik untuk setiap checkpoint (misalnya konfigurasi VGGFace berbeda dengan Emotion dan Age).
 
 Nilai mean dan standard deviation tidak ditulis manual, melainkan dimuat otomatis dari konfigurasi model. Hasil normalisasi kemudian diformat menjadi tensor dan dialokasikan ke device yang tersedia sebelum diteruskan ke Vision Transformer Encoder untuk ekstraksi fitur.
 
@@ -37,5 +37,5 @@ Nilai mean dan standard deviation tidak ditulis manual, melainkan dimuat otomati
 
 ## Referensi File
 
-- `code/utils/extraction.py` — implementasi preprocessing citra tingkat image-level
-- `code/1.1_vit-*_demogpairs.ipynb` — eksekusi ekstraksi offline per domain
+- `code/utils/extraction.py` - implementasi preprocessing citra tingkat image-level
+- `code/1.1_vit-*_demogpairs.ipynb` - eksekusi ekstraksi offline per domain

@@ -6,9 +6,9 @@ Penelitian menggunakan **DemogPairs** (Hupont & Fernández, FG 2019) sebagai sat
 
 | Atribut | Nilai |
 |---------|-------|
-| **Dataset** | DemogPairs — DOI `10.1109/FG.2019.8756625` |
+| **Dataset** | DemogPairs - DOI `10.1109/FG.2019.8756625` |
 | **Total citra** | **10.800** (600 identitas × 18 citra) |
-| **Kelas** | **6 interseksional**, 1.800 per kelas — seimbang sempurna |
+| **Kelas** | **6 interseksional**, 1.800 per kelas - seimbang sempurna |
 | **Rasio** | 50% Female/Male, 33,3% Asian/Black/White |
 | **Split** | Stratified 80/20 → **8.640 Train / 2.160 Test** |
 | **Cakupan** | Satu split yang sama untuk 28 eksperimen (7 fitur × 4 classifier) |
@@ -30,7 +30,7 @@ Setiap kelas terdiri dari **100 subjek × 18 citra = 1.800 citra**, dengan pemet
 | Asian_Females | Asian | Female | 100 | 1.800 | 5 |
 | **Total** | 3 ras | 2 gender | **600** | **10.800** | 0–5 |
 
-Pemetaan didefinisikan di `utils/constants.py` dan tidak diubah — seluruh notebook, fitur, dan confusion matrix mengacu pada urutan ini.
+Pemetaan didefinisikan di `utils/constants.py` dan tidak diubah - seluruh notebook, fitur, dan confusion matrix mengacu pada urutan ini.
 
 ---
 
@@ -38,11 +38,11 @@ Pemetaan didefinisikan di `utils/constants.py` dan tidak diubah — seluruh note
 
 `metadata/` berisi 6 berkas teks (satu per kelas, masing-masing 1.800 baris data + 1 header), `images/` berisi 600 folder identitas dengan 18 JPEG tiap folder (total 10.800).
 
-Setiap berkas metadata berformat whitespace-separated dengan header `db_code image_path`. Kolom `db_code` mencatat provenance (CWF, VGGFace atau VGGFace2 — varian tanpa '2' adalah legacy dan diperlakukan identik) dan tidak dipakai sebagai fitur. Kolom `image_path` menjadi kunci utama untuk mencocokkan citra dengan vektor fitur pada `features/demogpairs_vit-*.pkl`.
+Setiap berkas metadata berformat whitespace-separated dengan header `db_code image_path`. Kolom `db_code` mencatat provenance (CWF, VGGFace atau VGGFace2 - varian tanpa '2' adalah legacy dan diperlakukan identik) dan tidak dipakai sebagai fitur. Kolom `image_path` menjadi kunci utama untuk mencocokkan citra dengan vektor fitur pada `features/demogpairs_vit-*.pkl`.
 
 ---
 
-## Pembagian Dataset — Stratified 80/20
+## Pembagian Dataset - Stratified 80/20
 
 Pembagian menggunakan **Stratified Split** 80/20 dengan seed `42` untuk menjaga proporsi 16,67% per kelas secara eksak di kedua subset. Hasil pembagian:
 
@@ -78,8 +78,8 @@ Pemeriksaan meliputi kelengkapan metadata dan citra, keseimbangan kelas, keselar
 
 ## Referensi Silang
 
-- `dataset_demogpairs.md` — spesifikasi DemogPairs
-- `00_overview.md` — framework & 7 skema fitur
-- `03_feature-extraction.md` — ekstraksi ViT
-- `04_methods.md` — Grid Search & pipeline
-- `utils/dataset.py` dan `utils/constants.py` — implementasi pemuatan dan pemetaan label
+- `dataset_demogpairs.md` - spesifikasi DemogPairs
+- `00_overview.md` - framework & 7 skema fitur
+- `03_feature-extraction.md` - ekstraksi ViT
+- `04_methods.md` - Grid Search & pipeline
+- `utils/dataset.py` dan `utils/constants.py` - implementasi pemuatan dan pemetaan label
