@@ -1,0 +1,212 @@
+====================================================================================================
+PEDOMAN & ATURAN BAKU PENULISAN DRAF PAPER MARKDOWN (WRITING MD RULES)
+Pipeline: Paper Outline (paper_outline.md) -> Modular Paper Drafts (paper/*.md)
+====================================================================================================
+
+Dokumen ini memuat standarisasi, tata cara, format, dan aturan penulisan yang wajib diikuti
+saat menyusun draf artikel ilmiah dalam format Markdown sebelum dikonversi ke dokumen LaTeX.
+
+
+====================================================================================================
+1. KETENTUAN BAHASA PADA JUDUL & TEKS
+====================================================================================================
+
+1.1. Bahasa Inggris Wajib untuk Judul & Heading
+  - Judul Paper (Title), Judul Bab (Section Heading), dan Judul Sub-bab (Subsection Heading)
+    WAJIB ditulis dalam BAHASA INGGRIS dengan format Title Case.
+    * Contoh Judul Paper   : Improving Image Classification Through Dual Encoders
+    * Contoh Judul Bab     : # I. Introduction
+                             # II. Related Works
+                             # III. Materials and Methods
+                             # IV. Results and Discussion
+                             # V. Conclusion
+    * Contoh Judul Sub-bab : ## A. Dataset
+                             ## B. Proposed Architecture
+                             ## C. Image Enhancement
+                             ## A. Performance Comparison Across Encoders
+
+1.2. Bahasa Teks Naratif
+  - Isi teks narasi di dalam paragraf ditulis dalam Bahasa Indonesia.
+  - Seluruh istilah teknis internasional (misalnya: *encoder-decoder*, *deep learning*, *transformer*,
+    *multi-head attention*, *loss function*, *learning rate*, *batch size*, *feature extraction*,
+    *ablation study*, *checkpoint*, *ground truth*) TETAP ditulis dalam bahasa Inggris.
+
+
+====================================================================================================
+2. STRUKTUR & PEMBAGIAN BERKAS MODULAR
+====================================================================================================
+
+- Pembagian berkas naskah Markdown (.md) WAJIB mengikuti struktur bab dan sub-bab yang telah
+  ditetapkan pada berkas `paper_outline.md`.
+- Setiap seksi utama dan sub-seksi dipisahkan ke dalam berkas modular tersendiri pada folder `paper/`
+  (misalnya: 00_abstract.md, 01_introduction.md, 02_related-works.md, berkas metodologi,
+  berkas hasil dan pembahasan, 05_conclusion.md, 06_references.md, dan 07_biographies.md).
+- Pendekatan modular ini mempermudah pelacakan revisi serta pemetaan 1-ke-1 saat dikonversi ke LaTeX.
+
+
+====================================================================================================
+3. ATURAN WAJIB SITASI & PERUJUKAN SELURUH ELEMEN (NO ORPHAN ELEMENTS)
+====================================================================================================
+
+- DILARANG memuat elemen menggantung (orphan element) di dalam naskah:
+  * Setiap Referensi ([1], [2], ...) WAJIB disitasi di dalam paragraf terkait.
+  * Setiap Gambar (Figure 1, 2, ...) WAJIB dirujuk secara eksplisit dalam paragraf.
+  * Setiap Tabel (Table I, II, ...) WAJIB dirujuk secara eksplisit dalam paragraf.
+  * Setiap Persamaan (Equation (1), (2), ...) WAJIB dirujuk secara eksplisit dalam paragraf.
+  * Setiap Algoritma (Algorithm 1, 2, ...) WAJIB dirujuk secara eksplisit dalam paragraf.
+- Setiap elemen ditempatkan tepat setelah paragraf yang pertama kali merujuknya.
+
+
+====================================================================================================
+4. URUTAN KRONOLOGIS PENOMORAN (STRICT CHRONOLOGICAL NUMBERING)
+====================================================================================================
+
+Urutan nomor pemanggilan elemen dari awal naskah (Introduction) hingga akhir (Conclusion)
+HARUS BENAR-BENAR RUNTUT dan KONSISTEN sesuai urutan kemunculan pertama kali dalam narasi:
+  - Nomor Sitasi Referensi : [1], [2], [3], [4], ... (tidak boleh meloncat).
+  - Nomor Gambar (Figures) : Figure 1, Figure 2, Figure 3, ... (Figure 2 tidak boleh muncul sebelum Figure 1 dirujuk).
+  - Nomor Tabel (Tables)   : Table I, Table II, Table III, ...
+  - Nomor Persamaan (Eqs)  : (1), (2), (3), (4), ...
+  - Nomor Algoritma (Algs) : Algorithm 1, Algorithm 2, ...
+
+
+====================================================================================================
+5. INTERAKTIVITAS TAUTAN NAVIGASI PADA MARKDOWN (CLICKABLE LINKS & ANCHORS)
+====================================================================================================
+
+Seluruh rujukan dan sitasi di dalam teks paragraf ketika diklik HARUS mengarah langsung ke posisi
+elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown:
+
+5.1. Rujukan Sitasi Daftar Pustaka
+  - Format dalam teks : `[[1]](06_references.md#ref1)` atau `[[1], [2]](06_references.md)`
+  - Format target     : Pada berkas `06_references.md`, sematkan tag anchor:
+    `<a id="ref1"></a>[1] A. Author, "Title of paper," Journal Name, vol. 1, 2025.`
+
+5.2. Rujukan Gambar (Figures)
+  - Format dalam teks : `[Figure 1](#fig1)` atau `[Figure 1](03_materials-and-methods_a-overview.md#fig1)`
+  - Format target     :
+    `<a id="fig1"></a>`
+    `![Figure 1. Architecture of the Proposed System.](images/overview.png)`
+
+5.3. Rujukan Tabel (Tables)
+  - Format dalam teks : `[Table I](#tab1)` atau `[Table I](03_materials-and-methods_b-dataset.md#tab1)`
+  - Format target     :
+    `<a id="tab1"></a>`
+    `**Table I. Partition and Sample Distribution.**`
+
+5.4. Rujukan Persamaan Matematika (Equations)
+  - Format dalam teks : `[(1)](#eq1)`
+  - Format target     :
+    `<a id="eq1"></a>`
+    $$
+    y = \sigma(W \mathbf{x} + b) \tag{1}
+    $$
+
+5.5. Rujukan Algoritma (Algorithms)
+  - Format dalam teks : `[Algorithm 1](#alg1)`
+  - Format target     :
+    `<a id="alg1"></a>`
+    `**Algorithm 1. Pseudocode of Training Procedure.**`
+
+
+====================================================================================================
+6. ATURAN PENJELASAN SIMBOL PERSAMAAN MATEMATIKA (MANDATORY EQUATION ELABORATION)
+====================================================================================================
+
+6.1. Kewajiban Penjelasan Simbol & Notasi
+  - SETIAP KALI persamaan matematika disitasi/dirujuk dalam paragraf, kalimat tersebut WAJIB disertai
+    penjelasan lengkap mengenai arti setiap simbol variabel dan parameternya.
+  - Contoh Pola Baku Penjelasan:
+    "Transformasi intensitas tersebut dirumuskan pada [(1)](#eq1), di mana $I_{\text{in}}$ merupakan
+    intensitas piksel input teranormalisasi pada rentang $[0, 1]$, $I_{\text{out}}$ adalah intensitas
+    piksel output, dan $\gamma$ menyatakan koefisien koreksi gamma."
+
+6.2. Penulisan Dimensi, Operasi & Simbol Sederhana dalam Teks
+  - Untuk penulisan ukuran dimensi, operasi aritmetika sederhana, rentang, atau simbol skalar deskriptif
+    di dalam kalimat, CUKUP gunakan teks biasa dengan simbol unicode standar tanpa mode matematika LaTeX ($...$):
+    * Dimensi / Resolusi      : 224 × 224, 518 × 518, 8 × 8 (gunakan simbol teks `×`, bukan `$\times$`)
+    * Penjumlahan / Fusi      : 1024 + 768 = 1792 (cukup teks biasa, bukan `$1024 + 768 = 1792$`)
+    * Rentang & Toleransi     : ±5%, ±15°, ±20% (gunakan simbol teks `±` dan `°`, bukan `$\pm$` atau `$^\circ$`)
+    * Rasio / Pembagian       : 80/10/10, 0.7 / 1.5 (cukup teks biasa)
+  - Mode matematika (`$...$` atau `$$...$$`) DIKHUSUSKAN untuk ekspresi simbolik, fungsi aljabar, matriks,
+    dan variabel murni (contoh: $\gamma$, $\sigma$, $\mathbf{x}$, $\mathbf{W}$, $I_{\text{in}}$, $f(x)$).
+
+6.3. Teks Subskrip Formula
+  - Subskrip non-variabel wajib menggunakan `\text{...}`, contoh: `$I_{\text{combined}}$`, `$W_{\text{proj}}$`.
+
+
+====================================================================================================
+7. ATURAN TATA BAHASA, TIPOGRAFI & GAYA PENULISAN
+====================================================================================================
+
+7.1. LARANGAN KERAS PENGGUNAAN EM DASH (—)
+  - JANGAN menggunakan karakter em dash (—) di dalam seluruh teks naskah Markdown.
+  - Solusi pengganti:
+    * Gunakan tanda hubung biasa (-) dengan spasi, ATAU
+    * Gunakan tanda kurung ( ), ATAU
+    * Susun ulang struktur kalimat menggunakan tanda koma (,).
+
+7.2. Struktur & Alur Paragraf
+  - Setiap paragraf harus memenuhi target jumlah kata yang ditentukan pada `paper_outline.md`.
+  - Setiap paragraf wajib memiliki 3 unsur pembangun:
+    1. Kalimat Pembuka (Topic Sentence): Mengaitkan argumen dari paragraf sebelumnya.
+    2. Tubuh Paragraf (Elaborasi/Bukti): Memaparkan data kuantitatif, formulasi, atau sintesis teori.
+    3. Kalimat Transisi (Closing/Bridge): Menutup ide dan mengarahkan pembaca ke topik berikutnya.
+
+7.3. Format Angka & Desimal
+  - Gunakan tanda titik (.) sebagai pemisah desimal standar internasional (contoh: 0.952, 0.001, 1.5).
+  - Penulisan tabel: metrik performa terbaik pada setiap kolom wajib dicetak tebal (`**...**`).
+
+7.4. Posisi Sitasi dalam Kalimat
+  - Sitasi WAJIB diletakkan SEBELUM tanda baca titik (.) atau koma (,).
+    * BENAR : "... metode pembelajaran terawasi [1], [2]."
+    * SALAH : "... metode pembelajaran terawasi. [1], [2]"
+  - Maksimal 4 nomor sitasi dalam satu kalimat untuk mencegah *citation dumping*.
+
+
+====================================================================================================
+8. DISIPLIN BATASAN KLAIM ILMIAH (GLOBAL SCIENTIFIC CLAIM DISCIPLINE)
+====================================================================================================
+
+Seluruh naskah Markdown wajib mematuhi etika dan batasan klaim ilmiah universal berikut:
+
+  1. Batasan Klaim Optimalitas:
+     - DILARANG mengklaim konfigurasi terpilih sebagai "optimal global (globally optimal)".
+     - Sebutkan secara objektif sebagai: *"best-performing configuration among evaluated settings"*
+       atau *"selected configuration within the evaluated trajectory"*.
+
+  2. Batasan Klaim Kausalitas & Sinergi Fitur:
+     - DILARANG mengklaim komponen terbukti "sinergis murni / komplementer mutlak" jika peningkatan
+       performa dapat dipengaruhi oleh perbedaan kapasitas parameter atau dimensi representasi.
+     - Batasi klaim keunggulan pada lingkup eksperimen terkontrol: *"among the evaluated configurations"*.
+
+  3. Batasan Klaim Signifikansi Statistik:
+     - DILARANG mengklaim "signifikan secara statistik" jika eksperimen dijalankan dalam 1 kali uji
+       (*single-run*) tanpa uji hipotesis formal, variasi multi-seed, atau pelaporan interval kepercayaan.
+
+  4. Batasan Kesiapan Aplikasi Nyata (Real-World / Domain Readiness):
+     - DILARANG mengklaim sistem siap menggantikan peran tenaga ahli secara otomatis tanpa melalui
+       evaluasi lapangan nyata atau uji validasi domain formal (*human-in-the-loop*).
+
+  5. Integritas Pelaporan Metrik Evaluasi:
+     - Seluruh metrik evaluasi utama wajib dilaporkan secara terpisah dan transparan tanpa manipulasi
+       skor agregat komposit buatan.
+
+
+====================================================================================================
+9. CHECKLIST VALIDASI NASKAH SEBELUM KONVERSI KE LATEX
+====================================================================================================
+
+Sebelum naskah Markdown dikonversi ke format LaTeX:
+[ ] 1. Seluruh Judul Paper, Judul Bab, dan Judul Sub-bab ditulis dalam BAHASA INGGRIS.
+[ ] 2. Setiap Referensi, Gambar, Tabel, Persamaan, dan Algoritma telah dirujuk di dalam paragraf teks.
+[ ] 3. Seluruh tautan Markdown (`[Figure 1](#fig1)`, `[(1)](#eq1)`, dll.) berfungsi dan mengarah ke anchor yang tepat.
+[ ] 4. Setiap perujukan persamaan telah disertai kalimat penjelas definisi simbol variabelnya.
+[ ] 5. Urutan nomor Referensi [1]..[N], Figur 1..N, Tabel I..N, dan Persamaan (1)..(N) runtut kronologis.
+[ ] 6. Penulisan dimensi, operasi sederhana (seperti 224 × 224, 1024 + 768 = 1792, ±5%) menggunakan teks biasa, bukan math mode.
+[ ] 7. Tidak ada satu pun karakter em dash (—) di seluruh naskah.
+[ ] 8. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
+
+====================================================================================================
+AKHIR DOKUMEN WRITING MD RULES
+====================================================================================================

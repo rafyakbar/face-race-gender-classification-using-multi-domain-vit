@@ -1,0 +1,303 @@
+====================================================================================================
+PEDOMAN & ATURAN BAKU PENYUSUNAN DOKUMEN LATEX IEEE ACCESS (WRITING LATEX RULES)
+Template: IEEE Access Official Template (ieeeaccess.cls)
+====================================================================================================
+
+Dokumen ini memuat standarisasi, tata cara koding LaTeX, makro interaktif, format tabel,
+manajemen gambar, sitasi BibTeX, dan aturan kompilasi untuk publikasi jurnal IEEE Access.
+
+
+====================================================================================================
+1. KETENTUAN BAHASA PADA JUDUL & HEADING LATEX
+====================================================================================================
+
+1.1. Bahasa Inggris Wajib untuk Judul & Struktur Heading
+  - Judul Artikel (`\title`), Judul Seksi (`\section`), Judul Sub-seksi (`\subsection`), dan
+    Sub-sub-seksi (`\subsubsection`) WAJIB ditulis dalam BAHASA INGGRIS dengan format Title Case.
+    * Contoh Judul Paper   : \title{Improving Neural Classification Through Dual Feature Encoders}
+    * Contoh Judul Section : \section{Introduction}
+                             \section{Related Works}
+                             \section{Materials and Methods}
+                             \section{Results and Discussion}
+                             \section{Conclusion}
+    * Contoh Subsection    : \subsection{Dataset Specification}
+                             \subsection{Model Architecture}
+                             \subsection{Performance Comparison Across Encoders}
+
+1.2. Bahasa Teks Naskah
+  - Isi teks naratif pada dokumen LaTeX ditulis dalam Bahasa Indonesia, dengan istilah teknis
+    internasional tetap dipertahankan dalam bahasa Inggris.
+
+
+====================================================================================================
+2. ATURAN WAJIB PERUJUKAN SELURUH ELEMEN (NO ORPHAN ELEMENTS)
+====================================================================================================
+
+- DILARANG memuat elemen menggantung di dalam dokumen LaTeX:
+  * Setiap entri pustaka di `references.bib` WAJIB disitasi dengan `\cite{refX}` di dalam teks.
+  * Setiap Gambar (`\begin{figure}`) WAJIB dirujuk dengan `Figure~\ref{fig:X}` di dalam teks.
+  * Setiap Tabel (`\begin{table}`) WAJIB dirujuk dengan `Table~\ref{tab:X}` di dalam teks.
+  * Setiap Persamaan (`\begin{equation}`) WAJIB dirujuk dengan `\eqref{eq:X}` di dalam teks.
+  * Setiap Algoritma (`\begin{algorithm}`) WAJIB dirujuk dengan `Algorithm~\ref{alg:X}` di dalam teks.
+- Setiap gambar atau tabel wajib diletakkan tepat setelah paragraf yang pertama kali merujuknya.
+
+
+====================================================================================================
+3. URUTAN KRONOLOGIS PENOMORAN KETAT (STRICT NUMBERING ORDER)
+====================================================================================================
+
+Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal hingga akhir dokumen:
+  - Urutan Sitasi Referensi : \cite{ref1}, \cite{ref2}, \cite{ref3}, ... (sesuai kemunculan pertama).
+  - Urutan Gambar (Figure)  : Figure 1, Figure 2, Figure 3, ... (Figure 2 tidak boleh dirujuk sebelum Figure 1).
+  - Urutan Tabel (Table)    : Table I, Table II, Table III, ...
+  - Urutan Persamaan (Eq)   : (1), (2), (3), (4), ...
+  - Urutan Algoritma (Alg)  : Algorithm 1, Algorithm 2, ...
+
+
+====================================================================================================
+4. PREAMBLE & MAKRO INTERAKTIVITAS (CLICKABLE CITATIONS & CROSS-REFS)
+====================================================================================================
+
+4.1. Paket Hyperref & Warna Tautan
+  Pada berkas induk `access.tex`, paket `hyperref` wajib dikonfigurasi agar seluruh tautan interaktif
+  saat diklik di dalam PDF dan berwarna biru:
+
+  \usepackage{hyperref}
+  \hypersetup{
+      colorlinks=true,
+      linkcolor=blue,
+      citecolor=blue,
+      urlcolor=blue
+  }
+
+4.2. Makro Kurung Siku Sitasi Interaktif (Clickable Citation Brackets)
+  Agar kurung siku luar `[...]` pada sitasi ikut terbungkus menjadi hyperlink biru yang melompat ke
+  daftar pustaka saat diklik, tambahkan makro berikut pada preamble `access.tex`:
+
+  \makeatletter
+  \providecommand{\hyper@link@cite}[2]{\hyperlink{cite.#1}{#2}}
+  \def\@citex[#1]#2{%
+    \let\@citea\@empty
+    \@for\@citeb:=#2\do{%
+      \@citea\def\@citea{, }%
+      \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+      \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+      \@ifundefined{b@\@citeb}{%
+        {\reset@font\bfseries [?]}%
+        \G@refundefinedtrue
+        \@latex@warning{Citation `\@citeb' on page \thepage \space undefined}%
+      }{%
+        \hyper@link@cite{\@citeb}{[\csname b@\@citeb\endcsname\if@tempswa, #1\fi]}%
+      }%
+    }%
+  }
+  \def\@cite#1#2{#1}
+
+4.3. Makro Perujukan Persamaan Interaktif (\eqref)
+  Agar tanda kurung `( )` pada nomor persamaan ikut menjadi link biru saat dirujuk dalam teks:
+
+  \renewcommand{\eqref}[1]{\hyperref[#1]{(\ref*{#1})}}
+  \makeatother
+
+4.4. Path Grafis Otomatis
+  \graphicspath{{images/}}
+
+
+====================================================================================================
+5. ATURAN PENJELASAN SIMBOL PERSAMAAN MATEMATIKA (EQUATIONS)
+====================================================================================================
+
+5.1. Kewajiban Penjelasan Simbol pada Setiap Rujukan Rumus
+  - SETIAP KALI persamaan matematika dirujuk menggunakan `\eqref{eq:X}` di dalam paragraf, kalimat
+    tersebut WAJIB disertai penjelasan eksplisit mengenai makna seluruh simbol variabelnya.
+  - Contoh Pola Baku:
+    "Mekanisme penyesuaian intensitas tersebut dirumuskan pada \eqref{eq:1}, di mana $I_{\text{in}}$
+    merupakan intensitas piksel input teranormalisasi $[0, 1]$, $I_{\text{out}}$ adalah intensitas
+    piksel output, dan $\gamma$ menyatakan koefisien koreksi gamma."
+
+5.2. Penulisan Dimensi, Operasi & Simbol Sederhana dalam Teks
+  - Untuk penulisan ukuran dimensi, operasi aritmetika sederhana, rentang, atau simbol skalar deskriptif
+    di dalam kalimat, CUKUP gunakan teks biasa dengan simbol unicode standar tanpa mode matematika LaTeX ($...$):
+    * Dimensi / Resolusi      : berukuran 224 × 224 piksel, grid 8 × 8 (gunakan simbol teks `×`, bukan `$\times$`)
+    * Penjumlahan / Fusi      : 1024 + 768 = 1792 (cukup teks biasa, bukan `$1024 + 768 = 1792$`)
+    * Rentang & Toleransi     : ±5%, ±15°, ±20% (gunakan simbol teks `±` dan `°`, bukan `$\pm$` atau `$^\circ$`)
+    * Rasio / Pembagian       : 80/10/10, 0.7 / 1.5 (cukup teks biasa)
+  - Mode matematika (`$...$` atau `\begin{equation}`) DIKHUSUSKAN untuk ekspresi simbolik, fungsi aljabar,
+    matriks, dan variabel murni (contoh: $\gamma$, $\sigma$, $\mathbf{x}$, $\mathbf{W}$, $I_{\text{in}}$, $f(x)$).
+
+5.3. Penulisan Lingkungan Equation
+  - Gunakan environment standar berlabel:
+    \begin{equation}
+    \mathbf{y} = \sigma(\mathbf{W} \mathbf{x} + \mathbf{b})
+    \label{eq:1}
+    \end{equation}
+
+  - Kasus Piecewise / Percabangan:
+    \begin{equation}
+    f(x) = \begin{cases} x, & \text{if } x \ge 0 \\ \alpha x, & \text{if } x < 0 \end{cases}
+    \label{eq:2}
+    \end{equation}
+
+5.4. Tipografi Notasi
+  - Subskrip teks deskriptif wajib menggunakan `\text{...}`, contoh: `$I_{\text{combined}}$`, `$\mathbf{W}_{\text{proj}}$`.
+  - Vektor dan matriks menggunakan huruf tebal `\mathbf{f}` atau `\bm{W}`.
+
+
+====================================================================================================
+6. ATURAN SITASI & DATABASE BIBTEX (references.bib)
+====================================================================================================
+
+6.1. Format Pemanggilan Sitasi dalam Teks
+  - Sitasi tunggal: \cite{ref1}
+  - Sitasi ganda/majemuk: \cite{ref1}, \cite{ref3}, \cite{ref5}
+  - Sitasi rentang berurutan: \cite{ref1}--\cite{ref4}
+  - Posisi Sitasi: WAJIB SEBELUM tanda baca titik atau koma.
+    * BENAR : "... representasi fitur yang terpadu \cite{ref1}."
+    * SALAH : "... representasi fitur yang terpadu. \cite{ref1}"
+  - Maksimal 4 sitasi dalam satu kalimat untuk mencegah penumpukan (*citation dumping*).
+
+6.2. Penataan Database `references.bib`
+  - Setiap entri BibTeX wajib memiliki field lengkap sesuai tipe publikasi.
+  - Gunakan `\bibliographystyle{IEEEtran}` dan `\bibliography{references}` di akhir dokumen `access.tex`.
+  - Pastikan urutan pertama kali kemunculan sitasi di teks berurutan: ref1 = [1], ref2 = [2], dst.
+
+
+====================================================================================================
+7. ATURAN GAMBAR & ILUSTRASI VISUAL (FIGURES)
+====================================================================================================
+
+7.1. Gambar 1 Kolom (Column Width)
+  \begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{diagram_model.png}
+  \caption{Architecture of the Proposed Neural Framework.}
+  \label{fig:2}
+  \end{figure}
+
+7.2. Gambar 2 Kolom Penuh (Full Width / Span-Column)
+  Gunakan environment berbintang `figure*`:
+  \begin{figure*}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{overview.png}
+  \caption{Overall Workflow and Experimental Pipeline.}
+  \label{fig:1}
+  \end{figure*}
+
+7.3. Aturan Krusial Posisi Label
+  - Perintah `\caption{...}` WAJIB diletakkan SEBELUM `\label{fig:X}`. Jika terbalik, nomor referensi
+    `\ref{fig:X}` akan salah menunjuk ke nomor seksi!
+  - Rujuk gambar dalam teks menggunakan `Figure~\ref{fig:X}` (dengan tilde `~` non-breaking space).
+  - Gambar wajib diletakkan tepat setelah paragraf yang pertama kali merujuknya.
+
+
+====================================================================================================
+8. ATURAN TABEL & PENYAJIAN DATA (TABLES)
+====================================================================================================
+
+8.1. Desain Tipografi Booktabs
+  - WAJIB menggunakan package `booktabs` (`\toprule`, `\midrule`, `\bottomrule`).
+  - DILARANG menggunakan garis vertikal (`|`). Gunakan format tabel ilmiah bersih.
+
+8.2. Format Tabel 1 Kolom
+  \begin{table}[htbp]
+  \caption{Performance Comparison Across Evaluated Configurations.}
+  \label{tab:1}
+  \centering
+  \begin{tabular}{lcccc}
+  \toprule
+  Model / Method & Accuracy & Precision & Recall & F1-Score \\
+  \midrule
+  Baseline A & 0.852 & 0.840 & 0.835 & 0.837 \\
+  Baseline B & 0.884 & 0.879 & 0.881 & 0.880 \\
+  \textbf{Proposed} & \textbf{0.931} & \textbf{0.928} & \textbf{0.930} & \textbf{0.929} \\
+  \bottomrule
+  \end{tabular}
+  \end{table}
+
+8.3. Format Tabel 2 Kolom Penuh (Full Page Width)
+  Gunakan environment berbintang `table*`:
+  \begin{table*}[htbp]
+  \caption{Comprehensive Comparison with Existing Benchmark Studies.}
+  \label{tab:2}
+  \centering
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc}
+  \toprule
+  Method & Parameter Count & Metric 1 & Metric 2 & Metric 3 & Metric 4 & Metric 5 \\
+  \midrule
+  ... & ... & ... & ... & ... & ... & ... \\
+  \bottomrule
+  \end{tabular*}
+  \end{table*}
+
+8.4. Aturan Posisi Caption Tabel
+  - Caption tabel WAJIB berada di ATAS tabel (berbeda dengan figur yang di bawah).
+  - Format caption: Title Case diakhiri tanda titik.
+  - Perujukan teks: `Table~\ref{tab:X}`.
+  - Nilai terbaik pada metrik di-bold menggunakan `\textbf{...}`.
+
+
+====================================================================================================
+9. ATURAN KHUSUS TEMPLATE IEEE ACCESS
+====================================================================================================
+
+9.1. Judul, Penulis & Metadata (`sections/00_title.tex`)
+  - Judul: `\title{Article Title in Title Case}`
+  - Penulis: Menggunakan format `\author{\uppercase{First Author}\authorrefmark{1}, ...}`
+  - Afiliasi: `\address[1]{Department, University / Institution, City, Country}`
+  - Corresponding Author: `\corresp{Corresponding author: Author Name (e-mail: author@domain.edu).}`
+
+9.2. Biografi Penulis dengan Foto (`sections/07_biographies.tex`)
+  - Format entri:
+    \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{author1.png}}]{Author Name}
+    biography text here...
+    \end{IEEEbiography}
+
+9.3. Penutup Dokumen
+  - Perintah `\EOD` wajib diletakkan sebelum `\end{document}` pada `access.tex` untuk menutup kolom IEEE Access.
+
+9.4. LARANGAN EM DASH (—)
+  - Pastikan tidak ada karakter em dash (—) di dalam berkas `.tex`. Gunakan tanda hubung (-)
+    atau tanda kurung.
+
+
+====================================================================================================
+10. ALUR KOMPILASI & TROUBLESHOOTING
+====================================================================================================
+
+10.1. Urutan Kompilasi Standar
+  Jalankan perintah berikut pada terminal/shell:
+    1. pdflatex access.tex
+    2. bibtex access
+    3. pdflatex access.tex
+    4. pdflatex access.tex
+
+10.2. Penanganan Error Umum
+  - Masalah Sitasi `[?]`:
+    * Periksa apakah nama kunci di `\cite{key}` identik huruf besar/kecil dengan di `references.bib`.
+    * Jalankan `bibtex access` lalu kompilasi ulang `pdflatex` dua kali.
+  - Masalah Referensi `??`:
+    * Pastikan `\label{...}` tidak terduplikasi.
+    * Pastikan `\caption{...}` berada SEBELUM `\label{...}`.
+  - Masalah Overfull \hbox:
+    * Sesuaikan lebar tabel dengan `tabularx` atau `\resizebox{\columnwidth}{!}{...}`.
+    * Gunakan tanda hubung `\-` pada kata-kata panjang yang memicu margin overflow.
+
+
+====================================================================================================
+11. CHECKLIST VERIFIKASI AKHIR SEBELUM SUBMISSION
+====================================================================================================
+
+[ ] 1. Seluruh Judul Paper, Section, Subsection, dan Subsubsection ditulis dalam BAHASA INGGRIS.
+[ ] 2. Setiap Referensi, Gambar, Tabel, Persamaan, dan Algoritma telah dirujuk di dalam teks.
+[ ] 3. Seluruh persamaan yang dirujuk dengan `\eqref{eq:X}` disertai kalimat penjelas definisi simbol variabel.
+[ ] 4. Seluruh tautan sitasi `[1]`, `[2]` dan rumus `(1)`, `(2)` berwarna biru dan melompat ke posisi yang tepat.
+[ ] 5. Urutan nomor Referensi [1]..[N], Figur 1..N, Tabel I..N, dan Persamaan (1)..(N) runtut kronologis.
+[ ] 6. Penulisan dimensi, operasi sederhana (seperti 224 × 224, 1024 + 768 = 1792, ±5%) menggunakan teks biasa, bukan math mode.
+[ ] 7. Seluruh tabel menggunakan style booktabs tanpa garis vertikal.
+[ ] 8. Kompilasi bersih tanpa warning "Citation undefined" atau "Reference undefined".
+[ ] 9. Foto seluruh penulis tersemat rapi pada bagian biografi.
+[ ] 10. Berkas PDF akhir terkompilasi sempurna sesuai standar publikasi IEEE Access.
+
+====================================================================================================
+AKHIR DOKUMEN WRITING LATEX RULES
+====================================================================================================
