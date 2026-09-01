@@ -4337,39 +4337,39 @@
     "test_f1": 0.7680515833672463,
     "classification_metrics": {
         "Asian_Females": {
-            "precision": 0.8092485549132948,
-            "recall": 0.7777777777777778,
-            "f1-score": 0.7932011331444759,
+            "precision": 0.7542372881355932,
+            "recall": 0.7416666666666667,
+            "f1-score": 0.7478991596638656,
             "support": 360.0
         },
         "Asian_Males": {
-            "precision": 0.7873563218390804,
-            "recall": 0.7611111111111111,
-            "f1-score": 0.7740112994350282,
-            "support": 360.0
-        },
-        "Black_Females": {
             "precision": 0.7252747252747253,
             "recall": 0.7333333333333333,
             "f1-score": 0.7292817679558011,
             "support": 360.0
         },
-        "Black_Males": {
-            "precision": 0.7590673575129534,
-            "recall": 0.8138888888888889,
-            "f1-score": 0.7855227882037533,
-            "support": 360.0
-        },
-        "White_Females": {
+        "Black_Females": {
             "precision": 0.7762430939226519,
             "recall": 0.7805555555555556,
             "f1-score": 0.778393351800554,
             "support": 360.0
         },
+        "Black_Males": {
+            "precision": 0.8092485549132948,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7932011331444759,
+            "support": 360.0
+        },
+        "White_Females": {
+            "precision": 0.7873563218390804,
+            "recall": 0.7611111111111111,
+            "f1-score": 0.7740112994350282,
+            "support": 360.0
+        },
         "White_Males": {
-            "precision": 0.7542372881355932,
-            "recall": 0.7416666666666667,
-            "f1-score": 0.7478991596638656,
+            "precision": 0.7590673575129534,
+            "recall": 0.8138888888888889,
+            "f1-score": 0.7855227882037533,
             "support": 360.0
         },
         "accuracy": 0.7680555555555556,

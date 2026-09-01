@@ -4342,52 +4342,52 @@
     "test_f1": 0.9254074085625507,
     "classification_metrics": {
         "Asian_Females": {
-            "precision": 0.9388888888888889,
-            "recall": 0.9388888888888889,
-            "f1-score": 0.9388888888888889,
-            "support": 360.0
-        },
-        "Asian_Males": {
-            "precision": 0.9189944134078212,
-            "recall": 0.9138888888888889,
-            "f1-score": 0.9164345403899722,
-            "support": 360.0
-        },
-        "Black_Females": {
-            "precision": 0.9258241758241759,
-            "recall": 0.9361111111111111,
-            "f1-score": 0.930939226519337,
-            "support": 360.0
-        },
-        "Black_Males": {
-            "precision": 0.9449035812672176,
-            "recall": 0.9527777777777777,
-            "f1-score": 0.9488243430152143,
-            "support": 360.0
-        },
-        "White_Females": {
-            "precision": 0.9147727272727273,
-            "recall": 0.8944444444444445,
-            "f1-score": 0.9044943820224719,
-            "support": 360.0
-        },
-        "White_Males": {
             "precision": 0.9090909090909091,
             "recall": 0.9166666666666666,
             "f1-score": 0.9128630705394191,
             "support": 360.0
         },
+        "Asian_Males": {
+            "precision": 0.9258241758241759,
+            "recall": 0.9361111111111111,
+            "f1-score": 0.930939226519337,
+            "support": 360.0
+        },
+        "Black_Females": {
+            "precision": 0.9147727272727273,
+            "recall": 0.8944444444444445,
+            "f1-score": 0.9044943820224719,
+            "support": 360.0
+        },
+        "Black_Males": {
+            "precision": 0.9388888888888889,
+            "recall": 0.9388888888888889,
+            "f1-score": 0.9388888888888889,
+            "support": 360.0
+        },
+        "White_Females": {
+            "precision": 0.9189944134078212,
+            "recall": 0.9138888888888889,
+            "f1-score": 0.9164345403899722,
+            "support": 360.0
+        },
+        "White_Males": {
+            "precision": 0.9449035812672176,
+            "recall": 0.9527777777777777,
+            "f1-score": 0.9488243430152143,
+            "support": 360.0
+        },
         "accuracy": 0.9254629629629629,
         "macro avg": {
             "precision": 0.9254124492919567,
-            "recall": 0.925462962962963,
+            "recall": 0.9254629629629628,
             "f1-score": 0.9254074085625507,
             "support": 2160.0
         },
         "weighted avg": {
             "precision": 0.9254124492919567,
             "recall": 0.9254629629629629,
-            "f1-score": 0.9254074085625505,
+            "f1-score": 0.9254074085625507,
             "support": 2160.0
         }
     }

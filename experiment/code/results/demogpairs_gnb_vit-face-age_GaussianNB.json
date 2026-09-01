@@ -4337,39 +4337,39 @@
     "test_f1": 0.8316522462782968,
     "classification_metrics": {
         "Asian_Females": {
-            "precision": 0.8177215189873418,
-            "recall": 0.8972222222222223,
-            "f1-score": 0.8556291390728477,
+            "precision": 0.7562814070351759,
+            "recall": 0.8361111111111111,
+            "f1-score": 0.7941952506596306,
             "support": 360.0
         },
         "Asian_Males": {
-            "precision": 0.9112426035502958,
-            "recall": 0.8555555555555555,
-            "f1-score": 0.8825214899713467,
-            "support": 360.0
-        },
-        "Black_Females": {
             "precision": 0.7855153203342619,
             "recall": 0.7833333333333333,
             "f1-score": 0.7844228094575799,
             "support": 360.0
         },
-        "Black_Males": {
-            "precision": 0.896551724137931,
-            "recall": 0.8666666666666667,
-            "f1-score": 0.8813559322033898,
-            "support": 360.0
-        },
-        "White_Females": {
+        "Black_Females": {
             "precision": 0.8385093167701864,
             "recall": 0.75,
             "f1-score": 0.7917888563049853,
             "support": 360.0
         },
+        "Black_Males": {
+            "precision": 0.8177215189873418,
+            "recall": 0.8972222222222223,
+            "f1-score": 0.8556291390728477,
+            "support": 360.0
+        },
+        "White_Females": {
+            "precision": 0.9112426035502958,
+            "recall": 0.8555555555555555,
+            "f1-score": 0.8825214899713467,
+            "support": 360.0
+        },
         "White_Males": {
-            "precision": 0.7562814070351759,
-            "recall": 0.8361111111111111,
-            "f1-score": 0.7941952506596306,
+            "precision": 0.896551724137931,
+            "recall": 0.8666666666666667,
+            "f1-score": 0.8813559322033898,
             "support": 360.0
         },
         "accuracy": 0.8314814814814815,
@@ -4380,7 +4380,7 @@
             "support": 2160.0
         },
         "weighted avg": {
-            "precision": 0.8343036484691987,
+            "precision": 0.8343036484691988,
             "recall": 0.8314814814814815,
             "f1-score": 0.8316522462782966,
             "support": 2160.0
