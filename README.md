@@ -160,7 +160,7 @@ nbconvert>=7  # for notebook -> Markdown exports
 | ViT-Emotion | `dima806/facial_emotions_image_detection` | Facial Emotion | 768-d [CLS] | 29.36 MB |
 | ViT-Age | `dima806/facial_age_image_detection` | Facial Age | 768-d [CLS] | 29.36 MB |
 
-All models use ViT-Base architecture (12 layers, 12 heads, 768 hidden dim, patch 16×16). Features are concatenated per image (`np.array(list(face)+list(emotion)+list(age))`).
+All models use ViT-Base architecture (12 layers, 12 heads, 768 hidden dim, patch 16×16). Features are concatenated per image in alfabet order. CM images without title, evaluation with explicit `labels` alignment.
 
 ## Classification Pipeline
 
@@ -217,15 +217,15 @@ Supports `label` (string) and `label_idx` (int) as used in `utils/dataset.py`.
 
 | Class | Precision | Recall | F1-Score | Support |
 |---|:---:|:---:|:---:|:---:|
+| Asian_Females | 0.9250 | 0.9250 | 0.9250 | 360 |
+| Asian_Males | 0.9239 | 0.9444 | 0.9341 | 360 |
+| Black_Females | 0.9415 | 0.8944 | 0.9174 | 360 |
 | Black_Males | 0.9549 | 0.9417 | 0.9483 | 360 |
 | White_Females | 0.9241 | 0.9472 | 0.9355 | 360 |
-| Asian_Males | 0.9239 | 0.9444 | 0.9341 | 360 |
 | White_Males | 0.9536 | 0.9694 | 0.9614 | 360 |
-| Black_Females | 0.9415 | 0.8944 | 0.9174 | 360 |
-| Asian_Females | 0.9250 | 0.9250 | 0.9250 | 360 |
 | **Macro Avg** | **0.9372** | **0.9370** | **0.9369** | **2160** |
 
-OvR Accuracy (one-vs-rest) per class is higher (e.g., Black_Males ~98.7%) — see notebook outputs and `md/svm/2.1.7_...md`. See `md/svm/2.1.7_svm_vit-face-emotion-age.md` or `results/demogpairs_svm_vit-face-emotion-age_SVC.json` for full details.
+Order alfabet `Asian_Females, Asian_Males, Black_Females, Black_Males, White_Females, White_Males` selaras `DEMOGPairs_CLASSES` dengan `labels` eksplisit di `evaluation.py`. OvR Accuracy per kelas lebih tinggi, CM tanpa title di `images/cm_*.png`. See `md/svm/2.1.7_svm_vit-face-emotion-age.md` atau `results/demogpairs_svm_vit-face-emotion-age_SVC.json`.
 
 ## Notebook-to-Markdown Exports
 
