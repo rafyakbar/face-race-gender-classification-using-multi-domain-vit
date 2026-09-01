@@ -11,8 +11,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 vit_face_path = 'skutaada/VIT-VGGFace'
 vit_emotion_path = 'dima806/facial_emotions_image_detection'
 # vit_age_path = 'dima806/facial_age_image_detection'
-# svm_path = 'models/clf_demogpairs_svm_vit-vggface-emotion-age_SVC.pkl'
-svm_path = 'models/clf_demogpairs_svm_vit-emotion-vggface_SVC.pkl'
+# svm_path = 'models/clf_demogpairs_svm_vit-face-emotion-age_SVC.pkl'
+svm_path = 'models/clf_demogpairs_svm_vit-emotion-face_SVC.pkl'
 
 vit_face_model = AutoModelForImageClassification.from_pretrained(vit_face_path).to(device)
 vit_emotion_model = AutoModelForImageClassification.from_pretrained(vit_emotion_path).to(device)
@@ -21,11 +21,11 @@ svm_model = joblib.load(svm_path)
 
 def predict(image):
     try:
-        # Ekstraksi fitur
+        # Ekstraksi fitur - urutan harus selaras dengan model vit-emotion-face (emotion + face)
         face_features = u.extract_vit_features(image, model=vit_face_model, model_path=vit_face_path)
         emotion_features = u.extract_vit_features(image, model=vit_emotion_model, model_path=vit_emotion_path)
         # age_features = u.extract_vit_features(image, model=vit_age_model, model_path=vit_age_path)
-        features = list(face_features) +  list(emotion_features)
+        features = list(emotion_features) + list(face_features)
         
         # Prediksi
         prediction = svm_model.predict([features])
