@@ -1,3 +1,31 @@
+Analisa dan pelajari project ini dengan sangat amat detail (selain notebook/.ipynb)!
+
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+perhatikan:
+- ubah author nya menjadi:
+  1. Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.
+  2. Rezky Arisanti Putri, S.Kom., M.Kom. (https://orcid.org/0009-0000-8021-1833)
+  3. Dr. Yuni Yamasari, S.Kom., M.Kom. (https://orcid.org/0000-0001-9719-3491)
+  4. Rafy Aulia Akbar, S.Kom., M.Kom.
+- per paragraf minimal 150 kata dan maksimal 150 kata, kecuali:
+  - introduction bagian paragraf yang sedikit membahas tentang penelitian sebelumnya
+  - introduction bagian paragraf Usulan Solusi
+  - introduction bagian paragraf kontribusi utama
+  - introduction Organisasi Artikel
+- jangan beri nomor sitasi dulu
+- judul sub bab harus berbahasa inggris
+- gunakan bahasa indonesia, namun jika ada istilah akademik, gunakan bahasa inggris
+- sebelum membuat introduction baca dulu section 'Poin-Poin yang Dibahas dalam Introduction' pada related_works\summaries
+- list sitasi wajib pada introduction bagian paragraf yang sedikit membahas tentang penelitian sebelumnya, berikan dalam bentuk judul paper yang ada pada related_works
+- usahakan paragraf yang membahas tentang gap dan usulan solusi agar nyambung
+- berikan jumlah target kata per paragraf pada RELATED WORKS
+- ubah 'A. Dataset DemogPairs & Protokol Pembagian Data' menjadi 'A. Dataset'
+- pada 'III. MATERIALS AND METHODS', sebelum memulai pembahasan 'A. Dataset', seharusnya ada satu paragraf yang membahas overview method yang mensitasi citra ini 'D:\Research\face-race-gender-classification-using-multi-domain-vit\images\method.png', berikan nama figure
+sementara ini dulu, perbaiki paper outline
+
+sekarang buatkan paper outline! contoh seperti 'D:\Research\chexnet-raddino-medical-captioning\research'
+
 tolong buat summary dari paper:
 - 'research\related_works\pdf\2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.pdf'
 template ada pada research\related_works\summaries\TEMPLATE.md. baca paper secara langsung dan buat summary nya!
