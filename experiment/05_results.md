@@ -240,7 +240,7 @@ Revisi ini melengkapi **28 eksperimen** penuh: **4 classifier** (SVM, LR, RF, GN
 | White_Males | White | Pria | 0.9536 | 0.9694 | 0.9614 |
 | **Macro Avg** | - | - | **0.9372** | **0.9370** | **0.9369** |
 
-Recall range **0.8944–0.9694** (gap 0.0750), F1 range **0.9174–0.9614** (gap 0.0441). Kelas terendah: **Black_Females** 0.8944, tertinggi **White_Males** 0.9694.
+Recall range **0.8944–0.9694** (gap 0.0750), F1 range **0.9174–0.9614** (gap 0.0440). Kelas terendah: **Black_Females** 0.8944, tertinggi **White_Males** 0.9694.
 → Gap 0.0750, seluruh F1 >0.91 - disparitas minimal.
 
 *Improvement:* Recall `White_Females` vit-age 0.8611 → Tri 0.9472 = **+0.0861**.
@@ -308,7 +308,7 @@ Recall range **0.8028–0.8861** (gap 0.0833), F1 range **0.8118–0.8898** (gap
 
 | Classifier | Akurasi | Rec Min | Rec Max | Gap Rec | F1 Min | F1 Max | Gap F1 | Tersulit |
 |------------|---------|---------|---------|---------|--------|--------|--------|----------|
-| SVM | 0.9370 | 0.8944 | 0.9694 | 0.0750 | 0.9174 | 0.9614 | 0.0441 | Black_Females |
+| SVM | 0.9370 | 0.8944 | 0.9694 | 0.0750 | 0.9174 | 0.9614 | 0.0440 | Black_Females |
 | LR | 0.9273 | 0.9111 | 0.9611 | 0.0500 | 0.9136 | 0.9558 | 0.0422 | Asian_Females / Black_Females tie |
 | RF | 0.8620 | 0.7889 | 0.9222 | 0.1333 | 0.8260 | 0.9019 | 0.0759 | Black_Females |
 | GNB | 0.8505 | 0.8028 | 0.8861 | 0.0833 | 0.8118 | 0.8898 | 0.0780 | Black_Females |
