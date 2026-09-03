@@ -205,6 +205,52 @@ Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal 
   - Rujuk gambar dalam teks menggunakan `Figure~\ref{fig:X}` (dengan tilde `~` non-breaking space).
   - Gambar wajib diletakkan tepat setelah paragraf yang pertama kali merujuknya.
 
+7.4. Format Gambar Multi-Subfigure Grid 2 Kolom (Contoh Figure 2: 3 Baris × 2 Kolom)
+  Untuk menyusun beberapa subfigure dalam format 2 kolom terstruktur (misal 6 subgrup demografis):
+  \begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_Asian_Females.jpg}
+    \caption{Asian Females}
+    \label{fig:2a}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_Asian_Males.jpg}
+    \caption{Asian Males}
+    \label{fig:2b}
+  \end{subfigure}
+  \vskip 4pt
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_Black_Females.jpg}
+    \caption{Black Females}
+    \label{fig:2c}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_Black_Males.jpg}
+    \caption{Black Males}
+    \label{fig:2d}
+  \end{subfigure}
+  \vskip 4pt
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_White_Females.jpg}
+    \caption{White Females}
+    \label{fig:2e}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/sample_White_Males.jpg}
+    \caption{White Males}
+    \label{fig:2f}
+  \end{subfigure}
+  \caption{Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.}
+  \label{fig:2}
+  \end{figure}
+
 
 ====================================================================================================
 8. ATURAN TABEL & PENYAJIAN DATA (TABLES)
