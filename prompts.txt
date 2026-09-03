@@ -1,3 +1,19 @@
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+perhatikan juga urutan dari figure/table dll
+
+tidak usah ada kode latex nya, cukup berikan instruksi saja
+
+berikan instruksi kepada latex agar tersusun menjadi 2 kolom
+
+buat agar menjadi figure seperti figure confusion matrix
+
+sepertinya 'Table I. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups.' ubah agar menjadi figure!
+
+coba pahami paper outline
+
+pahami readme ai md beserta file-file yang ada hubungan dengannya
+
 Analisa dan pelajari project ini dengan sangat amat detail (selain notebook/.ipynb)!
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
