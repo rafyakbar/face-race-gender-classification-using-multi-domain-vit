@@ -1,22 +1,31 @@
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
-perhatikan juga urutan dari figure/table dll
+tambahkan instruksi ini ke dalam rules
 
-tidak usah ada kode latex nya, cukup berikan instruksi saja
+mengenai rule 1.3, buat file txt dalam folder paper untuk mencatat apa apa saja yang sudah ada singkatannya, jadi tidak perlu cek file-file yang sebelumnnya, cukup cek file txt tersebut
 
-berikan instruksi kepada latex agar tersusun menjadi 2 kolom
+untuk paragraf kontribusi ilmiah, terjemahannya jangan dihitung sebagai jumlah kata
 
-buat agar menjadi figure seperti figure confusion matrix
+sekarang bantu saya menyusun/audit paper/01_introduction.md berdasarkan paper outline dan perhatikan:
+- perhatikan apa yang ada pada rules
+- perhatikan target jumlah kata per paragraf yang ada pada paper outline
+- jangan ada yang dicetak miring karena nantinya akan diterjemahkan ke bahasa inggris
+- jangan menggunakan kata-kata seperti 'kendati', 'paradigma', 'guna'
+- ingat rule "1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)", berarti harus cek juga pada file file sebelumnya
+kerjakan dengan sangat teliti!
 
-sepertinya 'Table I. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups.' ubah agar menjadi figure!
+dan jangan ada yang dicetak miring, karena nantinya akan ditranslate ke bahasa inggris
 
-coba pahami paper outline
+gunakan persen semua saja
 
-pahami readme ai md beserta file-file yang ada hubungan dengannya
+perhatikan target jumlah kata dala paper outline
 
-Analisa dan pelajari project ini dengan sangat amat detail (selain notebook/.ipynb)!
+contoh pada abstrak terdapat kata 'phenotypic overlap', seharusnya langsung saja tanpa ada bahasa indonesianya karena itu akademik
 
-Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+sekarang bantu saya menyusun paper/00_abstract.md berdasarkan paper outline dan perhatikan:
+- perhatikan apa yang ada pada rules
+
+sekarang sudah membuat paper outline, kemudian selanjutnya adalah membuat draft dalam bentuk markdown dalam folder paper, tolong buat foldernya beserta file-file markdown nya (kosongan dulu saja) berdasarkan paper outline!
 
 perhatikan:
 - ubah author nya menjadi:
