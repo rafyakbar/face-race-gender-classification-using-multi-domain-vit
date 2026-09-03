@@ -27,18 +27,21 @@ saat menyusun draf artikel ilmiah dalam format Markdown sebelum dikonversi ke do
 
 1.2. Bahasa Teks Naratif
   - Isi teks narasi di dalam paragraf ditulis dalam Bahasa Indonesia.
-  - Seluruh istilah teknis internasional (misalnya: *encoder-decoder*, *deep learning*, *transformer*,
-    *multi-head attention*, *loss function*, *learning rate*, *batch size*, *feature extraction*,
-    *ablation study*, *checkpoint*, *ground truth*) TETAP ditulis dalam bahasa Inggris.
+  - Seluruh istilah teknis/akademik internasional (misalnya: Vision Transformer, deep learning, transformer,
+    multi-domain, single-domain, pre-trained, cross-validation, hyperparameter tuning, phenotypic overlap,
+    classifier, dataset, pipeline) TETAP ditulis langsung dalam bahasa Inggris TANPA cetak miring (tanpa asteris *...*),
+    sehingga draf bersih dan siap untuk proses translasi ke naskah LaTeX Bahasa Inggris.
 
 1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)
-  - Setiap istilah teknis yang memiliki singkatan atau akronim resmi (contoh: *Vision Transformer* (ViT),
-    *Support Vector Machine* (SVM), *Random Forest* (RF), *Gaussian Naive Bayes* (GNB),
-    *Logistic Regression* (LR), *Principal Component Analysis* (PCA), *Multi-Head Self-Attention* (MHSA),
-    *Convolutional Neural Networks* (CNN)) WAJIB ditulis lengkap dengan singkatannya di dalam tanda kurung
+  - Setiap istilah teknis yang memiliki singkatan atau akronim resmi (contoh: Vision Transformer (ViT),
+    Support Vector Classifier (SVC), Random Forest (RF), Gaussian Naive Bayes (GNB),
+    Logistic Regression (LR), Principal Component Analysis (PCA), Multi-Head Self-Attention (MHSA),
+    Convolutional Neural Networks (CNN)) WAJIB ditulis lengkap dengan singkatannya di dalam tanda kurung
     pada pemunculan pertamanya di awal naskah (misalnya di Abstract atau awal Introduction).
   - Pada pemunculan berikutnya di seluruh paragraf naskah, CUKUP gunakan singkatannya saja
-    (misal: ViT, SVM, RF, GNB, LR, PCA, MHSA, CNN) tanpa mengulang kepanjangannya.
+    (misal: ViT, SVC, RF, GNB, LR, PCA, MHSA, CNN) tanpa mengulang kepanjangannya.
+  - Untuk mempermudah pelacakan dan validasi, seluruh singkatan yang telah diperkenalkan WAJIB dicatat
+    secara terpusat pada berkas `paper/acronyms.txt`, sehingga penulis/auditor cukup merujuk ke berkas tersebut.
 
 
 ====================================================================================================
@@ -178,7 +181,28 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
   - Sitasi WAJIB diletakkan SEBELUM tanda baca titik (.) atau koma (,).
     * BENAR : "... metode pembelajaran terawasi [1], [2]."
     * SALAH : "... metode pembelajaran terawasi. [1], [2]"
-  - Maksimal 4 nomor sitasi dalam satu kalimat untuk mencegah *citation dumping*.
+  - Maksimal 4 nomor sitasi dalam satu kalimat untuk mencegah citation dumping.
+
+7.5. Larangan Kata-Kata Tertentu (Forbidden Words)
+  - DILARANG menggunakan kata-kata berikut di seluruh teks naskah Markdown:
+    * `kendati` (termasuk frasa `kendati demikian`) -> Ganti dengan `namun demikian`, `meskipun demikian`, atau `akan tetapi`.
+    * `paradigma` -> Ganti dengan `pendekatan`, `metode`, `kelompok model`, atau `famili algoritma`.
+    * `guna` (sebagai konjungsi/preposisi) -> Ganti dengan `untuk`.
+
+7.6. Penyeragaman Pelaporan Metrik Evaluasi ke Format Persentase (%)
+  - Seluruh metrik evaluasi klasifikasi (Accuracy, Precision, Recall, F1-Score, dan rentang disparitas subkelompok)
+    pada teks naratif WAJIB dilaporkan dalam format persentase (%) secara seragam dan konsisten
+    (contoh: Accuracy 93.70%, Precision 93.72%, Recall 93.70%, F1-Score 93.69%, rentang 91.74% dan 96.14%).
+
+7.7. Kaidah Penghitungan Target Kata Paragraf Kontribusi Ilmiah (Key Contributions / P6)
+  - Pada paragraf kontribusi ilmiah utama (P6), teks utama Bahasa Inggris (kalimat pengantar + butir-butir kontribusi dalam bahasa Inggris)
+    HARUS secara mandiri memenuhi batas target jumlah kata (200–250 kata) TANPA menghitung terjemahan Bahasa Indonesia di dalam tanda kurung.
+
+7.8. Larangan Cetak Miring (No Italics) pada Istilah Akademik Internasional
+  - Seluruh istilah teknis/akademik internasional (misalnya: Vision Transformer, deep learning, multi-domain,
+    pre-trained, cross-validation, hyperparameter tuning, phenotypic overlap, classifier, dataset)
+    DILARANG dicetak miring (tanpa tanda asteris `*...*`) di dalam teks narasi Bahasa Indonesia,
+    sehingga draf naskah bersih dan siap ditranslasikan ke naskah LaTeX Bahasa Inggris.
 
 
 ====================================================================================================
@@ -222,7 +246,11 @@ Sebelum naskah Markdown dikonversi ke format LaTeX:
 [ ] 5. Urutan nomor Referensi [1]..[N], Figur 1..N, Tabel I..N, dan Persamaan (1)..(N) runtut kronologis.
 [ ] 6. Penulisan dimensi, operasi sederhana (seperti 224 × 224, 1024 + 768 = 1792, ±5%) menggunakan teks biasa, bukan math mode.
 [ ] 7. Tidak ada satu pun karakter em dash (—) di seluruh naskah.
-[ ] 8. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
+[ ] 8. Tidak ada kata terlarang (`kendati`, `paradigma`, `guna`) di dalam teks.
+[ ] 9. Seluruh singkatan baru telah tercatat pada `paper/acronyms.txt` dan singkatan lama tidak diulang kepanjangannya.
+[ ] 10. Teks bebas dari cetak miring (*italics*) pada istilah teknis internasional.
+[ ] 11. Seluruh metrik evaluasi dilaporkan konsisten dalam format persentase (%).
+[ ] 12. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
 
 ====================================================================================================
 AKHIR DOKUMEN WRITING MD RULES
