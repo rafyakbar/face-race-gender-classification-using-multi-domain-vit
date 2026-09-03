@@ -76,6 +76,14 @@ saat menyusun draf artikel ilmiah dalam format Markdown sebelum dikonversi ke do
   * Contoh Judul Tabel  : `**Table I. Dataset Partition and Demographic Subgroup Distribution.**`
   * Contoh Judul Algoritma : `**Algorithm 1. Pseudocode of Hyperparameter Grid Search Procedure.**`
 
+3.3. Aturan Sitasi Sementara pada Tahap Draf Naskah (Temporary Bracketed Citation Format: [(N)])
+- Selama tahap penyusunan dan audit draf naskah Markdown modular per bab, sebelum seluruh daftar pustaka pada `paper/06_references.md` ditetapkan secara final dan ditautkan (linked), seluruh sitasi literatur WAJIB ditulis menggunakan format kurung ganda bersarang: `[(1)]`, `[(2)]`, `[(3)]`, `[(9)], [(10)]` sesuai nomor urut studi terkait pada `paper_outline.md`.
+- Format `[(N)]` ini berfungsi sebagai penanda visual yang jelas untuk membedakan antara:
+  1. Sitasi sementara/draf naskah: `[(1)]`
+  2. Rujukan persamaan matematika: `[(1)](#eq1)`
+  3. Sitasi final bertautan: `[[1]](06_references.md#ref1)`
+- Pada tahap finalisasi naskah (setelah `06_references.md` siap dan dikonversi), seluruh format `[(N)]` akan dimutakhirkan menjadi format tautan interaktif `[[N]](06_references.md#refN)`.
+
 
 ====================================================================================================
 4. URUTAN KRONOLOGIS PENOMORAN (STRICT CHRONOLOGICAL NUMBERING)
@@ -127,6 +135,16 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
   - Format target     :
     `<a id="alg1"></a>`
     `**Algorithm 1. Pseudocode of Training Procedure.**`
+
+5.6. Rujukan Antar-Seksi / Bab Naskah (Section & Subsection Links)
+  - Setiap kali merujuk ke bab atau sub-bab lain (misalnya pada bagian sistematika penulisan naskah di akhir
+    Introduction / Section I atau rujukan silang antarbab), penomoran seksi WAJIB dijadikan tautan aktif
+    yang mengarah langsung ke berkas target modular yang sesuai:
+    * Rujukan ke Related Works      : `Section [II](02_related-works.md)`
+    * Rujukan ke Metodologi Utama   : `Section [III](03_materials-and-methods_overview.md)`
+    * Rujukan ke Subseksi Metode    : `Section [III-A](03_materials-and-methods_a-dataset.md)`
+    * Rujukan ke Hasil & Pembahasan : `Section [IV](04_results-and-discussion_a-global-performance.md)`
+    * Rujukan ke Kesimpulan         : `Section [V](05_conclusion.md)`
 
 
 ====================================================================================================
