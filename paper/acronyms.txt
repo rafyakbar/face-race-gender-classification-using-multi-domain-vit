@@ -1,0 +1,26 @@
+====================================================================================================
+DAFTAR REGISTRASI SINGKATAN & AKRONIM NASKAH (ACRONYM REGISTRY)
+Pedoman: Rule 1.3 (First-Mention Full Form & Subsequent Acronym Only)
+Lokasi Berkas: paper/acronyms.txt
+====================================================================================================
+
+Petunjuk Penggunaan:
+1. Istilah yang SUDAH tercatat dalam berkas ini TIDAK BOLEH dituliskan kepanjangannya lagi pada
+   berkas-berkas draf markdown berikutnya (cukup gunakan singkatannya saja).
+2. Jika ada istilah teknis baru yang memiliki singkatan resmi dan diperkenalkan untuk pertama kali
+   dalam draf naskah, tuliskan bentuk lengkapnya beserta singkatannya pada teks draf, lalu
+   segera daftarkan ke dalam berkas `paper/acronyms.txt` ini.
+
+----------------------------------------------------------------------------------------------------
+NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)       | LOKASI PERTAMA KALI DIPERKENALKAN
+----+---------------------+----------------------------------+----------------------------------
+1   | ViT                 | Vision Transformer               | paper/00_abstract.md (Abstract)
+2   | RF                  | Random Forest                    | paper/00_abstract.md (Abstract)
+3   | GNB                 | Gaussian Naive Bayes             | paper/00_abstract.md (Abstract)
+4   | LR                  | Logistic Regression              | paper/00_abstract.md (Abstract)
+5   | SVC                 | Support Vector Classifier        | paper/00_abstract.md (Abstract)
+6   | GridSearchCV        | Grid Search Cross-Validation     | paper/00_abstract.md (Abstract)
+7   | CNN                 | Convolutional Neural Networks    | paper/01_introduction.md (P3)
+8   | MHSA                | Multi-Head Self-Attention        | paper/01_introduction.md (P3)
+9   | PCA                 | Principal Component Analysis     | paper/01_introduction.md (P5)
+====================================================================================================
