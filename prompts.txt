@@ -1,5 +1,17 @@
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+tambahkan juga instruksi ketika section diklik akan mengarah ke file dan baris terkait seperti yang ada pada D:\Research\chexnet-raddino-medical-captioning\research\paper\01_introduction.md, kemudian perbaiki introduction nya
+
+tambakan instruksi tentang sitasi sementara [()] pada rules
+
+jangan menyebut seperti ViT-Face, ViT-Age dsb, gunakan istilah seperti pada paper outline
+
+khusus untuk paragraf 3, berikan sitasi dengan sesuai dengan nomor yang ada pada paper outline namun tambahkan kurung, contoh [(1)], agar bisa membedakan mana sitasi yang belum final
+
+pada paragraf ke tiga jangan menyebutkan judul paper penelitian sebelumnya secara langsung
+
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
 tambahkan instruksi ini ke dalam rules
 
 mengenai rule 1.3, buat file txt dalam folder paper untuk mencatat apa apa saja yang sudah ada singkatannya, jadi tidak perlu cek file-file yang sebelumnnya, cukup cek file txt tersebut
