@@ -23,8 +23,8 @@
    - Hindari klaim "state-of-the-art" mutlak; gunakan "the highest performance among the compared studies on DemogPairs" atau "outperformed the compared methods".
    - Usahakan maksimal 3 sitasi per kalimat untuk mencegah penumpukan sitasi (*citation dumping*).
    - Penempatan Eksplisit Pernyataan Etika (*Ethical Statement*): Dialokasikan secara struktural sebagai sub-bab tersendiri pada **Section III.I (Ethical Considerations and Responsible AI Use)**.
-   - Kepatuhan Mutlak Urutan Master Elemen: Urutan pemunculan seluruh Gambar (Figure 1-3), Tabel (Table I-XIII), dan Persamaan (Eq. 1-19) pada naskah LaTeX wajib mematuhi secara ketat urutan kronologis yang tercantum pada tabel *Master Element Sequence & Layout Specifications*.
-   - Pelaporan Parameter Aktif pada Tabel Hasil (Table VIII-XI): Pada penulisan naskah akhir, parameter yang tidak aktif atau tidak relevan untuk konfigurasi terpilih (misalnya `degree` pada kernel RBF/linear, atau `gamma` pada kernel linear) tidak boleh ditampilkan seolah-olah berpengaruh; tampilkan hanya parameter yang aktif secara fungsional atau beri tanda strip (-) / N/A untuk menjaga ketepatan teknis.
+   - Kepatuhan Mutlak Urutan Master Elemen: Urutan pemunculan seluruh Gambar (Figure 1-4), Tabel (Table I-XII), dan Persamaan (Eq. 1-19) pada naskah LaTeX wajib mematuhi secara ketat urutan kronologis yang tercantum pada tabel *Master Element Sequence & Layout Specifications*.
+   - Pelaporan Parameter Aktif pada Tabel Hasil (Table VII-X): Pada penulisan naskah akhir, parameter yang tidak aktif atau tidak relevan untuk konfigurasi terpilih (misalnya `degree` pada kernel RBF/linear, atau `gamma` pada kernel linear) tidak boleh ditampilkan seolah-olah berpengaruh; tampilkan hanya parameter yang aktif secara fungsional atau beri tanda strip (-) / N/A untuk menjaga ketepatan teknis.
    - Seluruh persamaan matematika diberi nomor berurutan secara individual dari (1) hingga (19).
    - Seluruh tabel yang memiliki kolom lebar atau memuat parameter model wajib diinstruksikan berformat LaTeX Full Width (`\begin{table*} ... \end{table*}`).
 
@@ -255,29 +255,37 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
   1. Dataset DemogPairs memuat total 10.800 citra wajah yang terdistribusi secara seimbang pada 6 kelas interseksional (1.800 citra per subkelompok).
   2. Subkelompok mencakup kombinasi 3 kelompok ras makro (Asian, Black, White) dan 2 kelompok gender (Female, Male).
   3. Distribusi kelas yang seimbang ini (*balanced evaluation setting*) menyediakan kondisi evaluasi yang terkontrol untuk membandingkan performa antarsubkelompok tanpa terdistorsi oleh ketidakseimbangan jumlah sampel per kelas.
-- **Tabel I (Contoh Citra Dataset DemogPairs)**: Seluruh citra sampel diatur dengan ukuran tinggi seragam (`height="100"`).
-
-**Table I. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups.**
-
-| Demographic Subgroup | Sample Image |
-|---|:---:|
-| **Asian_Females** | <img src="images/sample_Asian_Females.jpg" alt="Asian Females" height="100" /> |
-| **Asian_Males** | <img src="images/sample_Asian_Males.jpg" alt="Asian Males" height="100" /> |
-| **Black_Females** | <img src="images/sample_Black_Females.jpg" alt="Black Females" height="100" /> |
-| **Black_Males** | <img src="images/sample_Black_Males.jpg" alt="Black Males" height="100" /> |
-| **White_Females** | <img src="images/sample_White_Females.jpg" alt="White Females" height="100" /> |
-| **White_Males** | <img src="images/sample_White_Males.jpg" alt="White Males" height="100" /> |
+- **Sitasi Gambar Wajib**: Mensitasi contoh citra sampel dataset DemogPairs pada [Figure 2](#fig2) (Figure 2a s.d. 2f).
+- **Ketentuan Layout LaTeX**: Figure 2 disusun dalam format **2 kolom subfigur (grid 3 baris × 2 kolom)**:
+  - Baris 1: (a) Asian Females dan (b) Asian Males
+  - Baris 2: (c) Black Females dan (d) Black Males
+  - Baris 3: (e) White Females dan (f) White Males
+  - Menggunakan lebar subfigur proporsional (`0.48\columnwidth` untuk layout 1 kolom naskah atau `0.48\textwidth` untuk layout 2 kolom naskah) dengan pemisah horizontal `\hfill` dan spasi vertikal antarbaris `\vskip 4pt`.
+- **Caption Figure**: **Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.**
+- **Visual Markdown**:
+  - *(a) Asian Females:*
+    ![Figure 2(a). Sample Image of Asian Females](images/sample_Asian_Females.jpg)
+  - *(b) Asian Males:*
+    ![Figure 2(b). Sample Image of Asian Males](images/sample_Asian_Males.jpg)
+  - *(c) Black Females:*
+    ![Figure 2(c). Sample Image of Black Females](images/sample_Black_Females.jpg)
+  - *(d) Black Males:*
+    ![Figure 2(d). Sample Image of Black Males](images/sample_Black_Males.jpg)
+  - *(e) White Females:*
+    ![Figure 2(e). Sample Image of White Females](images/sample_White_Females.jpg)
+  - *(f) White Males:*
+    ![Figure 2(f). Sample Image of White Males](images/sample_White_Males.jpg)
 
 #### Paragraph 2: Dataset Partitioning and Image Preprocessing
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Tujuan**: Menjelaskan protokol pembagian data (*Stratified Split*) dan tahapan standardisasi citra (*preprocessing*).
 - **Poin Narasi**:
-  1. Pembagian data menggunakan Stratified 80/20 Split (`random_state=42`, `stratify=y`) menghasilkan 8.640 citra latih (1.440 citra per subkelompok) dan 2.160 citra uji *held-out* (360 citra per subkelompok).
+  1. Pembagian data menggunakan Stratified 80/20 Split (`random_state=42`, `stratify=y`) menghasilkan 8.640 citra latih (1.440 citra per subkelompok) dan 2.160 citra uji *held-out* (360 citra per subkelompok) sebagaimana dirincikan pada [Table I](#tab1).
   2. Subset uji tidak pernah dilibatkan selama proses pencarian hyperparameter dan hanya digunakan untuk evaluasi akhir.
   3. Preprocessing citra mencakup konversi ke 3-channel RGB, interpolasi bicubic ke resolusi 224 × 224 piksel, dan rescaling intensitas $[0, 255] \to [0, 1]$.
-- **Tabel II (Distribusi Partisi Data DemogPairs)**:
+- **Tabel I (Distribusi Partisi Data DemogPairs)**:
 
-**Table II. Dataset Partition and Demographic Subgroup Distribution.**
+**Table I. Dataset Partition and Demographic Subgroup Distribution.**
 
 | Subgroup | Train Set (80%) | Test Set (20%) | Total |
 |---|:---:|:---:|:---:|
@@ -294,12 +302,12 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 
 #### Paragraph 1: ViT Architecture and Patch Embedding
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
-- **Tujuan**: Menjelaskan arsitektur fundamental ViT (ViT-Base: 12 layer transformer encoder, 12 attention heads, hidden dimension 768, patch size 16 × 16), mekanisme proyeksi linier patch, embedding posisi, dan Multi-Head Self-Attention (MHSA).
-- **Sitasi Gambar Wajib**: Mensitasi diagram arsitektur ViT pada file `images/vit.png` (Figure 2).
-- **Ketentuan Layout LaTeX**: Figure 2 **tidak perlu full width** (cukup 1 kolom standar menggunakan `\begin{figure} ... \end{figure}`).
-- **Caption Figure**: **Figure 2. Architecture of the ViT Backbone and Patch Projection.**
+- **Tujuan**: Menjelaskan arsitektur fundamental ViT (ViT-Base: 12 layer transformer encoder, 12 attention heads, hidden dimension 768, patch size 16 × 16), mekanisme proyeksi linier patch, embedding posisi, dan Multi-Head Self-Attention (MHSA) sesuai diagram [Figure 3](#fig3).
+- **Sitasi Gambar Wajib**: Mensitasi diagram arsitektur ViT pada file `images/vit.png` (Figure 3).
+- **Ketentuan Layout LaTeX**: Figure 3 **tidak perlu full width** (cukup 1 kolom standar menggunakan `\begin{figure} ... \end{figure}`).
+- **Caption Figure**: **Figure 3. Architecture of the ViT Backbone and Patch Projection.**
 - **Visual Markdown**:
-  ![Figure 2. Architecture of the ViT Backbone and Patch Projection.](images/vit.png)
+  ![Figure 3. Architecture of the ViT Backbone and Patch Projection.](images/vit.png)
 - **Formulasi Matematis ViT**:
   $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^{196}\mathbf{E}] + \mathbf{E}_{\text{pos}} \tag{1}$$
   $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1} \tag{2}$$
@@ -307,7 +315,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 
 #### Paragraph 2: Multi-Domain Feature Extraction and Fusion Design
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
-- **Tujuan**: Menjelaskan pemanfaatan ViT sebagai ekstraktor fitur offline dan peran tiga model pra-latih spesifik sebagai penyedia task-associated representations:
+- **Tujuan**: Menjelaskan pemanfaatan ViT sebagai ekstraktor fitur offline dan peran tiga model pra-latih spesifik sebagai penyedia task-associated representations melintasi 7 konfigurasi fusi fitur ([Table II](#tab2)):
   1. `ViT-Face` (`skutaada/VIT-VGGFace`): Menghasilkan representasi terkait geometri biometrik wajah (task-associated face biometric representations).
   2. `ViT-Emotion` (`dima806/facial_emotions_image_detection`): Menghasilkan representasi terkait ekspresi wajah (expression-related representations) - bukan karakterisasi eksklusif dari ekspresi mikro dinamis.
   3. `ViT-Age` (`dima806/facial_age_image_detection`): Menghasilkan representasi terkait estimasi usia wajah (age-associated facial representations) - bukan representasi eksklusif morfologi penuaan biologis.
@@ -315,9 +323,9 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
   $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{4}$$
   *(di mana $\mathbf{z}_L^0$ merupakan representasi token $[\text{CLS}]$ dari layer encoder terakhir $L$ setelah normalisasi LayerNorm)*
   $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{5}$$
-- **Tabel III (Konfigurasi Fusi Fitur dan Desain Ablasi)**:
+- **Tabel II (Konfigurasi Fusi Fitur dan Desain Ablasi)**:
 
-**Table III. Multi-Domain Feature Fusion and Ablation Configurations.**
+**Table II. Multi-Domain Feature Fusion and Ablation Configurations.**
 
 | # | Configuration | Domain Category | Dimension |
 |:---:|---|:---:|:---:|
@@ -332,10 +340,10 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 ### C. Random Forest
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
 - **Tujuan**: Menjelaskan arsitektur ensemble Random Forest (RF) berbasis bootstrap aggregating (bagging) dan random subspace method.
-- **Poin Pembahasan**: Pembentukan $B$ pohon keputusan independen, pemilihan fitur acak pada percabangan (`max_features` $\in \{\text{'sqrt'}, \text{'log2'}\}$), batas kedalaman pohon (`max_depth`), kriteria split Gini impurity, serta agregasi prediksi via majority voting.
-- **Tabel IV (Ruang Pencarian Hyperparameter Random Forest)**:
+- **Poin Pembahasan**: Pembentukan $B$ pohon keputusan independen, pemilihan fitur acak pada percabangan (`max_features` $\in \{\text{'sqrt'}, \text{'log2'}\}$), batas kedalaman pohon (`max_depth`), kriteria split Gini impurity, serta agregasi prediksi via majority voting sesuai ruang pencarian hyperparameter pada [Table III](#tab3).
+- **Tabel III (Ruang Pencarian Hyperparameter Random Forest)**:
 
-**Table IV. Hyperparameter Search Space for Random Forest Classifier.**
+**Table III. Hyperparameter Search Space for Random Forest Classifier.**
 
 | Component / Hyperparameter | Evaluated Values | Count |
 |---|---|:---:|
@@ -353,10 +361,10 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 - **Tujuan**: Menjelaskan pengklasifikasi probabilistik Gaussian Naive Bayes (GNB) berbasis Teorema Bayes dengan asumsi independensi fitur kontinu.
 - **Formulasi Likelihood Gaussian**:
   $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{6}$$
-- **Poin Pembahasan**: Estimasi parameter mean $\mu_{c,i}$ dan varians $\sigma_{c,i}^2$, serta penalaan stabilitas numerik melalui parameter penghalusan varians `var_smoothing` yang dieksplorasi secara logaritmik.
-- **Tabel V (Ruang Pencarian Hyperparameter Gaussian Naive Bayes)**:
+- **Poin Pembahasan**: Estimasi parameter mean $\mu_{c,i}$ dan varians $\sigma_{c,i}^2$, serta penalaan stabilitas numerik melalui parameter penghalusan varians `var_smoothing` yang dieksplorasi secara logaritmik sesuai ruang pencarian pada [Table IV](#tab4).
+- **Tabel IV (Ruang Pencarian Hyperparameter Gaussian Naive Bayes)**:
 
-**Table V. Hyperparameter Search Space for Gaussian Naive Bayes Classifier.**
+**Table IV. Hyperparameter Search Space for Gaussian Naive Bayes Classifier.**
 
 | Component / Hyperparameter | Evaluated Values | Count |
 |---|---|:---:|
@@ -370,10 +378,10 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 - **Tujuan**: Menjelaskan formulasi multinomial Logistic Regression (LR) / Softmax regression untuk klasifikasi multi-kelas.
 - **Formulasi Probabilitas Softmax**:
   $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{7}$$
-- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti $C$, dan batas konvergensi `max_iter`.
-- **Tabel VI (Ruang Pencarian Hyperparameter Logistic Regression)**:
+- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti $C$, dan batas konvergensi `max_iter` sesuai ruang pencarian pada [Table V](#tab5).
+- **Tabel V (Ruang Pencarian Hyperparameter Logistic Regression)**:
 
-**Table VI. Hyperparameter Search Space for Logistic Regression Classifier.**
+**Table V. Hyperparameter Search Space for Logistic Regression Classifier.**
 
 | Component / Hyperparameter | Evaluated Values | Count |
 |---|---|:---:|
@@ -390,10 +398,10 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 - **Formulasi Kernel Polinomial Derajat 2**:
   $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d = 2 \tag{8}$$
   *(di mana $\text{coef0}$ merupakan parameter konstan intercept independen pada formulasi kernel polinomial; pada penelitian ini digunakan nilai bawaan $\text{coef0} = 0.0$ sesuai implementasi standar `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search)*
-- **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi $C$, koefisien kernel $\gamma$, dan derajat polinomial $d$ (dengan parameter konstan default $\text{coef0} = 0.0$).
-- **Tabel VII (Ruang Pencarian Hyperparameter Support Vector Classifier)**:
+- **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi $C$, koefisien kernel $\gamma$, dan derajat polinomial $d$ (dengan parameter konstan default $\text{coef0} = 0.0$) sesuai ruang pencarian pada [Table VI](#tab6).
+- **Tabel VI (Ruang Pencarian Hyperparameter Support Vector Classifier)**:
 
-**Table VII. Hyperparameter Search Space for Support Vector Classifier.**
+**Table VI. Hyperparameter Search Space for Support Vector Classifier.**
 
 | Component / Hyperparameter | Evaluated Values | Count |
 |---|---|:---:|
@@ -473,11 +481,11 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Random Forest Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Random Forest melintasi 7 konfigurasi fitur. Konfigurasi terbaik diraih oleh dual-domain `Emotion ⊕ Face` (akurasi 0.8685), sedangkan tri-domain `Face ⊕ Emotion ⊕ Age` mengalami penurunan (0.8620). Penurunan ini diinterpretasikan sebagai kemungkinan yang perlu ditelaah lebih lanjut; salah satu interpretasi yang dapat diajukan adalah bahwa peningkatan dimensi (2.304 dimensi) mungkin menghadirkan tantangan tambahan dalam partisi ruang fitur menggunakan pemotongan pohon acak (*may reflect the increased difficulty of feature space partitioning with random splits at higher dimensionality*).
-- **Ketentuan Layout LaTeX**: **Table VIII berformat Full Width (`\begin{table*}`)**.
-- **Tabel VIII (Hasil Evaluasi Random Forest)**:
+- **Fokus Narasi**: Menganalisis performa Random Forest melintasi 7 konfigurasi fitur berdasarkan [Table VII](#tab7). Konfigurasi terbaik diraih oleh dual-domain `Emotion ⊕ Face` (akurasi 0.8685), sedangkan tri-domain `Face ⊕ Emotion ⊕ Age` mengalami penurunan (0.8620). Penurunan ini diinterpretasikan sebagai kemungkinan yang perlu ditelaah lebih lanjut; salah satu interpretasi yang dapat diajukan adalah bahwa peningkatan dimensi (2.304 dimensi) mungkin menghadirkan tantangan tambahan dalam partisi ruang fitur menggunakan pemotongan pohon acak (*may reflect the increased difficulty of feature space partitioning with random splits at higher dimensionality*).
+- **Ketentuan Layout LaTeX**: **Table VII berformat Full Width (`\begin{table*}`)**.
+- **Tabel VII (Hasil Evaluasi Random Forest)**:
 
-**Table VIII. Performance Benchmark of Random Forest across Seven Feature Configurations.**
+**Table VII. Performance Benchmark of Random Forest across Seven Feature Configurations.**
 
 | Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|:---:|---|
@@ -491,11 +499,11 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 2: Gaussian Naive Bayes Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Gaussian Naive Bayes. Meskipun dibatasi oleh asumsi independensi fitur, model menunjukkan tren peningkatan performa dari Single (terendah `Age` 0.6963) ke Dual (`Emotion ⊕ Face` 0.8486) hingga mencapai performa tertinggi pada Tri-Domain `Face ⊕ Emotion ⊕ Age` (0.8505).
-- **Ketentuan Layout LaTeX**: **Table IX berformat Full Width (`\begin{table*}`)**.
-- **Tabel IX (Hasil Evaluasi Gaussian Naive Bayes)**:
+- **Fokus Narasi**: Menganalisis performa Gaussian Naive Bayes berdasarkan [Table VIII](#tab8). Meskipun dibatasi oleh asumsi independensi fitur, model menunjukkan tren peningkatan performa dari Single (terendah `Age` 0.6963) ke Dual (`Emotion ⊕ Face` 0.8486) hingga mencapai performa tertinggi pada Tri-Domain `Face ⊕ Emotion ⊕ Age` (0.8505).
+- **Ketentuan Layout LaTeX**: **Table VIII berformat Full Width (`\begin{table*}`)**.
+- **Tabel VIII (Hasil Evaluasi Gaussian Naive Bayes)**:
 
-**Table IX. Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.**
+**Table VIII. Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.**
 
 | Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|:---:|---|
@@ -509,11 +517,11 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 3: Logistic Regression Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Logistic Regression. Seluruh model mempertahankan fitur asli tanpa reduksi PCA (7/7 memilih `pca=None`), dengan Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih akurasi 0.9273 ($C=0.1$, `newton-cg`), melampaui dual domain terbaik `Emotion ⊕ Face` (0.9241) dan single domain terbaik `Face` (0.9060).
-- **Ketentuan Layout LaTeX**: **Table X berformat Full Width (`\begin{table*}`)**.
-- **Tabel X (Hasil Evaluasi Logistic Regression)**:
+- **Fokus Narasi**: Menganalisis performa Logistic Regression berdasarkan [Table IX](#tab9). Seluruh model mempertahankan fitur asli tanpa reduksi PCA (7/7 memilih `pca=None`), dengan Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih akurasi 0.9273 ($C=0.1$, `newton-cg`), melampaui dual domain terbaik `Emotion ⊕ Face` (0.9241) dan single domain terbaik `Face` (0.9060).
+- **Ketentuan Layout LaTeX**: **Table IX berformat Full Width (`\begin{table*}`)**.
+- **Tabel IX (Hasil Evaluasi Logistic Regression)**:
 
-**Table X. Performance Benchmark of Logistic Regression across Seven Feature Configurations.**
+**Table IX. Performance Benchmark of Logistic Regression across Seven Feature Configurations.**
 
 | Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|:---:|---|
@@ -527,11 +535,11 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 4: Support Vector Classifier Ablation Progression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Classifier (SVC) dari single-domain ke dual-domain dan tri-domain. Seluruh model SVC secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (0.9083) ke dual domain `Emotion ⊕ Face` (0.9329) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (0.9370).
-- **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
-- **Tabel XI (Hasil Evaluasi Support Vector Classifier)**:
+- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Classifier (SVC) dari single-domain ke dual-domain dan tri-domain berdasarkan [Table X](#tab10). Seluruh model SVC secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (0.9083) ke dual domain `Emotion ⊕ Face` (0.9329) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (0.9370).
+- **Ketentuan Layout LaTeX**: **Table X berformat Full Width (`\begin{table*}`)**.
+- **Tabel X (Hasil Evaluasi Support Vector Classifier)**:
 
-**Table XI. Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.**
+**Table X. Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.**
 
 | Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|:---:|---|
@@ -553,7 +561,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Progressive Feature Contribution across Single, Dual, and Tri-Domain Schemes
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VIII](#tab8), [Table IX](#tab9), [Table X](#tab10), dan [Table XI](#tab11). Pada SVC, transisi dari `Face` (0.9083) ke `Emotion ⊕ Face` (0.9329) meningkatkan akurasi sebesar $+0.0246$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 0.9370 (peningkatan kumulatif $+0.0287$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
+- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVC, transisi dari `Face` (0.9083) ke `Emotion ⊕ Face` (0.9329) meningkatkan akurasi sebesar $+0.0246$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 0.9370 (peningkatan kumulatif $+0.0287$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
 
 #### Paragraph 2: Informational Contribution of Age-Associated Representations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -564,16 +572,16 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVC Model
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVC Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XII(a)](#tab12a). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVC Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI(a)](#tab11a). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
 
 #### Paragraph 2: Comparative Disparity Evaluation between SVC and Logistic Regression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan profil disparitas SVC dengan Logistic Regression Tri-Domain berdasarkan ringkasan disparitas pada [Table XII(b)](#tab12b). Model LR Tri-Domain mencatat $\Delta_{\text{Recall}} = 0.0500$, $\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Precision}} = 0.0495$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$, sedangkan SVC mencatat $\Delta_{\text{Recall}} = 0.0750$, $\Delta_{\text{F1}} = 0.0440$, $\Delta_{\text{Precision}} = 0.0310$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$. Nilai disparitas kedua model bervariasi antar-metrik, sehingga tidak dapat disimpulkan salah satu model lebih fair daripada yang lain, mengingat fairness tidak diukur hanya melalui satu statistik disparitas rentang.
+- **Fokus Narasi**: Membandingkan profil disparitas SVC dengan Logistic Regression Tri-Domain berdasarkan ringkasan disparitas pada [Table XI(b)](#tab11b). Model LR Tri-Domain mencatat $\Delta_{\text{Recall}} = 0.0500$, $\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Precision}} = 0.0495$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$, sedangkan SVC mencatat $\Delta_{\text{Recall}} = 0.0750$, $\Delta_{\text{F1}} = 0.0440$, $\Delta_{\text{Precision}} = 0.0310$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$. Nilai disparitas kedua model bervariasi antar-metrik, sehingga tidak dapat disimpulkan salah satu model lebih fair daripada yang lain, mengingat fairness tidak diukur hanya melalui satu statistik disparitas rentang.
 
-- **Ketentuan Layout LaTeX**: **Table XII berformat Full Width (`\begin{table*}`)**.
-- **Tabel XII (Kinerja per-Subkelompok dan Ringkasan Disparitas Model Tri-Domain)**:
+- **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
+- **Tabel XI (Kinerja per-Subkelompok dan Ringkasan Disparitas Model Tri-Domain)**:
 
-**Table XII. Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.**
+**Table XI. Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.**
 
 *(a) Subgroup-Level Performance Metrics*
 
@@ -604,29 +612,29 @@ Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Comparative Error Reduction across Feature Schemes
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Tinjauan umum pergeseran distribusi kesalahan klasifikasi dari Single-Domain ke Dual-Domain dan Tri-Domain berdasarkan visualisasi diagram matriks konfusi [Figure 3](#fig3). Total misklasifikasi pada 2.160 data uji held-out menurun dari 198 sampel (Single) menjadi 145 sampel (Dual) dan mencapai 136 sampel pada Tri-Domain.
-- **Sitasi Gambar Wajib**: Mensitasi diagram komparatif 3 matriks konfusi (Figure 3a, 3b, 3c).
-- **Ketentuan Layout LaTeX**: **Figure 3 berformat Full Width (`\begin{figure*}`)**.
-- **Caption Figure**: **Figure 3. Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).**
+- **Fokus Narasi**: Tinjauan umum pergeseran distribusi kesalahan klasifikasi dari Single-Domain ke Dual-Domain dan Tri-Domain berdasarkan visualisasi diagram matriks konfusi [Figure 4](#fig4). Total misklasifikasi pada 2.160 data uji held-out menurun dari 198 sampel (Single) menjadi 145 sampel (Dual) dan mencapai 136 sampel pada Tri-Domain.
+- **Sitasi Gambar Wajib**: Mensitasi diagram komparatif 3 matriks konfusi (Figure 4a, 4b, 4c).
+- **Ketentuan Layout LaTeX**: **Figure 4 berformat Full Width (`\begin{figure*}`)**.
+- **Caption Figure**: **Figure 4. Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).**
 - **Visual Markdown**:
   - *(a) Single-Domain (Face):*
-    ![Figure 3(a). Single-Domain ViT-Face Confusion Matrix](images/confusion_matrix_single.png)
+    ![Figure 4(a). Single-Domain ViT-Face Confusion Matrix](images/confusion_matrix_single.png)
   - *(b) Dual-Domain (Emotion ⊕ Face):*
-    ![Figure 3(b). Dual-Domain ViT-Emotion-Face Confusion Matrix](images/confusion_matrix_dual.png)
+    ![Figure 4(b). Dual-Domain ViT-Emotion-Face Confusion Matrix](images/confusion_matrix_dual.png)
   - *(c) Tri-Domain (Face ⊕ Emotion ⊕ Age):*
-    ![Figure 3(c). Tri-Domain ViT-Face-Emotion-Age Confusion Matrix](images/confusion_matrix_tri.png)
+    ![Figure 4(c). Tri-Domain ViT-Face-Emotion-Age Confusion Matrix](images/confusion_matrix_tri.png)
 
 #### Paragraph 2: Cross-Race Same-Gender Misclassification Patterns in Single-Domain Classifier
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis pola kesalahan pada model Single-Domain [Figure 3(a)](#fig3a). Kesalahan terkonsentrasi pada subkelompok bergender sama antarras, khususnya pada wanita di mana `Asian_Females` mengalami 46 kesalahan (16 terprediksi sebagai `White_Females` dan 16 sebagai `Black_Females`), sedangkan `White_Females` mengalami 20 kesalahan ke `Asian_Females`. Pola ini konsisten dengan kemungkinan adanya tumpang tindih fenotipe (phenotypic overlap) - meskipun confusion matrix tidak membuktikan bahwa hal tersebut merupakan penyebab tunggal dari misklasifikasi yang teramati.
+- **Fokus Narasi**: Menganalisis pola kesalahan pada model Single-Domain [Figure 4(a)](#fig4a). Kesalahan terkonsentrasi pada subkelompok bergender sama antarras, khususnya pada wanita di mana `Asian_Females` mengalami 46 kesalahan (16 terprediksi sebagai `White_Females` dan 16 sebagai `Black_Females`), sedangkan `White_Females` mengalami 20 kesalahan ke `Asian_Females`. Pola ini konsisten dengan kemungkinan adanya tumpang tindih fenotipe (phenotypic overlap) - meskipun confusion matrix tidak membuktikan bahwa hal tersebut merupakan penyebab tunggal dari misklasifikasi yang teramati.
 
 #### Paragraph 3: Impact of Dual-Domain Emotion Representations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis perubahan kesalahan pada model Dual-Domain [Figure 3(b)](#fig3b). Penambahan representasi terkait ekspresi (`Emotion ⊕ Face`) mengurangi beberapa pola misklasifikasi antarras pada subkelompok wanita, seperti menurunkan kesalahan `Asian_Females` ke `White_Females` dari 16 menjadi 9 kasus, serta meningkatkan sampel prediksi benar pada `White_Females` dari 325 menjadi 334 citra.
+- **Fokus Narasi**: Menganalisis perubahan kesalahan pada model Dual-Domain [Figure 4(b)](#fig4b). Penambahan representasi terkait ekspresi (`Emotion ⊕ Face`) mengurangi beberapa pola misklasifikasi antarras pada subkelompok wanita, seperti menurunkan kesalahan `Asian_Females` ke `White_Females` dari 16 menjadi 9 kasus, serta meningkatkan sampel prediksi benar pada `White_Females` dari 325 menjadi 334 citra.
 
 #### Paragraph 4: Misclassification Patterns in Tri-Domain Fusion
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis pola misklasifikasi pada model Tri-Domain [Figure 3(c)](#fig3c). Integrasi representasi terkait usia (`Face ⊕ Emotion ⊕ Age`) meningkatkan true positive `Asian_Females` ke 333 sampel dan `White_Females` ke 341 sampel. Kesalahan lintas gender (prediksi wanita tertukar pria atau sebaliknya) berjumlah 51 kasus dari total 2.160 data uji held-out (2.36%), yang menunjukkan bahwa misklasifikasi lintas gender lebih sedikit dibandingkan beberapa pola misklasifikasi antarras pada kelompok bergender sama.
+- **Fokus Narasi**: Menganalisis pola misklasifikasi pada model Tri-Domain [Figure 4(c)](#fig4c). Integrasi representasi terkait usia (`Face ⊕ Emotion ⊕ Age`) meningkatkan true positive `Asian_Females` ke 333 sampel dan `White_Females` ke 341 sampel. Kesalahan lintas gender (prediksi wanita tertukar pria atau sebaliknya) berjumlah 51 kasus dari total 2.160 data uji held-out (2.36%), yang menunjukkan bahwa misklasifikasi lintas gender lebih sedikit dibandingkan beberapa pola misklasifikasi antarras pada kelompok bergender sama.
 
 > **Tabel Acuan Matriks Konfusi (Data Acuan Eksperimen - Non-Numbered / Tidak Dinomori pada Naskah Publikasi):**
 
@@ -682,16 +690,16 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Comparative Performance on the DemogPairs Dataset
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XIII](#tab13). Model Tri-Domain ViT + SVC (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 0.9372**, **Recall 0.9370**, dan **F1-Score 0.9369**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 0.9238) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 0.8901). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
+- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XII](#tab12). Model Tri-Domain ViT + SVC (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 0.9372**, **Recall 0.9370**, dan **F1-Score 0.9369**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 0.9238) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 0.8901). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
 
 #### Paragraph 2: Research Positioning and Comparative Context
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Narasi**: Membahas posisi riset terhadap penelitian seminal dataset DemogPairs (Hupont & Fernández, IEEE FG 2019). Integrasi representasi tiga domain menghasilkan akurasi tertinggi di antara studi-studi yang dibandingkan pada dataset tersebut. Analisis disparitas subkelompok dilakukan secara komprehensif pada konfigurasi tri-domain terbaik untuk memetakan variasi performa antarsubgrup demografis, dengan tetap memperhatikan bahwa perbandingan disparitas lintas seluruh skema sebelumnya tidak dapat disertakan karena tidak dilaporkan dalam literatur terkait.
 
-- **Ketentuan Layout LaTeX**: **Table XIII berformat Full Width (`\begin{table*}`)**.
-- **Tabel XIII (Perbandingan Komparatif terhadap Studi yang Menggunakan Dataset DemogPairs)**:
+- **Ketentuan Layout LaTeX**: **Table XII berformat Full Width (`\begin{table*}`)**.
+- **Tabel XII (Perbandingan Komparatif terhadap Studi yang Menggunakan Dataset DemogPairs)**:
 
-**Table XIII. Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.**
+**Table XII. Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.**
 
 | Study | Model | Accuracy | Precision | Recall | F1-Score |
 |---|---|:---:|:---:|:---:|:---:|
@@ -733,22 +741,22 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | Element ID | Tipe Elemen | Bab / Sub-seksi Kemunculan | Judul / Deskripsi Formal Lengkap | Format Layout LaTeX |
 |:---:|:---:|:---:|---|:---:|
 | **Figure 1** | Gambar | Section III (Overview) | *End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.* | **Full Width (`figure*`)** |
-| **Table I** | Tabel | Section III.A (Paragraph 1) | *Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups.* | Column Width (`table`) |
-| **Table II** | Tabel | Section III.A (Paragraph 2) | *Dataset Partition and Demographic Subgroup Distribution.* | Column Width (`table`) |
-| **Figure 2** | Gambar | Section III.B (Paragraph 1) | *Architecture of the ViT Backbone and Patch Projection.* | Column Width (`figure`) |
+| **Figure 2** | Gambar | Section III.A (Paragraph 1) | *Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.* | **Full Width (`figure*`)** |
+| **Table I** | Tabel | Section III.A (Paragraph 2) | *Dataset Partition and Demographic Subgroup Distribution.* | Column Width (`table`) |
+| **Figure 3** | Gambar | Section III.B (Paragraph 1) | *Architecture of the ViT Backbone and Patch Projection.* | Column Width (`figure`) |
 | **Eq. (1)** | Persamaan | Section III.B (Paragraph 1) | *Formulasi Proyeksi Patch ViT dan Embedding Posisi Laten* | In-line Math / Standard |
 | **Eq. (2)** | Persamaan | Section III.B (Paragraph 1) | *Formulasi Multi-Head Self-Attention (MHSA) pada Layer Encoder ViT* | In-line Math / Standard |
 | **Eq. (3)** | Persamaan | Section III.B (Paragraph 1) | *Formulasi Multi-Layer Perceptron (MLP) pada Layer Encoder ViT* | In-line Math / Standard |
 | **Eq. (4)** | Persamaan | Section III.B (Paragraph 2) | *Ekstraksi Vektor Fitur Representasi Laten Token [CLS] Domain Spesifik ($\mathbb{R}^{768}$)* | In-line Math / Standard |
 | **Eq. (5)** | Persamaan | Section III.B (Paragraph 2) | *Formulasi Fusi Konkatenasi Vektor Multi-Domain ($\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$)* | In-line Math / Standard |
-| **Table III** | Tabel | Section III.B (Paragraph 2) | *Multi-Domain Feature Fusion and Ablation Configurations.* | Column Width (`table`) |
-| **Table IV** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | Column Width (`table`) |
+| **Table II** | Tabel | Section III.B (Paragraph 2) | *Multi-Domain Feature Fusion and Ablation Configurations.* | Column Width (`table`) |
+| **Table III** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | Column Width (`table`) |
 | **Eq. (6)** | Persamaan | Section III.D (Gaussian NB) | *Formulasi Likelihood Probabilistik Gaussian Naive Bayes* | In-line Math / Standard |
-| **Table V** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | Column Width (`table`) |
+| **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | Column Width (`table`) |
 | **Eq. (7)** | Persamaan | Section III.E (Logistic Reg) | *Formulasi Probabilitas Softmax Multinomial Logistic Regression* | In-line Math / Standard |
-| **Table VI** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | Column Width (`table`) |
+| **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | Column Width (`table`) |
 | **Eq. (8)** | Persamaan | Section III.F (Support Vector) | *Formulasi Kernel Polinomial Derajat 2 Support Vector Classifier* | In-line Math / Standard |
-| **Table VII** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Classifier.* | Column Width (`table`) |
+| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Classifier.* | Column Width (`table`) |
 | **Eq. (9)** | Persamaan | Section III.G (Pipeline) | *Rantai Transformasi Pipeline Modular Scaler - PCA - Classifier* | In-line Math / Standard |
 | **Eq. (10)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Akurasi One-vs-Rest Subkelompok ($\text{Accuracy}_c$)* | In-line Math / Standard |
 | **Eq. (11)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Presisi One-vs-Rest Subkelompok ($\text{Precision}_c$)* | In-line Math / Standard |
@@ -760,10 +768,10 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Eq. (17)** | Persamaan | Section III.H (Paragraph 2) | *Formulasi F1-Score Global (Global F1-Score)* | In-line Math / Standard |
 | **Eq. (18)** | Persamaan | Section III.H (Paragraph 3) | *Formulasi Rentang Disparitas Recall Subkelompok ($\Delta_{\text{Recall}}$)* | In-line Math / Standard |
 | **Eq. (19)** | Persamaan | Section III.H (Paragraph 3) | *Formulasi Rentang Disparitas F1-Score Subkelompok ($\Delta_{\text{F1}}$)* | In-line Math / Standard |
-| **Table VIII** | Tabel | Section IV.A (Paragraph 1) | *Performance Benchmark of Random Forest across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table IX** | Tabel | Section IV.A (Paragraph 2) | *Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table X** | Tabel | Section IV.A (Paragraph 3) | *Performance Benchmark of Logistic Regression across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table XI** | Tabel | Section IV.A (Paragraph 4) | *Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table XII** | Tabel | Section IV.C (Fairness) | *Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.* | **Full Width (`table*`)** |
-| **Figure 3** | Gambar | Section IV.D (Error Pattern) | *Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).* | **Full Width (`figure*`)** |
-| **Table XIII** | Tabel | Section IV.F (Comparison) | *Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | **Full Width (`table*`)** |
+| **Table VII** | Tabel | Section IV.A (Paragraph 1) | *Performance Benchmark of Random Forest across Seven Feature Configurations.* | **Full Width (`table*`)** |
+| **Table VIII** | Tabel | Section IV.A (Paragraph 2) | *Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.* | **Full Width (`table*`)** |
+| **Table IX** | Tabel | Section IV.A (Paragraph 3) | *Performance Benchmark of Logistic Regression across Seven Feature Configurations.* | **Full Width (`table*`)** |
+| **Table X** | Tabel | Section IV.A (Paragraph 4) | *Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.* | **Full Width (`table*`)** |
+| **Table XI** | Tabel | Section IV.C (Fairness) | *Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.* | **Full Width (`table*`)** |
+| **Figure 4** | Gambar | Section IV.D (Error Pattern) | *Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).* | **Full Width (`figure*`)** |
+| **Table XII** | Tabel | Section IV.F (Comparison) | *Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | **Full Width (`table*`)** |
