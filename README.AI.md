@@ -338,7 +338,7 @@ Predicted Total  360   368   342   355   369   366  │ 2,160 │
 | 10| Putri et al. (JIEET 2025) | MD-ViT (Face+Age) + XGBoost | DemogPairs | 6 Intersectional | 89.07% | 0.8905 | Yes |
 | ⭐ | **Proposed Framework (2026)** | **Tri-Domain ViT (Face+Emotion+Age) + Optimized SVC** | **DemogPairs (10,800)** | **6 Intersectional** | **93.70%** | **0.9369** | **Yes (Full Audit)** |
 
-> **Note:** Direct comparison in paper (Table XIII) includes only studies evaluated on DemogPairs (rows 9, 10, and the Proposed Framework). Studies 1-8 evaluated on different datasets and class definitions and are cited for contextual positioning only. Use "highest performance among the compared studies on DemogPairs" - not "state-of-the-art."
+> **Note:** Direct comparison in paper (Table XII) includes only studies evaluated on DemogPairs (rows 9, 10, and the Proposed Framework). Studies 1-8 evaluated on different datasets and class definitions and are cited for contextual positioning only. Use "highest performance among the compared studies on DemogPairs" - not "state-of-the-art."
 
 ---
 
@@ -551,7 +551,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 12. **Equation (4) CLS Token Definition:** `z_L^0` in `f_domain = LN(z_L^0)` refers specifically to the CLS token representation from the **final encoder layer L** of the ViT backbone. This must be stated explicitly when first introducing Eq. (4).
 13. **ViT Embedding as Task-Associated Representations:** Do not claim that ViT embeddings are exclusive or universal feature characterizations. Use "task-associated representations" as the preferred framing.
 14. **Corrected Disparity Values:** The confirmed disparity values from the experiment logs are: SVC ΔF1 = **0.0440** (0.9614 - 0.9174), SVC ΔPrecision = **0.0310**, SVC ΔRecall = **0.0750**, SVC ΔOvR Acc = **1.39 pp**; LR ΔF1 = **0.0422** (0.9558 - 0.9136), LR ΔPrecision = **0.0495** (0.9571 - 0.9076), LR ΔRecall = **0.0500** (0.9611 - 0.9111), LR ΔOvR Acc = **1.39 pp**.
-15. **Table XII Restructured (Two Parts):** Table XII (Subgroup Performance) must be presented in two blocks: (a) subgroup-level performance per classifier on tri-domain configuration, and (b) disparity summary comparing ΔRecall, ΔPrecision, ΔF1, ΔOvR across classifiers.
+15. **Table XI Restructured (Two Parts):** Table XI (Subgroup Performance) must be presented in two blocks: (a) subgroup-level performance per classifier on tri-domain configuration, and (b) disparity summary comparing ΔRecall, ΔPrecision, ΔF1, ΔOvR across classifiers.
 16. **Range-Based Disparity Scope:** Explicitly note that range-based disparity (max - min) is a simple, interpretable indicator and does not constitute a comprehensive fairness audit.
 17. **OvR Accuracy Context:** High OvR accuracy values are partially attributable to the 5:1 negative sample ratio in binary one-vs-rest evaluation; do not present OvR Accuracy as a sole or primary fairness indicator.
 18. **No "State-of-the-Art" Without Benchmark:** Do not claim state-of-the-art without a comprehensive benchmark; the proposed framework was evaluated only on DemogPairs.
@@ -560,7 +560,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 21. **Novelty Statement:** The novelty of this work is the combination of (a) tri-domain ViT feature fusion, (b) comparative 4-classifier evaluation under unified GridSearchCV, (c) SVC hyperparameter optimization, and (d) subgroup disparity analysis on an intersectional benchmark.
 22. **RQ Alignment:** Every research conclusion must be backed by a table, figure, or experiment result. Do not assert findings without an explicit evidential anchor.
 23. **Final Terminology/Notation/Number Consistency:** Before finalizing any section, verify that all acronyms, configuration names (using ⊕ symbol), equation references (Eq. 1-19), and numerical values are consistent throughout the entire document.
-24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XIII), but should be cited when introducing the DemogPairs dataset.
+24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XII), but should be cited when introducing the DemogPairs dataset.
 25. **Universal Manuscript Pipeline SOP (`WORKFLOW.md`):** All drafting, translation, and publication workflows must strictly follow `WORKFLOW.md` as the official standard operating procedure for generating modular Markdown drafts (`paper/`), Indonesian LaTeX (`paper_latex_id/`), and English submission-ready LaTeX manuscripts (`paper_latex_en/`) from `paper_outline.md`. Each stage must strictly maintain 100% numerical consistency, exact formula definitions, and 1-to-1 modular mapping across all target formats.
 
 ---

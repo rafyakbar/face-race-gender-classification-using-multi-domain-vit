@@ -118,9 +118,9 @@ paper_latex_[id|en]/
 | **I. Pendahuluan** | `01_introduction.md` | `01_introduction.tex` | Background, Problem, Gap, Contributions (bullet), Paper Organization |
 | **II. Studi Terkait** | `02_related-works.md` | `02_related-works.tex` | Literature Review by thematic topics, Positioning table |
 | **III. Metodologi (Pengantar)**| `03_materials-and-methods_overview.md` | `03_materials-and-methods_overview.tex` | Lead-in text & Overall Pipeline Architecture (Figure 1) |
-| **III-A. Dataset** | `03_materials-and-methods_a-dataset.md` | `03_materials-and-methods_a-dataset.tex` | Dataset Partition & Distribution (Table I & Table II) |
-| **III-B s.d. III-G. Metodologi**| `03_materials-and-methods_[b-g]-*.md` | `03_materials-and-methods_[b-g]-*.tex` | Feature extraction (Table III, Eq 1-4), Fusion (Eq 5), Classifiers (Table IV-VII, Eq 6-9), Setup, Metrics (Eq 10-19) |
-| **IV-A s.d. IV-F. Hasil & Diskusi**| `04_results-and-discussion_[a-f]-*.md`| `04_results-and-discussion_[a-f]-*.tex`| Benchmark (Table VIII-XI), Ablation, Subgroup/Disparity (Table XII), Error Matrix, Complexity, Prior Studies (Table XIII) |
+| **III-A. Dataset** | `03_materials-and-methods_a-dataset.md` | `03_materials-and-methods_a-dataset.tex` | Dataset Partition & Distribution (Figure 2 & Table I) |
+| **III-B s.d. III-G. Metodologi**| `03_materials-and-methods_[b-g]-*.md` | `03_materials-and-methods_[b-g]-*.tex` | Feature extraction (Figure 3, Table II, Eq 1-4), Fusion (Eq 5), Classifiers (Table III-VI, Eq 6-9), Setup, Metrics (Eq 10-19) |
+| **IV-A s.d. IV-F. Hasil & Diskusi**| `04_results-and-discussion_[a-f]-*.md`| `04_results-and-discussion_[a-f]-*.tex`| Benchmark (Table VII-X), Ablation, Subgroup/Disparity (Table XI), Error Matrix (Figure 4), Complexity, Prior Studies (Table XII) |
 | **V. Kesimpulan** | `05_conclusion.md` | `05_conclusion.tex` | Concluding remarks, Limitations (bullet), Future Directions (bullet) |
 | **Referensi** | `06_references.md` | `references.bib` | Standard BibTeX database (`@article`, `@inproceedings`, `@book`) |
 | **Biografi** | `07_biographies.md` | `07_biographies.tex` | Biographies with photo embeddings |
