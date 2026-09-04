@@ -1,3 +1,33 @@
+jangan ada kata benchmark
+
+'repositori acuan untuk mengukur dan memitigasi disparitas demografis pada pengenalan wajah' buat agar menjadi lebih mudah dipahami
+
+'diinterpolasi menggunakan metode bicubic ke resolusi spasial' bahasanya ber beli belit, cukup resize
+
+oh iya, instruksikan dalam rules, agar jika ada gambar, maka copy gambarnya dan masukkan ke dalam folder paper/images
+
+sekarang bantu saya menyusun/audit paper/03_materials-and-methods_a-dataset.md berdasarkan paper outline dan perhatikan:
+- perhatikan apa yang ada pada rules.
+- perhatikan target jumlah kata per paragraf yang ada pada paper outline.
+- jangan ada yang dicetak miring karena nantinya akan diterjemahkan ke bahasa inggris.
+- jangan menggunakan kata-kata seperti 'kendati', 'paradigma', 'guna'.
+- ingat rule "1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)", cek file akronim, jika ada kepanjang yang ada singkatannya yang baru, maka tulis di file akronim.
+- baca experiment/dataset_demogpairs.md sebelum menyusun.
+kerjakan dengan sangat teliti!
+
+oh iya, judul section harus besar semua ya
+
+sekarang bantu saya menyusun/audit paper/02_related-works.md berdasarkan paper outline dan perhatikan:
+- perhatikan apa yang ada pada rules
+- perhatikan target jumlah kata per paragraf yang ada pada paper outline
+- jangan ada yang dicetak miring karena nantinya akan diterjemahkan ke bahasa inggris
+- jangan menggunakan kata-kata seperti 'kendati', 'paradigma', 'guna'
+- ingat rule "1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)", cek file akronim
+- baca related_works/summaries sebelum menyusun
+kerjakan dengan sangat teliti!
+
+pada II. RELATED WORKS, berikan urutan nomor untuk sumber literatur terkait
+
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
 tambahkan juga instruksi ketika section diklik akan mengarah ke file dan baris terkait seperti yang ada pada D:\Research\chexnet-raddino-medical-captioning\research\paper\01_introduction.md, kemudian perbaiki introduction nya
