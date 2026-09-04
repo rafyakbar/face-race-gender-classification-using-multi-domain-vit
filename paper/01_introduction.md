@@ -1,4 +1,4 @@
-# I. Introduction
+# I. INTRODUCTION
 
 Pengenalan otomatis atribut demografis wajah memegang peranan penting dalam berbagai domain aplikasi cerdas, termasuk sistem forensik digital, kontrol akses biometrik, interaksi manusia-komputer, dan personalisasi layanan interaktif. Namun demikian, sejumlah studi empiris melaporkan bahwa sistem pengenalan wajah komersial maupun akademik kerap memperlihatkan disparitas performa yang nyata terhadap subkelompok demografis tertentu, di mana penurunan akurasi yang signifikan secara konsisten teramati pada kelompok wanita dan populasi berkulit gelap. Ketimpangan akurasi tersebut bersumber dari beragam faktor fundamental, meliputi ketidakseimbangan distribusi data latih pada dataset publik dan keterbatasan ekstraktor fitur konvensional dalam mengekstraksi representasi visual yang invarian terhadap variasi pencahayaan, pose, serta degradasi visual alami. Keterbatasan sistem konvensional dalam mengatasi variasi visual ini menegaskan bahwa pengenalan demografis yang adil dan akurat masih menghadapi kendala besar, sehingga diperlukan pendekatan baru yang mampu memodelkan atribut demografis secara komprehensif.
 
