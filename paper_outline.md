@@ -191,45 +191,49 @@ Sintesis literatur disusun dalam 6 paragraf terstruktur tanpa subjudul, masing-m
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Evolusi tugas pengenalan ras dan gender wajah dari deskriptor konvensional berbasis bagian (part-based) dan fitur buatan tangan (handcrafted features: LBP, HOG, Gabor) ke model representasi mendalam. Menguraikan bagaimana representasi konvolusional klasik berinteraksi dengan variasi pencahayaan dan disparitas performa antarras (Other-Race Effect) sebagaimana dilaporkan dalam literatur empiris.
 - **Sumber Literatur Terkait**:
-  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
-  - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., IVC 2022)
-  - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., JVCI 2023)
+  1. `[(1)]` *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  2. `[(3)]` *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., IVC 2022)
+  3. `[(6)]` *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., JVCI 2023)
 
 ### Paragraph 2: Vision Transformers for Face Representation
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Penerapan arsitektur Vision Transformer (ViT) dalam analisis biometrik wajah. Menjelaskan karakteristik struktural mekanisme Multi-Head Self-Attention (MHSA) yang memfasilitasi pemodelan dependensi spasial global antarpatch citra secara langsung, serta eksplorasi model transformer hibrida seperti MaxViT, dengan memisahkan karakteristik desain arsitektur dari evaluasi performa empirisnya.
 - **Sumber Literatur Terkait**:
-  - *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
-  - *Classifying Gender Based on Face Images Using Vision Transformer* (Tahyudin et al., JOIV 2024)
-  - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
+  1. `[(4)]` *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
+  2. `[(7)]` *Classifying Gender Based on Face Images Using Vision Transformer* (Tahyudin et al., JOIV 2024)
+  3. `[(8)]` *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
 
 ### Paragraph 3: Demographic Disparities and Fairness in Vision Systems
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Analisis terhadap disparitas performa dalam model visi komputer dan teknik evaluasi demografis. Menekankan bahwa evaluasi pada dataset berdistribusi seimbang menyediakan kondisi terkontrol untuk membandingkan performa antarsubkelompok tanpa distorsi ketidakseimbangan sampel (tanpa mengimplikasikan bahwa distribusi seimbang secara otomatis menghilangkan bias sosial). Mengulas teknik mitigasi generatif seperti StyleGAN2 dan analisis bias sosial pada encoder transformer.
 - **Sumber Literatur Terkait**:
-  - *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
-  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer 2023)
+  1. `[(4)]` *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
+  2. `[(5)]` *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer 2023)
 
 ### Paragraph 4: Multi-Domain and Multi-Task Feature Fusion
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Perkembangan pendekatan fusi representasi multi-skala, multi-task, dan multi-domain pada analisis atribut wajah. Mengulas keterbatasan pendekatan representasi tunggal yang tidak secara simultan memodelkan variasi dari berbagai aspek visual (seperti geometri wajah, ekspresi afektif, dan usia), serta menelaah temuan empiris penggabungan fitur laten antardomain tanpa mengklaim komplementaritas teoretis yang mutlak.
 - **Sumber Literatur Terkait**:
-  - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
-  - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., JVCI 2023)
-  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer 2023)
+  1. `[(2)]` *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
+  2. `[(6)]` *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., JVCI 2023)
+  3. `[(5)]` *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer 2023)
+  4. `[(9)]` *Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images* (Putri et al., IEEE ICVEE 2025)
+  5. `[(10)]` *MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition* (Putri et al., JIEET 2025)
 
 ### Paragraph 5: Downstream Classifier Paradigms and Decision Boundaries
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Perbandingan paradigma classifier hilir antara SoftMax end-to-end, model pohon (Random Forest), model probabilistik (Gaussian Naive Bayes), dan Support Vector Classifier (SVC). Menjelaskan karakteristik batas keputusan masing-masing paradigma pada ruang fitur berdimensi tinggi berdasarkan hasil empiris yang dilaporkan dalam literatur, tanpa menyatakan keunggulan matematis mutlak salah satu pendekatan.
 - **Sumber Literatur Terkait**:
-  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
-  - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., IVC 2022)
-  - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
-  - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
+  1. `[(1)]` *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  2. `[(3)]` *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., IVC 2022)
+  3. `[(2)]` *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
+  4. `[(8)]` *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
 
 ### Paragraph 6: Research Positioning
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Sintesis**: Memetakan posisi kebaruan penelitian ini terhadap literatur yang telah dibahas pada Paragraf 1 hingga 5 (tanpa menyertakan sitasi pustaka). Menegaskan bahwa penelitian ini memadukan kekuatan representasi laten tiga domain Vision Transformer (representasi terkait biometrik wajah, ekspresi wajah, dan usia wajah) yang dipadukan dengan optimasi pipeline Support Vector Classifier untuk klasifikasi demografis interseksional pada dataset DemogPairs.
+- **Sumber Literatur Terkait**:
+  - *Tanpa sitasi pustaka* (sintesis orisinal posisi penelitian terhadap literatur di atas).
 
 ---
 
@@ -282,7 +286,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 - **Poin Narasi**:
   1. Pembagian data menggunakan Stratified 80/20 Split (`random_state=42`, `stratify=y`) menghasilkan 8.640 citra latih (1.440 citra per subkelompok) dan 2.160 citra uji *held-out* (360 citra per subkelompok) sebagaimana dirincikan pada [Table I](#tab1).
   2. Subset uji tidak pernah dilibatkan selama proses pencarian hyperparameter dan hanya digunakan untuk evaluasi akhir.
-  3. Preprocessing citra mencakup konversi ke 3-channel RGB, interpolasi bicubic ke resolusi 224 × 224 piksel, dan rescaling intensitas $[0, 255] \to [0, 1]$.
+  3. Preprocessing citra mencakup konversi ke 3-channel RGB, resize ke resolusi 224 × 224 piksel, dan rescaling intensitas $[0, 255] \to [0, 1]$.
 - **Tabel I (Distribusi Partisi Data DemogPairs)**:
 
 **Table I. Dataset Partition and Demographic Subgroup Distribution.**

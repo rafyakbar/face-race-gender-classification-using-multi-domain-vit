@@ -13,17 +13,20 @@ saat menyusun draf artikel ilmiah dalam format Markdown sebelum dikonversi ke do
 
 1.1. Bahasa Inggris Wajib untuk Judul & Heading
   - Judul Paper (Title), Judul Bab (Section Heading), dan Judul Sub-bab (Subsection Heading)
-    WAJIB ditulis dalam BAHASA INGGRIS dengan format Title Case.
-    * Contoh Judul Paper   : Improving Image Classification Through Dual Encoders
-    * Contoh Judul Bab     : # I. Introduction
-                             # II. Related Works
-                             # III. Materials and Methods
-                             # IV. Results and Discussion
-                             # V. Conclusion
+    WAJIB ditulis dalam BAHASA INGGRIS.
+  - Judul Bab Utama (Section Level 1 Heading, `# `) WAJIB ditulis dalam HURUF BESAR SEMUA (ALL CAPS / UPPERCASE):
+    * Contoh Judul Bab     : # I. INTRODUCTION
+                             # II. RELATED WORKS
+                             # III. MATERIALS AND METHODS
+                             # IV. RESULTS AND DISCUSSION
+                             # V. CONCLUSION
+                             # VI. REFERENCES
+                             # VII. BIOGRAPHIES
+  - Judul Sub-bab (Subsection Level 2 Heading, `## `) ditulis dalam English Title Case:
     * Contoh Judul Sub-bab : ## A. Dataset
-                             ## B. Proposed Architecture
-                             ## C. Image Enhancement
-                             ## A. Performance Comparison Across Encoders
+                             ## B. Vision Transformer Feature Extraction
+                             ## C. Random Forest
+                             ## A. Global Performance Comparison
 
 1.2. Bahasa Teks Naratif
   - Isi teks narasi di dalam paragraf ditulis dalam Bahasa Indonesia.
@@ -110,11 +113,17 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
   - Format target     : Pada berkas `06_references.md`, sematkan tag anchor:
     `<a id="ref1"></a>[1] A. Author, "Title of paper," Journal Name, vol. 1, 2025.`
 
-5.2. Rujukan Gambar (Figures)
-  - Format dalam teks : `[Figure 1](#fig1)` atau `[Figure 1](03_materials-and-methods_a-overview.md#fig1)`
+5.2. Rujukan Gambar (Figures) & Aturan Penyimpanan Lokal (paper/images/)
+  - Format dalam teks : `[Figure 1](#fig1)` atau `[Figure 1](03_materials-and-methods_overview.md#fig1)`
   - Format target     :
     `<a id="fig1"></a>`
     `![Figure 1. Architecture of the Proposed System.](images/overview.png)`
+  - Aturan Penyalinan & Penyimpanan Berkas Gambar Lokal (Mandatory Local Image Storage):
+    * SETIAP KALI ada gambar, diagram, grafik, atau aset visual yang dirujuk di dalam naskah, berkas
+      gambar tersebut WAJIB disalin (copy) dan dimasukkan ke dalam folder lokal `paper/images/`.
+    * Hal ini memastikan bahwa folder `paper/` bersifat sepenuhnya mandiri (self-contained) dan portabel,
+      sehingga seluruh tautan gambar pada Markdown dapat langsung merujuk ke path relatif `images/<nama_gambar>`
+      tanpa ketergantungan pada direktori luar dan siap dikonversi ke direktori kerja LaTeX.
 
 5.3. Rujukan Tabel (Tables)
   - Format dalam teks : `[Table I](#tab1)` atau `[Table I](03_materials-and-methods_b-dataset.md#tab1)`
@@ -269,6 +278,7 @@ Sebelum naskah Markdown dikonversi ke format LaTeX:
 [ ] 10. Teks bebas dari cetak miring (*italics*) pada istilah teknis internasional.
 [ ] 11. Seluruh metrik evaluasi dilaporkan konsisten dalam format persentase (%).
 [ ] 12. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
+[ ] 13. Seluruh berkas gambar yang dirujuk telah disalin dan tersedia di dalam folder lokal `paper/images/`.
 
 ====================================================================================================
 AKHIR DOKUMEN WRITING MD RULES
