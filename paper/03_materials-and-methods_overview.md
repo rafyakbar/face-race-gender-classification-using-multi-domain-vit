@@ -1,3 +1,8 @@
-# III. Materials and Methods: Overview
+# III. MATERIALS AND METHODS
 
-<!-- Draft konten akan ditulis pada tahap berikutnya sesuai paper_outline.md -->
+Kerangka kerja komprehensif yang diusulkan dalam penelitian ini dirancang untuk menyelesaikan klasifikasi demografis ras dan gender interseksional melalui integrasi representasi visual multi-domain serta optimasi model pembelajaran mesin klasik, sebagaimana diilustrasikan pada [Figure 1](#fig1). Alur metodologi berawal dari pemrosesan citra wajah berukuran 224 × 224 piksel dari dataset DemogPairs yang dipartisi menggunakan stratified split menjadi data latih dan data uji held-out. Citra dialirkan ke tiga model backbone ViT pre-trained yang dibekukan untuk mengekstraksi representasi laten berdimensi 768 dari token [CLS] secara offline, mencakup representasi geometri biometrik wajah, isyarat ekspresi afektif, dan estimasi usia biologis. Ketiga vektor fitur tersebut digabungkan melalui operasi konkatenasi $\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$ menghasilkan representasi tri-domain berdimensi 2.304, di samping pembentukan konfigurasi domain tunggal dan domain ganda. Vektor representasi selanjutnya diproses ke dalam pipeline modular yang mengintegrasikan penskalaan fitur, reduksi dimensionalitas PCA, serta klasifikasi akhir menggunakan empat kelompok algoritma, yaitu RF, GNB, LR, dan SVC. Prosedur penalaan hyperparameter dijalankan melalui 5-Fold Stratified Cross-Validation dengan skema GridSearchCV yang dirancang secara terisolasi untuk mencegah kebocoran informasi sebelum dilakukan evaluasi akhir pada data uji held-out.
+
+<a id="fig1"></a>
+**Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.**
+
+![Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.](images/method.png)
