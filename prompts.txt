@@ -1,5 +1,25 @@
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+terapkan
+
+apakah ada file lain yg perlu dibetulkan?
+
+coba cek paper outline, ubah istilah svc menjadi svm, begitu juga dengan kepanjangannya, cek juga file akronim
+
+sekarang cek paper/02_related-works.md
+
+apakah sudah sesuai spok?
+
+coba cek paper/01_introduction.md
+
+tambahkan aturan ini ke dalam rules
+
+menurutmu untuk paper q1 apakah spok?
+
+dan usahakan SPOK untuk c d e f
+
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
 buat agar c d e f kalimat pembukanya beserta narasinya tidak sama dengan yang lain
 
 ubah awalan kalimat pada paper/03_materials-and-methods_d-gaussian-naive-bayes.md agar tidak sama dengan:
