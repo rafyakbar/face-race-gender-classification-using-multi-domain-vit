@@ -109,7 +109,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 
 ```
 .
-├── experiment/
+├── experiment/                            # Experimental logs, documentation, and source code
 │   ├── 00_overview.md - 05_results.md     # Comprehensive experimental logs and methodology audits
 │   ├── dataset_demogpairs.md              # Dataset specification and partition summary
 │   └── code/
@@ -118,23 +118,43 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │       ├── 3.0_compare.ipynb              # Global 28-model comparison and benchmarking
 │       ├── 4.0_test.ipynb                 # Held-out evaluation and test routines
 │       ├── app.py                         # Interactive Gradio demo web application
-│       ├── utils/                         # Modular utility library (<200 lines/file)
+│       ├── utils/                         # Modular utility library
 │       │   ├── constants.py               # Class names, mappings, and seed definitions
 │       │   ├── dataset.py                 # Dataset loaders and metadata processors
+│       │   ├── display.py                 # Visual display and tabular helpers
 │       │   ├── evaluation.py              # Cross-validation, metrics, and disparity calculations
-│       │   └── models.py                  # Pipeline builders and grid configurations
+│       │   ├── extraction.py              # ViT [CLS] feature extractor
+│       │   ├── serialization.py           # Joblib & JSON loaders/savers
+│       │   └── time_helpers.py            # Execution duration trackers
+│       ├── dataset/demogpairs/metadata/   # 6 metadata .txt files (1,800 rows each)
 │       ├── md/                            # Markdown exports of all Jupyter notebooks
 │       ├── results/                       # Raw JSON result files (28 experiment artifacts)
-│       └── models/                        # Serialized best model checkpoints (.pkl)
-├── images/
-│   ├── method.png                         # Methodology framework architecture diagram
-│   └── method.pptx                        # Editable presentation source
-├── paper_outline.md                       # Complete IEEE Access publication outline
-├── WORKFLOW.md                            # Standard Operating Procedure (SOP) for Research Manuscript Pipeline
-├── README.AI.md                           # AI assistant development instructions and ground-truth index
-├── rules/                                 # Standardized rules for formatting, LaTeX, and citations
+│       └── images/                        # Confusion matrix plots (28 models)
+├── images/                                # High-resolution architecture diagrams and sample figures
+├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
+│   ├── 00_abstract.md - 07_biographies.md # Section-by-section modular academic manuscript
+│   ├── acronyms.txt                       # Centralized acronym registry (Rule 1.3)
+│   └── images/                            # Self-contained local image assets for paper compilation
+├── references/                            # BibTeX citation sources (DemogPairs)
 ├── related_works/                         # Literature reviews, summary matrices, and gap analysis
-└── references/                            # BibTeX citation sources
+│   ├── bib/                               # BibTeX files for 10 mandatory literature papers
+│   ├── pdf/                               # Full-text PDFs of related studies
+│   ├── summaries/                         # Structured analytical summaries per paper
+│   ├── gap_analysis.md                    # Research gap identification
+│   ├── literature_matrix.md               # Comparative literature matrix
+│   ├── sintesis_literatur.md              # Thematic literature synthesis
+│   └── tren_analisis.md                   # Chronological and methodological trend analysis
+├── rules/                                 # Standardized rules for formatting, LaTeX, and citations
+│   ├── IEEE_citation_guidelines.md        # IEEE citation and bibliography guidelines
+│   ├── latex_rules.txt                    # LaTeX conversion rules and templates
+│   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
+├── folder_structure.txt                   # Complete project directory tree and file glossary
+├── paper_outline.md                       # Complete publication outline & paragraph targets
+├── prompts.txt                            # Chronological log of experimental prompts and instructions
+├── README.AI.md                           # Master AI agent operational guide and ground-truth index
+├── README.md                              # Public research documentation
+├── scopus_query.txt                       # Scopus literature search query strings
+└── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ```
 
 ### Overview of Core Documentation & Manuscript Pipeline
@@ -144,6 +164,9 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 | [`WORKFLOW.md`](WORKFLOW.md) | **Standard Operating Procedure (SOP):** Universal 4-stage research manuscript pipeline (`Outline` &rarr; `paper/` &rarr; `paper_latex_id/` &rarr; `paper_latex_en/`) |
 | [`README.AI.md`](README.AI.md) | Master AI agent operational guide, ground-truth audit index, and academic writing rules |
 | [`paper_outline.md`](paper_outline.md) | Master architectural blueprint for IEEE Access publication, word limits, and notation definitions |
+| [`folder_structure.txt`](folder_structure.txt) | Complete directory tree diagram and comprehensive functional glossary of all folders/files |
+| [`paper/`](paper/) | Modular publication draft in Markdown conforming strictly to IEEE publication standards |
+| [`rules/md_rules.txt`](rules/md_rules.txt) | Strict Markdown drafting rules (word count bounds, acronym tracking, interactive links, no forbidden words) |
 | [`experiment/00_overview.md`](experiment/00_overview.md) | Comprehensive experimental logs, 28-model leaderboard audit, and dataset partition details |
 
 ---
@@ -160,7 +183,7 @@ pip install torch torchvision transformers scikit-learn imbalanced-learn joblib 
 ### 2. Experimental Execution Workflow
 1. **Extract Embeddings:** Run `experiment/code/1.1_vit-*.ipynb` to generate `.pkl` latent embeddings in `features/`.
 2. **Train Classifiers:** Run `2.1.*` (SVC), `2.2.*` (GNB), `2.4.*` (RF), or `2.5.*` (LR) for 5-Fold GridSearchCV tuning.
-3. **Compare Results:** Run `3.0_compare.ipynb` or review [experiment/code/md/3.0_compare.md](file:///D:/Research/face-race-gender-multi-vit/experiment/code/md/3.0_compare.md).
+3. **Compare Results:** Run `3.0_compare.ipynb` or review [`experiment/code/md/3.0_compare.md`](experiment/code/md/3.0_compare.md).
 4. **Interactive Demo:** Launch `python experiment/code/app.py` for real-time web inference.
 
 ---

@@ -26,7 +26,7 @@
 
 ### 1.1 Project Overview
 - **Repository Name / Corpus:** `rafyakbar/face-race-gender-classification-using-multi-domain-vit`
-- **Working Directory:** `D:\Research\face-race-gender-multi-vit`
+- **Working Directory:** `D:\Research\face-race-gender-classification-using-multi-domain-vit`
 - **Target Publication:** High-tier Q1 International Journal (IEEE Access / Pattern Recognition / Image and Vision Computing)
 - **Paper Title:** *Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images*
 - **Primary Goal:** Classify facial images into **6 intersectional demographic subgroups** (3 Races × 2 Genders: Asian/Black/White × Female/Male) by combining task-associated latent representations from three domain-specialized pre-trained Vision Transformers (**Face**, **Facial Emotion**, and **Facial Age**) and optimizing downstream classical machine learning pipelines via exhaustive 5-Fold Stratified GridSearchCV.
@@ -345,20 +345,35 @@ Predicted Total  360   368   342   355   369   366  │ 2,160 │
 ## 9. Repository & Codebase Architecture
 
 ```
-D:\Research\face-race-gender-multi-vit\
+D:\Research\face-race-gender-classification-using-multi-domain-vit\
 ├── README.md                           # Public GitHub repository landing page
 ├── README.AI.md                        # Master AI Agent reference guide (This file)
 ├── WORKFLOW.md                         # Universal Research Manuscript Pipeline SOP (Outline -> paper/ -> paper_latex_id/ -> paper_latex_en/)
 ├── paper_outline.md                    # Detailed paper outline (IEEE Access / Q1 target)
+├── folder_structure.txt                # Complete directory tree and comprehensive file glossary
 ├── prompts.txt                         # Experimental instructions and agent logs
 ├── scopus_query.txt                    # Scopus literature search query strings
 │
 ├── images/
-│   ├── method.png                      # Architecture & methodology framework diagram
-│   └── method.pptx                     # Editable presentation source diagram
+│   ├── method.png / method.pptx        # Architecture & methodology framework diagram (Figure 1)
+│   ├── sample_*.jpg / demogpairs.png   # Sample demographic face images (Figure 2)
+│   ├── vit.png / vit.pptx              # ViT backbone & patch projection diagram (Figure 3)
+│   └── confusion_matrix_*.png          # Selected confusion matrix plots
+│
+├── paper/                              # Modular publication manuscript draft in Markdown (IEEE style)
+│   ├── 00_abstract.md                  # Title, authors, abstract (188 words), and IEEE keywords
+│   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
+│   ├── 02_related-works.md              # Section II (Related Works, 6 paragraphs, no subheadings)
+│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (overview, a-dataset s.d. i-ethical)
+│   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. f-prior-studies)
+│   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
+│   ├── 06_references.md                # Section VI (IEEE formatted bibliography)
+│   ├── 07_biographies.md               # Section VII (Author academic biographies)
+│   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   └── images/                         # Local image copies ensuring self-contained paper compilation
 │
 ├── rules/
-│   ├── md_rules.txt                    # Mandatory Markdown writing rules & constraints
+│   ├── md_rules.txt                    # Mandatory Markdown writing rules, constraints & checklist
 │   ├── latex_rules.txt                 # Mandatory LaTeX conversion & formatting rules
 │   └── IEEE_citation_guidelines.md     # IEEE referencing style and citation guidelines
 │
@@ -377,22 +392,23 @@ D:\Research\face-race-gender-multi-vit\
 └── experiment/
     ├── 00_overview.md                  # High-level experimental framework overview
     ├── 01_prepare-data.md              # Dataset preparation, composition & split
-    ├── 02_preprocessing.md             # Image normalization and bicubic resizing
+    ├── 02_preprocessing.md             # Image normalization and resizing
     ├── 03_feature-extraction.md        # ViT feature extraction & concatenation fusion
     ├── 04_methods.md                   # 4 Classifiers, pipeline & GridSearchCV protocol
     ├── 05_results.md                   # 28-experiment leaderboard & fairness audit
+    ├── dataset_demogpairs.md           # Dataset specification and partition summary
     │
     └── code/
         ├── app.py                      # Interactive Gradio demo web application
         ├── 1.1_vit-face_demogpairs.ipynb       # ViT-Face feature extraction notebook
         ├── 1.1_vit-emotion_demogpairs.ipynb    # ViT-Emotion feature extraction notebook
         ├── 1.1_vit-age_demogpairs.ipynb        # ViT-Age feature extraction notebook
-        ├── 2.1.1_svm_vit-face_demogpairs.ipynb ... 2.1.7_svm_vit-face-emotion-age_demogpairs.ipynb (7 SVM)
-        ├── 2.2.1_gnb_vit-face_demogpairs.ipynb ... 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb (7 GNB)
-        ├── 2.4.1_rf_vit-face_demogpairs.ipynb  ... 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb  (7 RF)
-        ├── 2.5.1_lr_vit-face_demogpairs.ipynb  ... 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb  (7 LR)
-        ├── 3.0_compare.ipynb           # Global comparative analysis & leaderboard
-        ├── 4.0_test.ipynb              # Final pipeline testing & interactive inference
+        ├── 2.1.1 s.d. 2.1.7_svm_*.ipynb        # 7 SVM feature ablation notebooks
+        ├── 2.2.1 s.d. 2.2.7_gnb_*.ipynb        # 7 GNB feature ablation notebooks
+        ├── 2.4.1 s.d. 2.4.7_rf_*.ipynb         # 7 RF feature ablation notebooks
+        ├── 2.5.1 s.d. 2.5.7_lr_*.ipynb         # 7 LR feature ablation notebooks
+        ├── 3.0_compare.ipynb                   # Global comparative analysis & leaderboard
+        ├── 4.0_test.ipynb                      # Final pipeline testing & interactive inference
         │
         ├── utils/                      # Modular Python utility package
         │   ├── __init__.py             # Exposes core APIs
@@ -404,17 +420,7 @@ D:\Research\face-race-gender-multi-vit\
         │   ├── serialization.py        # Joblib & JSON loaders/savers
         │   └── time_helpers.py         # Formats elapsed execution time
         │
-        ├── dataset/
-        │   └── demogpairs/
-        │       ├── metadata/           # 6 metadata .txt files (1,800 rows each)
-        │       └── images/             # 600 subject directories (18 JPEGs each)
-        │
-        ├── features/                   # Serialized feature archives (.pkl)
-        │   ├── demogpairs_vit-face.pkl
-        │   ├── demogpairs_vit-emotion.pkl
-        │   └── demogpairs_vit-age.pkl
-        │
-        ├── models/                     # 28 trained joblib models (.pkl)
+        ├── dataset/demogpairs/metadata/# 6 metadata .txt files (1,800 rows each)
         ├── results/                    # 28 evaluation result JSON files (.json)
         ├── images/                     # 28 confusion matrix diagrams (.png)
         └── md/                         # Exported markdown versions of notebooks
