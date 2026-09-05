@@ -1,3 +1,11 @@
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+update readme md dan readme ai md
+
+berikan juga penjelasan setiap folder/file
+
+buat file folder_structure.txt yang isinya adalah struktur folder dari project ini
+
 jangan ada kata benchmark
 
 'repositori acuan untuk mengukur dan memitigasi disparitas demografis pada pengenalan wajah' buat agar menjadi lebih mudah dipahami
