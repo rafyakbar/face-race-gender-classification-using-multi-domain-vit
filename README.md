@@ -1,6 +1,6 @@
 # Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images
 
-> **Abstract:** An empirical framework for intersectional 6-class (3 Race × 2 Gender) demographic classification from facial images using offline feature fusion across three task-associated Vision Transformer (ViT) representations (**Face Biometrics**, **Facial Emotion**, and **Facial Age**) combined with GridSearchCV-optimized classical machine learning pipelines. The proposed Tri-Domain ViT + Support Vector Classifier (SVC) achieves **93.70% Test Accuracy** and **0.9369 F1-Score** on the balanced DemogPairs benchmark ($N = 2,160$ held-out test samples), outperforming single-domain and dual-domain baselines.
+> **Abstract:** An empirical framework for intersectional 6-class (3 Race × 2 Gender) demographic classification from facial images using offline feature fusion across three task-associated Vision Transformer (ViT) representations (**Face Biometrics**, **Facial Emotion**, and **Facial Age**) combined with GridSearchCV-optimized classical machine learning pipelines. The proposed Tri-Domain ViT + Support Vector Machine (SVM) achieves **93.70% Test Accuracy** and **0.9369 F1-Score** on the balanced DemogPairs benchmark ($N = 2,160$ held-out test samples), outperforming single-domain and dual-domain baselines.
 
 ---
 
@@ -12,18 +12,18 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 
 | Rank | Classifier | Best Feature Configuration | Feature Dim | Best Accuracy | Precision | Recall | F1-Score | Best Hyperparameters |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|---|
-| 🥇 | **Support Vector Classifier (SVC)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **93.70%** | **0.9372** | **0.9370** | **0.9369** | `C=10, kernel='poly', degree=2, gamma='scale', pca=None, scaler=None` |
+| 🥇 | **Support Vector Machine (SVM)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **93.70%** | **0.9372** | **0.9370** | **0.9369** | `C=10, kernel='poly', degree=2, gamma='scale', pca=None, scaler=None` |
 | 🥈 | **Logistic Regression (LR)** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 2,304 | **92.73%** | 0.9275 | 0.9273 | 0.9273 | `C=0.1, solver='newton-cg', max_iter=500, pca=None, scaler=None` |
 | 🥉 | **Random Forest (RF)** | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | **86.85%** | 0.8689 | 0.8685 | 0.8682 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
 | 4 | **Gaussian Naive Bayes (GNB)** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 2,304 | **85.05%** | 0.8512 | 0.8505 | 0.8505 | `var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=None` |
 
-> **Key Takeaway:** Tri-domain feature fusion yields the highest performance across **3 of the 4 evaluated classifiers** (SVC, LR, GNB). Random Forest achieves its empirical peak on the dual-domain `Emotion ⊕ Face` configuration (86.85% vs. 86.20% on tri-domain).
+> **Key Takeaway:** Tri-domain feature fusion yields the highest performance across **3 of the 4 evaluated classifiers** (SVM, LR, GNB). Random Forest achieves its empirical peak on the dual-domain `Emotion ⊕ Face` configuration (86.85% vs. 86.20% on tri-domain).
 
 ---
 
 ### 2. Intersectional Subgroup Performance & Disparity Profile
 
-#### (a) Subgroup-Level Metrics for Best-Performing Model: SVC Tri-Domain (`Face ⊕ Emotion ⊕ Age`)
+#### (a) Subgroup-Level Metrics for Best-Performing Model: SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`)
 
 | Demographic Subgroup | Race | Gender | OvR Accuracy | Precision | Recall | F1-Score | Support |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -39,10 +39,10 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 
 | Classifier | $\Delta_{\text{Recall}}$ | $\Delta_{\text{Precision}}$ | $\Delta_{\text{F1}}$ | $\Delta_{\text{OvR Acc}}$ |
 |---|:---:|:---:|:---:|:---:|
-| **SVC (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0750 | 0.0310 | 0.0440 | 1.39 pp |
+| **SVM (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0750 | 0.0310 | 0.0440 | 1.39 pp |
 | **LR (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0500 | 0.0495 | 0.0422 | 1.39 pp |
 
-> **Audit Note:** All 6 demographic subgroups achieve an F1-Score above **0.91** on the proposed SVC Tri-Domain model (range: **0.9174 to 0.9614**; $\Delta\text{F1} = 0.0440$). Range-based disparity ($\max - \min$) is reported as a descriptive indicator of cross-subgroup performance variation and does not replace a comprehensive algorithmic fairness audit.
+> **Audit Note:** All 6 demographic subgroups achieve an F1-Score above **0.91** on the proposed SVM Tri-Domain model (range: **0.9174 to 0.9614**; $\Delta\text{F1} = 0.0440$). Range-based disparity ($\max - \min$) is reported as a descriptive indicator of cross-subgroup performance variation and does not replace a comprehensive algorithmic fairness audit.
 
 ---
 
@@ -52,7 +52,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 |---|---|:---:|:---:|:---:|:---:|
 | Putri et al. (JIEET 2025) | MD-ViT + XGBoost | 89.07% | 0.8912 | 0.8907 | 0.8901 |
 | Putri et al. (ICVEE 2025) | Dual-ViT + SVM | 92.41% | 0.9248 | 0.9241 | 0.9238 |
-| **Proposed Framework** | **Tri-Domain ViT + SVC** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
+| **Proposed Framework** | **Tri-Domain ViT + SVM** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
 
 ---
 
@@ -76,7 +76,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
                                            │
                                            ▼
                    [ 5-Fold Stratified Cross-Validation GridSearchCV ]
-                     (SVC / Logistic Regression / Random Forest / GNB)
+                     (SVM / Logistic Regression / Random Forest / GNB)
                                            │
                                            ▼
                  [ Intersectional 6-Class Classification on DemogPairs ]
@@ -114,7 +114,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── dataset_demogpairs.md              # Dataset specification and partition summary
 │   └── code/
 │       ├── 1.1_vit-*_demogpairs.ipynb     # Feature extraction scripts (Face, Emotion, Age)
-│       ├── 2.1.* - 2.5.*.ipynb            # Classifier training notebooks (SVC, GNB, RF, LR)
+│       ├── 2.1.* - 2.5.*.ipynb            # Classifier training notebooks (SVM, GNB, RF, LR)
 │       ├── 3.0_compare.ipynb              # Global 28-model comparison and benchmarking
 │       ├── 4.0_test.ipynb                 # Held-out evaluation and test routines
 │       ├── app.py                         # Interactive Gradio demo web application

@@ -32,15 +32,15 @@
 - **Primary Goal:** Classify facial images into **6 intersectional demographic subgroups** (3 Races × 2 Genders: Asian/Black/White × Female/Male) by combining task-associated latent representations from three domain-specialized pre-trained Vision Transformers (**Face**, **Facial Emotion**, and **Facial Age**) and optimizing downstream classical machine learning pipelines via exhaustive 5-Fold Stratified GridSearchCV.
 
 ### 1.2 Key Research Findings & Benchmarks
-- **Top Performing Model (Highest Performance Among Compared Studies):** **Support Vector Classifier (SVC) + Tri-Domain ViT Fusion** (`vit-face-emotion-age`, 2,304-d)
+- **Top Performing Model (Highest Performance Among Compared Studies):** **Support Vector Machine (SVM) + Tri-Domain ViT Fusion** (`vit-face-emotion-age`, 2,304-d)
   - **Test Accuracy:** **93.70%** (2,024 / 2,160 correct on held-out test set)
   - **Macro Precision:** **0.9372**
   - **Macro Recall:** **0.9370**
   - **Macro F1-Score:** **0.9369**
   - **Best Hyperparameters:** $C = 10$, kernel = `'poly'`, degree = 2, gamma = `'scale'`, Scaler = `None`, PCA = `None`
 - **Global Classifier Hierarchy (Average Accuracy across all 7 Feature Configurations):**
-  $$\text{SVC } (0.9147) > \text{Logistic Regression } (0.9040) > \text{Random Forest } (0.8281) > \text{Gaussian Naive Bayes } (0.7937)$$
-- **Ablation Insight:** Tri-Domain (2,304-d) outperforms Dual-Domain (1,536-d) and Single-Domain (768-d) across **3 of 4 classifiers** (SVC, LR, GNB). Random Forest achieved its best performance on dual-domain `Emotion ⊕ Face` (0.8685). Biological Age (`ViT-Age`), while weaker individually, provides additional discriminative morphology information that contributes to improved accuracy and reduced subgroup error.
+  $$\text{SVM } (0.9147) > \text{Logistic Regression } (0.9040) > \text{Random Forest } (0.8281) > \text{Gaussian Naive Bayes } (0.7937)$$
+- **Ablation Insight:** Tri-Domain (2,304-d) outperforms Dual-Domain (1,536-d) and Single-Domain (768-d) across **3 of 4 classifiers** (SVM, LR, GNB). Random Forest achieved its best performance on dual-domain `Emotion ⊕ Face` (0.8685). Biological Age (`ViT-Age`), while weaker individually, provides additional discriminative morphology information that contributes to improved accuracy and reduced subgroup error.
 - **Subgroup Disparity:** Subgroup F1-scores range from **0.9174 to 0.9614** (disparity gap $\Delta_{\text{F1}} = 0.0440$), with One-vs-Rest (OvR) Accuracy ranging from **97.31% to 98.70%**, showing a lower disparity across demographic subgroups compared to single- and dual-domain configurations.
 
 ---
@@ -93,7 +93,7 @@
                                                   ▼
 +---------------------------------------------------------------------------------------------------+
 |                               MODULAR CLASSIFIER PIPELINE (GridSearchCV)                          |
-|         Scaler [None | MinMaxScaler] -> PCA [None | 0.50 | 0.75] -> Classifier [SVC|LR|RF|GNB]    |
+|         Scaler [None | MinMaxScaler] -> PCA [None | 0.50 | 0.75] -> Classifier [SVM|LR|RF|GNB]    |
 |                5-Fold Stratified Cross-Validation (1,086 combinations, 38,010 total fits)         |
 +---------------------------------------------------------------------------------------------------+
                                                   │
@@ -183,7 +183,7 @@ $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{P
 ### 5.2 Hyperparameter Search Spaces
 
 ```python
-# 1. Support Vector Classifier (288 combinations per feature scheme)
+# 1. Support Vector Machine (288 combinations per feature scheme)
 param_grid_svm = {
     'scaler': [None, MinMaxScaler()],
     'pca': [None, PCA(n_components=0.50), PCA(n_components=0.75)],
@@ -276,14 +276,14 @@ Below is the complete, definitive leaderboard of all 28 experiments evaluated on
 3. **Cumulative Single $\to$ Tri-Domain Impact:**
    - SVM: `vit-face` (0.9083) $\to$ `vit-face-emotion-age` (0.9370) = **+0.0287 (+3.16% gain, 31.31% total error reduction)**.
 4. **Behavior of Preprocessing Transformations:**
-   - **SVC & LR:** 7 out of 7 configurations perform best with `pca=None` (retaining full raw 2,304-d latent space). The degree-2 polynomial kernel selected by SVC may capture nonlinear interactions among latent feature dimensions, which could contribute to its strong performance on high-dimensional fused representations.
+   - **SVM & LR:** 7 out of 7 configurations perform best with `pca=None` (retaining full raw 2,304-d latent space). The degree-2 polynomial kernel selected by SVM may capture nonlinear interactions among latent feature dimensions, which could contribute to its strong performance on high-dimensional fused representations.
    - **RF & GNB:** 7 out of 7 configurations select `pca=PCA(n_components=0.75)` to prevent severe overfitting on sparse high-dimensional data. Note: The drop in RF performance at tri-domain dimensionality (2,304-d) may reflect the increased difficulty of partitioning a higher-dimensional feature space using randomized decision splits.
 
 ---
 
 ## 7. Intersectional Subgroup Performance & Disparity Analysis
 
-### 7.1 Subgroup Performance for the Top-Performing Model (SVC Tri-Domain, $N = 2,160$)
+### 7.1 Subgroup Performance for the Top-Performing Model (SVM Tri-Domain, $N = 2,160$)
 
 | Intersectional Subgroup | Race | Gender | Support | TP | FP | FN | TN | OvR Accuracy | Precision | Recall | F1-Score |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -336,7 +336,7 @@ Predicted Total  360   368   342   355   369   366  │ 2,160 │
 | 8 | Kalkatawi & Saeed (IJACSA 2024)| MaxViT Multi-Axis Transformer | FairFace | 6 Ethnicity | 77.20% | 0.7680 | No |
 | 9 | Putri et al. (IEEE ICVEE 2025) | Dual-ViT (Face+Emotion) + SVM | DemogPairs | 6 Intersectional | 92.41% | 0.9240 | Yes |
 | 10| Putri et al. (JIEET 2025) | MD-ViT (Face+Age) + XGBoost | DemogPairs | 6 Intersectional | 89.07% | 0.8905 | Yes |
-| ⭐ | **Proposed Framework (2026)** | **Tri-Domain ViT (Face+Emotion+Age) + Optimized SVC** | **DemogPairs (10,800)** | **6 Intersectional** | **93.70%** | **0.9369** | **Yes (Full Audit)** |
+| ⭐ | **Proposed Framework (2026)** | **Tri-Domain ViT (Face+Emotion+Age) + Optimized SVM** | **DemogPairs (10,800)** | **6 Intersectional** | **93.70%** | **0.9369** | **Yes (Full Audit)** |
 
 > **Note:** Direct comparison in paper (Table XII) includes only studies evaluated on DemogPairs (rows 9, 10, and the Proposed Framework). Studies 1-8 evaluated on different datasets and class definitions and are cited for contextual positioning only. Use "highest performance among the compared studies on DemogPairs" - not "state-of-the-art."
 
@@ -526,11 +526,12 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 
 ### 12.1 Language & Heading Rules
 - **Headings & Subheadings:** Must be strictly in **English Title Case** (e.g., `# I. Introduction`, `## A. Dataset`, `## B. Vision Transformer`).
-- **Narrative Body Text:** Written in formal **Bahasa Indonesia**, while preserving standard international academic and technical terms in **English** (e.g., *feature extraction*, *cross-validation*, *grid search*, *held-out test set*, *one-vs-rest*, *support vector classifier*).
-- **Classifier Terminology Standardization:** Standardize on **Support Vector Classifier (SVC)** (consistent with scikit-learn `sklearn.svm.SVC`) throughout the manuscript.
-- **First-Mention Acronym Rule:** Technical terms with standard acronyms (e.g., *Vision Transformer* (ViT), *Support Vector Classifier* (SVC), *Random Forest* (RF), *Gaussian Naive Bayes* (GNB), *Logistic Regression* (LR), *Principal Component Analysis* (PCA), *Multi-Head Self-Attention* (MHSA)) **MUST** be written in full with their acronym on first mention in the abstract or introduction. Subsequently, use only the acronym (ViT, SVC, RF, GNB, LR, PCA, MHSA).
+- **Narrative Body Text:** Written in formal **Bahasa Indonesia**, while preserving standard international academic and technical terms in **English** (e.g., *feature extraction*, *cross-validation*, *grid search*, *held-out test set*, *one-vs-rest*, *support vector machine*).
+- **Classifier Terminology Standardization:** Standardize on **Support Vector Machine (SVM)** (consistent with scikit-learn `sklearn.svm.SVC`) throughout the manuscript.
+- **First-Mention Acronym Rule:** Technical terms with standard acronyms (e.g., *Vision Transformer* (ViT), *Support Vector Machine* (SVM), *Random Forest* (RF), *Gaussian Naive Bayes* (GNB), *Logistic Regression* (LR), *Principal Component Analysis* (PCA), *Multi-Head Self-Attention* (MHSA)) **MUST** be written in full with their acronym on first mention in the abstract or introduction. Subsequently, use only the acronym (ViT, SVM, RF, GNB, LR, PCA, MHSA).
 - **Paragraph Length Discipline:** Standard paragraphs should be calibrated to **100-150 words** (with Related Works specifically at **100-115 words**) as specified in `paper_outline.md`, except for designated special paragraphs (Intro P3 [150-275 words], Intro P5 [150-250 words], Intro P6 [200-250 words], Intro P7 [75-100 words], and Abstract [150-200 words]).
 - **Citation Density:** Maximum of 3 citations per sentence to prevent citation dumping.
+- **SPOK Sentence Structure & Syntactic Variety:** Sentences in narrative drafts must maintain clear, well-formed SPOK (Subjek, Predikat, Objek, Keterangan) syntax to ensure definitive subjects/verbs and eliminate dangling clauses. To meet Q1 academic elegance without robotic monotony, balance direct S-P-O-K with measured transitional K-S-P-O clauses and objective passive phrasing in methodology, facilitating flawless translation into Academic English (SVO/SVOC).
 
 ### 12.2 Mathematical & Typographical Constraints
 - **NO Em Dash Characters:** The long em dash (`—`) is **strictly forbidden**. Use a standard hyphen (`-`), parentheses `( )`, or commas `,`.
@@ -547,7 +548,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 2. **Cautious Data Leakage Formulation:** Do not claim absolute "zero data leakage"; use "the preprocessing and cross-validation pipeline was designed to prevent information leakage."
 3. **Balanced Evaluation Setting:** A balanced dataset does not imply demographic bias has been eliminated; refer to it as a "balanced evaluation setting" or "balanced class distribution across subgroups."
 4. **No "Significantly" Without Statistical Tests:** Do not use the word "significantly" in the absence of statistical hypothesis testing; use "substantially", "considerably", "notably", or "achieved higher performance."
-5. **Accurate Tri-Domain Scope:** Tri-domain fusion was top-performing on 3 of the 4 classifiers (SVC, LR, GNB); Random Forest achieved its highest performance on dual-domain `Emotion ⊕ Face`.
+5. **Accurate Tri-Domain Scope:** Tri-domain fusion was top-performing on 3 of the 4 classifiers (SVM, LR, GNB); Random Forest achieved its highest performance on dual-domain `Emotion ⊕ Face`.
 6. **Complementary Age Features:** Refer to Age features as providing "complementary informational contribution" or "additional discriminative information", not "orthogonal contribution".
 7. **Hypothesis-Driven RF Drop Interpretation:** Present the drop in RF performance on 2,304 dimensions as a potential interpretation ("may reflect the difficulty of partitioning a higher-dimensional feature space using randomized splits").
 8. **Empirical vs Theoretical Separation:** Strictly separate empirical findings (actual experimental figures) from conceptual interpretations.
@@ -556,14 +557,14 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 11. **AI Ethics Statement:** Formulated for academic benchmarking and algorithmic fairness research; public surveillance deployment requires human-in-the-loop oversight and ethical governance.
 12. **Equation (4) CLS Token Definition:** `z_L^0` in `f_domain = LN(z_L^0)` refers specifically to the CLS token representation from the **final encoder layer L** of the ViT backbone. This must be stated explicitly when first introducing Eq. (4).
 13. **ViT Embedding as Task-Associated Representations:** Do not claim that ViT embeddings are exclusive or universal feature characterizations. Use "task-associated representations" as the preferred framing.
-14. **Corrected Disparity Values:** The confirmed disparity values from the experiment logs are: SVC ΔF1 = **0.0440** (0.9614 - 0.9174), SVC ΔPrecision = **0.0310**, SVC ΔRecall = **0.0750**, SVC ΔOvR Acc = **1.39 pp**; LR ΔF1 = **0.0422** (0.9558 - 0.9136), LR ΔPrecision = **0.0495** (0.9571 - 0.9076), LR ΔRecall = **0.0500** (0.9611 - 0.9111), LR ΔOvR Acc = **1.39 pp**.
+14. **Corrected Disparity Values:** The confirmed disparity values from the experiment logs are: SVM ΔF1 = **0.0440** (0.9614 - 0.9174), SVM ΔPrecision = **0.0310**, SVM ΔRecall = **0.0750**, SVM ΔOvR Acc = **1.39 pp**; LR ΔF1 = **0.0422** (0.9558 - 0.9136), LR ΔPrecision = **0.0495** (0.9571 - 0.9076), LR ΔRecall = **0.0500** (0.9611 - 0.9111), LR ΔOvR Acc = **1.39 pp**.
 15. **Table XI Restructured (Two Parts):** Table XI (Subgroup Performance) must be presented in two blocks: (a) subgroup-level performance per classifier on tri-domain configuration, and (b) disparity summary comparing ΔRecall, ΔPrecision, ΔF1, ΔOvR across classifiers.
 16. **Range-Based Disparity Scope:** Explicitly note that range-based disparity (max - min) is a simple, interpretable indicator and does not constitute a comprehensive fairness audit.
 17. **OvR Accuracy Context:** High OvR accuracy values are partially attributable to the 5:1 negative sample ratio in binary one-vs-rest evaluation; do not present OvR Accuracy as a sole or primary fairness indicator.
 18. **No "State-of-the-Art" Without Benchmark:** Do not claim state-of-the-art without a comprehensive benchmark; the proposed framework was evaluated only on DemogPairs.
 19. **Conclusion Must Reflect Actual Results:** Conclusions must state that tri-domain fusion achieved the highest performance on 3 of 4 classifiers. No "universal improvement" or "fairness fully resolved" claims are permitted.
 20. **Full Numerical Consistency Check:** All tables, confusion matrices, per-subgroup metrics, and narrative text must be numerically consistent with source JSON result files in `experiment/code/results/`.
-21. **Novelty Statement:** The novelty of this work is the combination of (a) tri-domain ViT feature fusion, (b) comparative 4-classifier evaluation under unified GridSearchCV, (c) SVC hyperparameter optimization, and (d) subgroup disparity analysis on an intersectional benchmark.
+21. **Novelty Statement:** The novelty of this work is the combination of (a) tri-domain ViT feature fusion, (b) comparative 4-classifier evaluation under unified GridSearchCV, (c) SVM hyperparameter optimization, and (d) subgroup disparity analysis on an intersectional benchmark.
 22. **RQ Alignment:** Every research conclusion must be backed by a table, figure, or experiment result. Do not assert findings without an explicit evidential anchor.
 23. **Final Terminology/Notation/Number Consistency:** Before finalizing any section, verify that all acronyms, configuration names (using ⊕ symbol), equation references (Eq. 1-19), and numerical values are consistent throughout the entire document.
 24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XII), but should be cited when introducing the DemogPairs dataset.

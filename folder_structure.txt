@@ -202,7 +202,7 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 03_materials-and-methods_c-random-forest.md
 │   ├── 03_materials-and-methods_d-gaussian-naive-bayes.md
 │   ├── 03_materials-and-methods_e-logistic-regression.md
-│   ├── 03_materials-and-methods_f-support-vector-classifier.md
+│   ├── 03_materials-and-methods_f-support-vector-machine.md
 │   ├── 03_materials-and-methods_g-classification-pipeline.md
 │   ├── 03_materials-and-methods_h-evaluation-metrics.md
 │   ├── 03_materials-and-methods_i-ethical-considerations.md
@@ -210,7 +210,7 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 04_results-and-discussion_b-feature-ablation-analysis.md
 │   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
 │   ├── 04_results-and-discussion_d-error-pattern-analysis.md
-│   ├── 04_results-and-discussion_e-analysis-of-selected-svc-kernel-configuration.md
+│   ├── 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md
 │   ├── 04_results-and-discussion_f-comparison-with-prior-studies.md
 │   ├── 05_conclusion.md
 │   ├── 06_references.md
@@ -324,7 +324,7 @@ Sub-direktori experiment/code/:
 - 1.1_vit-age_demogpairs.ipynb
   Notebook ekstraksi fitur estimasi usia biologis menggunakan model ViT-Base (dima806/facial_age_image_detection).
 - 2.1.1 s.d. 2.1.7_svm_*_demogpairs.ipynb
-  Tujuh notebook eksperimen pengklasifikasi Support Vector Classifier (SVC) untuk 7 variasi ablasi fitur.
+  Tujuh notebook eksperimen pengklasifikasi Support Vector Machine (SVM) untuk 7 variasi ablasi fitur.
 - 2.2.1 s.d. 2.2.7_gnb_*_demogpairs.ipynb
   Tujuh notebook eksperimen pengklasifikasi Gaussian Naive Bayes (GNB) untuk 7 variasi ablasi fitur.
 - 2.4.1 s.d. 2.4.7_rf_*_demogpairs.ipynb
@@ -394,8 +394,8 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
   Section III-D (Gaussian Naive Bayes): Formulasi probabilistik Gaussian dan penalaan parameter smoothing.
 - 03_materials-and-methods_e-logistic-regression.md
   Section III-E (Logistic Regression): Formulasi SoftMax multikelompok dan ruang pencarian regularisasi.
-- 03_materials-and-methods_f-support-vector-classifier.md
-  Section III-F (Support Vector Classifier): Formulasi margin optimal, fungsi kernel, dan hyperparameter tuning.
+- 03_materials-and-methods_f-support-vector-machine.md
+  Section III-F (Support Vector Machine): Formulasi margin optimal, fungsi kernel, dan hyperparameter tuning.
 - 03_materials-and-methods_g-classification-pipeline.md
   Section III-G: Pipeline pencegahan data leakage, StratifiedKFold cross-validation, dan reduksi dimensi PCA.
 - 03_materials-and-methods_h-evaluation-metrics.md
@@ -410,8 +410,8 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
   Section IV-C: Analisis performa granular dan metrik disparitas di keenam subkelompok demografis.
 - 04_results-and-discussion_d-error-pattern-analysis.md
   Section IV-D: Telaah mendalam pola kesalahan prediksi dan tumpang tindih visual antarsubkelompok.
-- 04_results-and-discussion_e-analysis-of-selected-svc-kernel-configuration.md
-  Section IV-E: Analisis mendalam konfigurasi SVC kernel polynomial derajat 2 sebagai model terbaik.
+- 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md
+  Section IV-E: Analisis mendalam konfigurasi SVM kernel polynomial derajat 2 sebagai model terbaik.
 - 04_results-and-discussion_f-comparison-with-prior-studies.md
   Section IV-F: Perbandingan komparatif hasil penelitian terhadap 10 studi literatur terdahulu.
 - 05_conclusion.md

@@ -3,7 +3,7 @@
 > **Target Publikasi**: Artikel Jurnal Internasional Bereputasi (IEEE Access / Pattern Recognition / Image and Vision Computing)  
 > **Bahasa Naskah**: Bahasa Indonesia formal dengan istilah akademik/teknis tetap dalam Bahasa Inggris  
 > **Gaya Sitasi**: IEEE format (sitasi teks berbasis nama penulis dan judul tanpa penomoran numerik dulu)  
-> **Topik Riset**: Klasifikasi Ras & Gender Interseksional Berbasis Fusi Fitur Tri-Domain Vision Transformer dan Support Vector Classifier Teroptimasi
+> **Topik Riset**: Klasifikasi Ras & Gender Interseksional Berbasis Fusi Fitur Tri-Domain Vision Transformer dan Support Vector Machine Teroptimasi
 
 ---
 
@@ -11,13 +11,13 @@
 
 ### A. Allowed Claims and Core Focus
 1. **Fokus Utama**: Evaluasi empiris sistematis fusi fitur representasi laten dari tiga domain visual wajah komplementer (task-associated representations: Face biometrics, Facial Emotion, dan Facial Age) menggunakan Vision Transformer (ViT) pra-latih (offline feature extraction) dipadukan dengan optimasi pipeline classical machine learning (GridSearchCV 5-Fold Stratified Cross-Validation).
-2. **Klaim Keunggulan Tri-Domain**: Fusi tri-domain (2.304 dimensi) menghasilkan performa tertinggi pada **3 dari 4 classifier** yang dievaluasi (Support Vector Classifier / SVC, Logistic Regression / LR, dan Gaussian Naive Bayes / GNB), dengan model terbaik **SVC Tri-Domain** (`Face ⊕ Emotion ⊕ Age`) mencapai akurasi **93.70%** dan F1-Score **0.9369** pada dataset DemogPairs (N=2.160 data uji). Pada Random Forest (RF), konfigurasi terbaik dicapai oleh skema dual-domain `Emotion ⊕ Face` (0.8685).
-3. **Analisis Disparitas Subkelompok (Subgroup Disparity Analysis)**: Evaluasi performa antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 0.91 dengan rentang 0.9174 s.d. 0.9614 pada model SVC Tri-Domain, dan ΔF1 = 0.0440. Pada model LR Tri-Domain, ΔF1 = 0.0422. Disparitas rentang (max - min) digunakan sebagai indikator sederhana variasi performa antarsubgrup, bukan sebagai ukuran fairness yang komprehensif.
+2. **Klaim Keunggulan Tri-Domain**: Fusi tri-domain (2.304 dimensi) menghasilkan performa tertinggi pada **3 dari 4 classifier** yang dievaluasi (Support Vector Machine / SVM, Logistic Regression / LR, dan Gaussian Naive Bayes / GNB), dengan model terbaik **SVM Tri-Domain** (`Face ⊕ Emotion ⊕ Age`) mencapai akurasi **93.70%** dan F1-Score **0.9369** pada dataset DemogPairs (N=2.160 data uji). Pada Random Forest (RF), konfigurasi terbaik dicapai oleh skema dual-domain `Emotion ⊕ Face` (0.8685).
+3. **Analisis Disparitas Subkelompok (Subgroup Disparity Analysis)**: Evaluasi performa antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 0.91 dengan rentang 0.9174 s.d. 0.9614 pada model SVM Tri-Domain, dan ΔF1 = 0.0440. Pada model LR Tri-Domain, ΔF1 = 0.0422. Disparitas rentang (max - min) digunakan sebagai indikator sederhana variasi performa antarsubgrup, bukan sebagai ukuran fairness yang komprehensif.
 4. **Metodologi Pencegahan Kebocoran Informasi**: Pipeline preprocessing dan validasi silang dirancang untuk mencegah kebocoran informasi (*information leakage*) dengan melakukan fitting penskalaan (Scaler) dan Principal Component Analysis (PCA) secara eksklusif hanya pada fold latih di dalam GridSearchCV, serta evaluasi akhir dilakukan pada subset uji held-out yang belum pernah dilihat selama proses pelatihan.
 5. **Standarisasi Istilah & Konvensi Penulisan**:
    - Dilarang keras menggunakan karakter em dash (tanda pisah panjang); gunakan tanda pisah biasa (- atau --), tanda kurung ( ), atau koma (,).
-   - Pengklasifikasi berbasis support vector distandardisasi dengan istilah **Support Vector Classifier (SVC)** (berbasis implementasi `sklearn.svm.SVC`).
-   - Setiap istilah teknis yang memiliki singkatan resmi (seperti ViT, SVC, RF, GNB, LR, PCA, Multi-Head Self-Attention / MHSA, Convolutional Neural Networks / CNN) wajib ditulis lengkap beserta singkatannya pada pemunculan pertama di awal naskah (misalnya di Abstract atau awal Introduction). Pada kemunculan berikutnya di seluruh naskah, cukup gunakan singkatannya saja (misal: ViT, SVC, RF, GNB, LR, PCA, MHSA).
+   - Pengklasifikasi berbasis support vector distandardisasi dengan istilah **Support Vector Machine (SVM)** (berbasis implementasi `sklearn.svm.SVC`).
+   - Setiap istilah teknis yang memiliki singkatan resmi (seperti ViT, SVM, RF, GNB, LR, PCA, Multi-Head Self-Attention / MHSA, Convolutional Neural Networks / CNN) wajib ditulis lengkap beserta singkatannya pada pemunculan pertama di awal naskah (misalnya di Abstract atau awal Introduction). Pada kemunculan berikutnya di seluruh naskah, cukup gunakan singkatannya saja (misal: ViT, SVM, RF, GNB, LR, PCA, MHSA).
    - Penamaan konfigurasi fitur ditulis seragam menggunakan simbol direct sum `⊕` untuk fusi konkatenasi (misal: `Face`, `Emotion`, `Age`, `Face ⊕ Age`, `Emotion ⊕ Age`, `Emotion ⊕ Face`, `Face ⊕ Emotion ⊕ Age`).
    - Dilarang menggunakan kata "significantly" tanpa adanya uji signifikansi statistik formal (statistical hypothesis testing); gunakan kata "substantially", "considerably", "notably", atau "achieved higher performance".
    - Hindari klaim "state-of-the-art" mutlak; gunakan "the highest performance among the compared studies on DemogPairs" atau "outperformed the compared methods".
@@ -34,7 +34,7 @@
 3. **Dilarang mengklaim bahwa dataset balanced otomatis menghilangkan bias**: Dataset seimbang (*balanced evaluation setting*) menyediakan distribusi kelas yang setara untuk mengevaluasi disparitas performa tanpa pengaruh ketidakseimbangan sampel, bukan jaminan bahwa bias sosial telah sepenuhnya tereliminasi.
 4. **Dilarang mengklaim peningkatan universal (universal improvement)**: Jelaskan secara faktual bahwa tri-domain unggul pada 3 dari 4 classifier, sementara Random Forest mencapai puncak pada dual-domain `Emotion ⊕ Face`.
 5. **Dilarang mengklaim ortogonalitas Age**: Gunakan istilah "complementary informational contribution" atau "additional discriminative information provided by Age-associated representations".
-6. **Dilarang mengklaim keunggulan matematis mutlak polynomial kernel**: Pembahasan difokuskan pada analisis empiris konfigurasi kernel SVC terpilih dalam search space yang dievaluasi. Suku konstan $\text{coef0} = 0.0$ pada formulasi kernel polinomial merupakan nilai bawaan (default) pada `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search.
+6. **Dilarang mengklaim keunggulan matematis mutlak polynomial kernel**: Pembahasan difokuskan pada analisis empiris konfigurasi kernel SVM terpilih dalam search space yang dievaluasi. Suku konstan $\text{coef0} = 0.0$ pada formulasi kernel polinomial merupakan nilai bawaan (default) pada `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search.
 7. **Pisahkan temuan empiris (empirical findings) dan interpretasi teoretis (conceptual interpretations)**.
 8. **Jangan mengklaim model siap untuk penegakan hukum atau pengawasan publik tanpa pengawasan etis**. Wajib disertakan batasan etika AI (ethical statement).
 9. **Jelaskan secara jujur eliminasi XGBoost** pada fase eksplorasi awal karena batasan komputasi GPU / inkompatibilitas CUDA pada environment lokal dan efisiensi waktu pelatihan.
@@ -45,7 +45,7 @@
 - **Fusi Fitur (Concatenation / Direct Sum)**: Konkatenasi vektor representasi laten multi-domain [(5)](#eq5).
 - **Klasifikasi Probabilistik GNB**: Likelihood Gaussian bersyarat [(6)](#eq6).
 - **Klasifikasi Multinomial LR**: Fungsi probabilitas Softmax [(7)](#eq7).
-- **Optimasi Kernel SVC**: Kernel polinomial derajat 2 [(8)](#eq8).
+- **Optimasi Kernel SVM**: Kernel polinomial derajat 2 [(8)](#eq8).
 - **Pipeline Transformasi**: Rantai transformasi Scaler - PCA - Classifier [(9)](#eq9).
 - **Metrik Evaluasi per-Subkelompok (One-vs-Rest)**: Formulasi kanonikal Accuracy [(10)](#eq10), Precision [(11)](#eq11), Recall [(12)](#eq12), dan F1-Score [(13)](#eq13) per kelas.
 - **Metrik Evaluasi Agregasi Global**: Formulasi Overall Accuracy [(14)](#eq14), Global Precision [(15)](#eq15), Global Recall [(16)](#eq16), dan Global F1-Score [(17)](#eq17).
@@ -70,12 +70,12 @@
 Satu paragraf terpadu, **target 150-200 kata**, dengan alur: **Latar Belakang → Tujuan Penelitian → Metode yang Diusulkan → Hasil Eksperimen → Kesimpulan**.
 - **Latar Belakang**: Pengenalan atribut demografis wajah (ras dan gender) secara simultan menghadapi tantangan variasi ekspresi dinamis, degradasi morfologi penuaan biologis, tumpang tindih visual (phenotypic overlap), dan keterbatasan representasi domain tunggal, sehingga dibutuhkan pendekatan komprehensif yang mampu memodelkan representasi visual wajah lintas-domain secara terpadu.
 - **Tujuan**: Mengusulkan kerangka kerja fusi fitur laten lintas-domain (cross-domain feature fusion) dari tiga Vision Transformer (ViT) pra-latih yang menangkap representasi terkait struktur biometrik wajah, ekspresi emosi, dan estimasi usia dipadukan dengan optimasi pipeline classical machine learning untuk klasifikasi atribut demografis wajah secara interseksional.
-- **Metode**: Representasi laten diekstraksi secara offline dari tiga model ViT pra-latih (ViT-Face, ViT-Emotion, ViT-Age) pada dataset DemogPairs. Berbagai skema ablasi fusi fitur dievaluasi melalui 5-Fold Stratified Cross-Validation pada empat algoritma pengklasifikasi (Random Forest / RF, Gaussian Naive Bayes / GNB, Logistic Regression / LR, dan Support Vector Classifier / SVC) dengan optimasi hyperparameter GridSearchCV.
-- **Hasil**: Model SVC berbasis fusi fitur tri-domain (`Face ⊕ Emotion ⊕ Age`) meraih performa tertinggi di antara metode yang dibandingkan dengan **Accuracy 93.70%**, **Precision 93.72%**, **Recall 93.70%**, dan **F1-Score 93.69%**.
+- **Metode**: Representasi laten diekstraksi secara offline dari tiga model ViT pra-latih (ViT-Face, ViT-Emotion, ViT-Age) pada dataset DemogPairs. Berbagai skema ablasi fusi fitur dievaluasi melalui 5-Fold Stratified Cross-Validation pada empat algoritma pengklasifikasi (Random Forest / RF, Gaussian Naive Bayes / GNB, Logistic Regression / LR, dan Support Vector Machine / SVM) dengan optimasi hyperparameter GridSearchCV.
+- **Hasil**: Model SVM berbasis fusi fitur tri-domain (`Face ⊕ Emotion ⊕ Age`) meraih performa tertinggi di antara metode yang dibandingkan dengan **Accuracy 93.70%**, **Precision 93.72%**, **Recall 93.70%**, dan **F1-Score 93.69%**.
 - **Kesimpulan**: Fusi fitur tri-domain mencapai performa terbaik pada tiga dari empat classifier yang dievaluasi, dengan nilai F1-Score pada keenam subkelompok berada pada kisaran 91.74% hingga 96.14%.
 
 ### Keywords
-Facial demographic recognition; intersectional classification; Vision Transformer; multi-domain feature fusion; algorithmic fairness; Support Vector Classifier; DemogPairs.
+Facial demographic recognition; intersectional classification; Vision Transformer; multi-domain feature fusion; algorithmic fairness; Support Vector Machine; DemogPairs.
 
 ---
 
@@ -159,12 +159,12 @@ Introduction disusun dalam 7 paragraf berbobot dengan alur narasi yang kohesif:
 - **Poin Narasi**:
   1. Mengusulkan kerangka kerja fusi fitur Tri-Domain ViT yang mengombinasikan tiga domain representasi: ViT-Face (representasi terkait geometri biometrik wajah), ViT-Emotion (representasi terkait ekspresi wajah), dan ViT-Age (representasi terkait usia wajah) menjadi satu representasi terpadu via operasi konkatenasi (`Face ⊕ Emotion ⊕ Age`).
   2. Ekstraksi fitur dilakukan secara offline dari backbone pra-latih yang dibekukan untuk menjaga efisiensi dan mengisolasi variabilitas komputasi.
-  3. Representasi laten dievaluasi melalui berbagai skema ablasi fitur domain tunggal, dual domain, dan tri-domain pada empat algoritma classical machine learning (RF, GNB, LR, SVC).
+  3. Representasi laten dievaluasi melalui berbagai skema ablasi fitur domain tunggal, dual domain, dan tri-domain pada empat algoritma classical machine learning (RF, GNB, LR, SVM).
   4. Optimasi hyperparameter dilakukan melalui validasi silang Stratified Cross-Validation dengan pipeline modular Scaler-PCA yang dirancang untuk mencegah kebocoran informasi.
 
 ### Paragraph 6: Key Contributions
 - **Target Kata**: 200-250 kata (paragraf khusus kontribusi utama).
-- **Tujuan**: Menyajikan empat kontribusi ilmiah penelitian secara konseptual dalam Bahasa Inggris disertai terjemahan Bahasa Indonesia, tanpa mengkhususkan SVC pada poin benchmarking, tidak menyebut DemogPairs sebagai benchmark (melainkan dataset utama), tanpa rincian angka numerik/hyperparameter spesifik, serta menjelaskan esensi analisis disparitas subkelompok.
+- **Tujuan**: Menyajikan empat kontribusi ilmiah penelitian secara konseptual dalam Bahasa Inggris disertai terjemahan Bahasa Indonesia, tanpa mengkhususkan SVM pada poin benchmarking, tidak menyebut DemogPairs sebagai benchmark (melainkan dataset utama), tanpa rincian angka numerik/hyperparameter spesifik, serta menjelaskan esensi analisis disparitas subkelompok.
 - **Poin Narasi (English & Indonesian Translation)**:
   1. **A Tri-Domain Vision Transformer feature fusion framework** integrating face-associated biometric representations, expression-related representations, and age-associated facial representations into a unified latent feature vector for intersectional demographic classification.  
      *(Kerangka kerja fusi fitur Tri-Domain Vision Transformer yang mengintegrasikan representasi terkait biometrik wajah, representasi terkait ekspresi, dan representasi terkait usia wajah ke dalam vektor fitur laten terpadu untuk klasifikasi demografis interseksional).*
@@ -222,7 +222,7 @@ Sintesis literatur disusun dalam 6 paragraf terstruktur tanpa subjudul, masing-m
 
 ### Paragraph 5: Downstream Classifier Paradigms and Decision Boundaries
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Sintesis**: Perbandingan paradigma classifier hilir antara SoftMax end-to-end, model pohon (Random Forest), model probabilistik (Gaussian Naive Bayes), dan Support Vector Classifier (SVC). Menjelaskan karakteristik batas keputusan masing-masing paradigma pada ruang fitur berdimensi tinggi berdasarkan hasil empiris yang dilaporkan dalam literatur, tanpa menyatakan keunggulan matematis mutlak salah satu pendekatan.
+- **Fokus Sintesis**: Perbandingan paradigma classifier hilir antara SoftMax end-to-end, model pohon (Random Forest), model probabilistik (Gaussian Naive Bayes), dan Support Vector Machine (SVM). Menjelaskan karakteristik batas keputusan masing-masing paradigma pada ruang fitur berdimensi tinggi berdasarkan hasil empiris yang dilaporkan dalam literatur, tanpa menyatakan keunggulan matematis mutlak salah satu pendekatan.
 - **Sumber Literatur Terkait**:
   1. `[(1)]` *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
   2. `[(3)]` *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., IVC 2022)
@@ -231,7 +231,7 @@ Sintesis literatur disusun dalam 6 paragraf terstruktur tanpa subjudul, masing-m
 
 ### Paragraph 6: Research Positioning
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Sintesis**: Memetakan posisi kebaruan penelitian ini terhadap literatur yang telah dibahas pada Paragraf 1 hingga 5 (tanpa menyertakan sitasi pustaka). Menegaskan bahwa penelitian ini memadukan kekuatan representasi laten tiga domain Vision Transformer (representasi terkait biometrik wajah, ekspresi wajah, dan usia wajah) yang dipadukan dengan optimasi pipeline Support Vector Classifier untuk klasifikasi demografis interseksional pada dataset DemogPairs.
+- **Fokus Sintesis**: Memetakan posisi kebaruan penelitian ini terhadap literatur yang telah dibahas pada Paragraf 1 hingga 5 (tanpa menyertakan sitasi pustaka). Menegaskan bahwa penelitian ini memadukan kekuatan representasi laten tiga domain Vision Transformer (representasi terkait biometrik wajah, ekspresi wajah, dan usia wajah) yang dipadukan dengan optimasi pipeline Support Vector Machine untuk klasifikasi demografis interseksional pada dataset DemogPairs.
 - **Sumber Literatur Terkait**:
   - *Tanpa sitasi pustaka* (sintesis orisinal posisi penelitian terhadap literatur di atas).
 
@@ -247,7 +247,7 @@ Sintesis literatur disusun dalam 6 paragraf terstruktur tanpa subjudul, masing-m
 - **Caption Figure**: **Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.**
 - **Visual Markdown**:
   ![Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.](images/method.png)
-- **Narasi Pendukung**: Menjelaskan alur pemrosesan: citra wajah berukuran 224 × 224 piksel dialirkan ke tiga model ViT-Base pra-latih yang dibekukan (frozen), representasi laten diekstraksi secara offline, digabungkan menjadi vektor fusi, diproses melalui pipeline modular Scaler-PCA, dan diklasifikasikan ke dalam 6 kelas interseksional melalui 5-Fold Stratified Cross-Validation pada empat pengklasifikasi (RF, GNB, LR, SVC).
+- **Narasi Pendukung**: Menjelaskan alur pemrosesan: citra wajah berukuran 224 × 224 piksel dialirkan ke tiga model ViT-Base pra-latih yang dibekukan (frozen), representasi laten diekstraksi secara offline, digabungkan menjadi vektor fusi, diproses melalui pipeline modular Scaler-PCA, dan diklasifikasikan ke dalam 6 kelas interseksional melalui 5-Fold Stratified Cross-Validation pada empat pengklasifikasi (RF, GNB, LR, SVM).
 
 ### A. Dataset
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
@@ -396,16 +396,16 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 | Maximum Iterations (`max_iter`) | `500`, `1000`, `2000` | 3 |
 | **Total Grid Combinations** | **2 × 3 × 5 × 3 × 3** | **270 (1,350 fits)** |
 
-### F. Support Vector Classifier
+### F. Support Vector Machine
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
-- **Tujuan**: Menjelaskan formulasi Support Vector Classifier (SVC) dan optimasi hyperplane pemisah multi-kelas untuk klasifikasi representasi laten wajah.
+- **Tujuan**: Menjelaskan formulasi Support Vector Machine (SVM) dan optimasi hyperplane pemisah multi-kelas untuk klasifikasi representasi laten wajah.
 - **Formulasi Kernel Polinomial Derajat 2**:
   $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d = 2 \tag{8}$$
   *(di mana $\text{coef0}$ merupakan parameter konstan intercept independen pada formulasi kernel polinomial; pada penelitian ini digunakan nilai bawaan $\text{coef0} = 0.0$ sesuai implementasi standar `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search)*
 - **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi $C$, koefisien kernel $\gamma$, dan derajat polinomial $d$ (dengan parameter konstan default $\text{coef0} = 0.0$) sesuai ruang pencarian pada [Table VI](#tab6).
-- **Tabel VI (Ruang Pencarian Hyperparameter Support Vector Classifier)**:
+- **Tabel VI (Ruang Pencarian Hyperparameter Support Vector Machine)**:
 
-**Table VI. Hyperparameter Search Space for Support Vector Classifier.**
+**Table VI. Hyperparameter Search Space for Support Vector Machine.**
 
 | Component / Hyperparameter | Evaluated Values | Count |
 |---|---|:---:|
@@ -537,13 +537,13 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 | Emotion ⊕ Age | Dual | 0.9051 | 0.9052 | 0.9051 | 0.9051 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
 | **Face ⊕ Emotion ⊕ Age** | **Tri** | **0.9273** | **0.9275** | **0.9273** | **0.9273** | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
 
-#### Paragraph 4: Support Vector Classifier Ablation Progression
+#### Paragraph 4: Support Vector Machine Ablation Progression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Classifier (SVC) dari single-domain ke dual-domain dan tri-domain berdasarkan [Table X](#tab10). Seluruh model SVC secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (0.9083) ke dual domain `Emotion ⊕ Face` (0.9329) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (0.9370).
+- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Machine (SVM) dari single-domain ke dual-domain dan tri-domain berdasarkan [Table X](#tab10). Seluruh model SVM secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (0.9083) ke dual domain `Emotion ⊕ Face` (0.9329) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (0.9370).
 - **Ketentuan Layout LaTeX**: **Table X berformat Full Width (`\begin{table*}`)**.
-- **Tabel X (Hasil Evaluasi Support Vector Classifier)**:
+- **Tabel X (Hasil Evaluasi Support Vector Machine)**:
 
-**Table X. Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.**
+**Table X. Performance Benchmark of Support Vector Machine across Seven Feature Configurations.**
 
 | Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|:---:|---|
@@ -558,29 +558,29 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 5: Cross-Classifier Synthesis and Comparative Performance Overview
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Sintesis komparatif deskriptif lintas-pengklasifikasi melintasi 28 eksperimen tanpa menampilkan tabel terpisah. Menjelaskan bahwa SVC Tri-Domain `Face ⊕ Emotion ⊕ Age` memperoleh capaian tertinggi dalam search space yang dievaluasi (akurasi 0.9370, F1-Score 0.9369). Rata-rata performa classifier di seluruh konfigurasi menunjukkan urutan deskriptif: $\text{SVC } (0.9147) > \text{LR } (0.9040) > \text{RF } (0.8281) > \text{GNB } (0.7937)$ - perlu dicatat bahwa perbandingan ini bersifat deskriptif dan tidak mencerminkan superioritas statistik.
+- **Fokus Narasi**: Sintesis komparatif deskriptif lintas-pengklasifikasi melintasi 28 eksperimen tanpa menampilkan tabel terpisah. Menjelaskan bahwa SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` memperoleh capaian tertinggi dalam search space yang dievaluasi (akurasi 0.9370, F1-Score 0.9369). Rata-rata performa classifier di seluruh konfigurasi menunjukkan urutan deskriptif: $\text{SVM } (0.9147) > \text{LR } (0.9040) > \text{RF } (0.8281) > \text{GNB } (0.7937)$ - perlu dicatat bahwa perbandingan ini bersifat deskriptif dan tidak mencerminkan superioritas statistik.
 
 ### B. Feature Ablation Analysis
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Progressive Feature Contribution across Single, Dual, and Tri-Domain Schemes
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVC, transisi dari `Face` (0.9083) ke `Emotion ⊕ Face` (0.9329) meningkatkan akurasi sebesar $+0.0246$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 0.9370 (peningkatan kumulatif $+0.0287$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
+- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVM, transisi dari `Face` (0.9083) ke `Emotion ⊕ Face` (0.9329) meningkatkan akurasi sebesar $+0.0246$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 0.9370 (peningkatan kumulatif $+0.0287$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
 
 #### Paragraph 2: Informational Contribution of Age-Associated Representations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 0.8764 pada SVC). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 0.9255) memberikan peningkatan $+0.0172$ di atas fitur `Face` murni (0.9083). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
+- **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 0.8764 pada SVM). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 0.9255) memberikan peningkatan $+0.0172$ di atas fitur `Face` murni (0.9083). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
 
 ### C. Intersectional Subgroup Performance and Disparity Analysis
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
-#### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVC Model
+#### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVM Model
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVC Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI(a)](#tab11a). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI(a)](#tab11a). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
 
-#### Paragraph 2: Comparative Disparity Evaluation between SVC and Logistic Regression
+#### Paragraph 2: Comparative Disparity Evaluation between SVM and Logistic Regression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan profil disparitas SVC dengan Logistic Regression Tri-Domain berdasarkan ringkasan disparitas pada [Table XI(b)](#tab11b). Model LR Tri-Domain mencatat $\Delta_{\text{Recall}} = 0.0500$, $\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Precision}} = 0.0495$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$, sedangkan SVC mencatat $\Delta_{\text{Recall}} = 0.0750$, $\Delta_{\text{F1}} = 0.0440$, $\Delta_{\text{Precision}} = 0.0310$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$. Nilai disparitas kedua model bervariasi antar-metrik, sehingga tidak dapat disimpulkan salah satu model lebih fair daripada yang lain, mengingat fairness tidak diukur hanya melalui satu statistik disparitas rentang.
+- **Fokus Narasi**: Membandingkan profil disparitas SVM dengan Logistic Regression Tri-Domain berdasarkan ringkasan disparitas pada [Table XI(b)](#tab11b). Model LR Tri-Domain mencatat $\Delta_{\text{Recall}} = 0.0500$, $\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Precision}} = 0.0495$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$, sedangkan SVM mencatat $\Delta_{\text{Recall}} = 0.0750$, $\Delta_{\text{F1}} = 0.0440$, $\Delta_{\text{Precision}} = 0.0310$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$. Nilai disparitas kedua model bervariasi antar-metrik, sehingga tidak dapat disimpulkan salah satu model lebih fair daripada yang lain, mengingat fairness tidak diukur hanya melalui satu statistik disparitas rentang.
 
 - **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
 - **Tabel XI (Kinerja per-Subkelompok dan Ringkasan Disparitas Model Tri-Domain)**:
@@ -591,7 +591,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 | Classifier | Subgroup | Recall | Precision | F1-Score | OvR Accuracy |
 |---|---|:---:|:---:|:---:|:---:|
-| **SVC (Tri)** | `White_Males` | 0.9694 | 0.9536 | 0.9614 | 98.70% |
+| **SVM (Tri)** | `White_Males` | 0.9694 | 0.9536 | 0.9614 | 98.70% |
 | | `Black_Males` | 0.9417 | 0.9549 | 0.9483 | 98.29% |
 | | `White_Females` | 0.9472 | 0.9241 | 0.9355 | 97.82% |
 | | `Asian_Males` | 0.9444 | 0.9239 | 0.9341 | 97.78% |
@@ -608,7 +608,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 | Classifier | $\Delta_{\text{Recall}}$ | $\Delta_{\text{Precision}}$ | $\Delta_{\text{F1}}$ | $\Delta_{\text{OvR Acc}}$ |
 |---|:---:|:---:|:---:|:---:|
-| **SVC (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0750 | 0.0310 | 0.0440 | 1.39 pp |
+| **SVM (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0750 | 0.0310 | 0.0440 | 1.39 pp |
 | **LR (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0500 | 0.0495 | 0.0422 | 1.39 pp |
 
 ### D. Error Pattern Analysis
@@ -678,23 +678,23 @@ Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 k
 | **White_Males** | 1 | 4 | 0 | 4 | 2 | **349** | 360 |
 | **Total Predicted** | 360 | 368 | 342 | 355 | 369 | 366 | **2,160** |
 
-### E. Analysis of Selected SVC Kernel Configuration
+### E. Analysis of Selected SVM Kernel Configuration
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Empirical Behavior of the Polynomial Kernel Configuration
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membahas konfigurasi Support Vector Classifier terpilih dari hasil grid search, yaitu kernel polinomial derajat 2 ($C=10$, $\gamma=$ scale, $\text{coef0}=0.0$ default, tanpa PCA, tanpa Scaler) sesuai formulasi [(8)](#eq8). Perlu ditegaskan bahwa konfigurasi ini merupakan model terbaik di dalam search space yang dievaluasi, bukan klaim keunggulan matematis mutlak dari kernel tersebut secara umum. Secara konseptual, pemetaan polinomial derajat 2 memungkinkan model menangkap interaksi kuadratik antardimensi fitur laten tanpa memerlukan pemetaan eksplisit berdimensi tak terhingga.
+- **Fokus Narasi**: Membahas konfigurasi Support Vector Machine terpilih dari hasil grid search, yaitu kernel polinomial derajat 2 ($C=10$, $\gamma=$ scale, $\text{coef0}=0.0$ default, tanpa PCA, tanpa Scaler) sesuai formulasi [(8)](#eq8). Perlu ditegaskan bahwa konfigurasi ini merupakan model terbaik di dalam search space yang dievaluasi, bukan klaim keunggulan matematis mutlak dari kernel tersebut secara umum. Secara konseptual, pemetaan polinomial derajat 2 memungkinkan model menangkap interaksi kuadratik antardimensi fitur laten tanpa memerlukan pemetaan eksplisit berdimensi tak terhingga.
 
 #### Paragraph 2: Latent Representation Preservation without PCA Reduction
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis temuan empiris bahwa konfigurasi SVC terbaik memilih ruang fitur penuh (`pca=None`). Pemilihan `pca=None` menunjukkan bahwa mempertahankan full latent representation memberikan performa terbaik dalam search space yang dievaluasi. Interpretasi ini bersifat empiris dan tidak dapat disimpulkan bahwa reduksi PCA secara definitif membuang informasi penting.
+- **Fokus Narasi**: Menganalisis temuan empiris bahwa konfigurasi SVM terbaik memilih ruang fitur penuh (`pca=None`). Pemilihan `pca=None` menunjukkan bahwa mempertahankan full latent representation memberikan performa terbaik dalam search space yang dievaluasi. Interpretasi ini bersifat empiris dan tidak dapat disimpulkan bahwa reduksi PCA secara definitif membuang informasi penting.
 
 ### F. Comparison with Prior Studies
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Comparative Performance on the DemogPairs Dataset
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XII](#tab12). Model Tri-Domain ViT + SVC (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 0.9372**, **Recall 0.9370**, dan **F1-Score 0.9369**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 0.9238) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 0.8901). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
+- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XII](#tab12). Model Tri-Domain ViT + SVM (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 0.9372**, **Recall 0.9370**, dan **F1-Score 0.9369**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 0.9238) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 0.8901). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
 
 #### Paragraph 2: Research Positioning and Comparative Context
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -709,7 +709,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 |---|---|:---:|:---:|:---:|:---:|
 | Putri et al. (JIEET 2025) | MD-ViT + XGBoost | 89.07% | 0.8912 | 0.8907 | 0.8901 |
 | Putri et al. (ICVEE 2025) | Dual-ViT + SVM | 92.41% | 0.9248 | 0.9241 | 0.9238 |
-| **Proposed Framework** | **Tri-Domain ViT + SVC** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
+| **Proposed Framework** | **Tri-Domain ViT + SVM** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
 
 ---
 
@@ -721,7 +721,7 @@ Bagian ini disusun dalam **2 paragraf terpadu tanpa sub-seksi**:
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
 - **Poin Narasi**:
   1. Penelitian ini mengevaluasi fusi representasi laten Tri-Domain ViT (`Face ⊕ Emotion ⊕ Age`: 2.304 dimensi) untuk klasifikasi ras dan gender interseksional pada dataset DemogPairs.
-  2. Hasil eksperimen menunjukkan bahwa fusi tri-domain merupakan konfigurasi terbaik pada 3 dari 4 classifier yang diuji (SVC, LR, GNB), dengan Support Vector Classifier teroptimasi ($C=10$, kernel polinomial derajat 2) menghasilkan performa tertinggi dalam search space yang dievaluasi (akurasi 93.70% dan F1-Score 0.9369). Perlu dicatat bahwa manfaat fusi multi-domain bersifat classifier-dependent: Random Forest mencapai performa terbaiknya pada konfigurasi dual-domain `Emotion ⊕ Face`.
+  2. Hasil eksperimen menunjukkan bahwa fusi tri-domain merupakan konfigurasi terbaik pada 3 dari 4 classifier yang diuji (SVM, LR, GNB), dengan Support Vector Machine teroptimasi ($C=10$, kernel polinomial derajat 2) menghasilkan performa tertinggi dalam search space yang dievaluasi (akurasi 93.70% dan F1-Score 0.9369). Perlu dicatat bahwa manfaat fusi multi-domain bersifat classifier-dependent: Random Forest mencapai performa terbaiknya pada konfigurasi dual-domain `Emotion ⊕ Face`.
   3. Analisis performa subkelompok menunjukkan bahwa nilai F1-Score pada keenam subkelompok berkisar antara 0.9174 dan 0.9614.
 
 ### Paragraph 2: Limitations and Future Research Directions
@@ -759,8 +759,8 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | Column Width (`table`) |
 | **Eq. (7)** | Persamaan | Section III.E (Logistic Reg) | *Formulasi Probabilitas Softmax Multinomial Logistic Regression* | In-line Math / Standard |
 | **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | Column Width (`table`) |
-| **Eq. (8)** | Persamaan | Section III.F (Support Vector) | *Formulasi Kernel Polinomial Derajat 2 Support Vector Classifier* | In-line Math / Standard |
-| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Classifier.* | Column Width (`table`) |
+| **Eq. (8)** | Persamaan | Section III.F (Support Vector) | *Formulasi Kernel Polinomial Derajat 2 Support Vector Machine* | In-line Math / Standard |
+| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Machine.* | Column Width (`table`) |
 | **Eq. (9)** | Persamaan | Section III.G (Pipeline) | *Rantai Transformasi Pipeline Modular Scaler - PCA - Classifier* | In-line Math / Standard |
 | **Eq. (10)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Akurasi One-vs-Rest Subkelompok ($\text{Accuracy}_c$)* | In-line Math / Standard |
 | **Eq. (11)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Presisi One-vs-Rest Subkelompok ($\text{Precision}_c$)* | In-line Math / Standard |
@@ -775,7 +775,7 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Table VII** | Tabel | Section IV.A (Paragraph 1) | *Performance Benchmark of Random Forest across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table VIII** | Tabel | Section IV.A (Paragraph 2) | *Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table IX** | Tabel | Section IV.A (Paragraph 3) | *Performance Benchmark of Logistic Regression across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table X** | Tabel | Section IV.A (Paragraph 4) | *Performance Benchmark of Support Vector Classifier across Seven Feature Configurations.* | **Full Width (`table*`)** |
+| **Table X** | Tabel | Section IV.A (Paragraph 4) | *Performance Benchmark of Support Vector Machine across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table XI** | Tabel | Section IV.C (Fairness) | *Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.* | **Full Width (`table*`)** |
 | **Figure 4** | Gambar | Section IV.D (Error Pattern) | *Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).* | **Full Width (`figure*`)** |
 | **Table XII** | Tabel | Section IV.F (Comparison) | *Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | **Full Width (`table*`)** |

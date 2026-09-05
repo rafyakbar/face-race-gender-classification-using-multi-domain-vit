@@ -18,7 +18,7 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)       | LOKASI PERTAMA KA
 2   | RF                  | Random Forest                    | paper/00_abstract.md (Abstract)
 3   | GNB                 | Gaussian Naive Bayes             | paper/00_abstract.md (Abstract)
 4   | LR                  | Logistic Regression              | paper/00_abstract.md (Abstract)
-5   | SVC                 | Support Vector Classifier        | paper/00_abstract.md (Abstract)
+5   | SVM                 | Support Vector Machine           | paper/00_abstract.md (Abstract)
 6   | GridSearchCV        | Grid Search Cross-Validation     | paper/00_abstract.md (Abstract)
 7   | CNN                 | Convolutional Neural Networks    | paper/01_introduction.md (P3)
 8   | MHSA                | Multi-Head Self-Attention        | paper/01_introduction.md (P3)
@@ -26,5 +26,5 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)       | LOKASI PERTAMA KA
 10  | RGB                 | Red, Green, Blue                 | paper/03_materials-and-methods_a-dataset.md (P2)
 11  | LN                  | Layer Normalization              | paper/03_materials-and-methods_b-vision-transformer.md (P1)
 12  | MLP                 | Multi-Layer Perceptron           | paper/03_materials-and-methods_b-vision-transformer.md (P1)
-13  | RBF                 | Radial Basis Function            | paper/03_materials-and-methods_f-support-vector-classifier.md (P1)
+13  | RBF                 | Radial Basis Function            | paper/03_materials-and-methods_f-support-vector-machine.md (P1)
 ====================================================================================================
