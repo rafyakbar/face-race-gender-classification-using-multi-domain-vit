@@ -1,5 +1,13 @@
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+buat agar c d e f kalimat pembukanya beserta narasinya tidak sama dengan yang lain
+
+ubah awalan kalimat pada paper/03_materials-and-methods_d-gaussian-naive-bayes.md agar tidak sama dengan:
+- paper/03_materials-and-methods_c-random-forest.md
+harus tetap sesuai dengan paper_outline.md
+
+pada folder paper, ada file yang namanya saya rename, perbaiki readme md, readme ai md, dan folder structure
+
 update readme md dan readme ai md
 
 berikan juga penjelasan setiap folder/file
