@@ -141,3 +141,5 @@ Untuk memastikan manuskrip memenuhi standar jurnal internasional bereputasi ting
    - Setiap paragraf harus diawali dengan kalimat topik (*topic sentence*) yang kuat, diikuti kalimat penjelas berbobot dan sitasi pendukung, serta ditutup dengan kalimat transisi kohesif menuju paragraf berikutnya.
 4. **Protokol Delegasi Subagent (Modular Drafting & Auditing):**
    - Saat menulis atau mengaudit draf manuskrip, delegasikan **1 subagent independen untuk 1 file spesifik** dengan instruksi yang terfokus agar konteks penulisan dan akurasi tetap maksimal.
+5. **Kepatuhan Struktur Sintaksis SPOK & Kesiapan Translasi SVO:**
+   - Setiap kalimat dalam draf naskah wajib memiliki struktur Subjek (S) dan Predikat (P) yang definitif untuk mencegah kalimat menggantung (*dangling sentences*). Variasikan antara pola S-P-O-K murni, transisi K-S-P-O terukur, dan bentuk pasif akademis objektif pada metodologi untuk mempermudah pemetaan ke struktur SVO/SVOC pada naskah LaTeX Bahasa Inggris standar IEEE.

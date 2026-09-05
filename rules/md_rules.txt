@@ -37,12 +37,12 @@ saat menyusun draf artikel ilmiah dalam format Markdown sebelum dikonversi ke do
 
 1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)
   - Setiap istilah teknis yang memiliki singkatan atau akronim resmi (contoh: Vision Transformer (ViT),
-    Support Vector Classifier (SVC), Random Forest (RF), Gaussian Naive Bayes (GNB),
+    Support Vector Machine (SVM), Random Forest (RF), Gaussian Naive Bayes (GNB),
     Logistic Regression (LR), Principal Component Analysis (PCA), Multi-Head Self-Attention (MHSA),
     Convolutional Neural Networks (CNN)) WAJIB ditulis lengkap dengan singkatannya di dalam tanda kurung
     pada pemunculan pertamanya di awal naskah (misalnya di Abstract atau awal Introduction).
   - Pada pemunculan berikutnya di seluruh paragraf naskah, CUKUP gunakan singkatannya saja
-    (misal: ViT, SVC, RF, GNB, LR, PCA, MHSA, CNN) tanpa mengulang kepanjangannya.
+    (misal: ViT, SVM, RF, GNB, LR, PCA, MHSA, CNN) tanpa mengulang kepanjangannya.
   - Untuk mempermudah pelacakan dan validasi, seluruh singkatan yang telah diperkenalkan WAJIB dicatat
     secara terpusat pada berkas `paper/acronyms.txt`, sehingga penulis/auditor cukup merujuk ke berkas tersebut.
 
@@ -231,6 +231,15 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
     DILARANG dicetak miring (tanpa tanda asteris `*...*`) di dalam teks narasi Bahasa Indonesia,
     sehingga draf naskah bersih dan siap ditranslasikan ke naskah LaTeX Bahasa Inggris.
 
+7.9. Penerapan Struktur Kalimat SPOK & Variasi Sintaksis Standar Jurnal Q1
+  - Setiap kalimat dalam draf naskah WAJIB memiliki struktur tata bahasa yang jelas, kokoh, dan lengkap dengan Subjek (S) dan Predikat (P) yang tegas, diikuti Objek (O) dan Keterangan (K) yang proporsional.
+  - DILARANG membuat kalimat menggantung (dangling sentences/modifiers) atau kalimat tanpa subjek yang diakibatkan oleh penumpukan frasa preposisi berantai di awal kalimat.
+  - Penerapan SPOK dalam naskah jurnal bereputasi tinggi (Q1) TIDAK BOLEH kaku atau monoton:
+    * Gunakan pola S-P-O-K murni untuk menyatakan fakta definitif, formulasi matematika, atau kontribusi utama secara lugas.
+    * Gunakan pola variasi K-S-P-O (fronted adverbial / keterangan pengantar di awal) secara terukur untuk menghubungkan alur ide antarkalimat (prinsip The Known-New Contract / kohesi wacana).
+    * Gunakan bentuk pasif akademis objektif (S_terkena - P_pasif - K) khususnya pada seksi Materials and Methods untuk menjaga nada ilmiah yang impersonal.
+  - Struktur SPOK yang tertib pada draf Bahasa Indonesia ini menjadi prasyarat mutlak untuk menghasilkan terjemahan yang akurat, presisi, dan luwes ke struktur SVO/SVOC (Subject-Verb-Object-Complement) pada naskah LaTeX Bahasa Inggris standar IEEE.
+
 
 ====================================================================================================
 8. DISIPLIN BATASAN KLAIM ILMIAH (GLOBAL SCIENTIFIC CLAIM DISCIPLINE)
@@ -279,6 +288,7 @@ Sebelum naskah Markdown dikonversi ke format LaTeX:
 [ ] 11. Seluruh metrik evaluasi dilaporkan konsisten dalam format persentase (%).
 [ ] 12. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
 [ ] 13. Seluruh berkas gambar yang dirujuk telah disalin dan tersedia di dalam folder lokal `paper/images/`.
+[ ] 14. Seluruh kalimat mematuhi kaidah SPOK dengan Subjek dan Predikat yang definitif, bebas dari kalimat menggantung (dangling sentences), serta memiliki variasi alur transisi yang alami.
 
 ====================================================================================================
 AKHIR DOKUMEN WRITING MD RULES
