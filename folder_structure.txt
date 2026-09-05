@@ -1,0 +1,459 @@
+====================================================================================================
+STRUKTUR DIREKTORI & PENJELASAN BERKAS PROYEK
+Project: face-race-gender-classification-using-multi-domain-vit
+Repository: https://github.com/rafyakbar/face-race-gender-classification-using-multi-domain-vit
+====================================================================================================
+
+BAGIAN 1: DIAGRAM STRUKTUR POHON DIREKTORI (DIRECTORY TREE)
+----------------------------------------------------------------------------------------------------
+face-race-gender-classification-using-multi-domain-vit/
+├── experiment/
+│   ├── code/
+│   │   ├── dataset/
+│   │   │   └── demogpairs/
+│   │   │       └── metadata/
+│   │   │           ├── Asian_Females.txt
+│   │   │           ├── Asian_Males.txt
+│   │   │           ├── Black_Females.txt
+│   │   │           ├── Black_Males.txt
+│   │   │           ├── White_Females.txt
+│   │   │           └── White_Males.txt
+│   │   ├── images/
+│   │   │   ├── cm_gnb_vit-age_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-emotion-age_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-emotion-face_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-emotion_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-face-age_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-face-emotion-age_GaussianNB.png
+│   │   │   ├── cm_gnb_vit-face_GaussianNB.png
+│   │   │   ├── cm_lr_vit-age_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-emotion-age_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-emotion-face_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-emotion_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-face-age_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-face-emotion-age_LogisticRegression.png
+│   │   │   ├── cm_lr_vit-face_LogisticRegression.png
+│   │   │   ├── cm_rf_vit-age_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-emotion-age_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-emotion-face_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-emotion_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-face-age_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-face-emotion-age_RandomForestClassifier.png
+│   │   │   ├── cm_rf_vit-face_RandomForestClassifier.png
+│   │   │   ├── cm_svm_vit-age_SVC.png
+│   │   │   ├── cm_svm_vit-emotion-age_SVC.png
+│   │   │   ├── cm_svm_vit-emotion-face_SVC.png
+│   │   │   ├── cm_svm_vit-emotion_SVC.png
+│   │   │   ├── cm_svm_vit-face-age_SVC.png
+│   │   │   ├── cm_svm_vit-face-emotion-age_SVC.png
+│   │   │   └── cm_svm_vit-face_SVC.png
+│   │   ├── md/
+│   │   │   ├── gnb/
+│   │   │   │   ├── 2.2.1_gnb_vit-face.md
+│   │   │   │   ├── 2.2.2_gnb_vit-emotion.md
+│   │   │   │   ├── 2.2.3_gnb_vit-age.md
+│   │   │   │   ├── 2.2.4_gnb_vit-face-age.md
+│   │   │   │   ├── 2.2.5_gnb_vit-emotion-age.md
+│   │   │   │   ├── 2.2.6_gnb_vit-emotion-face.md
+│   │   │   │   └── 2.2.7_gnb_vit-face-emotion-age.md
+│   │   │   ├── lr/
+│   │   │   │   ├── 2.5.1_lr_vit-face.md
+│   │   │   │   ├── 2.5.2_lr_vit-emotion.md
+│   │   │   │   ├── 2.5.3_lr_vit-age.md
+│   │   │   │   ├── 2.5.4_lr_vit-face-age.md
+│   │   │   │   ├── 2.5.5_lr_vit-emotion-age.md
+│   │   │   │   ├── 2.5.6_lr_vit-emotion-face.md
+│   │   │   │   └── 2.5.7_lr_vit-face-emotion-age.md
+│   │   │   ├── rf/
+│   │   │   │   ├── 2.4.1_rf_vit-face.md
+│   │   │   │   ├── 2.4.2_rf_vit-emotion.md
+│   │   │   │   ├── 2.4.3_rf_vit-age.md
+│   │   │   │   ├── 2.4.4_rf_vit-face-age.md
+│   │   │   │   ├── 2.4.5_rf_vit-emotion-age.md
+│   │   │   │   ├── 2.4.6_rf_vit-emotion-face.md
+│   │   │   │   └── 2.4.7_rf_vit-face-emotion-age.md
+│   │   │   ├── svm/
+│   │   │   │   ├── 2.1.1_svm_vit-face.md
+│   │   │   │   ├── 2.1.2_svm_vit-emotion.md
+│   │   │   │   ├── 2.1.3_svm_vit-age.md
+│   │   │   │   ├── 2.1.4_svm_vit-face-age.md
+│   │   │   │   ├── 2.1.5_svm_vit-emotion-age.md
+│   │   │   │   ├── 2.1.6_svm_vit-emotion-face.md
+│   │   │   │   └── 2.1.7_svm_vit-face-emotion-age.md
+│   │   │   └── 3.0_compare.md
+│   │   ├── results/
+│   │   │   ├── demogpairs_gnb_vit-age_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-emotion-age_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-emotion-face_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-emotion_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-face-age_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-face-emotion-age_GaussianNB.json
+│   │   │   ├── demogpairs_gnb_vit-face_GaussianNB.json
+│   │   │   ├── demogpairs_lr_vit-age_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-emotion-age_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-emotion-face_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-emotion_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-face-age_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-face-emotion-age_LogisticRegression.json
+│   │   │   ├── demogpairs_lr_vit-face_LogisticRegression.json
+│   │   │   ├── demogpairs_rf_vit-age_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-emotion-age_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-emotion-face_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-emotion_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-face-age_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-face-emotion-age_RandomForestClassifier.json
+│   │   │   ├── demogpairs_rf_vit-face_RandomForestClassifier.json
+│   │   │   ├── demogpairs_svm_vit-age_SVC.json
+│   │   │   ├── demogpairs_svm_vit-emotion-age_SVC.json
+│   │   │   ├── demogpairs_svm_vit-emotion-face_SVC.json
+│   │   │   ├── demogpairs_svm_vit-emotion_SVC.json
+│   │   │   ├── demogpairs_svm_vit-face-age_SVC.json
+│   │   │   ├── demogpairs_svm_vit-face-emotion-age_SVC.json
+│   │   │   └── demogpairs_svm_vit-face_SVC.json
+│   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   ├── constants.py
+│   │   │   ├── dataset.py
+│   │   │   ├── display.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── extraction.py
+│   │   │   ├── serialization.py
+│   │   │   └── time_helpers.py
+│   │   ├── 1.1_vit-age_demogpairs.ipynb
+│   │   ├── 1.1_vit-emotion_demogpairs.ipynb
+│   │   ├── 1.1_vit-face_demogpairs.ipynb
+│   │   ├── 2.1.1_svm_vit-face_demogpairs.ipynb
+│   │   ├── 2.1.2_svm_vit-emotion_demogpairs.ipynb
+│   │   ├── 2.1.3_svm_vit-age_demogpairs.ipynb
+│   │   ├── 2.1.4_svm_vit-face-age_demogpairs.ipynb
+│   │   ├── 2.1.5_svm_vit-emotion-age_demogpairs.ipynb
+│   │   ├── 2.1.6_svm_vit-emotion-face_demogpairs.ipynb
+│   │   ├── 2.1.7_svm_vit-face-emotion-age_demogpairs.ipynb
+│   │   ├── 2.2.1_gnb_vit-face_demogpairs.ipynb
+│   │   ├── 2.2.2_gnb_vit-emotion_demogpairs.ipynb
+│   │   ├── 2.2.3_gnb_vit-age_demogpairs.ipynb
+│   │   ├── 2.2.4_gnb_vit-face-age_demogpairs.ipynb
+│   │   ├── 2.2.5_gnb_vit-emotion-age_demogpairs.ipynb
+│   │   ├── 2.2.6_gnb_vit-emotion-face_demogpairs.ipynb
+│   │   ├── 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb
+│   │   ├── 2.4.1_rf_vit-face_demogpairs.ipynb
+│   │   ├── 2.4.2_rf_vit-emotion_demogpairs.ipynb
+│   │   ├── 2.4.3_rf_vit-age_demogpairs.ipynb
+│   │   ├── 2.4.4_rf_vit-face-age_demogpairs.ipynb
+│   │   ├── 2.4.5_rf_vit-emotion-age_demogpairs.ipynb
+│   │   ├── 2.4.6_rf_vit-emotion-face_demogpairs.ipynb
+│   │   ├── 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb
+│   │   ├── 2.5.1_lr_vit-face_demogpairs.ipynb
+│   │   ├── 2.5.2_lr_vit-emotion_demogpairs.ipynb
+│   │   ├── 2.5.3_lr_vit-age_demogpairs.ipynb
+│   │   ├── 2.5.4_lr_vit-face-age_demogpairs.ipynb
+│   │   ├── 2.5.5_lr_vit-emotion-age_demogpairs.ipynb
+│   │   ├── 2.5.6_lr_vit-emotion-face_demogpairs.ipynb
+│   │   ├── 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb
+│   │   ├── 3.0_compare.ipynb
+│   │   ├── 4.0_test.ipynb
+│   │   └── app.py
+│   ├── 00_overview.md
+│   ├── 01_prepare-data.md
+│   ├── 02_preprocessing.md
+│   ├── 03_feature-extraction.md
+│   ├── 04_methods.md
+│   ├── 05_results.md
+│   └── dataset_demogpairs.md
+├── images/
+│   ├── confusion_matrix_dual.png
+│   ├── confusion_matrix_single.png
+│   ├── confusion_matrix_svm_tri.png
+│   ├── confusion_matrix_tri.png
+│   ├── method.png
+│   ├── method.pptx
+│   ├── sample_Asian_Females.jpg
+│   ├── sample_Asian_Males.jpg
+│   ├── sample_Black_Females.jpg
+│   ├── sample_Black_Males.jpg
+│   ├── sample_demogpairs.png
+│   ├── sample_White_Females.jpg
+│   ├── sample_White_Males.jpg
+│   ├── vit.png
+│   └── vit.pptx
+├── paper/
+│   ├── images/
+│   │   ├── confusion_matrix_dual.png
+│   │   ├── confusion_matrix_single.png
+│   │   ├── confusion_matrix_svm_tri.png
+│   │   ├── confusion_matrix_tri.png
+│   │   ├── method.png
+│   │   ├── method.pptx
+│   │   ├── sample_Asian_Females.jpg
+│   │   ├── sample_Asian_Males.jpg
+│   │   ├── sample_Black_Females.jpg
+│   │   ├── sample_Black_Males.jpg
+│   │   ├── sample_demogpairs.png
+│   │   ├── sample_White_Females.jpg
+│   │   ├── sample_White_Males.jpg
+│   │   ├── vit.png
+│   │   └── vit.pptx
+│   ├── 00_abstract.md
+│   ├── 01_introduction.md
+│   ├── 02_related-works.md
+│   ├── 03_materials-and-methods_a-dataset.md
+│   ├── 03_materials-and-methods_b-vision-transformer.md
+│   ├── 03_materials-and-methods_c-random-forest.md
+│   ├── 03_materials-and-methods_d-gaussian-naive-bayes.md
+│   ├── 03_materials-and-methods_e-logistic-regression.md
+│   ├── 03_materials-and-methods_f-support-vector-classifier.md
+│   ├── 03_materials-and-methods_g-classification-pipeline.md
+│   ├── 03_materials-and-methods_h-evaluation-metrics.md
+│   ├── 03_materials-and-methods_i-ethical-considerations.md
+│   ├── 03_materials-and-methods_overview.md
+│   ├── 04_results-and-discussion_a-global-performance.md
+│   ├── 04_results-and-discussion_b-feature-ablation-analysis.md
+│   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
+│   ├── 04_results-and-discussion_d-error-pattern-analysis.md
+│   ├── 04_results-and-discussion_e-analysis-of-selected-svc-kernel-configuration.md
+│   ├── 04_results-and-discussion_f-comparison-with-prior-studies.md
+│   ├── 05_conclusion.md
+│   ├── 06_references.md
+│   ├── 07_biographies.md
+│   └── acronyms.txt
+├── references/
+│   └── 2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
+├── related_works/
+│   ├── bib/
+│   │   ├── 2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
+│   │   ├── 2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
+│   │   ├── 2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
+│   │   ├── 2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
+│   │   ├── 2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
+│   │   ├── 2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
+│   │   ├── 2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
+│   │   ├── 2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+│   │   ├── 2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+│   │   └── 2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+│   ├── pdf/
+│   │   ├── 2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.pdf
+│   │   ├── 2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.pdf
+│   │   ├── 2022_Intelligent deep learning based ethnicity recognition and classification using facial images.pdf
+│   │   ├── 2023_A Multidimensional Analysis of Social Biases in Vision Transformers.pdf
+│   │   ├── 2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.pdf
+│   │   ├── 2023_Learning an attention-aware parallel sharing network for facial attribute recognition.pdf
+│   │   ├── 2024_Classifying Gender Based on Face Images Using Vision Transformer.pdf
+│   │   ├── 2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.pdf
+│   │   ├── 2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.pdf
+│   │   └── 2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.pdf
+│   ├── summaries/
+│   │   ├── 2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.md
+│   │   ├── 2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.md
+│   │   ├── 2022_Intelligent deep learning based ethnicity recognition and classification using facial images.md
+│   │   ├── 2023_A Multidimensional Analysis of Social Biases in Vision Transformers.md
+│   │   ├── 2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.md
+│   │   ├── 2023_Learning an attention-aware parallel sharing network for facial attribute recognition.md
+│   │   ├── 2024_Classifying Gender Based on Face Images Using Vision Transformer.md
+│   │   ├── 2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.md
+│   │   ├── 2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.md
+│   │   ├── 2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.md
+│   │   └── TEMPLATE.md
+│   ├── gap_analysis.md
+│   ├── literature_matrix.md
+│   ├── sintesis_literatur.md
+│   └── tren_analisis.md
+├── rules/
+│   ├── IEEE_citation_guidelines.md
+│   ├── latex_rules.txt
+│   └── md_rules.txt
+├── .gitignore
+├── folder_structure.txt
+├── paper_outline.md
+├── prompts.txt
+├── README.AI.md
+├── README.md
+├── scopus_query.txt
+└── WORKFLOW.md
+
+====================================================================================================
+BAGIAN 2: PENJELASAN LENGKAP SETIAP DIREKTORI & BERKAS (DIRECTORY & FILE GLOSSARY)
+====================================================================================================
+
+1. DIREKTORI UTAMA (ROOT LEVEL)
+----------------------------------------------------------------------------------------------------
+- README.md
+  Dokumentasi utama proyek riset yang memuat latar belakang, ringkasan arsitektur Tri-Domain ViT,
+  hasil eksperimen utama, dan petunjuk penggunaan kode.
+- README.AI.md
+  Panduan dan konteks komprehensif untuk agen kecerdasan buatan (AI) / pengembang terkait alur kerja,
+  tata kelola repositori, dan instruksi khusus riset.
+- WORKFLOW.md
+  Alur kerja sistematis riset, mulai dari persiapan dataset, ekstraksi fitur laten, eksperimen
+  klasifikasi hilir, hingga penyusunan naskah publikasi.
+- paper_outline.md
+  Kontrak master naskah publikasi (paper blueprint) yang menetapkan struktur bab per bab, target
+  jumlah kata per paragraf, rancangan tabel/figur, dan metrik eksperimen.
+- prompts.txt
+  Catatan riwayat seluruh prompt dan arahan instruksi pengguna yang dieksekusi secara kronologis.
+- scopus_query.txt
+  Kumpulan kueri penelusuran basis data Scopus yang digunakan untuk mengumpulkan literatur relevan.
+- folder_structure.txt
+  Berkas ini, berisi visualisasi diagram pohon direktori dan penjelasan fungsional setiap komponen repositori.
+- .gitignore
+  Daftar berkas dan folder yang diabaikan oleh Git, termasuk dataset gambar mentah, checkpoint, dan cache.
+
+
+2. DIREKTORI EXPERIMENT/ (EKSPERIMEN & KODE SUMBER)
+----------------------------------------------------------------------------------------------------
+Direktori ini mendokumentasikan seluruh tahapan eksperimen empiris, implementasi kode, dan artefak hasil:
+- 00_overview.md
+  Ringkasan metodologi eksperimen, kerangka kerja ekstraksi, dan protokol evaluasi.
+- 01_prepare-data.md
+  Dokumentasi pemrosesan dataset DemogPairs dan struktur metadata subkelompok.
+- 02_preprocessing.md
+  Spesifikasi standardisasi citra (konversi 3-channel RGB, resize 224 x 224, dan penskalaan intensitas [0, 1]).
+- 03_feature-extraction.md
+  Detail teknis ekstraksi fitur laten offline dari token [CLS] berdimensi 768 dari tiga model ViT-Base.
+- 04_methods.md
+  Deskripsi empat famili pengklasifikasi (SVM, GNB, RF, LR) dan optimasi GridSearchCV 5-Fold Stratified CV.
+- 05_results.md
+  Rekapitulasi lengkap metrik akurasi, presisi, recall, dan skor F1 di seluruh konfigurasi eksperimen.
+- dataset_demogpairs.md
+  Spesifikasi detail dataset DemogPairs (10.800 citra, 600 subjek, 6 kelas interseksional seimbang).
+
+Sub-direktori experiment/code/:
+- 1.1_vit-face_demogpairs.ipynb
+  Notebook ekstraksi fitur biometrik wajah menggunakan model ViT-Base pre-trained (skutaada/VIT-VGGFace).
+- 1.1_vit-emotion_demogpairs.ipynb
+  Notebook ekstraksi fitur ekspresi afektif menggunakan model ViT-Base (dima806/facial_emotions_image_detection).
+- 1.1_vit-age_demogpairs.ipynb
+  Notebook ekstraksi fitur estimasi usia biologis menggunakan model ViT-Base (dima806/facial_age_image_detection).
+- 2.1.1 s.d. 2.1.7_svm_*_demogpairs.ipynb
+  Tujuh notebook eksperimen pengklasifikasi Support Vector Classifier (SVC) untuk 7 variasi ablasi fitur.
+- 2.2.1 s.d. 2.2.7_gnb_*_demogpairs.ipynb
+  Tujuh notebook eksperimen pengklasifikasi Gaussian Naive Bayes (GNB) untuk 7 variasi ablasi fitur.
+- 2.4.1 s.d. 2.4.7_rf_*_demogpairs.ipynb
+  Tujuh notebook eksperimen pengklasifikasi Random Forest (RF) untuk 7 variasi ablasi fitur.
+- 2.5.1 s.d. 2.5.7_lr_*_demogpairs.ipynb
+  Tujuh notebook eksperimen pengklasifikasi Logistic Regression (LR) untuk 7 variasi ablasi fitur.
+- 3.0_compare.ipynb
+  Notebook analisis komparatif dan agregasi kinerja dari seluruh 28 konfigurasi eksperimen.
+- 4.0_test.ipynb
+  Notebook evaluasi akhir pada held-out test set dan analisis pola kesalahan (confusion matrix).
+- app.py
+  Skrip aplikasi inferensi demonstrasi berbasis Python.
+- dataset/demogpairs/metadata/
+  Folder berkas metadata teks (.txt) berisi daftar citra per kelas interseksional.
+- images/
+  Plot confusion matrix yang dihasilkan dari setiap konfigurasi eksperimen.
+- md/
+  Laporan kinerja dalam format Markdown per famili classifier (svm/, gnb/, rf/, lr/) dan ringkasan perbandingan.
+- results/
+  Berkas hasil evaluasi mentah dalam format JSON (.json) berisi parameter terbaik dan metrik pengujian.
+- utils/
+  Modul pustaka pendukung Python:
+  * constants.py: Konstanta pemetaan label kelas dan konfigurasi global.
+  * dataset.py: Fungsi pemuat dataset dan pembagian stratified split.
+  * display.py: Fungsi visualisasi citra dan plot confusion matrix.
+  * evaluation.py: Fungsi kalkulasi metrik evaluasi dan disparitas subkelompok.
+  * extraction.py: Fungsi ekstraksi representasi laten token [CLS] ViT.
+  * serialization.py: Utilitas penyimpanan dan pemuatan berkas fitur (.pkl).
+  * time_helpers.py: Utilitas pelacak durasi komputasi eksperimen.
+
+
+3. DIREKTORI IMAGES/ (ASET VISUAL UTAMA)
+----------------------------------------------------------------------------------------------------
+Menyimpan berkas visual beresolusi tinggi yang digunakan dalam naskah ilmiah dan presentasi:
+- method.png & method.pptx
+  Diagram alur arsitektur keseluruhan Tri-Domain ViT dan pipeline klasifikasi hilir (Figure 1).
+- sample_*.jpg & sample_demogpairs.png
+  Contoh citra representatif dari keenam subkelompok demografis dataset DemogPairs (Figure 2).
+- vit.png & vit.pptx
+  Diagram arsitektur Vision Transformer, patch projection, dan mekanisme self-attention (Figure 3).
+- confusion_matrix_*.png
+  Visualisasi confusion matrix untuk konfigurasi single-domain, dual-domain, dan tri-domain terbaik.
+
+
+4. DIREKTORI PAPER/ (DRAF NASKAH PUBLIKASI ILMIAH)
+----------------------------------------------------------------------------------------------------
+Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonversi ke LaTeX:
+- 00_abstract.md
+  Judul naskah, daftar penulis, afiliasi, abstrak ilmiah (188 kata), dan kata kunci IEEE.
+- 01_introduction.md
+  Section I (Introduction): Latar belakang, motivasi, sintesis literatur, gap riset, usulan solusi,
+  empat kontribusi ilmiah utama, dan sistematika penulisan naskah.
+- 02_related-works.md
+  Section II (Related Works): 6 paragraf sintesis literatur tanpa subjudul mengenai pengenalan
+  atribut demografis, ViT, keadilan sistem visi, fusi fitur multi-domain, dan posisi riset.
+- 03_materials-and-methods_overview.md
+  Section III (Overview): Gambaran umum alur pemrosesan end-to-end dengan rujukan Figure 1.
+- 03_materials-and-methods_a-dataset.md
+  Section III-A (Dataset): Karakteristik DemogPairs, pembagian data 80/20, preprocessing citra,
+  rujukan Figure 2, dan Table I (partisi data).
+- 03_materials-and-methods_b-vision-transformer.md
+  Section III-B (Vision Transformer): Arsitektur ViT, mekanisme MHSA, formulasi matematika, dan
+  peran tiga domain representasi komplementer.
+- 03_materials-and-methods_c-random-forest.md
+  Section III-C (Random Forest): Formulasi model pohon ensemble dan ruang pencarian hyperparameter.
+- 03_materials-and-methods_d-gaussian-naive-bayes.md
+  Section III-D (Gaussian Naive Bayes): Formulasi probabilistik Gaussian dan penalaan parameter smoothing.
+- 03_materials-and-methods_e-logistic-regression.md
+  Section III-E (Logistic Regression): Formulasi SoftMax multikelompok dan ruang pencarian regularisasi.
+- 03_materials-and-methods_f-support-vector-classifier.md
+  Section III-F (Support Vector Classifier): Formulasi margin optimal, fungsi kernel, dan hyperparameter tuning.
+- 03_materials-and-methods_g-classification-pipeline.md
+  Section III-G: Pipeline pencegahan data leakage, StratifiedKFold cross-validation, dan reduksi dimensi PCA.
+- 03_materials-and-methods_h-evaluation-metrics.md
+  Section III-H: Formulasi metrik performa global (Akurasi, Presisi, Recall, F1) dan disparitas subkelompok.
+- 03_materials-and-methods_i-ethical-considerations.md
+  Section III-I: Pertimbangan etika riset biometrik, tata kelola data, dan transparansi AI bertanggung jawab.
+- 04_results-and-discussion_a-global-performance.md
+  Section IV-A: Analisis perbandingan kinerja global pada 28 konfigurasi eksperimen.
+- 04_results-and-discussion_b-feature-ablation-analysis.md
+  Section IV-B: Analisis kontribusi ablasi representasi domain tunggal, ganda, dan tri-domain.
+- 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
+  Section IV-C: Analisis performa granular dan metrik disparitas di keenam subkelompok demografis.
+- 04_results-and-discussion_d-error-pattern-analysis.md
+  Section IV-D: Telaah mendalam pola kesalahan prediksi dan tumpang tindih visual antarsubkelompok.
+- 04_results-and-discussion_e-analysis-of-selected-svc-kernel-configuration.md
+  Section IV-E: Analisis mendalam konfigurasi SVC kernel polynomial derajat 2 sebagai model terbaik.
+- 04_results-and-discussion_f-comparison-with-prior-studies.md
+  Section IV-F: Perbandingan komparatif hasil penelitian terhadap 10 studi literatur terdahulu.
+- 05_conclusion.md
+  Section V (Conclusion): Kesimpulan utama temuan empiris, keterbatasan riset, dan rekomendasi studi lanjutan.
+- 06_references.md
+  Section VI (References): Daftar pustaka lengkap dalam format sitasi standar IEEE.
+- 07_biographies.md
+  Section VII (Biographies): Profil biografi akademik para penulis beserta foto.
+- acronyms.txt
+  Daftar registrasi singkatan dan akronim naskah sesuai Rule 1.3 untuk mencegah redundansi kepanjangan.
+- images/
+  Salinan lokal seluruh aset visual naskah agar folder paper/ bersifat mandiri (self-contained) dan portabel.
+
+
+5. DIREKTORI REFERENCES/ & RELATED_WORKS/ (LITERATUR ILMIAH)
+----------------------------------------------------------------------------------------------------
+Direktori ini mengelola seluruh rujukan ilmiah dan kajian literatur terdahulu:
+- references/
+  Menyimpan entri sitasi BibTeX untuk dataset acuan DemogPairs (Hupont & Fernandez, FG 2019).
+- related_works/bib/
+  Kumpulan berkas BibTeX (.bib) dari 10 paper acuan wajib (2022-2025) yang diulas pada Related Works.
+- related_works/pdf/
+  Kumpulan berkas naskah asli PDF dari 10 paper acuan wajib.
+- related_works/summaries/
+  Berkas ringkasan analitis mendalam (.md) dari masing-masing paper berdasarkan format TEMPLATE.md.
+- related_works/gap_analysis.md
+  Dokumentasi pemetaan kesenjangan penelitian (research gaps) yang diidentifikasi dari literatur.
+- related_works/literature_matrix.md
+  Matriks komparasi literatur komprehensif mencakup dataset, arsitektur, classifier, dan hasil pengujian.
+- related_works/sintesis_literatur.md
+  Naskah sintesis tematik dari telaah literatur terkait pengenalan ras dan gender wajah.
+- related_works/tren_analisis.md
+  Analisis tren kronologis metodologi visi komputer dari CNN konvensional hingga Vision Transformer.
+
+
+6. DIREKTORI RULES/ (PEDOMAN & STANDAR PUBLIKASI)
+----------------------------------------------------------------------------------------------------
+- IEEE_citation_guidelines.md
+  Pedoman resmi IEEE mengenai tata cara penulisan sitasi dalam teks dan format bibliografi daftar pustaka.
+- latex_rules.txt
+  Aturan konversi naskah Markdown ke dokumen LaTeX IEEE template (formatting, lingkungan gambar, persamaan).
+- md_rules.txt
+  Aturan baku penulisan draf naskah Markdown (penomoran kronologis, tautan interaktif, ketiadaan kata
+  terlarang, target kata per paragraf, larangan cetak miring, dan checklist validasi sebelum LaTeX).
+====================================================================================================
