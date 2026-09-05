@@ -64,7 +64,7 @@ paper/
 ├── 00_abstract.md                                      # Metadata, Judul, Abstrak, Kata Kunci
 ├── 01_introduction.md                                  # Latar belakang, urgensi, gap, kontribusi, sistematika
 ├── 02_related-works.md                                 # Tinjauan literatur tematik & posisi riset
-├── 03_materials-and-methods_overview.md                # Teks pengantar metodologi & Figure 1 (Arsitektur Pipeline)
+├── 03_materials-and-methods_0-overview.md              # Teks pengantar metodologi & Figure 1 (Arsitektur Pipeline)
 ├── 03_materials-and-methods_a-dataset.md               # A. Deskripsi dataset, partisi data, pra-pemrosesan
 ├── 03_materials-and-methods_b-[core-component-1].md    # B. Komponen metodologi 1 (e.g. feature extractors)
 ├── 03_materials-and-methods_c-[core-component-2].md    # C. Komponen metodologi 2 (e.g. fusion framework)
@@ -117,7 +117,7 @@ paper_latex_[id|en]/
 | **Abstrak & Keywords**| `00_abstract.md` | `00_abstract.tex` | Abstract block, Index Terms / Keywords |
 | **I. Pendahuluan** | `01_introduction.md` | `01_introduction.tex` | Background, Problem, Gap, Contributions (bullet), Paper Organization |
 | **II. Studi Terkait** | `02_related-works.md` | `02_related-works.tex` | Literature Review by thematic topics, Positioning table |
-| **III. Metodologi (Pengantar)**| `03_materials-and-methods_overview.md` | `03_materials-and-methods_overview.tex` | Lead-in text & Overall Pipeline Architecture (Figure 1) |
+| **III. Metodologi (Pengantar)**| `03_materials-and-methods_0-overview.md` | `03_materials-and-methods_0-overview.tex` | Lead-in text & Overall Pipeline Architecture (Figure 1) |
 | **III-A. Dataset** | `03_materials-and-methods_a-dataset.md` | `03_materials-and-methods_a-dataset.tex` | Dataset Partition & Distribution (Figure 2 & Table I) |
 | **III-B s.d. III-G. Metodologi**| `03_materials-and-methods_[b-g]-*.md` | `03_materials-and-methods_[b-g]-*.tex` | Feature extraction (Figure 3, Table II, Eq 1-4), Fusion (Eq 5), Classifiers (Table III-VI, Eq 6-9), Setup, Metrics (Eq 10-19) |
 | **IV-A s.d. IV-F. Hasil & Diskusi**| `04_results-and-discussion_[a-f]-*.md`| `04_results-and-discussion_[a-f]-*.tex`| Benchmark (Table VII-X), Ablation, Subgroup/Disparity (Table XI), Error Matrix (Figure 4), Complexity, Prior Studies (Table XII) |

@@ -132,9 +132,16 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │       └── images/                        # Confusion matrix plots (28 models)
 ├── images/                                # High-resolution architecture diagrams and sample figures
 ├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
-│   ├── 00_abstract.md - 07_biographies.md # Section-by-section modular academic manuscript
-│   ├── acronyms.txt                       # Centralized acronym registry (Rule 1.3)
-│   └── images/                            # Self-contained local image assets for paper compilation
+│   ├── 00_abstract.md                  # Title, authors, abstract, and IEEE keywords
+│   ├── 01_introduction.md              # Section I: Introduction
+│   ├── 02_related-works.md              # Section II: Related Works
+│   ├── 03_materials-and-methods_*.md   # Section III: Methodology (0-overview, a-dataset s.d. i-ethical)
+│   ├── 04_results-and-discussion_*.md  # Section IV: Results and Discussion (a-global s.d. f-prior-studies)
+│   ├── 05_conclusion.md                # Section V: Conclusion
+│   ├── 06_references.md                # Section VI: References
+│   ├── 07_biographies.md               # Section VII: Biographies
+│   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   └── images/                         # Self-contained local image assets for paper compilation
 ├── references/                            # BibTeX citation sources (DemogPairs)
 ├── related_works/                         # Literature reviews, summary matrices, and gap analysis
 │   ├── bib/                               # BibTeX files for 10 mandatory literature papers

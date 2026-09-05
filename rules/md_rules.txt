@@ -114,7 +114,7 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
     `<a id="ref1"></a>[1] A. Author, "Title of paper," Journal Name, vol. 1, 2025.`
 
 5.2. Rujukan Gambar (Figures) & Aturan Penyimpanan Lokal (paper/images/)
-  - Format dalam teks : `[Figure 1](#fig1)` atau `[Figure 1](03_materials-and-methods_overview.md#fig1)`
+  - Format dalam teks : `[Figure 1](#fig1)` atau `[Figure 1](03_materials-and-methods_0-overview.md#fig1)`
   - Format target     :
     `<a id="fig1"></a>`
     `![Figure 1. Architecture of the Proposed System.](images/overview.png)`
@@ -150,7 +150,7 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
     Introduction / Section I atau rujukan silang antarbab), penomoran seksi WAJIB dijadikan tautan aktif
     yang mengarah langsung ke berkas target modular yang sesuai:
     * Rujukan ke Related Works      : `Section [II](02_related-works.md)`
-    * Rujukan ke Metodologi Utama   : `Section [III](03_materials-and-methods_overview.md)`
+    * Rujukan ke Metodologi Utama   : `Section [III](03_materials-and-methods_0-overview.md)`
     * Rujukan ke Subseksi Metode    : `Section [III-A](03_materials-and-methods_a-dataset.md)`
     * Rujukan ke Hasil & Pembahasan : `Section [IV](04_results-and-discussion_a-global-performance.md)`
     * Rujukan ke Kesimpulan         : `Section [V](05_conclusion.md)`

@@ -364,7 +364,7 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 │   ├── 00_abstract.md                  # Title, authors, abstract (188 words), and IEEE keywords
 │   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
 │   ├── 02_related-works.md              # Section II (Related Works, 6 paragraphs, no subheadings)
-│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (overview, a-dataset s.d. i-ethical)
+│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. i-ethical)
 │   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. f-prior-studies)
 │   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
 │   ├── 06_references.md                # Section VI (IEEE formatted bibliography)

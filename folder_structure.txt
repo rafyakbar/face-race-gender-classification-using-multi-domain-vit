@@ -196,6 +196,7 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 00_abstract.md
 │   ├── 01_introduction.md
 │   ├── 02_related-works.md
+│   ├── 03_materials-and-methods_0-overview.md
 │   ├── 03_materials-and-methods_a-dataset.md
 │   ├── 03_materials-and-methods_b-vision-transformer.md
 │   ├── 03_materials-and-methods_c-random-forest.md
@@ -205,7 +206,6 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 03_materials-and-methods_g-classification-pipeline.md
 │   ├── 03_materials-and-methods_h-evaluation-metrics.md
 │   ├── 03_materials-and-methods_i-ethical-considerations.md
-│   ├── 03_materials-and-methods_overview.md
 │   ├── 04_results-and-discussion_a-global-performance.md
 │   ├── 04_results-and-discussion_b-feature-ablation-analysis.md
 │   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
@@ -380,7 +380,7 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
 - 02_related-works.md
   Section II (Related Works): 6 paragraf sintesis literatur tanpa subjudul mengenai pengenalan
   atribut demografis, ViT, keadilan sistem visi, fusi fitur multi-domain, dan posisi riset.
-- 03_materials-and-methods_overview.md
+- 03_materials-and-methods_0-overview.md
   Section III (Overview): Gambaran umum alur pemrosesan end-to-end dengan rujukan Figure 1.
 - 03_materials-and-methods_a-dataset.md
   Section III-A (Dataset): Karakteristik DemogPairs, pembagian data 80/20, preprocessing citra,
