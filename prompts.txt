@@ -1,12 +1,18 @@
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
-buat agar c d e f kalimat pembukanya beserta narasinya tidak sama dengan yang lain
+jika pada paper_outline.md bagian 'H. Evaluation Metrics' pada 'Paragraph 3: Subgroup Disparity and Performance Variation' dihapus, kemudian harus menghapus bagian apa saja?
+
+sekarang bantu saya menyusun/audit paper/03_materials-and-methods_g-classification-pipeline.md berdasarkan paper outline dan perhatikan:
+- perhatikan apa yang ada pada rules.
+- perhatikan target jumlah kata per paragraf yang ada pada paper outline.
+- jangan ada yang dicetak miring karena nantinya akan diterjemahkan ke bahasa inggris.
+- jangan menggunakan kata-kata seperti 'kendati', 'paradigma', 'guna'.
+- ingat rule "1.3. Aturan Penulisan Singkatan & Akronim (First-Mention Full Form)", cek file akronim, jika ada kepanjang yang ada singkatannya yang baru, maka tulis di file akronim.
+kerjakan dengan sangat teliti!
 
 ubah awalan kalimat pada paper/03_materials-and-methods_d-gaussian-naive-bayes.md agar tidak sama dengan:
 - paper/03_materials-and-methods_c-random-forest.md
 harus tetap sesuai dengan paper_outline.md
-
-pada folder paper, ada file yang namanya saya rename, perbaiki readme md, readme ai md, dan folder structure
 
 update readme md dan readme ai md
 
