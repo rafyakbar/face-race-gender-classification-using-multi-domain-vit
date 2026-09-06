@@ -27,4 +27,5 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)       | LOKASI PERTAMA KA
 11  | LN                  | Layer Normalization              | paper/03_materials-and-methods_b-vision-transformer.md (P1)
 12  | MLP                 | Multi-Layer Perceptron           | paper/03_materials-and-methods_b-vision-transformer.md (P1)
 13  | RBF                 | Radial Basis Function            | paper/03_materials-and-methods_f-support-vector-machine.md (P1)
+14  | OvR                 | One-vs-Rest                      | paper/03_materials-and-methods_h-evaluation-metrics.md (P1)
 ====================================================================================================
