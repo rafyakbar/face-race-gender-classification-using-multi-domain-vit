@@ -1,0 +1,41 @@
+\subsection{Evaluation Metrics}
+\label{sec:evaluation_metrics}
+
+Evaluasi performa klasifikasi multi-kelas enam subkelompok demografis pada tingkat subkelompok dilakukan menggunakan skema biner One-vs-Rest (OvR). Skema ini memanfaatkan empat komponen matriks konfusi per kelas untuk menghitung Akurasi OvR, Presisi, Recall, dan F1-Score pada setiap kelas $c \in \{1, \dots, K\}$. Keempat komponen tersebut mencakup $TP_c$ (True Positive), $TN_c$ (True Negative), $FP_c$ (False Positive), dan $FN_c$ (False Negative). Akurasi OvR pada \eqref{eq:10} mengukur rasio total prediksi benar terhadap seluruh data uji:
+\begin{equation}
+\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c}
+\label{eq:10}
+\end{equation}
+Sedangkan Presisi pada \eqref{eq:11} dan Recall pada \eqref{eq:12} memetakan ketepatan positif serta sensitivitas deteksi sistem per subkelompok:
+\begin{equation}
+\text{Precision}_c = \frac{TP_c}{TP_c + FP_c}
+\label{eq:11}
+\end{equation}
+\begin{equation}
+\text{Recall}_c = \frac{TP_c}{TP_c + FN_c}
+\label{eq:12}
+\end{equation}
+F1-Score pada \eqref{eq:13} dirumuskan sebagai rata-rata harmonik antara Presisi dan Recall untuk merepresentasikan keseimbangan evaluasi performa deteksi per subkelompok:
+\begin{equation}
+\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c}
+\label{eq:13}
+\end{equation}
+
+Untuk mengevaluasi efektivitas sistem klasifikasi secara menyeluruh pada data uji independen, metrik performa per subkelompok diagregasikan menjadi metrik evaluasi global. Pada formulasi ini, simbol $N$ menyatakan total sampel data uji ($N=2.160$), sedangkan $K$ menyatakan jumlah total subkelompok demografis ($K=6$). Akurasi Global (Overall Accuracy) pada \eqref{eq:14} dihitung sebagai rasio total prediksi benar, yaitu penjumlahan elemen diagonal utama matriks konfusi $\sum_{c=1}^K TP_c$, terhadap total sampel data uji $N$:
+\begin{equation}
+\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N}
+\label{eq:14}
+\end{equation}
+Selanjutnya, Presisi global (Macro Precision) pada \eqref{eq:15}, Recall global (Macro Recall) pada \eqref{eq:16}, dan F1-Score global (Macro F1-Score) pada \eqref{eq:17} dihitung melalui perataan makro tanpa bobot (unweighted macro average) melintasi $K=6$ subkelompok untuk memberikan bobot evaluasi yang setara pada setiap kelas demografis:
+\begin{equation}
+\text{Precision}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c
+\label{eq:15}
+\end{equation}
+\begin{equation}
+\text{Recall}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c
+\label{eq:16}
+\end{equation}
+\begin{equation}
+\text{F1-Score}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c
+\label{eq:17}
+\end{equation}

@@ -1,0 +1,11 @@
+\section{Materials and Methods}
+\label{sec:materials_and_methods}
+
+Kerangka kerja yang diusulkan memadukan representasi visual multi-domain dan optimasi model pembelajaran mesin untuk klasifikasi ras dan gender interseksional, sebagaimana diilustrasikan pada Figure~\ref{fig:1}. Metodologi diawali dengan pemisahan citra wajah berukuran 224 × 224 piksel pada dataset DemogPairs menjadi data latih dan data uji melalui stratified split. Citra dialirkan ke tiga model ViT-Base pre-trained yang dibekukan untuk mengekstraksi representasi laten berdimensi 768 dari token [CLS] secara offline, mencakup geometri biometrik wajah, ekspresi afektif, dan estimasi usia biologis. Ketiga vektor digabungkan melalui operasi fusi konkatenasi $\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$, di mana $\mathbf{z}_{\text{tri}}$ menyatakan vektor representasi tri-domain berdimensi 2.304, $\oplus$ melambangkan operator konkatenasi, serta $\mathbf{f}_{\text{face}}$, $\mathbf{f}_{\text{emotion}}$, dan $\mathbf{f}_{\text{age}}$ masing-masing merepresentasikan vektor fitur biometrik wajah, ekspresi, dan usia. Vektor representasi fusi maupun domain tunggal dan ganda diproses ke dalam pipeline modular yang memadukan penskalaan fitur, reduksi dimensionalitas PCA, serta klasifikasi akhir ke dalam enam kelas interseksional menggunakan empat algoritma, yaitu RF, GNB, LR, dan SVM. Penalaan hyperparameter dijalankan melalui 5-Fold Stratified Cross-Validation dengan skema GridSearchCV terisolasi untuk mencegah kebocoran informasi sebelum evaluasi akhir pada data uji independen.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{method.png}
+\caption{End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.}
+\label{fig:1}
+\end{figure*}
