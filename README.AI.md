@@ -364,7 +364,7 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 │   ├── 00_abstract.md                  # Title, authors, abstract (188 words), and IEEE keywords
 │   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
 │   ├── 02_related-works.md              # Section II (Related Works, 6 paragraphs, no subheadings)
-│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. i-ethical)
+│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. h-evaluation-metrics)
 │   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. f-prior-studies)
 │   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
 │   ├── 06_references.md                # Section VI (IEEE formatted bibliography)
@@ -558,8 +558,8 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 12. **Equation (4) CLS Token Definition:** `z_L^0` in `f_domain = LN(z_L^0)` refers specifically to the CLS token representation from the **final encoder layer L** of the ViT backbone. This must be stated explicitly when first introducing Eq. (4).
 13. **ViT Embedding as Task-Associated Representations:** Do not claim that ViT embeddings are exclusive or universal feature characterizations. Use "task-associated representations" as the preferred framing.
 14. **Corrected Disparity Values:** The confirmed disparity values from the experiment logs are: SVM ΔF1 = **0.0440** (0.9614 - 0.9174), SVM ΔPrecision = **0.0310**, SVM ΔRecall = **0.0750**, SVM ΔOvR Acc = **1.39 pp**; LR ΔF1 = **0.0422** (0.9558 - 0.9136), LR ΔPrecision = **0.0495** (0.9571 - 0.9076), LR ΔRecall = **0.0500** (0.9611 - 0.9111), LR ΔOvR Acc = **1.39 pp**.
-15. **Table XI Restructured (Two Parts):** Table XI (Subgroup Performance) must be presented in two blocks: (a) subgroup-level performance per classifier on tri-domain configuration, and (b) disparity summary comparing ΔRecall, ΔPrecision, ΔF1, ΔOvR across classifiers.
-16. **Range-Based Disparity Scope:** Explicitly note that range-based disparity (max - min) is a simple, interpretable indicator and does not constitute a comprehensive fairness audit.
+15. **Table XI Structure:** Table XI (Subgroup-Level Performance) reports per-subgroup classification metrics (Recall, Precision, F1-Score, OvR Accuracy) for SVM and LR on the tri-domain configuration.
+16. **Subgroup Performance Scope:** Note that subgroup evaluation reflects per-class performance across intersectional demographics and does not constitute a comprehensive fairness audit.
 17. **OvR Accuracy Context:** High OvR accuracy values are partially attributable to the 5:1 negative sample ratio in binary one-vs-rest evaluation; do not present OvR Accuracy as a sole or primary fairness indicator.
 18. **No "State-of-the-Art" Without Benchmark:** Do not claim state-of-the-art without a comprehensive benchmark; the proposed framework was evaluated only on DemogPairs.
 19. **Conclusion Must Reflect Actual Results:** Conclusions must state that tri-domain fusion achieved the highest performance on 3 of 4 classifiers. No "universal improvement" or "fairness fully resolved" claims are permitted.

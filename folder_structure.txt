@@ -205,10 +205,9 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 03_materials-and-methods_f-support-vector-machine.md
 │   ├── 03_materials-and-methods_g-classification-pipeline.md
 │   ├── 03_materials-and-methods_h-evaluation-metrics.md
-│   ├── 03_materials-and-methods_i-ethical-considerations.md
 │   ├── 04_results-and-discussion_a-global-performance.md
 │   ├── 04_results-and-discussion_b-feature-ablation-analysis.md
-│   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
+│   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md
 │   ├── 04_results-and-discussion_d-error-pattern-analysis.md
 │   ├── 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md
 │   ├── 04_results-and-discussion_f-comparison-with-prior-studies.md
@@ -399,15 +398,13 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
 - 03_materials-and-methods_g-classification-pipeline.md
   Section III-G: Pipeline pencegahan data leakage, StratifiedKFold cross-validation, dan reduksi dimensi PCA.
 - 03_materials-and-methods_h-evaluation-metrics.md
-  Section III-H: Formulasi metrik performa global (Akurasi, Presisi, Recall, F1) dan disparitas subkelompok.
-- 03_materials-and-methods_i-ethical-considerations.md
-  Section III-I: Pertimbangan etika riset biometrik, tata kelola data, dan transparansi AI bertanggung jawab.
+  Section III-H: Formulasi metrik performa tingkat subkelompok (Akurasi, Presisi, Recall, F1) dan agregasi global.
 - 04_results-and-discussion_a-global-performance.md
   Section IV-A: Analisis perbandingan kinerja global pada 28 konfigurasi eksperimen.
 - 04_results-and-discussion_b-feature-ablation-analysis.md
   Section IV-B: Analisis kontribusi ablasi representasi domain tunggal, ganda, dan tri-domain.
-- 04_results-and-discussion_c-intersectional-subgroup-performance-and-disparity-analysis.md
-  Section IV-C: Analisis performa granular dan metrik disparitas di keenam subkelompok demografis.
+- 04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md
+  Section IV-C: Analisis performa granular antarsubkelompok demografis pada model tri-domain.
 - 04_results-and-discussion_d-error-pattern-analysis.md
   Section IV-D: Telaah mendalam pola kesalahan prediksi dan tumpang tindih visual antarsubkelompok.
 - 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md

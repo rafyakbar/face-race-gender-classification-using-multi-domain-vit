@@ -12,7 +12,7 @@
 ### A. Allowed Claims and Core Focus
 1. **Fokus Utama**: Evaluasi empiris sistematis fusi fitur representasi laten dari tiga domain visual wajah komplementer (task-associated representations: Face biometrics, Facial Emotion, dan Facial Age) menggunakan Vision Transformer (ViT) pra-latih (offline feature extraction) dipadukan dengan optimasi pipeline classical machine learning (GridSearchCV 5-Fold Stratified Cross-Validation).
 2. **Klaim Keunggulan Tri-Domain**: Fusi tri-domain (2.304 dimensi) menghasilkan performa tertinggi pada **3 dari 4 classifier** yang dievaluasi (Support Vector Machine / SVM, Logistic Regression / LR, dan Gaussian Naive Bayes / GNB), dengan model terbaik **SVM Tri-Domain** (`Face ⊕ Emotion ⊕ Age`) mencapai akurasi **93.70%** dan F1-Score **0.9369** pada dataset DemogPairs (N=2.160 data uji). Pada Random Forest (RF), konfigurasi terbaik dicapai oleh skema dual-domain `Emotion ⊕ Face` (0.8685).
-3. **Analisis Disparitas Subkelompok (Subgroup Disparity Analysis)**: Evaluasi performa antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 0.91 dengan rentang 0.9174 s.d. 0.9614 pada model SVM Tri-Domain, dan ΔF1 = 0.0440. Pada model LR Tri-Domain, ΔF1 = 0.0422. Disparitas rentang (max - min) digunakan sebagai indikator sederhana variasi performa antarsubgrup, bukan sebagai ukuran fairness yang komprehensif.
+3. **Analisis Performa Subkelompok Interseksional (Intersectional Subgroup Performance Analysis)**: Evaluasi performa granular antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 0.91 dengan rentang 0.9174 s.d. 0.9614 pada model SVM Tri-Domain, dan melampaui 0.91 pada model LR Tri-Domain (rentang 0.9136 s.d. 0.9558), membuktikan konsistensi dan stabilitas representasi visual fusi multi-domain melintasi keenam kelompok demografis interseksional.
 4. **Metodologi Pencegahan Kebocoran Informasi**: Pipeline preprocessing dan validasi silang dirancang untuk mencegah kebocoran informasi (*information leakage*) dengan melakukan fitting penskalaan (Scaler) dan Principal Component Analysis (PCA) secara eksklusif hanya pada fold latih di dalam GridSearchCV, serta evaluasi akhir dilakukan pada subset uji held-out yang belum pernah dilihat selama proses pelatihan.
 5. **Standarisasi Istilah & Konvensi Penulisan**:
    - Dilarang keras menggunakan karakter em dash (tanda pisah panjang); gunakan tanda pisah biasa (- atau --), tanda kurung ( ), atau koma (,).
@@ -22,10 +22,9 @@
    - Dilarang menggunakan kata "significantly" tanpa adanya uji signifikansi statistik formal (statistical hypothesis testing); gunakan kata "substantially", "considerably", "notably", atau "achieved higher performance".
    - Hindari klaim "state-of-the-art" mutlak; gunakan "the highest performance among the compared studies on DemogPairs" atau "outperformed the compared methods".
    - Usahakan maksimal 3 sitasi per kalimat untuk mencegah penumpukan sitasi (*citation dumping*).
-   - Penempatan Eksplisit Pernyataan Etika (*Ethical Statement*): Dialokasikan secara struktural sebagai sub-bab tersendiri pada **Section III.I (Ethical Considerations and Responsible AI Use)**.
-   - Kepatuhan Mutlak Urutan Master Elemen: Urutan pemunculan seluruh Gambar (Figure 1-4), Tabel (Table I-XII), dan Persamaan (Eq. 1-19) pada naskah LaTeX wajib mematuhi secara ketat urutan kronologis yang tercantum pada tabel *Master Element Sequence & Layout Specifications*.
+   - Kepatuhan Mutlak Urutan Master Elemen: Urutan pemunculan seluruh Gambar (Figure 1-4), Tabel (Table I-XII), dan Persamaan (Eq. 1-17) pada naskah LaTeX wajib mematuhi secara ketat urutan kronologis yang tercantum pada tabel *Master Element Sequence & Layout Specifications*.
    - Pelaporan Parameter Aktif pada Tabel Hasil (Table VII-X): Pada penulisan naskah akhir, parameter yang tidak aktif atau tidak relevan untuk konfigurasi terpilih (misalnya `degree` pada kernel RBF/linear, atau `gamma` pada kernel linear) tidak boleh ditampilkan seolah-olah berpengaruh; tampilkan hanya parameter yang aktif secara fungsional atau beri tanda strip (-) / N/A untuk menjaga ketepatan teknis.
-   - Seluruh persamaan matematika diberi nomor berurutan secara individual dari (1) hingga (19).
+   - Seluruh persamaan matematika diberi nomor berurutan secara individual dari (1) hingga (17).
    - Seluruh tabel yang memiliki kolom lebar atau memuat parameter model wajib diinstruksikan berformat LaTeX Full Width (`\begin{table*} ... \end{table*}`).
 
 ### B. Negative Constraints and Disallowed Claims
@@ -49,7 +48,6 @@
 - **Pipeline Transformasi**: Rantai transformasi Scaler - PCA - Classifier [(9)](#eq9).
 - **Metrik Evaluasi per-Subkelompok (One-vs-Rest)**: Formulasi kanonikal Accuracy [(10)](#eq10), Precision [(11)](#eq11), Recall [(12)](#eq12), dan F1-Score [(13)](#eq13) per kelas.
 - **Metrik Evaluasi Agregasi Global**: Formulasi Overall Accuracy [(14)](#eq14), Global Precision [(15)](#eq15), Global Recall [(16)](#eq16), dan Global F1-Score [(17)](#eq17).
-- **Metrik Disparitas Keadilan Antarsubkelompok**: Formulasi gap rentang disparitas Recall [(18)](#eq18) dan F1-Score [(19)](#eq19).
 - **Disiplin Simbol Sederhana**: Penulisan ukuran dimensi (224 × 224), operasi aritmetika (768 + 768 + 768 = 2304), rasio (80/20, 3 Ras × 2 Gender), dan rentang (±5%) wajib menggunakan teks biasa tanpa math mode.
 
 ---
@@ -172,14 +170,14 @@ Introduction disusun dalam 7 paragraf berbobot dengan alur narasi yang kohesif:
      *(Tolok ukur komparatif empiris melintasi berbagai skema ablasi fitur dan pengklasifikasi pembelajaran mesin klasik yang dioptimalkan melalui penyetelan hyperparameter validasi silang berstrata, mengkaji perilaku batas keputusan antarmodel linier, probabilistik, ensemble, dan berbasis kernel).*
   3. **Competitive classification performance on the DemogPairs dataset**, achieving higher reported performance compared to the evaluated single-domain and dual-domain configurations on the majority of classifiers.  
      *(Capaian performa klasifikasi kompetitif pada dataset DemogPairs yang mencapai performa lebih tinggi dibandingkan konfigurasi domain tunggal dan domain ganda yang dievaluasi pada mayoritas pengklasifikasi).*
-  4. **An intersectional subgroup performance and disparity analysis**, evaluating subgroup-level classification performance and performance variation across demographic subgroups using range-based disparity metrics - noting that this constitutes a subgroup performance analysis rather than a comprehensive fairness assessment.  
-     *(Analisis performa dan disparitas subkelompok interseksional, mengevaluasi performa klasifikasi per-subkelompok dan variasi performa antarsubkelompok demografis menggunakan metrik disparitas berbasis rentang - dengan catatan bahwa ini merupakan analisis performa subkelompok dan bukan penilaian fairness yang komprehensif).*
+  4. **A granular intersectional subgroup performance analysis**, evaluating subgroup-level classification performance across six demographic subgroups, providing an in-depth characterization of model behaviors across racial and gender intersections while systematically revealing the consistency of multi-domain feature representations on held-out evaluation cohorts.  
+     *(Analisis performa subkelompok interseksional granular yang mengevaluasi performa klasifikasi di keenam subkelompok demografis, memberikan karakterisasi mendalam mengenai perilaku model melintasi persilangan ras dan gender sekaligus mengungkap secara sistematis konsistensi representasi fitur multi-domain pada kohort evaluasi held-out).*
 
 ### Paragraph 7: Paper Organization
 - **Target Kata**: 75-100 kata (minimal 75 kata, maksimal 100 kata).
 - **Tujuan**: Menjelaskan sistematika dan fungsi setiap bab dalam artikel secara ringkas dan padat.
 - **Poin Narasi**:
-  Artikel ini disusun sebagai berikut: Section II mengulas sintesis literatur terkait (Related Works); Section III menjabarkan dataset, metodologi ekstraksi multi-domain ViT, pipeline pengklasifikasi, dan pertimbangan etika (Materials and Methods); Section IV memaparkan analisis komparatif performa global, studi ablasi, analisis disparitas subkelompok, pola kesalahan, dan perbandingan dengan literatur terdahulu (Results and Discussion); Section V menyimpulkan temuan utama, keterbatasan, dan arah riset mendatang (Conclusion).
+  Artikel ini disusun sebagai berikut: Section II mengulas sintesis literatur terkait (Related Works); Section III menjabarkan dataset, metodologi ekstraksi multi-domain ViT, pipeline pengklasifikasi, serta metrik evaluasi (Materials and Methods); Section IV memaparkan analisis komparatif performa global, studi ablasi, analisis performa subkelompok interseksional, pola kesalahan, dan perbandingan dengan literatur terdahulu (Results and Discussion); Section V menyimpulkan temuan utama, keterbatasan, dan arah riset mendatang (Conclusion).
 
 ---
 
@@ -428,7 +426,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
   - Total fitting: $1.086 \text{ kombinasi} \times 5 \text{ fold} = 5.430 \text{ fits}$ per konfigurasi fitur, sehingga untuk 7 skema fitur mencapai **38.010 model fits** (ditambah 28 refit final).
 
 ### H. Evaluation Metrics
-Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100-115 kata**:
+Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Subgroup-Level One-vs-Rest Performance Metrics
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -455,27 +453,6 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100-115 k
   $$\text{Precision}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{15}$$
   $$\text{Recall}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{16}$$
   $$\text{F1-Score}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{17}$$
-
-#### Paragraph 3: Subgroup Disparity and Performance Variation
-- **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Tujuan**: Menjelaskan formulasi metrik disparitas antarsubkelompok berbasis rentang (range-based disparity metrics) untuk menganalisis kesenjangan performa.
-- **Poin Narasi**:
-  1. Evaluasi keadilan algoritmik dan variasi performa antarsubkelompok diukur menggunakan metrik disparitas berbasis rentang $(\max - \min)$ pada nilai Recall dan F1-Score antarkelas.
-  2. Disparitas Recall ($\Delta_{\text{Recall}}$) dan Disparitas F1-Score ($\Delta_{\text{F1}}$) mengukur selisih absolut antara performa subkelompok tertinggi dan terendah sebagai indikator variasi performa.
-  3. Metrik disparitas rentang ini digunakan sebagai indikator diagnostik sederhana variasi performa antarsubgrup dan bukan penilaian keadilan komprehensif, dengan memperhatikan bahwa tingginya Akurasi OvR sebagian dipengaruhi oleh dominasi sampel negatif (rasio 5:1 pada evaluasi biner).
-- **Formulasi Matematis (Eq. 18 - Eq. 19)**:
-  $$\Delta_{\text{Recall}} = \max_{c \in \{1,\dots,K\}}(\text{Recall}_c) - \min_{c \in \{1,\dots,K\}}(\text{Recall}_c) \tag{18}$$
-  $$\Delta_{\text{F1}} = \max_{c \in \{1,\dots,K\}}(\text{F1-Score}_c) - \min_{c \in \{1,\dots,K\}}(\text{F1-Score}_c) \tag{19}$$
-
-### I. Ethical Considerations and Responsible AI Use
-- **Target Kata**: 100-120 kata (minimal 100 kata, maksimal 120 kata).
-- **Tujuan**: Memaparkan batasan etika dan tata kelola penggunaan model visi komputer untuk atribut demografis.
-- **Poin Pembahasan**:
-  1. *Tujuan Penelitian*: Penelitian ini dilakukan murni untuk tujuan akademik, benchmarking ilmiah, dan riset mitigasi disparitas algoritmik (algorithmic fairness) pada visi komputer.
-  2. *Penggunaan Dataset*: Eksperimen menggunakan dataset publik DemogPairs yang telah dipublikasikan untuk keperluan riset evaluasi bias.
-  3. *Batasan Deployment*: Model klasifikasi demografis ini tidak dirancang atau direkomendasikan untuk deployment pengawasan publik (*mass surveillance*), penegakan hukum otomatis, atau pengambilan keputusan berdampak tinggi tanpa pengawasan etis dan mekanisme *human-in-the-loop*.
-  4. *Privasi dan Generalisasi*: Menegaskan perlunya kehati-hatian dalam penerapan praktis terkait privasi subjek serta batasan representasi 3 kelompok ras yang tidak mencakup keberagaman rasial penuh secara global.
-
 ---
 
 ## IV. RESULTS AND DISCUSSION
@@ -571,23 +548,21 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 0.8764 pada SVM). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 0.9255) memberikan peningkatan $+0.0172$ di atas fitur `Face` murni (0.9083). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
 
-### C. Intersectional Subgroup Performance and Disparity Analysis
+### C. Intersectional Subgroup Performance Analysis
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVM Model
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI(a)](#tab11a). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI](#tab11). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
 
-#### Paragraph 2: Comparative Disparity Evaluation between SVM and Logistic Regression
+#### Paragraph 2: Comparative Subgroup Performance between SVM and Logistic Regression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan profil disparitas SVM dengan Logistic Regression Tri-Domain berdasarkan ringkasan disparitas pada [Table XI(b)](#tab11b). Model LR Tri-Domain mencatat $\Delta_{\text{Recall}} = 0.0500$, $\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Precision}} = 0.0495$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$, sedangkan SVM mencatat $\Delta_{\text{Recall}} = 0.0750$, $\Delta_{\text{F1}} = 0.0440$, $\Delta_{\text{Precision}} = 0.0310$, dan $\Delta_{\text{OvR Acc}} = 1.39\text{ pp}$. Nilai disparitas kedua model bervariasi antar-metrik, sehingga tidak dapat disimpulkan salah satu model lebih fair daripada yang lain, mengingat fairness tidak diukur hanya melalui satu statistik disparitas rentang.
+- **Fokus Narasi**: Membandingkan profil kinerja subkelompok antara model SVM dan Logistic Regression Tri-Domain berdasarkan [Table XI](#tab11). Model LR Tri-Domain juga menunjukkan konsistensi performa yang tinggi dengan F1-Score melampaui 0.91 pada keenam kelas demografis (rentang 0.9136 s.d. 0.9558), di mana subkelompok White Males mencatat performa tertinggi (0.9558) serupa dengan SVM (0.9614). Temuan empiris ini membuktikan bahwa fusi fitur laten tri-domain menghasilkan representasi visual yang tangguh dan terdistribusi stabil melintasi seluruh kelompok demografis baik pada pengklasifikasi linier maupun model batas keputusan nonlinier.
 
 - **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
-- **Tabel XI (Kinerja per-Subkelompok dan Ringkasan Disparitas Model Tri-Domain)**:
+- **Tabel XI (Kinerja Klasifikasi per-Subkelompok Model Tri-Domain)**:
 
-**Table XI. Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.**
-
-*(a) Subgroup-Level Performance Metrics*
+**Table XI. Subgroup-Level Performance for Tri-Domain Models.**
 
 | Classifier | Subgroup | Recall | Precision | F1-Score | OvR Accuracy |
 |---|---|:---:|:---:|:---:|:---:|
@@ -603,13 +578,6 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 | | `Asian_Males` | 0.9278 | 0.9076 | 0.9176 | 97.22% |
 | | `Asian_Females` | 0.9111 | 0.9162 | 0.9136 | 97.13% |
 | | `Black_Females` | 0.9111 | 0.9213 | 0.9162 | 97.22% |
-
-*(b) Subgroup Disparity Summary ($\max - \min$)*
-
-| Classifier | $\Delta_{\text{Recall}}$ | $\Delta_{\text{Precision}}$ | $\Delta_{\text{F1}}$ | $\Delta_{\text{OvR Acc}}$ |
-|---|:---:|:---:|:---:|:---:|
-| **SVM (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0750 | 0.0310 | 0.0440 | 1.39 pp |
-| **LR (Tri-Domain: `Face ⊕ Emotion ⊕ Age`)** | 0.0500 | 0.0495 | 0.0422 | 1.39 pp |
 
 ### D. Error Pattern Analysis
 Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 kata**:
@@ -770,12 +738,10 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Eq. (15)** | Persamaan | Section III.H (Paragraph 2) | *Formulasi Presisi Global (Global Precision)* | In-line Math / Standard |
 | **Eq. (16)** | Persamaan | Section III.H (Paragraph 2) | *Formulasi Recall Global (Global Recall)* | In-line Math / Standard |
 | **Eq. (17)** | Persamaan | Section III.H (Paragraph 2) | *Formulasi F1-Score Global (Global F1-Score)* | In-line Math / Standard |
-| **Eq. (18)** | Persamaan | Section III.H (Paragraph 3) | *Formulasi Rentang Disparitas Recall Subkelompok ($\Delta_{\text{Recall}}$)* | In-line Math / Standard |
-| **Eq. (19)** | Persamaan | Section III.H (Paragraph 3) | *Formulasi Rentang Disparitas F1-Score Subkelompok ($\Delta_{\text{F1}}$)* | In-line Math / Standard |
 | **Table VII** | Tabel | Section IV.A (Paragraph 1) | *Performance Benchmark of Random Forest across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table VIII** | Tabel | Section IV.A (Paragraph 2) | *Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table IX** | Tabel | Section IV.A (Paragraph 3) | *Performance Benchmark of Logistic Regression across Seven Feature Configurations.* | **Full Width (`table*`)** |
 | **Table X** | Tabel | Section IV.A (Paragraph 4) | *Performance Benchmark of Support Vector Machine across Seven Feature Configurations.* | **Full Width (`table*`)** |
-| **Table XI** | Tabel | Section IV.C (Fairness) | *Subgroup-Level Performance and Disparity Summary for Tri-Domain Models.* | **Full Width (`table*`)** |
+| **Table XI** | Tabel | Section IV.C (Subgroups) | *Subgroup-Level Performance for Tri-Domain Models.* | **Full Width (`table*`)** |
 | **Figure 4** | Gambar | Section IV.D (Error Pattern) | *Confusion Matrices across Feature Fusion Schemes on the Held-Out Test Set: (a) Single-Domain (`Face`), (b) Dual-Domain (`Emotion ⊕ Face`), and (c) Tri-Domain (`Face ⊕ Emotion ⊕ Age`).* | **Full Width (`figure*`)** |
 | **Table XII** | Tabel | Section IV.F (Comparison) | *Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | **Full Width (`table*`)** |
