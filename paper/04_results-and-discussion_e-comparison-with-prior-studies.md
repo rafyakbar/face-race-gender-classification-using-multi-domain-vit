@@ -1,4 +1,4 @@
-## F. Comparison with Prior Studies
+## E. Comparison with Prior Studies
 
 <a id="tab12"></a>
 **Table XII. Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.**

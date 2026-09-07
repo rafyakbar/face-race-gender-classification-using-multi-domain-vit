@@ -646,18 +646,7 @@ Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 k
 | **White_Males** | 1 | 4 | 0 | 4 | 2 | **349** | 360 |
 | **Total Predicted** | 360 | 368 | 342 | 355 | 369 | 366 | **2,160** |
 
-### E. Selected SVM Kernel Configuration
-Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
-
-#### Paragraph 1: Empirical Behavior of the Polynomial Kernel Configuration
-- **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membahas konfigurasi Support Vector Machine terpilih dari hasil grid search, yaitu kernel polinomial derajat 2 ($C=10$, $\gamma=$ scale, $\text{coef0}=0.0$ default, tanpa PCA, tanpa Scaler) sesuai formulasi [(8)](#eq8). Perlu ditegaskan bahwa konfigurasi ini merupakan model terbaik di dalam search space yang dievaluasi, bukan klaim keunggulan matematis mutlak dari kernel tersebut secara umum. Secara konseptual, pemetaan polinomial derajat 2 memungkinkan model menangkap interaksi kuadratik antardimensi fitur laten tanpa memerlukan pemetaan eksplisit berdimensi tak terhingga.
-
-#### Paragraph 2: Latent Representation Preservation without PCA Reduction
-- **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis temuan empiris bahwa konfigurasi SVM terbaik memilih ruang fitur penuh (`pca=None`). Pemilihan `pca=None` menunjukkan bahwa mempertahankan full latent representation memberikan performa terbaik dalam search space yang dievaluasi. Interpretasi ini bersifat empiris dan tidak dapat disimpulkan bahwa reduksi PCA secara definitif membuang informasi penting.
-
-### F. Comparison with Prior Studies
+### E. Comparison with Prior Studies
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Comparative Performance on the DemogPairs Dataset
