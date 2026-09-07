@@ -1,18 +1,14 @@
-
-@Article{s21134597,
-AUTHOR = {Deng, Yulan and Teng, Shaohua and Fei, Lunke and Zhang, Wei and Rida, Imad},
-TITLE = {A Multifeature Learning and Fusion Network for Facial Age Estimation},
-JOURNAL = {Sensors},
-VOLUME = {21},
-YEAR = {2021},
-NUMBER = {13},
-ARTICLE-NUMBER = {4597},
-URL = {https://www.mdpi.com/1424-8220/21/13/4597},
-PubMedID = {34283133},
-ISSN = {1424-8220},
-ABSTRACT = {Age estimation from face images has attracted much attention due to its favorable and many real-world applications such as video surveillance and social networking. However, most existing studies usually learn a single kind of age feature and ignore other appearance features such as gender and race, which have a great influence on the age pattern. In this paper, we proposed a compact multifeature learning and fusion method for age estimation. Specifically, we first used three subnetworks to learn gender, race, and age information. Then, we fused these complementary features to further form more robust features for age estimation. Finally, we engineered a regression-ranking age-feature estimator to convert the fusion features into the exact age numbers. Experimental results on three benchmark databases demonstrated the effectiveness and efficiency of the proposed method on facial age estimation in comparison to previous state-of-the-art methods. Moreover, compared with previous state-of-the-art methods, our model was more compact with only a 20 MB memory overhead and is suitable for deployment on mobile or embedded devices for age estimation.},
-DOI = {10.3390/s21134597}
+@inproceedings{10.1609/aaai.v38i6.28396,
+  author = {Wang, Zhicheng and Xiao, Liwen and Cao, Zhiguo and Lu, Hao},
+  title = {Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting},
+  year = {2024},
+  isbn = {978-1-57735-887-9},
+  publisher = {AAAI Press},
+  url = {https://doi.org/10.1609/aaai.v38i6.28396},
+  doi = {10.1609/aaai.v38i6.28396},
+  abstract = {Class-agnostic counting (CAC) aims to count objects of interest from a query image given few exemplars. This task is typically addressed by extracting the features of query image and exemplars respectively and then matching their feature similarity, leading to an extract-then-match paradigm. In this work, we show that CAC can be simplified in an extract-and-match manner, particularly using a vision transformer (ViT) where feature extraction and similarity matching are executed simultaneously within the self-attention. We reveal the rationale of such simplification from a decoupled view of the self-attention. The resulting model, termed CACViT, simplifies the CAC pipeline into a single pretrained plain ViT. Further, to compensate the loss of the scale and the order-of-magnitude information due to resizing and normalization in plain ViT, we present two effective strategies for scale and magnitude embedding. Extensive experiments on the FSC147 and the CARPK datasets show that CACViT significantly outperforms state-of-the-art CAC approaches in both effectiveness (23.60\% error reduction) and generalization, which suggests CACViT provides a concise and strong baseline for CAC. Code will be available.},
+  booktitle = {Proceedings of the Thirty-Eighth AAAI Conference on Artificial Intelligence and Thirty-Sixth Conference on Innovative Applications of Artificial Intelligence and Fourteenth Symposium on Educational Advances in Artificial Intelligence},
+  articleno = {648},
+  numpages = {9},
+  series = {AAAI'24/IAAI'24/EAAI'24}
 }
-
-
-
