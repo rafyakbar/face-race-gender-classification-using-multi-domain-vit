@@ -13,6 +13,7 @@ paper/01_introduction.md: paragraf 2:
   - paper/references/2023_Facial attribute classification by deep mining inter-attribute correlations.bib
 - "Pemodelan atribut secara terpisah dapat membatasi analisis terhadap kelompok yang terbentuk dari kombinasi atribut, seperti ras dan gender":
   - paper/references/2022_Racial, skin tone, and sex disparities in automated proctoring software.bib
+  - paper/references/2022_Gender and race classification using geodesic distance measurement.bib
 - "Akibatnya, metrik agregat berpotensi tidak menangkap disparitas performa pada subkelompok tertentu":
   - paper/references/2023_Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.nbib
 - "Evaluasi pada subkelompok demografis dengan representasi yang seimbang secara terkontrol dapat menyediakan landasan komparatif yang lebih konsisten dan objektif untuk mengukur variasi performa antarkelompok":
@@ -181,3 +182,28 @@ paper/04_results-and-discussion_a-global-performance.md: paragraf 3:
 paper/04_results-and-discussion_a-global-performance.md: paragraf 4:
 - "Pada hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut":
   - paper/references/2026_SVC.bib
+
+paper/04_results-and-discussion_d-error-pattern-assessment.md: paragraf 2:
+- "Pola empiris ini konsisten dengan kemungkinan adanya tumpang tindih fenotipe (phenotypic overlap) antarras pada representasi geometri biometrik wajah tunggal":
+  - paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+
+paper/04_results-and-discussion_e-comparison-with-prior-studies.md: Table XII:
+- "MD-ViT":
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+- "Dual-ViT":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+
+paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 1:
+- "Capaian kuantitatif tersebut melampaui metrik yang dilaporkan pada model Dual-ViT + SVM, yaitu Akurasi 92.41% dan F1-Score 0.9238, serta model MD-ViT + XGBoost dengan Akurasi 89.07% dan F1-Score 0.8901":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+
+paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 2:
+- "Penelitian seminal mengenai perancangan dataset DemogPairs meletakkan landasan penting dalam mengukur dampak ketidakseimbangan demografis pada sistem pengenalan wajah":
+  - paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
+- "kerangka kerja integrasi representasi tiga domain yang diusulkan dalam penelitian ini menghasilkan akurasi tertinggi di antara studi-studi yang dibandingkan pada dataset DemogPairs":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+- "perbandingan disparitas lintas seluruh skema sebelumnya tidak dapat disertakan karena informasi variasi performa tersebut tidak dilaporkan dalam literatur terkait":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
