@@ -2,6 +2,23 @@ Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubung
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+sekarang audit ulang nomor referesi pada seluruh kalimat klaim pada paper/*.md, perhatikan:
+- sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
+- nomor referensi yang dipakai HARUS merujuk ke entri yang sudah ada di paper/06_references.md, jangan membuat nomor baru
+- gunakan format tautan interaktif: [[N]](06_references.md#refN), misalnya [[1]](06_references.md#ref1)
+- untuk beberapa sitasi dalam satu kalimat gunakan format terpisah, contoh: [[1]](06_references.md#ref1), [[2]](06_references.md#ref2)
+- urutan nomor mengikuti kemunculan pertama sitasi pada naskah sesuai pedoman IEEE (referensi pertama kali disitasi mendapat nomor terkecil)
+- setiap klaim yang memetakan ke file di paper/references (lihat paper/references.txt) harus diberi nomor referensi yang benar dan konsisten
+- pastikan setiap kalimat yang mengutip sumber diberi nomor, dan tidak ada klaim luar tanpa sitasi
+- pastikan nomor yang sama dipakai ulang untuk sumber yang sama (jangan membuat nomor ganda untuk satu sumber)
+- periksa ulang seluruh paper/*.md agar tidak ada sitasi yang hilang, salah nomor, atau melompat
+- jangan mengubah isi kalimat, hanya menambahkan nomor referensi di posisi yang tepat (sebelum tanda baca)
+- delegasikan audit ke subagent secara paralel
+- satu subagent HANYA BOLEH AUDIT satu file pada folder paper/ agar hasilnya optimal
+- berikan instruksi ke subagent dengan jelas
+- pastikan audit memeriksa konsistensi nomor dengan paper/06_references.md, posisi sitasi sebelum tanda baca, dan tidak ada sitasi yang hilang/salah nomor
+- lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
 sekarang berikan nomor referensi pada seluruh klaim di paper/*.md sesuai daftar yang ada pada paper/06_references.md, contoh formatnya seperti pada D:\Research\chexnet-raddino-medical-captioning\paper, perhatikan:
 - sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
 - nomor referensi yang dipakai HARUS merujuk ke entri yang sudah ada di paper/06_references.md, jangan membuat nomor baru
