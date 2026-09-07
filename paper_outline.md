@@ -161,7 +161,7 @@ Introduction disusun dalam 7 paragraf berbobot dengan alur narasi yang kohesif:
   4. Optimasi hyperparameter dilakukan melalui validasi silang Stratified Cross-Validation dengan pipeline modular Scaler-PCA yang dirancang untuk mencegah kebocoran informasi.
 
 ### Paragraph 6: Key Contributions
-- **Target Kata**: 200-250 kata (paragraf khusus kontribusi utama).
+- **Target Kata**: 125-175 kata (paragraf khusus kontribusi utama).
 - **Tujuan**: Menyajikan empat kontribusi ilmiah penelitian secara konseptual dalam Bahasa Inggris disertai terjemahan Bahasa Indonesia, tanpa mengkhususkan SVM pada poin benchmarking, tidak menyebut DemogPairs sebagai benchmark (melainkan dataset utama), tanpa rincian angka numerik/hyperparameter spesifik, serta menjelaskan esensi analisis disparitas subkelompok.
 - **Poin Narasi (English & Indonesian Translation)**:
   1. **A Tri-Domain Vision Transformer feature fusion framework** integrating face-associated biometric representations, expression-related representations, and age-associated facial representations into a unified latent feature vector for intersectional demographic classification.  
@@ -170,11 +170,11 @@ Introduction disusun dalam 7 paragraf berbobot dengan alur narasi yang kohesif:
      *(Tolok ukur komparatif empiris melintasi berbagai skema ablasi fitur dan pengklasifikasi pembelajaran mesin klasik yang dioptimalkan melalui penyetelan hyperparameter validasi silang berstrata, mengkaji perilaku batas keputusan antarmodel linier, probabilistik, ensemble, dan berbasis kernel).*
   3. **Competitive classification performance on the DemogPairs dataset**, achieving higher reported performance compared to the evaluated single-domain and dual-domain configurations on the majority of classifiers.  
      *(Capaian performa klasifikasi kompetitif pada dataset DemogPairs yang mencapai performa lebih tinggi dibandingkan konfigurasi domain tunggal dan domain ganda yang dievaluasi pada mayoritas pengklasifikasi).*
-  4. **A granular intersectional subgroup performance analysis**, evaluating subgroup-level classification performance across six demographic subgroups, providing an in-depth characterization of model behaviors across racial and gender intersections while systematically revealing the consistency of multi-domain feature representations on held-out evaluation cohorts.  
-     *(Analisis performa subkelompok interseksional granular yang mengevaluasi performa klasifikasi di keenam subkelompok demografis, memberikan karakterisasi mendalam mengenai perilaku model melintasi persilangan ras dan gender sekaligus mengungkap secara sistematis konsistensi representasi fitur multi-domain pada kohort evaluasi held-out).*
+  4. **An in-depth intersectional subgroup performance evaluation**, assessing subgroup-level classification performance across six demographic subgroups, providing an in-depth characterization of model behaviors across racial and gender intersections while systematically revealing the consistency of multi-domain feature representations on held-out evaluation cohorts.  
+     *(Evaluasi performa subkelompok interseksional mendalam yang mengevaluasi performa klasifikasi di keenam subkelompok demografis, memberikan karakterisasi mendalam mengenai perilaku model melintasi persilangan ras dan gender sekaligus mengungkap secara sistematis konsistensi representasi fitur multi-domain pada kohort evaluasi held-out).*
 
 ### Paragraph 7: Paper Organization
-- **Target Kata**: 75-100 kata (minimal 75 kata, maksimal 100 kata).
+- **Target Kata**: 50-75 kata (paragraf penutup pengantar struktur artikel).
 - **Tujuan**: Menjelaskan sistematika dan fungsi setiap bab dalam artikel secara ringkas dan padat.
 - **Poin Narasi**:
   Artikel ini disusun sebagai berikut: Section II mengulas sintesis literatur terkait (Related Works); Section III menjabarkan dataset, metodologi ekstraksi multi-domain ViT, pipeline pengklasifikasi, serta metrik evaluasi (Materials and Methods); Section IV memaparkan analisis komparatif performa global, studi ablasi, analisis performa subkelompok interseksional, pola kesalahan, dan perbandingan dengan literatur terdahulu (Results and Discussion); Section V menyimpulkan temuan utama, keterbatasan, dan arah riset mendatang (Conclusion).
@@ -351,19 +351,19 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 |---|---|:---:|
 | Feature Scaler | `None`, `MinMaxScaler` | 2 |
 | Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
-| Number of Estimators (`n_estimators`) | `100`, `200` | 2 |
-| Maximum Tree Depth (`max_depth`) | `None`, `20`, `30` | 3 |
-| Feature Subspace (`max_features`) | `'sqrt'`, `'log2'` | 2 |
-| Minimum Samples Split (`min_samples_split`) | `2`, `5` | 2 |
-| Minimum Samples Leaf (`min_samples_leaf`) | `1`, `2` | 2 |
-| **Total Grid Combinations** | **2 × 3 × 2 × 3 × 2 × 2 × 2** | **288 (1,440 fits)** |
+| Number of Estimators | `100`, `200` | 2 |
+| Maximum Tree Depth | `None`, `20`, `30` | 3 |
+| Feature Subspace | `'sqrt'`, `'log2'` | 2 |
+| Minimum Samples Split | `2`, `5` | 2 |
+| Minimum Samples Leaf | `1`, `2` | 2 |
+| **Total Grid Combinations** | - | **288 (1,440 fits)** |
 
 ### D. Gaussian Naive Bayes
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
 - **Tujuan**: Menjelaskan pengklasifikasi probabilistik Gaussian Naive Bayes (GNB) berbasis Teorema Bayes dengan asumsi independensi fitur kontinu.
 - **Formulasi Likelihood Gaussian**:
   $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{6}$$
-- **Poin Pembahasan**: Estimasi parameter mean $\mu_{c,i}$ dan varians $\sigma_{c,i}^2$, serta penalaan stabilitas numerik melalui parameter penghalusan varians `var_smoothing` yang dieksplorasi secara logaritmik sesuai ruang pencarian pada [Table IV](#tab4).
+- **Poin Pembahasan**: Estimasi parameter mean $\mu_{c,i}$ dan varians $\sigma_{c,i}^2$, serta penalaan stabilitas numerik melalui parameter penghalusan varians yang dieksplorasi secara logaritmik sesuai ruang pencarian pada [Table IV](#tab4).
 - **Tabel IV (Ruang Pencarian Hyperparameter Gaussian Naive Bayes)**:
 
 **Table IV. Hyperparameter Search Space for Gaussian Naive Bayes Classifier.**
@@ -372,15 +372,15 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 |---|---|:---:|
 | Feature Scaler | `None`, `MinMaxScaler` | 2 |
 | Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
-| Variance Smoothing (`var_smoothing`) | $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) | 40 |
-| **Total Grid Combinations** | **2 × 3 × 40** | **240 (1,200 fits)** |
+| Variance Smoothing | $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) | 40 |
+| **Total Grid Combinations** | — | **240 (1,200 fits)** |
 
 ### E. Logistic Regression
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
 - **Tujuan**: Menjelaskan formulasi multinomial Logistic Regression (LR) / Softmax regression untuk klasifikasi multi-kelas.
 - **Formulasi Probabilitas Softmax**:
   $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{7}$$
-- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti $C$, dan batas konvergensi `max_iter` sesuai ruang pencarian pada [Table V](#tab5).
+- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti regularisasi, dan batas konvergensi jumlah iterasi sesuai ruang pencarian pada [Table V](#tab5).
 - **Tabel V (Ruang Pencarian Hyperparameter Logistic Regression)**:
 
 **Table V. Hyperparameter Search Space for Logistic Regression Classifier.**
@@ -389,10 +389,10 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 |---|---|:---:|
 | Feature Scaler | `None`, `MinMaxScaler` | 2 |
 | Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
-| Regularization Strength ($C$) | `0.01`, `0.1`, `1`, `10`, `100` | 5 |
+| Regularization Strength | `0.01`, `0.1`, `1`, `10`, `100` | 5 |
 | Optimization Solver | `'lbfgs'`, `'saga'`, `'newton-cg'` | 3 |
-| Maximum Iterations (`max_iter`) | `500`, `1000`, `2000` | 3 |
-| **Total Grid Combinations** | **2 × 3 × 5 × 3 × 3** | **270 (1,350 fits)** |
+| Maximum Iterations | `500`, `1000`, `2000` | 3 |
+| **Total Grid Combinations** | — | **270 (1,350 fits)** |
 
 ### F. Support Vector Machine
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
@@ -400,7 +400,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 - **Formulasi Kernel Polinomial Derajat 2**:
   $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d = 2 \tag{8}$$
   *(di mana $\text{coef0}$ merupakan parameter konstan intercept independen pada formulasi kernel polinomial; pada penelitian ini digunakan nilai bawaan $\text{coef0} = 0.0$ sesuai implementasi standar `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search)*
-- **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi $C$, koefisien kernel $\gamma$, dan derajat polinomial $d$ (dengan parameter konstan default $\text{coef0} = 0.0$) sesuai ruang pencarian pada [Table VI](#tab6).
+- **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi, koefisien kernel, dan derajat polinomial sesuai ruang pencarian pada [Table VI](#tab6).
 - **Tabel VI (Ruang Pencarian Hyperparameter Support Vector Machine)**:
 
 **Table VI. Hyperparameter Search Space for Support Vector Machine.**
@@ -409,11 +409,11 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 |---|---|:---:|
 | Feature Scaler | `None`, `MinMaxScaler` | 2 |
 | Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
-| Regularization Parameter ($C$) | `0.01`, `0.1`, `1`, `10` | 4 |
+| Regularization Parameter | `0.01`, `0.1`, `1`, `10` | 4 |
 | Kernel Function | `'linear'`, `'rbf'`, `'poly'` | 3 |
-| Polynomial Degree (`degree`) | `2`, `3` | 2 |
-| Kernel Coefficient (`gamma`) | `'scale'`, `'auto'` | 2 |
-| **Total Grid Combinations** | **2 × 3 × 4 × 3 × 2 × 2** | **288 (1,440 fits)** |
+| Polynomial Degree | `2`, `3` | 2 |
+| Kernel Coefficient | `'scale'`, `'auto'` | 2 |
+| **Total Grid Combinations** | — | **288 (1,440 fits)** |
 
 ### G. Classification Pipeline
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
@@ -468,15 +468,15 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 **Table VII. Performance Benchmark of Random Forest across Seven Feature Configurations.**
 
-| Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| Face | Single | 0.8546 | 0.8543 | 0.8546 | 0.8539 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | Single | 0.8060 | 0.8063 | 0.8060 | 0.8057 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Age | Single | 0.7366 | 0.7363 | 0.7366 | 0.7354 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| **Emotion ⊕ Face** | **Dual** | **0.8685** | **0.8689** | **0.8685** | **0.8682** | n_est=200, depth=None, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Face ⊕ Age | Dual | 0.8579 | 0.8578 | 0.8579 | 0.8573 | n_est=200, depth=None, max_feat=sqrt, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Emotion ⊕ Age | Dual | 0.8111 | 0.8111 | 0.8111 | 0.8108 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=2, pca=PCA(0.75), scaler=None |
-| Face ⊕ Emotion ⊕ Age | Tri | 0.8620 | 0.8620 | 0.8620 | 0.8613 | n_est=200, depth=30, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
+|---|:---:|:---:|:---:|:---:|---|
+| Face | 0.8546 | 0.8543 | 0.8546 | 0.8539 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion | 0.8060 | 0.8063 | 0.8060 | 0.8057 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Age | 0.7366 | 0.7363 | 0.7366 | 0.7354 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
+| **Emotion ⊕ Face** | **0.8685** | **0.8689** | **0.8685** | **0.8682** | n_est=200, depth=None, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Face ⊕ Age | 0.8579 | 0.8578 | 0.8579 | 0.8573 | n_est=200, depth=None, max_feat=sqrt, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Emotion ⊕ Age | 0.8111 | 0.8111 | 0.8111 | 0.8108 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=2, pca=PCA(0.75), scaler=None |
+| Face ⊕ Emotion ⊕ Age | 0.8620 | 0.8620 | 0.8620 | 0.8613 | n_est=200, depth=30, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
 
 #### Paragraph 2: Gaussian Naive Bayes Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -486,15 +486,15 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 **Table VIII. Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.**
 
-| Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| Face | Single | 0.8269 | 0.8271 | 0.8269 | 0.8258 | var_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | Single | 0.7338 | 0.7387 | 0.7338 | 0.7329 | var_smoothing=3.0703e-03, pca=PCA(0.75), scaler=None |
-| Age | Single | 0.6963 | 0.6979 | 0.6963 | 0.6952 | var_smoothing=4.3755e-04, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Face | Dual | 0.8486 | 0.8490 | 0.8486 | 0.8481 | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler |
-| Face ⊕ Age | Dual | 0.8315 | 0.8343 | 0.8315 | 0.8317 | var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Age | Dual | 0.7681 | 0.7686 | 0.7681 | 0.7681 | var_smoothing=1.6037e-03, pca=PCA(0.75), scaler=MinMaxScaler |
-| **Face ⊕ Emotion ⊕ Age** | **Tri** | **0.8505** | **0.8512** | **0.8505** | **0.8505** | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=None |
+| Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
+|---|:---:|:---:|:---:|:---:|---|
+| Face | 0.8269 | 0.8271 | 0.8269 | 0.8258 | var_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion | 0.7338 | 0.7387 | 0.7338 | 0.7329 | var_smoothing=3.0703e-03, pca=PCA(0.75), scaler=None |
+| Age | 0.6963 | 0.6979 | 0.6963 | 0.6952 | var_smoothing=4.3755e-04, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion ⊕ Face | 0.8486 | 0.8490 | 0.8486 | 0.8481 | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler |
+| Face ⊕ Age | 0.8315 | 0.8343 | 0.8315 | 0.8317 | var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion ⊕ Age | 0.7681 | 0.7686 | 0.7681 | 0.7681 | var_smoothing=1.6037e-03, pca=PCA(0.75), scaler=MinMaxScaler |
+| **Face ⊕ Emotion ⊕ Age** | **0.8505** | **0.8512** | **0.8505** | **0.8505** | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=None |
 
 #### Paragraph 3: Logistic Regression Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -504,15 +504,15 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 **Table IX. Performance Benchmark of Logistic Regression across Seven Feature Configurations.**
 
-| Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| Face | Single | 0.9060 | 0.9060 | 0.9060 | 0.9059 | C=1, solver=newton-cg, max_iter=500, pca=None, scaler=MinMaxScaler |
-| Emotion | Single | 0.8847 | 0.8850 | 0.8847 | 0.8846 | C=1, solver=saga, max_iter=500, pca=None, scaler=MinMaxScaler |
-| Age | Single | 0.8648 | 0.8649 | 0.8648 | 0.8648 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| Emotion ⊕ Face | Dual | 0.9241 | 0.9241 | 0.9241 | 0.9240 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| Face ⊕ Age | Dual | 0.9162 | 0.9162 | 0.9162 | 0.9162 | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
-| Emotion ⊕ Age | Dual | 0.9051 | 0.9052 | 0.9051 | 0.9051 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **Tri** | **0.9273** | **0.9275** | **0.9273** | **0.9273** | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
+| Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
+|---|:---:|:---:|:---:|:---:|---|
+| Face | 0.9060 | 0.9060 | 0.9060 | 0.9059 | C=1, solver=newton-cg, max_iter=500, pca=None, scaler=MinMaxScaler |
+| Emotion | 0.8847 | 0.8850 | 0.8847 | 0.8846 | C=1, solver=saga, max_iter=500, pca=None, scaler=MinMaxScaler |
+| Age | 0.8648 | 0.8649 | 0.8648 | 0.8648 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| Emotion ⊕ Face | 0.9241 | 0.9241 | 0.9241 | 0.9240 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| Face ⊕ Age | 0.9162 | 0.9162 | 0.9162 | 0.9162 | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
+| Emotion ⊕ Age | 0.9051 | 0.9052 | 0.9051 | 0.9051 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| **Face ⊕ Emotion ⊕ Age** | **0.9273** | **0.9275** | **0.9273** | **0.9273** | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
 
 #### Paragraph 4: Support Vector Machine Ablation Progression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -522,22 +522,22 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 **Table X. Performance Benchmark of Support Vector Machine across Seven Feature Configurations.**
 
-| Configuration | Domain Category | Accuracy | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| Face | Single | 0.9083 | 0.9084 | 0.9083 | 0.9083 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Emotion | Single | 0.9019 | 0.9020 | 0.9019 | 0.9017 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Age | Single | 0.8764 | 0.8767 | 0.8764 | 0.8765 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Emotion ⊕ Face | Dual | 0.9329 | 0.9333 | 0.9329 | 0.9329 | C=10, rbf, γ=scale, pca=None, scaler=MinMaxScaler |
-| Face ⊕ Age | Dual | 0.9255 | 0.9254 | 0.9255 | 0.9254 | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
-| Emotion ⊕ Age | Dual | 0.9208 | 0.9210 | 0.9208 | 0.9209 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **Tri** | **0.9370** | **0.9372** | **0.9370** | **0.9369** | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
+| Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
+|---|:---:|:---:|:---:|:---:|---|
+| Face | 0.9083 | 0.9084 | 0.9083 | 0.9083 | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Emotion | 0.9019 | 0.9020 | 0.9019 | 0.9017 | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Age | 0.8764 | 0.8767 | 0.8764 | 0.8765 | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Emotion ⊕ Face | 0.9329 | 0.9333 | 0.9329 | 0.9329 | C=10, rbf, γ=scale, pca=None, scaler=MinMaxScaler |
+| Face ⊕ Age | 0.9255 | 0.9254 | 0.9255 | 0.9254 | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
+| Emotion ⊕ Age | 0.9208 | 0.9210 | 0.9208 | 0.9209 | C=10, rbf, γ=scale, pca=None, scaler=None |
+| **Face ⊕ Emotion ⊕ Age** | **0.9370** | **0.9372** | **0.9370** | **0.9369** | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
 *(Catatan: Parameter `deg` hanya aktif dan dilaporkan pada kernel `poly`; pada kernel `rbf`, parameter `degree` tidak aktif dan tidak dicantumkan pada naskah publikasi).*
 
 #### Paragraph 5: Cross-Classifier Synthesis and Comparative Performance Overview
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Narasi**: Sintesis komparatif deskriptif lintas-pengklasifikasi melintasi 28 eksperimen tanpa menampilkan tabel terpisah. Menjelaskan bahwa SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` memperoleh capaian tertinggi dalam search space yang dievaluasi (akurasi 0.9370, F1-Score 0.9369). Rata-rata performa classifier di seluruh konfigurasi menunjukkan urutan deskriptif: $\text{SVM } (0.9147) > \text{LR } (0.9040) > \text{RF } (0.8281) > \text{GNB } (0.7937)$ - perlu dicatat bahwa perbandingan ini bersifat deskriptif dan tidak mencerminkan superioritas statistik.
 
-### B. Feature Ablation Analysis
+### B. Feature Ablation Study
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Progressive Feature Contribution across Single, Dual, and Tri-Domain Schemes
@@ -548,7 +548,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
 - **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 0.8764 pada SVM). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 0.9255) memberikan peningkatan $+0.0172$ di atas fitur `Face` murni (0.9083). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
 
-### C. Intersectional Subgroup Performance Analysis
+### C. Intersectional Subgroup Performance
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVM Model
@@ -579,7 +579,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 | | `Asian_Females` | 0.9111 | 0.9162 | 0.9136 | 97.13% |
 | | `Black_Females` | 0.9111 | 0.9213 | 0.9162 | 97.22% |
 
-### D. Error Pattern Analysis
+### D. Error Pattern Assessment
 Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Comparative Error Reduction across Feature Schemes
@@ -646,7 +646,7 @@ Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 k
 | **White_Males** | 1 | 4 | 0 | 4 | 2 | **349** | 360 |
 | **Total Predicted** | 360 | 368 | 342 | 355 | 369 | 366 | **2,160** |
 
-### E. Analysis of Selected SVM Kernel Configuration
+### E. Selected SVM Kernel Configuration
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Empirical Behavior of the Polynomial Kernel Configuration
@@ -673,11 +673,11 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 **Table XII. Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.**
 
-| Study | Model | Accuracy | Precision | Recall | F1-Score |
-|---|---|:---:|:---:|:---:|:---:|
-| Putri et al. (JIEET 2025) | MD-ViT + XGBoost | 89.07% | 0.8912 | 0.8907 | 0.8901 |
-| Putri et al. (ICVEE 2025) | Dual-ViT + SVM | 92.41% | 0.9248 | 0.9241 | 0.9238 |
-| **Proposed Framework** | **Tri-Domain ViT + SVM** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
+| Model | Accuracy | Precision | Recall | F1-Score |
+|---|:---:|:---:|:---:|:---:|
+| MD-ViT [(10)] | 89.07% | 0.8912 | 0.8907 | 0.8901 |
+| Dual-ViT [(9)] | 92.41% | 0.9248 | 0.9241 | 0.9238 |
+| **Ours (Tri-Domain ViT + SVM)** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
 
 ---
 
@@ -722,13 +722,13 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Eq. (4)** | Persamaan | Section III.B (Paragraph 2) | *Ekstraksi Vektor Fitur Representasi Laten Token [CLS] Domain Spesifik ($\mathbb{R}^{768}$)* | In-line Math / Standard |
 | **Eq. (5)** | Persamaan | Section III.B (Paragraph 2) | *Formulasi Fusi Konkatenasi Vektor Multi-Domain ($\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$)* | In-line Math / Standard |
 | **Table II** | Tabel | Section III.B (Paragraph 2) | *Multi-Domain Feature Fusion and Ablation Configurations.* | Column Width (`table`) |
-| **Table III** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | Column Width (`table`) |
+| **Table III** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | **Full Width (`table*`)** |
 | **Eq. (6)** | Persamaan | Section III.D (Gaussian NB) | *Formulasi Likelihood Probabilistik Gaussian Naive Bayes* | In-line Math / Standard |
-| **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | Column Width (`table`) |
+| **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | **Full Width (`table*`)** |
 | **Eq. (7)** | Persamaan | Section III.E (Logistic Reg) | *Formulasi Probabilitas Softmax Multinomial Logistic Regression* | In-line Math / Standard |
-| **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | Column Width (`table`) |
+| **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | **Full Width (`table*`)** |
 | **Eq. (8)** | Persamaan | Section III.F (Support Vector) | *Formulasi Kernel Polinomial Derajat 2 Support Vector Machine* | In-line Math / Standard |
-| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Machine.* | Column Width (`table`) |
+| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Machine.* | **Full Width (`table*`)** |
 | **Eq. (9)** | Persamaan | Section III.G (Pipeline) | *Rantai Transformasi Pipeline Modular Scaler - PCA - Classifier* | In-line Math / Standard |
 | **Eq. (10)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Akurasi One-vs-Rest Subkelompok ($\text{Accuracy}_c$)* | In-line Math / Standard |
 | **Eq. (11)** | Persamaan | Section III.H (Paragraph 1) | *Formulasi Presisi One-vs-Rest Subkelompok ($\text{Precision}_c$)* | In-line Math / Standard |

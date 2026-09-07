@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.25)  6 SEP 2026 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.8.25)  7 SEP 2026 07:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,10 +677,10 @@ Underfull \hbox (badness 1389) in paragraph at lines 4--5
  []
 
 
-Underfull \vbox (badness 1102) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \vbox (badness 1107) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <logo.png, id=104, 206.27063pt x 53.44969pt>
 File: logo.png Graphic file (type png)
@@ -711,14 +711,44 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
  <./logo.png> <./images/orcid.png> <./bullet.png>]
-Underfull \hbox (badness 1796) in paragraph at lines 8--9
-\T1/times/n/n/10 anal-i-sis men-dalam ter-hadap bias rep-re-sen-tasi vi-sual []
-[][[][]4[][]][][],
+Underfull \hbox (badness 2799) in paragraph at lines 8--9
+\T1/times/n/n/10 melalui mekanisme Multi-Head Self-Attention (MHSA),
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 18--19
-[]\T1/times/n/n/10 Capaian per-forma pen-ge-nalan de-mografis in-ter-sek-
+Underfull \hbox (badness 4072) in paragraph at lines 16--17
+[]\T1/times/n/n/10 A Tri-Domain ViT fea-ture fu-sion frame-work in-
+ []
+
+
+Underfull \hbox (badness 4254) in paragraph at lines 16--17
+\T1/times/n/n/10 te-grat-ing face-associated bio-met-ric rep-re-sen-ta-tions,
+ []
+
+
+Underfull \hbox (badness 2653) in paragraph at lines 16--17
+\T1/times/n/n/10 fa-cial rep-re-sen-ta-tions into a uni-fied la-tent fea-ture
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 16--17
+\T1/times/n/n/10 vec-tor for in-ter-sec-tional de-mo-graphic clas-si-fi-ca-tion
+
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 17--18
+\T1/times/n/n/10 learn-ing clas-si-fiers op-ti-mized via Strat-i-fied Cross-
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 18--19
+[]\T1/times/n/n/10 Competitive clas-si-fi-ca-tion per-for-mance on the De-
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 19--20
+\T1/times/n/n/10 mengeval-u-asi per-forma klasi-fikasi di keenam sub-
  []
 
 
@@ -801,32 +831,32 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [3] (sections/03_materials-and-methods_0-overview.tex
+<images/method.png, id=199, 1890.3122pt x 875.52094pt>
+File: images/method.png Graphic file (type png)
+<use images/method.png>
+Package pdftex.def Info: images/method.png  used on input line 6.
+(pdftex.def)             Requested size: 505.12177pt x 233.94905pt.
+)
+(sections/03_materials-and-methods_a-dataset.tex
+<images/sample_demogpairs.png, id=202, 1076.823pt x 232.9503pt>
+File: images/sample_demogpairs.png Graphic file (type png)
+<use images/sample_demogpairs.png>
+Package pdftex.def Info: images/sample_demogpairs.png  used on input line 6.
+(pdftex.def)             Requested size: 505.12177pt x 109.27338pt.
 LaTeX Font Info:    Trying to load font information for TS1+times on input line
- 4.
-LaTeX Font Info:    No file TS1times.fd. on input line 4.
+ 33.
+LaTeX Font Info:    No file TS1times.fd. on input line 33.
 
 
 LaTeX Font Warning: Font shape `TS1/times/n/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `texttimes' on input line 4.
+(Font)              for symbol `texttimes' on input line 33.
 
-<images/method.png, id=201, 1890.3122pt x 875.52094pt>
-File: images/method.png Graphic file (type png)
-<use images/method.png>
-Package pdftex.def Info: images/method.png  used on input line 8.
-(pdftex.def)             Requested size: 505.12177pt x 233.94905pt.
-) (sections/03_materials-and-methods_a-dataset.tex
-<images/sample_demogpairs.png, id=206, 1076.823pt x 232.9503pt>
-File: images/sample_demogpairs.png Graphic file (type png)
-<use images/sample_demogpairs.png>
-Package pdftex.def Info: images/sample_demogpairs.png  used on input line 8.
-(pdftex.def)             Requested size: 505.12177pt x 109.27338pt.
-)
-(sections/03_materials-and-methods_b-vision-transformer.tex
-<images/vit.png, id=210, 1818.04219pt x 733.99219pt>
+) (sections/03_materials-and-methods_b-vision-transformer.tex
+<images/vit.png, id=207, 1818.04219pt x 733.99219pt>
 File: images/vit.png Graphic file (type png)
 <use images/vit.png>
-Package pdftex.def Info: images/vit.png  used on input line 12.
+Package pdftex.def Info: images/vit.png  used on input line 6.
 (pdftex.def)             Requested size: 242.67355pt x 97.96468pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 26--28
@@ -844,14 +874,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
  []
 
 
-Overfull \hbox (86.96277pt too wide) in paragraph at lines 29--30
-\T1/times/n/n/10 ometri biometrik wa-jah, ViT-Emotion (dima806/facial_emotions_
-image_detection)
+Underfull \hbox (badness 5696) in paragraph at lines 29--30
+\T1/times/n/n/10 (skutaada/VIT-VGGFace) menangkap rep-re-sen-tasi terkait
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 29--30
-\T1/times/n/n/10 Age (dima806/facial_age_image_detection) mengek-straksi
+Underfull \hbox (badness 1769) in paragraph at lines 29--30
+\T1/times/n/n/10 ge-ometri biometrik wa-jah, ViT-Emotion (dima806/facial-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+\T1/times/n/n/10 _emotions-_image-_detection) meng-hasilkan rep-re-sen-tasi
  []
 
 File: notaglinelogo.png Graphic file (type png)
@@ -878,109 +912,16 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [4]
-Overfull \hbox (1.60468pt too wide) in paragraph at lines 47--60
+Overfull \hbox (1.60468pt too wide) in paragraph at lines 45--58
  [][] 
  []
 
-) (sections/03_materials-and-methods_c-random-forest.tex
-Underfull \hbox (badness 2503) in paragraph at lines 4--5
+) (sections/03_materials-and-methods_c-random-forest.tex)
+(sections/03_materials-and-methods_d-gaussian-naive-bayes.tex
+Underfull \hbox (badness 2503) in paragraph at lines 25--1
 \T1/times/n/n/10 sam-pel citra melin-tasi selu-ruh po-hon kepu-tu-san. Prose-
  []
 
-
-LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 5.
-
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 5.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[5 <./images/method.png> <./images/sample_demogpairs.png> <./images/vit.png>]
-
-LaTeX Font Warning: Font shape `TS1/times/b/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `texttimes' on input line 22.
-
-
-Overfull \hbox (80.55132pt too wide) in paragraph at lines 10--25
- [][] 
- []
-
-) (sections/03_materials-and-methods_d-gaussian-naive-bayes.tex
-Overfull \hbox (120.48434pt too wide) in paragraph at lines 16--27
- [][] 
- []
-
-) (sections/03_materials-and-methods_e-logistic-regression.tex
-Overfull \hbox (37.63814pt too wide) in paragraph at lines 16--29
- [][] 
- []
-
-) (sections/03_materials-and-methods_f-support-vector-machine.tex
-Underfull \hbox (badness 3281) in paragraph at lines 4--5
-\T1/times/n/n/10 Pengklasifikasi SVM men-gon-struk-sikan bidang pemisah
- []
-
-
-Underfull \hbox (badness 8151) in paragraph at lines 4--5
-\T1/times/n/n/10 ber-jarak ter-jauh (max-i-mum mar-gin hy-per-plane) un-tuk
- []
-
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 5.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
-
-LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 5.
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[6]
-Overfull \hbox (27.4778pt too wide) in paragraph at lines 17--31
- [][] 
- []
-
-) (sections/03_materials-and-methods_g-classification-pipeline.tex)
-(sections/03_materials-and-methods_h-evaluation-metrics.tex
-Underfull \hbox (badness 1668) in paragraph at lines 10--1
-\T1/times/n/n/10 i-fied Cross-Validation den-gan pen-ga-cakan terkon-trol un-
- []
-
-
-Underfull \hbox (badness 1400) in paragraph at lines 10--1
-\T1/times/n/n/10 tuk mem-per-ta-hankan pro-porsi se-im-bang 16.67% per ke-
- []
-
-) (sections/04_results-and-discussion_a-global-performance.tex
 
 LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
 (Font)              using `T1/formata/m/it' instead on input line 1.
@@ -1004,61 +945,108 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[7]
-Overfull \hbox (158.14005pt too wide) in paragraph at lines 13--26
- [][] 
+[5 <./images/method.png> <./images/sample_demogpairs.png> <./images/vit.png>])
+(sections/03_materials-and-methods_e-logistic-regression.tex)
+(sections/03_materials-and-methods_f-support-vector-machine.tex
+Underfull \hbox (badness 3281) in paragraph at lines 24--25
+\T1/times/n/n/10 Pengklasifikasi SVM men-gon-struk-sikan bidang pemisah
  []
 
 
-Underfull \hbox (badness 2261) in paragraph at lines 28--29
+Underfull \hbox (badness 8151) in paragraph at lines 24--25
+\T1/times/n/n/10 ber-jarak ter-jauh (max-i-mum mar-gin hy-per-plane) un-tuk
+ []
+
+) (sections/03_materials-and-methods_g-classification-pipeline.tex
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 8.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+
+LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
+(Font)              using `T1/formata/m/it' instead on input line 8.
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[6]) (sections/03_materials-and-methods_h-evaluation-metrics.tex
+Underfull \hbox (badness 1552) in paragraph at lines 10--1
+\T1/times/n/n/10 mem-per-ta-hankan pro-porsi se-im-bang $\OMS/cmsy/m/n/10 ^^X \
+OT1/cmr/m/n/10 16\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 67%$ \T1/times/n/n/10 per ke
+-
+ []
+
+
+LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
+(Font)              using `T1/formata/m/it' instead on input line 13.
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 13.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[7]) (sections/04_results-and-discussion_a-global-performance.tex
+Underfull \hbox (badness 2261) in paragraph at lines 47--48
 []\T1/times/n/n/10 Evaluasi per-forma klasi-fikasi prob-a-bilis-tik GNB pada
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 28--29
+Underfull \hbox (badness 2020) in paragraph at lines 47--48
 \T1/times/n/n/10 tu-juh vari-asi kon-fig-urasi fi-tur di-rangkum pada Ta-ble []
 []8[][].
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 28--29
+Underfull \hbox (badness 2027) in paragraph at lines 47--48
 \T1/times/n/n/10 Meskipun di-batasi oleh asumsi dasar in-de-pen-densi fi-tur
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 28--29
+Underfull \hbox (badness 1975) in paragraph at lines 47--48
 \T1/times/n/n/10 ca-pa-ian teren-dah den-gan Akurasi 69.63% dan F1-Score
  []
 
 
-Overfull \hbox (45.56413pt too wide) in paragraph at lines 34--47
- [][] 
- []
-
-
-Overfull \hbox (71.53563pt too wide) in paragraph at lines 55--68
- [][] 
- []
-
-
-Underfull \hbox (badness 1824) in paragraph at lines 70--71
+Underfull \hbox (badness 1824) in paragraph at lines 89--90
 []\T1/times/n/n/10 Perkembangan per-forma SVM melin-tasi selu-ruh taha-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 70--71
+Underfull \hbox (badness 1648) in paragraph at lines 89--90
 \T1/times/n/n/10 pan ablasi fi-tur di-rangkum pada Ta-ble [][]10[][]. Serupa de
 n-
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 70--71
+Underfull \hbox (badness 1584) in paragraph at lines 89--90
 \T1/times/n/n/10 ten mem-per-ta-hankan ru-ang rep-re-sen-tasi penuh tanpa re-
- []
-
-
-Overfull \hbox (8.004pt too wide) in paragraph at lines 76--89
- [][] 
  []
 
 ) (sections/04_results-and-discussion_b-feature-ablation-analysis.tex
@@ -1077,32 +1065,13 @@ Underfull \hbox (badness 1715) in paragraph at lines 91--1
 \T1/times/n/n/10 per-forma tert-inggi dalam ru-ang pen-car-ian yang dieval-u-
  []
 
-
-Underfull \hbox (badness 5203) in paragraph at lines 4--5
-\T1/times/n/n/10 di-rangkum pada Ta-ble [][]7[][], Ta-ble [][]8[][], Ta-ble [][
-]9[][], dan Ta-
- []
-
-
-Underfull \hbox (badness 2790) in paragraph at lines 4--5
-\T1/times/n/n/10 kon-fig-urasi tri-domain Face $\OMS/cmsy/m/n/10 ^^H$ \T1/times
-/n/n/10 Emo-tion $\OMS/cmsy/m/n/10 ^^H$ \T1/times/n/n/10 Age meng-
- []
-
-)
-(sections/04_results-and-discussion_c-intersectional-subgroup-performance-analy
-sis.tex
-Underfull \hbox (badness 1983) in paragraph at lines 4--5
-\T1/times/n/n/10 berhasil men-ca-pai F1-Score melam-paui 91.00%, den-gan
- []
-
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 5.
+Package pdftex.def Info: notaglinelogo.png  used on input line 1.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 5.
+(Font)              using `T1/formata/m/it' instead on input line 1.
 
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -1120,19 +1089,31 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 5203) in paragraph at lines 4--5
+\T1/times/n/n/10 di-rangkum pada Ta-ble [][]7[][], Ta-ble [][]8[][], Ta-ble [][
+]9[][], dan Ta-
+ []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 2790) in paragraph at lines 4--5
+\T1/times/n/n/10 kon-fig-urasi tri-domain Face $\OMS/cmsy/m/n/10 ^^H$ \T1/times
+/n/n/10 Emo-tion $\OMS/cmsy/m/n/10 ^^H$ \T1/times/n/n/10 Age meng-
+ []
 
+)
+(sections/04_results-and-discussion_c-intersectional-subgroup-performance-analy
+sis.tex
+Underfull \hbox (badness 1983) in paragraph at lines 29--30
+\T1/times/n/n/10 berhasil men-ca-pai F1-Score melam-paui 91.00%, den-gan
+ []
 
 
 LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 7.
+(Font)              using `T1/formata/m/it' instead on input line 30.
 
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 7.
+Package pdftex.def Info: notaglinelogo.png  used on input line 30.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -1150,23 +1131,53 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [9]) (sections/04_results-and-discussion_d-error-pattern-analysis.tex
-<images/confusion_matrix_single.png, id=325, 534.3162pt x 444.7014pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 1.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+
+LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
+(Font)              using `T1/formata/m/it' instead on input line 1.
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[10]
+<images/confusion_matrix_single.png, id=323, 534.3162pt x 444.7014pt>
 File: images/confusion_matrix_single.png Graphic file (type png)
 <use images/confusion_matrix_single.png>
 Package pdftex.def Info: images/confusion_matrix_single.png  used on input line
- 8.
+ 6.
 (pdftex.def)             Requested size: 161.64265pt x 134.53107pt.
-<images/confusion_matrix_dual.png, id=326, 534.3162pt x 444.7014pt>
+<images/confusion_matrix_dual.png, id=324, 534.3162pt x 444.7014pt>
 File: images/confusion_matrix_dual.png Graphic file (type png)
 <use images/confusion_matrix_dual.png>
-Package pdftex.def Info: images/confusion_matrix_dual.png  used on input line 9
+Package pdftex.def Info: images/confusion_matrix_dual.png  used on input line 7
 .
 (pdftex.def)             Requested size: 161.64265pt x 134.53107pt.
-<images/confusion_matrix_tri.png, id=327, 534.3162pt x 444.7014pt>
+<images/confusion_matrix_tri.png, id=325, 534.3162pt x 444.7014pt>
 File: images/confusion_matrix_tri.png Graphic file (type png)
 <use images/confusion_matrix_tri.png>
-Package pdftex.def Info: images/confusion_matrix_tri.png  used on input line 10
-.
+Package pdftex.def Info: images/confusion_matrix_tri.png  used on input line 8.
+
 (pdftex.def)             Requested size: 161.64265pt x 134.53107pt.
 
 Underfull \hbox (badness 2689) in paragraph at lines 15--16
@@ -1197,37 +1208,14 @@ Underfull \hbox (badness 3199) in paragraph at lines 6--1
 \T1/times/n/n/10 Pemil-i-han opsi pca=None terse-but me-nun-jukkan bahwa
  []
 
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 5.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+)
 
 LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 5.
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[10]) (sections/05_conclusion.tex)
-
-LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 99.
+(Font)              using `T1/formata/m/it' instead on input line 96.
 
 File: notaglinelogo.png Graphic file (type png)
 <use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 99.
+Package pdftex.def Info: notaglinelogo.png  used on input line 96.
 (pdftex.def)             Requested size: 91.32pt x 23.1352pt.
 
 Overfull \hbox (505.12177pt too wide) has occurred while \output is active
@@ -1244,86 +1232,93 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[11 <./images/confusion_matrix_single.png> <./images/confusion_matrix_dual.png>
- <./images/confusion_matrix_tri.png>] (access.bbl) (sections/07_biographies.tex
+[11] (sections/05_conclusion.tex) (access.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: notaglinelogo.png Graphic file (type png)
+<use notaglinelogo.png>
+Package pdftex.def Info: notaglinelogo.png  used on input line 28.
+(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+
+
+LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
+(Font)              using `T1/formata/m/it' instead on input line 28.
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (505.12177pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[12 <./images/confusion_matrix_single.png> <./images/confusion_matrix_dual.png>
+ <./images/confusion_matrix_tri.png>]) (sections/07_biographies.tex
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 1.
 
-<images/author_ricky.jpg, id=359, 777.65532pt x 777.65532pt>
+<images/author_ricky.jpg, id=361, 401.5pt x 601.24625pt>
 File: images/author_ricky.jpg Graphic file (type jpg)
 <use images/author_ricky.jpg>
 Package pdftex.def Info: images/author_ricky.jpg  used on input line 1.
-(pdftex.def)             Requested size: 72.26424pt x 72.26424pt.
+(pdftex.def)             Requested size: 60.32042pt x 90.32982pt.
 File: images/author_ricky.jpg Graphic file (type jpg)
 <use images/author_ricky.jpg>
 Package pdftex.def Info: images/author_ricky.jpg  used on input line 1.
-(pdftex.def)             Requested size: 72.26424pt x 72.26424pt.
-<images/author_rezky.jpg, id=362, 301.125pt x 301.125pt>
+(pdftex.def)             Requested size: 60.32042pt x 90.32982pt.
+
+Underfull \hbox (badness 2635) in paragraph at lines 1--3
+\T1/times/n/n/8 serta mem-per-oleh gelar Pro-fesi In-sinyur pada
+ []
+
+<images/author_rezky.jpg, id=365, 526.96875pt x 792.71156pt>
 File: images/author_rezky.jpg Graphic file (type jpg)
 <use images/author_rezky.jpg>
 Package pdftex.def Info: images/author_rezky.jpg  used on input line 5.
-(pdftex.def)             Requested size: 72.27147pt x 72.27147pt.
+(pdftex.def)             Requested size: 60.04932pt x 90.33134pt.
 File: images/author_rezky.jpg Graphic file (type jpg)
 <use images/author_rezky.jpg>
 Package pdftex.def Info: images/author_rezky.jpg  used on input line 5.
-(pdftex.def)             Requested size: 72.27147pt x 72.27147pt.
-
-Underfull \hbox (badness 1412) in paragraph at lines 5--7
-\T1/times/n/n/8 ver-si-tas Negeri Surabaya, Surabaya, In-done-sia.
- []
-
-<images/author_yuni.jpg, id=365, 301.125pt x 301.125pt>
+(pdftex.def)             Requested size: 60.04932pt x 90.33134pt.
+<images/author_yuni.jpg, id=369, 401.5pt x 601.24625pt>
 File: images/author_yuni.jpg Graphic file (type jpg)
 <use images/author_yuni.jpg>
 Package pdftex.def Info: images/author_yuni.jpg  used on input line 9.
-(pdftex.def)             Requested size: 72.27147pt x 72.27147pt.
+(pdftex.def)             Requested size: 60.32042pt x 90.32982pt.
 File: images/author_yuni.jpg Graphic file (type jpg)
 <use images/author_yuni.jpg>
 Package pdftex.def Info: images/author_yuni.jpg  used on input line 9.
-(pdftex.def)             Requested size: 72.27147pt x 72.27147pt.
-File: notaglinelogo.png Graphic file (type png)
-<use notaglinelogo.png>
-Package pdftex.def Info: notaglinelogo.png  used on input line 13.
-(pdftex.def)             Requested size: 91.32pt x 23.1352pt.
+(pdftex.def)             Requested size: 60.32042pt x 90.32982pt.
 
-LaTeX Font Warning: Font shape `T1/formata/m/sl' undefined
-(Font)              using `T1/formata/m/it' instead on input line 13.
-
-
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
+\T1/times/n/n/8 Uni-ver-si-tas Negeri Surabaya (UN-ESA) den-
  []
 
 
-Overfull \hbox (505.12177pt too wide) has occurred while \output is active
-[]
+Underfull \hbox (badness 3525) in paragraph at lines 9--11
+\T1/times/n/n/8 gan lan-dasan keil-muan yang kokoh di dunia
  []
 
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-[12 <./images/author_ricky.jpg> <./images/author_rezky.jpg> <./images/author_yu
-ni.jpg>]
-<images/author_rafy.jpg, id=376, 526.96875pt x 526.96875pt>
+<images/author_rafy.jpg, id=373, 526.96875pt x 792.71156pt>
 File: images/author_rafy.jpg Graphic file (type jpg)
 <use images/author_rafy.jpg>
 Package pdftex.def Info: images/author_rafy.jpg  used on input line 13.
-(pdftex.def)             Requested size: 72.26343pt x 72.26343pt.
+(pdftex.def)             Requested size: 60.04932pt x 90.33134pt.
 File: images/author_rafy.jpg Graphic file (type jpg)
 <use images/author_rafy.jpg>
 Package pdftex.def Info: images/author_rafy.jpg  used on input line 13.
-(pdftex.def)             Requested size: 72.26343pt x 72.26343pt.
+(pdftex.def)             Requested size: 60.04932pt x 90.33134pt.
 
-Underfull \hbox (badness 2205) in paragraph at lines 13--15
-\T1/times/n/n/8 tas Negeri Surabaya, In-done-sia, den-gan fokus
- []
-
-
-Underfull \hbox (badness 2626) in paragraph at lines 13--15
-\T1/times/n/n/8 peng-har-gaan Best So-lu-tion Award pada ajang
+Underfull \hbox (badness 2469) in paragraph at lines 13--15
+\T1/times/n/n/8 Ilmu Kom-puter. Se-masa studi, be-liau berhasil
  []
 
 )
@@ -1355,9 +1350,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 []
  []
 
-[13
-
- <./images/author_rafy.jpg>] (access.aux)
+[13 <./images/author_ricky.jpg> <./images/author_rezky.jpg> <./images/author_yu
+ni.jpg> <./images/author_rafy.jpg>] (access.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1367,45 +1361,44 @@ L3 programming layer <2025-12-24>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `access.out' has not changed.
-(rerunfilecheck)             Checksum: C9D86C31C1121512C8EE8C2F634010A7;3822.
+(rerunfilecheck)             Checksum: CB191FE0C3CBFA5A843DA049F14F2B63;3703.
  ) 
 Here is how much of TeX's memory you used:
- 12388 strings out of 467871
- 200530 string characters out of 5418860
- 634299 words of memory out of 5000000
- 40915 multiletter control sequences out of 15000+600000
- 715220 words of font info for 182 fonts, out of 8000000 for 9000
+ 12372 strings out of 467871
+ 200248 string characters out of 5418860
+ 638265 words of memory out of 5000000
+ 40901 multiletter control sequences out of 15000+600000
+ 714583 words of font info for 178 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,1727b,545s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1706b,641s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{section*.1} has been referenced but does not exist,
  replaced by a fixed one
 
- <C:\Users\Rafy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm080
-0.pk> <C:\Users\Rafy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
-rm1000.pk><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx7.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmex10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Rafy/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Rafy/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Rafy/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Rafy/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/R
-afy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/U
-sers/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb
-><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmsy6.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmsy8.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/symbols/msbm10.pfb><./t1-formata-bold.pfb><./t1-formata
--condmedium.pfb><./t1-formata-medium.pfb><./t1-formata-mediumitalic.pfb><./t1-f
-ormata-regular.pfb><./t1-giovannistd-bookitalic.pfb><./t1-times-bold.pfb><./t1-
-times-italic.pfb><./t1-times.pfb>
-Output written on access.pdf (13 pages, 3601598 bytes).
+ <C:\Users\Rafy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm100
+0.pk><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx7.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmex10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Rafy/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Rafy/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Rafy/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Rafy/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/
+Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/
+Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmsy6.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmsy7.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmsy8.pfb><C:/Users/Rafy/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb><./t1-formata-bold.pfb><./t1-formata-cond
+medium.pfb><./t1-formata-medium.pfb><./t1-formata-mediumitalic.pfb><./t1-format
+a-regular.pfb><./t1-giovannistd-bookitalic.pfb><./t1-times-bold.pfb><./t1-times
+-italic.pfb><./t1-times.pfb>
+Output written on access.pdf (13 pages, 3586075 bytes).
 PDF statistics:
- 512 PDF objects out of 1000 (max. 8388607)
+ 513 PDF objects out of 1000 (max. 8388607)
  87 named destinations out of 1000 (max. 500000)
  319 words of extra memory for PDF output out of 10000 (max. 10000000)
 

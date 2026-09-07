@@ -1,4 +1,4 @@
-## B. Feature Ablation Analysis
+## B. Feature Ablation Study
 
 Kuantifikasi perubahan akurasi klasifikasi dari skema domain tunggal menuju konfigurasi ganda dan tiga domain dirangkum pada [Table VII](04_results-and-discussion_a-global-performance.md#tab7), [Table VIII](04_results-and-discussion_a-global-performance.md#tab8), [Table IX](04_results-and-discussion_a-global-performance.md#tab9), dan [Table X](04_results-and-discussion_a-global-performance.md#tab10). Pada model SVM, transisi representasi dari Face (90.83%) ke Emotion ⊕ Face (93.29%) meningkatkan akurasi sebesar 2.46% (0.0246). Penambahan domain ketiga pada konfigurasi tri-domain Face ⊕ Emotion ⊕ Age menghasilkan peningkatan performa lebih lanjut menjadi 93.70%, yang mencerminkan peningkatan kumulatif sebesar 2.87% (0.0287) di atas fitur tunggal Face. Pola peningkatan progresif ini mengindikasikan kehadiran informasi diskriminatif tambahan dari setiap domain representasi visual yang digabungkan, meskipun mekanisme interaksi antardimensi fitur laten tidak dapat dipastikan hanya dari hasil pengujian empiris.
 

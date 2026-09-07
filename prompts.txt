@@ -1,4 +1,56 @@
+Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubungan dengannya (jangan pernah baca file prompts.txt dan .ipynb, untuk .ipynb gantinya ada pada experiment/code/md)!
+
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+tuliskan semua yang kamu ketahui tentang session ini pada 'sessions/session_agy_tahun-bulan-tanggal_judul-session.md' dengan detil!
+
+letakkan figure/tabel sebelum paragraf untuk:
+- paper/03_materials-and-methods_0-overview.md
+- paper/03_materials-and-methods_a-dataset.md
+- paper/03_materials-and-methods_b-vision-transformer.md
+- paper/03_materials-and-methods_c-random-forest.md
+- paper/03_materials-and-methods_d-gaussian-naive-bayes.md
+- paper/03_materials-and-methods_e-logistic-regression.md
+- paper/03_materials-and-methods_f-support-vector-machine.md
+- paper/04_results-and-discussion_a-global-performance.md
+- paper/04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md
+- paper/04_results-and-discussion_d-error-pattern-analysis.md
+- paper/04_results-and-discussion_f-comparison-with-prior-studies.md
+agar pada latex nya tidak terlalu ke bawah, jika sudah update paper, kemudian update paper_latex_id. kemudian:
+- kalimat 'ViT-Emotion (dima806/facial_emotions_image_detection)' pada latex hasilnya overlap sehingga menutupi paragraf di sebelahnya.
+- buat agar tabel 3, 4, 5, dan 6 menjadi full width pada latex (dan juga update paper_outline).
+- pada tabel 7, 8, 9, 10: hapus kolom Domain Category (update juga paper outline nya).
+perhatikan:
+- delegasikan ke subagent.
+- satu subagent HANYA BOLEH AUDIT DAN MEMBETULKAN	 satu file agar hasilnya optimal.
+- berikan instruksi ke subagent dengan jelas.
+- harus dilakukan dengan sangat amat teliti.
+
+coba cek semua yang ada pada folder 'paper/', perhatikan:
+- global:
+  - gunakan bahasa indonesia, namun jika ada istilah akademik gunakan bahasa inggris.
+  - gunakan pemisah angka internasional seperti '.' untuk koma dan ',' untuk ribuan.
+  - PERHATIKAN RULES, TERUTAMA '1.3. Aturan Penulisan Singkatan & Akronim'. karena saya random cek ada kepanjangan beserta singkatan pada abstrak, namun diulangi lagi pada introduction!
+- abstrak:
+  - jangan ada seperti [CLS] atau jumlah fitur pada abstrak.
+  - jangan menyebut konfigurasi parameter seperti ' polynomial degree 2' pada abstrak.
+  - jangan gunakan kata seperti 'granular', gunakan bahasa yang lebih mudah dipahami.
+  - pada index term, hapus: svm, demogpairs, Facial demographic recognition. ganti dengan seperti race and gender classification atau yang lainnya.
+- introduction:
+  - pada 'Paragraph 6: Key Contributions', buat agar target katanya 125 hingga 175 kata (update juga paper_outline.md nya).
+  - pada 'Paragraph 7: Paper Organization', buat agar target katanya 50 hingga 75 kata saja (update juga paper_outline.md nya).
+- materials and methods:
+  - C. RANDOM FOREST: TABLE 3. Hyperparameter Search Space for Random Forest Classifier.: tabel terlalu lebar, jadi hilangkan: (n_estimators),  (max_depth),  (max_features),  (min_samples_split),  (min_samples_leaf). karena sudah ada nama lengkapnya. kemudian ini '2 x 3 x 2 x 3 x 2 x 2 x 2' ini juga membuat terlalu lebar. LAKUKAN JUGA HAL YANG SAMA UNTUK TABEL 4, 5, dan 6 karena terlalu lebar.
+- results and discussion:
+  - coba cek judul sub section dari 'B. Feature Ablation Analysis', 'C. Intersectional Subgroup Performance Analysis', 'D. Error Pattern Analysis', 'E. Analysis of Selected SVM Kernel Configuration'. terlalu banyak judul sub section dengan kata analysis.
+  - tabel 7, 8, dan 9 ini juga terlalu lebar gara-gara kolom best parameters, contoh pada tabel 7 baris pertama, kolom best parameter isinya adalah 'n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler', seharusnya mulai min_split itu sudah ada dibawahnya (atau di enter).
+  - tabel 12 saat ini kolom nya adalah 'Study Model Accuracy Precision Recall F1-Score', ganti menjadi 'Model Accuracy Precision Recall F1-Score', jadi sitasinya ada pada kolom model, dan isi dari model cukup: MD-ViT, Dual-ViT, dan Ours.
+- perbaiki paper_outline.md jika berhubungan.
+untuk setiap file:
+- delegasikan ke subagent.
+- satu subagent HANYA BOLEH AUDIT DAN MEMBETULKAN	 satu file pada folder 'paper/' agar hasilnya optimal.
+- berikan instruksi ke subagent dengan jelas.
+- harus dilakukan dengan sangat amat teliti.
 
 jika pada paper_outline.md bagian 'H. Evaluation Metrics' pada 'Paragraph 3: Subgroup Disparity and Performance Variation' dihapus, kemudian harus menghapus bagian apa saja?
 
