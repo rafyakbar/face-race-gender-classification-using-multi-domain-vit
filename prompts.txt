@@ -2,6 +2,8 @@ Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubung
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+coba cek paper_outline.md dan paper, ketika digenerate pdf nya, sudah menjadi 13 halaman tanpa referensi, menurutmu section apa yang bisa dihilangkan? jangan menghapus section yang sudah ada pada paper/references.txt
+
 related works sudah saya ubah, semua kalimat pada paper/02_related-works.md sitasinya sudah ada pada paper_outline.md (bersumber dari related_works/bib). sekarang copy related_works/bib ke dalam paper/references, kemudian perbaiki daftar list related works (per paragraf) yang ada pada paper/references.txt, kemudian hapus penomoran sitasi pada paper/02_related-works.md karena sudah tergantikan pada paper/references.txt
 
 tuliskan semua yang kamu ketahui tentang session ini pada 'sessions/session_agy_tahun-bulan-tanggal_judul-session.md' dengan detil!
