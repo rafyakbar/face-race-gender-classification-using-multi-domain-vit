@@ -167,3 +167,17 @@ paper/03_materials-and-methods_h-evaluation-metrics.md: paragraf 1:
   - paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris
 - "F1-Score pada ... performa deteksi per subkelompok":
   - paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris
+  
+paper/04_results-and-discussion_a-global-performance.md: paragraf 1:
+- "Penurunan ini diinterpretasikan sebagai kemungkinan tantangan partisi ruang fitur berdimensi 2,304 melalui pemotongan pohon acak (random splits)":
+  - paper/references/2023_Feature space reduction method for ultrahigh-dimensional, multiclass data random forest-based multiround screening (RFMS).bib
+  
+paper/04_results-and-discussion_a-global-performance.md: paragraf 3:
+- "Karakteristik utama dari model LR adalah retensi representasi fitur penuh":
+  - paper/references/2024_Functional Multivariable Logistic Regression With an Application to HIV Viral Suppression Prediction.bib
+- "Temuan ini mengindikasikan efektivitas regularisasi L2 dalam menangani ruang fitur berdimensi tinggi tanpa kompresi komponen utama":
+  - paper/references/2023_Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data.bib
+  
+paper/04_results-and-discussion_a-global-performance.md: paragraf 4:
+- "Pada hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut":
+  - paper/references/2026_SVC.bib
