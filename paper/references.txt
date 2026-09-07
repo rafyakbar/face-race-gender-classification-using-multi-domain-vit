@@ -155,3 +155,15 @@ paper/03_materials-and-methods_f-support-vector-machine.md:
   - paper/references/2022_Churn prediction in telecommunication industry using kernel Support Vector Machines.bib
 - "Pemetaan kuadratik ini memfasilitasi penangkapan interaksi nonlinier ...":
   - paper/references/2022_A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers.ris
+  
+paper/03_materials-and-methods_h-evaluation-metrics.md: paragraf 1:
+- "Evaluasi performa klasifikasi multi-kelas enam subkelompok demografis pada tingkat subkelompok dilakukan melalui skema biner One-vs-Rest (OvR)":
+  - paper/references/2023_Common statistical concepts in the supervised Machine Learning arena.nbib
+- "Skema ini memanfaatkan empat komponen matriks konfusi per kelas untuk menghitung ...":
+  - paper/references/2022_General Performance Score for classification problems.ris
+- "Keempat komponen tersebut mencakup $TP_c$ (True Positive), $TN_c$ (True Negative), $FP_c$ (False Positive), dan $FN_c$ (False Negative)":
+  - paper/references/2021_Attention-gating for improved radio galaxy classification.bib
+- "Akurasi OvR pada [(10)](#eq10) mengukur rasio total prediksi benar terhadap seluruh data uji, sedangkan ...":
+  - paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris
+- "F1-Score pada ... performa deteksi per subkelompok":
+  - paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris
