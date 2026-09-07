@@ -2,6 +2,46 @@ Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubung
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+sekarang berikan nomor referensi pada seluruh klaim di paper/*.md sesuai daftar yang ada pada paper/06_references.md, contoh formatnya seperti pada D:\Research\chexnet-raddino-medical-captioning\paper, perhatikan:
+- sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
+- nomor referensi yang dipakai HARUS merujuk ke entri yang sudah ada di paper/06_references.md, jangan membuat nomor baru
+- gunakan format tautan interaktif: [[N]](06_references.md#refN), misalnya [[1]](06_references.md#ref1)
+- untuk beberapa sitasi dalam satu kalimat gunakan format terpisah, contoh: [[1]](06_references.md#ref1), [[2]](06_references.md#ref2)
+- urutan nomor mengikuti kemunculan pertama sitasi pada naskah sesuai pedoman IEEE (referensi pertama kali disitasi mendapat nomor terkecil)
+- setiap klaim yang memetakan ke file di paper/references (lihat paper/references.txt) harus diberi nomor referensi yang benar dan konsisten
+- pastikan setiap kalimat yang mengutip sumber diberi nomor, dan tidak ada klaim luar tanpa sitasi
+- pastikan nomor yang sama dipakai ulang untuk sumber yang sama (jangan membuat nomor ganda untuk satu sumber)
+- periksa ulang seluruh paper/*.md agar tidak ada sitasi yang hilang, salah nomor, atau melompat
+- jangan mengubah isi kalimat, hanya menambahkan nomor referensi di posisi yang tepat (sebelum tanda baca)
+- delegasikan pengerjaan ke subagent secara paralel
+- satu subagent HANYA BOLEH MENGERJAKAN satu file pada folder paper/ agar hasilnya optimal
+- berikan instruksi ke subagent dengan jelas
+- setelah selesai memberikan nomor referensi, minta beberapa subagent untuk meng-audit ulang hasilnya
+- satu subagent audit HANYA BOLEH MENG-AUDIT DAN MEMBETULKAN satu file pada folder paper/ agar hasilnya optimal
+- pastikan audit memeriksa konsistensi nomor dengan paper/06_references.md, posisi sitasi sebelum tanda baca, dan tidak ada sitasi yang hilang/salah nomor
+- lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
+sekarang bantu saya audit ulang paper/06_references.md berdasarkan paper/references.txt dan paper/references, perhatikan:
+- sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
+- urutan entri [1] sampai [N] harus persis mengikuti urutan kemunculan pertama setiap file pada paper/references.txt
+- baca file yang ada pada paper/references satu per satu dan cocokkan metadata (penulis, judul, jurnal, volume, nomor, halaman/article number, tahun, DOI) dengan entri di paper/06_references.md
+- pastikan tidak ada file di paper/references yang tidak dirujuk, dan tidak ada entri bernomor tanpa file sumber
+- periksa aturan penulis: untuk lebih dari 6 penulis gunakan 'et al.', untuk 6 penulis atau kurang tulis semua
+- periksa format sitasi yang tepat: inisial diikuti nama keluarga, judul dalam tanda kutip, judul jurnal dicetak miring, vol./no./pp. atau Art. no., tahun, doi
+- pastikan tidak ada karakter terlarang (em dash, 'kendati', 'paradigma', 'guna')
+- jika ditemukan kesalahan, perbaiki langsung dengan sangat amat teliti
+- delegasikan audit ke beberapa subagent secara paralel
+- satu subagent HANYA BOLEH MENG-AUDIT DAN MEMBETULKAN satu rentang nomor referensi (misalnya [1]-[5], [6]-[10], [11]-[15]) agar hasilnya optimal
+- berikan instruksi ke subagent dengan jelas
+- lakukan dengan sangat amat teliti
+
+sekarang tolong susun paper/06_references.md berdasarkan paper/references.txt dan paper/references, contohnya seperti yang ada pada D:\Research\chexnet-raddino-medical-captioning\paper\06_references.md, perhatikan:
+- sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
+- baca file yang ada pada paper/references satu per satu
+- susun sesuai dengan urutan yang ada pada paper/references.txt 
+- jika sudah disusun, minta beberapa subagent agar audit ulang
+lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
 coba cek paper_outline.md dan paper, ketika digenerate pdf nya, sudah menjadi 13 halaman tanpa referensi, menurutmu section apa yang bisa dihilangkan? jangan menghapus section yang sudah ada pada paper/references.txt
 
 related works sudah saya ubah, semua kalimat pada paper/02_related-works.md sitasinya sudah ada pada paper_outline.md (bersumber dari related_works/bib). sekarang copy related_works/bib ke dalam paper/references, kemudian perbaiki daftar list related works (per paragraf) yang ada pada paper/references.txt, kemudian hapus penomoran sitasi pada paper/02_related-works.md karena sudah tergantikan pada paper/references.txt
