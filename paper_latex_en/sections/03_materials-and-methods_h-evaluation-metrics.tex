@@ -1,0 +1,41 @@
+\subsection{Evaluation Metrics}
+\label{sec:evaluation_metrics}
+
+The performance evaluation of the multi-class classification for the six demographic subgroups at the subgroup level is conducted using a binary One-vs-Rest (OvR) scheme. This scheme utilizes four per-class confusion matrix components to compute OvR Accuracy, Precision, Recall, and F1-Score for each class $c \in \{1, \dots, K\}$. These four components comprise $TP_c$ (True Positive), $TN_c$ (True Negative), $FP_c$ (False Positive), and $FN_c$ (False Negative). OvR Accuracy in \eqref{eq:10} measures the ratio of total correct predictions to the entire test data:
+\begin{equation}
+\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c}
+\label{eq:10}
+\end{equation}
+Meanwhile, Precision in \eqref{eq:11} and Recall in \eqref{eq:12} map the positive accuracy and detection sensitivity of the system per subgroup:
+\begin{equation}
+\text{Precision}_c = \frac{TP_c}{TP_c + FP_c}
+\label{eq:11}
+\end{equation}
+\begin{equation}
+\text{Recall}_c = \frac{TP_c}{TP_c + FN_c}
+\label{eq:12}
+\end{equation}
+The F1-Score in \eqref{eq:13} is formulated as the harmonic mean of Precision and Recall to represent the balanced evaluation of detection performance per subgroup:
+\begin{equation}
+\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c}
+\label{eq:13}
+\end{equation}
+
+To evaluate the overall effectiveness of the classification system on independent test data, subgroup-level performance metrics are aggregated into global evaluation metrics. In this formulation, the symbol $N$ represents the total test data samples ($N=2{,}160$), while $K$ denotes the total number of demographic subgroups ($K=6$). Global Accuracy (Overall Accuracy) in \eqref{eq:14} is calculated as the ratio of total correct predictions, namely the sum of the main diagonal elements of the confusion matrix $\sum_{c=1}^K TP_c$, to the total test samples $N$:
+\begin{equation}
+\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N}
+\label{eq:14}
+\end{equation}
+Furthermore, global Precision (Macro Precision) in \eqref{eq:15}, global Recall (Macro Recall) in \eqref{eq:16}, and global F1-Score (Macro F1-Score) in \eqref{eq:17} are computed via an unweighted macro average across the $K=6$ subgroups to assign equal evaluation weight to each demographic class:
+\begin{equation}
+\text{Precision}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c
+\label{eq:15}
+\end{equation}
+\begin{equation}
+\text{Recall}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c
+\label{eq:16}
+\end{equation}
+\begin{equation}
+\text{F1-Score}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c
+\label{eq:17}
+\end{equation}

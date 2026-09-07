@@ -1,0 +1,27 @@
+\subsection{Gaussian Naive Bayes}
+\label{sec:gaussian_naive_bayes}
+
+\begin{table*}[htbp]
+\caption{Hyperparameter Search Space for Gaussian Naive Bayes Classifier.}
+\label{tab:IV}
+\centering
+\begin{tabular}{llc}
+\toprule
+Component / Hyperparameter & Evaluated Values & Count \\
+\midrule
+Feature Scaler & None, MinMaxScaler & 2 \\
+Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
+Variance Smoothing & $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) & 40 \\
+\midrule
+\textbf{Total Grid Combinations} & -- & \textbf{240 (1,200 fits)} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Based on Bayes' theorem, the GNB classifier estimates the posterior probability of intersectional demographic classes under the assumption that all continuous feature dimensions are conditionally independent. The probability density function of the normal distribution models the likelihood of continuous features with respect to the target class according to the formulation in \eqref{eq:6}, where $x_i$ denotes the value of the $i$-th continuous feature, $y$ is the class label variable, $c$ represents the target class category, and $\mu_{c,i}$ and $\sigma_{c,i}^2$ represent the mean and variance of the $i$-th feature in class $c$, respectively:
+\begin{equation}
+P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right)
+\label{eq:6}
+\end{equation}
+
+The addition of the smoothing parameter var\_smoothing maintains computational stability against the risk of near-zero variance in high-dimensional latent representation spaces. The hyperparameter tuning procedure via 5-Fold Stratified Cross-Validation evaluates combinations of data scaling, PCA dimensionality reduction, and 40 var\_smoothing intervals explored logarithmically from $1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$, yielding 240 grid combinations with 1,200 total fits as presented in Table~\ref{tab:IV}.

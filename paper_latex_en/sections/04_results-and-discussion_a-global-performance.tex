@@ -1,0 +1,91 @@
+\section{Results and Discussion}
+\label{sec:results_and_discussion}
+
+\subsection{Global Performance Analysis}
+\label{sec:global_performance}
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Random Forest across Seven Feature Configurations.}
+\label{tab:VII}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
+\midrule
+Face & 0.8546 & 0.8543 & 0.8546 & 0.8539 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion & 0.8060 & 0.8063 & 0.8060 & 0.8057 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Age & 0.7366 & 0.7363 & 0.7366 & 0.7354 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+\textbf{Emotion $\oplus$ Face} & \textbf{0.8685} & \textbf{0.8689} & \textbf{0.8685} & \textbf{0.8682} & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Face $\oplus$ Age & 0.8579 & 0.8578 & 0.8579 & 0.8573 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 0.8111 & 0.8111 & 0.8111 & 0.8108 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=2, pca=PCA(0.75), scaler=None\end{tabular} \\
+Face $\oplus$ Emotion $\oplus$ Age & 0.8620 & 0.8620 & 0.8620 & 0.8613 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The performance evaluation of RF across the seven feature configurations on the DemogPairs test data is presented in Table~\ref{tab:VII}. Empirical experimental results demonstrate that the dual-domain Emotion $\oplus$ Face scheme achieves the highest performance, with an Accuracy of 86.85\% and an F1-Score of 86.82\%. Conversely, the tri-domain concatenation Face $\oplus$ Emotion $\oplus$ Age exhibits a slight decrease in performance to an Accuracy of 86.20\% and an F1-Score of 86.13\%. This decline is interpreted as a potential challenge in partitioning the 2,304-dimensional feature space through random tree splits (random splits). All RF configurations consistently select PCA 0.75 dimensionality reduction to balance data variance. In the single-domain category, the Face feature records the best performance with an Accuracy of 85.46\%, surpassing the Emotion domain feature at 80.60\% as well as the Age domain at 73.66\%.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.}
+\label{tab:VIII}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
+\midrule
+Face & 0.8269 & 0.8271 & 0.8269 & 0.8258 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.1246e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion & 0.7338 & 0.7387 & 0.7338 & 0.7329 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=3.0703e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
+Age & 0.6963 & 0.6979 & 0.6963 & 0.6952 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.3755e-04, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion $\oplus$ Face & 0.8486 & 0.8490 & 0.8486 & 0.8481 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Face $\oplus$ Age & 0.8315 & 0.8343 & 0.8315 & 0.8317 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.1253e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion $\oplus$ Age & 0.7681 & 0.7686 & 0.7681 & 0.7681 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.6037e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.8505} & \textbf{0.8512} & \textbf{0.8505} & \textbf{0.8505} & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The performance evaluation of the probabilistic GNB classification across seven feature configuration variations is summarized in Table~\ref{tab:VIII}. Although constrained by the fundamental assumption of continuous feature independence, the GNB model demonstrates a consistent performance improvement trend from the single-domain to multi-domain categories. In the single-domain category, the Age configuration produces the lowest performance with an Accuracy of 69.63\% and an F1-Score of 69.52\%, whereas the Face feature achieves an Accuracy of 82.69\%. Feature integration in the dual-domain category consistently enhances accuracy, led by the Emotion $\oplus$ Face combination at 84.86\%. The peak GNB classification performance is attained by the tri-domain configuration Face $\oplus$ Emotion $\oplus$ Age with an Accuracy of 85.05\% and an F1-Score of 85.05\%. All GNB feature configurations uniformly select PCA 0.75 dimensionality reduction to minimize correlations among latent features.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Logistic Regression across Seven Feature Configurations.}
+\label{tab:IX}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
+\midrule
+Face & 0.9060 & 0.9060 & 0.9060 & 0.9059 & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Emotion & 0.8847 & 0.8850 & 0.8847 & 0.8846 & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=saga, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Age & 0.8648 & 0.8649 & 0.8648 & 0.8648 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Face & 0.9241 & 0.9241 & 0.9241 & 0.9240 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Face $\oplus$ Age & 0.9162 & 0.9162 & 0.9162 & 0.9162 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 0.9051 & 0.9052 & 0.9051 & 0.9051 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.9273} & \textbf{0.9275} & \textbf{0.9273} & \textbf{0.9273} & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The benchmark results of multinomial LR performance across all feature configurations are presented in Table~\ref{tab:IX}. A key characteristic of the LR model is the retention of the full feature representation, in which all schemes (seven out of seven configurations) select no PCA reduction (pca=None). Empirical evaluation indicates that the tri-domain configuration Face $\oplus$ Emotion $\oplus$ Age records the highest performance with an Accuracy of 92.73\% and an F1-Score of 92.73\% via the penalty parameter $C=0.1$ and the newton-cg solver. This tri-domain achievement surpasses the best dual-domain configuration Emotion $\oplus$ Face, which attains an Accuracy of 92.41\% and an F1-Score of 92.40\%, as well as outperforms the best single-domain configuration Face with an Accuracy of 90.60\%. These findings indicate the effectiveness of $L_2$ regularization in handling high-dimensional feature spaces without principal component compression.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Support Vector Machine across Seven Feature Configurations.}
+\label{tab:X}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
+\midrule
+Face & 0.9083 & 0.9084 & 0.9083 & 0.9083 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Emotion & 0.9019 & 0.9020 & 0.9019 & 0.9017 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Age & 0.8764 & 0.8767 & 0.8764 & 0.8765 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Face & 0.9329 & 0.9333 & 0.9329 & 0.9329 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Face $\oplus$ Age & 0.9255 & 0.9254 & 0.9255 & 0.9254 & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 0.9208 & 0.9210 & 0.9208 & 0.9209 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.9370} & \textbf{0.9372} & \textbf{0.9370} & \textbf{0.9369} & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The performance progression of SVM across all feature ablation stages is summarized in Table~\ref{tab:X}. Similar to the linear model, all SVM configurations consistently maintain the full representation space without PCA reduction (pca=None). Empirical evaluation reveals a tiered performance increase, commencing from the best single-domain configuration Face with an Accuracy of 90.83\% and an F1-Score of 90.83\%. Representation integration in the dual-domain scheme Emotion $\oplus$ Face enhances performance to an Accuracy of 93.29\% and an F1-Score of 93.29\%, before ultimately reaching the highest point in the tri-domain configuration Face $\oplus$ Emotion $\oplus$ Age with an Accuracy of 93.70\% and an F1-Score of 93.69\%. In hyperparameter tuning, the degree parameter with a value of 2 is only active for the poly kernel function, whereas RBF kernel-based models do not activate this parameter.
+
+A descriptive comparative synthesis across the 28 experimental combinations shows that the SVM model based on the tri-domain fusion Face $\oplus$ Emotion $\oplus$ Age occupies the highest performance achievement within the evaluated search space, attaining an Accuracy of 93.70\% and an F1-Score of 93.69\%. Based on the average classifier performance across all feature configurations, the descriptive hierarchical ranking of algorithmic effectiveness is led by SVM (91.47\%), followed by LR (90.40\%), RF (82.81\%), and GNB (79.37\%). The non-linear characteristics of the polynomial kernel in SVM prove effective in mapping decision boundaries between high-dimensional demographic subgroups. However, this performance ranking comparison is strictly empirical and descriptive within the controlled experimental setup, and does not reflect absolute statistical superiority among algorithm families without formal hypothesis testing.

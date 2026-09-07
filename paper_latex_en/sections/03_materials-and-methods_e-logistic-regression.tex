@@ -1,0 +1,29 @@
+\subsection{Logistic Regression}
+\label{sec:logistic_regression}
+
+\begin{table*}[htbp]
+\caption{Hyperparameter Search Space for Logistic Regression Classifier.}
+\label{tab:V}
+\centering
+\begin{tabular}{llc}
+\toprule
+Component / Hyperparameter & Evaluated Values & Count \\
+\midrule
+Feature Scaler & None, MinMaxScaler & 2 \\
+Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
+Regularization Strength & 0.01, 0.1, 1, 10, 100 & 5 \\
+Optimization Solver & 'lbfgs', 'saga', 'newton-cg' & 3 \\
+Maximum Iterations & 500, 1000, 2000 & 3 \\
+\midrule
+\textbf{Total Grid Combinations} & -- & \textbf{270 (1,350 fits)} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The multinomial regression approach (Softmax regression) in LR maps latent feature representations into six intersectional demographic categories through unified linear probability estimation. The Softmax probability function calculates the conditional probability of a sample with respect to the target category as defined in \eqref{eq:7}, where $\mathbf{x}$ represents the input feature vector, $y$ is the class label variable, $c$ denotes the target class category, $\mathbf{w}_c$ and $b_c$ represent the weight vector and bias of class $c$, respectively, while the constant $K = 6$ indicates the total number of intersectional classes:
+\begin{equation}
+P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}}
+\label{eq:7}
+\end{equation}
+
+The model training process minimizes the cross-entropy loss function by incorporating an $L_2$ regularization penalty to control weight complexity in the high-dimensional representation space. The structured hyperparameter search evaluates variations in the regularization strength $C$, optimization solver algorithms (lbfgs, saga, newton-cg), iteration limit max\_iter, as well as the integration of scaling and PCA, yielding 270 evaluation combinations or 1,350 total fits under the 5-Fold Stratified Cross-Validation protocol presented in Table~\ref{tab:V}.

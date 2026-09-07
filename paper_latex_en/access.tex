@@ -1,0 +1,109 @@
+\documentclass{ieeeaccess}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{bm}
+\makeatletter
+\AtBeginDocument{\DeclareMathVersion{bold}
+\SetSymbolFont{operators}{bold}{T1}{times}{b}{n}
+\SetSymbolFont{NewLetters}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathrm}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathit}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathbf}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{pcr}{b}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{cmsy}{b}{n}
+\renewcommand\boldmath{\@nomath\boldmath\mathversion{bold}}}
+
+% Include square brackets inside citation hyperlinks
+\providecommand{\hyper@link@cite}[2]{\hyperlink{cite.#1}{#2}}
+\def\@citex[#1]#2{%
+  \let\@citea\@empty
+  \@for\@citeb:=#2\do{%
+    \@citea\def\@citea{, }%
+    \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+    \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+    \@ifundefined{b@\@citeb}{%
+      {\reset@font\bfseries [?]}%
+      \G@refundefinedtrue
+      \@latex@warning{Citation `\@citeb' on page \thepage \space undefined}%
+    }{%
+      \hyper@link@cite{\@citeb}{[\csname b@\@citeb\endcsname\if@tempswa, #1\fi]}%
+    }%
+  }%
+}
+\def\@cite#1#2{#1}
+
+% Include parentheses inside equation hyperlinks
+\renewcommand{\eqref}[1]{\hyperref[#1]{(\ref*{#1})}}
+\makeatother
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Path to graphics directory
+\graphicspath{{images/}}
+
+\begin{document}
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2026.0000000}
+
+% Title, Authors, Affiliations, Metadata & Funding
+\input{sections/00_title.tex}
+
+% Abstract and Index Terms (Keywords)
+\input{sections/00_abstract.tex}
+
+\maketitle
+
+% Section I: Introduction
+\input{sections/01_introduction.tex}
+
+% Section II: Related Works
+\input{sections/02_related-works.tex}
+
+% Section III: Materials and Methods
+\input{sections/03_materials-and-methods_0-overview.tex}
+\input{sections/03_materials-and-methods_a-dataset.tex}
+\input{sections/03_materials-and-methods_b-vision-transformer.tex}
+\input{sections/03_materials-and-methods_c-random-forest.tex}
+\input{sections/03_materials-and-methods_d-gaussian-naive-bayes.tex}
+\input{sections/03_materials-and-methods_e-logistic-regression.tex}
+\input{sections/03_materials-and-methods_f-support-vector-machine.tex}
+\input{sections/03_materials-and-methods_g-classification-pipeline.tex}
+\input{sections/03_materials-and-methods_h-evaluation-metrics.tex}
+
+% Section IV: Results and Discussion
+\input{sections/04_results-and-discussion_a-global-performance.tex}
+\input{sections/04_results-and-discussion_b-feature-ablation-analysis.tex}
+\input{sections/04_results-and-discussion_c-intersectional-subgroup-performance-analysis.tex}
+\input{sections/04_results-and-discussion_d-error-pattern-analysis.tex}
+\input{sections/04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.tex}
+\input{sections/04_results-and-discussion_f-comparison-with-prior-studies.tex}
+
+% Section V: Conclusion
+\input{sections/05_conclusion.tex}
+
+% References (BibTeX)
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+% Author Biographies
+\input{sections/07_biographies.tex}
+
+\EOD
+
+\end{document}

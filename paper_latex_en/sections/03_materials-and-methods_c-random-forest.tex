@@ -1,0 +1,25 @@
+\subsection{Random Forest}
+\label{sec:random_forest}
+
+\begin{table*}[htbp]
+\caption{Hyperparameter Search Space for Random Forest Classifier.}
+\label{tab:III}
+\centering
+\begin{tabular}{llc}
+\toprule
+Component / Hyperparameter & Evaluated Values & Count \\
+\midrule
+Feature Scaler & None, MinMaxScaler & 2 \\
+Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
+Number of Estimators & 100, 200 & 2 \\
+Maximum Tree Depth & None, 20, 30 & 3 \\
+Feature Subspace & 'sqrt', 'log2' & 2 \\
+Minimum Samples Split & 2, 5 & 2 \\
+Minimum Samples Leaf & 1, 2 & 2 \\
+\midrule
+\textbf{Total Grid Combinations} & -- & \textbf{288 (1,440 fits)} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The RF ensemble model aggregates predictions from a collection of independent decision trees to classify facial features based on the principles of bootstrap aggregating (bagging) and the random subspace method. This approach reduces prediction variance by constructing $B$ classification trees from random samples of the training data. Each node split restricts feature selection to a random subset of size max\_features $\in \{\text{'sqrt'}, \text{'log2'}\}$ to suppress inter-tree correlation. The split criterion optimizes the Gini impurity index until satisfying the minimum node split threshold min\_samples\_split, the maximum depth limit max\_depth, or the minimum leaf threshold min\_samples\_leaf. The majority voting mechanism determines the final decision for an image sample across all decision trees. The hyperparameter tuning procedure evaluates combinations of feature scaling, PCA dimensionality reduction, variations in the number of trees n\_estimators, and tree growth constraints, yielding 288 grid configurations with 1,440 total fits via 5-Fold Stratified Cross-Validation as summarized in Table~\ref{tab:III}.

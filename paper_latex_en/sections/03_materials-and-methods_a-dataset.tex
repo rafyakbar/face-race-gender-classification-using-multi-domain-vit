@@ -1,0 +1,33 @@
+\subsection{Dataset}
+\label{sec:dataset}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{sample_demogpairs.png}
+\caption{Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.}
+\label{fig:2}
+\end{figure*}
+
+The dataset used in this study is DemogPairs \cite{ref11}, a dataset specifically designed to measure facial recognition performance disparities across demographic groups. This dataset contains a total of 10,800 facial images distributed evenly across six intersectional classes. The six subgroups encompass cross-combinations of three macro-race groups and two gender groups, namely Asian Females, Asian Males, Black Females, Black Males, White Females, and White Males, with an exact quota of 1,800 images per class. This balanced distribution provides a controlled evaluation condition to objectively compare performance across subgroups without distortion from majority sample dominance. Visual samples from the six demographic subgroups are illustrated in Figure~\ref{fig:2}.
+
+\begin{table}[htbp]
+\caption{Dataset Partition and Demographic Subgroup Distribution.}
+\label{tab:I}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Subgroup & Train Set (80\%) & Test Set (20\%) & Total \\
+\midrule
+Black Males & 1,440 & 360 & 1,800 \\
+White Females & 1,440 & 360 & 1,800 \\
+Asian Males & 1,440 & 360 & 1,800 \\
+White Males & 1,440 & 360 & 1,800 \\
+Black Females & 1,440 & 360 & 1,800 \\
+Asian Females & 1,440 & 360 & 1,800 \\
+\midrule
+\textbf{Total} & \textbf{8,640} & \textbf{2,160} & \textbf{10,800} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To ensure the integrity of empirical testing, the dataset is partitioned using an 80/20 stratified split procedure (80\% training data and 20\% test data). This partition yields 8,640 training images with 1,440 samples per class and 2,160 independent test images with 360 samples per class, as detailed in Table~\ref{tab:I}. The test subset is strictly isolated, never involved during the hyperparameter search process, and solely used for final evaluation. At the image standardization stage, each facial image is converted into a 3-channel Red, Green, Blue (RGB) format, resized to a resolution of $224 \times 224$ pixels, and its pixel intensity is scaled from the range [0, 255] to [0, 1] to align with the transformer model inputs.

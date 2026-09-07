@@ -1,0 +1,60 @@
+\subsection{Vision Transformer}
+\label{sec:vision_transformer}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{vit.png}
+\caption{Architecture of the ViT Backbone and Patch Projection.}
+\label{fig:3}
+\end{figure}
+
+The visual representation extraction architecture of this study adopts ViT-Base (vit-base-patch16-224), as illustrated in Figure~\ref{fig:3}. The input facial image of $224 \times 224$ pixels with three color channels is partitioned into 196 non-overlapping spatial patches $\mathbf{x}_p^i$ of size $16 \times 16$ pixels. Each patch is linearly projected via matrix $\mathbf{E}$ into a latent space of dimension $D = 768$, and then concatenated with a class token $\mathbf{x}_{\text{class}}$ and positional embedding $\mathbf{E}_{\text{pos}}$ according to \eqref{eq:1}, where $\mathbf{z}_0$ represents the initial token sequence vector input to the encoder:
+\begin{equation}
+\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^{196}\mathbf{E}] + \mathbf{E}_{\text{pos}}
+\label{eq:1}
+\end{equation}
+
+The initial token sequence vector $\mathbf{z}_0$ is passed to a stack of 12 identical transformer encoder layers. Each encoder layer $\ell$ processes the input $\mathbf{z}_{\ell-1}$ into an intermediate representation $\mathbf{z}'_\ell$ via the Multi-Head Self-Attention (MHSA) mechanism following the Layer Normalization (LN) operation according to \eqref{eq:2}, where $\text{LN}(\cdot)$ denotes layer normalization and $\mathbf{z}_{\ell-1}$ is the output representation from the previous layer:
+\begin{equation}
+\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}
+\label{eq:2}
+\end{equation}
+This process continues toward the output representation $\mathbf{z}_\ell$ via a two-layer Multi-Layer Perceptron (MLP) block with GeLU activation according to \eqref{eq:3}, where $\text{MLP}(\cdot)$ denotes the multi-layer perceptron network and $\mathbf{z}'_\ell$ is the residual intermediate representation:
+\begin{equation}
+\mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell
+\label{eq:3}
+\end{equation}
+The self-attention mechanism with 12 attention heads directly maps global spatial relationships among facial patches without local receptive field constraints.
+
+To maintain computational efficiency and prevent retraining variability, the three ViT backbone models are frozen as offline providers of task-associated representations. The ViT-Face model (skutaada/VIT\-VGGFace) captures representations related to facial biometric geometry, ViT-Emotion (dima806/facial\-\_emotions\-\_image\-\_detection) yields representations related to facial expressions, and ViT-Age (dima806/facial\-\_age\-\_image\-\_detection) extracts representations related to facial age estimation. From each domain model, the feature vector $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ is extracted from the $[\text{CLS}]$ token representation at the final encoder layer $L$ ($\mathbf{z}_L^0$) following the LN operation according to \eqref{eq:4}, where $\mathbf{z}_L^0$ denotes the first token representation vector at layer $L$:
+\begin{equation}
+\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768}
+\label{eq:4}
+\end{equation}
+
+The three single-domain latent representations are combined into a tri-domain fusion vector $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ via the feature concatenation operation ($\oplus$) of vectors $\mathbf{f}_{\text{face}}$, $\mathbf{f}_{\text{emotion}}$, and $\mathbf{f}_{\text{age}}$, as formulated in \eqref{eq:5}, where $\mathbf{z}_{\text{tri}}$ denotes the tri-domain fused representation vector:
+\begin{equation}
+\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304}
+\label{eq:5}
+\end{equation}
+
+\begin{table}[htbp]
+\caption{Multi-Domain Feature Fusion and Ablation Configurations.}
+\label{tab:II}
+\centering
+\begin{tabular}{clcc}
+\toprule
+\# & Configuration & Domain Category & Dimension \\
+\midrule
+1 & Face & Single-Domain & 768 \\
+2 & Emotion & Single-Domain & 768 \\
+3 & Age & Single-Domain & 768 \\
+4 & Emotion $\oplus$ Face & Dual-Domain & 1,536 \\
+5 & Face $\oplus$ Age & Dual-Domain & 1,536 \\
+6 & Emotion $\oplus$ Age & Dual-Domain & 1,536 \\
+7 & Face $\oplus$ Emotion $\oplus$ Age & \textbf{Tri-Domain (Proposed)} & \textbf{2,304} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The systematic exploration encompasses seven feature ablation schemes, comprising three single-domain configurations of dimension 768, three dual-domain configurations of dimension 1,536, and one tri-domain configuration of dimension 2,304, as summarized in Table~\ref{tab:II}.
