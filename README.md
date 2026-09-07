@@ -109,6 +109,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 
 ```
 .
+├── authors.txt                            # Complete author profiles, affiliations, and ORCID IDs
 ├── experiment/                            # Experimental logs, documentation, and source code
 │   ├── 00_overview.md - 05_results.md     # Comprehensive experimental logs and methodology audits
 │   ├── dataset_demogpairs.md              # Dataset specification and partition summary
@@ -130,6 +131,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │       ├── md/                            # Markdown exports of all Jupyter notebooks
 │       ├── results/                       # Raw JSON result files (28 experiment artifacts)
 │       └── images/                        # Confusion matrix plots (28 models)
+├── folder_structure.txt                   # Complete project directory tree and file glossary
 ├── images/                                # High-resolution architecture diagrams and sample figures
 ├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
 │   ├── 00_abstract.md                  # Title, authors, abstract, and IEEE keywords
@@ -141,7 +143,27 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── 06_references.md                # Section VI: References
 │   ├── 07_biographies.md               # Section VII: Biographies
 │   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   ├── references.txt                  # Sentence-level citation tracking & verification registry
+│   ├── references/                     # 47 bibliographic source files (.bib, .ris, .nbib, .bibtex)
 │   └── images/                         # Self-contained local image assets for paper compilation
+├── paper_latex_en/                        # Submission-ready English IEEE Access LaTeX package
+│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                      # Compiled dual-column English manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
+│   ├── references.bib                  # Consolidated BibTeX database
+│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+├── paper_latex_id/                        # Reference Indonesian IEEE Access LaTeX package
+│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                      # Compiled dual-column Indonesian manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
+│   ├── references.bib                  # Consolidated BibTeX database
+│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+├── paper_outline.md                       # Complete publication outline & paragraph targets
+├── prompts.txt                            # Chronological log of experimental prompts and instructions
+├── README.AI.md                           # Master AI agent operational guide and ground-truth index
+├── README.md                              # Public research documentation
 ├── references/                            # BibTeX citation sources (DemogPairs)
 ├── related_works/                         # Literature reviews, summary matrices, and gap analysis
 │   ├── bib/                               # BibTeX files for 10 mandatory literature papers
@@ -155,11 +177,6 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── IEEE_citation_guidelines.md        # IEEE citation and bibliography guidelines
 │   ├── latex_rules.txt                    # LaTeX conversion rules and templates
 │   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
-├── folder_structure.txt                   # Complete project directory tree and file glossary
-├── paper_outline.md                       # Complete publication outline & paragraph targets
-├── prompts.txt                            # Chronological log of experimental prompts and instructions
-├── README.AI.md                           # Master AI agent operational guide and ground-truth index
-├── README.md                              # Public research documentation
 ├── scopus_query.txt                       # Scopus literature search query strings
 └── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ```
@@ -171,10 +188,14 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 | [`WORKFLOW.md`](WORKFLOW.md) | **Standard Operating Procedure (SOP):** Universal 4-stage research manuscript pipeline (`Outline` &rarr; `paper/` &rarr; `paper_latex_id/` &rarr; `paper_latex_en/`) |
 | [`README.AI.md`](README.AI.md) | Master AI agent operational guide, ground-truth audit index, and academic writing rules |
 | [`paper_outline.md`](paper_outline.md) | Master architectural blueprint for IEEE Access publication, word limits, and notation definitions |
-| [`folder_structure.txt`](folder_structure.txt) | Complete directory tree diagram and comprehensive functional glossary of all folders/files |
 | [`paper/`](paper/) | Modular publication draft in Markdown conforming strictly to IEEE publication standards |
+| [`paper/references.txt`](paper/references.txt) | Sentence-level citation tracking registry mapping manuscript statements directly to bibliographic sources |
+| [`paper_latex_en/`](paper_latex_en/) | **Final submission package:** English IEEE Access modular LaTeX source and compiled PDF ([`access.pdf`](paper_latex_en/access.pdf)) |
+| [`paper_latex_id/`](paper_latex_id/) | **Indonesian reference package:** Modular IEEE Access LaTeX source and compiled PDF ([`access.pdf`](paper_latex_id/access.pdf)) |
 | [`rules/md_rules.txt`](rules/md_rules.txt) | Strict Markdown drafting rules (word count bounds, acronym tracking, interactive links, no forbidden words) |
+| [`folder_structure.txt`](folder_structure.txt) | Complete directory tree diagram and comprehensive functional glossary of all folders/files |
 | [`experiment/00_overview.md`](experiment/00_overview.md) | Comprehensive experimental logs, 28-model leaderboard audit, and dataset partition details |
+| [`authors.txt`](authors.txt) | Comprehensive academic author profiles, departmental affiliations, and ORCID identifiers |
 
 ---
 

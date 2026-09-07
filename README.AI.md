@@ -351,6 +351,7 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 ├── WORKFLOW.md                         # Universal Research Manuscript Pipeline SOP (Outline -> paper/ -> paper_latex_id/ -> paper_latex_en/)
 ├── paper_outline.md                    # Detailed paper outline (IEEE Access / Q1 target)
 ├── folder_structure.txt                # Complete directory tree and comprehensive file glossary
+├── authors.txt                         # Author biographies, departmental affiliations, and ORCIDs
 ├── prompts.txt                         # Experimental instructions and agent logs
 ├── scopus_query.txt                    # Scopus literature search query strings
 │
@@ -363,14 +364,32 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 ├── paper/                              # Modular publication manuscript draft in Markdown (IEEE style)
 │   ├── 00_abstract.md                  # Title, authors, abstract (188 words), and IEEE keywords
 │   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
-│   ├── 02_related-works.md              # Section II (Related Works, 6 paragraphs, no subheadings)
+│   ├── 02_related-works.md              # Section II (Related Works, 5 paragraphs, no subheadings)
 │   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. h-evaluation-metrics)
 │   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. f-prior-studies)
 │   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
 │   ├── 06_references.md                # Section VI (IEEE formatted bibliography)
 │   ├── 07_biographies.md               # Section VII (Author academic biographies)
 │   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   ├── references.txt                  # Sentence-level citation tracking & verification registry
+│   ├── references/                     # 47 bibliographic source files (.bib, .ris, .nbib, .bibtex)
 │   └── images/                         # Local image copies ensuring self-contained paper compilation
+│
+├── paper_latex_en/                     # Submission-ready English IEEE Access LaTeX package
+│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                      # Fully compiled dual-column English manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
+│   ├── references.bib                  # Consolidated BibTeX database
+│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+│
+├── paper_latex_id/                     # Reference Indonesian IEEE Access LaTeX package
+│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                      # Fully compiled dual-column Indonesian manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
+│   ├── references.bib                  # Consolidated BibTeX database
+│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
 │
 ├── rules/
 │   ├── md_rules.txt                    # Mandatory Markdown writing rules, constraints & checklist
@@ -518,6 +537,25 @@ pred_label = u.DEMOGPairs_IDX_TO_LABEL[pred_idx]
 print(f'Predicted Class Index: {pred_idx} -> Label: {pred_label}')
 ```
 
+### 11.4 LaTeX Manuscript Compilation Workflow
+Both Indonesian and English IEEE Access manuscripts are fully modularized and ready for compilation under `paper_latex_id/` and `paper_latex_en/`. To recompile either manuscript from source:
+```bash
+# Compile English IEEE Access Manuscript (Submission-Ready)
+cd paper_latex_en
+pdflatex access.tex
+bibtex access
+pdflatex access.tex
+pdflatex access.tex
+
+# Compile Indonesian Reference Manuscript
+cd ../paper_latex_id
+pdflatex access.tex
+bibtex access
+pdflatex access.tex
+pdflatex access.tex
+```
+Compilation yields the publication-ready dual-column PDF `access.pdf` in each respective directory.
+
 ---
 
 ## 12. Scientific Claim Boundaries & Academic Writing Rules
@@ -543,7 +581,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 - **Math Mode Exclusivity:** Reserve LaTeX formulas (`$...$` and `$$...$$`) strictly for symbolic algebra, vectors, matrices, and formal mathematical definitions.
 - **No Orphan Elements:** Every figure, table, equation, algorithm, and reference cited must be explicitly introduced and elaborated in the accompanying narrative text.
 
-### 12.3 Scientific Claim Boundaries & Academic Rigor (25 Directives)
+### 12.3 Scientific Claim Boundaries & Academic Rigor (26 Directives)
 1. **No Subject Identity Discussion:** Do not discuss identity-level split, identity leakage, subject identity, or identity-aware split. Focus strictly on intersectional race and gender classification.
 2. **Cautious Data Leakage Formulation:** Do not claim absolute "zero data leakage"; use "the preprocessing and cross-validation pipeline was designed to prevent information leakage."
 3. **Balanced Evaluation Setting:** A balanced dataset does not imply demographic bias has been eliminated; refer to it as a "balanced evaluation setting" or "balanced class distribution across subgroups."
@@ -568,7 +606,8 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 22. **RQ Alignment:** Every research conclusion must be backed by a table, figure, or experiment result. Do not assert findings without an explicit evidential anchor.
 23. **Final Terminology/Notation/Number Consistency:** Before finalizing any section, verify that all acronyms, configuration names (using ⊕ symbol), equation references (Eq. 1-19), and numerical values are consistent throughout the entire document.
 24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XII), but should be cited when introducing the DemogPairs dataset.
-25. **Universal Manuscript Pipeline SOP (`WORKFLOW.md`):** All drafting, translation, and publication workflows must strictly follow `WORKFLOW.md` as the official standard operating procedure for generating modular Markdown drafts (`paper/`), Indonesian LaTeX (`paper_latex_id/`), and English submission-ready LaTeX manuscripts (`paper_latex_en/`) from `paper_outline.md`. Each stage must strictly maintain 100% numerical consistency, exact formula definitions, and 1-to-1 modular mapping across all target formats.
+25. **Universal Manuscript Pipeline SOP (`WORKFLOW.md`):** All drafting, translation, and publication workflows must strictly follow `WORKFLOW.md` as the official standard operating procedure for generating modular Markdown drafts (`paper/`), Indonesian LaTeX (`paper_latex_id/`), and English submission-ready LaTeX manuscripts (`paper_latex_en/`) from `paper_outline.md`. Both LaTeX packages use `access.tex` as the master document entrypoint and compile directly to `access.pdf`. Each stage must strictly maintain 100% numerical consistency, exact formula definitions, and 1-to-1 modular mapping across all target formats.
+26. **Sentence-Level Citation Audit Protocol (`paper/references.txt`):** Every factual claim or external literature reference in `paper/*.md` must be registered with exact quote matching in `paper/references.txt` pointing to source files in `paper/references/`. During manuscript evolution, temporary inline citation markers (`[(N)]`) are strictly tracked and converted into validated bibliography entries before final LaTeX synchronization (`references.bib`).
 
 ---
 
