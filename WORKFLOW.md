@@ -77,12 +77,11 @@ paper/
 ├── 03_materials-and-methods_f-support-vector-machine.md# Section III-F: Support Vector Machine formulation & Eq. (9)
 ├── 03_materials-and-methods_g-classification-pipeline.md # Section III-G: Pipeline modular & 5-Fold Stratified GridSearchCV
 ├── 03_materials-and-methods_h-evaluation-metrics.md    # Section III-H: Metrik evaluasi OvR & Global (Eq. 10-17)
-├── 04_results-and-discussion_a-global-performance.md   # Section IV-A: Benchmark performa global 28 model (Table II-V)
-├── 04_results-and-discussion_b-feature-ablation-analysis.md # Section IV-B: Analisis ablasi fitur & kontribusi domain
-├── 04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md # Section IV-C: Evaluasi performa subkelompok & disparitas (Table VI)
-├── 04_results-and-discussion_d-error-pattern-analysis.md # Section IV-D: Analisis pola kesalahan & confusion matrix (Figure 4)
-├── 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md # Section IV-E: Analisis konfigurasi kernel SVM
-├── 04_results-and-discussion_f-comparison-with-prior-studies.md # Section IV-F: Perbandingan komparatif studi terdahulu (Table VII)
+├── 04_results-and-discussion_a-global-performance.md   # Section IV-A: Benchmark performa global 28 model (Table VII-X)
+├── 04_results-and-discussion_b-feature-ablation-study.md # Section IV-B: Analisis ablasi fitur & kontribusi domain
+├── 04_results-and-discussion_c-intersectional-subgroup-performance.md # Section IV-C: Evaluasi performa subkelompok & disparitas (Table XI)
+├── 04_results-and-discussion_d-error-pattern-assessment.md # Section IV-D: Analisis pola kesalahan & confusion matrix (Figure 4)
+├── 04_results-and-discussion_e-comparison-with-prior-studies.md # Section IV-E: Perbandingan komparatif studi terdahulu (Table XII)
 ├── 05_conclusion.md                                    # Section V: Kesimpulan, limitasi riset, dan rencana masa depan
 ├── 06_references.md                                    # Section VI: Daftar pustaka format IEEE
 ├── 07_biographies.md                                   # Section VII: Biografi akademik seluruh penulis
@@ -112,7 +111,7 @@ paper_latex_[id|en]/
     ├── 01_introduction.tex           # \section{Introduction}
     ├── 02_related-works.tex          # \section{Related Works}
     ├── 03_materials-and-methods_*.tex# \section{Materials and Methods} & 9 sub-bagian modular
-    ├── 04_results-and-discussion_*.tex# \section{Results and Discussion} & 6 sub-bagian modular
+├── 04_results-and-discussion_*.tex# \section{Results and Discussion} & 5 sub-bagian modular
     ├── 05_conclusion.tex             # \section{Conclusion}
     └── 07_biographies.tex            # Biografi & foto seluruh penulis (\begin{IEEEbiography})
 ```
@@ -145,12 +144,11 @@ pdflatex access.tex
 | **III-F. Support Vector Machine**| `03_materials-and-methods_f-support-vector-machine.md`| `03_materials-and-methods_f-support-vector-machine.tex`| Margin optimal, fungsi kernel polinomial derajat 2, dan Eq. (9) |
 | **III-G. Pipeline Klasifikasi**| `03_materials-and-methods_g-classification-pipeline.md`| `03_materials-and-methods_g-classification-pipeline.tex`| Pipeline terisolasi Scaler + PCA, 5-Fold Stratified Cross-Validation, GridSearchCV |
 | **III-H. Metrik Evaluasi** | `03_materials-and-methods_h-evaluation-metrics.md` | `03_materials-and-methods_h-evaluation-metrics.tex` | Skema One-vs-Rest (OvR), akurasi, presisi, recall, F1-score subkelompok & global, Eq. (10)-(17) |
-| **IV-A. Performa Global** | `04_results-and-discussion_a-global-performance.md`| `04_results-and-discussion_a-global-performance.tex`| Tolok ukur 28 model, evaluasi data uji held-out, ranking pengklasifikasi, [Table II-V](#tab2) |
-| **IV-B. Analisis Ablasi Fitur**| `04_results-and-discussion_b-feature-ablation-analysis.md`| `04_results-and-discussion_b-feature-ablation-analysis.tex`| Perbandingan skema representasi single, dual, dan tri-domain |
-| **IV-C. Performa Subkelompok**| `04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md`| `04_results-and-discussion_c-intersectional-subgroup-performance-analysis.tex`| Evaluasi performa 6 kelas demografis interseksional & profil rentang disparitas, [Table VI](#tab6) |
-| **IV-D. Pola Kesalahan** | `04_results-and-discussion_d-error-pattern-analysis.md`| `04_results-and-discussion_d-error-pattern-analysis.tex`| Analisis matriks konfusi 6x6 model terbaik SVM Tri-Domain ([Figure 4](images/confusion_matrix.png)) |
-| **IV-E. Konfigurasi Kernel SVM**| `04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md`| `04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.tex`| Justifikasi empiris pemilihan kernel polynomial derajat dua dan parameterisasi $C=10$ |
-| **IV-F. Studi Terdahulu** | `04_results-and-discussion_f-comparison-with-prior-studies.md`| `04_results-and-discussion_f-comparison-with-prior-studies.tex`| Perbandingan langsung tolok ukur DemogPairs dengan studi terdahulu, [Table VII](#tab7) |
+| **IV-A. Performa Global** | `04_results-and-discussion_a-global-performance.md`| `04_results-and-discussion_a-global-performance.tex`| Tolok ukur 28 model, evaluasi data uji held-out, ranking pengklasifikasi, [Table VII-X](#tab7) |
+| **IV-B. Analisis Ablasi Fitur**| `04_results-and-discussion_b-feature-ablation-study.md`| `04_results-and-discussion_b-feature-ablation-study.tex`| Perbandingan skema representasi single, dual, dan tri-domain |
+| **IV-C. Performa Subkelompok**| `04_results-and-discussion_c-intersectional-subgroup-performance.md`| `04_results-and-discussion_c-intersectional-subgroup-performance.tex`| Evaluasi performa 6 kelas demografis interseksional & profil rentang disparitas, [Table XI](#tab11) |
+| **IV-D. Pola Kesalahan** | `04_results-and-discussion_d-error-pattern-assessment.md`| `04_results-and-discussion_d-error-pattern-assessment.tex`| Analisis matriks konfusi 6x6 model terbaik SVM Tri-Domain ([Figure 4](images/confusion_matrix.png)) |
+| **IV-E. Studi Terdahulu** | `04_results-and-discussion_e-comparison-with-prior-studies.md`| `04_results-and-discussion_e-comparison-with-prior-studies.tex`| Perbandingan langsung tolok ukur DemogPairs dengan studi terdahulu, [Table XII](#tab12) |
 | **V. Kesimpulan** | `05_conclusion.md` | `05_conclusion.tex` | Kesimpulan utama, batasan penelitian, dan rekomendasi arah riset lanjutan |
 | **Referensi** | `06_references.md` / `references.txt` | `references.bib` | Basis data BibTeX terpadu (`@article`, `@inproceedings`, `@book`) |
 | **Biografi** | `07_biographies.md` | `07_biographies.tex` | Biografi akademik dan penyematan foto seluruh penulis |

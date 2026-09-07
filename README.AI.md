@@ -366,7 +366,7 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 │   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
 │   ├── 02_related-works.md              # Section II (Related Works, 5 paragraphs, no subheadings)
 │   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. h-evaluation-metrics)
-│   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. f-prior-studies)
+│   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. e-prior-studies)
 │   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
 │   ├── 06_references.md                # Section VI (IEEE formatted bibliography)
 │   ├── 07_biographies.md               # Section VII (Author academic biographies)

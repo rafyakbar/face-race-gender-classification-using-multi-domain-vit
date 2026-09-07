@@ -206,11 +206,10 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 03_materials-and-methods_g-classification-pipeline.md
 │   ├── 03_materials-and-methods_h-evaluation-metrics.md
 │   ├── 04_results-and-discussion_a-global-performance.md
-│   ├── 04_results-and-discussion_b-feature-ablation-analysis.md
-│   ├── 04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md
-│   ├── 04_results-and-discussion_d-error-pattern-analysis.md
-│   ├── 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md
-│   ├── 04_results-and-discussion_f-comparison-with-prior-studies.md
+│   ├── 04_results-and-discussion_b-feature-ablation-study.md
+│   ├── 04_results-and-discussion_c-intersectional-subgroup-performance.md
+│   ├── 04_results-and-discussion_d-error-pattern-assessment.md
+│   ├── 04_results-and-discussion_e-comparison-with-prior-studies.md
 │   ├── 05_conclusion.md
 │   ├── 06_references.md
 │   ├── 07_biographies.md
@@ -401,16 +400,14 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
   Section III-H: Formulasi metrik performa tingkat subkelompok (Akurasi, Presisi, Recall, F1) dan agregasi global.
 - 04_results-and-discussion_a-global-performance.md
   Section IV-A: Analisis perbandingan kinerja global pada 28 konfigurasi eksperimen.
-- 04_results-and-discussion_b-feature-ablation-analysis.md
+- 04_results-and-discussion_b-feature-ablation-study.md
   Section IV-B: Analisis kontribusi ablasi representasi domain tunggal, ganda, dan tri-domain.
-- 04_results-and-discussion_c-intersectional-subgroup-performance-analysis.md
+- 04_results-and-discussion_c-intersectional-subgroup-performance.md
   Section IV-C: Analisis performa granular antarsubkelompok demografis pada model tri-domain.
-- 04_results-and-discussion_d-error-pattern-analysis.md
+- 04_results-and-discussion_d-error-pattern-assessment.md
   Section IV-D: Telaah mendalam pola kesalahan prediksi dan tumpang tindih visual antarsubkelompok.
-- 04_results-and-discussion_e-analysis-of-selected-svm-kernel-configuration.md
-  Section IV-E: Analisis mendalam konfigurasi SVM kernel polynomial derajat 2 sebagai model terbaik.
-- 04_results-and-discussion_f-comparison-with-prior-studies.md
-  Section IV-F: Perbandingan komparatif hasil penelitian terhadap 10 studi literatur terdahulu.
+- 04_results-and-discussion_e-comparison-with-prior-studies.md
+  Section IV-E: Perbandingan komparatif hasil penelitian terhadap 10 studi literatur terdahulu.
 - 05_conclusion.md
   Section V (Conclusion): Kesimpulan utama temuan empiris, keterbatasan riset, dan rekomendasi studi lanjutan.
 - 06_references.md

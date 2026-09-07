@@ -138,7 +138,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── 01_introduction.md              # Section I: Introduction
 │   ├── 02_related-works.md              # Section II: Related Works
 │   ├── 03_materials-and-methods_*.md   # Section III: Methodology (0-overview, a-dataset s.d. h-evaluation-metrics)
-│   ├── 04_results-and-discussion_*.md  # Section IV: Results and Discussion (a-global s.d. f-prior-studies)
+│   ├── 04_results-and-discussion_*.md  # Section IV: Results and Discussion (a-global s.d. e-prior-studies)
 │   ├── 05_conclusion.md                # Section V: Conclusion
 │   ├── 06_references.md                # Section VI: References
 │   ├── 07_biographies.md               # Section VII: Biographies
