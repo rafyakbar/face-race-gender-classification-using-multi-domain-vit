@@ -1,0 +1,157 @@
+paper/01_introduction.md: paragraf 1:
+- "Pengenalan otomatis atribut demografis wajah memegang peranan penting dalam berbagai domain aplikasi cerdas, termasuk sistem forensik digital, kontrol akses biometrik, interaksi manusia-komputer, dan personalisasi layanan interaktif":
+  - paper/references/2022_A comprehensive survey on techniques to handle face identity threats challenges and opportunities.ris
+  - paper/references/2021_Privacy–Enhancing Face Biometrics A Comprehensive Survey.bib
+- "Namun, sejumlah studi melaporkan adanya disparitas performa pada subkelompok demografis tertentu, termasuk perempuan dan individu dengan warna kulit lebih gelap":
+  - paper/references/2022_The unseen Black faces of AI algorithms.nbib
+  - paper/references/2024_Reinvention mediates impacts of skin tone bias in algorithms implications for technology diffusion.bib
+- "Ketimpangan tersebut dapat dipengaruhi oleh berbagai faktor, termasuk ketidakseimbangan distribusi data dan keterbatasan representasi fitur terhadap variasi visual":
+  - paper/references/2022_A Comprehensive Study on Face Recognition Biases Beyond Demographics.bib
+  
+paper/01_introduction.md: paragraf 2:
+- "Sebagian pendekatan pengenalan atribut wajah memodelkan atribut secara terpisah, sedangkan multi-task learning memungkinkan beberapa atribut dipelajari secara simultan":
+  - paper/references/2023_Facial attribute classification by deep mining inter-attribute correlations.bib
+- "Pemodelan atribut secara terpisah dapat membatasi analisis terhadap kelompok yang terbentuk dari kombinasi atribut, seperti ras dan gender":
+  - paper/references/2022_Racial, skin tone, and sex disparities in automated proctoring software.bib
+- "Akibatnya, metrik agregat berpotensi tidak menangkap disparitas performa pada subkelompok tertentu":
+  - paper/references/2023_Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.nbib
+- "Evaluasi pada subkelompok demografis dengan representasi yang seimbang secara terkontrol dapat menyediakan landasan komparatif yang lebih konsisten dan objektif untuk mengukur variasi performa antarkelompok":
+  - paper/references/2023_Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.nbib
+- "Pemodelan interseksional juga menghadapi tantangan representasi karena karakteristik wajah dan ekspresi dapat bervariasi antar kelompok demografis, sehingga diperlukan representasi visual yang mampu mempertahankan informasi diskriminatif sekaligus robust terhadap variasi tersebut":
+  - paper/references/2021_Racial Identity-Aware Facial Expression Recognition Using Deep Convolutional Neural Networks.bib
+  
+paper/01_introduction.md: paragraf 3:
+- "Pada era arsitektur Convolutional Neural Networks (CNN), berbagai penelitian mengeksplorasi ekstraksi ciri demografis melalui pemanfaatan region spesifik wajah seperti area wajah bagian tengah, kerangka kerja multi-tugas berbasis multi-skala untuk estimasi usia dan gender secara simultan, serta model CNN mendalam untuk pengenalan etnisitas":
+  - paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
+  - paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
+  - paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
+- "ViT mampu memodelkan hubungan global antarpatch melalui Multi-Head Self-Attention (MHSA), sehingga berpotensi menghasilkan representasi visual yang lebih kontekstual, sementara pemanfaatan representasi generatif sintetis turut dikembangkan untuk memitigasi disparitas demografis":
+  - paper/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
+  - paper/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
+- "Di samping itu, integrasi mekanisme atensi paralel, pemanfaatan ViT untuk klasifikasi gender wajah, serta eksplorasi arsitektur transformer multi-aksis semakin memperkaya variasi pemodelan representasi visual":
+  - paper/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
+  - paper/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
+  - paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+- "Lebih lanjut, eksplorasi penggabungan representasi ViT lintas domain mulai dikembangkan melalui integrasi fitur ganda wajah dan emosi untuk meningkatkan diskriminasi atribut ras dan gender":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+  
+paper/01_introduction.md: paragraf 4:
+- "Pertama, sebagian besar studi terdahulu bertumpu pada representasi biometrik wajah domain tunggal, namun integrasi informasi afektif secara simultan untuk klasifikasi demografis interseksional masih terbatas":
+  - paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
+  - paper/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
+  - paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+- "Kedua, pengenalan demografis sering kali menunjukkan sensitivitas tinggi terhadap perubahan morfologi wajah seiring pertambahan usia karena ekstraksi fitur yang digunakan tidak mengikutsertakan representasi penuaan biologis":
+  - paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
+  - paper/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
+- "Ketiga, studi komparatif mengenai pengaruh classifier, penskalaan fitur, dan reduksi dimensionalitas pada representasi transformer masih terbatas":
+  - paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+   
+paper/01_introduction.md: paragraf 5:
+- "Kerangka kerja yang diusulkan mengintegrasikan tiga domain representasi komplementer, meliputi representasi biometrik wajah, ekspresi afektif, dan karakteristik penuaan, ke dalam satu representasi terpadu melalui fusi fitur":
+  - paper/references/2022_Review Single attribute and multi attribute facial gender and age estimation.nbib
+  - paper/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib
+- "Ekstraksi fitur laten dilakukan secara offline dari model backbone ViT pre-trained yang dibekukan, sehingga klasifikasi hilir dapat dilakukan tanpa fine-tuning ulang backbone":
+  - paper/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib
+- "Seluruh classifier hilir dievaluasi menggunakan Stratified Cross-Validation dalam pipeline yang mengintegrasikan penskalaan fitur dan reduksi dimensionalitas PCA, dengan setiap transformasi dipelajari hanya pada data pelatihan di setiap fold untuk mencegah data leakage":
+  - paper/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib
+
+paper/02_related-works.md: paragraf 1:
+- "Pendekatan berbasis region lokal memanfaatkan geometri bagian tengah wajah untuk mengenali etnisitas dan mengurangi interferensi latar belakang":
+  - paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
+- "Peningkatan kedalaman jaringan konvolusi dapat memperkaya representasi fitur visual untuk membedakan populasi yang beragam":
+  - paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
+- "Pendekatan ini menunjukkan pergeseran dari rekayasa fitur menuju pembelajaran representasi yang lebih adaptif terhadap keragaman wajah":
+  - paper/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
+
+paper/02_related-works.md: paragraf 2:
+- "Melalui mekanisme Multi-Head Self-Attention (MHSA), transformer dapat memodelkan hubungan antarpatch secara global sehingga menangkap dependensi spasial yang lebih luas dibandingkan operasi konvolusi lokal":
+  - paper/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
+- "Karakteristik tersebut menunjukkan potensi transformer dalam memodelkan atribut demografis, termasuk gender, pada citra wajah beresolusi terstandarisasi":
+  - paper/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
+- "Selain ViT standar, arsitektur hibrida seperti MaxViT menggabungkan perhatian berbasis jendela dan kisi untuk membangun representasi spasial secara bertingkat":
+  - paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+
+paper/02_related-works.md: paragraf 3:
+- "Analisis representasi laten juga menunjukkan bahwa model transformer dapat mereproduksi bias sosial yang berasal dari korpus pra-latih berskala besar":
+  - paper/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
+- "Untuk mengurangi disparitas performa antarkelompok ras dan gender, augmentasi generatif berbasis StyleGAN2 digunakan untuk menghasilkan variasi sintetis yang dapat membantu mengurangi kesalahan klasifikasi":
+  - paper/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
+
+paper/02_related-works.md: paragraf 4:
+- "Pendekatan multi-tugas digunakan untuk mempelajari keterkaitan antara atribut usia dan gender melalui representasi wajah yang diproses secara bersama":
+  - paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
+- "Mekanisme berbagi representasi paralel juga dikembangkan untuk mengombinasikan berbagai atribut afektif secara simultan, sedangkan pendekatan generatif dapat memperkaya variasi fitur antarkelompok demografis":
+  - paper/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
+  - paper/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
+- "Lebih lanjut, integrasi fitur laten berbasis ViT yang memadukan representasi biometrik wajah dan ekspresi emosi menunjukkan potensi untuk meningkatkan klasifikasi atribut interseksional":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
+- "Penggabungan representasi biometrik dengan informasi usia juga memperlihatkan kontribusi informasi yang saling melengkapi, sehingga fusi lintas domain menjadi pendekatan yang relevan":
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+
+paper/02_related-works.md: paragraf 5:
+- "Pendekatan end-to-end umumnya menggunakan lapisan SoftMax untuk memetakan representasi fitur ke probabilitas kelas secara langsung":
+  - paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
+  - paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
+- "Sebagai alternatif, Support Vector Machine (SVM) dapat mempelajari batas keputusan nonlinier pada ruang fitur tanpa memperbarui parameter backbone yang telah dibekukan":
+  - paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
+- "Model ensemble berbasis pohon seperti RF dan pendekatan probabilistik seperti GNB juga dapat digunakan sebagai classifier dengan karakteristik kompleksitas dan pemisahan kelas yang berbeda":
+  - paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
+  
+paper/03_materials-and-methods_a-dataset.md: paragraf 1:
+- "Dataset yang digunakan dalam penelitian ini adalah DemogPairs":
+  - paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
+- "Distribusi yang seimbang ini menyediakan kondisi evaluasi yang lebih terkontrol untuk membandingkan performa antarsubkelompok dengan mengurangi pengaruh ketimpangan jumlah sampel":
+  - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+
+paper/03_materials-and-methods_b-vision-transformer.md: paragraf 1:
+- "Arsitektur ekstraksi representasi visual penelitian ini mengadopsi ViT-Base sebagaimana diilustrasikan ...":
+  - paper/references/2026_Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction.ris
+- "Citra wajah masukan berukuran 224 × 224 piksel dengan 3 saluran warna dibagi menjadi 196 patch spasial non-overlapping $\mathbf{x}_p^i$ berukuran 16 × 16 piksel":
+  - paper/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib
+- "Setiap patch diproyeksikan secara linier melalui matriks ...":
+  - paper/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib
+- "Setiap layer encoder ... memproses masukan ... menjadi representasi antara ...":
+  - paper/references/2021_Vision Transformers for Remote Sensing Image Classification.bib
+- "Mekanisme self-attention memungkinkan pemodelan hubungan global antarpatch wajah tanpa ketergantungan pada receptive field lokal seperti pada operasi konvolusi":
+  - paper/references/2024_Visualizing and Understanding Patch Interactions in Vision Transformer.bib
+  
+paper/03_materials-and-methods_c-random-forest.md:
+- "Model ensemble RF mengagregasikan prediksi sekumpulan pohon keputusan independen untuk mengklasifikasikan fitur wajah berdasarkan prinsip bootstrap aggregating (bagging) dan random subspace method":
+  - paper/references/2022_Oblique and rotation double random forest.bib
+- "Pendekatan ini mereduksi varians prediksi dengan membangun sebanyak $B$ pohon klasifikasi dari sampel acak data latih":
+  - paper/references/2022_BoostTree and BoostForest for Ensemble Learning.bib
+- "Setiap percabangan node membatasi pemilihan fitur pada subset acak berukuran `max_features` $\in \{\text{'sqrt'}, \text{'log2'}\}$ untuk menekan korelasi antarpohon":
+  - paper/references/2025_Interpreting Deep Forest through Feature Contribution and MDI Feature Importance.bib
+- "Kriteria pemisahan cabang mengoptimalkan indeks Gini impurity hingga memenuhi ambang batas minimum pemisahan node `min_samples_split`, batas kedalaman `max_depth`, atau batas minimum daun `min_samples_leaf`":
+  - paper/references/2022_Optimization of the Random Forest Hyperparameters for Power Industrial Control Systems Intrusion Detection Using an Improved Grid Search Algorithm.bib
+- "Mekanisme majority voting menentukan keputusan akhir sampel citra melintasi seluruh pohon keputusan":
+  - paper/references/2024_Data-driven multinomial random forest a new random forest variant with strong consistency.ris
+  
+paper/03_materials-and-methods_d-gaussian-naive-bayes.md:
+- "Berdasarkan Teorema Bayes, pengklasifikasi GNB mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat":
+  - paper/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris
+- "Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada [(6)](#eq6), di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$":
+  - paper/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris
+- "Penambahan parameter penghalusan `var_smoothing` menjaga stabilitas komputasi terhadap risiko varians mendekati nol pada ruang representasi laten berdimensi tinggi":
+  - paper/references/2024_Coupling of Solidification and Heat Transfer Simulations with Interpretable Machine Learning Algorithms to Predict Transverse Cracks in Continuous Cast.bibtex
+  
+paper/03_materials-and-methods_e-logistic-regression.md:
+- "Pendekatan regresi multinomial (Softmax regression) pada LR memetakan representasi fitur laten ke dalam enam kategori demografis interseksional melalui estimasi probabilitas linier terpadu":
+  - paper/references/2023_Multiresolution Categorical Regression for Interpretable Cell-Type Annotation.bibtex
+- "Fungsi probabilitas Softmax menghitung peluang bersyarat sampel terhadap kategori target sebagaimana didefinisikan ...":
+  - paper/references/2022_Multinomial logistic regression classifier via 𝑙𝑞,0-proximal Newton algorithm.bib
+- "Proses pembelajaran model meminimalkan fungsi kerugian cross-entropy dengan menyertakan penalti regularisasi":
+  - paper/references/2022_Group Logistic Regression Models with lp,q Regularization.bib
+  
+paper/03_materials-and-methods_f-support-vector-machine.md:
+- "Pengklasifikasi SVM mengonstruksikan bidang pemisah berjarak terjauh ...":
+  - paper/references/2023_Maximal Margin Support Vector Machine for Feature Representation and Classification.bib
+- "Fungsi kernel memproyeksikan distribusi data nonlinier dari fusi multi-domain ke ruang fitur berdimensi lebih tinggi ...":
+  - paper/references/2022_Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications.bib
+- "Formulasi kernel polinomial derajat dua pada ...":
+  - paper/references/2022_Churn prediction in telecommunication industry using kernel Support Vector Machines.bib
+- "Pemetaan kuadratik ini memfasilitasi penangkapan interaksi nonlinier ...":
+  - paper/references/2022_A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers.ris

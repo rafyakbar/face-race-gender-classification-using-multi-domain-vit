@@ -1,0 +1,62 @@
+PMID- 37467097
+OWN - NLM
+STAT- MEDLINE
+DCOM- 20230809
+LR  - 20230809
+IS  - 1941-0042 (Electronic)
+IS  - 1057-7149 (Linking)
+VI  - 32
+DP  - 2023
+TI  - Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.
+PG  - 4365-4377
+LID - 10.1109/TIP.2023.3282837 [doi]
+AB  - There are demographic biases present in current facial recognition (FR) models. 
+      To measure these biases across different ethnic and gender subgroups, we 
+      introduce our Balanced Faces in the Wild (BFW) dataset. This dataset allows for 
+      the characterization of FR performance per subgroup. We found that relying on a 
+      single score threshold to differentiate between genuine and imposters sample 
+      pairs leads to suboptimal results. Additionally, performance within subgroups 
+      often varies significantly from the global average. Therefore, specific error 
+      rates only hold for populations that match the validation data. To mitigate 
+      imbalanced performances, we propose a novel domain adaptation learning scheme 
+      that uses facial features extracted from state-of-the-art neural networks. This 
+      scheme boosts the average performance and preserves identity information while 
+      removing demographic knowledge. Removing demographic knowledge prevents potential 
+      biases from affecting decision-making and protects privacy by eliminating 
+      demographic information. We explore the proposed method and demonstrate that 
+      subgroup classifiers can no longer learn from features projected using our domain 
+      adaptation scheme. For access to the source code and data, please visit 
+      https://github.com/visionjo/facerec-bias-bfw.
+FAU - Robinson, Joseph P
+AU  - Robinson JP
+FAU - Qin, Can
+AU  - Qin C
+FAU - Henon, Yann
+AU  - Henon Y
+FAU - Timoner, Samson
+AU  - Timoner S
+FAU - Fu, Yun
+AU  - Fu Y
+LA  - eng
+PT  - Journal Article
+DEP - 20230808
+PL  - United States
+TA  - IEEE Trans Image Process
+JT  - IEEE transactions on image processing : a publication of the IEEE Signal 
+      Processing Society
+JID - 9886191
+SB  - IM
+MH  - *Privacy
+MH  - *Neural Networks, Computer
+MH  - Software
+MH  - Bias
+EDAT- 2023/07/19 19:08
+MHDA- 2023/08/09 06:43
+CRDT- 2023/07/19 12:33
+PHST- 2023/08/09 06:43 [medline]
+PHST- 2023/07/19 19:08 [pubmed]
+PHST- 2023/07/19 12:33 [entrez]
+AID - 10.1109/TIP.2023.3282837 [doi]
+PST - ppublish
+SO  - IEEE Trans Image Process. 2023;32:4365-4377. doi: 10.1109/TIP.2023.3282837. Epub 
+      2023 Aug 8.

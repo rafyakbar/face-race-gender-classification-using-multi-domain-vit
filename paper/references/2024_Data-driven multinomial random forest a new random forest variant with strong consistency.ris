@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Chen, JunHao
+AU  - Wang, XueLi
+AU  - Lei, Fei
+PY  - 2024
+DA  - 2024/02/23
+TI  - Data-driven multinomial random forest: a new random forest variant with strong consistency
+JO  - Journal of Big Data
+SP  - 34
+VL  - 11
+IS  - 1
+AB  - In this paper, we modify the proof methods of some previously weakly consistent variants of random forest into strongly consistent proof methods, and improve the data utilization of these variants in order to obtain better theoretical properties and experimental performance. In addition, we propose the Data-driven Multinomial Random Forest (DMRF) algorithm, which has the same complexity with BreimanRF (proposed by Breiman) while satisfying strong consistency with probability 1. It has better performance in classification and regression tasks than previous RF variants that only satisfy weak consistency, and in most cases even surpasses BreimanRF in classification tasks. To the best of our knowledge, DMRF is currently a low-complexity and high-performing variation of random forest that achieves strong consistency with probability 1.
+SN  - 2196-1115
+UR  - https://doi.org/10.1186/s40537-023-00874-6
+DO  - 10.1186/s40537-023-00874-6
+ID  - Chen2024
+ER  - 
