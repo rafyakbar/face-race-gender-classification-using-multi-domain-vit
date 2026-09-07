@@ -1,0 +1,87 @@
+PMID- 36845729
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20230228
+IS  - 2234-943X (Print)
+IS  - 2234-943X (Electronic)
+IS  - 2234-943X (Linking)
+VI  - 13
+DP  - 2023
+TI  - Common statistical concepts in the supervised Machine Learning arena.
+PG  - 1130229
+LID - 10.3389/fonc.2023.1130229 [doi]
+LID - 1130229
+AB  - One of the core elements of Machine Learning (ML) is statistics and its embedded 
+      foundational rules and without its appropriate integration, ML as we know would 
+      not exist. Various aspects of ML platforms are based on statistical rules and 
+      most notably the end results of the ML model performance cannot be objectively 
+      assessed without appropriate statistical measurements. The scope of statistics 
+      within the ML realm is rather broad and cannot be adequately covered in a single 
+      review article. Therefore, here we will mainly focus on the common statistical 
+      concepts that pertain to supervised ML (i.e. classification and regression) along 
+      with their interdependencies and certain limitations.
+CI  - Copyright © 2023 Rashidi, Albahra, Robertson, Tran and Hu.
+FAU - Rashidi, Hooman H
+AU  - Rashidi HH
+AD  - Pathology and Laboratory Medicine Institute (PLMI), Cleveland Clinic, Cleveland, 
+      OH, United States.
+AD  - PLMI's Center for Artificial Intelligence & Data Science, Cleveland Clinic, 
+      Cleveland, OH, United States.
+FAU - Albahra, Samer
+AU  - Albahra S
+AD  - Pathology and Laboratory Medicine Institute (PLMI), Cleveland Clinic, Cleveland, 
+      OH, United States.
+AD  - PLMI's Center for Artificial Intelligence & Data Science, Cleveland Clinic, 
+      Cleveland, OH, United States.
+FAU - Robertson, Scott
+AU  - Robertson S
+AD  - Pathology and Laboratory Medicine Institute (PLMI), Cleveland Clinic, Cleveland, 
+      OH, United States.
+AD  - PLMI's Center for Artificial Intelligence & Data Science, Cleveland Clinic, 
+      Cleveland, OH, United States.
+FAU - Tran, Nam K
+AU  - Tran NK
+AD  - Pathology and Laboratory Medicine, University of California Davis, Sacramento, 
+      CA, United States.
+FAU - Hu, Bo
+AU  - Hu B
+AD  - PLMI's Center for Artificial Intelligence & Data Science, Cleveland Clinic, 
+      Cleveland, OH, United States.
+AD  - Department of Quantitative Health Sciences, Cleveland Clinic, Cleveland, OH, 
+      United States.
+LA  - eng
+PT  - Journal Article
+PT  - Review
+DEP - 20230214
+PL  - Switzerland
+TA  - Front Oncol
+JT  - Frontiers in oncology
+JID - 101568867
+PMC - PMC9949554
+OTO - NOTNLM
+OT  - Machine Learning
+OT  - artificial intelligence
+OT  - classification
+OT  - model evaluations
+OT  - regression
+OT  - statistics
+COIS- The MILO auto-ML mentioned in this manuscript is the intellectual property of the 
+      Regents of the University of California UC and the following co-authors in this 
+      manuscript HR, SA, and NT are its co-inventors. They are all also on the board of 
+      MILO-ML Inc. a UC start up. The remaining authors declare that the research was 
+      conducted in the absence of any commercial or financial relationships that could 
+      be construed as a potential conflict of interest.
+EDAT- 2023/02/28 06:00
+MHDA- 2023/02/28 06:01
+PMCR- 2023/01/01
+CRDT- 2023/02/27 05:20
+PHST- 2022/12/23 00:00 [received]
+PHST- 2023/01/30 00:00 [accepted]
+PHST- 2023/02/27 05:20 [entrez]
+PHST- 2023/02/28 06:00 [pubmed]
+PHST- 2023/02/28 06:01 [medline]
+PHST- 2023/01/01 00:00 [pmc-release]
+AID - 10.3389/fonc.2023.1130229 [doi]
+PST - epublish
+SO  - Front Oncol. 2023 Feb 14;13:1130229. doi: 10.3389/fonc.2023.1130229. eCollection 
+      2023.
