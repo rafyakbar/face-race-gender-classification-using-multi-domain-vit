@@ -2,6 +2,31 @@ Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubung
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
+pada paper_latex_id:
+- paper_latex_id/sections/07_biographies.tex: tidak usah ada link orcid pada biografi, karena sudah ada di atas
+perbaiki paper_latex_id, bisa juga update paper_outline.md dan folder paper jika diperlukan. lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan! delegasikan ke subagent jika diperlukan!
+
+pada paper_latex_id:
+- buat agar citra pada FIGURE 2 memiliki height yang sama
+- TABLE 2: tidak usah ada yang dibold
+- TABLE 3, 4, 5, 6: kata 'Total Grid Combinations' seharusnya merge 2 kolom dan align right
+- TABLE 12: ubah 'Ours (Tri-Domain ViT + SVM)' menjadi 'Ours', dan tidak perlu full width
+perbaiki paper_latex_id, bisa juga update paper_outline.md dan folder paper jika diperlukan. lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
+sekarang tolong audit dan perbaiki:
+- paper_outline.md.
+- semua yang ada pada folder paper.
+- semua yang ada pada folder paper_latex_id.
+seharusnya untuk seperti akurasi hingga f1-score menggunakan presentase (%), jadi tidak perlu seperti contoh '93.69% (0.9369)', jadi cukup presentase saja! perhatikan:
+- delegasikan ke subagent.
+- satu subagent satu file agar hasil optimal.
+- berikan instruksi yang jelas ke subagent.
+lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
+template/ACCESS_latex_template_20260513 adalah template asli dari ieee access, hanya saja pada paper_latex_id saya pecah menjadi file section sendiri. tolong audit apakah template nya sudah sama atau belum!
+
+sekarang pastikan isi dari paper_latex_id sama dengan paper, sebelum itu cek dulu file-file section yang ada pada paper_latex_id, kemudian delegasikan ke subagent, satu file satu subagent agar optimal!
+
 sekarang audit ulang nomor referesi pada seluruh kalimat klaim pada paper/*.md, perhatikan:
 - sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
 - nomor referensi yang dipakai HARUS merujuk ke entri yang sudah ada di paper/06_references.md, jangan membuat nomor baru
