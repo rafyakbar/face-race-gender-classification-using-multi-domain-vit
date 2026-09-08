@@ -355,7 +355,7 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 ├── prompts.txt                         # Experimental instructions and agent logs
 ├── scopus_query.txt                    # Scopus literature search query strings
 ├── sessions/                           # Chronological AGY session documentation logs
-│   └── session_agy_*.md                # Detailed development, audit, and verification session records
+│   └── session_*.md                     # Detailed development, audit, and verification session records (pattern: session_YYYY-MM-DD_agent_title)
 │
 ├── images/
 │   ├── method.png / method.pptx        # Architecture & methodology framework diagram (Figure 1)

@@ -180,7 +180,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
 ├── scopus_query.txt                       # Scopus literature search query strings
 ├── sessions/                              # Chronological AGY development and audit session records
-│   └── session_agy_*.md                   # Comprehensive session logs (06, 07, 08 September 2026)
+│   └── session_*.md                       # Comprehensive session logs (06, 07, 08 September 2026; pattern: session_YYYY-MM-DD_agent_title)
 └── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ```
 

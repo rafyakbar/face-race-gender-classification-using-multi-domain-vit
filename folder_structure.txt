@@ -273,9 +273,10 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── latex_rules.txt
 │   └── md_rules.txt
 ├── sessions/
-│   ├── session_agy_2026-09-06_audit-paper-dan-sinkronisasi-latex-id.md
-│   ├── session_agy_2026-09-07_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
-│   └── session_agy_2026-09-08_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
+│   ├── session_2026-09-06_agy_audit-paper-dan-sinkronisasi-latex-id.md
+│   ├── session_2026-09-07_agy_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
+│   ├── session_2026-09-08_agy_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
+│   └── session_2026-09-08_opencode_audit-referensi-dan-sitasi-naskah.md
 ├── .gitignore
 ├── folder_structure.txt
 ├── paper_outline.md
@@ -477,10 +478,13 @@ Direktori ini mengelola seluruh rujukan ilmiah dan kajian literatur terdahulu:
 
 7. DIREKTORI SESSIONS/ (LOG RIWAYAT PENGEMBANGAN & AUDIT)
 ----------------------------------------------------------------------------------------------------
-- session_agy_2026-09-06_audit-paper-dan-sinkronisasi-latex-id.md
+- session_2026-09-06_agy_audit-paper-dan-sinkronisasi-latex-id.md
   Log komprehensif audit naskah ilmiah dan sinkronisasi ke naskah LaTeX Bahasa Indonesia.
-- session_agy_2026-09-07_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
+- session_2026-09-07_agy_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
   Log komprehensif pemetaan sitasi naskah dan pembaruan berkas dokumentasi sistem repositori.
-- session_agy_2026-09-08_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
+- session_2026-09-08_agy_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
   Log komprehensif standardisasi bibliografi IEEE, penyematan sitasi interaktif naskah, dan audit paralel.
+- session_2026-09-08_opencode_audit-referensi-dan-sitasi-naskah.md
+  Log komprehensif audit ulang entri bibliografi IEEE, konsistensi bulan terbit, dan verifikasi 91 tautan
+  sitasi interaktif naskah melalui delegasi subagent paralel.
 ====================================================================================================

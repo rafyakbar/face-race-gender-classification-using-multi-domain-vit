@@ -1,5 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `sessions/session_agy_2026-09-07_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md`  
+**Nama Berkas**: `sessions/session_2026-09-07_agy_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md`  
 **Tanggal**: 07 September 2026  
 **Waktu Sesi**: 16:30:00 – 21:35:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-classification-using-multi-domain-vit`  

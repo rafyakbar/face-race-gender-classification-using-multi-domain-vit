@@ -1,5 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `sessions/session_agy_2026-09-08_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md`  
+**Nama Berkas**: `sessions/session_2026-09-08_agy_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md`  
 **Tanggal**: 08 September 2026  
 **Waktu Sesi**: 03:30:00 – 07:30:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-multi-vit`  

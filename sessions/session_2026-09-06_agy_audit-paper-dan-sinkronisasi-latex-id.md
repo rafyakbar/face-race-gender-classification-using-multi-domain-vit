@@ -1,5 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `sessions/session_agy_2026-09-06_audit-paper-dan-sinkronisasi-latex-id.md`  
+**Nama Berkas**: `sessions/session_2026-09-06_agy_audit-paper-dan-sinkronisasi-latex-id.md`  
 **Tanggal**: 06 September 2026  
 **Waktu Sesi**: 21:52:00 – 22:48:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-multi-vit`  
