@@ -11,8 +11,8 @@
 
 ### A. Allowed Claims and Core Focus
 1. **Fokus Utama**: Evaluasi empiris sistematis fusi fitur representasi laten dari tiga domain visual wajah komplementer (task-associated representations: Face biometrics, Facial Emotion, dan Facial Age) menggunakan Vision Transformer (ViT) pra-latih (offline feature extraction) dipadukan dengan optimasi pipeline classical machine learning (GridSearchCV 5-Fold Stratified Cross-Validation).
-2. **Klaim Keunggulan Tri-Domain**: Fusi tri-domain (2.304 dimensi) menghasilkan performa tertinggi pada **3 dari 4 classifier** yang dievaluasi (Support Vector Machine / SVM, Logistic Regression / LR, dan Gaussian Naive Bayes / GNB), dengan model terbaik **SVM Tri-Domain** (`Face ⊕ Emotion ⊕ Age`) mencapai akurasi **93.70%** dan F1-Score **0.9369** pada dataset DemogPairs (N=2.160 data uji). Pada Random Forest (RF), konfigurasi terbaik dicapai oleh skema dual-domain `Emotion ⊕ Face` (0.8685).
-3. **Analisis Performa Subkelompok Interseksional (Intersectional Subgroup Performance Analysis)**: Evaluasi performa granular antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 0.91 dengan rentang 0.9174 s.d. 0.9614 pada model SVM Tri-Domain, dan melampaui 0.91 pada model LR Tri-Domain (rentang 0.9136 s.d. 0.9558), membuktikan konsistensi dan stabilitas representasi visual fusi multi-domain melintasi keenam kelompok demografis interseksional.
+2. **Klaim Keunggulan Tri-Domain**: Fusi tri-domain (2.304 dimensi) menghasilkan performa tertinggi pada **3 dari 4 classifier** yang dievaluasi (Support Vector Machine / SVM, Logistic Regression / LR, dan Gaussian Naive Bayes / GNB), dengan model terbaik **SVM Tri-Domain** (`Face ⊕ Emotion ⊕ Age`) mencapai akurasi **93.70%** dan F1-Score **93.69%** pada dataset DemogPairs (N=2.160 data uji). Pada Random Forest (RF), konfigurasi terbaik dicapai oleh skema dual-domain `Emotion ⊕ Face` (86.85%).
+3. **Analisis Performa Subkelompok Interseksional (Intersectional Subgroup Performance Analysis)**: Evaluasi performa granular antarsubkelompok dilakukan pada model tri-domain terbaik, di mana subgroup F1-Score seluruh 6 kelas berada di atas 91.00% dengan rentang 91.74% s.d. 96.14% pada model SVM Tri-Domain, dan melampaui 91.00% pada model LR Tri-Domain (rentang 91.36% s.d. 95.58%), membuktikan konsistensi dan stabilitas representasi visual fusi multi-domain melintasi keenam kelompok demografis interseksional.
 4. **Metodologi Pencegahan Kebocoran Informasi**: Pipeline preprocessing dan validasi silang dirancang untuk mencegah kebocoran informasi (*information leakage*) dengan melakukan fitting penskalaan (Scaler) dan Principal Component Analysis (PCA) secara eksklusif hanya pada fold latih di dalam GridSearchCV, serta evaluasi akhir dilakukan pada subset uji held-out yang belum pernah dilihat selama proses pelatihan.
 5. **Standarisasi Istilah & Konvensi Penulisan**:
    - Dilarang keras menggunakan karakter em dash (tanda pisah panjang); gunakan tanda pisah biasa (- atau --), tanda kurung ( ), atau koma (,).
@@ -258,11 +258,9 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
   2. Subkelompok mencakup kombinasi 3 kelompok ras makro (Asian, Black, White) dan 2 kelompok gender (Female, Male).
   3. Distribusi kelas yang seimbang ini (*balanced evaluation setting*) menyediakan kondisi evaluasi yang terkontrol untuk membandingkan performa antarsubkelompok tanpa terdistorsi oleh ketidakseimbangan jumlah sampel per kelas.
 - **Sitasi Gambar Wajib**: Mensitasi contoh citra sampel dataset DemogPairs pada [Figure 2](#fig2) (Figure 2a s.d. 2f).
-- **Ketentuan Layout LaTeX**: Figure 2 disusun dalam format **2 kolom subfigur (grid 3 baris × 2 kolom)**:
-  - Baris 1: (a) Asian Females dan (b) Asian Males
-  - Baris 2: (c) Black Females dan (d) Black Males
-  - Baris 3: (e) White Females dan (f) White Males
-  - Menggunakan lebar subfigur proporsional (`0.48\columnwidth` untuk layout 1 kolom naskah atau `0.48\textwidth` untuk layout 2 kolom naskah) dengan pemisah horizontal `\hfill` dan spasi vertikal antarbaris `\vskip 4pt`.
+- **Ketentuan Layout LaTeX**: Figure 2 disusun sebagai **satu gambar komposit (`sample_demogpairs.png`) berformat full width (`\begin{figure*}`)** dengan susunan **1 baris × 6 kolom** berurutan:
+  - Kolom 1-6: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, (f) White Males
+  - Label (a)-(f) dicetak tebal di atas masing-masing citra, dan **seluruh citra memiliki tinggi yang seragam** (komposit diregenerasi dari enam citra sumber dengan tinggi sama).
 - **Caption Figure**: **Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.**
 - **Visual Markdown**:
   - *(a) Asian Females:*
@@ -337,7 +335,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-150 k
 | 4 | `Emotion ⊕ Face` | Dual-Domain | 1,536 |
 | 5 | `Face ⊕ Age` | Dual-Domain | 1,536 |
 | 6 | `Emotion ⊕ Age` | Dual-Domain | 1,536 |
-| 7 | `Face ⊕ Emotion ⊕ Age` | **Tri-Domain (Proposed)** | **2,304** |
+| 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | 2,304 |
 
 ### C. Random Forest
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
@@ -462,7 +460,7 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Random Forest Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Random Forest melintasi 7 konfigurasi fitur berdasarkan [Table VII](#tab7). Konfigurasi terbaik diraih oleh dual-domain `Emotion ⊕ Face` (akurasi 0.8685), sedangkan tri-domain `Face ⊕ Emotion ⊕ Age` mengalami penurunan (0.8620). Penurunan ini diinterpretasikan sebagai kemungkinan yang perlu ditelaah lebih lanjut; salah satu interpretasi yang dapat diajukan adalah bahwa peningkatan dimensi (2.304 dimensi) mungkin menghadirkan tantangan tambahan dalam partisi ruang fitur menggunakan pemotongan pohon acak (*may reflect the increased difficulty of feature space partitioning with random splits at higher dimensionality*).
+- **Fokus Narasi**: Menganalisis performa Random Forest melintasi 7 konfigurasi fitur berdasarkan [Table VII](#tab7). Konfigurasi terbaik diraih oleh dual-domain `Emotion ⊕ Face` (akurasi 86.85%), sedangkan tri-domain `Face ⊕ Emotion ⊕ Age` mengalami penurunan (86.20%). Penurunan ini diinterpretasikan sebagai kemungkinan yang perlu ditelaah lebih lanjut; salah satu interpretasi yang dapat diajukan adalah bahwa peningkatan dimensi (2.304 dimensi) mungkin menghadirkan tantangan tambahan dalam partisi ruang fitur menggunakan pemotongan pohon acak (*may reflect the increased difficulty of feature space partitioning with random splits at higher dimensionality*).
 - **Ketentuan Layout LaTeX**: **Table VII berformat Full Width (`\begin{table*}`)**.
 - **Tabel VII (Hasil Evaluasi Random Forest)**:
 
@@ -470,17 +468,17 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 | Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|---|
-| Face | 0.8546 | 0.8543 | 0.8546 | 0.8539 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | 0.8060 | 0.8063 | 0.8060 | 0.8057 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Age | 0.7366 | 0.7363 | 0.7366 | 0.7354 | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| **Emotion ⊕ Face** | **0.8685** | **0.8689** | **0.8685** | **0.8682** | n_est=200, depth=None, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Face ⊕ Age | 0.8579 | 0.8578 | 0.8579 | 0.8573 | n_est=200, depth=None, max_feat=sqrt, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Emotion ⊕ Age | 0.8111 | 0.8111 | 0.8111 | 0.8108 | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=2, pca=PCA(0.75), scaler=None |
-| Face ⊕ Emotion ⊕ Age | 0.8620 | 0.8620 | 0.8620 | 0.8613 | n_est=200, depth=30, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Face | 85.46% | 85.43% | 85.46% | 85.39% | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion | 80.60% | 80.63% | 80.60% | 80.57% | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Age | 73.66% | 73.63% | 73.66% | 73.54% | n_est=200, depth=30, max_feat=log2, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
+| **Emotion ⊕ Face** | **86.85%** | **86.89%** | **86.85%** | **86.82%** | n_est=200, depth=None, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Face ⊕ Age | 85.79% | 85.78% | 85.79% | 85.73% | n_est=200, depth=None, max_feat=sqrt, min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Emotion ⊕ Age | 81.11% | 81.11% | 81.11% | 81.08% | n_est=200, depth=None, max_feat=log2, min_split=5, min_leaf=2, pca=PCA(0.75), scaler=None |
+| Face ⊕ Emotion ⊕ Age | 86.20% | 86.20% | 86.20% | 86.13% | n_est=200, depth=30, max_feat=sqrt, min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
 
 #### Paragraph 2: Gaussian Naive Bayes Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Gaussian Naive Bayes berdasarkan [Table VIII](#tab8). Meskipun dibatasi oleh asumsi independensi fitur, model menunjukkan tren peningkatan performa dari Single (terendah `Age` 0.6963) ke Dual (`Emotion ⊕ Face` 0.8486) hingga mencapai performa tertinggi pada Tri-Domain `Face ⊕ Emotion ⊕ Age` (0.8505).
+- **Fokus Narasi**: Menganalisis performa Gaussian Naive Bayes berdasarkan [Table VIII](#tab8). Meskipun dibatasi oleh asumsi independensi fitur, model menunjukkan tren peningkatan performa dari Single (terendah `Age` 69.63%) ke Dual (`Emotion ⊕ Face` 84.86%) hingga mencapai performa tertinggi pada Tri-Domain `Face ⊕ Emotion ⊕ Age` (85.05%).
 - **Ketentuan Layout LaTeX**: **Table VIII berformat Full Width (`\begin{table*}`)**.
 - **Tabel VIII (Hasil Evaluasi Gaussian Naive Bayes)**:
 
@@ -488,17 +486,17 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 | Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|---|
-| Face | 0.8269 | 0.8271 | 0.8269 | 0.8258 | var_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | 0.7338 | 0.7387 | 0.7338 | 0.7329 | var_smoothing=3.0703e-03, pca=PCA(0.75), scaler=None |
-| Age | 0.6963 | 0.6979 | 0.6963 | 0.6952 | var_smoothing=4.3755e-04, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Face | 0.8486 | 0.8490 | 0.8486 | 0.8481 | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler |
-| Face ⊕ Age | 0.8315 | 0.8343 | 0.8315 | 0.8317 | var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Age | 0.7681 | 0.7686 | 0.7681 | 0.7681 | var_smoothing=1.6037e-03, pca=PCA(0.75), scaler=MinMaxScaler |
-| **Face ⊕ Emotion ⊕ Age** | **0.8505** | **0.8512** | **0.8505** | **0.8505** | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=None |
+| Face | 82.69% | 82.71% | 82.69% | 82.58% | var_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion | 73.38% | 73.87% | 73.38% | 73.29% | var_smoothing=3.0703e-03, pca=PCA(0.75), scaler=None |
+| Age | 69.63% | 69.79% | 69.63% | 69.52% | var_smoothing=4.3755e-04, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion ⊕ Face | 84.86% | 84.90% | 84.86% | 84.81% | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler |
+| Face ⊕ Age | 83.15% | 83.43% | 83.15% | 83.17% | var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler |
+| Emotion ⊕ Age | 76.81% | 76.86% | 76.81% | 76.81% | var_smoothing=1.6037e-03, pca=PCA(0.75), scaler=MinMaxScaler |
+| **Face ⊕ Emotion ⊕ Age** | **85.05%** | **85.12%** | **85.05%** | **85.05%** | var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=None |
 
 #### Paragraph 3: Logistic Regression Performance across Feature Configurations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis performa Logistic Regression berdasarkan [Table IX](#tab9). Seluruh model mempertahankan fitur asli tanpa reduksi PCA (7/7 memilih `pca=None`), dengan Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih akurasi 0.9273 ($C=0.1$, `newton-cg`), melampaui dual domain terbaik `Emotion ⊕ Face` (0.9241) dan single domain terbaik `Face` (0.9060).
+- **Fokus Narasi**: Menganalisis performa Logistic Regression berdasarkan [Table IX](#tab9). Seluruh model mempertahankan fitur asli tanpa reduksi PCA (7/7 memilih `pca=None`), dengan Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih akurasi 92.73% ($C=0.1$, `newton-cg`), melampaui dual domain terbaik `Emotion ⊕ Face` (92.41%) dan single domain terbaik `Face` (90.60%).
 - **Ketentuan Layout LaTeX**: **Table IX berformat Full Width (`\begin{table*}`)**.
 - **Tabel IX (Hasil Evaluasi Logistic Regression)**:
 
@@ -506,17 +504,17 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 | Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|---|
-| Face | 0.9060 | 0.9060 | 0.9060 | 0.9059 | C=1, solver=newton-cg, max_iter=500, pca=None, scaler=MinMaxScaler |
-| Emotion | 0.8847 | 0.8850 | 0.8847 | 0.8846 | C=1, solver=saga, max_iter=500, pca=None, scaler=MinMaxScaler |
-| Age | 0.8648 | 0.8649 | 0.8648 | 0.8648 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| Emotion ⊕ Face | 0.9241 | 0.9241 | 0.9241 | 0.9240 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| Face ⊕ Age | 0.9162 | 0.9162 | 0.9162 | 0.9162 | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
-| Emotion ⊕ Age | 0.9051 | 0.9052 | 0.9051 | 0.9051 | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **0.9273** | **0.9275** | **0.9273** | **0.9273** | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
+| Face | 90.60% | 90.60% | 90.60% | 90.59% | C=1, solver=newton-cg, max_iter=500, pca=None, scaler=MinMaxScaler |
+| Emotion | 88.47% | 88.50% | 88.47% | 88.46% | C=1, solver=saga, max_iter=500, pca=None, scaler=MinMaxScaler |
+| Age | 86.48% | 86.49% | 86.48% | 86.48% | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| Emotion ⊕ Face | 92.41% | 92.41% | 92.41% | 92.40% | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| Face ⊕ Age | 91.62% | 91.62% | 91.62% | 91.62% | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
+| Emotion ⊕ Age | 90.51% | 90.52% | 90.51% | 90.51% | C=0.1, solver=lbfgs, max_iter=500, pca=None, scaler=None |
+| **Face ⊕ Emotion ⊕ Age** | **92.73%** | **92.75%** | **92.73%** | **92.73%** | C=0.1, solver=newton-cg, max_iter=500, pca=None, scaler=None |
 
 #### Paragraph 4: Support Vector Machine Ablation Progression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Machine (SVM) dari single-domain ke dual-domain dan tri-domain berdasarkan [Table X](#tab10). Seluruh model SVM secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (0.9083) ke dual domain `Emotion ⊕ Face` (0.9329) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (0.9370).
+- **Fokus Narasi**: Menganalisis perkembangan performa Support Vector Machine (SVM) dari single-domain ke dual-domain dan tri-domain berdasarkan [Table X](#tab10). Seluruh model SVM secara konsisten mempertahankan representasi penuh tanpa PCA (`pca=None`), dengan kenaikan performa dari single domain `Face` (90.83%) ke dual domain `Emotion ⊕ Face` (93.29%) dan mencapai capaian tertinggi pada tri-domain `Face ⊕ Emotion ⊕ Age` (93.70%).
 - **Ketentuan Layout LaTeX**: **Table X berformat Full Width (`\begin{table*}`)**.
 - **Tabel X (Hasil Evaluasi Support Vector Machine)**:
 
@@ -524,40 +522,40 @@ Bagian ini disusun dalam **5 paragraf**, masing-masing dengan target **100-115 k
 
 | Configuration | Accuracy | Precision | Recall | F1-Score | Best Parameters |
 |---|:---:|:---:|:---:|:---:|---|
-| Face | 0.9083 | 0.9084 | 0.9083 | 0.9083 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Emotion | 0.9019 | 0.9020 | 0.9019 | 0.9017 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Age | 0.8764 | 0.8767 | 0.8764 | 0.8765 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| Emotion ⊕ Face | 0.9329 | 0.9333 | 0.9329 | 0.9329 | C=10, rbf, γ=scale, pca=None, scaler=MinMaxScaler |
-| Face ⊕ Age | 0.9255 | 0.9254 | 0.9255 | 0.9254 | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
-| Emotion ⊕ Age | 0.9208 | 0.9210 | 0.9208 | 0.9209 | C=10, rbf, γ=scale, pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **0.9370** | **0.9372** | **0.9370** | **0.9369** | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
+| Face | 90.83% | 90.84% | 90.83% | 90.83% | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Emotion | 90.19% | 90.20% | 90.19% | 90.17% | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Age | 87.64% | 87.67% | 87.64% | 87.65% | C=10, rbf, γ=scale, pca=None, scaler=None |
+| Emotion ⊕ Face | 93.29% | 93.33% | 93.29% | 93.29% | C=10, rbf, γ=scale, pca=None, scaler=MinMaxScaler |
+| Face ⊕ Age | 92.55% | 92.54% | 92.55% | 92.54% | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
+| Emotion ⊕ Age | 92.08% | 92.10% | 92.08% | 92.09% | C=10, rbf, γ=scale, pca=None, scaler=None |
+| **Face ⊕ Emotion ⊕ Age** | **93.70%** | **93.72%** | **93.70%** | **93.69%** | C=10, poly, γ=scale, deg=2, pca=None, scaler=None |
 *(Catatan: Parameter `deg` hanya aktif dan dilaporkan pada kernel `poly`; pada kernel `rbf`, parameter `degree` tidak aktif dan tidak dicantumkan pada naskah publikasi).*
 
 #### Paragraph 5: Cross-Classifier Synthesis and Comparative Performance Overview
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Sintesis komparatif deskriptif lintas-pengklasifikasi melintasi 28 eksperimen tanpa menampilkan tabel terpisah. Menjelaskan bahwa SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` memperoleh capaian tertinggi dalam search space yang dievaluasi (akurasi 0.9370, F1-Score 0.9369). Rata-rata performa classifier di seluruh konfigurasi menunjukkan urutan deskriptif: $\text{SVM } (0.9147) > \text{LR } (0.9040) > \text{RF } (0.8281) > \text{GNB } (0.7937)$ - perlu dicatat bahwa perbandingan ini bersifat deskriptif dan tidak mencerminkan superioritas statistik.
+- **Fokus Narasi**: Sintesis komparatif deskriptif lintas-pengklasifikasi melintasi 28 eksperimen tanpa menampilkan tabel terpisah. Menjelaskan bahwa SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` memperoleh capaian tertinggi dalam search space yang dievaluasi (akurasi 93.70%, F1-Score 93.69%). Rata-rata performa classifier di seluruh konfigurasi menunjukkan urutan deskriptif: $\text{SVM } (91.47\%) > \text{LR } (90.40\%) > \text{RF } (82.81\%) > \text{GNB } (79.37\%)$ - perlu dicatat bahwa perbandingan ini bersifat deskriptif dan tidak mencerminkan superioritas statistik.
 
 ### B. Feature Ablation Study
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Progressive Feature Contribution across Single, Dual, and Tri-Domain Schemes
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVM, transisi dari `Face` (0.9083) ke `Emotion ⊕ Face` (0.9329) meningkatkan akurasi sebesar $+0.0246$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 0.9370 (peningkatan kumulatif $+0.0287$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
+- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke ganda dan tiga domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVM, transisi dari `Face` (90.83%) ke `Emotion ⊕ Face` (93.29%) meningkatkan akurasi sebesar $+2.46\%$, dan penambahan domain ketiga pada Tri-Domain (`Face ⊕ Emotion ⊕ Age`) menghasilkan peningkatan lebih lanjut menjadi 93.70% (peningkatan kumulatif $+2.87\%$). Pola ini dapat diinterpretasikan sebagai indikasi adanya informasi diskriminatif tambahan dari setiap domain yang digabungkan - meskipun mekanisme interaksi antarfitur ini tidak dapat dipastikan hanya dari hasil empiris.
 
 #### Paragraph 2: Informational Contribution of Age-Associated Representations
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 0.8764 pada SVM). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 0.9255) memberikan peningkatan $+0.0172$ di atas fitur `Face` murni (0.9083). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
+- **Fokus Narasi**: Membedah kontribusi fitur domain usia (`Age`). Pada seluruh classifier yang dievaluasi, `Age` merupakan konfigurasi single-domain dengan performa terendah (misalnya 87.64% pada SVM). Namun, kombinasinya dengan fitur biometrik wajah (`Face ⊕ Age` 92.55%) memberikan peningkatan $+1.72\%$ di atas fitur `Face` murni (90.83%). Hasil tersebut menunjukkan kemungkinan adanya informasi diskriminatif tambahan dari age-associated representations - tanpa mengklaim bahwa kontribusi ini bersifat komplementer secara terbukti.
 
 ### C. Intersectional Subgroup Performance
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 kata**:
 
 #### Paragraph 1: Subgroup-Level Classification Profile in Top-Performing SVM Model
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI](#tab11). Seluruh subkelompok mencapai F1-Score di atas 0.91 dengan rentang antara 0.9174 (`Black_Females`) hingga 0.9614 (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) pada model SVM Tri-Domain (`Face ⊕ Emotion ⊕ Age`) berdasarkan [Table XI](#tab11). Seluruh subkelompok mencapai F1-Score di atas 91.00% dengan rentang antara 91.74% (`Black_Females`) hingga 96.14% (`White_Males`), serta OvR Accuracy berada pada rentang 97.31% hingga 98.70%.
 
 #### Paragraph 2: Comparative Subgroup Performance between SVM and Logistic Regression
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan profil kinerja subkelompok antara model SVM dan Logistic Regression Tri-Domain berdasarkan [Table XI](#tab11). Model LR Tri-Domain juga menunjukkan konsistensi performa yang tinggi dengan F1-Score melampaui 0.91 pada keenam kelas demografis (rentang 0.9136 s.d. 0.9558), di mana subkelompok White Males mencatat performa tertinggi (0.9558) serupa dengan SVM (0.9614). Temuan empiris ini membuktikan bahwa fusi fitur laten tri-domain menghasilkan representasi visual yang tangguh dan terdistribusi stabil melintasi seluruh kelompok demografis baik pada pengklasifikasi linier maupun model batas keputusan nonlinier.
+- **Fokus Narasi**: Membandingkan profil kinerja subkelompok antara model SVM dan Logistic Regression Tri-Domain berdasarkan [Table XI](#tab11). Model LR Tri-Domain juga menunjukkan konsistensi performa yang tinggi dengan F1-Score melampaui 91.00% pada keenam kelas demografis (rentang 91.36% s.d. 95.58%), di mana subkelompok White Males mencatat performa tertinggi (95.58%) serupa dengan SVM (96.14%). Temuan empiris ini membuktikan bahwa fusi fitur laten tri-domain menghasilkan representasi visual yang tangguh dan terdistribusi stabil melintasi seluruh kelompok demografis baik pada pengklasifikasi linier maupun model batas keputusan nonlinier.
 
 - **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
 - **Tabel XI (Kinerja Klasifikasi per-Subkelompok Model Tri-Domain)**:
@@ -566,18 +564,18 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 | Classifier | Subgroup | Recall | Precision | F1-Score | OvR Accuracy |
 |---|---|:---:|:---:|:---:|:---:|
-| **SVM (Tri)** | `White_Males` | 0.9694 | 0.9536 | 0.9614 | 98.70% |
-| | `Black_Males` | 0.9417 | 0.9549 | 0.9483 | 98.29% |
-| | `White_Females` | 0.9472 | 0.9241 | 0.9355 | 97.82% |
-| | `Asian_Males` | 0.9444 | 0.9239 | 0.9341 | 97.78% |
-| | `Asian_Females` | 0.9250 | 0.9250 | 0.9250 | 97.50% |
-| | `Black_Females` | 0.8944 | 0.9415 | 0.9174 | 97.31% |
-| **LR (Tri)** | `White_Males` | 0.9611 | 0.9505 | 0.9558 | 98.52% |
-| | `Black_Males` | 0.9306 | 0.9571 | 0.9437 | 98.15% |
-| | `White_Females` | 0.9222 | 0.9121 | 0.9171 | 97.22% |
-| | `Asian_Males` | 0.9278 | 0.9076 | 0.9176 | 97.22% |
-| | `Asian_Females` | 0.9111 | 0.9162 | 0.9136 | 97.13% |
-| | `Black_Females` | 0.9111 | 0.9213 | 0.9162 | 97.22% |
+| **SVM (Tri)** | `White_Males` | 96.94% | 95.36% | 96.14% | 98.70% |
+| | `Black_Males` | 94.17% | 95.49% | 94.83% | 98.29% |
+| | `White_Females` | 94.72% | 92.41% | 93.55% | 97.82% |
+| | `Asian_Males` | 94.44% | 92.39% | 93.41% | 97.78% |
+| | `Asian_Females` | 92.50% | 92.50% | 92.50% | 97.50% |
+| | `Black_Females` | 89.44% | 94.15% | 91.74% | 97.31% |
+| **LR (Tri)** | `White_Males` | 96.11% | 95.05% | 95.58% | 98.52% |
+| | `Black_Males` | 93.06% | 95.71% | 94.37% | 98.15% |
+| | `White_Females` | 92.22% | 91.21% | 91.71% | 97.22% |
+| | `Asian_Males` | 92.78% | 90.76% | 91.76% | 97.22% |
+| | `Asian_Females` | 91.11% | 91.62% | 91.36% | 97.13% |
+| | `Black_Females` | 91.11% | 92.13% | 91.62% | 97.22% |
 
 ### D. Error Pattern Assessment
 Bagian ini disusun dalam **4 paragraf**, masing-masing dengan target **100-115 kata**:
@@ -651,7 +649,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 #### Paragraph 1: Comparative Performance on the DemogPairs Dataset
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
-- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XII](#tab12). Model Tri-Domain ViT + SVM (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 0.9372**, **Recall 0.9370**, dan **F1-Score 0.9369**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 0.9238) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 0.8901). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
+- **Fokus Narasi**: Membandingkan model usulan secara langsung dengan studi terdahulu yang dievaluasi pada dataset DemogPairs berdasarkan [Table XII](#tab12). Model Tri-Domain ViT + SVM (`Face ⊕ Emotion ⊕ Age`) memperoleh **Accuracy 93.70%**, **Precision 93.72%**, **Recall 93.70%**, dan **F1-Score 93.69%**, yang menunjukkan reported performance lebih tinggi dibandingkan angka yang dilaporkan pada model Dual-ViT + SVM (Putri et al. ICVEE 2025, akurasi 92.41%, F1 92.38%) dan MD-ViT + XGBoost (Putri et al. JIEET 2025, akurasi 89.07%, F1 89.01%). Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga perbandingan ini berfungsi sebagai penempatan kontekstual pada benchmark data yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik (*fully apple-to-apple experimental replication*).
 
 #### Paragraph 2: Research Positioning and Comparative Context
 - **Target Kata**: 100-115 kata (minimal 100 kata, maksimal 115 kata).
@@ -664,9 +662,9 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100-115 k
 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |---|:---:|:---:|:---:|:---:|
-| MD-ViT [(10)] | 89.07% | 0.8912 | 0.8907 | 0.8901 |
-| Dual-ViT [(9)] | 92.41% | 0.9248 | 0.9241 | 0.9238 |
-| **Ours (Tri-Domain ViT + SVM)** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
+| MD-ViT [(10)] | 89.07% | 89.12% | 89.07% | 89.01% |
+| Dual-ViT [(9)] | 92.41% | 92.48% | 92.41% | 92.38% |
+| **Ours** | **93.70%** | **93.72%** | **93.70%** | **93.69%** |
 
 ---
 
@@ -678,8 +676,8 @@ Bagian ini disusun dalam **2 paragraf terpadu tanpa sub-seksi**:
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
 - **Poin Narasi**:
   1. Penelitian ini mengevaluasi fusi representasi laten Tri-Domain ViT (`Face ⊕ Emotion ⊕ Age`: 2.304 dimensi) untuk klasifikasi ras dan gender interseksional pada dataset DemogPairs.
-  2. Hasil eksperimen menunjukkan bahwa fusi tri-domain merupakan konfigurasi terbaik pada 3 dari 4 classifier yang diuji (SVM, LR, GNB), dengan Support Vector Machine teroptimasi ($C=10$, kernel polinomial derajat 2) menghasilkan performa tertinggi dalam search space yang dievaluasi (akurasi 93.70% dan F1-Score 0.9369). Perlu dicatat bahwa manfaat fusi multi-domain bersifat classifier-dependent: Random Forest mencapai performa terbaiknya pada konfigurasi dual-domain `Emotion ⊕ Face`.
-  3. Analisis performa subkelompok menunjukkan bahwa nilai F1-Score pada keenam subkelompok berkisar antara 0.9174 dan 0.9614.
+  2. Hasil eksperimen menunjukkan bahwa fusi tri-domain merupakan konfigurasi terbaik pada 3 dari 4 classifier yang diuji (SVM, LR, GNB), dengan Support Vector Machine teroptimasi ($C=10$, kernel polinomial derajat 2) menghasilkan performa tertinggi dalam search space yang dievaluasi (akurasi 93.70% dan F1-Score 93.69%). Perlu dicatat bahwa manfaat fusi multi-domain bersifat classifier-dependent: Random Forest mencapai performa terbaiknya pada konfigurasi dual-domain `Emotion ⊕ Face`.
+  3. Analisis performa subkelompok menunjukkan bahwa nilai F1-Score pada keenam subkelompok berkisar antara 91.74% dan 96.14%.
 
 ### Paragraph 2: Limitations and Future Research Directions
 - **Target Kata**: 150-250 kata (minimal 150 kata, maksimal 250 kata).
