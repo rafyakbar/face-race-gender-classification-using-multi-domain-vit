@@ -2,9 +2,24 @@ Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubung
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
 
-pada paper_latex_id:
-- paper_latex_id/sections/07_biographies.tex: tidak usah ada link orcid pada biografi, karena sudah ada di atas
+sekarang tolong perbaiki paragraf-paragraf yang statusnya OVER! sesuaikan agar sesuai dengan target kata pada paper outline! delegasi ke subagent, satu file section satu subagent agar optimal, berikan instruksi yang jelas. lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
+audit paper_latex_en target kata berdasarkan paper_outline.md:
+- jangan langsung mengubah apapun di paper_latex_en, hanya audit dan laporkan hasilnya terlebih dahulu!
+- hitung jumlah kata setiap paragraf pada seluruh section paper_latex_en, lalu cocokkan dengan target kata per paragraf yang ada pada paper_outline.md.
+- laporkan tabel audit: section -> paragraf -> jumlah kata aktual vs target -> status (PASS/OVER/UNDER), dan tampilkan paragraf yang bermasalah lengkap dengan saran perbaikannya.
+- perbaikan hanya dilakukan setelah saya konfirmasi dari hasil audit tersebut! saat memperbaiki, jangan mengubah kalimat, struktur, angka, metrik, maupun \cite/\label/\ref, hanya sesuaikan panjang kalimat, makna asli harus tetap terjaga, lalu build ulang dengan pdflatex -> bibtex -> pdflatex -> pdflatex dan verifikasi jumlah halaman & layout.
+- delegasi ke subagent, satu file section satu subagent agar optimal, berikan instruksi yang jelas.
+lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
 perbaiki paper_latex_id, bisa juga update paper_outline.md dan folder paper jika diperlukan. lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan! delegasikan ke subagent jika diperlukan!
+
+terjemahkan paper_latex_id (Bahasa Indonesia) ke dalam paper_latex_en (Bahasa Inggris):
+- jangan mengubah kalimat, struktur, atau makna apapun, hanya translate!
+- elemen yang TIDAK boleh diubah: \cite/\label/\ref (key), persamaan matematika, angka & metrik, path gambar, nama tabel/gambar, hyperparameter, dan seluruh isi references.bib (sinkronkan saja 51 entri dari paper_latex_id).
+- preamble access.tex, urutan section, dan struktur file harus identik dengan paper_latex_id.
+- cek juga style templatenya (konformansi template/ACCESS_latex_template_20260513), lalu build dengan pdflatex -> bibtex -> pdflatex -> pdflatex dan verifikasi jumlah halaman & layout sama dengan paper_latex_id.
+- delegasi ke subagent, satu file section satu subagent agar optimal, berikan instruksi yang jelas.
+lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
 
 pada paper_latex_id:
 - buat agar citra pada FIGURE 2 memiliki height yang sama
