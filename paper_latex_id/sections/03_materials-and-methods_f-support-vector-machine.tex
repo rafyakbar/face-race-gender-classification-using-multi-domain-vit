@@ -16,17 +16,17 @@ Kernel Function & 'linear', 'rbf', 'poly' & 3 \\
 Polynomial Degree & 2, 3 & 2 \\
 Kernel Coefficient & 'scale', 'auto' & 2 \\
 \midrule
-\textbf{Total Grid Combinations} & -- & \textbf{288 (1,440 fits)} \\
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{288 (1,440 fits)} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Pengklasifikasi SVM mengonstruksikan bidang pemisah berjarak terjauh (maximum margin hyperplane) untuk memisahkan enam kelas interseksional pada ruang representasi laten berdimensi tinggi. Fungsi kernel memproyeksikan distribusi data nonlinier dari fusi multi-domain ke ruang fitur berdimensi lebih tinggi, mencakup opsi kernel linear, Radial Basis Function (RBF), dan polinomial. Formulasi kernel polinomial derajat dua pada \eqref{eq:8} menghitung produk titik $\langle \mathbf{x}_i, \mathbf{x}_j \rangle$ antara pasangan vektor fitur $\mathbf{x}_i$ dan $\mathbf{x}_j$, di mana $\gamma$ menyatakan parameter penskalaan kernel, $d = 2$ menentukan derajat pemetaan, dan konstanta intercept $\text{coef0} = 0.0$ mengikuti nilai bawaan scikit-learn:
+Pengklasifikasi SVM mengonstruksikan bidang pemisah berjarak terjauh (maximum margin hyperplane) untuk memisahkan enam kelas interseksional pada ruang representasi laten berdimensi tinggi \cite{ref40}. Fungsi kernel memproyeksikan distribusi data nonlinier dari fusi multi-domain ke ruang fitur berdimensi lebih tinggi, mencakup opsi kernel linear, Radial Basis Function (RBF), dan polinomial \cite{ref41}. Formulasi kernel polinomial derajat dua pada \eqref{eq:8} menghitung produk titik $\langle \mathbf{x}_i, \mathbf{x}_j \rangle$ antara pasangan vektor fitur $\mathbf{x}_i$ dan $\mathbf{x}_j$, di mana $\gamma$ menyatakan parameter penskalaan kernel, $d = 2$ menentukan derajat pemetaan, dan konstanta intercept $\text{coef0} = 0.0$ mengikuti nilai bawaan scikit-learn \cite{ref42}:
 \begin{equation}
 K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d = 2
 \label{eq:8}
 \end{equation}
-Pemetaan kuadratik ini memfasilitasi penangkapan interaksi nonlinier antardimensi visual secara efisien.
+Pemetaan kuadratik ini memfasilitasi penangkapan interaksi nonlinier antardimensi visual secara efisien \cite{ref43}.
 
 Optimasi hyperparameter menelusuri rentang parameter penalti $C \in \{0.01, 0.1, 1, 10\}$, ragam fungsi kernel, koefisien $\gamma$, derajat polinomial, serta opsi penskalaan dan PCA, menghasilkan 288 kombinasi konfigurasi atau 1,440 total fits pada prosedur 5-Fold Stratified Cross-Validation sesuai Table~\ref{tab:VI}.
 

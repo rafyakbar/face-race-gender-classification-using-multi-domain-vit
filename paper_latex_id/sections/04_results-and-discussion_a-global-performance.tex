@@ -12,18 +12,18 @@
 \toprule
 Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
 \midrule
-Face & 0.8546 & 0.8543 & 0.8546 & 0.8539 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-Emotion & 0.8060 & 0.8063 & 0.8060 & 0.8057 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
-Age & 0.7366 & 0.7363 & 0.7366 & 0.7354 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
-\textbf{Emotion $\oplus$ Face} & \textbf{0.8685} & \textbf{0.8689} & \textbf{0.8685} & \textbf{0.8682} & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
-Face $\oplus$ Age & 0.8579 & 0.8578 & 0.8579 & 0.8573 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
-Emotion $\oplus$ Age & 0.8111 & 0.8111 & 0.8111 & 0.8108 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=2, pca=PCA(0.75), scaler=None\end{tabular} \\
-Face $\oplus$ Emotion $\oplus$ Age & 0.8620 & 0.8620 & 0.8620 & 0.8613 & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Face & 85.46\% & 85.43\% & 85.46\% & 85.39\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion & 80.60\% & 80.63\% & 80.60\% & 80.57\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Age & 73.66\% & 73.63\% & 73.66\% & 73.54\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=log2, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+\textbf{Emotion $\oplus$ Face} & \textbf{86.85\%} & \textbf{86.89\%} & \textbf{86.85\%} & \textbf{86.82\%} & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Face $\oplus$ Age & 85.79\% & 85.78\% & 85.79\% & 85.73\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=sqrt, \\ min\_split=2, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 81.11\% & 81.11\% & 81.11\% & 81.08\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=None, max\_feat=log2, \\ min\_split=5, min\_leaf=2, pca=PCA(0.75), scaler=None\end{tabular} \\
+Face $\oplus$ Emotion $\oplus$ Age & 86.20\% & 86.20\% & 86.20\% & 86.13\% & \begin{tabular}[t]{@{}l@{}}n\_est=200, depth=30, max\_feat=sqrt, \\ min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None\end{tabular} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Evaluasi performa RF melintasi tujuh konfigurasi fitur pada data uji DemogPairs disajikan pada Table~\ref{tab:VII}. Hasil eksperimen empiris menunjukkan bahwa skema dual-domain Emotion $\oplus$ Face mencapai capaian tertinggi dengan Akurasi 86.85\% dan F1-Score 86.82\%. Sebaliknya, penggabungan tri-domain Face $\oplus$ Emotion $\oplus$ Age mengalami sedikit penurunan performa menjadi Akurasi 86.20\% dan F1-Score 86.13\%. Penurunan ini diinterpretasikan sebagai kemungkinan tantangan partisi ruang fitur berdimensi 2,304 melalui pemotongan pohon acak (random splits). Seluruh konfigurasi RF secara konsisten memilih reduksi dimensionalitas PCA 0.75 untuk menyeimbangkan varians data. Pada kategori domain tunggal, fitur Face mencatatkan performa terbaik dengan Akurasi 85.46\%, melampaui fitur domain Emotion sebesar 80.60\% serta domain Age sebesar 73.66\%.
+Evaluasi performa RF melintasi tujuh konfigurasi fitur pada data uji DemogPairs disajikan pada Table~\ref{tab:VII}. Hasil eksperimen empiris menunjukkan bahwa skema dual-domain Emotion $\oplus$ Face mencapai capaian tertinggi dengan Akurasi 86.85\% dan F1-Score 86.82\%. Sebaliknya, penggabungan tri-domain Face $\oplus$ Emotion $\oplus$ Age mengalami sedikit penurunan performa menjadi Akurasi 86.20\% dan F1-Score 86.13\%. Penurunan ini diinterpretasikan sebagai kemungkinan tantangan partisi ruang fitur berdimensi 2,304 melalui pemotongan pohon acak (random splits) \cite{ref48}. Seluruh konfigurasi GridSearchCV secara konsisten memilih reduksi dimensionalitas PCA 0.75 untuk menyeimbangkan varians data. Pada kategori domain tunggal, fitur Face mencatatkan performa terbaik dengan Akurasi 85.46\%, melampaui fitur domain Emotion sebesar 80.60\% serta domain Age sebesar 73.66\%.
 
 \begin{table*}[htbp]
 \caption{Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.}
@@ -33,18 +33,18 @@ Evaluasi performa RF melintasi tujuh konfigurasi fitur pada data uji DemogPairs 
 \toprule
 Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
 \midrule
-Face & 0.8269 & 0.8271 & 0.8269 & 0.8258 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.1246e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-Emotion & 0.7338 & 0.7387 & 0.7338 & 0.7329 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=3.0703e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
-Age & 0.6963 & 0.6979 & 0.6963 & 0.6952 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.3755e-04, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-Emotion $\oplus$ Face & 0.8486 & 0.8490 & 0.8486 & 0.8481 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-Face $\oplus$ Age & 0.8315 & 0.8343 & 0.8315 & 0.8317 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.1253e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-Emotion $\oplus$ Age & 0.7681 & 0.7686 & 0.7681 & 0.7681 & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.6037e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
-\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.8505} & \textbf{0.8512} & \textbf{0.8505} & \textbf{0.8505} & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
+Face & 82.69\% & 82.71\% & 82.69\% & 82.58\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.1246e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion & 73.38\% & 73.87\% & 73.38\% & 73.29\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=3.0703e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
+Age & 69.63\% & 69.79\% & 69.63\% & 69.52\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=4.3755e-04, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion $\oplus$ Face & 84.86\% & 84.90\% & 84.86\% & 84.81\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Face $\oplus$ Age & 83.15\% & 83.43\% & 83.15\% & 83.17\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.1253e-02, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+Emotion $\oplus$ Age & 76.81\% & 76.86\% & 76.81\% & 76.81\% & \begin{tabular}[t]{@{}l@{}}var\_smoothing=1.6037e-03, \\ pca=PCA(0.75), scaler=MinMaxScaler\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{85.05\%} & \textbf{85.12\%} & \textbf{85.05\%} & \textbf{85.05\%} & \begin{tabular}[t]{@{}l@{}}var\_smoothing=5.8780e-03, \\ pca=PCA(0.75), scaler=None\end{tabular} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Evaluasi performa klasifikasi probabilistik GNB pada tujuh variasi konfigurasi fitur dirangkum pada Table~\ref{tab:VIII}. Meskipun dibatasi oleh asumsi dasar independensi fitur kontinu, model GNB menunjukkan tren peningkatan performa yang konsisten dari kategori domain tunggal ke multi-domain. Pada domain tunggal, konfigurasi Age menghasilkan capaian terendah dengan Akurasi 69.63\% dan F1-Score 69.52\%, sedangkan fitur Face mencapai Akurasi 82.69\%. Integrasi fitur pada kategori dual-domain meningkatkan akurasi secara konsisten, dipimpin oleh kombinasi Emotion $\oplus$ Face sebesar 84.86\%. Puncak performa klasifikasi GNB tercapai pada konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age dengan Akurasi 85.05\% dan F1-Score 85.05\%. Seluruh konfigurasi fitur GNB secara seragam memilih reduksi dimensionalitas PCA 0.75 untuk meminimalkan korelasi antarfitur laten.
+Evaluasi performa klasifikasi probabilistik GNB pada tujuh variasi konfigurasi fitur dirangkum pada Table~\ref{tab:VIII}. Model GNB menunjukkan tren peningkatan performa yang konsisten dari kategori domain tunggal ke multi-domain. Pada domain tunggal, konfigurasi Age menghasilkan capaian terendah dengan Akurasi 69.63\% dan F1-Score 69.52\%, sedangkan fitur Face mencapai Akurasi 82.69\%. Integrasi fitur pada kategori dual-domain meningkatkan akurasi secara konsisten, dipimpin oleh kombinasi Emotion $\oplus$ Face sebesar 84.86\%. Puncak performa klasifikasi GNB tercapai pada konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age dengan Akurasi 85.05\% dan F1-Score 85.05\%. Seluruh konfigurasi fitur GNB secara seragam memilih reduksi dimensionalitas PCA 0.75 berdasarkan hasil GridSearchCV.
 
 \begin{table*}[htbp]
 \caption{Performance Benchmark of Logistic Regression across Seven Feature Configurations.}
@@ -54,18 +54,18 @@ Evaluasi performa klasifikasi probabilistik GNB pada tujuh variasi konfigurasi f
 \toprule
 Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
 \midrule
-Face & 0.9060 & 0.9060 & 0.9060 & 0.9059 & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
-Emotion & 0.8847 & 0.8850 & 0.8847 & 0.8846 & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=saga, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
-Age & 0.8648 & 0.8649 & 0.8648 & 0.8648 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
-Emotion $\oplus$ Face & 0.9241 & 0.9241 & 0.9241 & 0.9240 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
-Face $\oplus$ Age & 0.9162 & 0.9162 & 0.9162 & 0.9162 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
-Emotion $\oplus$ Age & 0.9051 & 0.9052 & 0.9051 & 0.9051 & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
-\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.9273} & \textbf{0.9275} & \textbf{0.9273} & \textbf{0.9273} & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Face & 90.60\% & 90.60\% & 90.60\% & 90.59\% & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Emotion & 88.47\% & 88.50\% & 88.47\% & 88.46\% & \begin{tabular}[t]{@{}l@{}}$C=1$, solver=saga, max\_iter=500, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Age & 86.48\% & 86.49\% & 86.48\% & 86.48\% & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Face & 92.41\% & 92.41\% & 92.41\% & 92.40\% & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Face $\oplus$ Age & 91.62\% & 91.62\% & 91.62\% & 91.62\% & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 90.51\% & 90.52\% & 90.51\% & 90.51\% & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=lbfgs, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{92.73\%} & \textbf{92.75\%} & \textbf{92.73\%} & \textbf{92.73\%} & \begin{tabular}[t]{@{}l@{}}$C=0.1$, solver=newton-cg, max\_iter=500, \\ pca=None, scaler=None\end{tabular} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Hasil benchmark performa multinomial LR pada seluruh konfigurasi fitur dipaparkan pada Table~\ref{tab:IX}. Karakteristik utama dari model LR adalah retensi representasi fitur penuh, di mana seluruh skema (tujuh dari tujuh konfigurasi) memilih tanpa reduksi PCA (pca=None). Evaluasi empiris menunjukkan bahwa konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age mencatatkan performa tertinggi dengan Akurasi 92.73\% dan F1-Score 92.73\% melalui parameter penalti $C=0.1$ serta solver newton-cg. Capaian tri-domain ini melampaui konfigurasi dual-domain terbaik Emotion $\oplus$ Face yang meraih Akurasi 92.41\% dan F1-Score 92.40\%, serta mengungguli konfigurasi single-domain terbaik Face dengan Akurasi 90.60\%. Temuan ini mengindikasikan efektivitas regularisasi $L_2$ dalam menangani ruang fitur berdimensi tinggi tanpa kompresi komponen utama.
+Hasil benchmark performa multinomial LR pada seluruh konfigurasi fitur dipaparkan pada Table~\ref{tab:IX}. Karakteristik utama dari model LR adalah retensi representasi fitur penuh, di mana seluruh skema (tujuh dari tujuh konfigurasi) memilih tanpa reduksi PCA (pca=None) \cite{ref49}. Evaluasi empiris menunjukkan bahwa konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age mencatatkan performa tertinggi dengan Akurasi 92.73\% dan F1-Score 92.73\% melalui parameter penalti $C=0.1$ serta solver newton-cg. Capaian tri-domain ini melampaui konfigurasi dual-domain terbaik Emotion $\oplus$ Face yang meraih Akurasi 92.41\% dan F1-Score 92.40\%, serta mengungguli konfigurasi single-domain terbaik Face dengan Akurasi 90.60\%. Temuan ini mengindikasikan efektivitas regularisasi $L_2$ dalam menangani ruang fitur berdimensi tinggi tanpa kompresi komponen utama \cite{ref50}.
 
 \begin{table*}[htbp]
 \caption{Performance Benchmark of Support Vector Machine across Seven Feature Configurations.}
@@ -75,17 +75,19 @@ Hasil benchmark performa multinomial LR pada seluruh konfigurasi fitur dipaparka
 \toprule
 Configuration & Accuracy & Precision & Recall & F1-Score & Best Parameters \\
 \midrule
-Face & 0.9083 & 0.9084 & 0.9083 & 0.9083 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
-Emotion & 0.9019 & 0.9020 & 0.9019 & 0.9017 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
-Age & 0.8764 & 0.8767 & 0.8764 & 0.8765 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
-Emotion $\oplus$ Face & 0.9329 & 0.9333 & 0.9329 & 0.9329 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
-Face $\oplus$ Age & 0.9255 & 0.9254 & 0.9255 & 0.9254 & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
-Emotion $\oplus$ Age & 0.9208 & 0.9210 & 0.9208 & 0.9209 & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
-\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{0.9370} & \textbf{0.9372} & \textbf{0.9370} & \textbf{0.9369} & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
+Face & 90.83\% & 90.84\% & 90.83\% & 90.83\% & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Emotion & 90.19\% & 90.20\% & 90.19\% & 90.17\% & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Age & 87.64\% & 87.67\% & 87.64\% & 87.65\% & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Face & 93.29\% & 93.33\% & 93.29\% & 93.29\% & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
+Face $\oplus$ Age & 92.55\% & 92.54\% & 92.55\% & 92.54\% & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
+Emotion $\oplus$ Age & 92.08\% & 92.10\% & 92.08\% & 92.09\% & \begin{tabular}[t]{@{}l@{}}$C=10$, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{93.70\%} & \textbf{93.72\%} & \textbf{93.70\%} & \textbf{93.69\%} & \begin{tabular}[t]{@{}l@{}}$C=10$, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=None\end{tabular} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Perkembangan performa SVM melintasi seluruh tahapan ablasi fitur dirangkum pada Table~\ref{tab:X}. Serupa dengan model linier, seluruh konfigurasi SVM secara konsisten mempertahankan ruang representasi penuh tanpa reduksi PCA (pca=None). Evaluasi empiris memperlihatkan peningkatan performa berjenjang, dimulai dari konfigurasi domain tunggal terbaik Face dengan Akurasi 90.83\% dan F1-Score 90.83\%. Integrasi representasi pada skema dual-domain Emotion $\oplus$ Face meningkatkan performa dengan Akurasi 93.29\% dan F1-Score 93.29\%, sebelum akhirnya mencapai titik tertinggi pada konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age dengan Akurasi 93.70\% dan F1-Score 93.69\%. Pada penalaan hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut.
+(Catatan: Parameter degree hanya aktif dan dilaporkan pada kernel poly; pada kernel rbf, parameter degree tidak aktif dan tidak dicantumkan pada naskah publikasi).
 
-Sintesis komparatif deskriptif melintasi 28 kombinasi eksperimen menunjukkan bahwa model SVM berbasis fusi tri-domain Face $\oplus$ Emotion $\oplus$ Age menempati capaian performa tertinggi dalam ruang pencarian yang dievaluasi, dengan raihan Akurasi 93.70\% dan F1-Score 93.69\%. Berdasarkan nilai rata-rata performa pengklasifikasi di seluruh konfigurasi fitur, urutan hierarki deskriptif efektivitas algoritma dipimpin oleh SVM (91.47\%), diikuti oleh LR (90.40\%), RF (82.81\%), dan GNB (79.37\%). Karakteristik non-linier kernel polinomial pada SVM terbukti efektif dalam memetakan batas keputusan antarsubkelompok demografis berdimensi tinggi. Akan tetapi, perbandingan urutan performa ini sepenuhnya bersifat deskriptif empiris pada pengaturan eksperimen terkontrol dan tidak mencerminkan superioritas statistik mutlak antarfamili algoritma tanpa pengujian hipotesis formal.
+Perkembangan performa SVM melintasi seluruh tahapan ablasi fitur dirangkum pada Table~\ref{tab:X}. Serupa dengan model linier, seluruh konfigurasi SVM secara konsisten mempertahankan ruang representasi penuh tanpa reduksi PCA (pca=None). Evaluasi empiris memperlihatkan peningkatan performa berjenjang, dimulai dari konfigurasi domain tunggal terbaik Face dengan Akurasi 90.83\% dan F1-Score 90.83\%. Integrasi representasi pada skema dual-domain Emotion $\oplus$ Face meningkatkan performa dengan Akurasi 93.29\% dan F1-Score 93.29\%, sebelum akhirnya mencapai titik tertinggi pada konfigurasi tri-domain Face $\oplus$ Emotion $\oplus$ Age dengan Akurasi 93.70\% dan F1-Score 93.69\%. Pada hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut \cite{ref51}.
+
+Hasil 28 eksperimen pada Table~\ref{tab:VII}, Table~\ref{tab:VIII}, Table~\ref{tab:IX}, dan Table~\ref{tab:X} menunjukkan bahwa SVM dengan fusi tri-domain Face $\oplus$ Emotion $\oplus$ Age memberikan performa tertinggi dalam seluruh konfigurasi yang diuji. Model tersebut mencapai Akurasi 93.70\% dan F1-Score 93.69\%. Jika dirata-ratakan pada tujuh konfigurasi fitur, SVM memperoleh Akurasi 91.47\%, diikuti oleh LR 90.40\%, RF 82.81\%, dan GNB 79.37\%. Pada konfigurasi SVM tri-domain, GridSearchCV memilih kernel polinomial derajat 2 sebagai konfigurasi terbaik. Temuan ini berlaku pada data dan ruang pencarian yang digunakan, sehingga tidak dapat diartikan sebagai keunggulan universal kernel polinomial. Perbandingan tersebut bersifat deskriptif dan tidak membuktikan superioritas statistik suatu classifier karena penelitian ini tidak melakukan pengujian hipotesis formal.

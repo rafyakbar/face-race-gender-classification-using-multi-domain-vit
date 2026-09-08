@@ -1,7 +1,7 @@
 \subsection{Comparison with Prior Studies}
 \label{sec:comparison_prior}
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \caption{Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.}
 \label{tab:XII}
 \centering
@@ -9,13 +9,13 @@
 \toprule
 Model & Accuracy & Precision & Recall & F1-Score \\
 \midrule
-MD-ViT \cite{ref10} & 89.07\% & 0.8912 & 0.8907 & 0.8901 \\
-Dual-ViT \cite{ref9} & 92.41\% & 0.9248 & 0.9241 & 0.9238 \\
-\textbf{Ours (Tri-Domain ViT + SVM)} & \textbf{93.70\%} & \textbf{0.9372} & \textbf{0.9370} & \textbf{0.9369} \\
+MD-ViT \cite{ref20} & 89.07\% & 89.12\% & 89.07\% & 89.01\% \\
+Dual-ViT \cite{ref19} & 92.41\% & 92.48\% & 92.41\% & 92.38\% \\
+\textbf{Ours} & \textbf{93.70\%} & \textbf{93.72\%} & \textbf{93.70\%} & \textbf{93.69\%} \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-Perbandingan empiris secara langsung antara kerangka kerja yang diusulkan dan studi terdahulu yang dievaluasi pada dataset DemogPairs dirangkum pada Table~\ref{tab:XII}. Model usulan berbasis Tri-Domain ViT + SVM (Face $\oplus$ Emotion $\oplus$ Age) meraih Akurasi 93.70\%, Presisi 0.9372, Recall 0.9370, dan F1-Score 0.9369. Capaian kuantitatif tersebut melampaui metrik yang dilaporkan pada model Dual-ViT + SVM oleh Putri \textit{et al.} \cite{ref9}, yaitu Akurasi 92.41\% dan F1-Score 0.9238, serta model MD-ViT + XGBoost oleh Putri \textit{et al.} \cite{ref10} dengan Akurasi 89.07\% dan F1-Score 0.8901. Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga komparasi ini berfungsi sebagai penempatan kontekstual pada dataset acuan yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik.
+Perbandingan empiris secara langsung antara kerangka kerja yang diusulkan dan studi terdahulu yang dievaluasi pada dataset DemogPairs dirangkum pada Table~\ref{tab:XII}. Model usulan berbasis Tri-Domain ViT + SVM (Face $\oplus$ Emotion $\oplus$ Age) meraih Akurasi 93.70\%, Presisi 93.72\%, Recall 93.70\%, dan F1-Score 93.69\%. Capaian kuantitatif tersebut melampaui metrik yang dilaporkan pada model Dual-ViT + SVM, yaitu Akurasi 92.41\% dan F1-Score 92.38\%, serta model MD-ViT + XGBoost dengan Akurasi 89.07\% dan F1-Score 89.01\% \cite{ref19}, \cite{ref20}. Seluruh angka pembanding disitasi langsung dari publikasi masing-masing, sehingga komparasi ini berfungsi sebagai penempatan kontekstual pada dataset acuan yang sama dan tidak dimaksudkan sebagai replikasi eksperimen yang sepenuhnya identik.
 
-Penelitian seminal mengenai perancangan dataset DemogPairs oleh Hupont dan Fern{\'a}ndez \cite{ref11} meletakkan landasan penting dalam mengukur dampak ketidakseimbangan demografis pada sistem pengenalan wajah. Menanggapi tantangan tersebut, kerangka kerja integrasi representasi tiga domain yang diusulkan dalam penelitian ini menghasilkan akurasi tertinggi di antara studi-studi yang dibandingkan pada dataset DemogPairs. Selain mengevaluasi metrik agregat global, penyelidikan ini menjalankan analisis disparitas subkelompok secara komprehensif pada konfigurasi tri-domain terbaik untuk memetakan variasi performa antarsubkelompok demografis secara transparan. Evaluasi terperinci tersebut membuktikan stabilitas pengenalan lintas kategori ras dan gender interseksional, meskipun perbandingan disparitas lintas seluruh skema sebelumnya tidak dapat disertakan karena informasi variasi performa tersebut tidak dilaporkan dalam literatur terkait.
+Penelitian seminal mengenai perancangan dataset DemogPairs meletakkan landasan penting dalam mengukur dampak ketidakseimbangan demografis pada sistem pengenalan wajah \cite{ref25}. Menanggapi tantangan tersebut, kerangka kerja integrasi representasi tiga domain yang diusulkan dalam penelitian ini menghasilkan akurasi tertinggi di antara studi-studi yang dibandingkan pada dataset DemogPairs \cite{ref19}, \cite{ref20}. Selain mengevaluasi metrik agregat global, penyelidikan ini menjalankan analisis disparitas subkelompok secara komprehensif pada konfigurasi tri-domain terbaik untuk memetakan variasi performa antarsubkelompok demografis secara transparan. Evaluasi terperinci tersebut membuktikan stabilitas pengenalan lintas kategori ras dan gender interseksional, meskipun perbandingan disparitas lintas seluruh skema sebelumnya tidak dapat disertakan karena informasi variasi performa tersebut tidak dilaporkan dalam literatur terkait \cite{ref19}, \cite{ref20}.

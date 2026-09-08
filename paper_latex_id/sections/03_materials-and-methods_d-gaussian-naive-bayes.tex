@@ -13,15 +13,15 @@ Feature Scaler & None, MinMaxScaler & 2 \\
 Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
 Variance Smoothing & $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) & 40 \\
 \midrule
-\textbf{Total Grid Combinations} & -- & \textbf{240 (1,200 fits)} \\
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{240 (1,200 fits)} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Berdasarkan Teorema Bayes, pengklasifikasi GNB mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat. Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada \eqref{eq:6}, di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$:
+Berdasarkan Teorema Bayes, pengklasifikasi GNB mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat \cite{ref35}. Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada \eqref{eq:6}, di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$ \cite{ref35}:
 \begin{equation}
 P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right)
 \label{eq:6}
 \end{equation}
 
-Penambahan parameter penghalusan var\_smoothing menjaga stabilitas komputasi terhadap risiko varians mendekati nol pada ruang representasi laten berdimensi tinggi. Prosedur penalaan hyperparameter melalui 5-Fold Stratified Cross-Validation mengevaluasi kombinasi penskalaan data, reduksi dimensionalitas PCA, serta 40 interval var\_smoothing yang dieksplorasi secara logaritmik dari $1.0 \times 10^{-9}$ hingga $1.0 \times 10^{2}$, menghasilkan 240 kombinasi grid dengan 1,200 total fits sebagaimana dipaparkan pada Table~\ref{tab:IV}.
+Penambahan parameter penghalusan var\_smoothing menjaga stabilitas komputasi terhadap risiko varians mendekati nol pada ruang representasi laten berdimensi tinggi \cite{ref36}. Prosedur penalaan hyperparameter melalui 5-Fold Stratified Cross-Validation mengevaluasi kombinasi penskalaan data, reduksi dimensionalitas PCA, serta 40 interval var\_smoothing yang dieksplorasi secara logaritmik dari $1.0 \times 10^{-9}$ hingga $1.0 \times 10^{2}$, menghasilkan 240 kombinasi grid dengan total 1,200 proses fitting sebagaimana dipaparkan pada Table~\ref{tab:IV}.
