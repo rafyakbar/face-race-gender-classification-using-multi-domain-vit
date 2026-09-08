@@ -8,7 +8,7 @@
 \label{fig:2}
 \end{figure*}
 
-Dataset yang digunakan dalam penelitian ini adalah DemogPairs \cite{ref11}, sebuah dataset yang dirancang khusus untuk mengukur ketimpangan performa pengenalan wajah lintas kelompok demografis. Dataset ini memuat total 10,800 citra wajah yang terdistribusi secara seimbang ke dalam enam kelas interseksional. Keenam subkelompok tersebut mencakup kombinasi persilangan dari tiga kelompok ras makro dan dua kelompok gender, yaitu Asian Females, Asian Males, Black Females, Black Males, White Females, dan White Males, dengan kuota tepat 1,800 citra per kelas. Distribusi yang seimbang ini menyediakan kondisi evaluasi terkontrol untuk membandingkan performa antarsubkelompok secara objektif tanpa distorsi dominasi sampel mayoritas. Sampel visual dari keenam subkelompok demografis diilustrasikan pada Figure~\ref{fig:2}.
+Dataset yang digunakan dalam penelitian ini adalah DemogPairs \cite{ref25}, sebuah dataset yang dirancang khusus untuk pengenalan wajah lintas kelompok demografis. Dataset ini memuat total 10,800 citra wajah yang terdistribusi secara seimbang ke dalam enam kelas interseksional. Keenam subkelompok tersebut mencakup kombinasi persilangan dari tiga kelompok ras makro dan dua kelompok gender, yaitu Asian Females, Asian Males, Black Females, Black Males, White Females, dan White Males, dengan kuota tepat 1,800 citra per kelas. Distribusi yang seimbang ini menyediakan kondisi evaluasi yang lebih terkontrol untuk membandingkan performa antarsubkelompok dengan mengurangi pengaruh ketimpangan jumlah sampel \cite{ref20}. Sampel visual dari keenam subkelompok demografis diilustrasikan pada Figure~\ref{fig:2}.
 
 \begin{table}[htbp]
 \caption{Dataset Partition and Demographic Subgroup Distribution.}
@@ -18,12 +18,12 @@ Dataset yang digunakan dalam penelitian ini adalah DemogPairs \cite{ref11}, sebu
 \toprule
 Subgroup & Train Set (80\%) & Test Set (20\%) & Total \\
 \midrule
-Black Males & 1,440 & 360 & 1,800 \\
-White Females & 1,440 & 360 & 1,800 \\
-Asian Males & 1,440 & 360 & 1,800 \\
-White Males & 1,440 & 360 & 1,800 \\
-Black Females & 1,440 & 360 & 1,800 \\
-Asian Females & 1,440 & 360 & 1,800 \\
+Black\_Males & 1,440 & 360 & 1,800 \\
+White\_Females & 1,440 & 360 & 1,800 \\
+Asian\_Males & 1,440 & 360 & 1,800 \\
+White\_Males & 1,440 & 360 & 1,800 \\
+Black\_Females & 1,440 & 360 & 1,800 \\
+Asian\_Females & 1,440 & 360 & 1,800 \\
 \midrule
 \textbf{Total} & \textbf{8,640} & \textbf{2,160} & \textbf{10,800} \\
 \bottomrule
