@@ -25,4 +25,4 @@ Pengenalan atribut demografis wajah seperti ras dan gender secara simultan mengh
 
 ## Keywords
 
-Race and gender classification; intersectional demographic recognition; Vision Transformer; multi-domain feature fusion; algorithmic fairness.
+Race and gender classification, intersectional demographic recognition, multi-domain feature fusion, algorithmic fairness, Vision Transformer.

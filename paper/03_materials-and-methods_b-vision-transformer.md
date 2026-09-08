@@ -33,7 +33,7 @@ $$
 | 4 | `Emotion ⊕ Face` | Dual-Domain | 1,536 |
 | 5 | `Face ⊕ Age` | Dual-Domain | 1,536 |
 | 6 | `Emotion ⊕ Age` | Dual-Domain | 1,536 |
-| 7 | `Face ⊕ Emotion ⊕ Age` | **Tri-Domain (Proposed)** | **2,304** |
+| 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | 2,304 |
 
 Untuk mempertahankan efisiensi komputasi dan mencegah variabilitas pelatihan ulang, ketiga model backbone ViT dibekukan (frozen) sebagai penyedia task-associated representations secara offline. Model ViT-Face (`skutaada/VIT-VGGFace`) menangkap representasi terkait geometri biometrik wajah, ViT-Emotion (`dima806/facial_emotions_image_detection`) menghasilkan representasi terkait ekspresi wajah, dan ViT-Age (`dima806/facial_age_image_detection`) mengekstraksi representasi terkait estimasi usia wajah. Dari setiap model domain, vektor fitur $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ diekstraksi dari representasi token $[\text{CLS}]$ pada layer encoder terakhir $L$ ($\mathbf{z}_L^0$) setelah operasi LN sesuai [(4)](#eq4). Ketiga representasi laten domain tunggal tersebut digabungkan menjadi vektor fusi tri-domain $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ melalui operasi konkatenasi fitur ($\oplus$) dari vektor $\mathbf{f}_{\text{face}}$, $\mathbf{f}_{\text{emotion}}$, dan $\mathbf{f}_{\text{age}}$ sebagaimana dirumuskan pada [(5)](#eq5). Eksplorasi sistematis mencakup tujuh skema ablasi fitur, yang meliputi tiga konfigurasi domain tunggal berdimensi 768, tiga konfigurasi domain ganda berdimensi 1,536, serta satu konfigurasi tri-domain berdimensi 2,304 seperti dirangkum pada [Table II](#tab2).
 
