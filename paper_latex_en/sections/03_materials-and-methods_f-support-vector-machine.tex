@@ -16,16 +16,16 @@ Kernel Function & 'linear', 'rbf', 'poly' & 3 \\
 Polynomial Degree & 2, 3 & 2 \\
 Kernel Coefficient & 'scale', 'auto' & 2 \\
 \midrule
-\textbf{Total Grid Combinations} & -- & \textbf{288 (1,440 fits)} \\
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{288 (1,440 fits)} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The SVM classifier constructs a maximum margin hyperplane to separate the six intersectional classes in the high-dimensional latent representation space. Kernel functions project the nonlinear data distribution from multi-domain fusion into a higher-dimensional feature space, encompassing linear, Radial Basis Function (RBF), and polynomial kernel options. The second-degree polynomial kernel formulation in \eqref{eq:8} computes the dot product $\langle \mathbf{x}_i, \mathbf{x}_j \rangle$ between pairs of feature vectors $\mathbf{x}_i$ and $\mathbf{x}_j$, where $\gamma$ denotes the kernel scaling parameter, $d = 2$ determines the mapping degree, and the intercept constant $\text{coef0} = 0.0$ follows the scikit-learn default value:
+The SVM classifier constructs a maximum margin hyperplane to separate the six intersectional classes in the high-dimensional latent representation space \cite{ref40}. Kernel functions project the nonlinear data distribution from multi-domain fusion into a higher-dimensional feature space, encompassing linear, Radial Basis Function (RBF), and polynomial kernel options \cite{ref41}. The second-degree polynomial kernel formulation in \eqref{eq:8} computes the dot product $\langle \mathbf{x}_i, \mathbf{x}_j \rangle$ between pairs of feature vectors $\mathbf{x}_i$ and $\mathbf{x}_j$, where $\gamma$ denotes the kernel scaling parameter, $d = 2$ determines the mapping degree, and the intercept constant $\text{coef0} = 0.0$ follows the scikit-learn default value \cite{ref42}:
 \begin{equation}
 K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d = 2
 \label{eq:8}
 \end{equation}
-This quadratic mapping facilitates the efficient capture of nonlinear interactions across visual dimensions.
+This quadratic mapping facilitates the efficient capture of nonlinear interactions across visual dimensions \cite{ref43}.
 
 Hyperparameter optimization evaluates penalty parameter ranges $C \in \{0.01, 0.1, 1, 10\}$, various kernel functions, $\gamma$ coefficients, polynomial degrees, as well as scaling and PCA options, yielding 288 configuration combinations or 1,440 total fits across the 5-Fold Stratified Cross-Validation procedure as presented in Table~\ref{tab:VI}.

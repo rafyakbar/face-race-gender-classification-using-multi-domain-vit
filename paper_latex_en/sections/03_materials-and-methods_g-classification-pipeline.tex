@@ -1,10 +1,10 @@
 \subsection{Classification Pipeline}
 \label{sec:classification_pipeline}
 
-The modular pipeline framework unifies feature scaling, representational dimensionality reduction, and downstream model estimation into an integrated transformation chain. This processing chain is formulated in \eqref{eq:9}, where the input feature vector $\mathbf{x}$ is transformed by the scaling module into $\tilde{\mathbf{x}}$, dimensionally reduced via PCA into $\hat{\mathbf{x}}$, and mapped by the classifier to the predicted label $\hat{y} \in \{0, 1, 2, 3, 4, 5\}$ for the six demographic subgroups:
+The modular pipeline framework integrates feature scaling, representational dimensionality reduction, and downstream estimation into a unified transformation chain formulated in \eqref{eq:9}, where input feature vector $\mathbf{x}$ is scaled to $\tilde{\mathbf{x}}$, reduced via PCA to $\hat{\mathbf{x}}$, and mapped by the classifier to predicted label $\hat{y} \in \{0, 1, 2, 3, 4, 5\}$ for the six demographic subgroups:
 \begin{equation}
 \mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\}
 \label{eq:9}
 \end{equation}
 
-The cross-validation protocol implements a 5-Fold Stratified Cross-Validation scheme with controlled shuffling to maintain a balanced proportion of $\sim 16.67\%$ per class in each fold. To prevent information leakage, the Scaler and PCA are fitted exclusively on the training data within GridSearchCV before being applied to the validation data. The search over 1,086 hyperparameter combinations yields 5,430 fits per feature scheme or 38,010 total fits for the seven representation configurations, along with 28 final refits prior to testing on the independent held-out test data.
+The cross-validation protocol implements a 5-Fold Stratified Cross-Validation scheme with controlled shuffling to maintain a balanced proportion of $\sim 16.67\%$ per class in each fold. To prevent information leakage, the Scaler and PCA are fitted exclusively on training data within GridSearchCV before transform application. Evaluating 1,086 hyperparameter combinations yields 5,430 fits per scheme or 38,010 total fits across the seven configurations, along with 28 final refits before held-out testing.

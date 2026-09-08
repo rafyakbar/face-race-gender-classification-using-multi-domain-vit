@@ -1,21 +1,22 @@
 \subsection{Comparison with Prior Studies}
 \label{sec:comparison_prior}
+\label{sec:comparison_with_prior_studies}
 
-\begin{table*}[htbp]
-\caption{Comparative Performance of Proposed Framework against Prior Studies on the DemogPairs Dataset.}
+\begin{table}[htbp]
+\caption{Performance Comparison with Prior Intersectional Studies on the DemogPairs Benchmark.}
 \label{tab:XII}
 \centering
 \begin{tabular}{lcccc}
 \toprule
 Model & Accuracy & Precision & Recall & F1-Score \\
 \midrule
-MD-ViT \cite{ref10} & 89.07\% & 0.8912 & 0.8907 & 0.8901 \\
-Dual-ViT \cite{ref9} & 92.41\% & 0.9248 & 0.9241 & 0.9238 \\
-\textbf{Ours (Tri-Domain ViT + SVM)} & \textbf{93.70\%} & \textbf{0.9372} & \textbf{0.9370} & \textbf{0.9369} \\
+MD-ViT \cite{ref20} & 89.07\% & 89.12\% & 89.07\% & 89.01\% \\
+Dual-ViT \cite{ref19} & 92.41\% & 92.48\% & 92.41\% & 92.38\% \\
+\textbf{Ours} & \textbf{93.70\%} & \textbf{93.72\%} & \textbf{93.70\%} & \textbf{93.69\%} \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-A direct empirical comparison between the proposed framework and prior studies evaluated on the DemogPairs dataset is summarized in Table~\ref{tab:XII}. The proposed model based on Tri-Domain ViT + SVM (Face $\oplus$ Emotion $\oplus$ Age) achieves an Accuracy of 93.70\%, a Precision of 0.9372, a Recall of 0.9370, and an F1-Score of 0.9369. These quantitative achievements surpass the metrics reported for the Dual-ViT + SVM model by Putri \textit{et al.} \cite{ref9}, namely an Accuracy of 92.41\% and an F1-Score of 0.9238, as well as the MD-ViT + XGBoost model by Putri \textit{et al.} \cite{ref10} with an Accuracy of 89.07\% and an F1-Score of 0.8901. All comparative figures are directly cited from their respective publications, such that this comparison serves as a contextual benchmark on the same reference dataset and is not intended as an identical experimental replication.
+A direct empirical comparison between the proposed framework and prior studies evaluated on the DemogPairs dataset is summarized in Table~\ref{tab:XII}. The proposed model based on Tri-Domain ViT + SVM (Face $\oplus$ Emotion $\oplus$ Age) achieves an Accuracy of 93.70\%, a Precision of 93.72\%, a Recall of 93.70\%, and an F1-Score of 93.69\%. These quantitative achievements surpass the metrics reported for the Dual-ViT + SVM model (92.41\% Accuracy, 92.38\% F1-Score) and MD-ViT + XGBoost (89.07\% Accuracy, 89.01\% F1-Score) \cite{ref19}, \cite{ref20}. All comparative figures are directly cited from respective publications, serving as contextual positioning on the benchmark dataset rather than an identical experimental replication.
 
-The seminal research on the design of the DemogPairs dataset by Hupont and Fern{\'a}ndez \cite{ref11} established an essential foundation for measuring the impact of demographic imbalance on facial recognition systems. In response to this challenge, the three-domain representation integration framework proposed in this study achieves the highest accuracy among compared studies on the DemogPairs dataset. In addition to evaluating global aggregate metrics, this investigation conducts a comprehensive subgroup disparity analysis on the best tri-domain configuration to transparently map performance variations across demographic subgroups. This detailed evaluation demonstrates recognition stability across intersectional race and gender categories, although a cross-scheme disparity comparison with all prior studies could not be included because such performance variation information was not reported in the related literature.
+The seminal research on DemogPairs established an essential foundation for quantifying the impact of demographic imbalance on facial recognition systems \cite{ref25}. In response to this challenge, the three-domain representation integration framework proposed in this study achieves the highest accuracy among compared studies on the DemogPairs dataset \cite{ref19}, \cite{ref20}. In addition to evaluating global aggregate metrics, this investigation conducts a comprehensive subgroup disparity analysis on the best tri-domain configuration to transparently map performance variations across demographic subgroups. This detailed evaluation confirms recognition stability across intersectional race and gender categories, though cross-scheme disparity comparison with prior studies was precluded by unrecorded literature metrics \cite{ref19}, \cite{ref20}.

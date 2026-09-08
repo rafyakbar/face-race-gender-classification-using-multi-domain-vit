@@ -1,31 +1,32 @@
 \subsection{Intersectional Subgroup Performance}
 \label{sec:subgroup_performance}
+\label{sec:intersectional_subgroup_performance}
 
 \begin{table*}[htbp]
-\caption{Subgroup-Level Performance for Tri-Domain Models.}
+\caption{Subgroup-Level Classification Performance across Six Intersectional Demographics for Top-Performing Tri-Domain Models.}
 \label{tab:XI}
 \centering
 \begin{tabular}{llcccc}
 \toprule
 Classifier & Subgroup & Recall & Precision & F1-Score & OvR Accuracy \\
 \midrule
-\multirow{6}{*}{\textbf{SVM (Tri)}} & White Males & 0.9694 & 0.9536 & 0.9614 & 98.70\% \\
- & Black Males & 0.9417 & 0.9549 & 0.9483 & 98.29\% \\
- & White Females & 0.9472 & 0.9241 & 0.9355 & 97.82\% \\
- & Asian Males & 0.9444 & 0.9239 & 0.9341 & 97.78\% \\
- & Asian Females & 0.9250 & 0.9250 & 0.9250 & 97.50\% \\
- & Black Females & 0.8944 & 0.9415 & 0.9174 & 97.31\% \\
+\multirow{6}{*}{\textbf{SVM (Tri)}} & White\_Males & 96.94\% & 95.36\% & 96.14\% & 98.70\% \\
+ & Black\_Males & 94.17\% & 95.49\% & 94.83\% & 98.29\% \\
+ & White\_Females & 94.72\% & 92.41\% & 93.55\% & 97.82\% \\
+ & Asian\_Males & 94.44\% & 92.39\% & 93.41\% & 97.78\% \\
+ & Asian\_Females & 92.50\% & 92.50\% & 92.50\% & 97.50\% \\
+ & Black\_Females & 89.44\% & 94.15\% & 91.74\% & 97.31\% \\
 \midrule
-\multirow{6}{*}{\textbf{LR (Tri)}} & White Males & 0.9611 & 0.9505 & 0.9558 & 98.52\% \\
- & Black Males & 0.9306 & 0.9571 & 0.9437 & 98.15\% \\
- & White Females & 0.9222 & 0.9121 & 0.9171 & 97.22\% \\
- & Asian Males & 0.9278 & 0.9076 & 0.9176 & 97.22\% \\
- & Asian Females & 0.9111 & 0.9162 & 0.9136 & 97.13\% \\
- & Black Females & 0.9111 & 0.9213 & 0.9162 & 97.22\% \\
+\multirow{6}{*}{\textbf{LR (Tri)}} & White\_Males & 96.11\% & 95.05\% & 95.58\% & 98.52\% \\
+ & Black\_Males & 93.06\% & 95.71\% & 94.37\% & 98.15\% \\
+ & White\_Females & 92.22\% & 91.21\% & 91.71\% & 97.22\% \\
+ & Asian\_Males & 92.78\% & 90.76\% & 91.76\% & 97.22\% \\
+ & Asian\_Females & 91.11\% & 91.62\% & 91.36\% & 97.13\% \\
+ & Black\_Females & 91.11\% & 92.13\% & 91.62\% & 97.22\% \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The granular classification performance profile of the best-performing SVM model based on the tri-domain Face $\oplus$ Emotion $\oplus$ Age fusion is thoroughly evaluated based on OvR metrics as presented in Table~\ref{tab:XI}. All demographic subgroups successfully achieve an F1-Score exceeding 91.00\%, with performance ranges spanning from 91.74\% for Black Females to 96.14\% for White Males, resulting in a range disparity difference of 4.40\% (0.0440). Meanwhile, OvR Accuracy values fall within the range of 97.31\% to 98.70\% with a disparity of 1.39 pp. It should be noted methodologically that the high OvR Accuracy values are also influenced by the 5:1 negative sample dominance ratio in the binary OvR evaluation, such that this metric is not positioned as the sole indicator of performance disparity.
+The granular classification performance profile of the best-performing tri-domain SVM model (Face $\oplus$ Emotion $\oplus$ Age) across the six demographic subgroups is thoroughly evaluated via OvR metrics in Table~\ref{tab:XI}. All demographic subgroups successfully achieve an F1-Score exceeding 91.00\%, ranging from 91.74\% for Black Females to 96.14\% for White Males, resulting in a 4.40\% disparity gap. Concurrently, OvR Accuracy values fall within the range of 97.31\% to 98.70\% with a 1.39 pp disparity. Methodologically, high OvR Accuracy values are influenced by the 5:1 negative sample dominance in binary OvR evaluation, such that this metric is not positioned as the sole indicator of performance disparity across subgroups.
 
-A comparison of subgroup performance profiles between the SVM model and the linear LR classifier under the tri-domain configuration is presented in Table~\ref{tab:XI}. The tri-domain LR model likewise demonstrates high performance consistency, with F1-Score achievements exceeding 91.00\% across all demographic classes, spanning from 91.36\% for Asian Females to 95.58\% for White Males with a range disparity difference of 4.22\% (0.0422). The White Males subgroup consistently records the highest classification performance across both classifiers. These empirical findings demonstrate that the tri-domain representation fusion yields robust visual representations that are stably distributed across all demographic subgroups, in both linear and non-linear models. Nevertheless, this subgroup evaluation reflects granular per-class performance rather than a comprehensive algorithmic fairness audit.
+A comparison of subgroup performance profiles between the SVM model and the linear LR classifier under the tri-domain configuration is presented in Table~\ref{tab:XI}. The tri-domain LR model likewise demonstrates high performance consistency, with F1-Score achievements exceeding 91.00\% across all demographic classes, spanning from 91.36\% for Asian Females to 95.58\% for White Males with a range disparity difference of 4.22\%. The White Males subgroup consistently records the highest classification performance across both classifiers. These empirical findings demonstrate that the tri-domain representation fusion yields robust visual representations that are stably distributed across all demographic subgroups, in both linear and non-linear models. Nevertheless, this subgroup evaluation reflects granular per-class performance rather than a comprehensive algorithmic fairness audit.

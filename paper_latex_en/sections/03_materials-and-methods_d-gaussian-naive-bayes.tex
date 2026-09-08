@@ -13,15 +13,15 @@ Feature Scaler & None, MinMaxScaler & 2 \\
 Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
 Variance Smoothing & $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) & 40 \\
 \midrule
-\textbf{Total Grid Combinations} & -- & \textbf{240 (1,200 fits)} \\
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{240 (1,200 fits)} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Based on Bayes' theorem, the GNB classifier estimates the posterior probability of intersectional demographic classes under the assumption that all continuous feature dimensions are conditionally independent. The probability density function of the normal distribution models the likelihood of continuous features with respect to the target class according to the formulation in \eqref{eq:6}, where $x_i$ denotes the value of the $i$-th continuous feature, $y$ is the class label variable, $c$ represents the target class category, and $\mu_{c,i}$ and $\sigma_{c,i}^2$ represent the mean and variance of the $i$-th feature in class $c$, respectively:
+Under Bayes' theorem, the GNB classifier estimates class posterior probabilities assuming continuous feature dimensions are conditionally independent \cite{ref35}. A Gaussian probability density function models feature likelihood per target class in \eqref{eq:6}, where $x_i$ is the $i$-th feature, $y$ is the class label, $c$ is the target class, and $\mu_{c,i}$ and $\sigma_{c,i}^2$ are the mean and variance in class $c$ \cite{ref35}:
 \begin{equation}
 P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right)
 \label{eq:6}
 \end{equation}
 
-The addition of the smoothing parameter var\_smoothing maintains computational stability against the risk of near-zero variance in high-dimensional latent representation spaces. The hyperparameter tuning procedure via 5-Fold Stratified Cross-Validation evaluates combinations of data scaling, PCA dimensionality reduction, and 40 var\_smoothing intervals explored logarithmically from $1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$, yielding 240 grid combinations with 1,200 total fits as presented in Table~\ref{tab:IV}.
+The smoothing parameter var\_smoothing maintains numerical stability against near-zero variance in high-dimensional latent representation spaces \cite{ref36}. The hyperparameter tuning procedure via 5-Fold Stratified Cross-Validation evaluates combinations of data scaling, PCA dimensionality reduction, and 40 var\_smoothing intervals explored logarithmically from $1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$, yielding 240 grid combinations with a total of 1,200 fits as presented in Table~\ref{tab:IV}.

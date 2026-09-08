@@ -15,15 +15,15 @@ Regularization Strength & 0.01, 0.1, 1, 10, 100 & 5 \\
 Optimization Solver & 'lbfgs', 'saga', 'newton-cg' & 3 \\
 Maximum Iterations & 500, 1000, 2000 & 3 \\
 \midrule
-\textbf{Total Grid Combinations} & -- & \textbf{270 (1,350 fits)} \\
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{270 (1,350 fits)} \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The multinomial regression approach (Softmax regression) in LR maps latent feature representations into six intersectional demographic categories through unified linear probability estimation. The Softmax probability function calculates the conditional probability of a sample with respect to the target category as defined in \eqref{eq:7}, where $\mathbf{x}$ represents the input feature vector, $y$ is the class label variable, $c$ denotes the target class category, $\mathbf{w}_c$ and $b_c$ represent the weight vector and bias of class $c$, respectively, while the constant $K = 6$ indicates the total number of intersectional classes:
+Multinomial LR (Softmax regression) maps latent representations into six intersectional demographic classes via normalized posterior probabilities \cite{ref37}. For input vector $\mathbf{x} \in \mathbb{R}^D$ and class $c \in \{1, \dots, K\}$ with $K = 6$, the conditional probability is formulated in \eqref{eq:7}, where $\mathbf{w}_c$ and $b_c$ denote the weight vector and bias parameter of class $c$ \cite{ref38}:
 \begin{equation}
 P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}}
 \label{eq:7}
 \end{equation}
 
-The model training process minimizes the cross-entropy loss function by incorporating an $L_2$ regularization penalty to control weight complexity in the high-dimensional representation space. The structured hyperparameter search evaluates variations in the regularization strength $C$, optimization solver algorithms (lbfgs, saga, newton-cg), iteration limit max\_iter, as well as the integration of scaling and PCA, yielding 270 evaluation combinations or 1,350 total fits under the 5-Fold Stratified Cross-Validation protocol presented in Table~\ref{tab:V}.
+Model training minimizes categorical cross-entropy loss regularized with an $L_2$ penalty to prevent overfitting on high-dimensional representations \cite{ref39}. Hyperparameter tuning via 5-Fold Stratified Cross-Validation evaluates variations of feature scaling, PCA dimensionality reduction, five regularization values $C \in \{0.01, 0.1, 1, 10, 100\}$, three solvers (`lbfgs`, `saga`, `newton-cg`), and three maximum iteration limits (200, 500, 2000), producing 270 grid combinations with 1,350 total fits in Table~\ref{tab:V}.
