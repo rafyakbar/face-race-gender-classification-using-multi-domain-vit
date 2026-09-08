@@ -213,7 +213,20 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── 05_conclusion.md
 │   ├── 06_references.md
 │   ├── 07_biographies.md
-│   └── acronyms.txt
+│   ├── acronyms.txt
+│   ├── references/
+│   │   └── [51 berkas PDF / HTML literatur acuan primer]
+│   ├── references.txt
+│   ├── ref_part_1_5.md
+│   ├── ref_part_6_10.md
+│   ├── ref_part_11_15.md
+│   ├── ref_part_16_20.md
+│   ├── ref_part_21_25.md
+│   ├── ref_part_26_30.md
+│   ├── ref_part_31_35.md
+│   ├── ref_part_36_40.md
+│   ├── ref_part_41_45.md
+│   └── ref_part_46_51.md
 ├── references/
 │   └── 2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
 ├── related_works/
@@ -259,6 +272,10 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── IEEE_citation_guidelines.md
 │   ├── latex_rules.txt
 │   └── md_rules.txt
+├── sessions/
+│   ├── session_agy_2026-09-06_audit-paper-dan-sinkronisasi-latex-id.md
+│   ├── session_agy_2026-09-07_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
+│   └── session_agy_2026-09-08_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
 ├── .gitignore
 ├── folder_structure.txt
 ├── paper_outline.md
@@ -418,6 +435,12 @@ Menyimpan naskah artikel ilmiah modular dalam format Markdown yang siap dikonver
   Daftar registrasi singkatan dan akronim naskah sesuai Rule 1.3 untuk mencegah redundansi kepanjangan.
 - images/
   Salinan lokal seluruh aset visual naskah agar folder paper/ bersifat mandiri (self-contained) dan portabel.
+- references/
+  Direktori penyimpanan 51 berkas acuan primer (PDF dan HTML) daftar pustaka.
+- references.txt
+  Registri pemetaan tingkat kalimat dari urutan kemunculan sitasi terhadap berkas sumber acuan primer.
+- ref_part_*.md
+  Kumpulan 10 berkas log verifikasi dan audit metadata bibliografi modular [1] hingga [51].
 
 
 5. DIREKTORI REFERENCES/ & RELATED_WORKS/ (LITERATUR ILMIAH)
@@ -450,4 +473,14 @@ Direktori ini mengelola seluruh rujukan ilmiah dan kajian literatur terdahulu:
 - md_rules.txt
   Aturan baku penulisan draf naskah Markdown (penomoran kronologis, tautan interaktif, ketiadaan kata
   terlarang, target kata per paragraf, larangan cetak miring, dan checklist validasi sebelum LaTeX).
+
+
+7. DIREKTORI SESSIONS/ (LOG RIWAYAT PENGEMBANGAN & AUDIT)
+----------------------------------------------------------------------------------------------------
+- session_agy_2026-09-06_audit-paper-dan-sinkronisasi-latex-id.md
+  Log komprehensif audit naskah ilmiah dan sinkronisasi ke naskah LaTeX Bahasa Indonesia.
+- session_agy_2026-09-07_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md
+  Log komprehensif pemetaan sitasi naskah dan pembaruan berkas dokumentasi sistem repositori.
+- session_agy_2026-09-08_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md
+  Log komprehensif standardisasi bibliografi IEEE, penyematan sitasi interaktif naskah, dan audit paralel.
 ====================================================================================================

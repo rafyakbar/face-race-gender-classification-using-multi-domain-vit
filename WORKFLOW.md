@@ -83,11 +83,12 @@ paper/
 ├── 04_results-and-discussion_d-error-pattern-assessment.md # Section IV-D: Analisis pola kesalahan & confusion matrix (Figure 4)
 ├── 04_results-and-discussion_e-comparison-with-prior-studies.md # Section IV-E: Perbandingan komparatif studi terdahulu (Table XII)
 ├── 05_conclusion.md                                    # Section V: Kesimpulan, limitasi riset, dan rencana masa depan
-├── 06_references.md                                    # Section VI: Daftar pustaka format IEEE
+├── 06_references.md                                    # Section VI: Daftar pustaka format IEEE (entri [1]-[51])
 ├── 07_biographies.md                                   # Section VII: Biografi akademik seluruh penulis
 ├── acronyms.txt                                        # Registri pelacakan singkatan & akronim pertama kali (Rule 1.3)
+├── ref_part_*.md                                       # 10 berkas log audit bibliografi modular (entri [1]-[51])
 ├── references.txt                                      # Registri audit sitasi tingkat kalimat (Sentence-Level Citation)
-├── references/                                         # Direktori 47 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
+├── references/                                         # Direktori 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
 └── images/                                             # Berkas aset visual gambar beresolusi tinggi untuk naskah
 ```
 
@@ -175,3 +176,5 @@ Untuk memastikan manuskrip memenuhi standar jurnal internasional bereputasi ting
    - Seluruh klaim literatur dan fakta eksternal dalam naskah Markdown wajib dicatat secara granular pada `paper/references.txt` dan diverifikasi kecocokan teks kutipannya terhadap berkas sumber di `paper/references/` sebelum ditransformasikan ke berkas `references.bib` pada naskah LaTeX.
 7. **Pelacakan Akronim Terpusat (Centralized Acronym Registry):**
    - Seluruh singkatan teknis dicatat pada `paper/acronyms.txt` untuk memastikan kepatuhan aturan pemunculan pertama kali (*first-mention full form*) dan mencegah repetisi kepanjangan akronim pada paragraf-paragraf berikutnya.
+8. **Format Sitasi Interaktif Naskah (Interactive In-Text Citations):**
+   - Sitasi dalam draf naskah Markdown menggunakan tautan interaktif ganda `[[N]](06_references.md#refN)` yang terhubung langsung ke jangkar `<a id="refN"></a>` pada daftar pustaka Bagian VI. Sitasi jamak dipisahkan koma dan spasi (`[[1]](06_references.md#ref1), [[2]](06_references.md#ref2)`), diletakkan menempel tepat sebelum tanda baca terminal (`.` atau ` |`), dengan penomoran monotonik meningkat sesuai urutan kemunculan pertama pada naskah (IEEE style).

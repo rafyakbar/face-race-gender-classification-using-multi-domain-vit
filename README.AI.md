@@ -354,6 +354,8 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 ├── authors.txt                         # Author biographies, departmental affiliations, and ORCIDs
 ├── prompts.txt                         # Experimental instructions and agent logs
 ├── scopus_query.txt                    # Scopus literature search query strings
+├── sessions/                           # Chronological AGY session documentation logs
+│   └── session_agy_*.md                # Detailed development, audit, and verification session records
 │
 ├── images/
 │   ├── method.png / method.pptx        # Architecture & methodology framework diagram (Figure 1)
@@ -368,11 +370,12 @@ D:\Research\face-race-gender-classification-using-multi-domain-vit\
 │   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. h-evaluation-metrics)
 │   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. e-prior-studies)
 │   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
-│   ├── 06_references.md                # Section VI (IEEE formatted bibliography)
+│   ├── 06_references.md                # Section VI (IEEE formatted bibliography, entries [1]-[51])
 │   ├── 07_biographies.md               # Section VII (Author academic biographies)
 │   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   ├── ref_part_*.md                   # 10 modular bibliographic audit logs (entries [1]-[51])
 │   ├── references.txt                  # Sentence-level citation tracking & verification registry
-│   ├── references/                     # 47 bibliographic source files (.bib, .ris, .nbib, .bibtex)
+│   ├── references/                     # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
 │   └── images/                         # Local image copies ensuring self-contained paper compilation
 │
 ├── paper_latex_en/                     # Submission-ready English IEEE Access LaTeX package
@@ -608,6 +611,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XII), but should be cited when introducing the DemogPairs dataset.
 25. **Universal Manuscript Pipeline SOP (`WORKFLOW.md`):** All drafting, translation, and publication workflows must strictly follow `WORKFLOW.md` as the official standard operating procedure for generating modular Markdown drafts (`paper/`), Indonesian LaTeX (`paper_latex_id/`), and English submission-ready LaTeX manuscripts (`paper_latex_en/`) from `paper_outline.md`. Both LaTeX packages use `access.tex` as the master document entrypoint and compile directly to `access.pdf`. Each stage must strictly maintain 100% numerical consistency, exact formula definitions, and 1-to-1 modular mapping across all target formats.
 26. **Sentence-Level Citation Audit Protocol (`paper/references.txt`):** Every factual claim or external literature reference in `paper/*.md` must be registered with exact quote matching in `paper/references.txt` pointing to source files in `paper/references/`. During manuscript evolution, temporary inline citation markers (`[(N)]`) are strictly tracked and converted into validated bibliography entries before final LaTeX synchronization (`references.bib`).
+27. **Interactive In-Text Citation Standards (`paper/*.md`):** All in-text citations in modular Markdown manuscript files use double-bracketed interactive hyperlinks `[[N]](06_references.md#refN)` directly connecting to target `<a id="refN"></a>` anchors in Section VI (`paper/06_references.md`). Multi-citations within a single sentence must be comma-separated with spaces (e.g., `[[1]](06_references.md#ref1), [[2]](06_references.md#ref2)`), placed strictly before terminal punctuation marks (`.` or ` |`) without preceding whitespace, and ordered monotonically increasing by first appearance in the manuscript following IEEE guidelines. Identical literature sources must reuse the same reference number without duplicate assignment.
 
 ---
 

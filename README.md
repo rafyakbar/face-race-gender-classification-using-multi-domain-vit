@@ -140,11 +140,12 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── 03_materials-and-methods_*.md   # Section III: Methodology (0-overview, a-dataset s.d. h-evaluation-metrics)
 │   ├── 04_results-and-discussion_*.md  # Section IV: Results and Discussion (a-global s.d. e-prior-studies)
 │   ├── 05_conclusion.md                # Section V: Conclusion
-│   ├── 06_references.md                # Section VI: References
+│   ├── 06_references.md                # Section VI: References (IEEE formatted, entries [1]-[51])
 │   ├── 07_biographies.md               # Section VII: Biographies
 │   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
+│   ├── ref_part_*.md                   # 10 modular bibliographic audit logs (entries [1]-[51])
 │   ├── references.txt                  # Sentence-level citation tracking & verification registry
-│   ├── references/                     # 47 bibliographic source files (.bib, .ris, .nbib, .bibtex)
+│   ├── references/                     # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
 │   └── images/                         # Self-contained local image assets for paper compilation
 ├── paper_latex_en/                        # Submission-ready English IEEE Access LaTeX package
 │   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
@@ -178,6 +179,8 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   ├── latex_rules.txt                    # LaTeX conversion rules and templates
 │   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
 ├── scopus_query.txt                       # Scopus literature search query strings
+├── sessions/                              # Chronological AGY development and audit session records
+│   └── session_agy_*.md                   # Comprehensive session logs (06, 07, 08 September 2026)
 └── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ```
 
@@ -189,6 +192,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 | [`README.AI.md`](README.AI.md) | Master AI agent operational guide, ground-truth audit index, and academic writing rules |
 | [`paper_outline.md`](paper_outline.md) | Master architectural blueprint for IEEE Access publication, word limits, and notation definitions |
 | [`paper/`](paper/) | Modular publication draft in Markdown conforming strictly to IEEE publication standards |
+| [`paper/06_references.md`](paper/06_references.md) | Standardized IEEE bibliography registry (entries [1]-[51]) with `<a id="refN"></a>` anchors |
 | [`paper/references.txt`](paper/references.txt) | Sentence-level citation tracking registry mapping manuscript statements directly to bibliographic sources |
 | [`paper_latex_en/`](paper_latex_en/) | **Final submission package:** English IEEE Access modular LaTeX source and compiled PDF ([`access.pdf`](paper_latex_en/access.pdf)) |
 | [`paper_latex_id/`](paper_latex_id/) | **Indonesian reference package:** Modular IEEE Access LaTeX source and compiled PDF ([`access.pdf`](paper_latex_id/access.pdf)) |
@@ -196,6 +200,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 | [`folder_structure.txt`](folder_structure.txt) | Complete directory tree diagram and comprehensive functional glossary of all folders/files |
 | [`experiment/00_overview.md`](experiment/00_overview.md) | Comprehensive experimental logs, 28-model leaderboard audit, and dataset partition details |
 | [`authors.txt`](authors.txt) | Comprehensive academic author profiles, departmental affiliations, and ORCID identifiers |
+| [`sessions/`](sessions/) | Chronological AGY development logs, detailed session notes, and audit trajectories |
 
 ---
 
