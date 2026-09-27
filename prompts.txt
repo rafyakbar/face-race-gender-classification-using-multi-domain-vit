@@ -12,6 +12,35 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+delegasikan subagent untuk audit ulang untuk mengecek kesusuaian revisi dan sesuai target kata!
+- Delegasikan ke subagent agart hasil optimal.
+- Satu subagent hanya boleh audit satu file agar hasil optimal.
+
+/ar-paper-revision
+Eksekusi revisi naskah pada folder 'paper/' dan susun surat tanggapan reviewer resmi pada 'paper_reviews/round-2/09_response_letter.md' berdasarkan temuan pada 'paper_reviews/round-1/08_revision_roadmap.md' serta data dari 'experiment/code/3.1_statistical_significance.ipynb'.
+Instruksi dan batasan penting:
+1. HINDARI TRAINING ULANG MODEL! Gunakan data dan metrik yang sudah ada pada '3.1_statistical_significance.ipynb' dan file hasil 'experiment/code/results/*.json'.
+2. [P1-1] Pada 'paper/03_materials-and-methods_a-dataset.md': Tegaskan protokol pembagian data 80/20 stratified split dengan random_state=42 (1.440 latih / 360 uji per kelas). Pada Bab Diskusi, nyatakan keterbatasan subject-disjoint secara transparan (Deliberate Limitation) dan arahkan cross-identity generalization sebagai Future Work.
+3. [P1-2] Pada 'paper/04_results-and-discussion_a-global-performance.md' dan Tabel VII-X: Cantumkan rentang 95% Confidence Interval (Wilson CI),
+  hasil Uji McNemar berpasangan (SVM p = 0.3057, RF p = 0.2232), dan skor stabilitas CV Fold (Mean ± Std).
+4. [P1-4] Pada 'paper/04_results-and-discussion_b-feature-ablation-study.md': Tambahkan analisis teoretis bahwa degradasi RF (-0.65%) disebabkan oleh curse of dimensionality pada pemisahan pohon ortogonal sejajar sumbu (axis-aligned splits) yang membedakannya dari kernel kuadratik SVM, membuktikan adanya saturasi fitur laten dan membantah bahwa kenaikan SVM semata-mata karena pertambahan dimensi.
+5. [ISSUE-DOM-01] Pada 'paper/04_results-and-discussion_e-comparison-with-prior-studies.md': Jelaskan bahwa paper orisinal DemogPairs (Hupont & Fernández 2019) dirancang sebagai benchmark verifikasi identitas (bukan klasifikasi 6-kelas), sehingga studi kita menyediakan baseline terkontrol internal pertama yang komprehensif.
+6. [ISSUE-CROSS-01] Pada 'paper/04_results-and-discussion_c-intersectional-subgroup-performance.md' dan Tabel XI: Cantumkan metrik keadilan formal Equal Opportunity Difference (Delta TPR = 7.50%) dan diskusikan disparitas recall Black Females (89.44%) vs White Males (96.94%).
+7. [ISSUE-EIC-02] Pada 'paper/05_conclusion.md': Tambahkan subbab resmi IEEE Access: Data Availability Statement (tautan ke https://ihupont.github.io/publications/2019-05-16-demogpairs dan Google Drive), Code Availability Statement, dan Ethical Compliance Statement.
+8. [P1-5] Tetap gunakan Bahasa Indonesia pada draf paper (translasi ke Bahasa Inggris akademik akan dilakukan kemudian setelah revisi terkunci).
+9. Buat berkas 'paper_reviews/round-2/09_response_letter.md' yang menjawab ke-22 catatan reviewer secara profesional, diplomatis, dan berbasis kutipan naskah baru.
+Dan juga perhatikan:
+- Pahami apa yang ada pada folder 'rules'.
+- Perhatikan juga target kata yang ada pada paper_outline.md.
+- Jika diperlukan untuk edit paper_outline.md, maka diperbolehkan untuk mengubah poin-poin yang dibahas, namun jangan mengubah target kata (tapi harus berhati-hati agar subagent yang lain tidak sama-sama edit file yang sama secara bersamaan).
+- Jika ada perubahan kalimat yang ada sitasinya, maka file paper/references.txt juga harus dirubah (tapi harus berhati-hati agar subagent yang lain tidak sama-sama edit file yang sama secara bersamaan).
+- Jangan mengubah penomoran sitasi, karena acuannya ada pada paper/references.txt dan paper/06_references.md.
+- Hati-hati juga terhadap urutan penomoran seperti figure/table/equation/algorithm.
+- Delegasikan ke subagent agart hasil optimal.
+- Satu subagent hanya boleh membetulkan satu file agar hasil optimal.
+- Buat agar subagent juga membaca file-file yang dibutuhkan dan berikan instruksi yang jelas.
+
+
 oh iya, harusnya [P1-2]: "Apakah perlu coding?" seharusnya kamu bikin ipynb nya dan letakkan pada experiment/code, kemudian jalankan dan outputnya juga harus ada pada notebook, bisa gunakan nbconvert.
 Untuk konfirmasi:
 1. Konfirmasi Argumen Kontrol Dimensionalitas ([P1-4] / Devil's Advocate): "Jika peningkatan akurasi semata-mata karena pertambahan kapasitas dimensi, Random Forest seharusnya ikut naik.": seingat saya ini ada alasannya pada folder 'paper', coba delegasikan ke subagent untuk cek, seingat saya karena RF berbasis apa gitu.
