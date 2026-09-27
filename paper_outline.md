@@ -162,16 +162,14 @@ Introduction disusun dalam 7 paragraf berbobot dengan alur narasi yang kohesif:
 
 ### Paragraph 6: Key Contributions
 - **Target Kata**: 125-175 kata (paragraf khusus kontribusi utama).
-- **Tujuan**: Menyajikan empat kontribusi ilmiah penelitian secara konseptual dalam Bahasa Inggris disertai terjemahan Bahasa Indonesia, tanpa mengkhususkan SVM pada poin benchmarking, tidak menyebut DemogPairs sebagai benchmark (melainkan dataset utama), tanpa rincian angka numerik/hyperparameter spesifik, serta menjelaskan esensi analisis disparitas subkelompok.
+- **Tujuan**: Menyajikan tiga kontribusi ilmiah penelitian secara ringkas, elegan, dan berbobot dalam Bahasa Inggris disertai terjemahan Bahasa Indonesia, membedakan secara tegas dari prosiding konferensi terdahulu (Putri et al. 2025).
 - **Poin Narasi (English & Indonesian Translation)**:
-  1. **A Tri-Domain Vision Transformer feature fusion framework** integrating face-associated biometric representations, expression-related representations, and age-associated facial representations into a unified latent feature vector for intersectional demographic classification.  
-     *(Kerangka kerja fusi fitur Tri-Domain Vision Transformer yang mengintegrasikan representasi terkait biometrik wajah, representasi terkait ekspresi, dan representasi terkait usia wajah ke dalam vektor fitur laten terpadu untuk klasifikasi demografis interseksional).*
-  2. **An empirical comparative benchmark across multiple feature ablation schemes and classical machine learning classifiers** optimized via Stratified Cross-Validation hyperparameter tuning, examining decision boundary behavior across linear, probabilistic, ensemble, and kernel-based models.  
-     *(Tolok ukur komparatif empiris melintasi berbagai skema ablasi fitur dan pengklasifikasi pembelajaran mesin klasik yang dioptimalkan melalui penyetelan hyperparameter validasi silang berstrata, mengkaji perilaku batas keputusan antarmodel linier, probabilistik, ensemble, dan berbasis kernel).*
-  3. **Competitive classification performance on the DemogPairs dataset**, achieving higher reported performance compared to the evaluated single-domain and dual-domain configurations on the majority of classifiers.  
-     *(Capaian performa klasifikasi kompetitif pada dataset DemogPairs yang mencapai performa lebih tinggi dibandingkan konfigurasi domain tunggal dan domain ganda yang dievaluasi pada mayoritas pengklasifikasi).*
-  4. **An in-depth intersectional subgroup performance evaluation**, assessing subgroup-level classification performance across six demographic subgroups, providing an in-depth characterization of model behaviors across racial and gender intersections while systematically revealing the consistency of multi-domain feature representations on held-out evaluation cohorts.  
-     *(Evaluasi performa subkelompok interseksional mendalam yang mengevaluasi performa klasifikasi di keenam subkelompok demografis, memberikan karakterisasi mendalam mengenai perilaku model melintasi persilangan ras dan gender sekaligus mengungkap secara sistematis konsistensi representasi fitur multi-domain pada kohort evaluasi held-out).*
+  1. **A multi-domain latent representation integration framework** combining frozen pre-trained Vision Transformer backbones (face biometrics, facial emotions, and biological age) into a unified representation space for intersectional demographic classification.  
+     *(Formulasi integrasi representasi laten multi-domain yang menggabungkan backbone Vision Transformer pra-latih yang dibekukan ke dalam ruang representasi terpadu untuk klasifikasi demografis interseksional).*
+  2. **A rigorous comparative evaluation across feature ablation schemes and classical machine learning classifiers** optimized through a leakage-free Stratified Cross-Validation pipeline to characterize decision boundary dynamics across diverse model families.  
+     *(Evaluasi komparatif ketat melintasi skema ablasi fitur dan pengklasifikasi pembelajaran mesin klasik yang dioptimalkan melalui pipeline validasi silang berstrata bebas kebocoran untuk mengkarakterisasi dinamika batas keputusan).*
+  3. **A granular intersectional subgroup disparity and algorithmic fairness assessment on the DemogPairs dataset**, systematically evaluating demographic consistency and error patterns across racial and gender intersections.  
+     *(Investigasi granular disparitas subkelompok interseksional dan audit keadilan algoritmik pada dataset DemogPairs yang mengevaluasi konsistensi demografis serta pola kesalahan melintasi persilangan ras dan gender).*
 
 ### Paragraph 7: Paper Organization
 - **Target Kata**: 50-75 kata (paragraf penutup pengantar struktur artikel).

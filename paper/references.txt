@@ -51,12 +51,12 @@ paper/01_introduction.md: paragraf 4:
   - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
    
 paper/01_introduction.md: paragraf 5:
-- "Kerangka kerja yang diusulkan mengintegrasikan tiga domain representasi komplementer, meliputi representasi biometrik wajah, ekspresi afektif, dan karakteristik penuaan, ke dalam satu representasi terpadu melalui fusi fitur":
+- "Kerangka evaluasi ini mengintegrasikan tiga domain representasi komplementer, meliputi representasi biometrik wajah, ekspresi emosi afektif, dan karakteristik penuaan biologis, ke dalam satu representasi terpadu melalui fusi fitur":
   - paper/references/2022_Review Single attribute and multi attribute facial gender and age estimation.nbib
   - paper/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib
-- "Ekstraksi fitur laten dilakukan secara offline dari model backbone ViT pre-trained yang dibekukan, sehingga klasifikasi hilir dapat dilakukan tanpa fine-tuning ulang backbone":
+- "Ekstraksi fitur laten dilakukan secara offline dari model backbone ViT pre-trained yang dibekukan, sehingga klasifikasi hilir dapat dijalankan secara efisien tanpa memerlukan komputasi fine-tuning ulang backbone":
   - paper/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib
-- "Seluruh classifier hilir dievaluasi menggunakan Stratified Cross-Validation dalam pipeline yang mengintegrasikan penskalaan fitur dan reduksi dimensionalitas PCA, dengan setiap transformasi dipelajari hanya pada data pelatihan di setiap fold untuk mencegah data leakage":
+- "Seluruh classifier hilir dioptimalkan dan dievaluasi menggunakan Stratified Cross-Validation dalam pipeline pembelajaran terstruktur yang mengintegrasikan penskalaan fitur serta reduksi dimensionalitas Principal Component Analysis (PCA), dengan setiap transformasi dipelajari secara ketat hanya pada lipatan data pelatihan di setiap fold untuk mencegah data leakage":
   - paper/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib
 
 paper/02_related-works.md: paragraf 1:
@@ -104,7 +104,7 @@ paper/02_related-works.md: paragraf 5:
 paper/03_materials-and-methods_a-dataset.md: paragraf 1:
 - "Dataset yang digunakan dalam penelitian ini adalah DemogPairs":
   - paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
-- "Distribusi yang seimbang ini menyediakan kondisi evaluasi yang lebih terkontrol untuk membandingkan performa antarsubkelompok dengan mengurangi pengaruh ketimpangan jumlah sampel":
+- "Struktur data yang seimbang ini menyediakan kondisi evaluasi terkontrol untuk membandingkan performa model antarsubkelompok secara objektif, sekaligus memitigasi distorsi yang timbul akibat ketimpangan jumlah sampel":
   - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
 
 paper/03_materials-and-methods_b-vision-transformer.md: paragraf 1:
@@ -194,16 +194,18 @@ paper/04_results-and-discussion_e-comparison-with-prior-studies.md: Table XII:
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
 
 paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 1:
-- "Capaian kuantitatif tersebut melampaui metrik yang dilaporkan pada model Dual-ViT + SVM, yaitu Akurasi 92.41% dan F1-Score 0.9238, serta model MD-ViT + XGBoost dengan Akurasi 89.07% dan F1-Score 0.8901":
+- "Capaian kuantitatif tersebut melampaui performa yang dilaporkan pada model Dual-ViT + SVM dengan Akurasi 92.41% dan F1-Score 92.38% [[19]](06_references.md#ref19), serta model MD-ViT + XGBoost dengan Akurasi 89.07% dan F1-Score 89.01%":
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+- "Komparasi ini memposisikan kontribusi saintifik naskah ini sebagai evaluasi sistematis tri-domain laten dengan pengujian signifikansi serta batas keputusan yang melampaui studi prosiding konferensi terdahulu":
+  - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
 
 paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 2:
-- "Penelitian seminal mengenai perancangan dataset DemogPairs meletakkan landasan penting dalam mengukur dampak ketidakseimbangan demografis pada sistem pengenalan wajah":
+- "Penelitian seminal perancangan dataset DemogPairs oleh Hupont dan Fernández [[25]](06_references.md#ref25) dirancang secara eksklusif sebagai benchmark verifikasi identitas (identity verification ROC pada 58.3 juta pasangan citra) dan tidak melakukan pelatihan klasifikasi 6-kelas (closed-set intersectional classification)":
   - paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
-- "kerangka kerja integrasi representasi tiga domain yang diusulkan dalam penelitian ini menghasilkan akurasi tertinggi di antara studi-studi yang dibandingkan pada dataset DemogPairs":
+- "Oleh karena itu, penelitian ini bersama studi terkait terdahulu [[19]](06_references.md#ref19), [[20]](06_references.md#ref20) memelopori dan menyediakan baseline terkontrol internal pertama yang komprehensif untuk klasifikasi demografis interseksional 6-kelas pada dataset DemogPairs":
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
-- "perbandingan disparitas lintas seluruh skema sebelumnya tidak dapat disertakan karena informasi variasi performa tersebut tidak dilaporkan dalam literatur terkait":
+- "Evaluasi mendalam tersebut membuktikan stabilitas klasifikasi lintas kategori ras dan gender interseksional, di mana informasi variasi performa subkelompok tidak dilaporkan dalam literatur pembanding sebelumnya":
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
