@@ -1,0 +1,264 @@
+{
+  "round": 1,
+  "timestamp": "2026-09-27T21:20:00+07:00",
+  "target_venue": "IEEE Access",
+  "review_synthesis_model": "Multi-Model Panel Consensus (Gemini 3.8 Flash + Claude Opus)",
+  "total_findings": 22,
+  "severity_breakdown": {
+    "CRITICAL": 2,
+    "MAJOR": 9,
+    "MINOR": 11
+  },
+  "dimension_breakdown": {
+    "D1": 5,
+    "D2": 4,
+    "D3": 6,
+    "D4": 3,
+    "D5": 2,
+    "D6": 2
+  },
+  "findings": [
+    {
+      "id": "ISSUE-METH-01",
+      "source_reviewer": "Reviewer 1 (Methodology)",
+      "dimension": "D1",
+      "severity": "CRITICAL",
+      "title": "Ambiguitas Pembagian Data Tingkat Identitas Subjek (Subject-Disjoint Partition / Identity Leakage)",
+      "evidence_anchor": "[section: 03_materials-and-methods_a-dataset], [table: 1]",
+      "description": "Dataset DemogPairs memuat pasangan citra untuk verifikasi wajah. Pemisahan stratified split 80/20 tidak merinci apakah pemisahan dilakukan pada tingkat file citra acak atau tingkat subjek/orang unik. Jika citra dari individu yang sama tersebar di data latih dan data uji, terjadi identity leakage fatal yang merusak validitas generalisasi atribut demografis.",
+      "suggested_action": "Klarifikasi struktur identitas pada 10,800 citra DemogPairs dan tegaskan dalam teks bahwa pemisahan dijamin strictly subject-disjoint dengan 0% tumpang tindih identitas antara set pelatihan dan pengujian.",
+      "priority": "P1"
+    },
+    {
+      "id": "ISSUE-DA-C1",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "CRITICAL",
+      "title": "Paradoks Keunggulan Tri-Domain: Selisih 9 Sampel (+0.41%) dan Regresi Random Forest (-0.65%)",
+      "evidence_anchor": "[table: 7], [table: 8], [table: 9], [table: 10], [section: 04_results-and-discussion_b-feature-ablation-study]",
+      "description": "Penambahan domain usia (Age) hanya membalikkan 4 sampai 9 sampel pada model linier/kernel (0.19% s/d 0.41%), namun justru menyebabkan degradasi performa (regresi) sebesar -0.65% (14 citra bertambah salah) pada Random Forest. Bukti empiris ini bertentangan dengan klaim bahwa Tri-Domain merupakan arsitektur optimal seragam.",
+      "suggested_action": "Turunkan derajat klaim keunggulan mutlak Tri-Domain, ubah penekanan menjadi kajian komparatif pertukaran batas keputusan (decision boundary trade-offs) dan batas kejenuhan representasi fitur.",
+      "priority": "P1"
+    },
+    {
+      "id": "ISSUE-METH-02",
+      "source_reviewer": "Reviewer 1 (Methodology)",
+      "dimension": "D1",
+      "severity": "MAJOR",
+      "title": "Ketiadaan Uji Signifikansi Statistik Inferensial pada Selisih 0.41% dan Ketiadaan 95% CI",
+      "evidence_anchor": "[table: 10], [section: 04_results-and-discussion_a-global-performance], [section: 04_results-and-discussion_b-feature-ablation-study]",
+      "description": "Klaim keunggulan Tri-Domain atas Dual-Domain pada SVM (93.70% vs 93.29%) hanya merepresentasikan tepat 9 sampel citra dari 2,160 citra uji. Penulis mengakui tidak melakukan uji hipotesis formal. Di IEEE Access, selisih sekecil ini tanpa uji McNemar atau 95% CI tidak dapat dijustifikasi sebagai keunggulan nyata.",
+      "suggested_action": "Lakukan uji McNemar berpasangan pada data uji, cantumkan Interval Kepercayaan 95% (Wilson/Bootstrap) pada Tabel VII-X, dan lakukan uji beda pada fold cross-validation.",
+      "priority": "P1"
+    },
+    {
+      "id": "ISSUE-DA-M1",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "MAJOR",
+      "title": "Ketiadaan Eksperimen Kontrol Dimensionalitas (Noise Baseline Control Experiment)",
+      "evidence_anchor": "[section: 04_results-and-discussion_b-feature-ablation-study]",
+      "description": "Penulis tidak membuktikan apakah peningkatan akurasi berasal dari informasi domain komplementer atau sekadar efek bertambahnya dimensi fitur (768 ke 1,536 ke 2,304 dimensi). Belum ada eksperimen kontrol penambahan 768 dimensi Gaussian noise acak.",
+      "suggested_action": "Jalankan eksperimen kontrol baseline (konkatenasi fitur Face + 768-d Gaussian noise acak pada SVM) atau berikan justifikasi teoretis bahwa peningkatan bukan artefak kapasitas dimensi.",
+      "priority": "P1"
+    },
+    {
+      "id": "ISSUE-EIC-01",
+      "source_reviewer": "Editor-in-Chief (EIC)",
+      "dimension": "D6",
+      "severity": "MAJOR",
+      "title": "Risiko Persepsi Kontribusi Inkremental terhadap Publikasi Konferensi Penulis Sendiri",
+      "evidence_anchor": "[table: 12], [section: 04_results-and-discussion_e-comparison-with-prior-studies], [section: 06_references]",
+      "description": "Pada Tabel XII, pembanding model hanya karya penulis sendiri (ICVEE 2025 dan JIEET 2025). Delta kenaikan akurasi dari Dual-ViT ke Tri-ViT relatif kecil, sehingga berisiko dinilai sebagai inkremental marjinal oleh editor IEEE Access.",
+      "suggested_action": "Pertegas distingsi kontribusi konseptual di Bagian I yang membedakan naskah jurnal ini dari draf konferensi terdahulu, serta tambahkan perbandingan terhadap model acuan eksternal.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-DOM-01",
+      "source_reviewer": "Reviewer 2 (Domain Expert)",
+      "dimension": "D2",
+      "severity": "MAJOR",
+      "title": "Komparasi Benchmark Hanya dengan Self-Citations & Ketiadaan Baseline Standar Eksternal",
+      "evidence_anchor": "[table: 12], [section: 04_results-and-discussion_e-comparison-with-prior-studies]",
+      "description": "Tidak ada komparasi terhadap arsitektur tunggal standar industri/akademik seperti ResNet-50 standar, ViT-Base ImageNet standar, atau foundation models (CLIP ViT-B/16 linear probe, DINOv2) pada dataset DemogPairs.",
+      "suggested_action": "Sertakan baseline model tunggal non-fusi standar eksternal untuk membuktikan apakah arsitektur fusi tiga domain benar-benar memberikan nilai tambah di atas model fondasi visi tunggal.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-CROSS-01",
+      "source_reviewer": "Reviewer 3 (Cross-Perspective)",
+      "dimension": "D4",
+      "severity": "MAJOR",
+      "title": "Kesenjangan Klaim Algorithmic Fairness vs Ketiadaan Metrik Keadilan Formal & Drop Recall Black Females",
+      "evidence_anchor": "[section: 00_abstract], [table: 11], [section: 04_results-and-discussion_c-intersectional-subgroup-performance]",
+      "description": "Naskah mencantumkan algorithmic fairness sebagai kata kunci utama, tetapi hanya melaporkan rentang F1. Pada metrik Recall di Tabel XI, Black Females mengalami drop recall 7.50% dibandingkan White Males (89.44% vs 96.94%), yang mencerminkan bias demografis signifikan tanpa evaluasi metrik keadilan formal.",
+      "suggested_action": "Hitung dan laporkan metrik keadilan algoritmik standar (Equal Opportunity Difference, Equalized Odds) dan bahas disparitas recall 7.50% pada Black Females secara kritis.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-DA-M2",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "MAJOR",
+      "title": "Inflasi Semantik: Mengklaim Konkatenasi Vektor sebagai Kerangka Kerja Fusi Baru",
+      "evidence_anchor": "[section: 01_introduction], [section: 03_materials-and-methods_0-overview], [section: 03_materials-and-methods_b-vision-transformer]",
+      "description": "Operasi fusi hanyalah konkatenasi vektor offline sederhana tanpa mekanisme pembelajaran terpelajar (learned cross-attention, trainable projection, atau dynamic gating), sehingga penyebutan 'novel framework' tergolong berlebihan.",
+      "suggested_action": "Sesuaikan terminologi klaim menjadi deskripsi empiris objektif mengenai evaluasi multi-domain latent feature concatenation.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-DA-M3",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "MAJOR",
+      "title": "Ketiadaan Justifikasi Komparatif terhadap Single-ViT End-to-End Fine-Tuning",
+      "evidence_anchor": "[section: 03_materials-and-methods_0-overview], [section: 05_conclusion]",
+      "description": "Naskah tidak menyajikan alasan atau komparasi empiris mengapa harus menjalankan 3 model ViT beku (258M parameter) jika sebuah model ViT tunggal yang di-fine-tune end-to-end berpotensi mencapai akurasi setara dengan efisiensi jauh lebih tinggi.",
+      "suggested_action": "Tambahkan pembahasan justifikasi teknis mengapa pendekatan frozen representation + classical ML dipilih dibandingkan fine-tuning end-to-end.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-METH-03",
+      "source_reviewer": "Reviewer 1 (Methodology)",
+      "dimension": "D1",
+      "severity": "MAJOR",
+      "title": "Ketiadaan Pelaporan Skor Cross-Validation Fold (Mean ± Std)",
+      "evidence_anchor": "[table: VII], [table: VIII], [table: IX], [table: X]",
+      "description": "Tabel benchmark VII hingga X hanya melaporkan performa estimasi tunggal pada data uji held-out tanpa menyajikan nilai rata-rata dan deviasi standar validasi silang 5 fold selama pencarian hyperparameter.",
+      "suggested_action": "Tambahkan kolom CV Score (Mean ± Std) pada Tabel VII, VIII, IX, dan X untuk memperlihatkan stabilitas performa lintas lipatan data.",
+      "priority": "P2"
+    },
+    {
+      "id": "ISSUE-EIC-02",
+      "source_reviewer": "Editor-in-Chief (EIC)",
+      "dimension": "D6",
+      "severity": "MINOR",
+      "title": "Ketiadaan Statuta Wajib IEEE (Data, Code, & Ethics Statements)",
+      "evidence_anchor": "[section: 05_conclusion], [section: 03_materials-and-methods_a-dataset]",
+      "description": "Naskah belum menyertakan Data Availability Statement, Code Availability Statement, dan Ethical Compliance Statement yang disyaratkan oleh IEEE Access.",
+      "suggested_action": "Tambahkan subbab deklarasi transparansi kode, repositori data, dan persetujuan kepatuhan etika data wajah sebelum bab referensi.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-EIC-03",
+      "source_reviewer": "Editor-in-Chief (EIC)",
+      "dimension": "D5",
+      "severity": "MINOR",
+      "title": "Poin Kontribusi Ilmiah Redundan dan Terlalu Panjang",
+      "evidence_anchor": "[section: 01_introduction, baris 13-17]",
+      "description": "Poin kontribusi disajikan dalam format dwi-bahasa yang sangat panjang dan mencampuradukkan protokol evaluasi rutin dengan inovasi ilmiah orisinal.",
+      "suggested_action": "Padatkan poin kontribusi menjadi 3 poin ringkas dan tajam dengan memisahkan kontribusi metodologis dan evaluatif.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-EIC-04",
+      "source_reviewer": "Editor-in-Chief (EIC)",
+      "dimension": "D5",
+      "severity": "MINOR",
+      "title": "Diskusi Hasil Perlu Diperdalam dengan Interpretasi Mekanistik",
+      "evidence_anchor": "[section: 04_results-and-discussion_a-global-performance], [section: 04_results-and-discussion_b-feature-ablation-study]",
+      "description": "Narasi pembahasan cenderung bersifat deskriptif numerik tanpa mengelaborasi penjelasan mekanistik mengenai dinamika batas pemisahan kelas.",
+      "suggested_action": "Perdalam diskusi dengan analisis sifat pemisahan batas keputusan antarmodel dan interaksi antardimensi fitur laten.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-METH-04",
+      "source_reviewer": "Reviewer 1 (Methodology)",
+      "dimension": "D1",
+      "severity": "MINOR",
+      "title": "Keterbatasan Informatif Metrik Akurasi OvR pada Klasifikasi 6-Kelas Seimbang",
+      "evidence_anchor": "[section: 03_materials-and-methods_h-evaluation-metrics], [table: 11]",
+      "description": "Pelaporan Akurasi OvR (97-98%) terdistorsi oleh rasio dominansi kelas negatif 5:1 (baseline naif sudah 83.33%), sehingga mengaburkan disparitas galat antar-subkelompok.",
+      "suggested_action": "Lengkapi Tabel XI dengan metrik False Positive Rate (FPR) atau False Negative Rate (FNR) per subkelompok untuk merepresentasikan disparitas secara lebih berimbang.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-METH-05",
+      "source_reviewer": "Reviewer 1 (Methodology)",
+      "dimension": "D1",
+      "severity": "MINOR",
+      "title": "Random Seed Tidak Dilaporkan & Pilihan Scaler Terbatas",
+      "evidence_anchor": "[section: 03_materials-and-methods_g-classification-pipeline], [table: III, IV, V, VI]",
+      "description": "Random seed untuk pengacakan split dan model stokastik tidak dicantumkan, serta opsi penskalaan tidak mengevaluasi StandardScaler.",
+      "suggested_action": "Cantumkan nilai random seed dan sertakan justifikasi mengenai pemilihan penskalaan fitur.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-DOM-02",
+      "source_reviewer": "Reviewer 2 (Domain Expert)",
+      "dimension": "D2",
+      "severity": "MINOR",
+      "title": "Opasitas Silsilah Data Pra-Latih Checkpoint Komunitas HuggingFace",
+      "evidence_anchor": "[section: 03_materials-and-methods_b-vision-transformer]",
+      "description": "Checkpoint yang digunakan berasal dari pengguna komunitas HuggingFace tanpa rincian korpus pelatihan sumber, fungsi objektif, atau potensi tumpang tindih data dengan DemogPairs.",
+      "suggested_action": "Paparkan dokumentasi ringkas mengenai dataset pra-latih asli dari ketiga checkpoint tersebut dan konfirmasi ketiadaan kontaminasi data uji.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-DOM-03",
+      "source_reviewer": "Reviewer 2 (Domain Expert)",
+      "dimension": "D2",
+      "severity": "MINOR",
+      "title": "Ketiadaan Visualisasi Feature Embedding (t-SNE / UMAP)",
+      "evidence_anchor": "[section: 04_results-and-discussion_b-feature-ablation-study]",
+      "description": "Klaim peningkatan separabilitas ruang representasi multi-domain belum diverifikasi secara visual menggunakan visualisasi manifold 2D.",
+      "suggested_action": "Tambahkan visualisasi t-SNE atau UMAP untuk membandingkan distribusi keterpisahan klaster dari domain tunggal ke tri-domain.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-DOM-04",
+      "source_reviewer": "Reviewer 2 (Domain Expert)",
+      "dimension": "D2",
+      "severity": "MINOR",
+      "title": "Penguatan Landasan Teori Kognitif Visi Wajah (Dual-Stream Face Processing)",
+      "evidence_anchor": "[section: 04_results-and-discussion_b-feature-ablation-study], [section: 01_introduction]",
+      "description": "Naskah belum mengaitkan temuan fusi fitur invarian (wajah) dan dinamis (emosi/usia) dengan teori pemrosesan wajah dual-stream (Bruce & Young 1986, Haxby et al. 2000).",
+      "suggested_action": "Sertakan 1-2 kalimat sitasi yang menghubungkan fusi fitur dengan model persepsi kognitif wajah.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-CROSS-02",
+      "source_reviewer": "Reviewer 3 (Cross-Perspective)",
+      "dimension": "D4",
+      "severity": "MINOR",
+      "title": "Ketiadaan Analisis Biaya Komputasi dan Latensi Inferensi",
+      "evidence_anchor": "[section: 03_materials-and-methods_0-overview], [section: 04_results-and-discussion_a-global-performance]",
+      "description": "Penggunaan 3 backbone ViT (~258 juta parameter) membutuhkan 3 forward passes, namun naskah tidak melaporkan latensi inferensi (ms/frame) atau memori GPU pada skenario penggunaan riil.",
+      "suggested_action": "Cantumkan profil latensi inferensi per citra dan jumlah parameter komparatif pada bagian pembahasan efisiensi.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-CROSS-03",
+      "source_reviewer": "Reviewer 3 (Cross-Perspective)",
+      "dimension": "D4",
+      "severity": "MINOR",
+      "title": "Ketiadaan Pernyataan Etika Biometrik & Refleksi Risiko Dual-Use",
+      "evidence_anchor": "[section: 01_introduction], [section: 05_conclusion]",
+      "description": "Klasifikasi rasial membawa risiko etika sosioteknis (profiling rasial, pengawasan massal) dan reduksionisme sosial yang perlu dibatasi secara bertanggung jawab dalam narasi ilmiah.",
+      "suggested_action": "Sertakan refleksi etika bahwa kategorisasi rasial dibatasi oleh taksonomi dataset untuk audit bias, bukan untuk melegitimasi klasifikasi biologis esensialis.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-DA-m1",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "MINOR",
+      "title": "Seleksi Visualisasi Matriks Konfusi yang Bias",
+      "evidence_anchor": "[figure: 4], [section: 04_results-and-discussion_d-error-pattern-assessment]",
+      "description": "Gambar 4 hanya menampilkan confusion matrix SVM yang sukses mengalami penurunan galat, sementara model Random Forest yang mengalami regresi galat tidak divisualisasikan.",
+      "suggested_action": "Bahas secara seimbang pola konfusi pada model non-SVM (termasuk Random Forest) pada narasi Bagian IV-D.",
+      "priority": "P3"
+    },
+    {
+      "id": "ISSUE-DA-m2",
+      "source_reviewer": "Devil's Advocate",
+      "dimension": "D3",
+      "severity": "MINOR",
+      "title": "Klaim 'Stabilitas' Subkelompok Tanpa Definisi Formal Metrik Stabilitas",
+      "evidence_anchor": "[section: 04_results-and-discussion_c-intersectional-subgroup-performance]",
+      "description": "Pernyataan bahwa F1-score terdistribusi stabil pada rentang 91.74% hingga 96.14% tidak didukung batasan ambang batas kuantitatif formal.",
+      "suggested_action": "Berikan tolok ukur kuantitatif atau rujukan literatur yang mendefinisikan batas variasi yang dapat dikategorikan sebagai stabil.",
+      "priority": "P3"
+    }
+  ]
+}

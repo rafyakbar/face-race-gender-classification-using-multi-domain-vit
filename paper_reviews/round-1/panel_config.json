@@ -1,0 +1,79 @@
+{
+  "round": 1,
+  "freeze_timestamp": "2026-09-27T20:25:00+07:00",
+  "target_venue": {
+    "name": "IEEE Access",
+    "type": "Open Access Journal",
+    "publisher": "IEEE",
+    "scope": "Multidisciplinary applications of AI, Computer Vision, Pattern Recognition, Biometrics, and Human-Machine Systems",
+    "review_model": "Binary Decision (Accept or Reject / Reject and Resubmit)",
+    "core_criteria": [
+      "Technical soundness and correctness",
+      "Clear advance over state-of-the-art",
+      "Comprehensive experimental validation and baseline comparisons",
+      "Clarity of exposition, figures, and reproducibility",
+      "Ethical compliance and data provenance in facial biometrics"
+    ]
+  },
+  "panel_members": [
+    {
+      "id": "eic",
+      "role": "Editor-in-Chief (EIC)",
+      "assigned_dimensions": ["D5", "D6"],
+      "expertise": [
+        "Editorial governance",
+        "IEEE Access publication standards",
+        "Academic writing structure and IMRaD hygiene",
+        "Venue fit and novelty evaluation"
+      ],
+      "scoring_mandate": "Evaluate whether the manuscript provides a sufficient advance over prior work to justify publication in IEEE Access, ensure adherence to IEEE formatting and bibliographic hygiene, and maintain exposition clarity."
+    },
+    {
+      "id": "reviewer_1_methodology",
+      "role": "Reviewer 1 (Methodology)",
+      "assigned_dimensions": ["D1", "D3"],
+      "expertise": [
+        "Biometric dataset partitioning protocols (subject-disjoint splits)",
+        "Data leakage prevention in deep feature extraction pipelines",
+        "Statistical hypothesis testing (McNemar, DeLong, paired t-test, confidence intervals)",
+        "Hyperparameter optimization and cross-validation integrity"
+      ],
+      "scoring_mandate": "Rigorously audit the experimental design, dataset split protocols (detecting any potential image vs subject leakage), feature scaling/PCA leakage, and require formal inferential statistics for all claimed empirical gains."
+    },
+    {
+      "id": "reviewer_2_domain",
+      "role": "Reviewer 2 (Domain Expert)",
+      "assigned_dimensions": ["D2"],
+      "expertise": [
+        "Facial attribute recognition and demographic classification",
+        "Vision Transformer (ViT) representation learning",
+        "State-of-the-art demographic benchmarks (FairFace, UTKFace, DemogPairs)",
+        "Pre-trained model provenance and foundation model transferability"
+      ],
+      "scoring_mandate": "Evaluate the technical soundness of the facial, emotion, and age representations, scrutinize baseline comparisons against the broader literature, and verify the provenance and validity of upstream pre-trained checkpoints."
+    },
+    {
+      "id": "reviewer_3_cross_perspective",
+      "role": "Reviewer 3 (Cross-Perspective)",
+      "assigned_dimensions": ["D4"],
+      "expertise": [
+        "Algorithmic fairness, bias audits, and intersectional demographic disparities",
+        "AI ethics, privacy, and responsible biometrics deployment",
+        "Computational efficiency, edge inference latency, and parameter footprint"
+      ],
+      "scoring_mandate": "Scrutinize the ethical framing and algorithmic fairness claims (verifying formal bias metrics), assess subgroup disparities (particularly for vulnerable intersectional cohorts), and audit the real-world deployment viability (latency, memory footprint of 3 ViT backbones)."
+    },
+    {
+      "id": "devils_advocate",
+      "role": "Devil's Advocate (Adversarial Evaluator)",
+      "assigned_dimensions": ["D3"],
+      "expertise": [
+        "Adversarial thesis debunking",
+        "Detection of marginal gains overclaimed as breakthroughs",
+        "Fallacy detection, confirmation bias, and cherry-picking identification",
+        "Critical analysis of multi-domain feature redundancy"
+      ],
+      "scoring_mandate": "Directly attack the core thesis of the paper: question whether the +0.41% accuracy gain (merely 9 test images) from adding the Age domain is genuinely meaningful or statistical noise, challenge the framing of feature concatenation as a novel framework, and interrogate why Random Forest degrades under tri-domain features."
+    }
+  ]
+}
