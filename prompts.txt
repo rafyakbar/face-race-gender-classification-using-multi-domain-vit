@@ -1,6 +1,57 @@
+# ==============================================================================
+# ATURAN PENTING: PROMPT BERIKUT HARUS SELALU BERADA DI PALING ATAS FILE INI!
+# JANGAN MEMINDAHKAN ATAU MENGGESER PROMPT INI KE BAWAH.
+# SETIAP PROMPT BARU HARUS DILETAKKAN DI BAWAH BLOK INI.
+# ==============================================================================
+
 Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubungan dengannya (jangan pernah baca file prompts.txt dan .ipynb, untuk .ipynb gantinya ada pada experiment/code/md)!
 
-Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Buat git commit sekarang dan gunakan skill 'git-commit' atau sesuai dengan best practice!
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+# ==============================================================================
+# DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
+# ==============================================================================
+
+oh iya, harusnya [P1-2]: "Apakah perlu coding?" seharusnya kamu bikin ipynb nya dan letakkan pada experiment/code, kemudian jalankan dan outputnya juga harus ada pada notebook, bisa gunakan nbconvert.
+Untuk konfirmasi:
+1. Konfirmasi Argumen Kontrol Dimensionalitas ([P1-4] / Devil's Advocate): "Jika peningkatan akurasi semata-mata karena pertambahan kapasitas dimensi, Random Forest seharusnya ikut naik.": seingat saya ini ada alasannya pada folder 'paper', coba delegasikan ke subagent untuk cek, seingat saya karena RF berbasis apa gitu.
+2. Konfirmasi Baseline Eksternal ([ISSUE-DOM-01] / Reviewer 2): Apakah Anda setuju kita memasukkan baseline pustaka ini ke Tabel XII? masalahnya paper dataset aslinya tidak melakukan training, coba baca 'references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.md'.
+3. Konfirmasi Pernyataan Wajib IEEE Access ([ISSUE-EIC-02] / EIC): bisa diakses kok datasetnya. bisa dicek pada https://ihupont.github.io/publications/2019-05-16-demogpairs dan downloadnya ada pada https://drive.google.com/file/d/1f_ez-ll6wxDXScrG4ceStZRuLT_K8Uy8/view?usp=sharing.
+
+/ar-paper-revision-coach
+pelajari dulu apa yang ada pada experiment/code/md. saya telah membaca paper_reviews/round-1.md, tanggapan saya:
+- hindari training ulang!
+- [P1-1]: saya hanya split data biasa berdasarkan kelas, bisa cek code/md.
+- [P1-2]: apakah perlu coding?
+- [P1-5]: ANGGAP SAJA SUDAH BERBAHASA INGGRIS MESKIPUN BAHASA INDONESIA, KALAU SUDAH FIX BARU NANTI SAYA TERJEMAHKAN!
+jika ada yang ingin dikonfirmasi silahkan bertanya!
+
+isi folder paper_reviews_claude-opus merupakan hasil review dari model AI yang lain, sekarang gabungkan hasilnya atau merge dengan paper_reviews
+
+Kamu hanya boleh membaca file-file ini:
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\00_abstract.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\01_introduction.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\02_related-works.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_0-overview.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_a-dataset.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_b-vision-transformer.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_c-random-forest.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_d-gaussian-naive-bayes.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_e-logistic-regression.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_f-support-vector-machine.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_g-classification-pipeline.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_h-evaluation-metrics.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_a-global-performance.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_b-feature-ablation-study.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_c-intersectional-subgroup-performance.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_d-error-pattern-assessment.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_e-comparison-with-prior-studies.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\05_conclusion.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\06_references.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\07_biographies.md"
+jangan membaca file yang lain! paper memang sengaja ber bahasa indonesia dulu, jadi jangan mengomentari terkait ini!
+Berencana publish pada IEEE Access (bisa cari tahu tentang IEEE Access terlebih dulu!)!
+Review paper ini dan letakkan ke dalam "paper_reviews_claude-opus/"! Kemudian buat paper_reviews_claude-opus/round-1.md yang berisi rangkuman review!
 
 sekarang tolong perbaiki paragraf-paragraf yang statusnya OVER! sesuaikan agar sesuai dengan target kata pada paper outline! delegasi ke subagent, satu file section satu subagent agar optimal, berikan instruksi yang jelas. lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
 
