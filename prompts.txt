@@ -12,6 +12,32 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang lakukan perbaikan untuk 'Butir 8: Rujukan Cermat, Pencegahan Retraksi & Relevansi Sitasi' pada:
+- paper/references (buat file .bib)
+- paper/references.txt
+- paper/06_references.md
+- paper/ (update yang sekiranya berhubungan)
+- paper_latex_id
+- paper_latex_en
+delegasikan ke subagent, lakukan dengan sangat amat teliti
+
+Butir 8: Rujukan Cermat, Pencegahan Retraksi & Relevansi Sitasi:
+- Temuan Kritis: Anomali Pergeseran Sitasi Seminal (Displacement Anomaly):
+  - coba cari paper alternatif di internet dengan syarat artikel jurnal ilmiah terindeks scopus 2021–2026
+  - jangan langsung diubah, cukup tuliskan dulu perencanaan perubahan pada checklist_report.md
+- Entri and others pada Berkas BibTeX:
+  - tolong cek pada paper/06_references.md, paper/references.txt, paper/references
+  - jangan langsung diubah, cukup tuliskan dulu perencanaan perubahan pada checklist_report.md
+perhatikan:
+- delegasikan ke subagent.
+- berikan instruksi yang jelas kepada subagent.
+  
+Butir 11: Definisi Singkatan & Akronim pada Kemunculan Pertama:
+- Akar Masalah (Root Cause):
+  - perbaiki rules/md_rules.txt
+- Daftar Pelanggaran Konkret:
+  - setelah memperbaiki rules/md_rules.txt, perbaiki 
+
 sekarang tolong audit kesesuaian dari paper_latex_en berdasarkan IEEE-Access-Submission-Checklist.ID.txt, perhatikan:
 - delegasikan ke subagent.
 - satu subagent hanya boleh audit per checklist.
