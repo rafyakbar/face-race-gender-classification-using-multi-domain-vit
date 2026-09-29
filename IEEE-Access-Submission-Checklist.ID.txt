@@ -1,0 +1,91 @@
+DAFTAR PERIKSA PENGAJUAN (SUBMISSION CHECKLIST)
+Tinjau secara cermat setiap poin yang tercantum di bawah ini sebelum mengirimkan artikel Anda. Pengajuan artikel yang tidak mematuhi pedoman di bawah ini akan dikembalikan ke status draf atau langsung ditolak.
+
+1. Naskah harus disiapkan dalam format dua kolom, berspasi tunggal menggunakan templat IEEE Access yang diwajibkan. Berkas Word atau LaTeX dan berkas PDF keduanya wajib disertakan saat pengajuan. Konten pada setiap berkas harus cocok secara persis. Ukuran berkas tidak boleh melebihi 40MB. Unduh Templat IEEE Access untuk Microsoft Word dan LaTeX.
+
+2. Naskah harus disiapkan dalam format dua kolom, berspasi tunggal menggunakan templat IEEE Access yang diwajibkan. Berkas Word atau LaTeX dan berkas PDF keduanya wajib disertakan saat pengajuan. Konten pada setiap berkas harus cocok secara persis. Ukuran berkas tidak boleh melebihi 40MB. Unduh Templat IEEE Access untuk silakan klik di sini.
+
+3. Daftar penulis harus dipertimbangkan secara saksama sebelum pengajuan. Untuk informasi lebih lanjut mengenai apa yang memenuhi syarat sebagai penulis, silakan klik di sini. Kontributor yang tidak memenuhi definisi kepenulisan (authorship) IEEE harus dicantumkan pada bagian Ucapan Terima Kasih (Acknowledgment) dalam artikel. Menghilangkan penulis yang berkontribusi pada artikel Anda atau memasukkan seseorang yang tidak memenuhi persyaratan kepenulisan dianggap sebagai pelanggaran etika publikasi. Setiap perubahan pada daftar penulis setelah artikel diajukan dianggap kejadian langka dan luar biasa, dan keputusan untuk mengizinkan perubahan tersebut sepenuhnya berada pada Editor.
+
+4. Penulis yang mengajukan (submitting author) wajib memiliki ID ORCID yang terhubung dengan akun mereka. Profil ORCID harus dapat dilihat oleh publik dan terisi. Untuk informasi lebih lanjut mengenai ORCID, klik di sini. Penulis yang ditunjuk sebagai corresponding author pada sistem pengajuan akan menjadi narahubung utama untuk artikel tersebut dan akan bertanggung jawab untuk menyetujui proof jika artikel diterima untuk diterbitkan.
+
+5. Semua penulis harus dicantumkan pada kedua berkas sumber (berkas Word atau LaTeX) dan berkas PDF naskah. Saat mengunggah berkas Anda, pastikan sistem pengajuan berhasil mengekstrak daftar penulis secara lengkap dari berkas Anda.
+
+6. Biografi singkat diwajibkan bagi SEMUA penulis pada pengajuan artikel. Sebagaimana tertera pada templat IEEE Access yang diwajibkan, biografi semua penulis harus disertakan langsung di dalam artikel di bawah bagian referensi (daftar pustaka).
+
+7. Artikel harus diperiksa secara menyeluruh untuk ketepatan tata bahasa sebelum diajukan. Artikel dengan tata bahasa yang buruk akan langsung ditolak. Jika diperlukan, IEEE Access menyediakan Paperpal Preflight untuk membantu penulis dalam memeriksa naskah mereka dari kendala tata bahasa sebelum pengajuan. Periksa naskah Anda di Paperpal Preflight dengan mengeklik di sini.
+
+8. Semua karya penelitian harus dirujuk secara cermat. Untuk mempelajari lebih lanjut tentang pencegahan plagiarisme, silakan klik di sini. Jangan menyertakan referensi yang tidak relevan dengan karya Anda, dan periksa secara teliti setiap referensi untuk keakuratannya serta pastikan bahwa referensi tersebut tidak ditarik kembali (retracted), karena referensi yang ditarik dapat merusak validitas karya Anda. Artikel yang diajukan dengan referensi yang ditarik akan dikembalikan kepada penulis untuk dihapus, atau dapat ditolak jika validitas penelitian terpengaruh.
+
+9. Artikel tidak boleh diajukan ke penerbit/jurnal lain pada waktu yang bersamaan. Informasi lebih lanjut mengenai pengajuan ganda (duplicate submission) dapat ditemukan di sini.
+
+10. Jika berlaku untuk penelitian Anda, siapkan materi pelengkap (supplementary material) apa pun untuk proses penelaahan selama pengajuan.
+
+11. Penulis harus mendefinisikan singkatan dan akronim pada kali pertama istilah tersebut digunakan di dalam artikel, bahkan jika istilah tersebut telah didefinisikan di dalam abstrak. Akronim dan singkatan dapat memiliki banyak makna, sehingga sangat penting untuk mendefinisikannya secara jelas.
+
+12. Anda harus memilih minimal 3 (dan maksimal 10) kata kunci naskah saat pengajuan. Pastikan kata kunci dibuat seakurat mungkin untuk memastikan Associate Editor yang relevan dipasangkan guna mengelola proses penelaahan sejawat (peer review) artikel Anda.
+
+13. Anda akan diminta untuk memilih jenis naskah saat pengajuan. Daftar dan deskripsi jenis naskah tercantum di bawah ini. Jika Anda ragu, silakan pilih “Research Article”. *Harap dicatat bahwa jika artikel Anda diterima, jenis naskah tersebut akan dipublikasikan pada artikel.
+
+14. Jika relevan, siapkan daftar penelaah yang ditentang (opposed reviewers).
+
+15. Jika artikel Anda memiliki video (ukuran berkas maksimum 100MB), siapkan untuk diunggah bersamaan dengan pengajuan karena semua video harus ditelaah sejawat bersama artikel.
+
+16. Jika artikel sebelumnya ditolak setelah penelaahan sejawat dengan dorongan untuk memperbarui dan mengajukan kembali (update and resubmit), maka “daftar pembaruan” (list of updates) yang lengkap harus disertakan dalam dokumen terpisah. Daftar pembaruan harus memuat poin-poin berikut terkait setiap komentar: 1) kekhawatiran/masukan reviewer, 2) tanggapan penulis terhadap kekhawatiran tersebut, 3) perubahan nyata yang diterapkan. Rujuk surat penolakan asli untuk informasi lebih lanjut mengenai persyaratan pengajuan kembali.
+
+17. Meskipun IEEE Access tidak memiliki batasan jumlah halaman; kami sangat menyarankan untuk menjaga jumlah halaman di bawah 20 halaman demi kemudahan keterbacaan. Artikel yang lebih panjang dapat menyebabkan waktu penelaahan sejawat yang lebih lama. Konten tambahan dapat ditambahkan sebagai materi pelengkap (supplementary material). Penulis yang memiliki alasan khusus untuk mengajukan makalah lebih dari 20 halaman (tidak termasuk Materi Pelengkap atau Lampiran, atau jika jenis artikel adalah Topical Review atau Survey) harus terlebih dahulu melakukan pra-pengajuan (pre-submission inquiry) untuk meminta izin dari EIC (Editor-in-Chief).
+
+18. Selaras dengan Kode Etik IEEE dan dengan menghormati keinginan subjek gambar, IEEE tidak lagi menerima makalah yang diajukan yang memuat gambar 'Lena' (‘Lena image’). Untuk informasi lebih lanjut silakan klik di sini.
+
+(Bersambung / Continued)
+
+JENIS NASKAH YANG DAPAT DITERIMA UNTUK PENELAAHAN SEJAWAT (PEER REVIEW)
+Semua jenis artikel menjalani proses peer review ketat yang sama.
+
+RESEARCH ARTICLE (ARTIKEL PENELITIAN)
+Ini adalah artikel penelitian klasik yang memiliki hipotesis, investigasi, solusi, model, eksperimen fisik dan/atau simulasi, serta hasil yang bernilai bagi komunitas dalam bidang keahlian tersebut.
+
+TOPICAL REVIEW (TINJAUAN TOPIKAL)
+Ini adalah tinjauan terhadap bidang yang baru berkembang dalam lingkup jurnal yang melakukan tinjauan teknis dan kritis terhadap artikel-artikel lain. Perhitungan dilakukan dan kesimpulan ditarik mengenai kekuatan dan kelemahannya. Kesimpulan juga dapat membahas tantangan masa depan. Artikel yang bersifat deskriptif, tanpa kerangka kerja, dan sebaliknya menguraikan topik tertentu harus termasuk jenis ini.
+
+THEORY (TEORI)
+Ini adalah artikel ilmiah yang menggunakan metode matematika untuk mengembangkan hasil teoritis baru yang bernilai penting bagi bidang tersebut.
+
+SURVEY (SURVEI)
+Artikel survei menganalisis, merangkum, mensistematisasikan, dan menyajikan kesimpulan baru dari sejumlah besar artikel ilmiah yang diterbitkan baru-baru ini. Artikel ulasan yang memiliki kerangka kerja yang terdefinisi dengan baik untuk memilih dan mengecualikan makalah serta menarik kesimpulan menyeluruh dari kumpulan makalah tersebut harus termasuk jenis ini. Contoh dari jenis ini adalah Systematic Literature Review (SLR).
+
+PERSPECTIVE (PERSPEKTIF)
+Kategori artikel ini adalah artikel sudut pandang mendalam yang ditujukan untuk menyatukan gambaran besar dalam lanskap perkembangan teknologi yang berkembang pesat. Ini biasanya mencakup topik di mana terdapat ketidakpastian dan/atau perbedaan pendapat di kalangan komunitas. Karena IEEE Access tidak memiliki batasan halaman, penerbitan artikel perspektif akan memungkinkan diskusi teknis yang lebih luas. Kategori artikel ini biasanya ditulis oleh pakar terkemuka di suatu bidang.
+
+APPLIED RESEARCH (PENELITIAN TERAPAN)
+Artikel ini mendeskripsikan tantangan dan solusi praktis untuk topik-topik dalam lingkup jurnal. Hasil kuantitatif untuk validasi pendekatan sangat diharapkan.
+
+NEGATIVE RESULT (HASIL NEGATIF)
+Ini adalah hasil negatif atau nol (null result) non-trivial baik teoritis maupun eksperimental yang tidak mendukung hipotesis. Asalkan pertanyaan penelitian yang diajukan bermakna dan studi dilakukan secara ketat, jenis artikel ini memiliki nilai bagi komunitas teknik.
+
+METHODS (METODE)
+Artikel ini melaporkan pengembangan teknik fabrikasi atau manufaktur baru atau yang disempurnakan, atau teknik eksperimental, pengukuran, atau matematika baru. Artikel penelitian terapan berfokus pada sistem praktis, sedangkan di sini fokusnya adalah pada metode.
+
+TUTORIAL
+Ini adalah artikel pedagogis untuk membantu pembaca mempelajari dan membiasakan diri dengan suatu topik. Topik tersebut dapat berupa topik baru yang belum dipahami dengan baik di komunitas, atau topik tradisional yang rumit yang dapat memperoleh manfaat dari pemaparan terkini. Topik tersebut sebaiknya bukan topik yang sudah dipahami secara luas atau sudah terwakili dengan baik dalam buku teks. Artikel harus menambah literatur yang ada untuk memberi manfaat bagi pembaca. Tujuan dan latar belakang prasyarat yang dibutuhkan oleh pembaca harus diidentifikasi secara jelas dalam pendahuluan. Referensi harus mengutip materi latar belakang dan materi tingkat lanjut agar pembaca dapat menggali lebih dalam.
+
+STANDARDS (STANDAR)
+Artikel ini merangkum dan menguraikan standar IEEE yang baru atau direvisi. Ini juga dapat berupa makalah diskusi ilmiah untuk standar IEEE baru atau kritik terhadap standar IEEE yang sudah ada disertai rekomendasi.
+
+COMMENT (KOMENTAR)
+Ini adalah artikel yang mengomentari artikel lain yang dipublikasikan di IEEE Access. Sebuah komentar menunjukkan kesalahan teknis, kekeliruan, atau menyajikan posisi yang berlawanan. Ini adalah kritik, yang memberikan koreksi, dan melakukan analisis. IEEE Access tidak menerima artikel komentar terhadap artikel yang dipublikasikan di jurnal lain. Batas halaman maksimum untuk artikel komentar adalah 2 halaman; lebih dari itu akan memerlukan persetujuan EIC.
+
+REPLY (TANGGAPAN / JAWABAN)
+Artikel balasan diajukan oleh penulis makalah yang dipublikasikan sebagai tanggapan terhadap artikel Komentar (Comment). Harap dicatat bahwa kami hanya mengizinkan satu Komentar dan satu Balasan sebagai tanggapan. Kami tidak mengizinkan Komentar dan Balasan berikutnya.
+
+DEBATE (DEBAT)
+Terdapat topik-topik dalam lingkup IEEE Access di mana terdapat ketidaksepakatan antar para ahli. Makalah debat berupa makalah penelitian teknis ilmiah yang mengemukakan argumen untuk suatu posisi tertentu. EIC dapat mengundang makalah debat tandingan untuk menciptakan keseimbangan. Artikel perspektif melihat gambaran besarnya, sedangkan makalah debat bersifat sangat teknis.
+
+EXPOSITION (EKSPOSISI)
+Ini adalah artikel ilmiah ekspositori yang tidak menghasilkan hasil baru, melainkan meninjau kembali hasil yang rumit atau kurang dipahami dan menjelaskannya dengan pendekatan baru. Ini adalah artikel yang sangat teknis yang mendalami teori dan interpretasi. Berbeda dengan artikel tutorial, yang merupakan artikel "bagaimana" (“how”), artikel eksposisi lebih merupakan artikel "mengapa" (“why”).
+
+META-ANALYSIS (META-ANALISIS)
+Meta-analisis adalah analisis statistik yang menggabungkan hasil dari beberapa studi ilmiah yang dipublikasikan yang membahas pertanyaan yang sama. Meta-analisis diakhiri dengan mengidentifikasi efek-efek yang signifikan secara statistik di berbagai studi. Makalah semacam itu tidak hanya dapat memberikan estimasi mengenai kebenaran umum yang tidak diketahui, tetapi juga berpotensi membandingkan hasil dari studi yang berbeda dan mengidentifikasi sumber ketidaksepakatan di antara hasil-hasil tersebut, pola di antara hasil studi, atau hasil menarik lainnya yang mungkin terungkap dalam konteks berbagai studi.
+
+UNSOLVED PROBLEM (MASALAH BELUM TERPECAHKAN)
+Ini adalah artikel ilmiah teknis yang menyelidiki masalah berat yang belum terpecahkan. Artikel ini juga belum mampu memecahkannya. Analisis artikel diakhiri dengan mengidentifikasi serangkaian pertanyaan terbuka yang jelas yang perlu dikerjakan oleh komunitas untuk mencapai kemajuan lebih lanjut. Makalah seperti ini diharapkan dapat memberikan kejelasan pada isu-isu kompleks dan menciptakan peta jalan (roadmap) pertanyaan untuk diikuti oleh para peneliti.
