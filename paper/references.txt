@@ -109,13 +109,13 @@ paper/03_materials-and-methods_a-dataset.md: paragraf 1:
 
 paper/03_materials-and-methods_b-vision-transformer.md: paragraf 1:
 - "Arsitektur ekstraksi representasi visual penelitian ini mengadopsi ViT-Base sebagaimana diilustrasikan ...":
-  - paper/references/2026_Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction.ris
+  - paper/references/2023_A Survey on Vision Transformer.bib
 - "Citra wajah masukan berukuran 224 × 224 piksel dengan 3 saluran warna dibagi menjadi 196 patch spasial non-overlapping $\mathbf{x}_p^i$ berukuran 16 × 16 piksel":
-  - paper/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib
+  - paper/references/2022_Transformers in Vision A Survey.bib
 - "Setiap patch diproyeksikan secara linier melalui matriks ...":
-  - paper/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib
+  - paper/references/2022_Transformers in Vision A Survey.bib
 - "Setiap layer encoder ... memproses masukan ... menjadi representasi antara ...":
-  - paper/references/2021_Vision Transformers for Remote Sensing Image Classification.bib
+  - paper/references/2024_A Survey of Visual Transformers.bib
 - "Mekanisme self-attention memungkinkan pemodelan hubungan global antarpatch wajah tanpa ketergantungan pada receptive field lokal seperti pada operasi konvolusi":
   - paper/references/2024_Visualizing and Understanding Patch Interactions in Vision Transformer.bib
   
@@ -137,7 +137,7 @@ paper/03_materials-and-methods_d-gaussian-naive-bayes.md:
 - "Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada [(6)](#eq6), di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$":
   - paper/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris
 - "Penambahan parameter penghalusan `var_smoothing` menjaga stabilitas komputasi terhadap risiko varians mendekati nol pada ruang representasi laten berdimensi tinggi":
-  - paper/references/2024_Coupling of Solidification and Heat Transfer Simulations with Interpretable Machine Learning Algorithms to Predict Transverse Cracks in Continuous Cast.bibtex
+  - paper/references/2023_Artificial Intelligence Based Approach for Classification of Human Activities Using MEMS Sensors Data.bib
   
 paper/03_materials-and-methods_e-logistic-regression.md:
 - "Pendekatan regresi multinomial (Softmax regression) pada LR memetakan representasi fitur laten ke dalam enam kategori demografis interseksional melalui estimasi probabilitas linier terpadu":
@@ -153,7 +153,7 @@ paper/03_materials-and-methods_f-support-vector-machine.md:
 - "Fungsi kernel memproyeksikan distribusi data nonlinier dari fusi multi-domain ke ruang fitur berdimensi lebih tinggi ...":
   - paper/references/2022_Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications.bib
 - "Formulasi kernel polinomial derajat dua pada ...":
-  - paper/references/2022_Churn prediction in telecommunication industry using kernel Support Vector Machines.bib
+  - paper/references/2021_Survey on SVM and their application in image classification.bib
 - "Pemetaan kuadratik ini memfasilitasi penangkapan interaksi nonlinier ...":
   - paper/references/2022_A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers.ris
   
@@ -163,7 +163,7 @@ paper/03_materials-and-methods_h-evaluation-metrics.md: paragraf 1:
 - "Skema ini memanfaatkan empat komponen matriks konfusi per kelas untuk menghitung ...":
   - paper/references/2022_General Performance Score for classification problems.ris
 - "Keempat komponen tersebut mencakup $TP_c$ (True Positive), $TN_c$ (True Negative), $FP_c$ (False Positive), dan $FN_c$ (False Negative)":
-  - paper/references/2021_Attention-gating for improved radio galaxy classification.bib
+  - paper/references/2021_Classification assessment methods.bib
 - "Akurasi OvR pada [(10)](#eq10) mengukur rasio total prediksi benar terhadap seluruh data uji, sedangkan ...":
   - paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris
 - "F1-Score pada ... performa deteksi per subkelompok":

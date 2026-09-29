@@ -67,7 +67,7 @@
 [22] Y. Deng, S. Teng, L. Fei, W. Zhang, and I. Rida, "A multifeature learning and fusion network for facial age estimation," *Sensors*, vol. 21, no. 13, Art. no. 4597, 2021, doi: 10.3390/s21134597.
 
 <a id="ref23"></a>
-[23] Z. Wang, L. Xiao, Z. Cao, and H. Lu, "Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting," in *Proc. AAAI Conf. Artif. Intell. (AAAI)*, 2024, Art. no. 648, doi: 10.1609/aaai.v38i6.28396.
+[23] Z. Wang, L. Xiao, Z. Cao, and H. Lu, "Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting," in *Proc. AAAI Conf. Artif. Intell.*, vol. 38, no. 6, pp. 5832–5840, Mar. 2024, doi: 10.1609/aaai.v38i6.28396.
 
 <a id="ref24"></a>
 [24] D. Wilimitis and C. G. Walsh, "Practical considerations and applied examples of cross-validation for model development and evaluation in health care: tutorial," *JMIR AI*, vol. 2, Art. no. e49023, 2023, doi: 10.2196/49023.
@@ -76,13 +76,13 @@
 [25] I. Hupont and C. Fernández, "DemogPairs: quantifying the impact of demographic imbalance in deep face recognition," in *Proc. 2019 14th IEEE Int. Conf. Autom. Face Gesture Recognit. (FG)*, Lille, France, 2019, pp. 1-7, doi: 10.1109/FG.2019.8756625.
 
 <a id="ref26"></a>
-[26] L. Yu, "Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction," *Scientific Reports*, vol. 16, no. 1, Art. no. 5326, Jan. 2026, doi: 10.1038/s41598-026-36298-4.
+[26] K. Han, Y. Wang, H. Chen, X. Chen, J. Guo, Z. Liu, Y. Tang, A. Xiao, C. Xu, Y. Xu, Z. Yang, Y. Zhang, and D. Tao, "A survey on vision transformer," *IEEE Trans. Pattern Anal. Mach. Intell.*, vol. 45, no. 1, pp. 87–110, Jan. 2023, doi: 10.1109/TPAMI.2022.3152247.
 
 <a id="ref27"></a>
-[27] H. D. Jahja, N. Yudistira, and Sutrisno, "Mask usage recognition using vision transformer with transfer learning and data augmentation," *Intelligent Systems with Applications*, vol. 17, Art. no. 200186, Feb. 2023, doi: 10.1016/j.iswa.2023.200186.
+[27] S. Khan, M. Naseer, M. Hayat, S. W. Zamir, F. S. Khan, and M. Shah, "Transformers in vision: a survey," *ACM Comput. Surv.*, vol. 54, no. 10s, pp. 200:1–200:41, Sept. 2022, doi: 10.1145/3505244.
 
 <a id="ref28"></a>
-[28] Y. Bazi, L. Bashmal, M. M. A. Rahhal, R. A. Dayil, and N. A. Ajlan, "Vision transformers for remote sensing image classification," *Remote Sensing*, vol. 13, no. 3, Art. no. 516, 2021, doi: 10.3390/rs13030516.
+[28] Y. Liu, Y. Zhang, Y. Wang, F. Hou, J. Yuan, J. Tian, Y. Zhang, Z. Shi, J. Fan, and Z. He, "A survey of visual transformers," *IEEE Trans. Neural Netw. Learn. Syst.*, vol. 35, no. 6, pp. 7478–7498, June 2024, doi: 10.1109/TNNLS.2022.3227717.
 
 <a id="ref29"></a>
 [29] J. Ma, Y. Bai, B. Zhong, W. Zhang, T. Yao, and T. Mei, "Visualizing and understanding patch interactions in vision transformer," *IEEE Transactions on Neural Networks and Learning Systems*, vol. 35, no. 10, pp. 13671-13680, 2024, doi: 10.1109/TNNLS.2023.3270479.
@@ -106,7 +106,7 @@
 [35] E. Redivo, C. Viroli, and A. Farcomeni, "Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers," *Statistics and Computing*, vol. 33, no. 2, Art. no. 55, Mar. 2023, doi: 10.1007/s11222-023-10224-4.
 
 <a id="ref36"></a>
-[36] J. Norrena, S. Louhenkilpi, V.-V. Visuri, T. Alatarvas, A. Bogdanoff, and T. Fabritius, "Coupling of solidification and heat transfer simulations with interpretable machine learning algorithms to predict transverse cracks in continuous casting of steel," *Steel Research International*, vol. 95, no. 4, Art. no. 2300529, 2024, doi: 10.1002/srin.202300529.
+[36] Y. A. Khan, S. Imaduddin, Y. P. Singh, M. Wajid, M. Usman, and M. Abbas, "Artificial intelligence based approach for classification of human activities using MEMS sensors data," *Sensors*, vol. 23, no. 3, pp. 1275, Jan. 2023, doi: 10.3390/s23031275.
 
 <a id="ref37"></a>
 [37] A. J. Molstad and K. Motwani, "Multiresolution categorical regression for interpretable cell-type annotation," *Biometrics*, vol. 79, no. 4, pp. 3485-3496, Dec. 2023, doi: 10.1111/biom.13926.
@@ -124,7 +124,7 @@
 [41] C. Yang, S.-K. Oh, B. Yang, W. Pedrycz, and L. Wang, "Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications," *Expert Systems with Applications*, vol. 202, Art. no. 117392, 2022, doi: 10.1016/j.eswa.2022.117392.
 
 <a id="ref42"></a>
-[42] N.-Y. Nguyen, L. V. Tran, and V. T. S. Dao, "Churn prediction in telecommunication industry using kernel support vector machines," *PLOS ONE*, vol. 17, no. 5, pp. 1-18, May 2022, doi: 10.1371/journal.pone.0267935.
+[42] M. A. Chandra and S. S. Bedi, "Survey on SVM and their application in image classification," *Int. J. Inf. Technol.*, vol. 13, no. 5, pp. 1–11, Oct. 2021, doi: 10.1007/s41870-017-0080-1.
 
 <a id="ref43"></a>
 [43] R. Guido, M. C. Groccia, and D. Conforti, "A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers," *Soft Computing*, vol. 27, no. 18, pp. 12863-12881, Sept. 2023, doi: 10.1007/s00500-022-06768-8.
@@ -136,7 +136,7 @@
 [45] I. M. De Diego, A. R. Redondo, R. R. Fernández, J. Navarro, and J. M. Moguerza, "General performance score for classification problems," *Applied Intelligence*, vol. 52, no. 10, pp. 12049-12063, Aug. 2022, doi: 10.1007/s10489-021-03041-7.
 
 <a id="ref46"></a>
-[46] M. Bowles, A. M. M. Scaife, F. Porter, H. Tang, and D. J. Bastien, "Attention-gating for improved radio galaxy classification," *Monthly Notices of the Royal Astronomical Society*, vol. 501, no. 3, pp. 4579-4595, Mar. 2021, doi: 10.1093/mnras/staa3946.
+[46] A. Tharwat, "Classification assessment methods," *Appl. Comput. Inform.*, vol. 17, no. 1, pp. 168–192, Jan. 2021, doi: 10.1016/j.aci.2018.08.003.
 
 <a id="ref47"></a>
 [47] S. A. Hicks et al., "On evaluation metrics for medical applications of artificial intelligence," *Scientific Reports*, vol. 12, no. 1, Art. no. 5979, Apr. 2022, doi: 10.1038/s41598-022-09954-8.
