@@ -1,31 +1,40 @@
 ====================================================================================================
 DAFTAR REGISTRASI SINGKATAN & AKRONIM NASKAH (ACRONYM REGISTRY)
-Pedoman: Rule 1.3 (First-Mention Full Form & Subsequent Acronym Only)
+Pedoman: Rule 1.3 (Dual-Context Rule IEEE Access: Abstrak & Batang Tubuh Utama Independen)
 Lokasi Berkas: paper/acronyms.txt
 ====================================================================================================
 
-Petunjuk Penggunaan:
-1. Istilah yang SUDAH tercatat dalam berkas ini TIDAK BOLEH dituliskan kepanjangannya lagi pada
-   berkas-berkas draf markdown berikutnya (cukup gunakan singkatannya saja).
-2. Jika ada istilah teknis baru yang memiliki singkatan resmi dan diperkenalkan untuk pertama kali
-   dalam draf naskah, tuliskan bentuk lengkapnya beserta singkatannya pada teks draf, lalu
-   segera daftarkan ke dalam berkas `paper/acronyms.txt` ini.
+Petunjuk Penggunaan & Dual-Context Rule:
+1. Sesuai standar IEEE Access, Abstrak dan Batang Tubuh Utama (Section I s.d. V) merupakan dua konteks
+   pembacaan independen.
+2. Setiap singkatan/akronim WAJIB didefinisikan kepanjangannya (first-mention full form) pada kemunculan
+   pertamanya di Abstrak (jika digunakan di Abstrak) DAN pada kemunculan pertamanya di Batang Tubuh Utama
+   (Section I Introduction atau seksi pemunculan perdananya), sekalipun telah didefinisikan di Abstrak.
+3. Setelah didefinisikan pada kemunculan pertama di Batang Tubuh Utama, pemunculan berikutnya di seksi-seksi
+   setelahnya CUKUP menggunakan bentuk singkatannya saja tanpa mengulang kepanjangannya.
+4. Seluruh singkatan yang digunakan dalam naskah wajib terdaftar dalam tabel registrasi di bawah ini.
 
-----------------------------------------------------------------------------------------------------
-NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)       | LOKASI PERTAMA KALI DIPERKENALKAN
-----+---------------------+----------------------------------+----------------------------------
-1   | ViT                 | Vision Transformer               | paper/00_abstract.md (Abstract)
-2   | RF                  | Random Forest                    | paper/00_abstract.md (Abstract)
-3   | GNB                 | Gaussian Naive Bayes             | paper/00_abstract.md (Abstract)
-4   | LR                  | Logistic Regression              | paper/00_abstract.md (Abstract)
-5   | SVM                 | Support Vector Machine           | paper/00_abstract.md (Abstract)
-6   | GridSearchCV        | Grid Search Cross-Validation     | paper/00_abstract.md (Abstract)
-7   | CNN                 | Convolutional Neural Networks    | paper/01_introduction.md (P3)
-8   | MHSA                | Multi-Head Self-Attention        | paper/01_introduction.md (P3)
-9   | PCA                 | Principal Component Analysis     | paper/01_introduction.md (P5)
-10  | RGB                 | Red, Green, Blue                 | paper/03_materials-and-methods_a-dataset.md (P2)
-11  | LN                  | Layer Normalization              | paper/03_materials-and-methods_b-vision-transformer.md (P1)
-12  | MLP                 | Multi-Layer Perceptron           | paper/03_materials-and-methods_b-vision-transformer.md (P1)
-13  | RBF                 | Radial Basis Function            | paper/03_materials-and-methods_f-support-vector-machine.md (P1)
-14  | OvR                 | One-vs-Rest                      | paper/03_materials-and-methods_h-evaluation-metrics.md (P1)
-====================================================================================================
+------------------------------------------------------------------------------------------------------------------------------------------------------
+NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)        | LOKASI PERTAMA DI ABSTRAK        | LOKASI PERTAMA DI BATANG TUBUH UTAMA
+----+---------------------+-----------------------------------+----------------------------------+----------------------------------------------------
+1   | ViT                 | Vision Transformer                | paper/00_abstract.md (Abstract)  | paper/01_introduction.md (P3)
+2   | RF                  | Random Forest                     | paper/00_abstract.md (Abstract)  | paper/01_introduction.md (P5)
+3   | GNB                 | Gaussian Naive Bayes              | paper/00_abstract.md (Abstract)  | paper/01_introduction.md (P5)
+4   | LR                  | Logistic Regression               | paper/00_abstract.md (Abstract)  | paper/01_introduction.md (P5)
+5   | SVM                 | Support Vector Machine            | paper/00_abstract.md (Abstract)  | paper/01_introduction.md (P5)
+6   | GridSearchCV        | Grid Search Cross-Validation      | paper/00_abstract.md (Abstract)  | paper/03_materials-and-methods_g-classification-pipeline.md (P1)
+7   | CNN                 | Convolutional Neural Networks     | -                                | paper/01_introduction.md (P3)
+8   | MHSA                | Multi-Head Self-Attention         | -                                | paper/01_introduction.md (P3)
+9   | PCA                 | Principal Component Analysis      | -                                | paper/01_introduction.md (P5)
+10  | RGB                 | Red, Green, Blue                  | -                                | paper/03_materials-and-methods_a-dataset.md (P2)
+11  | LN                  | Layer Normalization               | -                                | paper/03_materials-and-methods_b-vision-transformer.md (P1)
+12  | MLP                 | Multi-Layer Perceptron            | -                                | paper/03_materials-and-methods_b-vision-transformer.md (P1)
+13  | RBF                 | Radial Basis Function             | -                                | paper/03_materials-and-methods_f-support-vector-machine.md (P1)
+14  | OvR                 | One-vs-Rest                       | -                                | paper/03_materials-and-methods_h-evaluation-metrics.md (P1)
+15  | GeLU                | Gaussian Error Linear Unit        | -                                | paper/03_materials-and-methods_b-vision-transformer.md (P1)
+16  | CI                  | Confidence Interval               | -                                | paper/04_results-and-discussion_b-feature-ablation-study.md (P1)
+17  | CV                  | Cross-Validation                  | -                                | paper/01_introduction.md (P5)
+18  | TPR                 | True Positive Rate                | -                                | paper/04_results-and-discussion_c-intersectional-subgroup-performance.md (P1)
+19  | FNR                 | False Negative Rate               | -                                | paper/04_results-and-discussion_c-intersectional-subgroup-performance.md (P1)
+20  | ROC                 | Receiver Operating Characteristic | -                                | paper/04_results-and-discussion_e-comparison-with-prior-studies.md (P2)
+================================================================================================================================================------
