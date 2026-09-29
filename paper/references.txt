@@ -22,7 +22,7 @@ paper/01_introduction.md: paragraf 2:
   - paper/references/2021_Racial Identity-Aware Facial Expression Recognition Using Deep Convolutional Neural Networks.bib
   
 paper/01_introduction.md: paragraf 3:
-- "Pada era arsitektur Convolutional Neural Networks (CNN), berbagai penelitian mengeksplorasi ekstraksi ciri demografis melalui pemanfaatan region spesifik wajah seperti area wajah bagian tengah, kerangka kerja multi-tugas berbasis multi-skala untuk estimasi usia dan gender secara simultan, serta model CNN mendalam untuk pengenalan etnisitas":
+- "Pada era arsitektur CNN, berbagai penelitian mengeksplorasi ekstraksi ciri demografis melalui pemanfaatan region spesifik wajah seperti area wajah bagian tengah, kerangka kerja multi-tugas berbasis multi-skala untuk estimasi usia dan gender secara simultan, serta model CNN mendalam untuk pengenalan etnisitas":
   - paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
   - paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
   - paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
@@ -56,7 +56,7 @@ paper/01_introduction.md: paragraf 5:
   - paper/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib
 - "Ekstraksi fitur laten dilakukan secara offline dari model backbone ViT pre-trained yang dibekukan, sehingga klasifikasi hilir dapat dijalankan secara efisien tanpa memerlukan komputasi fine-tuning ulang backbone":
   - paper/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib
-- "Seluruh classifier hilir dioptimalkan dan dievaluasi menggunakan Stratified Cross-Validation dalam pipeline pembelajaran terstruktur yang mengintegrasikan penskalaan fitur serta reduksi dimensionalitas Principal Component Analysis (PCA), dengan setiap transformasi dipelajari secara ketat hanya pada lipatan data pelatihan di setiap fold untuk mencegah data leakage":
+- "Seluruh classifier hilir dioptimalkan dan dievaluasi menggunakan Stratified Cross-Validation (CV) dalam pipeline pembelajaran terstruktur yang mengintegrasikan penskalaan fitur serta reduksi dimensionalitas Principal Component Analysis (PCA), dengan setiap transformasi dipelajari secara ketat hanya pada lipatan data pelatihan di setiap fold untuk mencegah data leakage":
   - paper/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib
 
 paper/02_related-works.md: paragraf 1:
@@ -201,7 +201,7 @@ paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 1:
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
 
 paper/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 2:
-- "Penelitian seminal perancangan dataset DemogPairs oleh Hupont dan Fernández [[25]](06_references.md#ref25) dirancang secara eksklusif sebagai benchmark verifikasi identitas (identity verification ROC pada 58.3 juta pasangan citra) dan tidak melakukan pelatihan klasifikasi 6-kelas (closed-set intersectional classification)":
+- "Penelitian seminal perancangan dataset DemogPairs oleh Hupont dan Fernández [[25]](06_references.md#ref25) dirancang secara eksklusif sebagai benchmark verifikasi identitas (identity verification Receiver Operating Characteristic (ROC) pada 58.3 juta pasangan citra) dan tidak melakukan pelatihan klasifikasi 6-kelas (closed-set intersectional classification)":
   - paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
 - "Oleh karena itu, penelitian ini bersama studi terkait terdahulu [[19]](06_references.md#ref19), [[20]](06_references.md#ref20) memelopori dan menyediakan baseline terkontrol internal pertama yang komprehensif untuk klasifikasi demografis interseksional 6-kelas pada dataset DemogPairs":
   - paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
