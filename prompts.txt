@@ -12,6 +12,20 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+Butir 11: Definisi Singkatan & Akronim pada Kemunculan Pertama:
+- Akar Masalah (Root Cause):
+  - perbaiki rules/md_rules.txt.
+- Daftar Pelanggaran Konkret:
+  - setelah memperbaiki rules/md_rules.txt, selanjutnya perbaiki paper, paper_latex_id, dan paper_latex_en.
+  - perhatikan juga paper/references.txt ketika memperbaiki.
+Butir 12: Kata Kunci Naskah:
+- perbaiki keywordsnya pada paper, paper_latex_id, dan paper_latex_en.
+- jika ingin tahu daftar IEEE Taxonomy, maka ada pada ieee_taxonomy.txt.
+Perhatikan:
+- delegasikan ke subagent.
+- berikan instruksi yang jelas kepada subagent.
+- lakukan dengan sangat amat teliti.
+
 sekarang lakukan perbaikan untuk 'Butir 8: Rujukan Cermat, Pencegahan Retraksi & Relevansi Sitasi' pada:
 - paper/references (buat file .bib)
 - paper/references.txt
@@ -31,12 +45,6 @@ Butir 8: Rujukan Cermat, Pencegahan Retraksi & Relevansi Sitasi:
 perhatikan:
 - delegasikan ke subagent.
 - berikan instruksi yang jelas kepada subagent.
-  
-Butir 11: Definisi Singkatan & Akronim pada Kemunculan Pertama:
-- Akar Masalah (Root Cause):
-  - perbaiki rules/md_rules.txt
-- Daftar Pelanggaran Konkret:
-  - setelah memperbaiki rules/md_rules.txt, perbaiki 
 
 sekarang tolong audit kesesuaian dari paper_latex_en berdasarkan IEEE-Access-Submission-Checklist.ID.txt, perhatikan:
 - delegasikan ke subagent.
