@@ -1,0 +1,205 @@
+IEEE Taxonomy: A Subset Hierarchical Display of IEEE Thesaurus Terms
+The IEEE Taxonomy comprises the first three hierarchical 'levels' under each term-family (or
+branch) that is formed from the top-most terms of the IEEE Thesaurus. In this document these
+term-families are arranged alphabetically and denoted by boldface type. Each term family's
+hierarchy goes to no more than three sublevels, denoted by indents (in groups of four dots)
+preceding the next level terms. A term can appear in more than one hierarchical branch and
+can appear more than once in any particular hierarchy. The IEEE Taxonomy is defined in this
+way so that it is always a subset of the January 2026 IEEE Thesaurus.
+Aerospace and electronic systems
+....Aerospace control
+........Air traffic control
+........Attitude control
+........Ground support
+....Aerospace engineering
+........Aerospace biophysics
+........Aerospace electronics
+........Aerospace safety
+............Air safety
+........Aerospace simulation
+........Aerospace testing
+............Wind tunnels
+........Artificial satellites
+............Earth Observing System
+............Low earth orbit satellites
+............Military satellites
+............Space stations
+........Flight dynamics
+........Space technology
+............Payloads
+............Space debris
+............Space exploration
+....Aerospace materials
+........Aerospace components
+....Aircraft manufacture
+....Aircraft navigation
+........Instrument landing systems
+........Urban air mobility
+....Aircraft propulsion
+........Propellers
+....Command and control systems
+....Electronic warfare
+........Electronic countermeasures
+........Jamming
+........Radar countermeasures
+....Military equipment
+........Military aircraft
+............Payloads
+........Military satellites
+........Military vehicles
+........Weapons
+............Biological weapons
+............Chemical weapons
+............Guns
+............Missiles
+............Nuclear weapons
+............Projectiles
+............Weapons of mass destruction
+....Sensor systems
+........Activity recognition
+............Human activity recognition
+........Gunshot detection systems
+....Sonar
+........Side-scan sonar
+........Sonar applications
+............Sonar detection
+............Sonar measurements
+........Sonar equipment
+............Echo sounders
+........Synthetic aperture sonar
+....Telemetry
+........Biomedical telemetry
+Antennas and propagation
+....Antennas
+........Antenna accessories
+............Radomes
+........Antenna arrays
+............Adaptive arrays
+............Butler matrices
+............Linear antenna arrays
+............Log periodic antennas
+............Microstrip antenna arrays
+............Microwave antenna arrays
+............Phased arrays
+............Planar arrays
+........Antenna radiation patterns
+............Near-field radiation pattern
+........Antenna theory
+............Frequency selective surfaces
+........Antenna-in-package
+........Apertures
+............Aperture antennas
+............Aperture coupled antennas
+........Broadband antennas
+January 2026 IEEE Taxonomy
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License (CC BY-NC-ND 4.0). Created by The Institute of Electrical and Electronics
+Engineers (IEEE) for the benefit of humanity. Page 3
+............Ultra wideband antennas
+............Vivaldi antennas
+........Dielectric resonator antennas
+........Dipole antennas
+........Directional antennas
+........Directive antennas
+........Feeds
+............Antenna feeds
+........Fractal antennas
+........Helical antennas
+........Horn antennas
+........Leaky wave antennas
+........Loaded antennas
+........Log-periodic dipole antennas
+........Loop antennas
+........Microstrip antennas
+........Microwave antennas
+........Mobile antennas
+........Multifrequency antennas
+........Omnidirectional antennas
+........Optical antennas
+............Nanoantennas
+........Patch antennas
+........Radar antennas
+........Receiving antennas
+........Rectennas
+........Reflector antennas
+........Satellite antennas
+........Slot antennas
+........Steerable antennas
+........Textile antennas
+........Transmission line antennas
+........Transmitting antennas
+........UHF antennas
+........Wearable antennas
+........Yagi-Uda antennas
+....Electromagnetic propagation
+........Electromagnetic diffraction
+............Optical diffraction
+............Physical theory of diffraction
+............X-ray diffraction
+........Electromagnetic propagation in absorbing
+media
+........Electromagnetic reflection
+............Optical reflection
+........Microwave propagation
+........Millimeter wave propagation
+........Optical propagation
+............Optical surface waves
+............Optical waveguides
+........Propagation constant
+........Propagation losses
+........Radio propagation
+........Radiowave propagation
+............NVIS
+........Submillimeter wave propagation
+........UHF propagation
+....Radio astronomy
+Broadcast technology
+....Broadcasting
+........Digital audio broadcasting
+............Digital audio players
+............Digital Radio Mondiale
+........Digital multimedia broadcasting
+........Digital video broadcasting
+........Motion pictures
+........NVIS
+........Radio broadcasting
+............Frequency modulation
+............Radio networks
+........Satellite broadcasting
+........Web TV
+Circuits and systems
+....Circuits
+........Active circuits
+............Active inductors
+............Gyrators
+............Operational amplifiers
+........Adders
+........Analog circuits
+............Analog integrated circuits
+............Analog processing circuits
+........Application specific integrated circuits
+............System-on-chip
+........Asynchronous circuits
+........Bipolar transistor circuits
+............BiCMOS integrated circuits
+............Bipolar integrated circuits
+........Bistable circuits
+............Latches
+........Bridge circuits
+........Charge pumps
+........Circuit analysis
+............Circuit analysis computing
+............Coupled mode analysis
+............Nonlinear network analysis
+........Circuit faults
+............Electrical fault detection
+........Circuit noise
+............Thermal noise
+........Circuit reliability
+........Circuit simulation
+........Circuit synthesis
+............High level synthesis
+............Integrated circuit synthesis
+............Register transfer level
+........Coprocessors
+........Counting circuits
