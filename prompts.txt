@@ -12,6 +12,104 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang tolong audit kesesuaian dari paper_latex_en berdasarkan IEEE-Access-Submission-Checklist.ID.txt, perhatikan:
+- delegasikan ke subagent.
+- satu subagent hanya boleh audit per checklist.
+- berikan instruksi yang jelas kepada subagent.
+- jangan mengubah file apapun.
+- tapi tuliskan hasil audit pada checklist_report.md.
+
+pada TABLE 10. Performance Benchmark of Support Vector Machine across Seven Feature Configurations terdapat kolom 95% CI CV Score, itu maksudnya apa?
+
+setelah saya baca ulang, menurut saya:
+- I. INTRODUCTION: Paragraf Kontribusi ilmiah: Poin ke 2: jangan menyebutkan seperti akurasi!
+perhatikan:
+- Perbaiki yang ada folder paper lebih dulu, kemudian baru folder paper_latex_id, kemudian baru translate untuk paper_latex_en.
+- Delegasikan ke subagent agar hasil optimal.
+- Satu subagent hanya boleh membetulkan satu file agar hasil optimal.
+- Berikan instruksi yang jelas.
+- Setelah semua selesai, build ulang pdfnya untuk paper_latex_id dan paper_latex_en.
+
+translate 'paper_latex_id' ke dalam bahasa inggris (folder 'paper_latex_en'), perhatikan:
+- saya hanya minta kamu mentranslate.
+- jangan mengubah kalimat apalagi makna.
+- isi harus sama dengan 'paper_latex_id' namun dengan versi bahasa inggris.
+- grammar harus sesuai dengan paper akademik journal Q1.
+- delegasikan ke subagent.
+- satu subagent hanya boleh audit dan perbaiki satu file.
+- berikan instruksi yang jelas kepada subagent.
+- jika ada figure, maka harusnya juga ada pada paper_latex_en/images (harus ter copy).
+lakukan dengan sangat amat teliti!
+
+setelah saya baca ulang, menurut saya:
+- I. INTRODUCTION: Paragraf Kontribusi ilmiah: Poin ke 3: jangan membahas tentang konferensi sebelumnya!
+- B. FEATURE ABLATION STUDY: Paragraf 2: Buat agar menjadi lebih mudah dipahami, terutama bagian Degradasi RF, tidak usah ada seperti akar 2304 di dalamnya.
+- CODE AVAILABILITY STATEMENT: hapus bagian ini.
+- ETHICAL COMPLIANCE STATEMENT: hapus bagian ini.
+perhatikan:
+- Perbaiki yang ada folder paper lebih dulu, kemudian baru folder paper_latex_id.
+- Delegasikan ke subagent agar hasil optimal.
+- Satu subagent hanya boleh membetulkan satu file agar hasil optimal.
+- Berikan instruksi yang jelas.
+- Setelah semua selesai, build ulang pdfnya.
+
+setelah saya baca ulang, menurut saya:
+- ABSTRACT: setelah kalimat yang membahas tentang latar belakang, biasanya kalimat selanjutnya adalah kalimat transisi seperti 'oleh karena itu dibutuhkan ...'.
+- ABSTRACT: jangan menggunakan kata seperti 'laten'.
+- INDEX TERMS: hapus 'algorithmic fairness'.
+- I. INTRODUCTION: jangan menggunakan kata seperti 'laten'.
+- I. INTRODUCTION: Paragraf Kontribusi ilmiah: poin-poin nya cukup gunakan bahasa indonesia pada paper_latex_id.
+- IV. RESULTS AND DISCUSSION: A. GLOBAL PERFORMANCE ANALYSIS: hapus kalimat '(Catatan: Parameter degree hanya aktif dan dilaporkan pada kernel poly; pada kernel rbf, parameter degree tidak aktif dan tidak dicantumkan pada naskah publikasi)' karena sudah ada di dalam paragraf 4 ("Pada hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut [51]").
+- IV. RESULTS AND DISCUSSION: C. INTERSECTIONAL SUBGROUP PERFORMANCE: kalimat 'sebesar 1.39 pp' maksudnya bagaimana?
+- IV. RESULTS AND DISCUSSION: A. GLOBAL PERFORMANCE ANALYSIS, B. FEATURE ABLATION STUDY, C. INTERSECTIONAL SUBGROUP PERFORMANCE, D. ERROR PATTERN ASSESSMENT: audit ulang mengenai ini berdasarkan experiment/code/md.
+perhatikan:
+- Perbaiki yang ada folder paper lebih dulu, kemudian baru folder paper_latex_id.
+- Delegasikan ke subagent agar hasil optimal.
+- Satu subagent hanya boleh membetulkan satu file agar hasil optimal.
+- Berikan instruksi yang jelas.
+- Setelah semua selesai, build ulang pdfnya.
+
+Tolong audit dan perbaiki yang ada pada folder 'paper_latex_id' agar isinya sama persis dengan folder 'paper'. Cek dulu apakah isi file-file section pada 'paper_latex_id' sudah sesuai dengan folder 'paper'. Jika sudah memastikan, maka selanjutnya perhatikan:
+- Pada folder 'paper' ini isinya sudah diperbaiki dan direview, jadi jangan ubah apapun.
+- Isi section atau sub section pada 'paper_latex_id', harus sama dengan folder 'paper'.
+- Delegasikan ke subagent!
+- Satu subagent hanya boleh audit dan perbaiki satu file!
+- Berikan instruksi yang jelas kepada subagent!
+- Jika ada figure, maka harusnya juga ada pada paper_latex_id/images (harus ter copy).
+Jika ada yang ingin ditanyakan atau dikonfirmasi sebelum audit, silahkan!
+
+/ar-paper-reviewer Kamu hanya boleh membaca file-file ini:
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\00_abstract.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\01_introduction.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\02_related-works.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_0-overview.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_a-dataset.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_b-vision-transformer.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_c-random-forest.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_d-gaussian-naive-bayes.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_e-logistic-regression.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_f-support-vector-machine.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_g-classification-pipeline.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\03_materials-and-methods_h-evaluation-metrics.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_a-global-performance.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_b-feature-ablation-study.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_c-intersectional-subgroup-performance.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_d-error-pattern-assessment.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\04_results-and-discussion_e-comparison-with-prior-studies.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\05_conclusion.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\06_references.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper\07_biographies.md"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper_reviews\round-1\"
+"D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit\paper_reviews\round-2\"
+Jangan membaca file yang lain! Paper memang sengaja ber bahasa indonesia dulu!
+Berencana publish pada IEEE Access (bisa cari tahu tentang IEEE Access terlebih dulu!)!
+Lakukan simulasi penelaahan putaran kedua (Round 2 Re-Review / Verification Review):
+1. Evaluasi apakah seluruh butir rencana aksi pada 'paper_reviews\round-1\08_revision_roadmap.md' telah dijawab tuntas dan sesuai oleh surat tanggapan 'paper_reviews\round-2\09_response_letter.md' serta perubahan naskah pada 'paper\'.
+2. Pertahankan kriteria evaluasi putaran pertama (Yardstick Continuity) dengan persona reviewer yang sama dari 'paper_reviews\round-1\panel_config.json'.
+3. Terbitkan berkas hasil verifikasi re-review putaran 2 ke dalam folder "paper_reviews\round-2\":
+4. Buat ringkasan singkat review putaran kedua pada "paper_reviews\round-2.md".
+5. Perbarui berkas "paper_reviews\REVIEW_LOG.md".
+
 delegasikan subagent untuk audit ulang untuk mengecek kesusuaian revisi dan sesuai target kata!
 - Delegasikan ke subagent agart hasil optimal.
 - Satu subagent hanya boleh audit satu file agar hasil optimal.
