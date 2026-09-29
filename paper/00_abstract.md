@@ -15,14 +15,18 @@
 4. **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID: 0009-0003-6991-0694](https://orcid.org/0009-0003-6991-0694))  
    Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia
 
+5. **Dr. Shukor Sanim Mohd Fauzi** ([ORCID: 0000-0003-4333-7853](https://orcid.org/0000-0003-4333-7853))  
+   Faculty of Computer and Mathematical Sciences, Universiti Teknologi MARA Perlis Branch, 02600 Arau, Perlis, Malaysia  
+   Email: `shukorsanim@uitm.edu.my`
+
 ---
 
 ## Abstract
 
-Pengenalan atribut demografis wajah seperti ras dan gender secara simultan menghadapi tantangan variasi ekspresi, penuaan biologis, phenotypic overlap, serta keterbatasan representasi single-domain. Penelitian ini mengusulkan kerangka kerja fusi fitur laten multi-domain yang mengintegrasikan representasi visual dari tiga model Vision Transformer (ViT) pre-trained spesifik tugas untuk biometrik wajah, ekspresi afektif, dan estimasi usia, yang dipadukan dengan optimasi pipeline machine learning klasik untuk klasifikasi enam intersectional demographic subgroups pada dataset DemogPairs. Representasi laten diekstraksi secara offline dari setiap model untuk menghasilkan representasi visual terpadu yang memadukan informasi komplementer lintas-domain. Tujuh konfigurasi fitur dievaluasi melalui 5-Fold Stratified Cross-Validation pada empat classifier: Random Forest (RF), Gaussian Naive Bayes (GNB), Logistic Regression (LR), dan Support Vector Machine (SVM) dengan hyperparameter tuning via Grid Search Cross-Validation (GridSearchCV). Hasil eksperimen menunjukkan bahwa fusi tri-domain meraih performa terbaik pada tiga dari empat classifier yang dievaluasi, dengan model SVM menghasilkan performa tertinggi, mencatat Accuracy 93.70%, Precision 93.72%, Recall 93.70%, dan F1-Score 93.69% pada data uji independen. Evaluasi mendalam pada keenam subkelompok mencatat rentang F1-Score antara 91.74% dan 96.14%, yang membuktikan efektivitas fusi representasi laten multi-domain dalam mengenali atribut demografis interseksional.
+Pengenalan atribut demografis wajah seperti ras dan gender secara simultan menghadapi tantangan variasi ekspresi, penuaan biologis, phenotypic overlap, serta keterbatasan representasi single-domain. Oleh karena itu, dibutuhkan kerangka representasi terpadu yang mampu memadukan berbagai karakteristik wajah secara komprehensif. Penelitian ini mengusulkan kerangka kerja fusi fitur multi-domain yang mengintegrasikan representasi visual dari tiga model Vision Transformer (ViT) pre-trained spesifik tugas untuk biometrik wajah, ekspresi afektif, dan estimasi usia, yang dipadukan dengan optimasi pipeline machine learning klasik untuk klasifikasi enam intersectional demographic subgroups pada dataset DemogPairs. Representasi visual diekstraksi secara offline dari setiap model untuk menghasilkan representasi visual terpadu yang memadukan informasi komplementer lintas-domain. Tujuh konfigurasi fitur dievaluasi melalui 5-Fold Stratified Cross-Validation pada empat classifier: Random Forest (RF), Gaussian Naive Bayes (GNB), Logistic Regression (LR), dan Support Vector Machine (SVM) dengan hyperparameter tuning via Grid Search Cross-Validation (GridSearchCV). Hasil eksperimen menunjukkan bahwa fusi tri-domain meraih performa terbaik pada tiga dari empat classifier yang dievaluasi, dengan model SVM menghasilkan performa tertinggi, mencatat Accuracy 93.70%, Precision 93.72%, Recall 93.70%, dan F1-Score 93.69% pada data uji independen. Evaluasi mendalam pada keenam subkelompok mencatat rentang F1-Score antara 91.74% dan 96.14%, yang membuktikan efektivitas fusi representasi multi-domain dalam mengenali atribut demografis interseksional.
 
 ---
 
 ## Keywords
 
-Race and gender classification, intersectional demographic recognition, multi-domain feature fusion, algorithmic fairness, Vision Transformer.
+Race and gender classification, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer.
