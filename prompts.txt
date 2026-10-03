@@ -12,6 +12,53 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+ketika saya cek pakai https://latexqc.ieee.org/, hasilnya:
+File name
+Line
+Message
+./sections/07_biographies.tex
+1
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 1.
+
+[008]:
+- coba cek https://scholar.google.com/citations?view_op=view_citation&hl=en&user=eREiKhUAAAAJ&citation_for_view=eREiKhUAAAAJ:Se3iqnhoufwC.
+[009]:
+- coba cek https://www.techrxiv.org/doi/full/10.36227/techrxiv.14715216.v1.
+- apa yang harus dilakukan?
+[015]:
+- coba cek https://link.springer.com/chapter/10.1007/978-3-031-37731-0_40.
+[017]:
+- cek https://joiv.org/index.php/joiv/article/view/1923.
+[020]:
+- https://journal.unesa.ac.id/index.php/jieet/article/view/47419.
+[023]:
+- coba cek https://doi.org/10.1609/aaai.v38i6.28396 atau https://ojs.aaai.org/index.php/AAAI/article/view/28396.
+[024]:
+- coba cek https://pmc.ncbi.nlm.nih.gov/articles/PMC11041453/.
+[031]:
+- coba cek https://ieeexplore.ieee.org/document/9973329.
+[046]:
+- coba cek https://www.emerald.com/aci/article/17/1/168/6011/Classification-assessment-methods.
+[050]:
+- cek https://pubmed.ncbi.nlm.nih.gov/36649281/.
+perbaiki referensi berdasarkan 'IEEE Reference Preparation Assistant Report.txt', perhatikan:
+- perbaiki paper, paper_latex_id, dan paper_latex_en.
+- bisa memperbaiki paper/references jika diperlukan.
+- jika ada url nya maka kunjungi dan pastikan.
+- delegasikan ke subagent.
+- berikan instruksi yang jelas kepada subagent.
+- harus berhati-hati agar subagent yang lain tidak sama-sama edit file yang sama secara bersamaan.
+- lakukan dengan sangat amat teliti.
+
+perbaiki referensi berdasarkan 'IEEE Reference Preparation Assistant Report.txt', perhatikan:
+- perbaiki paper, paper_latex_id, dan paper_latex_en.
+- jika ada url nya maka kunjungi dan pastikan.
+- delegasikan ke subagent.
+- berikan instruksi yang jelas kepada subagent.
+- harus berhati-hati agar subagent yang lain tidak sama-sama edit file yang sama secara bersamaan.
+- lakukan dengan sangat amat teliti.
+
 Butir 11: Definisi Singkatan & Akronim pada Kemunculan Pertama:
 - Akar Masalah (Root Cause):
   - perbaiki rules/md_rules.txt.
