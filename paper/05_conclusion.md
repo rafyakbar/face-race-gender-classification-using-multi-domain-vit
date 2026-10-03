@@ -6,4 +6,4 @@ Terlepas dari capaian tersebut, penelitian ini memiliki sejumlah keterbatasan ya
 
 ## Data Availability Statement
 
-Dataset DemogPairs yang dianalisis dalam penelitian ini merupakan dataset sekunder yang tersedia secara publik untuk keperluan riset akademis. Citra wajah beserta anotasi label demografis dapat diakses secara bebas melalui publikasi resmi pengembang pada https://ihupont.github.io/publications/2019-05-16-demogpairs dan direktori penyimpanan Google Drive resmi pada https://drive.google.com/file/d/1f_ez-ll6wxDXScrG4ceStZRuLT_K8Uy8/view?usp=sharing.
+Dataset DemogPairs yang dianalisis dalam penelitian ini merupakan dataset yang tersedia secara publik untuk keperluan riset akademis. Citra wajah beserta anotasi label demografis dapat diakses secara bebas melalui publikasi resmi pengembang pada https://ihupont.github.io/publications/2019-05-16-demogpairs dan direktori penyimpanan Google Drive resmi pada https://drive.google.com/file/d/1f_ez-ll6wxDXScrG4ceStZRuLT_K8Uy8/view?usp=sharing.
