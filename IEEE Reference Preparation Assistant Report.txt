@@ -1,0 +1,82 @@
+================================================================================
+Laporan IEEE Reference Preparation Assistant
+================================================================================
+
+Terima kasih telah menggunakan IEEE Reference Preparation Assistant. Di bawah ini adalah catatan dan tindakan yang direkomendasikan terkait referensi Anda.
+
+Harap tinjau kembali hasil referensi Anda meskipun tidak ada peringatan yang dilaporkan. IEEE Reference Preparation Assistant mungkin telah melakukan koreksi atau penambahan yang tidak tercantum dalam laporan ini. Teks abu-abu pada berkas hasil yang dikembalikan menunjukkan referensi yang tidak dapat diproses karena masalah pemformatan referensi atau referensi yang tidak lengkap.
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[008] Z. S. Marzoog, A. D. Hasan, and H. H. Abbas, “Gender and race classification using geodesic distance measurement,” Indones. J. Electr. Eng. Comput. Sci., vol. 27, no. 2, pp. 820–831, Aug. 2022. 10.11591/ijeecs.v27.i2.pp820-831
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant mungkin telah memperbarui nama individu untuk penyesuaian gaya penulisan, tetapi daftar nama belum diperbarui karena adanya ketidaksesuaian nama. Silakan bandingkan "Marzoog" dengan "Shahad Marzoog", "Hasan" dengan "Dhannon Hasan", dan "Abbas" dengan "Hassan Abbas". (Ref. 008 "Marzoog, Hasan, Abbas, 2022")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[009] J. P. Robinson, C. Qin, Y. Henon, S. Timoner, and Y. Fu, “Balancing biases and preserving privacy on Balanced Faces in the Wild,” IEEE Trans. Image Process., vol. 32, pp. 4365–4377, 2023. 10.1109/TIP.2023.3282837
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant melaporkan bahwa artikel ini awalnya diunggah sebagai Preprint di https://doi.org/10.36227/techrxiv.14715216. (Ref. 009 "Robinson, Qin, Henon, Timoner, Fu, 2023")
+2. Reference Preparation Assistant melaporkan bahwa artikel ini awalnya diunggah sebagai Preprint di https://doi.org/10.36227/techrxiv.14715216.v1. (Ref. 009 "Robinson, Qin, Henon, Timoner, Fu, 2023")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[015] S. Ramachandran and A. Rattani, “Deep generative views to mitigate gender classification bias across gender-race groups,” in Pattern Recognition, Computer Vision, and Image Processing. ICPR 2022 International Workshops and Challenges, J.-J. Rousseau and B. Kapralos, Eds. Cham, Switzerland: Springer Nature Switzerland, 2023, pp. 551–569. 10.1007/978-3-031-37731-0_40
+
+Catatan dan tindakan yang direkomendasikan:
+1. Edifix mencocokkan referensi ini dengan data Crossref "10.1007/978-3-031-37731-0_40" berdasarkan teksnya (kecocokan judul 100%). Harap konfirmasi bahwa ini memang karya yang disitasi. (Ref. 015 "Ramachandran, Rattani, 2023")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[017] G. G. Tahyudin, M. D. Sulistiyo, M. Arzaki, and E. Rachmawati, “Classifying gender based on face images using vision transformer,” JOIV Int. J. Inform. Vis., vol. 8, no. 1, pp. 18–25, Mar. 2024. 10.62527/joiv.8.1.1923
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant tidak mengenali judul jurnal "International Journal on Informatics Visualization". Silakan periksa referensi tersebut dan perbaiki jika diperlukan. (Ref. 017 "Tahyudin, Sulistiyo, Arzaki, Rachmawati, 2024")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[020] R. A. Putri, R. E. Putra, and Y. Yamasari, “MD-ViT: Multidomain vision transformer fusion for fair demographic attribute recognition,” Journal of Information Engineering and Educational Technology, vol. 9, no. 2, pp. 64–79, Dec. 2025. 10.26740/jieet.v9n2.p64-79
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant tidak mengenali judul jurnal "Journal of Information Engineering and Educational Technology". Silakan periksa referensi tersebut dan perbaiki jika diperlukan. (Ref. 020 "Putri, Putra, Yamasari, 2025")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[023] Z. Wang, L. Xiao, Z. Cao, and H. Lu, “Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting,” in Proceedings of the AAAI Conference on Artificial Intelligence (AAAI), vol. 38, no. 6, Mar. 2024, pp. 5832–5840. 10.1609/aaai.v38i6.28396
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant melaporkan bahwa penulisan volume seharusnya "38", bukan "vol. 38". Silakan periksa referensi tersebut. (Ref. 023 "Wang, Xiao, Cao, Lu, 2024")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[024] D. Wilimitis and C. G. Walsh, “Practical considerations and applied examples of cross-validation for model development and evaluation in health care: Tutorial,” JMIR AI, vol. 2, p. e49023, Dec. 18 2023. 10.2196/49023
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant melaporkan bahwa artikel ini awalnya diunggah sebagai Preprint di https://doi.org/10.2196/preprints.49023. (Ref. 024 "Wilimitis, Walsh, 2023")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[031] C. Zhao, D. Wu, J. Huang, Y. Yuan, H.-T. Zhang, R. Peng, et al., “BoostTree and BoostForest for ensemble learning,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 45, no. 7, pp. 8110–8126, Jul. 2023. 10.1109/TPAMI.2022.3227370
+
+Catatan dan tindakan yang direkomendasikan:
+1. Edifix mencocokkan referensi ini dengan data Crossref "10.1109/tpami.2022.3227370" berdasarkan teksnya (kecocokan judul 100%). Harap konfirmasi bahwa ini memang karya yang disitasi. (Ref. 031 "Zhao, Wu, Huang, Yuan, Zhang, Peng, et al., 2023")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[046] A. Tharwat, “Classification assessment methods,” Applied Computing and Informatics, vol. 17, no. 1, pp. 168–192, Jan. 2021. 10.1016/j.aci.2018.08.003
+
+Catatan dan tindakan yang direkomendasikan:
+1. Reference Preparation Assistant tidak mengenali judul jurnal "Applied Computing and Informatics". Silakan periksa referensi tersebut dan perbaiki jika diperlukan. (Ref. 046 "Tharwat, 2021")
+
+--------------------------------------------------------------------------------
+Referensi Anda:
+[050] K. Nadeem and M.-A. Jabri, “Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data,” PLoS One, vol. 18, no. 1, p. e0280258, Jan. 17 2023. 10.1371/journal.pone.0280258
+
+Catatan dan tindakan yang direkomendasikan:
+1. Rentang halaman telah diperbarui tetapi berbeda dari dokumen asli Anda: pp. 1–26. Silakan periksa referensi tersebut. (Ref. 050 "Nadeem, Jabri, 2023")
+
+--------------------------------------------------------------------------------
+Silakan gunakan IEEE Reference Preparation Assistant kembali segera. https://refassist.ieee.org
+================================================================================

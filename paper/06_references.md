@@ -25,10 +25,10 @@
 [8] Z. S. Marzoog, A. D. Hasan, and H. H. Abbas, "Gender and race classification using geodesic distance measurement," *Indonesian Journal of Electrical Engineering and Computer Science*, vol. 27, no. 2, pp. 820-831, Aug. 2022, doi: 10.11591/ijeecs.v27.i2.pp820-831.
 
 <a id="ref9"></a>
-[9] J. P. Robinson, C. Qin, Y. Henon, S. Timoner, and Y. Fu, "Balancing biases and preserving privacy on Balanced Faces in the Wild," *IEEE Transactions on Image Processing*, vol. 32, pp. 4365-4377, Aug. 2023, doi: 10.1109/TIP.2023.3282837.
+[9] J. P. Robinson, C. Qin, Y. Henon, S. Timoner, and Y. Fu, "Balancing biases and preserving privacy on Balanced Faces in the Wild," *IEEE Transactions on Image Processing*, vol. 32, pp. 4365-4377, 2023, doi: 10.1109/TIP.2023.3282837.
 
 <a id="ref10"></a>
-[10] M. Sohail et al., "Racial identity-aware facial expression recognition using deep convolutional neural networks," *Applied Sciences*, vol. 12, no. 1, Art. no. 88, 2022, doi: 10.3390/app12010088.
+[10] M. Sohail et al., "Racial identity-aware facial expression recognition using deep convolutional neural networks," *Applied Sciences*, vol. 12, no. 1, Art. no. 88, Dec. 2021, doi: 10.3390/app12010088.
 
 <a id="ref11"></a>
 [11] D. Belcar, P. Grd, and I. Tomičić, "Automatic ethnicity classification from middle part of the face using convolutional neural networks," *Informatics*, vol. 9, no. 1, Art. no. 18, 2022, doi: 10.3390/informatics9010018.
@@ -43,13 +43,13 @@
 [14] J. Brinkmann, P. Swoboda, and C. Bartelt, "A multidimensional analysis of social biases in vision transformers," in *Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV)*, Paris, France, 2023, pp. 4891-4900, doi: 10.1109/ICCV51070.2023.00453.
 
 <a id="ref15"></a>
-[15] S. Ramachandran and A. Rattani, "Deep generative views to mitigate gender classification bias across gender-race groups," in *Pattern Recognition, Computer Vision, and Image Processing. ICPR 2022 International Workshops and Challenges*, J.-J. Rousseau and B. Kapralos, Eds., Cham, Switzerland: Springer, 2023, pp. 551-569, doi: 10.1007/978-3-031-37731-0_40.
+[15] S. Ramachandran and A. Rattani, "Deep generative views to mitigate gender classification bias across gender-race groups," in *Pattern Recognition, Computer Vision, and Image Processing. ICPR 2022 International Workshops and Challenges*, J.-J. Rousseau and B. Kapralos, Eds., Cham, Switzerland: Springer Nature Switzerland, 2023, pp. 551-569, doi: 10.1007/978-3-031-37731-0_40.
 
 <a id="ref16"></a>
 [16] S. Chen, X. Lai, Y. Yan, D.-H. Wang, and S. Zhu, "Learning an attention-aware parallel sharing network for facial attribute recognition," *Journal of Visual Communication and Image Representation*, vol. 90, Art. no. 103745, 2023, doi: 10.1016/j.jvcir.2022.103745.
 
 <a id="ref17"></a>
-[17] G. G. Tahyudin, M. D. Sulistiyo, M. Arzaki, and E. Rachmawati, "Classifying gender based on face images using vision transformer," *International Journal on Informatics Visualization*, vol. 8, no. 1, pp. 18-25, 2024, doi: 10.62527/joiv.8.1.1923.
+[17] G. G. Tahyudin, M. D. Sulistiyo, M. Arzaki, and E. Rachmawati, "Classifying gender based on face images using vision transformer," *JOIV : International Journal on Informatics Visualization*, vol. 8, no. 1, pp. 18-25, Mar. 2024, doi: 10.62527/joiv.8.1.1923.
 
 <a id="ref18"></a>
 [18] A.-A. Kalkatawi and U. Saeed, "Ethnicity classification based on facial images using deep learning approach," *International Journal of Advanced Computer Science and Applications*, vol. 15, no. 2, pp. 217-226, 2024, doi: 10.14569/IJACSA.2024.0150223.
@@ -67,10 +67,10 @@
 [22] Y. Deng, S. Teng, L. Fei, W. Zhang, and I. Rida, "A multifeature learning and fusion network for facial age estimation," *Sensors*, vol. 21, no. 13, Art. no. 4597, 2021, doi: 10.3390/s21134597.
 
 <a id="ref23"></a>
-[23] Z. Wang, L. Xiao, Z. Cao, and H. Lu, "Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting," in *Proc. AAAI Conf. Artif. Intell.*, vol. 38, no. 6, pp. 5832–5840, Mar. 2024, doi: 10.1609/aaai.v38i6.28396.
+[23] Z. Wang, L. Xiao, Z. Cao, and H. Lu, "Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting," in *Proc. AAAI Conf. Artif. Intell.*, Mar. 2024, pp. 5832-5840, doi: 10.1609/aaai.v38i6.28396.
 
 <a id="ref24"></a>
-[24] D. Wilimitis and C. G. Walsh, "Practical considerations and applied examples of cross-validation for model development and evaluation in health care: tutorial," *JMIR AI*, vol. 2, Art. no. e49023, 2023, doi: 10.2196/49023.
+[24] D. Wilimitis and C. G. Walsh, "Practical considerations and applied examples of cross-validation for model development and evaluation in health care: tutorial," *JMIR AI*, vol. 2, Art. no. e49023, Dec. 2023, doi: 10.2196/49023.
 
 <a id="ref25"></a>
 [25] I. Hupont and C. Fernández, "DemogPairs: quantifying the impact of demographic imbalance in deep face recognition," in *Proc. 2019 14th IEEE Int. Conf. Autom. Face Gesture Recognit. (FG)*, Lille, France, 2019, pp. 1-7, doi: 10.1109/FG.2019.8756625.
@@ -91,10 +91,10 @@
 [30] M. A. Ganaie, M. Tanveer, P. N. Suganthan, and V. Snasel, "Oblique and rotation double random forest," *Neural Networks*, vol. 153, pp. 496-517, 2022, doi: 10.1016/j.neunet.2022.06.012.
 
 <a id="ref31"></a>
-[31] C. Zhao et al., "BoostTree and BoostForest for ensemble learning," *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 45, no. 7, pp. 8110-8126, 2023, doi: 10.1109/TPAMI.2022.3227370.
+[31] C. Zhao et al., "BoostTree and BoostForest for ensemble learning," *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 45, no. 7, pp. 8110-8126, Jul. 2023, doi: 10.1109/TPAMI.2022.3227370.
 
 <a id="ref32"></a>
-[32] Y.-X. He, S.-H. Lyu, and Y. Jiang, "Interpreting deep forest through feature contribution and MDI feature importance," *ACM Transactions on Knowledge Discovery from Data*, vol. 20, no. 1, Art. no. 15, Dec. 2025, doi: 10.1145/3641108.
+[32] Y.-X. He, S.-H. Lyu, and Y. Jiang, "Interpreting deep forest through feature contribution and MDI feature importance," *ACM Transactions on Knowledge Discovery from Data*, vol. 20, no. 1, Art. no. 15, pp. 1-21, Dec. 2025, doi: 10.1145/3641108.
 
 <a id="ref33"></a>
 [33] N. Zhu, C. Zhu, L. Zhou, Y. Zhu, and X. Zhang, "Optimization of the random forest hyperparameters for power industrial control systems intrusion detection using an improved grid search algorithm," *Applied Sciences*, vol. 12, no. 20, Art. no. 10456, 2022, doi: 10.3390/app122010456.
@@ -148,7 +148,7 @@
 [49] S. Guo et al., "Functional multivariable logistic regression with an application to HIV viral suppression prediction," *Biometrical Journal*, vol. 66, no. 5, Art. no. e202300081, 2024, doi: 10.1002/bimj.202300081.
 
 <a id="ref50"></a>
-[50] K. Nadeem and M.-A. Jabri, "Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data," *PLOS ONE*, vol. 18, no. 1, pp. 1-26, Jan. 2023, doi: 10.1371/journal.pone.0280258.
+[50] K. Nadeem and M.-A. Jabri, "Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data," *PLOS ONE*, vol. 18, no. 1, Art. no. e0280258, pp. 1-26, Jan. 2023, doi: 10.1371/journal.pone.0280258.
 
 <a id="ref51"></a>
 [51] Scikit-learn Developers, "SVC," [Online]. Available: https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html [Accessed: Feb. 2, 2026].
