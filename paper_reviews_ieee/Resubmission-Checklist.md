@@ -1,0 +1,101 @@
+# Resubmission Checklist
+
+Thank you again for your submission to IEEE *Access*. As the Associate Editor noted in the decision letter, we encourage you to revise your article based on the Editor and reviewers’ feedback and resubmit.
+
+Before resubmitting, please carefully review the resubmission checklist below to ensure that you have all the necessary files prepared to alleviate delay in the peer review process. When your files are prepared you can resubmit as a new manuscript through the [IEEE Author Portal](https://ieee.atyponrex.com/journal/ieee-access).
+
+For more information on submission guidelines, please visit our [submission checklist](https://ieeeaccess.ieee.org/guide-for-authors/submission-guidelines/).
+
+---
+
+## Checklist
+
+- [ ] ### 1. Review Comments and Concerns
+  **Carefully review all comments and concerns from the Editor and reviewers to ensure that you make the necessary changes to your manuscript before resubmitting.**
+
+  Please revise your manuscript based on the Editor and reviewers’ feedback and resubmit; elaborate on your points and clarify with references, examples, data, etc. If you disagree with any technical points the reviewers have made, please include your counterarguments in your response to the reviewers (more information detailed below) and work this into the updated manuscript.
+
+  Also, note that if a reviewer suggested references, you should only add those that are relevant to your work if you feel they strengthen your article. Recommending references to specific publications is not appropriate for reviewers and you should report excessive cases to [ieeeaccessEIC@ieee.org](mailto:ieeeaccessEIC@ieee.org).
+
+---
+
+- [ ] ### 2. Language and Grammar Review
+  **Carefully review the grammar to ensure all grammatical errors have been corrected.**
+
+  IEEE *Access* only provides light editing during production, so it’s important that authors carefully review their grammar. If needed, IEEE *Access* offers [PaperPal Preflight](https://preflight.paperpal.com/partner/ieee/access) (free or paid version) to assist authors with checking their article for grammar issues.
+
+  Additionally, IEEE *Access* authors are eligible for discounts at the following language editing services:
+  - [American Journal Experts](https://www.aje.com/go/ieee/): 10% discount
+  - [Enago](https://www.enago.com/ieee/): 30% discount ([review Enago’s services for authors in Chinese](https://www.enago.com/ieee/cn/))
+
+---
+
+- [ ] ### 3. Math Equations Formatting
+  **Ensure all math equations are properly formatted according to IEEE guidelines (if applicable).**
+
+  The main guidelines to keep in mind for math equations are:
+  - Single letter variables should be in italic. Multiple letter variables, functions and labels should not be in italic.
+  - If you write *ab* in italics, it means *a* × *b*. Use this visualization to correct all your math.
+  - Two italic variables next to each other means multiplication. Only use an explicit multiplication sign if absolutely needed.
+  - Use the proper multiplication sign and not an asterisk. If you want to use a dot, use a centered dot and not a period (full-stop).
+  - Physical units must not be in italic.
+  - There should always be a space between a number and the units (with the exception of the degree symbol and %).
+  - Use bold font for vectors.
+
+  For more information on editing mathematics per IEEE guidelines, [please click here](http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/Editing-Mathematics.pdf).
+
+---
+
+- [ ] ### 4. References Formatting
+  **Carefully review the formatting of references.**
+
+  We encourage you to check the formatting of your references to ensure that they are accurate in terms of bibliographic details as well as consistent with [IEEE style](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/create-the-text-of-your-article/ieee-editorial-style-manual/).
+
+  Additionally, we recommend that you list the references in order of citation throughout the manuscript to make it easier for the Associate Editor and reviewers to follow.
+
+---
+
+- [ ] ### 5. Video Files (if applicable)
+  **Video(s) included in peer review (if any).**
+
+  Any video you wish to have published with the article (if accepted for publication) should be submitted with the revised article to undergo peer review. As a reminder, the video file should not exceed 100 MB.
+
+---
+
+- [ ] ### 6. Response to Reviewers Document
+  **Response to Reviewers Document.**
+
+  A document containing your response to reviewers from the previous peer review. The “response to reviewers” document (template attached) should have the following regarding each comment:
+  - **a)** Reviewer’s concern,
+  - **b)** your response to the concern,
+  - **c)** your action to remedy the concern.
+
+  The document should be uploaded with your manuscript files under **“Author’s Response Files”**.
+
+  *\*Please note that the original reviewers will be invited to review, but unfortunately, we cannot guarantee that they are available or willing to complete the review again. Due to the binary decision process of IEEE Access, each article submission requires a minimum of 2 independent reviewers before a decision can be made. If an original reviewer is unavailable, an alternate reviewer will be invited and informed of the peer review history, including all edits made and your response to reviewers.\**
+
+---
+
+- [ ] ### 7. Highlighted PDF Manuscript
+  **A version of your manuscript with all individual changes highlighted.**
+
+  Your updated manuscript with all your individual changes highlighted, including grammatical changes (e.g. preferably with the yellow highlight tool within the pdf file). This file should be uploaded with your manuscript files as **“Highlighted PDF.”** This file will help the reviewers and Associate Editor pinpoint the areas that were changed from the original version of your article.
+
+---
+
+- [ ] ### 8. Supplementary Materials (if applicable)
+  **Supplementary materials (if any).**
+
+  Be sure to provide any supplementary materials that are separate from the manuscript with your final files to ensure they are published alongside your article. Supplementary materials can be appendices, video, additional graph/figures, etc. All supplementary materials should have been included in peer review or they cannot be published. Supplementary materials should be uploaded as a `.zip` file.
+
+---
+
+- [ ] ### 9. Main Manuscript (Source File)
+  **The revised manuscript in MS Word or LaTeX with all author biographies and photos included uploaded as the “Main Manuscript”.**
+
+  Required IEEE *Access* templates can be found on the [Preparing Your Article](https://ieeeaccess.ieee.org/guide-for-authors/preparing-your-article/) page of our website.
+
+---
+
+- [ ] ### 10. Main Manuscript (PDF File)
+  **A PDF of the revised manuscript in double column, single-spaced format uploaded as the "Main Manuscript – PDF".**
