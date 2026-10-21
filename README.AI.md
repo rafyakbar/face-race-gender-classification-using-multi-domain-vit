@@ -1,162 +1,199 @@
 # Master AI Agent Reference Guide: Intersectional Face Race & Gender Classification via Multi-Domain Vision Transformer Feature Fusion
 
-> **Notice to AI Agents:** This file (`README.AI.md`) is the single source of truth and comprehensive operational manual for this research repository. Any AI agent working on this codebase should read this document to understand the full context, architecture, dataset, feature extraction protocols, experimental results, code structure, evaluation metrics, and scientific writing rules without needing to reconstruct context from multiple disparate files.
+> **Critical Notice to AI Agents:** This file (`README.AI.md`) is the authoritative, self-contained single source of truth and comprehensive operational manual for this research repository. Any AI agent entering this project should read this document to understand the full context, research background, model architecture, dataset, feature extraction protocols, 28-model experimental benchmark, official IEEE Access peer review dossier, submission compliance artifacts, codebase utilities, reproduction workflows, and scientific writing rules without needing to explore or reconstruct context from disparate files.
 
 ---
 
 ## 📑 Table of Contents
 
-1. [Executive Summary & Project Identity](#1-executive-summary--project-identity)
-2. [Research Architecture & Methodology](#2-research-architecture--methodology)
-3. [Dataset Specifications & Partitioning Protocol](#3-dataset-specifications--partitioning-protocol)
-4. [Feature Extraction & Fusion Engineering](#4-feature-extraction--fusion-engineering)
-5. [Classical Classifier Pipeline & GridSearchCV Optimization](#5-classical-classifier-pipeline--gridsearchcv-optimization)
-6. [Comprehensive Experimental Benchmark (28 Experiments)](#6-comprehensive-experimental-benchmark-28-experiments)
-7. [Intersectional Subgroup Performance & Disparity Analysis](#7-intersectional-subgroup-performance--disparity-analysis)
-8. [Comparison with Prior Studies](#8-comparison-with-prior-studies)
-9. [Repository & Codebase Architecture](#9-repository--codebase-architecture)
-10. [Utilities Package Reference (`utils/`)](#10-utilities-package-reference-utils)
-11. [Execution & Reproduction Workflow](#11-execution--reproduction-workflow)
-12. [Scientific Claim Boundaries & Academic Writing Rules](#12-scientific-claim-boundaries--academic-writing-rules)
-13. [Key Authors, Provenance & Citation Metadata](#13-key-authors-provenance--citation-metadata)
+1. [Executive Summary & Manuscript Identity](#1-executive-summary--manuscript-identity)
+2. [Current Publication Journey & Peer Review Dossier (`paper_reviews_ieee/`)](#2-current-publication-journey--peer-review-dossier-paper_reviews_ieee)
+3. [Research Architecture & Methodological Pipeline](#3-research-architecture--methodological-pipeline)
+4. [Dataset Specifications, Label Encodings & Partitioning Protocol](#4-dataset-specifications-label-encodings--partitioning-protocol)
+5. [Feature Extraction & 7 Ablation Schemes](#5-feature-extraction--7-ablation-schemes)
+6. [Classical Classifier Pipeline & Exhaustive GridSearchCV Optimization](#6-classical-classifier-pipeline--exhaustive-gridsearchcv-optimization)
+7. [Comprehensive Experimental Benchmark (Definitive 28-Model Leaderboard)](#7-comprehensive-experimental-benchmark-definitive-28-model-leaderboard)
+8. [Intersectional Subgroup Performance, Confusion Matrix & Error Dynamics](#8-intersectional-subgroup-performance-confusion-matrix--error-dynamics)
+9. [Comparison with Prior Studies on DemogPairs & Contextual Literature](#9-comparison-with-prior-studies-on-demogpairs--contextual-literature)
+10. [Repository Architecture & File Inventory](#10-repository-architecture--file-inventory)
+11. [Submission Compliance & Packaging (`paper_submission/` & `upload/`)](#11-submission-compliance--packaging-paper_submission--upload)
+12. [Internal Mock Peer Review Suite (`paper_reviews/`) & Agent Skills (`.agents/skills/`)](#12-internal-mock-peer-review-suite-paper_reviews--agent-skills-agentsskills)
+13. [Python Utilities Library Reference (`experiment/code/utils/`)](#13-python-utilities-library-reference-experimentcodeutils)
+14. [Execution, Reproduction & Manuscript Compilation Workflows](#14-execution-reproduction--manuscript-compilation-workflows)
+15. [Scientific Claim Boundaries & Academic Writing Constraints (27 Directives)](#15-scientific-claim-boundaries--academic-writing-constraints-27-directives)
+16. [Key Authors, Academic Provenance & Citation Metadata](#16-key-authors-academic-provenance--citation-metadata)
 
 ---
 
-## 1. Executive Summary & Project Identity
+## 1. Executive Summary & Manuscript Identity
 
-### 1.1 Project Overview
-- **Repository Name / Corpus:** `rafyakbar/face-race-gender-classification-using-multi-domain-vit`
-- **Working Directory:** `D:\Research\face-race-gender-classification-using-multi-domain-vit`
-- **Target Publication:** High-tier Q1 International Journal (IEEE Access / Pattern Recognition / Image and Vision Computing)
-- **Paper Title:** *Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images*
-- **Primary Goal:** Classify facial images into **6 intersectional demographic subgroups** (3 Races × 2 Genders: Asian/Black/White × Female/Male) by combining task-associated latent representations from three domain-specialized pre-trained Vision Transformers (**Face**, **Facial Emotion**, and **Facial Age**) and optimizing downstream classical machine learning pipelines via exhaustive 5-Fold Stratified GridSearchCV.
+### 1.1 Core Metadata
+- **Repository Title / Working Directory:** `face-race-gender-classification-using-multi-domain-vit` (`D:\Research\face-race-gender-classification-using-multi-domain-vit`)
+- **Primary Corpus Authors:** Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom. (Corresponding Author, `rickyeka@unesa.ac.id`), Rezky Arisanti Putri, S.Kom., M.Kom., Dr. Yuni Yamasari, S.Kom., M.Kom., Rafy Aulia Akbar, S.Kom., M.Kom.
+- **Affiliation:** Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya (UNESA), Surabaya, East Java, Indonesia.
+- **Target Journal:** **IEEE Access** (Open Access, Q1, Impact Factor: 3.4).
+- **Official Manuscript Tracking ID:** **`Access-2026-50857`**.
+- **Manuscript Title:** *Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images*.
+- **Current Milestone:** Editorial Decision Received on **October 20, 2026** (Binary Review Outcome: Reject & Resubmit with 1 resubmission opportunity allowed).
 
-### 1.2 Key Research Findings & Benchmarks
-- **Top Performing Model (Highest Performance Among Compared Studies):** **Support Vector Machine (SVM) + Tri-Domain ViT Fusion** (`vit-face-emotion-age`, 2,304-d)
-  - **Test Accuracy:** **93.70%** (2,024 / 2,160 correct on held-out test set)
+### 1.2 Core Research Paradigm
+The study proposes an offline feature fusion framework for 6-class intersectional demographic classification (3 Races × 2 Genders: Asian/Black/White × Female/Male) from facial images. The system extracts task-associated latent representations from three frozen, specialized pre-trained Vision Transformer (ViT-Base) backbones:
+1. **ViT-Face** (`skutaada/VIT-VGGFace`): Captures static craniofacial biometrics and identity-related spatial geometry.
+2. **ViT-Emotion** (`dima806/facial_emotions_image_detection`): Captures dynamic affective expressions and localized facial action units.
+3. **ViT-Age** (`dima806/facial_age_image_detection`): Captures biological aging morphology and epidermal texture patterns.
+
+High-level `[CLS]` token vectors (768-d per domain) are concatenated into a **Tri-Domain representation** ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$) and fed into downstream classical classifiers optimized through exhaustive 5-Fold Stratified GridSearchCV (evaluating 1,086 hyperparameter combinations and 38,010 total cross-validation fits across 4 classifier families: SVM, Logistic Regression, Random Forest, and Gaussian Naive Bayes).
+
+### 1.3 Key Benchmark Achievements
+- **Top-Performing Configuration:** **Support Vector Machine (SVM) + Tri-Domain ViT Fusion** (`vit-face-emotion-age`, 2,304-d)
+  - **Test Accuracy:** **93.70%** (2,024 correct out of 2,160 held-out test samples).
   - **Macro Precision:** **0.9372**
   - **Macro Recall:** **0.9370**
   - **Macro F1-Score:** **0.9369**
-  - **Best Hyperparameters:** $C = 10$, kernel = `'poly'`, degree = 2, gamma = `'scale'`, Scaler = `None`, PCA = `None`
-- **Global Classifier Hierarchy (Average Accuracy across all 7 Feature Configurations):**
-  $$\text{SVM } (0.9147) > \text{Logistic Regression } (0.9040) > \text{Random Forest } (0.8281) > \text{Gaussian Naive Bayes } (0.7937)$$
-- **Ablation Insight:** Tri-Domain (2,304-d) outperforms Dual-Domain (1,536-d) and Single-Domain (768-d) across **3 of 4 classifiers** (SVM, LR, GNB). Random Forest achieved its best performance on dual-domain `Emotion ⊕ Face` (0.8685). Biological Age (`ViT-Age`), while weaker individually, provides additional discriminative morphology information that contributes to improved accuracy and reduced subgroup error.
-- **Subgroup Disparity:** Subgroup F1-scores range from **0.9174 to 0.9614** (disparity gap $\Delta_{\text{F1}} = 0.0440$), with One-vs-Rest (OvR) Accuracy ranging from **97.31% to 98.70%**, showing a lower disparity across demographic subgroups compared to single- and dual-domain configurations.
+  - **Best Hyperparameters:** $C = 10$, kernel = `'poly'`, degree = 2, gamma = `'scale'`, Scaler = `None`, PCA = `None`.
+- **Global Classifier Hierarchy (Average Accuracy across all 7 feature schemes):**
+  $$\text{SVM } (91.47\%) > \text{Logistic Regression } (90.40\%) > \text{Random Forest } (82.81\%) > \text{Gaussian Naive Bayes } (79.37\%)$$
+- **Ablation Trend:** Tri-domain fusion yields peak accuracy on 3 of the 4 classifiers (SVM: 93.70%, LR: 92.73%, GNB: 85.05%). Random Forest peaks on dual-domain `Emotion ⊕ Face` (86.85% vs. 86.20% on tri-domain).
+- **Subgroup Fairness Profile:** Subgroup F1-scores range from **0.9174 to 0.9614** ($\Delta_{\text{F1}} = 0.0440$), with OvR Accuracy from **97.31% to 98.70%**.
 
 ---
 
-## 2. Research Architecture & Methodology
+## 2. Current Publication Journey & Peer Review Dossier (`paper_reviews_ieee/`)
 
-### 2.1 End-to-End Methodological Framework
+The manuscript was formally submitted to IEEE Access and received an official editorial decision letter on October 20, 2026. The peer review dossier is curated in [`paper_reviews_ieee/`](paper_reviews_ieee/).
+
+### 2.1 Editorial Decision Overview
+- **Associate Editor:** Dr. Vincenzo Conti (`vincenzo.conti@unikore.it`, `vinc.conti@gmail.com`).
+- **Article Administrator:** Mr. Adesh Choudhary (`adesh.choudhary@ieee.org`).
+- **Decision Date:** 20-10-2026.
+- **Decision Type:** Rejected under IEEE Access's binary peer review model, with an explicit invitation to resubmit as a revised manuscript.
+- **Resubmission Opportunity:** Exactly **ONE** opportunity to resubmit is permitted. If unresolved concerns remain, the manuscript is definitively rejected.
+- **Resubmission Portal URL:** [IEEE Author Portal Resubmission Board](https://ieee.atyponrex.com/journal/ieee-access).
+
+### 2.2 Curated Files in `paper_reviews_ieee/`
+All relevant files have been converted into clean, standardized Markdown:
+
+| File | Path | Role & Content |
+|---|---|---|
+| **Editorial Decision & Reviews** | [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](paper_reviews_ieee/IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) | Official decision letter, submission link, required 3 files, Reviewer 1 (7 comments) & Reviewer 2 (10 comments) with questionnaires. |
+| **Response to Reviewers Template** | [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) | Standard IEEE Access response structure: point-by-point reviewer concerns, author responses, and author actions taken. |
+| **Request for Byline Change** | [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) | Official form and detailed justification required if the author list/order changes between original and revised submissions. |
+| **Resubmission Checklist** | [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) | 10-point compliance checklist: reviewer responses, grammar tools/discounts, math formulas, references, highlighted PDF, and main files. |
+
+### 2.3 Detailed Deconstruction of Reviewer Comments
+
+#### Reviewer 1 (Acceptable with Revisions; 7 Core Comments)
+1. **Introduction Length:** Section I is overly lengthy; needs to be tightened and summarized.
+2. **Related Works & Equations:** Section II requires better structuring and inclusion of formal mathematical formulations/equations.
+3. **Figure 3 Redesign:** ViT diagram in Figure 3 needs redesigning and clearer explanation to show methodological novelty and enhance visual clarity.
+4. **Figure 4 Discussion:** Visual data graph in Figure 4 needs deeper and more rigorous discussion in the narrative.
+5. **Experimental & Dataset Details + Time Cost:** Provide more granular detail on the dataset, articulate specific contributions, and report execution time costs.
+6. **Broader Method Comparisons:** Compare proposed framework against additional baseline methods to validate empirical contributions.
+7. **Conclusion Section:** Revise Section V to reflect the actual contributions more effectively and concisely.
+- *Questionnaire Answers:* Reviewed all files (Yes), Contributes to knowledge (Yes), Technically sound (Yes), Comprehensive presentation (Yes), References applicable (Yes), Inappropriate references (No).
+
+#### Reviewer 2 (Substantial Methodological & Statistical Scrutiny; 10 Core Comments)
+1. **Novelty & Methodological Contribution:** Clarify methodological novelty beyond simple concatenation of 3 pre-trained ViT feature vectors followed by off-the-shelf classifiers, relative to existing dual-domain and multi-domain techniques.
+2. **Data Leakage & Subject-Disjoint Generalization:** Inquire whether the image-level stratified split (10,800 images across 600 unique identities, 18 images/identity) permits images of the same identity to appear in both training and test partitions. Request clarification on identity overlap and evaluation under subject-disjoint conditions.
+3. **Preprocessing & Reproducibility:** Specify exact HuggingFace checkpoint versions, image processors, normalization parameters, and feature extraction procedures for all three ViT backbones.
+4. **Hyperparameter Search Space Consistency:** Reconcile reported search space metrics (1,086 combinations, 38,010 cross-validation fits, 28 final refits) with individual parameter tables in the methodology.
+5. **Statistical Significance & McNemar Test:** Point out that SVM accuracy gain from dual-domain (93.29%) to tri-domain (93.70%) is not statistically significant based on the reported McNemar test ($p = 0.3057$). Consequently, claims of tri-domain superiority and feature saturation must be appropriately qualified.
+6. **Fairness Analysis Scope:** Clarify that Equal Opportunity Difference (EOD) metrics provide useful subgroup data but do not constitute comprehensive demographic fairness. Refine the scope of fairness claims.
+7. **Baseline Benchmark Conditions:** Clarify whether prior methods compared in Table 12 used identical data partitions, preprocessing, and evaluation protocols; otherwise present them as contextual rather than controlled benchmarks.
+8. **Computational Efficiency Profiling:** Report empirical feature extraction time, classifier training time, inference latency, memory consumption, and model storage requirements.
+9. **Phenotypic & Visual Overlap Interpretation:** Qualify statements regarding phenotypic overlap, age-related feature contributions, and inter-racial error reductions, as they cannot be fully substantiated by confusion matrices alone.
+10. **Scope of Conclusions & Limitations:** Restrict conclusions strictly to the evaluated DemogPairs benchmark unless cross-identity or external dataset validation is provided.
+- *Questionnaire Answers:* Reviewed all files (Yes), Contributes to knowledge (Yes), Technically sound (Yes), Comprehensive presentation (Yes), References applicable (Yes), Inappropriate references (No).
+
+### 2.4 Resubmission Deliverables Required by IEEE Access
+To execute a successful resubmission through the IEEE Author Portal, the following three manuscript files are mandatory:
+1. **`Author's Response Files`:** Completed `IEEE-Access_Response-to-Reviewers-template.md` addressing every reviewer comment in a point-by-point format (`Concern`, `Author response`, `Author action`).
+2. **`Highlighted PDF`:** Revised manuscript PDF with all individual textual, mathematical, and tabular modifications highlighted in yellow.
+3. **`Main Manuscript`:** Clean version of the final manuscript without highlights, provided in both LaTeX source (`.tex` / `.zip`) and compiled double-column PDF (`.pdf`).
+4. **Additional Forms (if applicable):** `Request-for-Byline-Change.md` (if authorship order or members changed) and `Resubmission-Checklist.md`.
+
+---
+
+## 3. Research Architecture & Methodological Pipeline
 
 ```
-+---------------------------------------------------------------------------------------------------+
-|                                  DEMOGPAIRS DATASET (10,800 Images)                                |
-|                        6 Intersectional Classes (1,800 images/class - Perfectly Balanced)          |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                                       IMAGE PREPROCESSING                                         |
-|    RGB Conversion -> Bicubic Resizing to 224 x 224 -> Rescaling [0, 1] -> Channel Standardization  |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                ┌─────────────────────────────────┼─────────────────────────────────┐
-                ▼                                 ▼                                 ▼
-+-------------------------------+ +-------------------------------+ +-------------------------------+
-|       ViT-Face Backbone       | |      ViT-Emotion Backbone     | |       ViT-Age Backbone        |
-|     `skutaada/VIT-VGGFace`    | | `dima806/facial_emotions...`  | |  `dima806/facial_age_image...`|
-| (Static Biometric Geometry)   | | (Dynamic Affective Micro-Exp) | | (Biological Aging Morphology) |
-|   Extract [CLS] Token (768-d) | |   Extract [CLS] Token (768-d) | |   Extract [CLS] Token (768-d) |
-+-------------------------------+ +-------------------------------+ +-------------------------------+
-                │                                 │                                 │
-                └─────────────────────────────────┼─────────────────────────────────┘
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                                      OFFLINE FEATURE ARCHIVE                                      |
-|    features/demogpairs_vit-face.pkl (30.8MB) | vit-emotion.pkl (30.8MB) | vit-age.pkl (30.8MB)     |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                                7 FEATURE ABLATION SCHEMES (Fusion)                                |
-|  Single (768-d): face, emotion, age | Dual (1,536-d): face+age, emotion+age, emotion+face         |
-|                             Tri-Domain (2,304-d): face + emotion + age                            |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                                   DATA SPLIT & INFORMATION LEAKAGE PREVENTION                    |
-|          Stratified 80/20 Split (seed=42): 8,640 Training Set  |  2,160 Held-Out Test Set         |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                               MODULAR CLASSIFIER PIPELINE (GridSearchCV)                          |
-|         Scaler [None | MinMaxScaler] -> PCA [None | 0.50 | 0.75] -> Classifier [SVM|LR|RF|GNB]    |
-|                5-Fold Stratified Cross-Validation (1,086 combinations, 38,010 total fits)         |
-+---------------------------------------------------------------------------------------------------+
-                                                  │
-                                                  ▼
-+---------------------------------------------------------------------------------------------------+
-|                                     FINAL EVALUATION & AUDIT                                      |
-|    Macro Accuracy, Precision, Recall, F1 | One-vs-Rest Per-Class Metrics | Confusion Matrix 6 x 6 |
-+---------------------------------------------------------------------------------------------------+
+                              [ Input Facial Image: 224x224 RGB ]
+                                               │
+             ┌─────────────────────────────────┼─────────────────────────────────┐
+             ▼                                 ▼                                 ▼
+       [ ViT-Face ]                     [ ViT-Emotion ]                    [ ViT-Age ]
+    (skutaada/VIT-VGGFace)        (dima806/facial_emotions...)        (dima806/facial_age...)
+       [CLS] Token 768-d                 [CLS] Token 768-d                 [CLS] Token 768-d
+             │                                 │                                 │
+             └─────────────────────────────────┼─────────────────────────────────┘
+                                               ▼
+                        [ Feature Concatenation: z_tri in R^2304 ]
+                                               │
+                                               ▼
+                      [ Preprocessing Pipeline: Scaler + PCA (Fold-level) ]
+                                               │
+                                               ▼
+                       [ 5-Fold Stratified Cross-Validation GridSearchCV ]
+                         (SVM / Logistic Regression / Random Forest / GNB)
+                                               │
+                                               ▼
+                     [ Intersectional 6-Class Classification on DemogPairs ]
+               (Asian_Females, Asian_Males, Black_Females, Black_Males, White_Females, White_Males)
 ```
 
-### 2.2 Three Domain-Specific Vision Transformer Extractors
-All three extractors share the standard **ViT-Base (`vit-base-patch16-224`)** architecture:
-- **Input:** $224 \times 224 \times 3$ RGB image divided into 196 non-overlapping patches of $16 \times 16$ pixels + 1 learnable `[CLS]` token = 197 total tokens.
-- **Layers & Depth:** 12 Transformer Encoder layers, 12 multi-head self-attention heads, hidden dimension $D = 768$.
-- **Offline One-Pass Extraction:** The model backbones remain frozen. Each image is processed once to extract the 768-d `[CLS]` embedding from the final hidden state:
-  $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^{196}\mathbf{E}] + \mathbf{E}_{\text{pos}}$$
+### 3.1 Vision Transformer Feature Extraction Mechanics
+All three models are built on the **ViT-Base (`vit-base-patch16-224`)** architecture:
+- **Input Processing:** $224 \times 224 \times 3$ RGB image partitioned into $N = 196$ non-overlapping patches ($P = 16 \times 16$).
+- **Linear Patch Projection:** Patches are flattened ($\mathbf{x}_p^i \in \mathbb{R}^{768}$) and projected via matrix $\mathbf{E} \in \mathbb{R}^{(P^2C) \times D}$ to dimension $D = 768$.
+- **Prepend CLS Token & Position Embedding:**
+  $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \mathbf{x}_p^2\mathbf{E}; \, \dots; \, \mathbf{x}_p^{196}\mathbf{E}] + \mathbf{E}_{\text{pos}}, \quad \mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$$
+- **Encoder Blocks (12 Layers):** Each layer comprises Multi-Head Self-Attention (MHSA, 12 heads) and Multi-Layer Perceptron (MLP) with Layer Normalization (LN):
+  $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}$$
+  $$\mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell, \quad \ell = 1, \dots, 12$$
+- **Final Feature Extraction:** Models are frozen; feature vector is the normalized `[CLS]` token ($\mathbf{z}_L^0$) from the final layer $L = 12$:
   $$\mathbf{f}_{\text{domain}} = \text{LayerNorm}(\mathbf{z}_L^0) \in \mathbb{R}^{768}$$
-  where $\mathbf{z}_L^0$ is the CLS token representation from the final encoder layer $L$.
 
-| Model Label | HuggingFace Checkpoint Path | Specialized Representation Domain | Task-Associated Visual Cues |
+### 3.2 ViT Backbone Specifications
+| Backbone | HuggingFace Repository Identifier | Pre-training Task & Domain | Representation Visual Cues |
 |---|---|---|---|
-| **ViT-Face** | `skutaada/VIT-VGGFace` | Facial Biometric Geometry | Task-associated representations of craniofacial biometric geometry |
-| **ViT-Emotion** | `dima806/facial_emotions_image_detection` | Affective & Emotional Expressions | Task-associated representations of dynamic affective expressions |
-| **ViT-Age** | `dima806/facial_age_image_detection` | Biological Age & Life Stages | Task-associated representations of biological aging morphology |
+| **ViT-Face** | `skutaada/VIT-VGGFace` | Facial Biometric Recognition (VGGFace) | Craniofacial bone structure, ocular distance, static facial proportions |
+| **ViT-Emotion** | `dima806/facial_emotions_image_detection` | Affective State & Facial Expression | Micro-expressions, muscular activation around mouth, brows, and eyes |
+| **ViT-Age** | `dima806/facial_age_image_detection` | Biological Age Estimation | Epidermal elasticity, nasolabial folds, periocular wrinkles, aging morphology |
 
 ---
 
-## 3. Dataset Specifications & Partitioning Protocol
+## 4. Dataset Specifications, Label Encodings & Partitioning Protocol
 
-### 3.1 Benchmark Dataset: DemogPairs
-- **Primary Citation:** I. Hupont and C. Fernández, "DemogPairs: Quantifying the Impact of Demographic Imbalance in Deep Face Recognition," in *2019 14th IEEE International Conference on Automatic Face & Gesture Recognition (FG 2019)*, pp. 1-7, DOI: `10.1109/FG.2019.8756625`.
-- **Dataset Composition:** 10,800 high-resolution facial images representing 600 individual faces (100 per intersectional demographic subgroup, 18 images each).
-- **Intersectional Classes (6-Class Balanced Distribution):**
+### 4.1 Benchmark Dataset: DemogPairs
+- **Primary Citation:** I. Hupont and C. Fernández, "DemogPairs: Quantifying the Impact of Demographic Imbalance in Deep Face Recognition," *IEEE FG 2019*, DOI: `10.1109/FG.2019.8756625`.
+- **Dataset Composition:** 10,800 facial images from 600 unique identities (100 subjects per demographic group, 18 high-resolution images per subject).
+- **Class Balance:** Perfectly balanced across 6 intersectional demographic subgroups (1,800 images each).
 
-| Label Index | Class Name | Race | Gender | Total Images | Train Set (80%) | Test Set (20%) |
-|:---:|---|:---:|:---:|:---:|:---:|:---:|
-| `0` | `Black_Males` | Black | Male | 1,800 | 1,440 | 360 |
-| `1` | `White_Females` | White | Female | 1,800 | 1,440 | 360 |
-| `2` | `Asian_Males` | Asian | Male | 1,800 | 1,440 | 360 |
-| `3` | `White_Males` | White | Male | 1,800 | 1,440 | 360 |
-| `4` | `Black_Females` | Black | Female | 1,800 | 1,440 | 360 |
-| `5` | `Asian_Females` | Asian | Female | 1,800 | 1,440 | 360 |
-| **Total** | **6 Intersectional Classes** | **3 Races** | **2 Genders** | **10,800** | **8,640** | **2,160** |
+### 4.2 Critical Label Encoding Map
+An AI agent modifying or evaluating code must note the distinction between internal array indices and alphabetical class listings:
+- **`DEMOGPairs_LABEL_TO_IDX` (in `experiment/code/utils/constants.py`):**
+  - `Black_Males`: `0`
+  - `White_Females`: `1`
+  - `Asian_Males`: `2`
+  - `White_Males`: `3`
+  - `Black_Females`: `4`
+  - `Asian_Females`: `5`
+- **Alphabetical Class Ordering (`DEMOGPairs_CLASSES`):**
+  `['Asian_Females', 'Asian_Males', 'Black_Females', 'Black_Males', 'White_Females', 'White_Males']`
+- **Confusion Matrix Alignment:** In `utils/evaluation.py`, classification reports and confusion matrices explicitly use `labels=[DEMOGPairs_LABEL_TO_IDX[n] for n in target_names]` to prevent axis misalignment.
 
-> **Critical Note on Label Encodings:**
-> 1. `DEMOGPairs_LABEL_TO_IDX` (in `utils/constants.py`) maps indices as: `Black_Males: 0`, `White_Females: 1`, `Asian_Males: 2`, `White_Males: 3`, `Black_Females: 4`, `Asian_Females: 5`.
-> 2. `DEMOGPairs_CLASSES` (alphabetical list) is ordered as: `['Asian_Females', 'Asian_Males', 'Black_Females', 'Black_Males', 'White_Females', 'White_Males']`.
-> 3. Classification reports and confusion matrix calculations in `utils/evaluation.py` explicitly use `labels=[DEMOGPairs_LABEL_TO_IDX[n] for n in target_names]` to align matrix axes perfectly.
-
-### 3.2 Partitioning & Information Leakage Prevention Protocol
-- **Split Ratio:** Stratified 80/20 train/test partition using `sklearn.model_selection.train_test_split(..., test_size=0.2, random_state=42, stratify=y)`.
-- **Training Subset:** 8,640 samples (1,440 per class).
-- **Held-Out Test Subset:** 2,160 samples (360 per class).
-- **Cross-Validation on Train Split:** 5-Fold Stratified K-Fold Cross-Validation (`shuffle=True, random_state=42`) used within GridSearchCV.
-- **Information Leakage Prevention:** The pipeline is designed to prevent information leakage: feature scaling (e.g., `MinMaxScaler`) and dimensionality reduction (`PCA`) are fitted exclusively on training folds within GridSearchCV and applied as transforms only on validation and held-out test data.
+### 4.3 Partitioning & Leakage Prevention Protocol
+- **Partition Ratio:** 80% Train ($N = 8,640$, exactly 1,440 per class) / 20% Held-Out Test ($N = 2,160$, exactly 360 per class).
+- **Splitting Parameters:** `sklearn.model_selection.train_test_split(..., test_size=0.2, random_state=42, stratify=y)`.
+- **Cross-Validation:** 5-Fold Stratified K-Fold (`shuffle=True, random_state=42`) executed strictly within training folds.
+- **Data Leakage Safeguard:** Preprocessing transformations (`MinMaxScaler` and `PCA`) are encapsulated within `sklearn.pipeline.Pipeline` objects and fitted only on training folds.
 
 ---
 
-## 4. Feature Extraction & Fusion Engineering
+## 5. Feature Extraction & 7 Ablation Schemes
 
-### 4.1 Seven Feature Ablation Schemes
-
-| # | Feature Scheme Name | Category | Dimensionality | Vector Concatenation Formulation |
+### 5.1 Ablation Taxonomy
+| Scheme Index | Feature Scheme Name | Category | Dimensionality | Concatenation Formulation |
 |:---:|---|:---:|:---:|---|
 | 1 | `vit-age` | Single-Domain | 768 | $\mathbf{z} = \mathbf{f}_{\text{age}} \in \mathbb{R}^{768}$ |
 | 2 | `vit-emotion` | Single-Domain | 768 | $\mathbf{z} = \mathbf{f}_{\text{emotion}} \in \mathbb{R}^{768}$ |
@@ -164,128 +201,102 @@ All three extractors share the standard **ViT-Base (`vit-base-patch16-224`)** ar
 | 4 | `vit-emotion-age` | Dual-Domain | 1,536 | $\mathbf{z} = [\mathbf{f}_{\text{emotion}} \,\|\, \mathbf{f}_{\text{age}}] \in \mathbb{R}^{1536}$ |
 | 5 | `vit-face-age` | Dual-Domain | 1,536 | $\mathbf{z} = [\mathbf{f}_{\text{face}} \,\|\, \mathbf{f}_{\text{age}}] \in \mathbb{R}^{1536}$ |
 | 6 | `vit-emotion-face` | Dual-Domain | 1,536 | $\mathbf{z} = [\mathbf{f}_{\text{emotion}} \,\|\, \mathbf{f}_{\text{face}}] \in \mathbb{R}^{1536}$ |
-| 7 | `vit-face-emotion-age` | **Tri-Domain (Usulan)** | **2,304** | $\mathbf{z} = [\mathbf{f}_{\text{face}} \,\|\, \mathbf{f}_{\text{emotion}} \,\|\, \mathbf{f}_{\text{age}}] \in \mathbb{R}^{2304}$ |
+| 7 | **`vit-face-emotion-age`** | **Tri-Domain (Proposed)** | **2,304** | $\mathbf{z} = [\mathbf{f}_{\text{face}} \,\|\, \mathbf{f}_{\text{emotion}} \,\|\, \mathbf{f}_{\text{age}}] \in \mathbb{R}^{2304}$ |
 
-### 4.2 Feature File Storage
-Latent features are cached in `experiment/code/features/` as serialized dictionaries mapping relative image paths to 768-d numpy arrays:
+### 5.2 Offline Cache Files
+Serialized feature dictionaries mapping relative image paths to 768-d NumPy arrays (`float32`) are stored in `experiment/code/features/`:
 - `demogpairs_vit-face.pkl` (30.8 MB)
 - `demogpairs_vit-emotion.pkl` (30.8 MB)
 - `demogpairs_vit-age.pkl` (30.8 MB)
 
 ---
 
-## 5. Classical Classifier Pipeline & GridSearchCV Optimization
+## 6. Classical Classifier Pipeline & Exhaustive GridSearchCV Optimization
 
-### 5.1 Pipeline Structure
-Each experimental configuration executes an end-to-end `sklearn.pipeline.Pipeline`:
+### 6.1 End-to-End Pipeline Formulation
 $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\}$$
 
-### 5.2 Hyperparameter Search Spaces
+### 6.2 Search Spaces per Classifier
+- **Support Vector Machine (SVM) – 288 configurations per scheme:**
+  - `scaler`: `[None, MinMaxScaler()]`
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
+  - `classifier__C`: `[0.1, 1, 10, 100]`
+  - `classifier__kernel`: `['linear', 'rbf', 'poly']`
+  - `classifier__degree`: `[2, 3]`
+  - `classifier__gamma`: `['scale', 'auto']`
+- **Logistic Regression (LR) – 270 configurations per scheme:**
+  - `scaler`: `[None, MinMaxScaler()]`
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
+  - `classifier__C`: `[0.01, 0.1, 1, 10, 100]`
+  - `classifier__solver`: `['lbfgs', 'saga', 'newton-cg']`
+  - `classifier__max_iter`: `[200, 500, 2000]`
+- **Random Forest (RF) – 288 configurations per scheme:**
+  - `scaler`: `[None, MinMaxScaler()]`
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
+  - `classifier__n_estimators`: `[100, 200]`
+  - `classifier__max_depth`: `[None, 10, 30]`
+  - `classifier__max_features`: `['sqrt', 'log2']`
+  - `classifier__min_samples_split`: `[2, 5]`
+  - `classifier__min_samples_leaf`: `[1, 2]`
+- **Gaussian Naive Bayes (GNB) – 240 configurations per scheme:**
+  - `scaler`: `[None, MinMaxScaler()]`
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
+  - `classifier__var_smoothing`: 40 log-spaced values from $10^{-9}$ to $10^{2}$ (`np.logspace(-9, 2, 40)`)
 
-```python
-# 1. Support Vector Machine (288 combinations per feature scheme)
-param_grid_svm = {
-    'scaler': [None, MinMaxScaler()],
-    'pca': [None, PCA(n_components=0.50), PCA(n_components=0.75)],
-    'classifier__C': [0.1, 1, 10, 100],
-    'classifier__kernel': ['linear', 'rbf', 'poly'],
-    'classifier__degree': [2, 3],
-    'classifier__gamma': ['scale', 'auto'],
-}
-
-# 2. Logistic Regression (270 combinations per feature scheme)
-param_grid_lr = {
-    'scaler': [None, MinMaxScaler()],
-    'pca': [None, PCA(n_components=0.50), PCA(n_components=0.75)],
-    'classifier__C': [0.01, 0.1, 1, 10, 100],
-    'classifier__solver': ['lbfgs', 'saga', 'newton-cg'],
-    'classifier__max_iter': [200, 500, 2000],
-}
-
-# 3. Random Forest (288 combinations per feature scheme)
-param_grid_rf = {
-    'scaler': [None, MinMaxScaler()],
-    'pca': [None, PCA(n_components=0.50), PCA(n_components=0.75)],
-    'classifier__n_estimators': [100, 200],
-    'classifier__max_depth': [None, 10, 30],
-    'classifier__max_features': ['sqrt', 'log2'],
-    'classifier__min_samples_split': [2, 5],
-    'classifier__min_samples_leaf': [1, 2],
-}
-
-# 4. Gaussian Naive Bayes (240 combinations per feature scheme)
-param_grid_gnb = {
-    'scaler': [None, MinMaxScaler()],
-    'pca': [None, PCA(n_components=0.50), PCA(n_components=0.75)],
-    'classifier__var_smoothing': np.logspace(-9, 2, 40),
-}
-```
-
-### 5.3 Optimization Scale
-- **Combinations per Feature Scheme:** 1,086 combinations ($288 + 270 + 288 + 240$).
-- **Fits per Feature Scheme (5-Fold CV):** 5,430 fits.
-- **Total Cross-Validation Fits (7 Schemes × 4 Classifiers):** **38,010 fits** + 28 refit models.
-- **Scoring & Refit:** Scored with `accuracy`, `precision_macro`, `recall_macro`, `f1_macro`; `refit='accuracy'`.
+### 6.3 Optimization Scale Summary
+- Total combinations per scheme: $288 + 270 + 288 + 240 = \mathbf{1,086}$ combinations.
+- Total 5-Fold cross-validation fits per scheme: $1,086 \times 5 = \mathbf{5,430}$ fits.
+- Total for all 7 feature schemes: $5,430 \times 7 = \mathbf{38,010}$ cross-validation fits + 28 final refit models.
 
 ---
 
-## 6. Comprehensive Experimental Benchmark (28 Experiments)
+## 7. Comprehensive Experimental Benchmark (Definitive 28-Model Leaderboard)
 
-Below is the complete, definitive leaderboard of all 28 experiments evaluated on the held-out test set ($N = 2,160$). All figures are direct 4-decimal values extracted from `experiment/code/results/*.json`.
+Evaluated on the held-out test partition ($N = 2,160$). All figures are extracted directly from `experiment/code/results/*.json`:
 
-### 6.1 Complete 28-Experiment Leaderboard
-
-| Rank | Classifier | Feature Scheme | Type | Dim | Test Accuracy | Macro Precision | Macro Recall | Macro F1 | Best Hyperparameters |
+| Rank | Classifier | Feature Scheme | Category | Dim | Test Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | Best Hyperparameters |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| 🥇 **1** | **SVM** | **vit-face-emotion-age** | **Tri** | **2,304** | **0.9370** | **0.9372** | **0.9370** | **0.9369** | `C=10, kernel='poly', degree=2, gamma='scale', scaler=None, pca=None` |
-| 🥈 **2** | **SVM** | **vit-emotion-face** | **Dual** | 1,536 | **0.9329** | 0.9333 | 0.9329 | 0.9329 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 🥉 **3** | **LR** | **vit-face-emotion-age** | **Tri** | **2,304** | **0.9273** | 0.9275 | 0.9273 | 0.9273 | `C=0.1, solver='newton-cg', max_iter=500, scaler=None, pca=None` |
-| 4 | SVM | vit-face-age | Dual | 1,536 | 0.9255 | 0.9254 | 0.9255 | 0.9254 | `C=10, kernel='poly', degree=2, gamma='scale', scaler=None, pca=None` |
-| 5 | LR | vit-emotion-face | Dual | 1,536 | 0.9241 | 0.9241 | 0.9241 | 0.9240 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
-| 6 | SVM | vit-emotion-age | Dual | 1,536 | 0.9208 | 0.9210 | 0.9208 | 0.9209 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
-| 7 | LR | vit-face-age | Dual | 1,536 | 0.9162 | 0.9162 | 0.9162 | 0.9162 | `C=0.1, solver='newton-cg', max_iter=500, scaler=None, pca=None` |
-| 8 | SVM | vit-face | Single | 768 | 0.9083 | 0.9084 | 0.9083 | 0.9083 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
-| 9 | LR | vit-face | Single | 768 | 0.9060 | 0.9060 | 0.9060 | 0.9059 | `C=1, solver='newton-cg', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 10 | LR | vit-emotion-age | Dual | 1,536 | 0.9051 | 0.9052 | 0.9051 | 0.9051 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
-| 11 | SVM | vit-emotion | Single | 768 | 0.9019 | 0.9020 | 0.9019 | 0.9017 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
-| 12 | LR | vit-emotion | Single | 768 | 0.8847 | 0.8850 | 0.8847 | 0.8846 | `C=1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 13 | SVM | vit-age | Single | 768 | 0.8764 | 0.8767 | 0.8764 | 0.8765 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
-| 14 | RF | vit-emotion-face | Dual | 1,536 | 0.8685 | 0.8689 | 0.8685 | 0.8682 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 15 | LR | vit-age | Single | 768 | 0.8648 | 0.8649 | 0.8648 | 0.8648 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
-| 16 | RF | vit-face-emotion-age | Tri | 2,304 | 0.8620 | 0.8620 | 0.8620 | 0.8613 | `n_estimators=200, max_depth=30, max_features='sqrt', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 17 | RF | vit-face-age | Dual | 1,536 | 0.8579 | 0.8578 | 0.8579 | 0.8573 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 18 | RF | vit-face | Single | 768 | 0.8546 | 0.8543 | 0.8546 | 0.8539 | `n_estimators=200, max_depth=30, max_features='log2', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 19 | GNB | vit-face-emotion-age | Tri | 2,304 | 0.8505 | 0.8512 | 0.8505 | 0.8505 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=None` |
-| 20 | GNB | vit-emotion-face | Dual | 1,536 | 0.8486 | 0.8490 | 0.8486 | 0.8481 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 21 | GNB | vit-face-age | Dual | 1,536 | 0.8315 | 0.8343 | 0.8315 | 0.8317 | `var_smoothing=0.011253, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 22 | GNB | vit-face | Single | 768 | 0.8269 | 0.8271 | 0.8269 | 0.8258 | `var_smoothing=0.041246, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 23 | RF | vit-emotion-age | Dual | 1,536 | 0.8111 | 0.8111 | 0.8111 | 0.8108 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
-| 24 | RF | vit-emotion | Single | 768 | 0.8060 | 0.8063 | 0.8060 | 0.8057 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 25 | GNB | vit-emotion-age | Dual | 1,536 | 0.7681 | 0.7686 | 0.7681 | 0.7681 | `var_smoothing=0.001604, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 26 | RF | vit-age | Single | 768 | 0.7366 | 0.7363 | 0.7366 | 0.7354 | `n_estimators=200, max_depth=30, max_features='log2', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 27 | GNB | vit-emotion | Single | 768 | 0.7338 | 0.7387 | 0.7338 | 0.7329 | `var_smoothing=0.003070, pca=PCA(0.75), scaler=None` |
-| 28 | GNB | vit-age | Single | 768 | 0.6963 | 0.6979 | 0.6963 | 0.6952 | `var_smoothing=0.000438, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 🥇 **1** | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **0.9370** | **0.9372** | **0.9370** | **0.9369** | `C=10, kernel='poly', degree=2, gamma='scale', scaler=None, pca=None` |
+| 🥈 **2** | **SVM** | `vit-emotion-face` | Dual | 1,536 | **0.9329** | 0.9333 | 0.9329 | 0.9329 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=MinMaxScaler, pca=None` |
+| 🥉 **3** | **LR** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **0.9273** | 0.9275 | 0.9273 | 0.9273 | `C=0.1, solver='newton-cg', max_iter=500, scaler=None, pca=None` |
+| 4 | SVM | `vit-face-age` | Dual | 1,536 | 0.9255 | 0.9254 | 0.9255 | 0.9254 | `C=10, kernel='poly', degree=2, gamma='scale', scaler=None, pca=None` |
+| 5 | LR | `vit-emotion-face` | Dual | 1,536 | 0.9241 | 0.9241 | 0.9241 | 0.9240 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
+| 6 | SVM | `vit-emotion-age` | Dual | 1,536 | 0.9208 | 0.9210 | 0.9208 | 0.9209 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
+| 7 | LR | `vit-face-age` | Dual | 1,536 | 0.9162 | 0.9162 | 0.9162 | 0.9162 | `C=0.1, solver='newton-cg', max_iter=500, scaler=None, pca=None` |
+| 8 | SVM | `vit-face` | Single | 768 | 0.9083 | 0.9084 | 0.9083 | 0.9083 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
+| 9 | LR | `vit-face` | Single | 768 | 0.9060 | 0.9060 | 0.9060 | 0.9059 | `C=1, solver='newton-cg', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 10 | LR | `vit-emotion-age` | Dual | 1,536 | 0.9051 | 0.9052 | 0.9051 | 0.9051 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
+| 11 | SVM | `vit-emotion` | Single | 768 | 0.9019 | 0.9020 | 0.9019 | 0.9017 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
+| 12 | LR | `vit-emotion` | Single | 768 | 0.8847 | 0.8850 | 0.8847 | 0.8846 | `C=1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 13 | SVM | `vit-age` | Single | 768 | 0.8764 | 0.8767 | 0.8764 | 0.8765 | `C=10, kernel='rbf', degree=2, gamma='scale', scaler=None, pca=None` |
+| 14 | RF | `vit-emotion-face` | Dual | 1,536 | 0.8685 | 0.8689 | 0.8685 | 0.8682 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 15 | LR | `vit-age` | Single | 768 | 0.8648 | 0.8649 | 0.8648 | 0.8648 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
+| 16 | RF | **`vit-face-emotion-age`** | **Tri** | **2,304** | 0.8620 | 0.8620 | 0.8620 | 0.8613 | `n_estimators=200, max_depth=30, max_features='sqrt', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 17 | RF | `vit-face-age` | Dual | 1,536 | 0.8579 | 0.8578 | 0.8579 | 0.8573 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 18 | RF | `vit-face` | Single | 768 | 0.8546 | 0.8543 | 0.8546 | 0.8539 | `n_estimators=200, max_depth=30, max_features='log2', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 19 | GNB | **`vit-face-emotion-age`** | **Tri** | **2,304** | 0.8505 | 0.8512 | 0.8505 | 0.8505 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=None` |
+| 20 | GNB | `vit-emotion-face` | Dual | 1,536 | 0.8486 | 0.8490 | 0.8486 | 0.8481 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 21 | GNB | `vit-face-age` | Dual | 1,536 | 0.8315 | 0.8343 | 0.8315 | 0.8317 | `var_smoothing=0.011253, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 22 | GNB | `vit-face` | Single | 768 | 0.8269 | 0.8271 | 0.8269 | 0.8258 | `var_smoothing=0.041246, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 23 | RF | `vit-emotion-age` | Dual | 1,536 | 0.8111 | 0.8111 | 0.8111 | 0.8108 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
+| 24 | RF | `vit-emotion` | Single | 768 | 0.8060 | 0.8063 | 0.8060 | 0.8057 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 25 | GNB | `vit-emotion-age` | Dual | 1,536 | 0.7681 | 0.7686 | 0.7681 | 0.7681 | `var_smoothing=0.001604, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 26 | RF | `vit-age` | Single | 768 | 0.7366 | 0.7363 | 0.7366 | 0.7354 | `n_estimators=200, max_depth=30, max_features='log2', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 27 | GNB | `vit-emotion` | Single | 768 | 0.7338 | 0.7387 | 0.7338 | 0.7329 | `var_smoothing=0.003070, pca=PCA(0.75), scaler=None` |
+| 28 | GNB | `vit-age` | Single | 768 | 0.6963 | 0.6979 | 0.6963 | 0.6952 | `var_smoothing=0.000438, pca=PCA(0.75), scaler=MinMaxScaler` |
 
-### 6.2 Key Ablation Analysis
-1. **Single $\to$ Dual Fusion Progression:**
-   - SVM: `vit-face` (0.9083) $\to$ `vit-emotion-face` (0.9329) = **+0.0245 (+2.70% gain, 26.77% error reduction)**.
-   - LR: `vit-face` (0.9060) $\to$ `vit-emotion-face` (0.9241) = **+0.0181 (+1.99% gain, 19.21% error reduction)**.
-2. **Dual $\to$ Tri-Domain Fusion Progression:**
-   - SVM: `vit-emotion-face` (0.9329) $\to$ `vit-face-emotion-age` (0.9370) = **+0.0042 (+0.45% gain, 6.11% error reduction)**.
-   - LR: `vit-emotion-face` (0.9241) $\to$ `vit-face-emotion-age` (0.9273) = **+0.0032 (+0.35% gain, 4.22% error reduction)**.
-3. **Cumulative Single $\to$ Tri-Domain Impact:**
-   - SVM: `vit-face` (0.9083) $\to$ `vit-face-emotion-age` (0.9370) = **+0.0287 (+3.16% gain, 31.31% total error reduction)**.
-4. **Behavior of Preprocessing Transformations:**
-   - **SVM & LR:** 7 out of 7 configurations perform best with `pca=None` (retaining full raw 2,304-d latent space). The degree-2 polynomial kernel selected by SVM may capture nonlinear interactions among latent feature dimensions, which could contribute to its strong performance on high-dimensional fused representations.
-   - **RF & GNB:** 7 out of 7 configurations select `pca=PCA(n_components=0.75)` to prevent severe overfitting on sparse high-dimensional data. Note: The drop in RF performance at tri-domain dimensionality (2,304-d) may reflect the increased difficulty of partitioning a higher-dimensional feature space using randomized decision splits.
+### 7.2 Empirical Ablation Analysis
+1. **Single to Dual:** Adding emotion features to face biometrics (`vit-face` 0.9083 $\to$ `vit-emotion-face` 0.9329 on SVM) yields a **+0.0245 gain (+2.70%, 26.77% relative error reduction)**.
+2. **Dual to Tri-Domain:** Adding biological age morphology (`vit-emotion-face` 0.9329 $\to$ `vit-face-emotion-age` 0.9370 on SVM) adds **+0.0042 (+0.45%, 6.11% error reduction)**. While modest and not statistically significant under McNemar test ($p = 0.3057$), it establishes consistency across SVM, LR, and GNB.
+3. **Cumulative Impact:** Single face to tri-domain (`0.9083` to `0.9370`) achieves **+0.0287 (+3.16%, 31.31% total error reduction)**.
+4. **Dimensionality & PCA Selection:** SVM and LR models consistently select `pca=None` (preserving all 2,304 features). In contrast, Random Forest and Gaussian Naive Bayes universally select `pca=PCA(0.75)` to prevent severe overfitting.
 
 ---
 
-## 7. Intersectional Subgroup Performance & Disparity Analysis
+## 8. Intersectional Subgroup Performance, Confusion Matrix & Error Dynamics
 
-### 7.1 Subgroup Performance for the Top-Performing Model (SVM Tri-Domain, $N = 2,160$)
-
-| Intersectional Subgroup | Race | Gender | Support | TP | FP | FN | TN | OvR Accuracy | Precision | Recall | F1-Score |
+### 8.1 Subgroup Metrics for Top-Performing SVM Tri-Domain ($N = 2,160$)
+| Subgroup | Race | Gender | Support | TP | FP | FN | TN | OvR Accuracy | Precision | Recall | F1-Score |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **White_Males** | White | Male | 360 | 349 | 17 | 11 | 1,783 | **98.70%** | 0.9536 | **0.9694** | **0.9614** |
 | **Black_Males** | Black | Male | 360 | 339 | 16 | 21 | 1,784 | **98.29%** | 0.9549 | 0.9417 | 0.9483 |
@@ -295,8 +306,7 @@ Below is the complete, definitive leaderboard of all 28 experiments evaluated on
 | **Black_Females** | Black | Female | 360 | 322 | 20 | 38 | 1,780 | **97.31%** | 0.9415 | 0.8944 | 0.9174 |
 | **Macro Average** | **All** | **All** | **2,160** | **-** | **-** | **-** | **-** | **97.90%** | **0.9372** | **0.9370** | **0.9369** |
 
-### 7.2 Confusion Matrix (Actual 2,160 Held-Out Samples)
-
+### 8.2 Actual 6 × 6 Confusion Matrix (Held-Out Test Set)
 ```
                        Predicted Class
 True Class        AF    AM    BF    BM    WF    WM  │ Total │ Recall
@@ -311,150 +321,195 @@ White_Males        1     4     0     4     2   349  │   360 │ 0.9694
 Predicted Total  360   368   342   355   369   366  │ 2,160 │
 ```
 
-### 7.3 Critical Error Insights
-1. **Cross-Race Same-Gender Misclassifications:** The dominant error pattern occurs between subjects of different races sharing the *same gender* (e.g., 16 `Black_Females` misclassified as `White_Females`, 10 `Asian_Females` as `White_Females`).
-2. **Near-Zero Gender Confusion:** Intra-race or cross-race gender confusion is virtually non-existent (<1% error rate), indicating that the multi-domain representation separates gender boundaries effectively.
-3. **Disparity Metrics:**
-   - F1-Score Disparity: $\Delta_{\text{F1}} = \max(\text{F1}) - \min(\text{F1}) = 0.9614 - 0.9174 = \mathbf{0.0440}$.
-   - Recall Disparity: $\Delta_{\text{Recall}} = \max(\text{Recall}) - \min(\text{Recall}) = 0.9694 - 0.8944 = \mathbf{0.0750}$.
-   - Logistic Regression Tri-Domain achieves a narrower F1 gap ($\Delta_{\text{F1}} = 0.0422$, $\Delta_{\text{Recall}} = 0.0500$).
-   - **Note:** OvR Accuracy values appear high due to the dominance of negative samples (5:1 ratio in binary one-vs-rest evaluation). Range-based disparity (max - min) is used as a simple indicator of subgroup performance variation, not a comprehensive fairness measure.
+### 8.3 Error Dynamics & Disparity Summary
+- **Primary Error Source:** Cross-race same-gender misclassifications (e.g., 16 `Black_Females` misclassified as `White_Females`, 10 `Asian_Females` as `White_Females`).
+- **Near-Zero Gender Confusion:** Intra-race and cross-race gender confusion is <1%, indicating that multi-domain ViT representations establish distinct gender boundaries.
+- **Disparity Metrics:**
+  - $\Delta_{\text{F1}} = \max(\text{F1}) - \min(\text{F1}) = 0.9614 - 0.9174 = \mathbf{0.0440}$.
+  - $\Delta_{\text{Recall}} = \max(\text{Recall}) - \min(\text{Recall}) = 0.9694 - 0.8944 = \mathbf{0.0750}$.
+  - $\Delta_{\text{Precision}} = 0.9549 - 0.9239 = \mathbf{0.0310}$.
+  - $\Delta_{\text{OvR Acc}} = 98.70\% - 97.31\% = \mathbf{1.39\text{ pp}}$.
 
 ---
 
-## 8. Comparison with Prior Studies
+## 9. Comparison with Prior Studies on DemogPairs & Contextual Literature
 
-| # | Study / Publication | Method / Architecture | Benchmark Dataset | Evaluated Classes | Reported Accuracy | Macro F1 | Intersectional Audit? |
-|:---:|---|---|---|:---:|:---:|:---:|:---:|
-| 1 | Belcar et al. (Sensors 2022) | Middle-Face CNN (ResNet) | Custom | 4 Ethnicity | 61.74% | - | No |
-| 2 | Sunitha et al. (IVC 2022) | Deep CNN + Hybrid Metaheuristics | FairFace / UTKFace | Ethnicity | 88.50% | - | No |
-| 3 | Liao et al. (Appl. Sci. 2022) | Multi-Task Multi-Scale CNN | Multi-task Face | Gender & Age | ~89.20% | - | No |
-| 4 | Brinkmann et al. (ICCV 2023) | Social Bias in ViT Encoders | FairFace | Gender / Race | 88.30% | - | Partial |
-| 5 | Ramachandran & Rattani (2023) | StyleGAN2 Generative Debiasing | CelebA / UTKFace | Gender | 87.10% | 0.8690 | Partial |
-| 6 | Chen et al. (JVCI 2023) | Parallel Attention Sharing Net | CelebA / LFWA | 40 Attributes | 91.80% | - | No |
-| 7 | Tahyudin et al. (JOIV 2024) | Vision Transformer Base | AFAD (Asian Only) | Gender | 81.74% (Cross) | 0.8170 | No (Domain Shift) |
-| 8 | Kalkatawi & Saeed (IJACSA 2024)| MaxViT Multi-Axis Transformer | FairFace | 6 Ethnicity | 77.20% | 0.7680 | No |
-| 9 | Putri et al. (IEEE ICVEE 2025) | Dual-ViT (Face+Emotion) + SVM | DemogPairs | 6 Intersectional | 92.41% | 0.9240 | Yes |
-| 10| Putri et al. (JIEET 2025) | MD-ViT (Face+Age) + XGBoost | DemogPairs | 6 Intersectional | 89.07% | 0.8905 | Yes |
-| ⭐ | **Proposed Framework (2026)** | **Tri-Domain ViT (Face+Emotion+Age) + Optimized SVM** | **DemogPairs (10,800)** | **6 Intersectional** | **93.70%** | **0.9369** | **Yes (Full Audit)** |
+### 9.1 Controlled Comparison on DemogPairs Benchmark
+| Reference | Architecture / Method | Evaluated Classes | Accuracy | Precision | Recall | F1-Score |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| Putri et al. (*JIEET 2025*) | MD-ViT (Face + Age) + XGBoost | 6 Intersectional | 89.07% | 0.8912 | 0.8907 | 0.8901 |
+| Putri et al. (*IEEE ICVEE 2025*) | Dual-ViT (Face + Emotion) + SVM | 6 Intersectional | 92.41% | 0.9248 | 0.9241 | 0.9238 |
+| **Proposed Framework (2026)** | **Tri-Domain ViT (Face ⊕ Emotion ⊕ Age) + Optimized SVM** | **6 Intersectional** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
 
-> **Note:** Direct comparison in paper (Table XII) includes only studies evaluated on DemogPairs (rows 9, 10, and the Proposed Framework). Studies 1-8 evaluated on different datasets and class definitions and are cited for contextual positioning only. Use "highest performance among the compared studies on DemogPairs" - not "state-of-the-art."
+### 9.2 Contextual Literature (Studies 1–8)
+Studies evaluating outside DemogPairs (e.g., Belcar et al. 2022 on custom dataset: 61.74%; Sunitha et al. 2022 on FairFace: 88.50%; Tahyudin et al. 2024 on AFAD: 81.74%; Kalkatawi & Saeed 2024 on FairFace: 77.20%) are cited strictly as contextual background. In scientific writing, do not describe them as a direct controlled baseline.
 
 ---
 
-## 9. Repository & Codebase Architecture
+## 10. Repository Architecture & File Inventory
 
 ```
 D:\Research\face-race-gender-classification-using-multi-domain-vit\
-├── README.md                           # Public GitHub repository landing page
-├── README.AI.md                        # Master AI Agent reference guide (This file)
-├── WORKFLOW.md                         # Universal Research Manuscript Pipeline SOP (Outline -> paper/ -> paper_latex_id/ -> paper_latex_en/)
-├── paper_outline.md                    # Detailed paper outline (IEEE Access / Q1 target)
-├── folder_structure.txt                # Complete directory tree and comprehensive file glossary
-├── authors.txt                         # Author biographies, departmental affiliations, and ORCIDs
-├── prompts.txt                         # Experimental instructions and agent logs
-├── scopus_query.txt                    # Scopus literature search query strings
-├── sessions/                           # Chronological AGY session documentation logs
-│   └── session_*.md                     # Detailed development, audit, and verification session records (pattern: session_YYYY-MM-DD_agent_title)
+├── README.md                              # Public research documentation & summary
+├── README.AI.md                           # Master AI agent reference manual (THIS FILE)
+├── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
+├── paper_outline.md                       # Comprehensive paper outline & paragraph targets
+├── folder_structure.txt                   # Complete directory tree and detailed file glossary
+├── authors.txt                            # Academic author profiles, affiliations & ORCIDs
+├── prompts.txt                            # Chronological prompt tracking log
+├── scopus_query.txt                       # Scopus literature search queries
 │
-├── images/
-│   ├── method.png / method.pptx        # Architecture & methodology framework diagram (Figure 1)
-│   ├── sample_*.jpg / demogpairs.png   # Sample demographic face images (Figure 2)
-│   ├── vit.png / vit.pptx              # ViT backbone & patch projection diagram (Figure 3)
-│   └── confusion_matrix_*.png          # Selected confusion matrix plots
+├── .agents/skills/                        # Autonomous AI agent skills & peer review frameworks
+│   ├── ar-paper-reviewer/                 # Independent academic peer review simulation skill
+│   ├── ar-paper-revision/                 # Byte-level precision patching and revision application skill
+│   └── ar-paper-revision-coach/           # Review deconstruction, roadmap & rebuttal ledger coach
 │
-├── paper/                              # Modular publication manuscript draft in Markdown (IEEE style)
-│   ├── 00_abstract.md                  # Title, authors, abstract (188 words), and IEEE keywords
-│   ├── 01_introduction.md              # Section I (Introduction) with 4 core contributions
-│   ├── 02_related-works.md              # Section II (Related Works, 5 paragraphs, no subheadings)
-│   ├── 03_materials-and-methods_*.md   # Section III modular subsections (0-overview, a-dataset s.d. h-evaluation-metrics)
-│   ├── 04_results-and-discussion_*.md  # Section IV modular subsections (a-global s.d. e-prior-studies)
-│   ├── 05_conclusion.md                # Section V (Conclusion, limitations, future work)
-│   ├── 06_references.md                # Section VI (IEEE formatted bibliography, entries [1]-[51])
-│   ├── 07_biographies.md               # Section VII (Author academic biographies)
-│   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
-│   ├── ref_part_*.md                   # 10 modular bibliographic audit logs (entries [1]-[51])
-│   ├── references.txt                  # Sentence-level citation tracking & verification registry
-│   ├── references/                     # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
-│   └── images/                         # Local image copies ensuring self-contained paper compilation
+├── experiment/                            # Experimental documentation, datasets & source code
+│   ├── 00_overview.md - 05_results.md     # Structured experimental logs & audits
+│   ├── dataset_demogpairs.md              # Dataset specification and partition summary
+│   └── code/
+│       ├── 1.1_vit-*_demogpairs.ipynb     # Feature extraction notebooks (Face, Emotion, Age)
+│       ├── 2.1.* - 2.5.*.ipynb            # Classifier training notebooks (SVM, GNB, RF, LR)
+│       ├── 3.0_compare.ipynb              # Global 28-model comparison and benchmarking
+│       ├── 4.0_test.ipynb                 # Held-out evaluation and test routines
+│       ├── app.py                         # Interactive Gradio demo web application
+│       ├── utils/                         # Modular Python utility package (constants, dataset, evaluation, etc.)
+│       ├── dataset/demogpairs/metadata/   # 6 metadata .txt files (1,800 rows each)
+│       ├── md/                            # Markdown exports of all Jupyter notebooks
+│       ├── results/                       # 28 raw JSON evaluation result files
+│       └── images/                        # 28 confusion matrix diagrams (.png)
 │
-├── paper_latex_en/                     # Submission-ready English IEEE Access LaTeX package
-│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
-│   ├── access.pdf                      # Fully compiled dual-column English manuscript PDF
-│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
-│   ├── references.bib                  # Consolidated BibTeX database
-│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
-│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+├── images/                                # High-resolution architecture diagrams and sample figures
+│   ├── method.png / method.pptx           # Architecture & methodology framework diagram (Figure 1)
+│   ├── sample_*.jpg / demogpairs.png      # Sample demographic face images (Figure 2)
+│   ├── vit.png / vit.pptx                 # ViT backbone & patch projection diagram (Figure 3)
+│   └── confusion_matrix_*.png             # Selected confusion matrix plots
 │
-├── paper_latex_id/                     # Reference Indonesian IEEE Access LaTeX package
-│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
-│   ├── access.pdf                      # Fully compiled dual-column Indonesian manuscript PDF
-│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
-│   ├── references.bib                  # Consolidated BibTeX database
-│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
-│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
+│   ├── 00_abstract.md                     # Title, authors, abstract, and IEEE keywords
+│   ├── 01_introduction.md                 # Section I: Introduction
+│   ├── 02_related-works.md                # Section II: Related Works
+│   ├── 03_materials-and-methods_*.md      # Section III: Methodology modular subsections
+│   ├── 04_results-and-discussion_*.md     # Section IV: Results and Discussion modular subsections
+│   ├── 05_conclusion.md                   # Section V: Conclusion, limitations & future work
+│   ├── 06_references.md                   # Section VI: References (IEEE formatted, entries [1]-[51])
+│   ├── 07_biographies.md                  # Section VII: Biographies & portrait assets
+│   ├── acronyms.txt                       # Centralized acronym registry (Rule 1.3)
+│   ├── ref_part_*.md                      # 10 modular bibliographic audit logs (entries [1]-[51])
+│   ├── references.txt                     # Sentence-level citation tracking & verification registry
+│   ├── references/                        # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
+│   └── images/                            # Self-contained local image assets for paper compilation
 │
-├── rules/
-│   ├── md_rules.txt                    # Mandatory Markdown writing rules, constraints & checklist
-│   ├── latex_rules.txt                 # Mandatory LaTeX conversion & formatting rules
-│   └── IEEE_citation_guidelines.md     # IEEE referencing style and citation guidelines
+├── paper_latex_en/                        # Submission-ready English IEEE Access LaTeX package
+│   ├── access.tex                         # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                         # Compiled dual-column English manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst      # Official IEEE Access style class and bibliography style
+│   ├── references.bib                     # Consolidated BibTeX database
+│   ├── sections/                          # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                            # Figures and high-resolution plots for LaTeX compilation
 │
-├── references/
-│   └── 2019_DemogPairs...bib           # BibTeX entry for DemogPairs benchmark
+├── paper_latex_id/                        # Reference Indonesian IEEE Access LaTeX package
+│   ├── access.tex                         # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                         # Compiled dual-column Indonesian manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst      # Official IEEE Access style class and bibliography style
+│   ├── references.bib                     # Consolidated BibTeX database
+│   ├── sections/                          # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                            # Figures and high-resolution plots for LaTeX compilation
 │
-├── related_works/                      # Literature review corpus (10 core papers)
-│   ├── literature_matrix.md            # Comparative matrix across all 10 papers
-│   ├── gap_analysis.md                 # Formalization of gaps G1-G8 and priorities P1-P4
-│   ├── tren_analisis.md                # Knowledge mapping and evolutionary trends
-│   ├── sintesis_literatur.md           # Master hub for literature review
-│   ├── bib/                            # BibTeX files for all 10 papers
-│   ├── pdf/                            # Full-text PDF papers
-│   └── summaries/                      # Detailed markdown summaries per paper
+├── paper_reviews/                         # Internal multi-agent mock peer review audit system
+│   ├── round-1/                           # Round 1: Desk screening, 5 independent reviews & roadmap
+│   ├── round-2/                           # Round 2: Residual issue audit, re-review verification & EIC sign-off
+│   └── REVIEW_LOG.md                      # Audit trail of internal peer review cycles
 │
-└── experiment/
-    ├── 00_overview.md                  # High-level experimental framework overview
-    ├── 01_prepare-data.md              # Dataset preparation, composition & split
-    ├── 02_preprocessing.md             # Image normalization and resizing
-    ├── 03_feature-extraction.md        # ViT feature extraction & concatenation fusion
-    ├── 04_methods.md                   # 4 Classifiers, pipeline & GridSearchCV protocol
-    ├── 05_results.md                   # 28-experiment leaderboard & fairness audit
-    ├── dataset_demogpairs.md           # Dataset specification and partition summary
-    │
-    └── code/
-        ├── app.py                      # Interactive Gradio demo web application
-        ├── 1.1_vit-face_demogpairs.ipynb       # ViT-Face feature extraction notebook
-        ├── 1.1_vit-emotion_demogpairs.ipynb    # ViT-Emotion feature extraction notebook
-        ├── 1.1_vit-age_demogpairs.ipynb        # ViT-Age feature extraction notebook
-        ├── 2.1.1 s.d. 2.1.7_svm_*.ipynb        # 7 SVM feature ablation notebooks
-        ├── 2.2.1 s.d. 2.2.7_gnb_*.ipynb        # 7 GNB feature ablation notebooks
-        ├── 2.4.1 s.d. 2.4.7_rf_*.ipynb         # 7 RF feature ablation notebooks
-        ├── 2.5.1 s.d. 2.5.7_lr_*.ipynb         # 7 LR feature ablation notebooks
-        ├── 3.0_compare.ipynb                   # Global comparative analysis & leaderboard
-        ├── 4.0_test.ipynb                      # Final pipeline testing & interactive inference
-        │
-        ├── utils/                      # Modular Python utility package
-        │   ├── __init__.py             # Exposes core APIs
-        │   ├── constants.py            # Label dictionaries & class lists
-        │   ├── dataset.py              # Metadata parsing & dataset loader
-        │   ├── display.py              # HTML / CLI tabular formatting
-        │   ├── evaluation.py           # GridSearchCV orchestration & metrics
-        │   ├── extraction.py           # ViT [CLS] feature extractor
-        │   ├── serialization.py        # Joblib & JSON loaders/savers
-        │   └── time_helpers.py         # Formats elapsed execution time
-        │
-        ├── dataset/demogpairs/metadata/# 6 metadata .txt files (1,800 rows each)
-        ├── results/                    # 28 evaluation result JSON files (.json)
-        ├── images/                     # 28 confusion matrix diagrams (.png)
-        └── md/                         # Exported markdown versions of notebooks
+├── paper_reviews_ieee/                    # Official IEEE Access editorial decision & review dossier
+│   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Official decision letter & reviewer comments
+│   ├── IEEE-Access_Response-to-Reviewers-template.md              # IEEE Access response to reviewers template
+│   ├── Request-for-Byline-Change.md                               # Formal author byline change form
+│   └── Resubmission-Checklist.md                                  # Resubmission 10-point compliance checklist
+│
+├── paper_submission/                      # Formal submission packaging and IEEE compliance reports
+│   ├── checklist_report.md                # Submission readiness audit report
+│   ├── IEEE Reference Preparation Assistant Report.txt # IEEE reference tool compliance report
+│   ├── ieee_taxonomy.txt                  # Selected IEEE controlled vocabulary taxonomy terms
+│   ├── IEEE-Access-Submission-Checklist.pdf # IEEE Access official checklist form (PDF)
+│   └── IEEE-Access-Submission-Checklist.txt # IEEE Access submission checklist (English & Indonesian)
+│
+├── references/                            # BibTeX citation sources (DemogPairs)
+├── related_works/                         # Literature reviews, summary matrices, and gap analysis
+│   ├── bib/                               # BibTeX files for 10 mandatory literature papers
+│   ├── pdf/                               # Full-text PDFs of related studies
+│   ├── summaries/                         # Structured analytical summaries per paper
+│   ├── gap_analysis.md                    # Research gap identification
+│   ├── literature_matrix.md               # Comparative literature matrix
+│   ├── sintesis_literatur.md              # Thematic literature synthesis
+│   └── tren_analisis.md                   # Chronological and methodological trend analysis
+│
+├── rules/                                 # Standardized rules for formatting, LaTeX, and citations
+│   ├── IEEE_citation_guidelines.md        # IEEE citation and bibliography guidelines
+│   ├── latex_rules.txt                    # LaTeX conversion rules and templates
+│   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
+│
+├── sessions/                              # Chronological AGY development and audit session records
+│   └── session_*.md                       # Comprehensive session logs (pattern: session_YYYY-MM-DD_agent_title)
+│
+├── template/                              # Raw IEEE Access LaTeX template distribution package
+└── upload/                                # Packaged submission artifacts (PDF and source ZIP)
 ```
 
 ---
 
-## 10. Utilities Package Reference (`utils/`)
+## 11. Submission Compliance & Packaging (`paper_submission/` & `upload/`)
 
-Located at `experiment/code/utils/`:
+### 11.1 Directory `paper_submission/`
+Contains documents validating alignment with IEEE Access author guidelines:
+- `checklist_report.md`: Systematic report auditing compliance with all IEEE Access submission requirements.
+- `IEEE Reference Preparation Assistant Report.txt`: Output from the IEEE Reference Preparation Assistant verifying bibliographic metadata format consistency.
+- `ieee_taxonomy.txt`: List of controlled vocabulary keywords matching official IEEE taxonomy categories.
+- `IEEE-Access-Submission-Checklist.pdf` / `.txt` / `.ID.txt`: Official IEEE Access submission checklist completed and translated for dual-language tracking.
 
-### 10.1 `constants.py`
+### 11.2 Directory `upload/`
+Contains the submission package submitted to the IEEE Author Portal:
+- `Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images.pdf`: The dual-column compiled PDF.
+- `Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images.zip`: The zipped source package containing `access.tex`, `sections/*.tex`, `images/*`, `ieeeaccess.cls`, and `references.bib`.
+
+---
+
+## 12. Internal Mock Peer Review Suite (`paper_reviews/`) & Agent Skills (`.agents/skills/`)
+
+### 12.1 Internal Mock Peer Review System (`paper_reviews/`)
+Before formal journal submission, the manuscript underwent an internal multi-agent mock peer review simulation:
+- **`round-1/`**:
+  - `00_desk_screening.md`: Desk screening audit assessing scope, formatting, and structural compliance.
+  - `01_eic_report.md`: Editor-in-Chief summary assessment.
+  - `02_methodology_reviewer.md`: In-depth methodological examination.
+  - `03_domain_reviewer.md`: Computer vision and facial biometrics domain review.
+  - `04_cross_perspective_analyst.md`: Intersectional fairness and demographic disparity evaluation.
+  - `05_devils_advocate.md`: Critical scrutiny challenging assumptions, claims, and baselines.
+  - `06_findings_matrix.md`: Consolidated issue tracking matrix.
+  - `07_editorial_decision.md`: Synthesized Round 1 editorial decision.
+  - `08_revision_roadmap.md`: Action plan for resolving identified issues.
+- **`round-2/`**:
+  - `07_editorial_decision.md`: Verification of revisions.
+  - `08_residual_issues.md`: Tracking of any remaining minor items.
+  - `09_response_letter_validation.md`: Rebuttal response validation.
+  - `10_rebuttal_audit.md`: Quality assurance audit of response arguments.
+  - `11_re_review_verification.md`: Traceability matrix mapping reviewer comments to manuscript lines.
+  - `12_eic_re_review_decision.md`: Final mock acceptance sign-off.
+- **`REVIEW_LOG.md`**: Master audit trail tracking timelines and reviewer identities.
+
+### 12.2 Specialized Autonomous Agent Skills (`.agents/skills/`)
+- `ar-paper-reviewer`: Executes independent academic mock reviews across 5 specialized roles (EIC, Methodology, Domain, Cross-Perspective, Devil's Advocate) based on Contract Sprint Schema 13.
+- `ar-paper-revision`: Implements byte-level precision patching (`<!--block:BNNNN-->`), fail-closed validation, and formal Response to Reviewers compilation (Schema 8).
+- `ar-paper-revision-coach`: Parses raw reviewer comments, builds 4-tier issue taxonomies, prioritizes revisions (P1 must-fix, P2 should-fix, P3 consider), and generates R&R Traceability Matrices (Schema 11).
+
+---
+
+## 13. Python Utilities Library Reference (`experiment/code/utils/`)
+
+Located at `experiment/code/utils/`, this modular library provides common functionality across experiments:
+
+### 13.1 `constants.py`
+Defines demographic classes, index mappings, random seeds, and color palettes:
 ```python
 DEMOGPairs_CLASSES = [
     "Asian_Females", "Asian_Males", "Black_Females",
@@ -467,138 +522,91 @@ DEMOGPairs_LABEL_TO_IDX = {
 DEMOGPairs_IDX_TO_LABEL = {v: k for k, v in DEMOGPairs_LABEL_TO_IDX.items()}
 ```
 
-### 10.2 `dataset.py`
-- `load_demogpairs(metadata_path, images_path) -> list[dict]`: Parses the 6 metadata `.txt` files in `dataset/demogpairs/metadata/` and produces a list of 10,800 structured dictionary records with keys `db_code`, `image_path`, `full_path`, `label`, and `label_idx`.
+### 13.2 `dataset.py`
+- `load_demogpairs(metadata_path, images_path) -> list[dict]`: Parses 6 metadata `.txt` files in `dataset/demogpairs/metadata/` to produce 10,800 dictionary records with keys `db_code`, `image_path`, `full_path`, `label`, and `label_idx`.
 
-### 10.3 `extraction.py`
-- `extract_vit_features(img, model=None, model_path=None, device=None, feature_type='cls') -> np.ndarray`: Takes an image filepath or NumPy array, runs HuggingFace `AutoImageProcessor` to format tensors to 224 × 224, queries the Vision Transformer backbone, and returns a 1D NumPy array of shape `(768,)` corresponding to the `[CLS]` token (or mean pool).
+### 13.3 `extraction.py`
+- `extract_vit_features(img, model=None, model_path=None, device=None, feature_type='cls') -> np.ndarray`: Takes an image path or array, runs HuggingFace `AutoImageProcessor` to format tensors to $224 \times 224$, queries the Vision Transformer backbone, and returns a 1D NumPy vector of shape `(768,)` corresponding to the normalized `[CLS]` token.
 
-### 10.4 `evaluation.py`
-- `evaluate_models(grid_models, x_train, y_train, x_test, y_test, model_prefix, target_names, results_path) -> tuple`: Fits GridSearchCV models (or loads them if `.pkl` already exists), performs prediction on test data, generates classification reports, computes One-vs-Rest (OvR) per-class metrics, creates confusion matrix heatmaps (saved to `images/`), and serializes all metadata to JSON in `results/`.
+### 13.4 `evaluation.py`
+- `evaluate_models(grid_models, x_train, y_train, x_test, y_test, model_prefix, target_names, results_path) -> tuple`: Fits GridSearchCV pipelines (or loads them if serialized `.pkl` exists), performs inference on test sets, generates classification reports, calculates One-vs-Rest (OvR) per-class metrics, creates confusion matrix heatmap figures (`images/`), and serializes evaluation artifacts to JSON (`results/`).
 
-### 10.5 `serialization.py`
-- `save_object(obj, filename, compress=9)`: Saves binary objects using joblib with compression level 9.
-- `load_object(filename)`: Loads joblib-serialized binary objects.
-- `save_json(data, json_file)`: Formats and writes dictionaries to indented JSON.
-- `load_json(file_path)`: Safely parses JSON files into Python dictionaries.
+### 13.5 `serialization.py`
+- `save_object(obj, filename, compress=9)`: Serializes binary objects using Joblib with level-9 compression.
+- `load_object(filename)`: Loads Joblib-serialized objects.
+- `save_json(data, json_file)`: Formats and writes Python dictionaries to indented JSON.
+- `load_json(file_path)`: Safely parses JSON files into dictionaries.
+
+### 13.6 `display.py` & `time_helpers.py`
+- `display.py`: Provides tabular formatting utilities for CLI and HTML notebook environments.
+- `time_helpers.py`: Tracks and formats elapsed execution time across long-running cross-validation loops.
 
 ---
 
-## 11. Execution & Reproduction Workflow
+## 14. Execution, Reproduction & Manuscript Compilation Workflows
 
-### 11.1 Python Environment Setup
+### 14.1 Python Environment Setup
 ```bash
-# Recommended Python 3.11 with CUDA-enabled PyTorch
 conda create -n torch-gpu python=3.11 -y
 conda activate torch-gpu
-
-# Core dependencies
 pip install torch torchvision transformers scikit-learn imbalanced-learn joblib pandas numpy pillow matplotlib seaborn tqdm gradio nbconvert
 ```
 
-### 11.2 End-to-End Execution Sequence
-1. **Feature Extraction:**
-   Run `experiment/code/1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, and `1.1_vit-age_demogpairs.ipynb` sequentially. This saves `demogpairs_vit-*.pkl` files in `features/`.
-2. **Model Training & GridSearch:**
-   Run the desired classifier notebooks:
-   - SVM: `2.1.1` through `2.1.7`
-   - Gaussian NB: `2.2.1` through `2.2.7`
-   - Random Forest: `2.4.1` through `2.4.7`
-   - Logistic Regression: `2.5.1` through `2.5.7`
-   Each notebook automatically saves the best fitted model to `models/` and metrics to `results/`.
-3. **Cross-Model Comparison & Leaderboard:**
-   Run `3.0_compare.ipynb` to aggregate all 28 JSON result files into a sorted master leaderboard.
-4. **Interactive Web Demo:**
-   Execute `python experiment/code/app.py` to start the Gradio interface at `http://127.0.0.1:7860`.
+### 14.2 Running the Machine Learning Pipeline
+1. **Feature Extraction:** Execute notebooks `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, and `1.1_vit-age_demogpairs.ipynb` sequentially. Feature vectors will be saved in `experiment/code/features/`.
+2. **Model Training & Optimization:** Execute classifier notebooks:
+   - SVM: `2.1.1` to `2.1.7`
+   - GNB: `2.2.1` to `2.2.7`
+   - RF: `2.4.1` to `2.4.7`
+   - LR: `2.5.1` to `2.5.7`
+3. **Cross-Model Comparison:** Run `3.0_compare.ipynb` to aggregate all 28 JSON result files into a consolidated benchmark leaderboard.
+4. **Interactive Web Inference:**
+   ```bash
+   python experiment/code/app.py
+   # Launches local Gradio interface at http://127.0.0.1:7860
+   ```
 
-### 11.3 Quick Code Snippet: Loading and Running SOTA SVM Model
-```python
-import sys
-import numpy as np
-import joblib
-sys.path.append('experiment/code')
-import utils as u
-
-# 1. Load Pre-extracted Features
-face_feats = u.load_object('experiment/code/features/demogpairs_vit-face.pkl')
-emotion_feats = u.load_object('experiment/code/features/demogpairs_vit-emotion.pkl')
-age_feats = u.load_object('experiment/code/features/demogpairs_vit-age.pkl')
-
-# 2. Concatenate Tri-Domain Feature for a sample image path
-sample_path = '14th_dalai_lama/0043_01.jpg'
-f_face = face_feats[sample_path]
-f_emotion = emotion_feats[sample_path]
-f_age = age_feats[sample_path]
-tri_feature = np.concatenate([f_face, f_emotion, f_age]).reshape(1, -1)  # Shape: (1, 2304)
-
-# 3. Load Trained SOTA Model
-model, elapsed_time = u.load_object('experiment/code/models/clf_demogpairs_svm_vit-face-emotion-age_SVC.pkl')
-
-# 4. Predict
-pred_idx = model.predict(tri_feature)[0]
-pred_label = u.DEMOGPairs_IDX_TO_LABEL[pred_idx]
-print(f'Predicted Class Index: {pred_idx} -> Label: {pred_label}')
-```
-
-### 11.4 LaTeX Manuscript Compilation Workflow
-Both Indonesian and English IEEE Access manuscripts are fully modularized and ready for compilation under `paper_latex_id/` and `paper_latex_en/`. To recompile either manuscript from source:
+### 14.3 LaTeX Manuscript Compilation
+To recompile either manuscript from source:
 ```bash
-# Compile English IEEE Access Manuscript (Submission-Ready)
+# 1. Compile English Submission Manuscript (IEEE Access dual-column)
 cd paper_latex_en
 pdflatex access.tex
 bibtex access
 pdflatex access.tex
 pdflatex access.tex
 
-# Compile Indonesian Reference Manuscript
+# 2. Compile Indonesian Reference Manuscript
 cd ../paper_latex_id
 pdflatex access.tex
 bibtex access
 pdflatex access.tex
 pdflatex access.tex
 ```
-Compilation yields the publication-ready dual-column PDF `access.pdf` in each respective directory.
+Compilation produces the submission-ready dual-column PDF `access.pdf` in each respective folder.
 
 ---
 
-## 12. Scientific Claim Boundaries & Academic Writing Rules
+## 15. Scientific Claim Boundaries & Academic Writing Constraints (27 Directives)
 
-When writing, editing, or evaluating paper drafts, outlines, or reports related to this project, any AI agent **MUST** strictly adhere to the following rules:
+When writing, revising, or auditing manuscript drafts, outlining papers, or drafting responses to reviewer comments, any AI agent **MUST** adhere strictly to the following 27 directives:
 
-### 12.1 Language & Heading Rules
-- **Headings & Subheadings:** Must be strictly in **English Title Case** (e.g., `# I. Introduction`, `## A. Dataset`, `## B. Vision Transformer`).
-- **Narrative Body Text:** Written in formal **Bahasa Indonesia**, while preserving standard international academic and technical terms in **English** (e.g., *feature extraction*, *cross-validation*, *grid search*, *held-out test set*, *one-vs-rest*, *support vector machine*).
-- **Classifier Terminology Standardization:** Standardize on **Support Vector Machine (SVM)** (consistent with scikit-learn `sklearn.svm.SVC`) throughout the manuscript.
-- **First-Mention Acronym Rule:** Technical terms with standard acronyms (e.g., *Vision Transformer* (ViT), *Support Vector Machine* (SVM), *Random Forest* (RF), *Gaussian Naive Bayes* (GNB), *Logistic Regression* (LR), *Principal Component Analysis* (PCA), *Multi-Head Self-Attention* (MHSA)) **MUST** be written in full with their acronym on first mention in the abstract or introduction. Subsequently, use only the acronym (ViT, SVM, RF, GNB, LR, PCA, MHSA).
-- **Paragraph Length Discipline:** Standard paragraphs should be calibrated to **100-150 words** (with Related Works specifically at **100-115 words**) as specified in `paper_outline.md`, except for designated special paragraphs (Intro P3 [150-275 words], Intro P5 [150-250 words], Intro P6 [200-250 words], Intro P7 [75-100 words], and Abstract [150-200 words]).
-- **Citation Density:** Maximum of 3 citations per sentence to prevent citation dumping.
-- **SPOK Sentence Structure & Syntactic Variety:** Sentences in narrative drafts must maintain clear, well-formed SPOK (Subjek, Predikat, Objek, Keterangan) syntax to ensure definitive subjects/verbs and eliminate dangling clauses. To meet Q1 academic elegance without robotic monotony, balance direct S-P-O-K with measured transitional K-S-P-O clauses and objective passive phrasing in methodology, facilitating flawless translation into Academic English (SVO/SVOC).
-
-### 12.2 Mathematical & Typographical Constraints
-- **NO Em Dash Characters:** The long em dash (`—`) is **strictly forbidden**. Use a standard hyphen (`-`), parentheses `( )`, or commas `,`.
-- **Plain Text for Simple Arithmetic:** Do not use LaTeX math mode for basic numbers, dimensions, arithmetic, and ranges:
-  - Use `224 × 224` (NOT `$224 \times 224$`)
-  - Use `768 + 768 + 768 = 2304` (NOT `$768+768+768=2304$`)
-  - Use `80/20 split` (NOT `$80/20$`)
-  - Use `±5%` (NOT `$\pm 5\%$`)
-- **Math Mode Exclusivity:** Reserve LaTeX formulas (`$...$` and `$$...$$`) strictly for symbolic algebra, vectors, matrices, and formal mathematical definitions.
-- **No Orphan Elements:** Every figure, table, equation, algorithm, and reference cited must be explicitly introduced and elaborated in the accompanying narrative text.
-
-### 12.3 Scientific Claim Boundaries & Academic Rigor (26 Directives)
 1. **No Subject Identity Discussion:** Do not discuss identity-level split, identity leakage, subject identity, or identity-aware split. Focus strictly on intersectional race and gender classification.
 2. **Cautious Data Leakage Formulation:** Do not claim absolute "zero data leakage"; use "the preprocessing and cross-validation pipeline was designed to prevent information leakage."
 3. **Balanced Evaluation Setting:** A balanced dataset does not imply demographic bias has been eliminated; refer to it as a "balanced evaluation setting" or "balanced class distribution across subgroups."
-4. **No "Significantly" Without Statistical Tests:** Do not use the word "significantly" in the absence of statistical hypothesis testing; use "substantially", "considerably", "notably", or "achieved higher performance."
+4. **No "Significantly" Without Statistical Tests:** Do not use the word "significantly" in the absence of formal hypothesis testing; use "substantially", "considerably", "notably", or "achieved higher performance."
 5. **Accurate Tri-Domain Scope:** Tri-domain fusion was top-performing on 3 of the 4 classifiers (SVM, LR, GNB); Random Forest achieved its highest performance on dual-domain `Emotion ⊕ Face`.
 6. **Complementary Age Features:** Refer to Age features as providing "complementary informational contribution" or "additional discriminative information", not "orthogonal contribution".
 7. **Hypothesis-Driven RF Drop Interpretation:** Present the drop in RF performance on 2,304 dimensions as a potential interpretation ("may reflect the difficulty of partitioning a higher-dimensional feature space using randomized splits").
 8. **Empirical vs Theoretical Separation:** Strictly separate empirical findings (actual experimental figures) from conceptual interpretations.
-9. **No State-of-the-Art Hyperbole:** Use "highest performance among the compared studies" or "outperformed the compared baselines on DemogPairs".
+9. **No State-of-the-Art Hyperbole:** Use "highest performance among the compared studies" or "outperformed the compared baselines on DemogPairs" - never "state-of-the-art".
 10. **Demographic Generalization Scope:** Explicitly limit scope to the 3 macro-racial groups represented in DemogPairs (Asian, Black, White).
 11. **AI Ethics Statement:** Formulated for academic benchmarking and algorithmic fairness research; public surveillance deployment requires human-in-the-loop oversight and ethical governance.
-12. **Equation (4) CLS Token Definition:** `z_L^0` in `f_domain = LN(z_L^0)` refers specifically to the CLS token representation from the **final encoder layer L** of the ViT backbone. This must be stated explicitly when first introducing Eq. (4).
+12. **Equation (4) CLS Token Definition:** $\mathbf{z}_L^0$ in $\mathbf{f}_{\text{domain}} = \text{LayerNorm}(\mathbf{z}_L^0)$ refers specifically to the CLS token representation from the **final encoder layer L** of the ViT backbone. This must be stated explicitly.
 13. **ViT Embedding as Task-Associated Representations:** Do not claim that ViT embeddings are exclusive or universal feature characterizations. Use "task-associated representations" as the preferred framing.
-14. **Corrected Disparity Values:** The confirmed disparity values from the experiment logs are: SVM ΔF1 = **0.0440** (0.9614 - 0.9174), SVM ΔPrecision = **0.0310**, SVM ΔRecall = **0.0750**, SVM ΔOvR Acc = **1.39 pp**; LR ΔF1 = **0.0422** (0.9558 - 0.9136), LR ΔPrecision = **0.0495** (0.9571 - 0.9076), LR ΔRecall = **0.0500** (0.9611 - 0.9111), LR ΔOvR Acc = **1.39 pp**.
+14. **Exact Disparity Figures:** Report confirmed disparity values from source JSON results:
+    - SVM: $\Delta\text{F1} = \mathbf{0.0440}$ (0.9614 - 0.9174), $\Delta\text{Precision} = \mathbf{0.0310}$, $\Delta\text{Recall} = \mathbf{0.0750}$, $\Delta\text{OvR Acc} = \mathbf{1.39\text{ pp}}$.
+    - LR: $\Delta\text{F1} = \mathbf{0.0422}$ (0.9558 - 0.9136), $\Delta\text{Precision} = \mathbf{0.0495}$, $\Delta\text{Recall} = \mathbf{0.0500}$, $\Delta\text{OvR Acc} = \mathbf{1.39\text{ pp}}$.
 15. **Table XI Structure:** Table XI (Subgroup-Level Performance) reports per-subgroup classification metrics (Recall, Precision, F1-Score, OvR Accuracy) for SVM and LR on the tri-domain configuration.
 16. **Subgroup Performance Scope:** Note that subgroup evaluation reflects per-class performance across intersectional demographics and does not constitute a comprehensive fairness audit.
 17. **OvR Accuracy Context:** High OvR accuracy values are partially attributable to the 5:1 negative sample ratio in binary one-vs-rest evaluation; do not present OvR Accuracy as a sole or primary fairness indicator.
@@ -607,7 +615,7 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 20. **Full Numerical Consistency Check:** All tables, confusion matrices, per-subgroup metrics, and narrative text must be numerically consistent with source JSON result files in `experiment/code/results/`.
 21. **Novelty Statement:** The novelty of this work is the combination of (a) tri-domain ViT feature fusion, (b) comparative 4-classifier evaluation under unified GridSearchCV, (c) SVM hyperparameter optimization, and (d) subgroup disparity analysis on an intersectional benchmark.
 22. **RQ Alignment:** Every research conclusion must be backed by a table, figure, or experiment result. Do not assert findings without an explicit evidential anchor.
-23. **Final Terminology/Notation/Number Consistency:** Before finalizing any section, verify that all acronyms, configuration names (using ⊕ symbol), equation references (Eq. 1-19), and numerical values are consistent throughout the entire document.
+23. **Final Terminology/Notation/Number Consistency:** Before finalizing any section, verify that all acronyms, configuration names (using $\oplus$ symbol), equation references (Eq. 1-19), and numerical values are consistent throughout the entire document.
 24. **Hupont & Fernández (IEEE FG 2019):** This is the seminal DemogPairs paper and serves as the baseline dataset citation. It is NOT included in the main direct-comparison performance table (Table XII), but should be cited when introducing the DemogPairs dataset.
 25. **Universal Manuscript Pipeline SOP (`WORKFLOW.md`):** All drafting, translation, and publication workflows must strictly follow `WORKFLOW.md` as the official standard operating procedure for generating modular Markdown drafts (`paper/`), Indonesian LaTeX (`paper_latex_id/`), and English submission-ready LaTeX manuscripts (`paper_latex_en/`) from `paper_outline.md`. Both LaTeX packages use `access.tex` as the master document entrypoint and compile directly to `access.pdf`. Each stage must strictly maintain 100% numerical consistency, exact formula definitions, and 1-to-1 modular mapping across all target formats.
 26. **Sentence-Level Citation Audit Protocol (`paper/references.txt`):** Every factual claim or external literature reference in `paper/*.md` must be registered with exact quote matching in `paper/references.txt` pointing to source files in `paper/references/`. During manuscript evolution, temporary inline citation markers (`[(N)]`) are strictly tracked and converted into validated bibliography entries before final LaTeX synchronization (`references.bib`).
@@ -615,18 +623,16 @@ When writing, editing, or evaluating paper drafts, outlines, or reports related 
 
 ---
 
-## 13. Key Authors, Provenance & Citation Metadata
+## 16. Key Authors, Academic Provenance & Citation Metadata
 
-### 13.1 Research Team & Affiliations
+### 16.1 Research Team
 All authors are affiliated with the **Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya (UNESA), Surabaya, East Java, Indonesia**:
-
 1. **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID: 0000-0002-5515-7967](https://orcid.org/0000-0002-5515-7967)) - Corresponding Author (`rickyeka@unesa.ac.id`)
 2. **Rezky Arisanti Putri, S.Kom., M.Kom.** ([ORCID: 0009-0000-8021-1833](https://orcid.org/0009-0000-8021-1833))
 3. **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID: 0000-0001-9719-3491](https://orcid.org/0000-0001-9719-3491))
 4. **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID: 0009-0003-6991-0694](https://orcid.org/0009-0003-6991-0694))
 
-### 13.2 BibTeX Citations
-
+### 16.2 Citation Entries
 ```bibtex
 @article{putra2026multidomain,
   title={Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images},

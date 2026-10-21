@@ -4,6 +4,15 @@
 
 ---
 
+## 📌 Publication & Review Status
+
+- **Target Journal:** IEEE Access (Open Access, Q1 / Impact Factor: 3.4)
+- **Manuscript ID:** `Access-2026-50857`
+- **Current Milestone:** Editorial Decision Received (20-10-2026) – Binary Process (Reject & Resubmit with 1 Resubmission Opportunity).
+- **Peer Review Dossier:** Managed under [`paper_reviews_ieee/`](paper_reviews_ieee/) (Decision letter, official Reviewer 1 & 2 feedback, response template, and resubmission checklist).
+
+---
+
 ## 🌟 Key Experimental Results
 
 ### 1. Global Benchmark Leaderboard across Classifiers
@@ -109,6 +118,10 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 
 ```
 .
+├── .agents/skills/                        # Autonomous AI agent skills & peer review frameworks
+│   ├── ar-paper-reviewer/                 # Independent academic peer review simulation skill
+│   ├── ar-paper-revision/                 # Byte-level precision patching and revision application skill
+│   └── ar-paper-revision-coach/           # Review deconstruction, roadmap & rebuttal ledger coach
 ├── authors.txt                            # Complete author profiles, affiliations, and ORCID IDs
 ├── experiment/                            # Experimental logs, documentation, and source code
 │   ├── 00_overview.md - 05_results.md     # Comprehensive experimental logs and methodology audits
@@ -119,14 +132,7 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │       ├── 3.0_compare.ipynb              # Global 28-model comparison and benchmarking
 │       ├── 4.0_test.ipynb                 # Held-out evaluation and test routines
 │       ├── app.py                         # Interactive Gradio demo web application
-│       ├── utils/                         # Modular utility library
-│       │   ├── constants.py               # Class names, mappings, and seed definitions
-│       │   ├── dataset.py                 # Dataset loaders and metadata processors
-│       │   ├── display.py                 # Visual display and tabular helpers
-│       │   ├── evaluation.py              # Cross-validation, metrics, and disparity calculations
-│       │   ├── extraction.py              # ViT [CLS] feature extractor
-│       │   ├── serialization.py           # Joblib & JSON loaders/savers
-│       │   └── time_helpers.py            # Execution duration trackers
+│       ├── utils/                         # Modular utility library (constants, dataset, evaluation, etc.)
 │       ├── dataset/demogpairs/metadata/   # 6 metadata .txt files (1,800 rows each)
 │       ├── md/                            # Markdown exports of all Jupyter notebooks
 │       ├── results/                       # Raw JSON result files (28 experiment artifacts)
@@ -134,34 +140,44 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 ├── folder_structure.txt                   # Complete project directory tree and file glossary
 ├── images/                                # High-resolution architecture diagrams and sample figures
 ├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
-│   ├── 00_abstract.md                  # Title, authors, abstract, and IEEE keywords
-│   ├── 01_introduction.md              # Section I: Introduction
-│   ├── 02_related-works.md              # Section II: Related Works
-│   ├── 03_materials-and-methods_*.md   # Section III: Methodology (0-overview, a-dataset s.d. h-evaluation-metrics)
-│   ├── 04_results-and-discussion_*.md  # Section IV: Results and Discussion (a-global s.d. e-prior-studies)
-│   ├── 05_conclusion.md                # Section V: Conclusion
-│   ├── 06_references.md                # Section VI: References (IEEE formatted, entries [1]-[51])
-│   ├── 07_biographies.md               # Section VII: Biographies
-│   ├── acronyms.txt                    # Centralized acronym registry (Rule 1.3)
-│   ├── ref_part_*.md                   # 10 modular bibliographic audit logs (entries [1]-[51])
-│   ├── references.txt                  # Sentence-level citation tracking & verification registry
-│   ├── references/                     # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
-│   └── images/                         # Self-contained local image assets for paper compilation
+│   ├── 00_abstract.md - 05_conclusion.md  # Core manuscript sections
+│   ├── 06_references.md                   # Standardized IEEE bibliography registry (entries [1]-[51])
+│   ├── 07_biographies.md                  # Section VII: Biographies & portrait assets
+│   ├── acronyms.txt                       # Centralized acronym registry (Rule 1.3)
+│   ├── ref_part_*.md                      # 10 modular bibliographic audit logs (entries [1]-[51])
+│   ├── references.txt                     # Sentence-level citation tracking & verification registry
+│   ├── references/                        # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
+│   └── images/                            # Self-contained local image assets for paper compilation
 ├── paper_latex_en/                        # Submission-ready English IEEE Access LaTeX package
-│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
-│   ├── access.pdf                      # Compiled dual-column English manuscript PDF
-│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
-│   ├── references.bib                  # Consolidated BibTeX database
-│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
-│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+│   ├── access.tex                         # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                         # Compiled dual-column English manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst      # Official IEEE Access style class and bibliography style
+│   ├── references.bib                     # Consolidated BibTeX database
+│   ├── sections/                          # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                            # Figures and high-resolution plots for LaTeX compilation
 ├── paper_latex_id/                        # Reference Indonesian IEEE Access LaTeX package
-│   ├── access.tex                      # Master LaTeX entrypoint with \input{} sections
-│   ├── access.pdf                      # Compiled dual-column Indonesian manuscript PDF
-│   ├── ieeeaccess.cls / IEEEtran.bst   # Official IEEE Access style class and bibliography style
-│   ├── references.bib                  # Consolidated BibTeX database
-│   ├── sections/                       # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
-│   └── images/                         # Figures and high-resolution plots for LaTeX compilation
+│   ├── access.tex                         # Master LaTeX entrypoint with \input{} sections
+│   ├── access.pdf                         # Compiled dual-column Indonesian manuscript PDF
+│   ├── ieeeaccess.cls / IEEEtran.bst      # Official IEEE Access style class and bibliography style
+│   ├── references.bib                     # Consolidated BibTeX database
+│   ├── sections/                          # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
+│   └── images/                            # Figures and high-resolution plots for LaTeX compilation
 ├── paper_outline.md                       # Complete publication outline & paragraph targets
+├── paper_reviews/                         # Internal multi-agent mock peer review audit system
+│   ├── round-1/                           # Round 1: Desk screening, 5 independent reviews & roadmap
+│   ├── round-2/                           # Round 2: Residual issue audit, re-review verification & EIC sign-off
+│   └── REVIEW_LOG.md                      # Audit trail of internal peer review cycles
+├── paper_reviews_ieee/                    # Official IEEE Access editorial decision & review dossier
+│   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Official decision letter & reviewer comments
+│   ├── IEEE-Access_Response-to-Reviewers-template.md              # IEEE Access response to reviewers template
+│   ├── Request-for-Byline-Change.md                               # Formal author byline change form
+│   └── Resubmission-Checklist.md                                  # Resubmission 10-point compliance checklist
+├── paper_submission/                      # Formal submission packaging and IEEE compliance reports
+│   ├── checklist_report.md                # Submission readiness audit report
+│   ├── IEEE Reference Preparation Assistant Report.txt # IEEE reference tool compliance report
+│   ├── ieee_taxonomy.txt                  # Selected IEEE controlled vocabulary taxonomy terms
+│   ├── IEEE-Access-Submission-Checklist.pdf # IEEE Access official checklist form (PDF)
+│   └── IEEE-Access-Submission-Checklist.txt # IEEE Access submission checklist (English & Indonesian)
 ├── prompts.txt                            # Chronological log of experimental prompts and instructions
 ├── README.AI.md                           # Master AI agent operational guide and ground-truth index
 ├── README.md                              # Public research documentation
@@ -180,27 +196,32 @@ Evaluated on the held-out test set ($N = 2,160$) following 5-Fold Stratified Cro
 │   └── md_rules.txt                       # Strict Markdown drafting rules and checklist
 ├── scopus_query.txt                       # Scopus literature search query strings
 ├── sessions/                              # Chronological AGY development and audit session records
-│   └── session_*.md                       # Comprehensive session logs (06, 07, 08 September 2026; pattern: session_YYYY-MM-DD_agent_title)
+│   └── session_*.md                       # Comprehensive session logs (pattern: session_YYYY-MM-DD_agent_title)
+├── template/                              # Raw IEEE Access LaTeX template distribution package
+├── upload/                                # Packaged submission artifacts (PDF and source ZIP)
 └── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ```
 
+---
+
 ### Overview of Core Documentation & Manuscript Pipeline
 
-| Document | Description & Role |
+| Document / Directory | Description & Role |
 |---|---|
 | [`WORKFLOW.md`](WORKFLOW.md) | **Standard Operating Procedure (SOP):** Universal 4-stage research manuscript pipeline (`Outline` &rarr; `paper/` &rarr; `paper_latex_id/` &rarr; `paper_latex_en/`) |
-| [`README.AI.md`](README.AI.md) | Master AI agent operational guide, ground-truth audit index, and academic writing rules |
-| [`paper_outline.md`](paper_outline.md) | Master architectural blueprint for IEEE Access publication, word limits, and notation definitions |
+| [`README.AI.md`](README.AI.md) | **Master AI Agent Reference Manual:** Comprehensive ground-truth index, 28-model audit, reviewer deconstruction, and writing rules |
+| [`paper_reviews_ieee/`](paper_reviews_ieee/) | **Official IEEE Access Peer Review Dossier:** Decision letter for `Access-2026-50857`, Reviewer 1 & 2 feedback, response template, and resubmission checklist |
+| [`paper_submission/`](paper_submission/) | **Submission Compliance Hub:** IEEE Reference Preparation Assistant report, taxonomy terms, and submission checklist reports |
+| [`paper_reviews/`](paper_reviews/) | **Internal Mock Peer Review Suite:** Pre-submission mock reviews across Round 1 & Round 2 (5 evaluator roles) |
+| [`paper_latex_en/`](paper_latex_en/) | **Final Submission Package:** Dual-column English IEEE Access LaTeX source and compiled PDF ([`access.pdf`](paper_latex_en/access.pdf)) |
+| [`paper_latex_id/`](paper_latex_id/) | **Indonesian Reference Package:** Dual-column Indonesian IEEE Access LaTeX source and compiled PDF ([`access.pdf`](paper_latex_id/access.pdf)) |
 | [`paper/`](paper/) | Modular publication draft in Markdown conforming strictly to IEEE publication standards |
 | [`paper/06_references.md`](paper/06_references.md) | Standardized IEEE bibliography registry (entries [1]-[51]) with `<a id="refN"></a>` anchors |
 | [`paper/references.txt`](paper/references.txt) | Sentence-level citation tracking registry mapping manuscript statements directly to bibliographic sources |
-| [`paper_latex_en/`](paper_latex_en/) | **Final submission package:** English IEEE Access modular LaTeX source and compiled PDF ([`access.pdf`](paper_latex_en/access.pdf)) |
-| [`paper_latex_id/`](paper_latex_id/) | **Indonesian reference package:** Modular IEEE Access LaTeX source and compiled PDF ([`access.pdf`](paper_latex_id/access.pdf)) |
-| [`rules/md_rules.txt`](rules/md_rules.txt) | Strict Markdown drafting rules (word count bounds, acronym tracking, interactive links, no forbidden words) |
-| [`folder_structure.txt`](folder_structure.txt) | Complete directory tree diagram and comprehensive functional glossary of all folders/files |
+| [`upload/`](upload/) | Compiled camera-ready PDF and bundled source ZIP prepared for the IEEE Author Portal |
 | [`experiment/00_overview.md`](experiment/00_overview.md) | Comprehensive experimental logs, 28-model leaderboard audit, and dataset partition details |
 | [`authors.txt`](authors.txt) | Comprehensive academic author profiles, departmental affiliations, and ORCID identifiers |
-| [`sessions/`](sessions/) | Chronological AGY development logs, detailed session notes, and audit trajectories |
+| [`sessions/`](sessions/) | Chronological development logs, detailed session notes, and audit trajectories |
 
 ---
 
@@ -253,4 +274,3 @@ If you find this research or codebase useful in your work, please cite:
   doi={10.1109/FG.2019.8756625}
 }
 ```
-
