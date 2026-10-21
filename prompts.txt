@@ -6,11 +6,13 @@
 
 Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubungan dengannya (jangan pernah baca file prompts.txt dan .ipynb, untuk .ipynb gantinya ada pada experiment/code/md)!
 
-Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan push! Gunakan skill 'git-commit' atau sesuai dengan best practice!
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
 
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+eksplorasi ulang project ini dan update README.md dan README.AI.md. khusus untuk paper_reviews_ieee jangan memasukkan paper_reviews_ieee/raw ke readme. khusus untuk README.AI.md lebih detilkan karena file ini tujuannya adalah agar ai agent berikutnya tidak perlu eksplorasi project sedari awal.
 
 ketika saya cek pakai https://latexqc.ieee.org/, hasilnya:
 File name
