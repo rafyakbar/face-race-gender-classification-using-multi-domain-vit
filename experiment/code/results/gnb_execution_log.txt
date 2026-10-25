@@ -1,0 +1,136 @@
+[2026-10-23 18:33:25] MEMULAI RUNNER GNB (GAUSSIAN NAIVE BAYES)
+[2026-10-23 18:33:25] 
+--- Progress GNB 1/7 ---
+[2026-10-23 18:33:25] ============================================================
+[2026-10-23 18:33:25] [START] Mengeksekusi notebook: 2.2.1_gnb_vit-face_demogpairs.ipynb
+[2026-10-23 18:33:32] [ERROR] 2.2.1_gnb_vit-face_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:33:32] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:33:34] 
+--- Progress GNB 2/7 ---
+[2026-10-23 18:33:34] ============================================================
+[2026-10-23 18:33:34] [START] Mengeksekusi notebook: 2.2.2_gnb_vit-emotion_demogpairs.ipynb
+[2026-10-23 18:33:41] [ERROR] 2.2.2_gnb_vit-emotion_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:33:41] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:33:43] 
+--- Progress GNB 3/7 ---
+[2026-10-23 18:33:43] ============================================================
+[2026-10-23 18:33:43] [START] Mengeksekusi notebook: 2.2.3_gnb_vit-age_demogpairs.ipynb
+[2026-10-23 18:33:48] [ERROR] 2.2.3_gnb_vit-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:33:48] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:33:50] 
+--- Progress GNB 4/7 ---
+[2026-10-23 18:33:50] ============================================================
+[2026-10-23 18:33:50] [START] Mengeksekusi notebook: 2.2.4_gnb_vit-face-age_demogpairs.ipynb
+[2026-10-23 18:33:56] [ERROR] 2.2.4_gnb_vit-face-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:33:56] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:33:58] 
+--- Progress GNB 5/7 ---
+[2026-10-23 18:33:58] ============================================================
+[2026-10-23 18:33:58] [START] Mengeksekusi notebook: 2.2.5_gnb_vit-emotion-age_demogpairs.ipynb
+[2026-10-23 18:34:07] [ERROR] 2.2.5_gnb_vit-emotion-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:34:07] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:34:09] 
+--- Progress GNB 6/7 ---
+[2026-10-23 18:34:09] ============================================================
+[2026-10-23 18:34:09] [START] Mengeksekusi notebook: 2.2.6_gnb_vit-emotion-face_demogpairs.ipynb
+[2026-10-23 18:34:19] [ERROR] 2.2.6_gnb_vit-emotion-face_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:34:19] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:34:21] 
+--- Progress GNB 7/7 ---
+[2026-10-23 18:34:21] ============================================================
+[2026-10-23 18:34:21] [START] Mengeksekusi notebook: 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb
+[2026-10-23 18:34:27] [ERROR] 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-23 18:34:27] [STDERR]: [32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Any, Optional
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mjoblib[39;00m
+[32m      9[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msave_object[39m(obj: Any, filename: [38;5;28mstr[39m, compress: [38;5;28mint[39m = [32m9[39m) -> [38;5;28;01mNone[39;00m:
+[32m     10[39m [38;5;250m    [39m[33;03m"""Save object to disk using joblib with compression."""[39;00m
+
+[31mModuleNotFoundError[39m: No module named 'joblib'
+
+
+[2026-10-23 18:34:29] 
+============================================================
+[2026-10-23 18:34:29] SELURUH EKSEKUSI GNB SELESAI! (0/7 sukses)
+[2026-10-23 18:34:29] ============================================================
+[2026-10-23 18:35:53] MEMULAI RUNNER GNB (GAUSSIAN NAIVE BAYES)
+[2026-10-23 18:35:53] 
+--- Progress GNB 1/7 ---
+[2026-10-23 18:35:53] ============================================================
+[2026-10-23 18:35:53] [START] Mengeksekusi notebook: 2.2.1_gnb_vit-face_demogpairs.ipynb
+[2026-10-23 18:45:43] [EXCEPTION] Terjadi error pada 2.2.1_gnb_vit-face_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 18:45:45] 
+--- Progress GNB 2/7 ---
+[2026-10-23 18:45:45] ============================================================
+[2026-10-23 18:45:45] [START] Mengeksekusi notebook: 2.2.2_gnb_vit-emotion_demogpairs.ipynb
+[2026-10-23 18:55:26] [EXCEPTION] Terjadi error pada 2.2.2_gnb_vit-emotion_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 18:55:28] 
+--- Progress GNB 3/7 ---
+[2026-10-23 18:55:28] ============================================================
+[2026-10-23 18:55:28] [START] Mengeksekusi notebook: 2.2.3_gnb_vit-age_demogpairs.ipynb
+[2026-10-23 19:04:55] [EXCEPTION] Terjadi error pada 2.2.3_gnb_vit-age_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 19:04:57] 
+--- Progress GNB 4/7 ---
+[2026-10-23 19:04:57] ============================================================
+[2026-10-23 19:04:57] [START] Mengeksekusi notebook: 2.2.4_gnb_vit-face-age_demogpairs.ipynb
+[2026-10-23 19:31:47] [EXCEPTION] Terjadi error pada 2.2.4_gnb_vit-face-age_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 19:31:49] 
+--- Progress GNB 5/7 ---
+[2026-10-23 19:31:50] ============================================================
+[2026-10-23 19:31:50] [START] Mengeksekusi notebook: 2.2.5_gnb_vit-emotion-age_demogpairs.ipynb
+[2026-10-23 19:57:36] [EXCEPTION] Terjadi error pada 2.2.5_gnb_vit-emotion-age_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 19:57:38] 
+--- Progress GNB 6/7 ---
+[2026-10-23 19:57:38] ============================================================
+[2026-10-23 19:57:38] [START] Mengeksekusi notebook: 2.2.6_gnb_vit-emotion-face_demogpairs.ipynb
+[2026-10-23 20:23:27] [EXCEPTION] Terjadi error pada 2.2.6_gnb_vit-emotion-face_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 20:23:29] 
+--- Progress GNB 7/7 ---
+[2026-10-23 20:23:29] ============================================================
+[2026-10-23 20:23:29] [START] Mengeksekusi notebook: 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb
+[2026-10-23 21:17:59] [EXCEPTION] Terjadi error pada 2.2.7_gnb_vit-face-emotion-age_demogpairs.ipynb: 'charmap' codec can't encode character '\u2605' in position 22: character maps to <undefined>
+[2026-10-23 21:18:01] 
+============================================================
+[2026-10-23 21:18:01] SELURUH EKSEKUSI GNB SELESAI! (0/7 sukses)
+[2026-10-23 21:18:01] ============================================================

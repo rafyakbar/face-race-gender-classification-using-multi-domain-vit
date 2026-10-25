@@ -1,0 +1,497 @@
+[2026-10-23 21:46:15] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-23 21:46:15] 
+--- Progress Antrean 1/19 ---
+[2026-10-23 21:46:15] ============================================================
+[2026-10-23 21:46:15] [START] Mengeksekusi: 2.5.1_lr_vit-face_demogpairs.ipynb
+[2026-10-23 22:00:29] [DONE] 2.5.1_lr_vit-face_demogpairs.ipynb SUKSES! Waktu: 14.2 menit | Akurasi: 86.39% | Macro-F1: 0.8640
+[2026-10-23 22:00:31] 
+--- Progress Antrean 2/19 ---
+[2026-10-23 22:00:31] ============================================================
+[2026-10-23 22:00:31] [START] Mengeksekusi: 2.5.2_lr_vit-emotion_demogpairs.ipynb
+[2026-10-23 22:13:45] [DONE] 2.5.2_lr_vit-emotion_demogpairs.ipynb SUKSES! Waktu: 13.2 menit | Akurasi: 85.23% | Macro-F1: 0.8527
+[2026-10-23 22:13:47] 
+--- Progress Antrean 3/19 ---
+[2026-10-23 22:13:47] ============================================================
+[2026-10-23 22:13:47] [START] Mengeksekusi: 2.5.3_lr_vit-age_demogpairs.ipynb
+[2026-10-23 22:27:09] [DONE] 2.5.3_lr_vit-age_demogpairs.ipynb SUKSES! Waktu: 13.4 menit | Akurasi: 81.48% | Macro-F1: 0.8146
+[2026-10-23 22:27:11] 
+--- Progress Antrean 4/19 ---
+[2026-10-23 22:27:11] ============================================================
+[2026-10-23 22:27:11] [START] Mengeksekusi: 2.5.4_lr_vit-face-age_demogpairs.ipynb
+[2026-10-23 22:57:57] [DONE] 2.5.4_lr_vit-face-age_demogpairs.ipynb SUKSES! Waktu: 30.8 menit | Akurasi: 87.41% | Macro-F1: 0.8740
+[2026-10-23 22:57:59] 
+--- Progress Antrean 5/19 ---
+[2026-10-23 22:57:59] ============================================================
+[2026-10-23 22:57:59] [START] Mengeksekusi: 2.5.5_lr_vit-emotion-age_demogpairs.ipynb
+[2026-10-23 23:28:15] [DONE] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb SUKSES! Waktu: 30.3 menit | Akurasi: 86.67% | Macro-F1: 0.8667
+[2026-10-23 23:28:17] 
+--- Progress Antrean 6/19 ---
+[2026-10-23 23:28:17] ============================================================
+[2026-10-23 23:28:17] [START] Mengeksekusi: 2.5.6_lr_vit-emotion-face_demogpairs.ipynb
+[2026-10-24 00:00:57] [DONE] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb SUKSES! Waktu: 32.7 menit | Akurasi: 87.45% | Macro-F1: 0.8749
+[2026-10-24 00:00:59] 
+--- Progress Antrean 7/19 ---
+[2026-10-24 00:00:59] ============================================================
+[2026-10-24 00:00:59] [START] Mengeksekusi: 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb
+[2026-10-24 00:56:06] [DONE] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb SUKSES! Waktu: 55.1 menit | Akurasi: 88.66% | Macro-F1: 0.8868
+[2026-10-24 00:56:08] 
+--- Progress Antrean 8/19 ---
+[2026-10-24 00:56:08] ============================================================
+[2026-10-24 00:56:08] [START] Mengeksekusi: 2.4.1_rf_vit-face_demogpairs.ipynb
+[2026-10-24 01:35:19] [DONE] 2.4.1_rf_vit-face_demogpairs.ipynb SUKSES! Waktu: 39.2 menit | Akurasi: 84.03% | Macro-F1: 0.8403
+[2026-10-24 01:35:21] 
+--- Progress Antrean 9/19 ---
+[2026-10-24 01:35:21] ============================================================
+[2026-10-24 01:35:21] [START] Mengeksekusi: 2.4.2_rf_vit-emotion_demogpairs.ipynb
+[2026-10-24 02:17:02] [DONE] 2.4.2_rf_vit-emotion_demogpairs.ipynb SUKSES! Waktu: 41.7 menit | Akurasi: 76.11% | Macro-F1: 0.7603
+[2026-10-24 02:17:04] 
+--- Progress Antrean 10/19 ---
+[2026-10-24 02:17:04] ============================================================
+[2026-10-24 02:17:04] [START] Mengeksekusi: 2.4.3_rf_vit-age_demogpairs.ipynb
+[2026-10-24 02:57:13] [DONE] 2.4.3_rf_vit-age_demogpairs.ipynb SUKSES! Waktu: 40.1 menit | Akurasi: 71.81% | Macro-F1: 0.7170
+[2026-10-24 02:57:15] 
+--- Progress Antrean 11/19 ---
+[2026-10-24 02:57:15] ============================================================
+[2026-10-24 02:57:15] [START] Mengeksekusi: 2.4.4_rf_vit-face-age_demogpairs.ipynb
+[2026-10-24 04:06:04] [DONE] 2.4.4_rf_vit-face-age_demogpairs.ipynb SUKSES! Waktu: 68.8 menit | Akurasi: 84.86% | Macro-F1: 0.8478
+[2026-10-24 04:06:06] 
+--- Progress Antrean 12/19 ---
+[2026-10-24 04:06:06] ============================================================
+[2026-10-24 04:06:06] [START] Mengeksekusi: 2.4.5_rf_vit-emotion-age_demogpairs.ipynb
+[2026-10-24 05:16:07] [DONE] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb SUKSES! Waktu: 70.0 menit | Akurasi: 77.31% | Macro-F1: 0.7728
+[2026-10-24 05:16:09] 
+--- Progress Antrean 13/19 ---
+[2026-10-24 05:16:09] ============================================================
+[2026-10-24 05:16:09] [START] Mengeksekusi: 2.4.6_rf_vit-emotion-face_demogpairs.ipynb
+[2026-10-24 06:25:28] [DONE] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb SUKSES! Waktu: 69.3 menit | Akurasi: 84.86% | Macro-F1: 0.8479
+[2026-10-24 06:25:30] 
+--- Progress Antrean 14/19 ---
+[2026-10-24 06:25:30] ============================================================
+[2026-10-24 06:25:30] [START] Mengeksekusi: 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb
+[2026-10-24 08:16:31] [DONE] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb SUKSES! Waktu: 111.0 menit | Akurasi: 85.00% | Macro-F1: 0.8493
+[2026-10-24 08:16:33] 
+--- Progress Antrean 15/19 ---
+[2026-10-24 08:16:33] ============================================================
+[2026-10-24 08:16:33] [START] Mengeksekusi: 2.1.2_svm_vit-emotion_demogpairs.ipynb
+[2026-10-24 08:23:57] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-24 08:23:57] 
+--- Progress Antrean 1/20 ---
+[2026-10-24 08:23:57] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-24 08:23:59] 
+--- Progress Antrean 2/20 ---
+[2026-10-24 08:23:59] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-24 08:24:01] 
+--- Progress Antrean 3/20 ---
+[2026-10-24 08:24:01] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-24 08:24:03] 
+--- Progress Antrean 4/20 ---
+[2026-10-24 08:24:03] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-24 08:24:05] 
+--- Progress Antrean 5/20 ---
+[2026-10-24 08:24:05] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-24 08:24:07] 
+--- Progress Antrean 6/20 ---
+[2026-10-24 08:24:07] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-24 08:24:09] 
+--- Progress Antrean 7/20 ---
+[2026-10-24 08:24:09] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-24 08:24:11] 
+--- Progress Antrean 8/20 ---
+[2026-10-24 08:24:11] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-24 08:24:13] 
+--- Progress Antrean 9/20 ---
+[2026-10-24 08:24:13] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-24 08:24:15] 
+--- Progress Antrean 10/20 ---
+[2026-10-24 08:24:15] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-24 08:24:17] 
+--- Progress Antrean 11/20 ---
+[2026-10-24 08:24:17] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-24 08:24:19] 
+--- Progress Antrean 12/20 ---
+[2026-10-24 08:24:19] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-24 08:24:21] 
+--- Progress Antrean 13/20 ---
+[2026-10-24 08:24:21] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-24 08:24:23] 
+--- Progress Antrean 14/20 ---
+[2026-10-24 08:24:24] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-24 08:24:26] 
+--- Progress Antrean 15/20 ---
+[2026-10-24 08:24:26] ============================================================
+[2026-10-24 08:24:26] [START] Mengeksekusi: 2.1.2_svm_vit-emotion_demogpairs.ipynb
+[2026-10-24 08:47:01] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-24 08:47:01] 
+--- Progress Antrean 1/20 ---
+[2026-10-24 08:47:01] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-24 08:47:03] 
+--- Progress Antrean 2/20 ---
+[2026-10-24 08:47:03] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-24 08:47:05] 
+--- Progress Antrean 3/20 ---
+[2026-10-24 08:47:05] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-24 08:47:07] 
+--- Progress Antrean 4/20 ---
+[2026-10-24 08:47:07] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-24 08:47:09] 
+--- Progress Antrean 5/20 ---
+[2026-10-24 08:47:09] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-24 08:47:11] 
+--- Progress Antrean 6/20 ---
+[2026-10-24 08:47:11] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-24 08:47:13] 
+--- Progress Antrean 7/20 ---
+[2026-10-24 08:47:13] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-24 08:47:15] 
+--- Progress Antrean 8/20 ---
+[2026-10-24 08:47:15] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-24 08:47:17] 
+--- Progress Antrean 9/20 ---
+[2026-10-24 08:47:17] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-24 08:47:19] 
+--- Progress Antrean 10/20 ---
+[2026-10-24 08:47:19] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-24 08:47:21] 
+--- Progress Antrean 11/20 ---
+[2026-10-24 08:47:21] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-24 08:47:23] 
+--- Progress Antrean 12/20 ---
+[2026-10-24 08:47:23] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-24 08:47:25] 
+--- Progress Antrean 13/20 ---
+[2026-10-24 08:47:25] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-24 08:47:27] 
+--- Progress Antrean 14/20 ---
+[2026-10-24 08:47:27] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-24 08:47:29] 
+--- Progress Antrean 15/20 ---
+[2026-10-24 08:47:29] ============================================================
+[2026-10-24 08:47:29] [START] Mengeksekusi: 2.1.2_svm_vit-emotion_demogpairs.ipynb
+[2026-10-24 13:01:43] [DONE] 2.1.2_svm_vit-emotion_demogpairs.ipynb SUKSES! Waktu: 254.2 menit | Akurasi: 85.79% | Macro-F1: 0.8580
+[2026-10-24 13:01:45] 
+--- Progress Antrean 16/20 ---
+[2026-10-24 13:01:45] ============================================================
+[2026-10-24 13:01:45] [START] Mengeksekusi: 2.1.3_svm_vit-age_demogpairs.ipynb
+[2026-10-24 20:31:13] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-24 20:31:13] 
+--- Progress Antrean 1/20 ---
+[2026-10-24 20:31:13] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-24 20:31:15] 
+--- Progress Antrean 2/20 ---
+[2026-10-24 20:31:15] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-24 20:31:17] 
+--- Progress Antrean 3/20 ---
+[2026-10-24 20:31:17] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-24 20:31:19] 
+--- Progress Antrean 4/20 ---
+[2026-10-24 20:31:19] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-24 20:31:21] 
+--- Progress Antrean 5/20 ---
+[2026-10-24 20:31:21] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-24 20:31:23] 
+--- Progress Antrean 6/20 ---
+[2026-10-24 20:31:24] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-24 20:31:26] 
+--- Progress Antrean 7/20 ---
+[2026-10-24 20:31:26] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-24 20:31:28] 
+--- Progress Antrean 8/20 ---
+[2026-10-24 20:31:28] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-24 20:31:30] 
+--- Progress Antrean 9/20 ---
+[2026-10-24 20:31:30] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-24 20:31:32] 
+--- Progress Antrean 10/20 ---
+[2026-10-24 20:31:32] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-24 20:31:34] 
+--- Progress Antrean 11/20 ---
+[2026-10-24 20:31:34] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-24 20:31:36] 
+--- Progress Antrean 12/20 ---
+[2026-10-24 20:31:36] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-24 20:31:38] 
+--- Progress Antrean 13/20 ---
+[2026-10-24 20:31:38] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-24 20:31:40] 
+--- Progress Antrean 14/20 ---
+[2026-10-24 20:31:40] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-24 20:31:42] 
+--- Progress Antrean 15/20 ---
+[2026-10-24 20:31:42] [SKIP] 2.1.2_svm_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.79%, F1: 0.8580).
+[2026-10-24 20:31:44] 
+--- Progress Antrean 16/20 ---
+[2026-10-24 20:31:44] ============================================================
+[2026-10-24 20:31:44] [START] Mengeksekusi: 2.1.3_svm_vit-age_demogpairs.ipynb
+[2026-10-25 00:37:06] [DONE] 2.1.3_svm_vit-age_demogpairs.ipynb SUKSES! Waktu: 245.4 menit | Akurasi: 82.55% | Macro-F1: 0.8258
+[2026-10-25 00:37:08] 
+--- Progress Antrean 17/20 ---
+[2026-10-25 00:37:08] ============================================================
+[2026-10-25 00:37:08] [START] Mengeksekusi: 2.1.4_svm_vit-face-age_demogpairs.ipynb
+[2026-10-25 11:48:39] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-25 11:48:39] 
+--- Progress Antrean 1/20 ---
+[2026-10-25 11:48:39] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-25 11:48:41] 
+--- Progress Antrean 2/20 ---
+[2026-10-25 11:48:41] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-25 11:48:43] 
+--- Progress Antrean 3/20 ---
+[2026-10-25 11:48:43] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-25 11:48:45] 
+--- Progress Antrean 4/20 ---
+[2026-10-25 11:48:45] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-25 11:48:47] 
+--- Progress Antrean 5/20 ---
+[2026-10-25 11:48:47] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-25 11:48:49] 
+--- Progress Antrean 6/20 ---
+[2026-10-25 11:48:49] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-25 11:48:51] 
+--- Progress Antrean 7/20 ---
+[2026-10-25 11:48:51] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-25 11:48:53] 
+--- Progress Antrean 8/20 ---
+[2026-10-25 11:48:53] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-25 11:48:55] 
+--- Progress Antrean 9/20 ---
+[2026-10-25 11:48:55] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-25 11:48:57] 
+--- Progress Antrean 10/20 ---
+[2026-10-25 11:48:57] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-25 11:48:59] 
+--- Progress Antrean 11/20 ---
+[2026-10-25 11:48:59] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-25 11:49:01] 
+--- Progress Antrean 12/20 ---
+[2026-10-25 11:49:01] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-25 11:49:03] 
+--- Progress Antrean 13/20 ---
+[2026-10-25 11:49:03] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-25 11:49:05] 
+--- Progress Antrean 14/20 ---
+[2026-10-25 11:49:05] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-25 11:49:07] 
+--- Progress Antrean 15/20 ---
+[2026-10-25 11:49:07] [SKIP] 2.1.2_svm_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.79%, F1: 0.8580).
+[2026-10-25 11:49:09] 
+--- Progress Antrean 16/20 ---
+[2026-10-25 11:49:10] [SKIP] 2.1.3_svm_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 82.55%, F1: 0.8258).
+[2026-10-25 11:49:15] 
+--- Progress Antrean 17/20 ---
+[2026-10-25 11:49:15] ============================================================
+[2026-10-25 11:49:15] [START] Mengeksekusi: 2.1.4_svm_vit-face-age_demogpairs.ipynb
+[2026-10-25 11:49:15] [ERROR] 2.1.4_svm_vit-face-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:49:15] [STDERR]: nfig-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: builder.exe console.exe dejavu.exe events.exe
+execute.exe kernel.exe kernelspec.exe lab.exe labextension.exe labhub.exe
+migrate.exe nbconvert.exe notebook.exe run.exe server.exe troubleshoot.exe
+trust.exe
+
+Jupyter command `jupyter-nbconvert` not found.
+
+[2026-10-25 11:49:17] 
+--- Progress Antrean 18/20 ---
+[2026-10-25 11:49:17] ============================================================
+[2026-10-25 11:49:17] [START] Mengeksekusi: 2.1.5_svm_vit-emotion-age_demogpairs.ipynb
+[2026-10-25 11:49:17] [ERROR] 2.1.5_svm_vit-emotion-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:49:17] [STDERR]: nfig-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: builder.exe console.exe dejavu.exe events.exe
+execute.exe kernel.exe kernelspec.exe lab.exe labextension.exe labhub.exe
+migrate.exe nbconvert.exe notebook.exe run.exe server.exe troubleshoot.exe
+trust.exe
+
+Jupyter command `jupyter-nbconvert` not found.
+
+[2026-10-25 11:49:19] 
+--- Progress Antrean 19/20 ---
+[2026-10-25 11:49:19] ============================================================
+[2026-10-25 11:49:19] [START] Mengeksekusi: 2.1.6_svm_vit-emotion-face_demogpairs.ipynb
+[2026-10-25 11:49:20] [ERROR] 2.1.6_svm_vit-emotion-face_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:49:20] [STDERR]: nfig-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: builder.exe console.exe dejavu.exe events.exe
+execute.exe kernel.exe kernelspec.exe lab.exe labextension.exe labhub.exe
+migrate.exe nbconvert.exe notebook.exe run.exe server.exe troubleshoot.exe
+trust.exe
+
+Jupyter command `jupyter-nbconvert` not found.
+
+[2026-10-25 11:49:22] 
+--- Progress Antrean 20/20 ---
+[2026-10-25 11:49:22] ============================================================
+[2026-10-25 11:49:22] [START] Mengeksekusi: 2.1.7_svm_vit-face-emotion-age_demogpairs.ipynb
+[2026-10-25 11:49:22] [ERROR] 2.1.7_svm_vit-face-emotion-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:49:22] [STDERR]: nfig-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: builder.exe console.exe dejavu.exe events.exe
+execute.exe kernel.exe kernelspec.exe lab.exe labextension.exe labhub.exe
+migrate.exe nbconvert.exe notebook.exe run.exe server.exe troubleshoot.exe
+trust.exe
+
+Jupyter command `jupyter-nbconvert` not found.
+
+[2026-10-25 11:49:24] 
+============================================================
+[2026-10-25 11:49:24] SELURUH EKSEKUSI ANTREAN SELESAI! (16/20 sukses)
+[2026-10-25 11:49:24] ============================================================
+[2026-10-25 11:50:38] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-25 11:50:38] 
+--- Progress Antrean 1/20 ---
+[2026-10-25 11:50:38] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-25 11:50:40] 
+--- Progress Antrean 2/20 ---
+[2026-10-25 11:50:40] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-25 11:50:42] 
+--- Progress Antrean 3/20 ---
+[2026-10-25 11:50:42] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-25 11:50:44] 
+--- Progress Antrean 4/20 ---
+[2026-10-25 11:50:44] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-25 11:50:46] 
+--- Progress Antrean 5/20 ---
+[2026-10-25 11:50:46] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-25 11:50:48] 
+--- Progress Antrean 6/20 ---
+[2026-10-25 11:50:48] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-25 11:50:50] 
+--- Progress Antrean 7/20 ---
+[2026-10-25 11:50:50] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-25 11:50:52] 
+--- Progress Antrean 8/20 ---
+[2026-10-25 11:50:52] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-25 11:50:54] 
+--- Progress Antrean 9/20 ---
+[2026-10-25 11:50:54] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-25 11:50:56] 
+--- Progress Antrean 10/20 ---
+[2026-10-25 11:50:56] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-25 11:50:58] 
+--- Progress Antrean 11/20 ---
+[2026-10-25 11:50:58] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-25 11:51:00] 
+--- Progress Antrean 12/20 ---
+[2026-10-25 11:51:00] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-25 11:51:02] 
+--- Progress Antrean 13/20 ---
+[2026-10-25 11:51:02] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-25 11:51:04] 
+--- Progress Antrean 14/20 ---
+[2026-10-25 11:51:04] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-25 11:51:06] 
+--- Progress Antrean 15/20 ---
+[2026-10-25 11:51:06] [SKIP] 2.1.2_svm_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.79%, F1: 0.8580).
+[2026-10-25 11:51:08] 
+--- Progress Antrean 16/20 ---
+[2026-10-25 11:51:08] [SKIP] 2.1.3_svm_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 82.55%, F1: 0.8258).
+[2026-10-25 11:51:13] 
+--- Progress Antrean 17/20 ---
+[2026-10-25 11:51:13] ============================================================
+[2026-10-25 11:51:13] [START] Mengeksekusi: 2.1.4_svm_vit-face-age_demogpairs.ipynb
+[2026-10-25 11:51:21] [ERROR] 2.1.4_svm_vit-face-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:51:21] [STDERR]: 8;5;21;01mimblearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpipeline[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Pipeline
+[1;32m      9[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel_selection[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m GridSearchCV
+[1;32m     10[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m MinMaxScaler
+
+[0;31mModuleNotFoundError[0m: No module named 'imblearn'
+
+
+[2026-10-25 11:51:23] 
+--- Progress Antrean 18/20 ---
+[2026-10-25 11:51:23] ============================================================
+[2026-10-25 11:51:23] [START] Mengeksekusi: 2.1.5_svm_vit-emotion-age_demogpairs.ipynb
+[2026-10-25 11:51:28] [ERROR] 2.1.5_svm_vit-emotion-age_demogpairs.ipynb gagal dengan returncode 1!
+[2026-10-25 11:51:28] [STDERR]: 8;5;21;01mimblearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpipeline[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Pipeline
+[1;32m      9[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel_selection[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m GridSearchCV
+[1;32m     10[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m MinMaxScaler
+
+[0;31mModuleNotFoundError[0m: No module named 'imblearn'
+
+
+[2026-10-25 11:51:30] 
+--- Progress Antrean 19/20 ---
+[2026-10-25 11:51:30] ============================================================
+[2026-10-25 11:51:30] [START] Mengeksekusi: 2.1.6_svm_vit-emotion-face_demogpairs.ipynb
+[2026-10-25 11:51:54] MEMULAI RUNNER ANTREAN SISA MODEL (LR -> RF -> SVM)
+[2026-10-25 11:51:54] 
+--- Progress Antrean 1/20 ---
+[2026-10-25 11:51:54] [SKIP] 2.5.1_lr_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 86.39%, F1: 0.8640).
+[2026-10-25 11:51:56] 
+--- Progress Antrean 2/20 ---
+[2026-10-25 11:51:56] [SKIP] 2.5.2_lr_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.23%, F1: 0.8527).
+[2026-10-25 11:51:58] 
+--- Progress Antrean 3/20 ---
+[2026-10-25 11:51:58] [SKIP] 2.5.3_lr_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 81.48%, F1: 0.8146).
+[2026-10-25 11:52:00] 
+--- Progress Antrean 4/20 ---
+[2026-10-25 11:52:00] [SKIP] 2.5.4_lr_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 87.41%, F1: 0.8740).
+[2026-10-25 11:52:02] 
+--- Progress Antrean 5/20 ---
+[2026-10-25 11:52:02] [SKIP] 2.5.5_lr_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 86.67%, F1: 0.8667).
+[2026-10-25 11:52:04] 
+--- Progress Antrean 6/20 ---
+[2026-10-25 11:52:04] [SKIP] 2.5.6_lr_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 87.45%, F1: 0.8749).
+[2026-10-25 11:52:06] 
+--- Progress Antrean 7/20 ---
+[2026-10-25 11:52:06] [SKIP] 2.5.7_lr_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 88.66%, F1: 0.8868).
+[2026-10-25 11:52:08] 
+--- Progress Antrean 8/20 ---
+[2026-10-25 11:52:08] [SKIP] 2.4.1_rf_vit-face_demogpairs.ipynb sudah selesai (Akurasi: 84.03%, F1: 0.8403).
+[2026-10-25 11:52:10] 
+--- Progress Antrean 9/20 ---
+[2026-10-25 11:52:10] [SKIP] 2.4.2_rf_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 76.11%, F1: 0.7603).
+[2026-10-25 11:52:12] 
+--- Progress Antrean 10/20 ---
+[2026-10-25 11:52:12] [SKIP] 2.4.3_rf_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 71.81%, F1: 0.7170).
+[2026-10-25 11:52:14] 
+--- Progress Antrean 11/20 ---
+[2026-10-25 11:52:14] [SKIP] 2.4.4_rf_vit-face-age_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8478).
+[2026-10-25 11:52:16] 
+--- Progress Antrean 12/20 ---
+[2026-10-25 11:52:16] [SKIP] 2.4.5_rf_vit-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 77.31%, F1: 0.7728).
+[2026-10-25 11:52:18] 
+--- Progress Antrean 13/20 ---
+[2026-10-25 11:52:18] [SKIP] 2.4.6_rf_vit-emotion-face_demogpairs.ipynb sudah selesai (Akurasi: 84.86%, F1: 0.8479).
+[2026-10-25 11:52:23] 
+--- Progress Antrean 14/20 ---
+[2026-10-25 11:52:23] [SKIP] 2.4.7_rf_vit-face-emotion-age_demogpairs.ipynb sudah selesai (Akurasi: 85.00%, F1: 0.8493).
+[2026-10-25 11:52:25] 
+--- Progress Antrean 15/20 ---
+[2026-10-25 11:52:25] [SKIP] 2.1.2_svm_vit-emotion_demogpairs.ipynb sudah selesai (Akurasi: 85.79%, F1: 0.8580).
+[2026-10-25 11:52:27] 
+--- Progress Antrean 16/20 ---
+[2026-10-25 11:52:27] [SKIP] 2.1.3_svm_vit-age_demogpairs.ipynb sudah selesai (Akurasi: 82.55%, F1: 0.8258).
+[2026-10-25 11:52:29] 
+--- Progress Antrean 17/20 ---
+[2026-10-25 11:52:29] ============================================================
+[2026-10-25 11:52:29] [START] Mengeksekusi: 2.1.4_svm_vit-face-age_demogpairs.ipynb
+[2026-10-25 20:05:38] [DONE] 2.1.4_svm_vit-face-age_demogpairs.ipynb SUKSES! Waktu: 493.1 menit | Akurasi: 87.55% | Macro-F1: 0.8757
+[2026-10-25 20:05:40] 
+--- Progress Antrean 18/20 ---
+[2026-10-25 20:05:40] ============================================================
+[2026-10-25 20:05:40] [START] Mengeksekusi: 2.1.5_svm_vit-emotion-age_demogpairs.ipynb

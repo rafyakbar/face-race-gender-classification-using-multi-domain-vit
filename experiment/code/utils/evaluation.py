@@ -93,6 +93,8 @@ def evaluate_models(
     model_prefix: str = "models/clf_",
     target_names: list[str] | None = None,
     results_path: str = "results/result_",
+    groups_train: np.ndarray | None = None,
+    groups_test: np.ndarray | None = None,
 ) -> tuple[list[dict], list[dict]]:
     """
     Train, evaluate, and serialize multiple GridSearchCV models.
@@ -104,6 +106,8 @@ def evaluate_models(
         model_prefix: Directory/prefix for saved model files.
         target_names: Class names for classification_report.
         results_path: Directory/prefix for result JSON files.
+        groups_train: Optional array of subject/group identifiers for training folds.
+        groups_test: Optional array of subject/group identifiers for held-out test data.
 
     Returns:
         Tuple of (evaluation_results, fold_results).
@@ -115,17 +119,31 @@ def evaluate_models(
         model_file = f"{model_prefix}{short_name}.pkl"
         print(f"Evaluating: {short_name}")
 
+        # Ensure parent directories exist
+        model_dir = os.path.dirname(model_file)
+        if model_dir:
+            os.makedirs(model_dir, exist_ok=True)
+        results_dir = os.path.dirname(results_path)
+        if results_dir:
+            os.makedirs(results_dir, exist_ok=True)
+
         # Load or train
         if not os.path.exists(model_file):
             start = time.time()
-            trained_model = model.fit(x_train, y_train)
+            fit_kwargs = {"groups": groups_train} if groups_train is not None else {}
+            trained_model = model.fit(x_train, y_train, **fit_kwargs)
             elapsed = time.time() - start
             save_object((trained_model, elapsed), model_file)
         else:
             trained_model, elapsed = load_object(model_file)
 
-        # Predict and metrics
+        # Predict and metrics (with latency and resource profiling)
+        inf_start = time.perf_counter()
         y_pred = trained_model.predict(x_test)
+        inf_elapsed = time.perf_counter() - inf_start
+        latency_ms = (inf_elapsed / len(x_test)) * 1000.0 if len(x_test) > 0 else 0.0
+        model_size_mb = os.path.getsize(model_file) / (1024 * 1024) if os.path.exists(model_file) else 0.0
+
         test_acc = accuracy_score(y_test, y_pred)
         test_prec = precision_score(y_test, y_pred, average="macro")
         test_rec = recall_score(y_test, y_pred, average="macro")
@@ -152,6 +170,10 @@ def evaluate_models(
             "test_precision": test_prec,
             "test_recall": test_rec,
             "test_f1": test_f1,
+            "train_time_seconds": elapsed,
+            "inference_time_seconds": inf_elapsed,
+            "latency_ms_per_sample": latency_ms,
+            "model_size_mb": model_size_mb,
             "classification_metrics": cls_report,
         }
         save_json(saved_result, f"{results_path}{short_name}.json")
@@ -163,6 +185,11 @@ def evaluate_models(
         h(5, "Test Results")
         print(f"Accuracy  : {test_acc}")
         print(f"Precision : {test_prec}")
+        print(f"Recall    : {test_rec}")
+        print(f"F1 Score  : {test_f1}")
+        print(f"Inference Latency : {latency_ms:.4f} ms/sample ({inf_elapsed:.4f}s total for {len(x_test)} samples)")
+        print(f"Model Storage Size: {model_size_mb:.2f} MB")
+        print(classification_report(y_test, y_pred, target_names=target_names, labels=labels, digits=4))
         print(f"Recall    : {test_rec}")
         print(f"F1 Score  : {test_f1}")
         print(classification_report(y_test, y_pred, target_names=target_names, labels=labels, digits=4))
@@ -222,6 +249,10 @@ def evaluate_models(
                 "test_f1": test_f1,
                 "test_precision": test_prec,
                 "test_recall": test_rec,
+                "train_time_seconds": elapsed,
+                "inference_time_seconds": inf_elapsed,
+                "latency_ms_per_sample": latency_ms,
+                "model_size_mb": model_size_mb,
                 "parameter_combinations": len(cv_df),
             }
         )

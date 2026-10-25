@@ -4,13 +4,34 @@
 # SETIAP PROMPT BARU HARUS DILETAKKAN DI BAWAH BLOK INI.
 # ==============================================================================
 
-Baca dan pahami README.AI.md beserta analisa dan pahami file-file yang berhubungan dengannya (jangan pernah baca file prompts.txt dan .ipynb, untuk .ipynb gantinya ada pada experiment/code/md)!
+pahami:
+- README.AI.md beserta file-file yang berhubungan dengannya
+- paper_reviews_ieee/ (selain paper_reviews_ieee/raw/)
+perhatikan:
+- jangan pernah baca file prompts.txt dan .ipynb
+- untuk .ipynb gantinya ada pada experiment/code/md/
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
 
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+sekarang experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb sedang saya jalankan dan sedang training svm nya, jadi jangan diotak-atik.
+sekarang tolong buatkan untuk kombinasi fitur yang lain beserta ML yang lain (ML yang hanya digunakan di paper), untuk splitting nya seharusnya sama dengan experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb. caranya adalah:
+1. copy dari experiment/code/notebook_old ke experiment/code/
+2. modifikasi notebook nya di bagian splitting
+3. cek ulang ke valid an .ipynb nya (tapi jangan di running karena sudah ada notebook yang sedang berjalan)
+perhatikan:
+- delegasikan ke beberapa subagent
+- berikan instruksi yang sangat jelas
+- lakukan dengan sangat amat teliti
+
+saat ini kan pembagiannya startified berdasarkan kelas, tapi apakah bisa stratified berdasarkan kelas tapi juga memperhatikan identity?
+
+tolong fokus pada komentar Reviewer 2 nomor 2 mengenai "Data Leakage and Generalization". bagaimana split pada eksperimen?
+
+buatkan paper_reviews_ieee/Comments.md yang isinya adalah gabungan komentar dari reviewer dalam bahasa indonesia
 
 eksplorasi ulang project ini dan update README.md dan README.AI.md. khusus untuk paper_reviews_ieee jangan memasukkan paper_reviews_ieee/raw ke readme. khusus untuk README.AI.md lebih detilkan karena file ini tujuannya adalah agar ai agent berikutnya tidak perlu eksplorasi project sedari awal.
 
