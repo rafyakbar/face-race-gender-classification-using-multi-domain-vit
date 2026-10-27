@@ -81,6 +81,7 @@ face-race-gender-classification-using-multi-domain-vit/
 ├── paper_outline.md                           # Kontrak master outline naskah & alokasi target per paragraf
 ├── paper_reviews/                             # Arsip simulasi internal mock peer review (Round 1 & 2)
 ├── paper_reviews_ieee/                        # Berkas resmi penelaahan editorial IEEE Access
+│   ├── README.md                              # Panduan lengkap dossier ulasan editorial dan alur resubmission
 │   ├── Comments.md                            # Kompilasi komentar Editor, Reviewer 1 & 2 serta rencana tindak lanjut
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Surat keputusan editorial resmi
 │   ├── IEEE-Access_Response-to-Reviewers-template.md # Template resmi surat tanggapan point-by-point
@@ -171,7 +172,8 @@ Sub-direktori experiment/code/:
 4. DIREKTORI PAPER_REVIEWS_IEEE/, PAPER_REVIEWS/, & .AGENTS/
 ----------------------------------------------------------------------------------------------------
 - paper_reviews_ieee/
-  Dossier resmi penelaahan editorial IEEE Access (Access-2026-50857), memuat Comments.md (ulasan R1 & R2),
+  Dossier resmi penelaahan editorial IEEE Access (Access-2026-50857).
+  Memuat README.md (panduan dossier), penelaahan editorial IEEE Access (Access-2026-50857), memuat Comments.md (ulasan R1 & R2),
   surat keputusan, template author response point-by-point, byline change form, dan resubmission checklist.
 - paper_reviews/
   Arsip simulasi internal mock peer review multi-agen (Round 1 & 2) sebelum penyerahan naskah.

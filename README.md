@@ -4,21 +4,53 @@
 
 ---
 
-## 📌 Publication & Review Status
+## 📑 Table of Contents
 
-- **Target Journal:** [IEEE Access](https://ieeeaccess.ieee.org/) (Open Access, Q1 / Impact Factor: 3.4)
-- **Manuscript ID:** `Access-2026-50857`
-- **Current Milestone:** Editorial Decision Received (20-10-2026) – Binary Peer Review (Reject & Resubmit with 1 Resubmission Opportunity).
-- **Revision Core Objective:** Resolving Reviewer 2 Comment #2 regarding identity overlap and cross-subject generalization through strict subject-disjoint re-benchmarking, paired inferential hypothesis testing (McNemar tests & 95% Wilson Score CIs), and computational profiling.
-- **Peer Review Dossier:** Managed under [`paper_reviews_ieee/`](paper_reviews_ieee/) (Decision letter, Reviewer 1 & 2 feedback, response template, and 10-point resubmission checklist).
+- [Publication & Peer Review Status](#publication--peer-review-status)
+- [Dual-Benchmark System](#dual-benchmark-system)
+  - [1. Primary Benchmark: Subject-Disjoint Partitioning (Zero Data Leakage)](#1-primary-benchmark-subject-disjoint-partitioning-zero-data-leakage--ieee-access-revision)
+  - [2. Historical Benchmark: Subject-Overlap Partitioning (Baseline Archive)](#2-historical-benchmark-subject-overlap-partitioning-100-identity-leakage-baseline)
+  - [3. Comparative Data Leakage Ablation & Generalization Analysis](#3-comparative-data-leakage-ablation--generalization-analysis)
+  - [4. Intersectional Subgroup Disparity Profile](#4-intersectional-subgroup-disparity-profile-subject-disjoint-test-set)
+  - [5. Comparison with Prior Studies on DemogPairs](#5-comparison-with-prior-studies-on-demogpairs)
+- [Methodology Framework](#methodology-framework)
+- [Repository Structure](#repository-structure)
+- [Quick Start & Reproduction](#quick-start--reproduction)
+- [Research Team](#research-team)
+- [Citation](#citation)
 
 ---
 
-## 🌟 Dual Benchmark System
+## Publication & Peer Review Status
+
+> [!IMPORTANT]
+> **IEEE Access Revision In Progress (Manuscript ID: `Access-2026-50857`):**  
+> Following the official editorial decision received on **October 20, 2026** (*Reject & Resubmit* with exactly one resubmission opportunity permitted under IEEE Access binary peer review policy), this repository undergoes systematic revision. The primary objective is resolving Reviewer 2 Comment #2 regarding identity overlap and cross-subject generalization through strict subject-disjoint re-benchmarking, paired inferential hypothesis testing (McNemar tests & 95% Wilson Score CIs), and computational efficiency profiling.
+
+- **Target Journal:** [IEEE Access](https://ieeeaccess.ieee.org/) (Open Access, Q1 / Impact Factor: 3.4)
+- **Manuscript Tracking ID:** `Access-2026-50857`
+- **Current Milestone:** Editorial Decision Received (20-10-2026) – Binary Peer Review (Reject & Resubmit with 1 Resubmission Opportunity).
+- **Revision Core Objective:** Resolving Reviewer 2 Comment #2 regarding identity overlap and cross-subject generalization through strict subject-disjoint re-benchmarking, paired inferential hypothesis testing (McNemar tests & 95% Wilson Score CIs), and computational profiling.
+- **Peer Review Dossier:** Managed under [`paper_reviews_ieee/`](paper_reviews_ieee/):
+  - [`Comments.md`](paper_reviews_ieee/Comments.md) — Deconstructed reviewer feedback and detailed response matrix.
+  - [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](paper_reviews_ieee/IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) — Official editorial decision letter.
+  - [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) — Official point-by-point response letter template.
+  - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formal author byline change form.
+  - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Official 10-point resubmission compliance checklist.
+- **Operational Guides:**
+  - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure for the 5-stage research manuscript lifecycle.
+  - [`README.ai.md`](README.ai.md) — Master technical reference guide and single source of truth for autonomous agents.
+
+---
+
+## Dual Benchmark System
 
 To ensure complete scientific transparency and directly answer IEEE Access Reviewer 2 Comment #2, this repository establishes a **Dual Benchmark Architecture**:
 1. **Primary Benchmark (Subject-Disjoint):** Zero identity leakage ($0.00\%$); evaluates true generalizability on completely unseen identities.
 2. **Historical Benchmark (Subject-Overlap):** Image-level stratified split ($100.00\%$ identity presence); serves as the comparative baseline for quantifying facial identity memorization.
+
+> [!TIP]
+> **Zero Identity Leakage Protocol:** The primary benchmark isolates 120 subjects (2,160 test images) strictly into held-out evaluation, ensuring zero identity overlap ($0.00\%$) between training and testing splits.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -56,7 +88,8 @@ Evaluated on the held-out subject-disjoint test partition ($N = 2,160$ images fr
 | 🥉 | **Random Forest (RF)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **85.00%** | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0537 ms | 6.19 MB | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
 | 4 | **Gaussian Naive Bayes (GNB)** | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | **84.31%** | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0083 ms | 0.78 MB | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
 
-*Note: For Gaussian Naive Bayes, Tri-Domain achieves **83.61%** (Macro F1: 0.8364), while peak accuracy occurs on Dual-Domain `Emotion ⊕ Face` (84.31%).*
+> [!NOTE]
+> For Gaussian Naive Bayes, Tri-Domain achieves **83.61%** (Macro F1: 0.8364), while peak accuracy occurs on Dual-Domain `Emotion ⊕ Face` (84.31%).
 
 #### Definitive 28-Model Subject-Disjoint Global Leaderboard
 
@@ -125,19 +158,23 @@ Comparing the two partitioning schemes reveals critical empirical insights regar
 
 #### (b) Key Empirical Takeaways & Statistical Proofs
 
-1. **Elimination of Facial Identity Memorization:**
+1. **Elimination of Facial Identity Memorization:**  
    The nominal accuracy drop of ~4.0% to 5.1% across top classifiers proves that models evaluated under subject-overlap protocols inadvertently memorize facial identity signatures. The subject-disjoint results reflect genuine demographic attribute generalization on previously unseen individuals.
-2. **Statistically Significant Multi-Domain Superiority ($p < 0.001$):**
+2. **Statistically Significant Multi-Domain Superiority ($p < 0.001$):**  
    A common concern raised by Reviewer 2 was whether multi-domain fusion gains could be an artifact of data leakage. Inferential hypothesis testing (**Paired McNemar Test with Edwards continuity correction**) on the subject-disjoint test set definitively refutes this:
    - **SVM:** Tri-Domain (88.61%) significantly outperforms Single Face Biometrics (86.16%) with $\Delta = +2.45\%$ (+53 net correct images, $\chi^2 = 20.9612$, **$p = 3.46 \times 10^{-6} < 0.001$**).
    - **Logistic Regression:** Tri-Domain (88.66%) significantly outperforms Single Face Biometrics (86.39%) with $\Delta = +2.27\%$ (+49 net correct images, $\chi^2 = 19.6923$, **$p = 6.78 \times 10^{-6} < 0.001$**).
    - Multi-domain fusion gains are statistically robust and independent of identity leakage.
-3. **Asymptotic Feature Saturation vs. Linear Complementarity:**
+3. **Asymptotic Feature Saturation vs. Linear Complementarity:**  
    - In **Logistic Regression**, Tri-Domain (88.66%) significantly improves over Dual-Domain `Emotion ⊕ Face` (87.45%) with net gain +26 images (**$p = 0.0073 < 0.01$**), demonstrating that biological age morphology provides orthogonal discriminative signal for linear hyperplanes.
    - In **SVM**, Tri-Domain (88.61%) and Dual-Domain `Emotion ⊕ Face` (88.43%) exhibit net gain +4 images ($p = 0.7343 > 0.05$), confirming asymptotic representation saturation under non-linear RBF kernels.
-4. **Predictive Equivalence & Extreme Computational Efficiency (LR vs. SVM):**
+4. **Predictive Equivalence & Extreme Computational Efficiency (LR vs. SVM):**  
    - Paired McNemar testing between LR Tri-Domain (88.66%) and SVM Tri-Domain (88.61%) shows exact equivalence ($p = 1.0000$, net gain +1 image).
    - However, **LR delivers >800x faster inference** (**0.0054 ms** vs. 4.4481 ms per image) and **>330x smaller model footprint** (**0.11 MB** vs. 36.60 MB), establishing Logistic Regression as the optimal engine for resource-constrained edge AI.
+
+> [!NOTE]
+> **Key Finding on Multi-Domain Independence ($p < 0.001$):**  
+> Paired McNemar testing confirms that multi-domain ViT feature fusion gains are statistically significant and fully preserved under strict zero-leakage partitions.
 
 ---
 
@@ -157,8 +194,6 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 | **Black_Females** | Black | Female | 84.72% | 85.20% | 84.96% | 360 |
 | **Macro Average** | **All** | **All** | **88.66%** | **0.8875** | **0.8868** | **2,160** |
 
-*Equal Opportunity Difference (Max - Min Recall): **9.72 percentage points** (White_Males 94.44% vs. Black_Females 84.72%).*
-
 #### (b) Support Vector Machine Tri-Domain (88.61%)
 
 | Demographic Subgroup | Macro Race | Gender | Recall / TPR | Precision | F1-Score | Support |
@@ -171,7 +206,9 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 | **Black_Females** | Black | Female | 84.72% | 87.64% | 86.16% | 360 |
 | **Macro Average** | **All** | **All** | **88.61%** | **0.8871** | **0.8863** | **2,160** |
 
-*Equal Opportunity Difference (Max - Min Recall): **9.72 percentage points**.*
+> [!NOTE]
+> **Equal Opportunity Disparity Metric:**  
+> Both top-performing models exhibit an identical Equal Opportunity Difference (Max − Min Recall) of **9.72 percentage points** across demographic subgroups (White_Males 94.44% vs. Black_Females 84.72%), highlighting remaining intersectional disparities for future fairness mitigation.
 
 ---
 
@@ -187,7 +224,7 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 
 ---
 
-## 🔬 Methodology Framework
+## Methodology Framework
 
 ```
                           [ Input Facial Image: 224x224 RGB ]
@@ -230,7 +267,7 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -291,6 +328,7 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 ├── paper_outline.md                       # Complete publication outline & paragraph targets
 ├── paper_reviews/                         # Internal multi-agent mock peer review audit system (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Official IEEE Access editorial decision & review dossier
+│   ├── Comments.md                        # Deconstructed reviewer comments and response matrix
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Official decision & reviewer comments
 │   ├── IEEE-Access_Response-to-Reviewers-template.md              # Point-by-point response template
 │   ├── Request-for-Byline-Change.md                               # Formal author byline change form
@@ -305,25 +343,30 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 
 ---
 
-## 🚀 Quick Start
+## Quick Start & Reproduction
 
 ### 1. Environment Setup
+
 ```bash
+# Create and activate conda virtual environment
 conda create -n torch-gpu python=3.11 -y
 conda activate torch-gpu
+
+# Install required dependencies
 pip install torch torchvision transformers scikit-learn imbalanced-learn joblib pandas numpy pillow matplotlib seaborn tqdm gradio nbconvert
 ```
 
 ### 2. Experimental Reproduction Workflow
 
-#### Option A: Automated Batch Execution via Scripts (`experiment/code/scripts/`)
+#### Option A: Automated Batch Execution via Scripts ([`experiment/code/scripts/`](experiment/code/scripts/))
+
 ```bash
-# Execute automated batch execution across all models
 cd experiment/code
 python scripts/auto_run_experiments.py
 ```
 
 #### Option B: Step-by-Step Interactive Execution
+
 1. **Extract ViT Embeddings:** Run `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, and `1.1_vit-age_demogpairs.ipynb` to generate embeddings in `features/`.
 2. **Train Classifiers (Subject-Disjoint):** Run notebooks:
    - Logistic Regression: `2.5.1` to `2.5.7`
@@ -336,25 +379,28 @@ python scripts/auto_run_experiments.py
 
 ---
 
-## 👥 Research Team
+## Research Team
 
-- **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0002-5515-7967)) - Corresponding Author (`rickyeka@unesa.ac.id`)
+- **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0002-5515-7967)) — Corresponding Author (`rickyeka@unesa.ac.id`)
 - **Rezky Arisanti Putri, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0009-0000-8021-1833))
 - **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0001-9719-3491))
 - **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0009-0003-6991-0694))
+- **Dr. Shukor Sanim Mohd Fauzi** ([ORCID](https://orcid.org/0000-0003-4333-7853)) (`shukorsanim@uitm.edu.my`)
 
-*Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya, East Java, Indonesia.*
+*Institutional Affiliations:*
+- **Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya**, Surabaya, East Java, Indonesia (Putra, Putri, Yamasari, Akbar).
+- **School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA**, Perlis Branch, Arau Campus, 02600 Arau, Perlis, Malaysia (Mohd Fauzi).
 
 ---
 
-## 📜 Citation
+## Citation
 
 If you find this research or codebase useful in your work, please cite:
 
 ```bibtex
 @article{putra2026multidomain,
   title={Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images},
-  author={Putra, Ricky Eka and Putri, Rezky Arisanti and Yamasari, Yuni and Akbar, Rafy Aulia},
+  author={Putra, Ricky Eka and Putri, Rezky Arisanti and Yamasari, Yuni and Akbar, Rafy Aulia and Mohd Fauzi, Shukor Sanim},
   journal={IEEE Access},
   year={2026}
 }
