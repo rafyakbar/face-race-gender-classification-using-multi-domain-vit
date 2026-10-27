@@ -5,7 +5,7 @@
 # ==============================================================================
 
 pahami:
-- README.AI.md beserta file-file yang berhubungan dengannya
+- README.ai.md beserta file-file yang berhubungan dengannya
 - paper_reviews_ieee/ (selain paper_reviews_ieee/raw/)
 perhatikan:
 - jangan pernah baca file prompts.txt dan .ipynb
@@ -16,6 +16,18 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+buat commit dan push
+
+untuk readme gunakan skill https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/skills/create-readme/SKILL.md. sekarang buat atau perbaiki berkas-berkas bertipe panduan/dokumentasi/readme pendukung. delegasikan ke beberapa subagent agar optimal
+
+jangan dulu, maksud saya file file seperti readme, jangan file-file inti dulu
+
+jadi file-file yang perlu diperbarui?
+
+ubah README.AI.md menjadi README.ai.md
+
+apakah file seperti README.md dll sudah diperbarui? menurutmu apa saja file-file yang perlu diperbarui?
 
 lakukan dengan sangat amat teliti:
 - terkait archive:
@@ -49,7 +61,7 @@ tolong fokus pada komentar Reviewer 2 nomor 2 mengenai "Data Leakage and General
 
 buatkan paper_reviews_ieee/Comments.md yang isinya adalah gabungan komentar dari reviewer dalam bahasa indonesia
 
-eksplorasi ulang project ini dan update README.md dan README.AI.md. khusus untuk paper_reviews_ieee jangan memasukkan paper_reviews_ieee/raw ke readme. khusus untuk README.AI.md lebih detilkan karena file ini tujuannya adalah agar ai agent berikutnya tidak perlu eksplorasi project sedari awal.
+eksplorasi ulang project ini dan update README.md dan README.ai.md. khusus untuk paper_reviews_ieee jangan memasukkan paper_reviews_ieee/raw ke readme. khusus untuk README.ai.md lebih detilkan karena file ini tujuannya adalah agar ai agent berikutnya tidak perlu eksplorasi project sedari awal.
 
 ketika saya cek pakai https://latexqc.ieee.org/, hasilnya:
 File name
