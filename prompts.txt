@@ -17,6 +17,22 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+lakukan dengan sangat amat teliti:
+- terkait archive:
+  * masih ada folder experiment/code/notebook_old
+  * convert ulang semua notebook old ke md_old menggunakan nbconvert
+- terkait notebook baru:
+  * experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb masih belum konsisten dengan notebook yg lain, tolong audit semua notebook (selain old) agar seragam
+  * kemudian jalankan ulang semua notebook menggunakan nbconvert (btw seharusnya tidak training ulang karena tinggal load apa yang sudah ada)
+  * setelah itu convert ulang semua notebook ke md
+- terkait dokumen:
+  * setelah archive dan notebook baru selesai, maka audit ulang semua .md yang ada pada folder experiment (selain experiment/code) agar sesuai dengan notebook & old
+  * karena terdapat komentar reviewer terkait split data (paper_reviews_ieee/Comments.md mengenai Reviewer 2 Data Leakage and Generalization)
+perhatikan:
+- delegasikan ke beberapa subagent
+- berikan instruksi yang sangat jelas
+- lakukan dengan sangat amat teliti
+
 sekarang experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb sedang saya jalankan dan sedang training svm nya, jadi jangan diotak-atik.
 sekarang tolong buatkan untuk kombinasi fitur yang lain beserta ML yang lain (ML yang hanya digunakan di paper), untuk splitting nya seharusnya sama dengan experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb. caranya adalah:
 1. copy dari experiment/code/notebook_old ke experiment/code/

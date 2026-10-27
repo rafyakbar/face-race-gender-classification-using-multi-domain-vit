@@ -34,7 +34,7 @@ Untuk menjamin kepatuhan metodologis tertinggi sesuai telaah pakar jurnal **IEEE
 | **Logistic Regression (LR)** | 270 | **88,66%** (F1: **0,8868**) | **[87,25%, 89,93%]** | 92,73% (F1: 0,9273) | -4,07 pp | **0,0054 ms** | **0,11 MB** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** |
 | **Support Vector Machine (SVM)** | 288 | **88,61%** (F1: **0,8863**) | **[87,20%, 89,88%]** | **93,70%** (F1: **0,9369**) | -5,09 pp | 4,4481 ms | 36,60 MB | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** |
 | **Random Forest (RF)** | 288 | 85,00% (F1: 0,8493) | [83,43%, 86,44%] | 86,85% (F1: 0,8682) | -1,85 pp | 0,0537 ms | 6,19 MB | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) |
-| **Gaussian Naive Bayes (GNB)** | 240 | 84,31% (F1: 0,8430) | [82,71%, 85,78%] | 85,05% (F1: 0,8505) | -0,74 pp | 0,0081 ms | 0,78 MB | Dual-Domain (`Emotion ⊕ Face`) |
+| **Gaussian Naive Bayes (GNB)** | 240 | 84,31% (F1: 0,8430) | [82,71%, 85,78%] | 85,05% (F1: 0,8505) | -0,74 pp | 0,0083 ms | 0,78 MB | Dual-Domain (`Emotion ⊕ Face`) |
 
 > **Temuan Signifikansi Inferensial:** Pada protokol Subject-Disjoint, **LR Tri-Domain (88,66%) dan SVM Tri-Domain (88,61%) terbukti ekuivalen secara statistik** berdasarkan Uji McNemar berpasangan ($p = 1,0000$, selisih bersih hanya +1 citra). Namun, LR menawarkan keunggulan komputasi luar biasa (>820$\times$ lebih cepat dan >330$\times$ lebih hemat memori), menjadikannya pilihan optimal untuk *Edge AI*.
 

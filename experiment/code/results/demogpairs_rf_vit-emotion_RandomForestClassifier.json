@@ -4340,8 +4340,8 @@
     "test_recall": 0.7611111111111111,
     "test_f1": 0.7603368134554124,
     "train_time_seconds": 2465.569347858429,
-    "inference_time_seconds": 0.06826369999907911,
-    "latency_ms_per_sample": 0.03160356481438848,
+    "inference_time_seconds": 0.06939339998643845,
+    "latency_ms_per_sample": 0.03212657406779558,
     "model_size_mb": 10.335052490234375,
     "classification_metrics": {
         "Asian_Females": {
