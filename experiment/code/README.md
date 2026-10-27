@@ -41,9 +41,9 @@ Eksperimen ini menginvestigasi hipotesis bahwa penggabungan representasi semanti
 
 ### Ringkasan Kinerja 28 Konfigurasi Model (Held-Out Test Set)
 
-Berikut adalah ringkasan hasil evaluasi 28 model benchmark terurut berdasarkan akurasi klasifikasi:
+Berikut adalah ringkasan hasil evaluasi 28 model tolok ukur (*benchmark*) yang diurutkan berdasarkan akurasi klasifikasi:
 
-| Peringkat | Algoritma Klasifikasi | Domain Fitur ViT | Dimensi Fitur | Akurasi Test | Macro F1 | Latensi Inferensi | Waktu Latih |
+| Peringkat | Algoritma Klasifikasi | Domain Fitur ViT | Dimensi Fitur | Akurasi Uji | Macro F1 | Latensi Inferensi | Waktu Latih |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **1** | **Logistic Regression** | **Tri-Domain (Face + Emotion + Age)** | 2.304-D | **88.66%** | **0.8868** | **0.0046 ms** | 3.287,1 s |
 | **2** | **Support Vector Machine (SVC)** | **Tri-Domain (Face + Emotion + Age)** | 2.304-D | **88.61%** | **0.8863** | 4.6785 ms | 30.666,0 s |
@@ -119,7 +119,7 @@ experiment/code/
 
 Notebook ekstraksi memproses seluruh 10.800 citra DemogPairs melalui model *foundation* Vision Transformer dari Hugging Face untuk mengekstrak vektor representasi laten token `[CLS]` 768 dimensi:
 
-| File Notebook | Model Hugging Face | Domain Representasi | Dimensi Vektor | Berkas Cache Keluaran |
+| Berkas Notebook | Model Hugging Face | Domain Representasi | Dimensi Vektor | Berkas Cache Keluaran |
 | :--- | :--- | :--- | :---: | :--- |
 | [`1.1_vit-face_demogpairs.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/1.1_vit-face_demogpairs.ipynb) | `skutaada/VIT-VGGFace` | Ciri Biometrik / Identitas Wajah | 768-D | `features/demogpairs_vit-face.pkl` (~30.8 MB) |
 | [`1.1_vit-emotion_demogpairs.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/1.1_vit-emotion_demogpairs.ipynb) | `dima806/facial_emotions_image_detection` | Morfologi Otot / Ekspresi Wajah | 768-D | `features/demogpairs_vit-emotion.pkl` (~30.8 MB) |
@@ -135,7 +135,7 @@ Sebanyak 28 notebook mengimplementasikan 7 skema kombinasi domain fitur (3 *sing
 
 #### Matriks Pemetaan 28 Notebook Klasifikasi
 
-| No | File Notebook Klasifikasi | Algoritma | Konfigurasi Domain Fitur | Dimensi Asal | Komponen PCA ($k$) |
+| No | Berkas Notebook Klasifikasi | Algoritma | Konfigurasi Domain Fitur | Dimensi Asal | Komponen PCA ($k$) |
 | :---: | :--- | :---: | :--- | :---: | :---: |
 | 1 | [`2.1.1_svm_vit-face_demogpairs.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/2.1.1_svm_vit-face_demogpairs.ipynb) | SVM | Single: Face | 768-D | [50, 100, 150, 200, 250] |
 | 2 | [`2.1.2_svm_vit-emotion_demogpairs.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/2.1.2_svm_vit-emotion_demogpairs.ipynb) | SVM | Single: Emotion | 768-D | [50, 100, 150, 200, 250] |
@@ -236,20 +236,20 @@ experiment/code/
 ├── dataset/                         # Dataset DemogPairs
 │   └── demogpairs/
 │       ├── images/                  # Direktori citra wajah per subjek
-│       └── metadata/                # 6 file teks metadata interseksional
+│       └── metadata/                # 6 berkas teks metadata interseksional
 │
 ├── features/                        # Cache Embedding Representasi Laten (.pkl)
 │   ├── demogpairs_vit-face.pkl      # 10.800 × 768-D Face Embeddings
 │   ├── demogpairs_vit-emotion.pkl   # 10.800 × 768-D Emotion Embeddings
 │   └── demogpairs_vit-age.pkl       # 10.800 × 768-D Age Embeddings
 │
-├── models/                          # Bobot Model Terlatih (28 file .pkl)
+├── models/                          # Bobot Model Terlatih (28 berkas .pkl)
 │   ├── clf_demogpairs_svm_*.pkl     # 7 Model Support Vector Machine
 │   ├── clf_demogpairs_lr_*.pkl      # 7 Model Logistic Regression
 │   ├── clf_demogpairs_rf_*.pkl      # 7 Model Random Forest
 │   └── clf_demogpairs_gnb_*.pkl     # 7 Model Gaussian Naive Bayes
 │
-├── results/                         # Berkas Metrik Mentah JSON (28 file .json)
+├── results/                         # Berkas Metrik Mentah JSON (28 berkas .json)
 │   ├── demogpairs_svm_*.json        # Log metrik, prediksi y_pred, y_test
 │   ├── demogpairs_lr_*.json         # Log metrik Logistic Regression
 │   ├── demogpairs_rf_*.json         # Log metrik Random Forest
@@ -274,8 +274,8 @@ experiment/code/
 │   ├── auto_run_experiments.py      # Runner antrean utama 28 notebook
 │   ├── run_remaining_queue.py       # Runner antrean SVM komputasi berat
 │   ├── run_gnb_queue.py             # Runner antrean cepat GNB
-│   ├── run_experiments.bat          # Batch script aktivasi cepat Windows
-│   ├── run_gnb.bat                  # Batch script GNB Windows
+│   ├── run_experiments.bat          # Skrip batch aktivasi cepat Windows
+│   ├── run_gnb.bat                  # Skrip batch GNB Windows
 │   └── README.md                    # Dokumentasi teknis skrip otomatisasi
 │
 └── archive/                         # Arsip Eksperimen Historis (Subject-Overlap)
@@ -396,7 +396,7 @@ Eksperimen dan pencatatan latensi inferensi dilakukan pada stasiun kerja komputa
 
 ---
 
-### 2. Konfigurasi Lingkungan Software (Conda Environment)
+### 2. Konfigurasi Lingkungan Perangkat Lunak (Conda Environment)
 
 Eksperimen berjalan di atas lingkungan conda terisolasi bernama `torch-gpu`. Paket-paket utama beserta versinya adalah sebagai berikut:
 

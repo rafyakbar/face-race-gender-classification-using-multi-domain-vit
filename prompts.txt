@@ -17,6 +17,8 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+seharusnya berkas-berkas bertipe panduan/dokumentasi/readme pendukung cukup menggunakan bahasa indonesia saja, kecuali istilah akademik, tolong perbaiki, delegasikan ke subagent, buat commit, dan push
+
 buat commit dan push
 
 untuk readme gunakan skill https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/skills/create-readme/SKILL.md. sekarang buat atau perbaiki berkas-berkas bertipe panduan/dokumentasi/readme pendukung. delegasikan ke beberapa subagent agar optimal

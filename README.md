@@ -1,56 +1,56 @@
 # Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images
 
-> **Abstract:** An empirical machine learning framework for intersectional 6-class (3 Race × 2 Gender) demographic classification from facial images using offline multi-representation feature fusion across three task-specialized Vision Transformer (ViT) backbones (**Face Biometrics**, **Facial Emotion**, and **Facial Age**) combined with exhaustive 5-Fold Stratified GridSearchCV-optimized classical classifiers. Under strict **Subject-Disjoint Partitioning** (Zero Identity Leakage — IEEE Access Revision Milestone), the proposed Tri-Domain ViT representation achieves **88.66% Test Accuracy** (Logistic Regression, Macro F1: **0.8868**) and **88.61% Test Accuracy** (Support Vector Machine, Macro F1: **0.8863**) on held-out unseen subjects ($N = 2,160$ test samples from 120 isolated identities). Concurrently, this repository preserves the historical **Subject-Overlap Benchmark** (**93.70%** SVM Tri-Domain) to provide a rigorous empirical baseline for data leakage ablation and out-of-subject generalization analysis (answering IEEE Access Reviewer 2 Comment #2).
+> **Abstrak:** Kerangka kerja machine learning empiris untuk klasifikasi demografis 6 kelas interseksional (3 Ras × 2 Gender) dari citra wajah menggunakan offline multi-representation feature fusion pada tiga backbone Vision Transformer (ViT) spesifik tugas (**Face Biometrics**, **Facial Emotion**, dan **Facial Age**) yang dipadukan dengan pengklasifikasi klasik teroptimasi 5-Fold Stratified GridSearchCV secara komprehensif. Di bawah protokol ketat **Subject-Disjoint Partitioning** (Zero Identity Leakage — Milestone Revisi IEEE Access), representasi Tri-Domain ViT yang diusulkan mencapai **Akurasi Pengujian 88.66%** (Logistic Regression, Macro F1: **0.8868**) dan **Akurasi Pengujian 88.61%** (Support Vector Machine, Macro F1: **0.8863**) pada subjek held-out yang belum pernah dilihat sebelumnya ($N = 2,160$ sampel uji dari 120 identitas terisolasi). Secara bersamaan, repositori ini mempertahankan **Subject-Overlap Benchmark** historis (**93.70%** SVM Tri-Domain) sebagai baseline empiris yang ketat untuk analisis ablasi data leakage dan generalisasi lintas subjek (menjawab Komentar #2 Reviewer 2 IEEE Access).
 
 ---
 
-## 📑 Table of Contents
+## 📑 Daftar Isi
 
-- [Publication & Peer Review Status](#publication--peer-review-status)
-- [Dual-Benchmark System](#dual-benchmark-system)
-  - [1. Primary Benchmark: Subject-Disjoint Partitioning (Zero Data Leakage)](#1-primary-benchmark-subject-disjoint-partitioning-zero-data-leakage--ieee-access-revision)
-  - [2. Historical Benchmark: Subject-Overlap Partitioning (Baseline Archive)](#2-historical-benchmark-subject-overlap-partitioning-100-identity-leakage-baseline)
-  - [3. Comparative Data Leakage Ablation & Generalization Analysis](#3-comparative-data-leakage-ablation--generalization-analysis)
-  - [4. Intersectional Subgroup Disparity Profile](#4-intersectional-subgroup-disparity-profile-subject-disjoint-test-set)
-  - [5. Comparison with Prior Studies on DemogPairs](#5-comparison-with-prior-studies-on-demogpairs)
-- [Methodology Framework](#methodology-framework)
-- [Repository Structure](#repository-structure)
-- [Quick Start & Reproduction](#quick-start--reproduction)
-- [Research Team](#research-team)
-- [Citation](#citation)
+- [Status Publikasi & Peer Review](#status-publikasi--peer-review)
+- [Sistem Dual-Benchmark](#sistem-dual-benchmark)
+  - [1. Benchmark Utama: Subject-Disjoint Partitioning (Zero Data Leakage)](#1-benchmark-utama-subject-disjoint-partitioning-zero-data-leakage--revisi-ieee-access)
+  - [2. Benchmark Historis: Subject-Overlap Partitioning (Baseline Identity Leakage 100%)](#2-benchmark-historis-subject-overlap-partitioning-baseline-identity-leakage-100)
+  - [3. Analisis Komparatif Ablasi Data Leakage & Generalisasi](#3-analisis-komparatif-ablasi-data-leakage--generalisasi)
+  - [4. Profil Disparitas Subkelompok Interseksional](#4-profil-disparitas-subkelompok-interseksional-held-out-subject-disjoint-test-set)
+  - [5. Perbandingan dengan Studi Terdahulu pada DemogPairs](#5-perbandingan-dengan-studi-terdahulu-pada-demogpairs)
+- [Kerangka Metodologi](#kerangka-metodologi)
+- [Struktur Repositori](#struktur-repositori)
+- [Panduan Memulai Cepat & Reproduksi Eksperimen](#panduan-memulai-cepat--reproduksi-eksperimen)
+- [Tim Peneliti](#tim-peneliti)
+- [Sitasi](#sitasi)
 
 ---
 
-## Publication & Peer Review Status
+## Status Publikasi & Peer Review
 
 > [!IMPORTANT]
-> **IEEE Access Revision In Progress (Manuscript ID: `Access-2026-50857`):**  
-> Following the official editorial decision received on **October 20, 2026** (*Reject & Resubmit* with exactly one resubmission opportunity permitted under IEEE Access binary peer review policy), this repository undergoes systematic revision. The primary objective is resolving Reviewer 2 Comment #2 regarding identity overlap and cross-subject generalization through strict subject-disjoint re-benchmarking, paired inferential hypothesis testing (McNemar tests & 95% Wilson Score CIs), and computational efficiency profiling.
+> **Revisi IEEE Access Sedang Berjalan (ID Naskah: `Access-2026-50857`):**  
+> Menyusul keputusan editorial resmi yang diterima pada **20 Oktober 2026** (*Reject & Resubmit* dengan tepat satu kesempatan resubmisi yang diizinkan di bawah kebijakan binary peer review IEEE Access), repositori ini menjalani revisi sistematis. Tujuan utamanya adalah menyelesaikan Komentar #2 Reviewer 2 terkait identity overlap dan generalisasi lintas subjek melalui re-benchmarking subject-disjoint yang ketat, paired inferential hypothesis testing (uji McNemar & 95% Wilson Score CI), serta profiling efisiensi komputasi (computational efficiency profiling).
 
-- **Target Journal:** [IEEE Access](https://ieeeaccess.ieee.org/) (Open Access, Q1 / Impact Factor: 3.4)
-- **Manuscript Tracking ID:** `Access-2026-50857`
-- **Current Milestone:** Editorial Decision Received (20-10-2026) – Binary Peer Review (Reject & Resubmit with 1 Resubmission Opportunity).
-- **Revision Core Objective:** Resolving Reviewer 2 Comment #2 regarding identity overlap and cross-subject generalization through strict subject-disjoint re-benchmarking, paired inferential hypothesis testing (McNemar tests & 95% Wilson Score CIs), and computational profiling.
-- **Peer Review Dossier:** Managed under [`paper_reviews_ieee/`](paper_reviews_ieee/):
-  - [`Comments.md`](paper_reviews_ieee/Comments.md) — Deconstructed reviewer feedback and detailed response matrix.
-  - [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](paper_reviews_ieee/IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) — Official editorial decision letter.
-  - [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) — Official point-by-point response letter template.
-  - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formal author byline change form.
-  - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Official 10-point resubmission compliance checklist.
-- **Operational Guides:**
-  - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure for the 5-stage research manuscript lifecycle.
-  - [`README.ai.md`](README.ai.md) — Master technical reference guide and single source of truth for autonomous agents.
+- **Jurnal Sasaran:** [IEEE Access](https://ieeeaccess.ieee.org/) (Open Access, Q1 / Impact Factor: 3.4)
+- **ID Pelacakan Naskah:** `Access-2026-50857`
+- **Milestone Terkini:** Keputusan Editorial Diterima (20-10-2026) – Binary Peer Review (Reject & Resubmit dengan 1 Kesempatan Resubmisi).
+- **Fokus Utama Revisi:** Menyelesaikan Komentar #2 Reviewer 2 mengenai identity overlap dan generalisasi lintas subjek melalui re-benchmarking subject-disjoint yang ketat, paired inferential hypothesis testing (uji McNemar & 95% Wilson Score CI), serta computational profiling.
+- **Berkas Penelaahan Sejawat (Peer Review Dossier):** Dikelola di bawah direktori [`paper_reviews_ieee/`](paper_reviews_ieee/):
+  - [`Comments.md`](paper_reviews_ieee/Comments.md) — Umpan balik reviewer yang didekonstruksi beserta matriks respons detail.
+  - [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](paper_reviews_ieee/IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) — Surat keputusan editorial resmi.
+  - [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) — Templat resmi surat tanggapan butir-per-butir (point-by-point response letter).
+  - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formulir resmi perubahan susunan kepengarangan (author byline change form).
+  - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Daftar periksa kepatuhan resubmisi 10 poin resmi.
+- **Panduan Operasional:**
+  - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure (SOP) untuk siklus hidup naskah riset 5 tahap.
+  - [`README.ai.md`](README.ai.md) — Panduan referensi teknis utama dan single source of truth untuk autonomous agents.
 
 ---
 
-## Dual Benchmark System
+## Sistem Dual-Benchmark
 
-To ensure complete scientific transparency and directly answer IEEE Access Reviewer 2 Comment #2, this repository establishes a **Dual Benchmark Architecture**:
-1. **Primary Benchmark (Subject-Disjoint):** Zero identity leakage ($0.00\%$); evaluates true generalizability on completely unseen identities.
-2. **Historical Benchmark (Subject-Overlap):** Image-level stratified split ($100.00\%$ identity presence); serves as the comparative baseline for quantifying facial identity memorization.
+Untuk menjamin transparansi ilmiah secara menyeluruh dan menjawab langsung Komentar #2 Reviewer 2 IEEE Access, repositori ini mengimplementasikan **Arsitektur Dual-Benchmark**:
+1. **Benchmark Utama (Subject-Disjoint):** Zero identity leakage ($0.00\%$); mengevaluasi kemampuan generalisasi sejati pada identitas wajah yang sepenuhnya belum pernah dilihat sebelumnya (held-out unseen identities).
+2. **Benchmark Historis (Subject-Overlap):** Split terstratifikasi berbasis citra ($100.00\%$ kehadiran identitas); berfungsi sebagai baseline komparatif untuk mengukur efek memorisasi identitas wajah (facial identity memorization).
 
 > [!TIP]
-> **Zero Identity Leakage Protocol:** The primary benchmark isolates 120 subjects (2,160 test images) strictly into held-out evaluation, ensuring zero identity overlap ($0.00\%$) between training and testing splits.
+> **Protokol Zero Identity Leakage:** Benchmark utama mengisolasi 120 subjek (2,160 citra uji) secara ketat ke dalam evaluasi held-out, menjamin nol tumpang tindih identitas ($0.00\%$) antara partisi pelatihan (training) dan pengujian (testing).
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -75,13 +75,13 @@ To ensure complete scientific transparency and directly answer IEEE Access Revie
 
 ---
 
-### 1. Primary Benchmark: Subject-Disjoint Partitioning (Zero Data Leakage — IEEE Access Revision)
+### 1. Benchmark Utama: Subject-Disjoint Partitioning (Zero Data Leakage — Revisi IEEE Access)
 
-Evaluated on the held-out subject-disjoint test partition ($N = 2,160$ images from 120 unseen subjects; exactly 360 images per intersectional class) following 5-fold stratified cross-validation on 480 training subjects ($N = 8,640$).
+Dievaluasi pada partisi uji subject-disjoint held-out ($N = 2,160$ citra dari 120 subjek unseen; tepat 360 citra per kelas interseksional) setelah 5-fold stratified cross-validation pada 480 subjek pelatihan ($N = 8,640$).
 
-#### Top-Performing Configuration per Classifier Family
+#### Konfigurasi Performa Terbaik per Famili Classifier
 
-| Rank | Classifier | Best Feature Scheme | Feature Dim | Test Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | 95% Wilson Score CI | Latency (ms/sample) | Model Size (MB) | Best Hyperparameters |
+| Peringkat | Classifier | Skema Fitur Terbaik | Dimensi Fitur | Test Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | 95% Wilson Score CI | Latensi (ms/sampel) | Ukuran Model (MB) | Hyperparameter Terbaik |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
 | 🥇 | **Logistic Regression (LR)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | **0.0054 ms** | **0.11 MB** | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
 | 🥈 | **Support Vector Machine (SVM)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.4481 ms | 36.60 MB | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
@@ -89,11 +89,11 @@ Evaluated on the held-out subject-disjoint test partition ($N = 2,160$ images fr
 | 4 | **Gaussian Naive Bayes (GNB)** | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | **84.31%** | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0083 ms | 0.78 MB | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
 
 > [!NOTE]
-> For Gaussian Naive Bayes, Tri-Domain achieves **83.61%** (Macro F1: 0.8364), while peak accuracy occurs on Dual-Domain `Emotion ⊕ Face` (84.31%).
+> Untuk Gaussian Naive Bayes, konfigurasi Tri-Domain mencapai **83.61%** (Macro F1: 0.8364), sedangkan akurasi puncak tercapai pada Dual-Domain `Emotion ⊕ Face` (84.31%).
 
-#### Definitive 28-Model Subject-Disjoint Global Leaderboard
+#### Papan Peringkat Global Definitif 28 Model Subject-Disjoint
 
-| Rank | Classifier | Feature Scheme | Category | Dim | Test Accuracy | Precision | Recall | F1-Score | 95% CI (Wilson) | Latency (ms) | Size (MB) |
+| Peringkat | Classifier | Skema Fitur | Kategori | Dim | Test Accuracy | Precision | Recall | F1-Score | 95% CI (Wilson) | Latensi (ms) | Ukuran (MB) |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 1 | **LR** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | 0.0054 | 0.11 |
 | 2 | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.4481 | 36.60 |
@@ -126,11 +126,11 @@ Evaluated on the held-out subject-disjoint test partition ($N = 2,160$ images fr
 
 ---
 
-### 2. Historical Benchmark: Subject-Overlap Partitioning (100% Identity Leakage Baseline)
+### 2. Benchmark Historis: Subject-Overlap Partitioning (Baseline Identity Leakage 100%)
 
-Preserved under [`experiment/code/archive/`](experiment/code/archive/) as an ablation baseline to quantify the inflation effect of identity leakage. Evaluated under standard image-level stratified splitting ($N = 8,640$ train / $N = 2,160$ test; all 593 test identities appeared in the training set under different photos):
+Diarsipkan di bawah direktori [`experiment/code/archive/`](experiment/code/archive/) sebagai baseline ablasi untuk mengukur besaran efek inflasi akibat kebocoran identitas (identity leakage). Dievaluasi dengan skema random stratified split tingkat citra standar ($N = 8,640$ latih / $N = 2,160$ uji; seluruh 593 identitas pada data uji juga hadir di data latih pada foto berbeda):
 
-| Rank | Classifier | Best Feature Configuration | Feature Dim | Best Accuracy | Precision | Recall | F1-Score | Best Hyperparameters |
+| Peringkat | Classifier | Konfigurasi Fitur Terbaik | Dimensi Fitur | Best Accuracy | Precision | Recall | F1-Score | Hyperparameter Terbaik |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|---|
 | 🥇 | **Support Vector Machine (SVM)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **93.70%** | **0.9372** | **0.9370** | **0.9369** | `C=10, kernel='poly', degree=2, gamma='scale', pca=None, scaler=None` |
 | 🥈 | **Logistic Regression (LR)** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 2,304 | **92.73%** | 0.9275 | 0.9273 | 0.9273 | `C=0.1, solver='newton-cg', max_iter=500, pca=None, scaler=None` |
@@ -139,52 +139,52 @@ Preserved under [`experiment/code/archive/`](experiment/code/archive/) as an abl
 
 ---
 
-### 3. Comparative Data Leakage Ablation & Generalization Analysis
+### 3. Analisis Komparatif Ablasi Data Leakage & Generalisasi
 
-Comparing the two partitioning schemes reveals critical empirical insights regarding identity memorization versus generalizable multi-domain feature representations:
+Perbandingan antara kedua skema partisi mengungkap wawasan empiris fundamental terkait efek memorisasi identitas (identity memorization) vs representasi fitur multi-domain yang mampu digeneralisasikan:
 
-#### (a) Performance Delta across Configurations (Subject-Overlap vs. Subject-Disjoint)
+#### (a) Selisih Performa Lintas Konfigurasi (Subject-Overlap vs. Subject-Disjoint)
 
-| Classifier | Feature Configuration | Subject-Overlap Acc (Old) | Subject-Disjoint Acc (New) | Nominal Drop ($\Delta\text{Acc}$) | 95% Wilson CI (New) | Generalization Verdict |
+| Classifier | Konfigurasi Fitur | Akurasi Subject-Overlap (Lama) | Akurasi Subject-Disjoint (Baru) | Penurunan Nominal ($\Delta\text{Akurasi}$) | 95% Wilson CI (Baru) | Kesimpulan Generalisasi |
 |---|---|:---:|:---:|:---:|:---:|---|
-| **SVM** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **93.70%** | **88.61%** | **-5.09 pp** | [87.20%, 89.88%] | High out-of-subject generalization |
-| **SVM** | Dual-Domain (`Emotion ⊕ Face`) | 93.29% | 88.43% | -4.86 pp | [87.01%, 89.71%] | Robust cross-subject boundaries |
-| **SVM** | Single-Domain (`vit-face`) | 90.83% | 86.16% | -4.68 pp | [84.64%, 87.55%] | Susceptible to facial identity cues |
-| **LR** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **92.73%** | **88.66%** | **-4.07 pp** | [87.25%, 89.93%] | Peak generalizability & lowest drop |
-| **LR** | Dual-Domain (`Emotion ⊕ Face`) | 92.41% | 87.45% | -4.95 pp | [85.99%, 88.78%] | Linear model benefits from Age |
-| **LR** | Single-Domain (`vit-face`) | 90.60% | 86.39% | -4.21 pp | [84.88%, 87.77%] | Face-alone baseline |
-| **RF** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 86.20% | 85.00% | -1.20 pp | [83.43%, 86.44%] | Moderate cross-subject stability |
-| **GNB** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 85.05% | 83.61% | -1.44 pp | [81.99%, 85.11%] | Naive Bayes baseline |
+| **SVM** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **93.70%** | **88.61%** | **-5.09 pp** | [87.20%, 89.88%] | Generalisasi out-of-subject tinggi |
+| **SVM** | Dual-Domain (`Emotion ⊕ Face`) | 93.29% | 88.43% | -4.86 pp | [87.01%, 89.71%] | Batas keputusan lintas subjek kokoh |
+| **SVM** | Single-Domain (`vit-face`) | 90.83% | 86.16% | -4.68 pp | [84.64%, 87.55%] | Rentan terhadap petunjuk identitas wajah |
+| **LR** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **92.73%** | **88.66%** | **-4.07 pp** | [87.25%, 89.93%] | Generalisasi puncak & penurunan terendah |
+| **LR** | Dual-Domain (`Emotion ⊕ Face`) | 92.41% | 87.45% | -4.95 pp | [85.99%, 88.78%] | Model linier terdorong oleh fitur Age |
+| **LR** | Single-Domain (`vit-face`) | 90.60% | 86.39% | -4.21 pp | [84.88%, 87.77%] | Baseline Face tunggal |
+| **RF** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 86.20% | 85.00% | -1.20 pp | [83.43%, 86.44%] | Stabilitas lintas subjek moderat |
+| **GNB** | Tri-Domain (`Face ⊕ Emotion ⊕ Age`) | 85.05% | 83.61% | -1.44 pp | [81.99%, 85.11%] | Baseline Naive Bayes |
 
-#### (b) Key Empirical Takeaways & Statistical Proofs
+#### (b) Temuan Empiris Utama & Pembuktian Statistik
 
-1. **Elimination of Facial Identity Memorization:**  
-   The nominal accuracy drop of ~4.0% to 5.1% across top classifiers proves that models evaluated under subject-overlap protocols inadvertently memorize facial identity signatures. The subject-disjoint results reflect genuine demographic attribute generalization on previously unseen individuals.
-2. **Statistically Significant Multi-Domain Superiority ($p < 0.001$):**  
-   A common concern raised by Reviewer 2 was whether multi-domain fusion gains could be an artifact of data leakage. Inferential hypothesis testing (**Paired McNemar Test with Edwards continuity correction**) on the subject-disjoint test set definitively refutes this:
-   - **SVM:** Tri-Domain (88.61%) significantly outperforms Single Face Biometrics (86.16%) with $\Delta = +2.45\%$ (+53 net correct images, $\chi^2 = 20.9612$, **$p = 3.46 \times 10^{-6} < 0.001$**).
-   - **Logistic Regression:** Tri-Domain (88.66%) significantly outperforms Single Face Biometrics (86.39%) with $\Delta = +2.27\%$ (+49 net correct images, $\chi^2 = 19.6923$, **$p = 6.78 \times 10^{-6} < 0.001$**).
-   - Multi-domain fusion gains are statistically robust and independent of identity leakage.
-3. **Asymptotic Feature Saturation vs. Linear Complementarity:**  
-   - In **Logistic Regression**, Tri-Domain (88.66%) significantly improves over Dual-Domain `Emotion ⊕ Face` (87.45%) with net gain +26 images (**$p = 0.0073 < 0.01$**), demonstrating that biological age morphology provides orthogonal discriminative signal for linear hyperplanes.
-   - In **SVM**, Tri-Domain (88.61%) and Dual-Domain `Emotion ⊕ Face` (88.43%) exhibit net gain +4 images ($p = 0.7343 > 0.05$), confirming asymptotic representation saturation under non-linear RBF kernels.
-4. **Predictive Equivalence & Extreme Computational Efficiency (LR vs. SVM):**  
-   - Paired McNemar testing between LR Tri-Domain (88.66%) and SVM Tri-Domain (88.61%) shows exact equivalence ($p = 1.0000$, net gain +1 image).
-   - However, **LR delivers >800x faster inference** (**0.0054 ms** vs. 4.4481 ms per image) and **>330x smaller model footprint** (**0.11 MB** vs. 36.60 MB), establishing Logistic Regression as the optimal engine for resource-constrained edge AI.
+1. **Eliminasi Memorisasi Identitas Wajah:**  
+   Penurunan akurasi nominal sebesar ~4.0% hingga 5.1% pada seluruh pengklasifikasi teratas membuktikan bahwa model yang dievaluasi dengan protokol subject-overlap tanpa sengaja menghafal ciri khas identitas wajah (facial identity signatures). Hasil subject-disjoint mencerminkan generalisasi atribut demografis sejati pada individu yang sebelumnya belum pernah dilihat.
+2. **Keunggulan Multi-Domain Signifikan secara Statistik ($p < 0.001$):**  
+   Kekhawatiran utama yang disampaikan Reviewer 2 adalah apakah peningkatan performa fusi multi-domain hanyalah artefak dari kebocoran data (data leakage). Pengujian hipotesis inferensial (**Paired McNemar Test dengan koreksi kontinuitas Edwards**) pada held-out test set subject-disjoint secara definitif membantah kekhawatiran tersebut:
+   - **SVM:** Tri-Domain (88.61%) mengungguli Single Face Biometrics (86.16%) secara signifikan dengan $\Delta = +2.45\%$ (+53 citra benar bersih, $\chi^2 = 20.9612$, **$p = 3.46 \times 10^{-6} < 0.001$**).
+   - **Logistic Regression:** Tri-Domain (88.66%) mengungguli Single Face Biometrics (86.39%) secara signifikan dengan $\Delta = +2.27\%$ (+49 citra benar bersih, $\chi^2 = 19.6923$, **$p = 6.78 \times 10^{-6} < 0.001$**).
+   - Peningkatan fusi multi-domain terbukti kokoh secara statistik dan tidak bergantung pada kebocoran identitas.
+3. **Saturasi Fitur Asimtotik vs. Komplementaritas Linier:**  
+   - Pada **Logistic Regression**, Tri-Domain (88.66%) meningkat secara signifikan dibandingkan Dual-Domain `Emotion ⊕ Face` (87.45%) dengan penambahan bersih +26 citra (**$p = 0.0073 < 0.01$**), membuktikan bahwa morfologi usia biologis memberikan sinyal diskriminatif ortogonal bagi hyperplane linier.
+   - Pada **SVM**, Tri-Domain (88.61%) dan Dual-Domain `Emotion ⊕ Face` (88.43%) menghasilkan selisih bersih +4 citra ($p = 0.7343 > 0.05$), mengonfirmasi terjadinya saturasi representasi asimtotik di bawah kernel RBF non-linier.
+4. **Ekuivalensi Prediktif & Efisiensi Komputasi Ekstrem (LR vs. SVM):**  
+   - Uji McNemar berpasangan antara LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) menunjukkan ekuivalensi prediktif persis ($p = 1.0000$, selisih bersih +1 citra).
+   - Namun, **LR memberikan inferensi >800× lebih cepat** (**0.0054 ms** vs. 4.4481 ms per citra) dan **ukuran model >330× lebih ringkas** (**0.11 MB** vs. 36.60 MB), menetapkan Logistic Regression sebagai model optimal untuk implementasi Edge AI pada perangkat dengan keterbatasan sumber daya.
 
 > [!NOTE]
-> **Key Finding on Multi-Domain Independence ($p < 0.001$):**  
-> Paired McNemar testing confirms that multi-domain ViT feature fusion gains are statistically significant and fully preserved under strict zero-leakage partitions.
+> **Temuan Kunci mengenai Independensi Multi-Domain ($p < 0.001$):**  
+> Uji McNemar berpasangan membuktikan bahwa peningkatan performa fusi fitur ViT multi-domain signifikan secara statistik dan sepenuhnya bertahan di bawah partisi ketat tanpa kebocoran data (zero data leakage).
 
 ---
 
-### 4. Intersectional Subgroup Disparity Profile (Subject-Disjoint Test Set)
+### 4. Profil Disparitas Subkelompok Interseksional (Held-out Subject-Disjoint Test Set)
 
-Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test images per subgroup):
+Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji unseen per subkelompok):
 
-#### (a) Logistic Regression Tri-Domain (Top Benchmark Model: 88.66%)
+#### (a) Logistic Regression Tri-Domain (Model Benchmark Teratas: 88.66%)
 
-| Demographic Subgroup | Macro Race | Gender | Recall / TPR | Precision | F1-Score | Support |
+| Subkelompok Demografis | Ras Makro | Gender | Recall / TPR | Precision | F1-Score | Support |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
 | **White_Males** | White | Male | **94.44%** | **95.24%** | **94.84%** | 360 |
 | **White_Females** | White | Female | 90.56% | 91.32% | 90.93% | 360 |
@@ -192,11 +192,11 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 | **Asian_Males** | Asian | Male | 87.78% | 82.72% | 85.18% | 360 |
 | **Asian_Females** | Asian | Female | 86.67% | 86.43% | 86.55% | 360 |
 | **Black_Females** | Black | Female | 84.72% | 85.20% | 84.96% | 360 |
-| **Macro Average** | **All** | **All** | **88.66%** | **0.8875** | **0.8868** | **2,160** |
+| **Macro Average** | **Semua** | **Semua** | **88.66%** | **0.8875** | **0.8868** | **2,160** |
 
 #### (b) Support Vector Machine Tri-Domain (88.61%)
 
-| Demographic Subgroup | Macro Race | Gender | Recall / TPR | Precision | F1-Score | Support |
+| Subkelompok Demografis | Ras Makro | Gender | Recall / TPR | Precision | F1-Score | Support |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
 | **White_Males** | White | Male | **94.44%** | 93.92% | **94.18%** | 360 |
 | **White_Females** | White | Female | 91.11% | 90.11% | 90.61% | 360 |
@@ -204,27 +204,27 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 | **Asian_Males** | Asian | Male | 88.06% | 82.34% | 85.10% | 360 |
 | **Asian_Females** | Asian | Female | 86.11% | 85.87% | 85.99% | 360 |
 | **Black_Females** | Black | Female | 84.72% | 87.64% | 86.16% | 360 |
-| **Macro Average** | **All** | **All** | **88.61%** | **0.8871** | **0.8863** | **2,160** |
+| **Macro Average** | **Semua** | **Semua** | **88.61%** | **0.8871** | **0.8863** | **2,160** |
 
 > [!NOTE]
-> **Equal Opportunity Disparity Metric:**  
-> Both top-performing models exhibit an identical Equal Opportunity Difference (Max − Min Recall) of **9.72 percentage points** across demographic subgroups (White_Males 94.44% vs. Black_Females 84.72%), highlighting remaining intersectional disparities for future fairness mitigation.
+> **Metrik Disparitas Equal Opportunity:**  
+> Kedua model berperforma teratas menunjukkan Equal Opportunity Difference (Max − Min Recall) yang identik sebesar **9.72 percentage points** lintas subkelompok demografis (White_Males 94.44% vs. Black_Females 84.72%), menyoroti disparitas interseksional yang masih ada untuk mitigasi keadilan (fairness mitigation) di masa mendatang.
 
 ---
 
-### 5. Comparison with Prior Studies on DemogPairs
+### 5. Perbandingan dengan Studi Terdahulu pada DemogPairs
 
-| Study | Partitioning Protocol | Architecture | Accuracy | Precision | Recall | F1-Score |
+| Studi | Protokol Partisi | Arsitektur | Accuracy | Precision | Recall | F1-Score |
 |---|---|---|:---:|:---:|:---:|:---:|
 | Putri et al. (*JIEET 2025*) | Random Stratified (Subject-Overlap) | MD-ViT (Face + Age) + XGBoost | 89.07% | 0.8912 | 0.8907 | 0.8901 |
 | Putri et al. (*ICVEE 2025*) | Random Stratified (Subject-Overlap) | Dual-ViT (Face + Emotion) + SVM | 92.41% | 0.9248 | 0.9241 | 0.9238 |
-| **Proposed (Historical Baseline)** | **Random Stratified (Subject-Overlap)** | **Tri-Domain ViT + SVM** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
-| **Proposed (Revision Milestone)** | **Subject-Disjoint (Zero Leakage)** | **Tri-Domain ViT + LR** | **88.66%** | **0.8875** | **0.8866** | **0.8868** |
-| **Proposed (Revision Milestone)** | **Subject-Disjoint (Zero Leakage)** | **Tri-Domain ViT + SVM** | **88.61%** | **0.8871** | **0.8861** | **0.8863** |
+| **Diusulkan (Baseline Historis)** | **Random Stratified (Subject-Overlap)** | **Tri-Domain ViT + SVM** | **93.70%** | **0.9372** | **0.9370** | **0.9369** |
+| **Diusulkan (Milestone Revisi)** | **Subject-Disjoint (Zero Leakage)** | **Tri-Domain ViT + LR** | **88.66%** | **0.8875** | **0.8866** | **0.8868** |
+| **Diusulkan (Milestone Revisi)** | **Subject-Disjoint (Zero Leakage)** | **Tri-Domain ViT + SVM** | **88.61%** | **0.8871** | **0.8861** | **0.8863** |
 
 ---
 
-## Methodology Framework
+## Kerangka Metodologi
 
 ```
                           [ Input Facial Image: 224x224 RGB ]
@@ -251,151 +251,151 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
            (Asian_Females, Asian_Males, Black_Females, Black_Males, White_Females, White_Males)
 ```
 
-### 1. Multi-Domain Vision Transformer Extractors (768-d per domain)
-- **ViT-Face** (`skutaada/VIT-VGGFace`): Pretrained on facial biometrics; captures static craniofacial geometry and facial identity proportions.
-- **ViT-Emotion** (`dima806/facial_emotions_image_detection`): Pretrained on facial affect; captures dynamic expression cues and localized action units.
-- **ViT-Age** (`dima806/facial_age_image_detection`): Pretrained on facial age estimation; captures biological aging morphology and epidermal texture patterns.
+### 1. Ekstraktor Vision Transformer Multi-Domain (768-D per domain)
+- **ViT-Face** (`skutaada/VIT-VGGFace`): Pretrained pada biometrik wajah; menangkap geometri kraniofasial statis dan proporsi identitas wajah.
+- **ViT-Emotion** (`dima806/facial_emotions_image_detection`): Pretrained pada ekspresi emosi wajah; menangkap petunjuk afektif dinamis dan localized action units.
+- **ViT-Age** (`dima806/facial_age_image_detection`): Pretrained pada estimasi usia wajah; menangkap morfologi penuaan biologis dan pola tekstur epidermal.
 
-### 2. Feature Fusion & Optimization Pipeline
-- **Offline Representation Extraction:** High-level representations are extracted from the normalized `[CLS]` token ($\mathbf{z}_L^0 \in \mathbb{R}^{768}$) of the final encoder layer of each frozen ViT-Base backbone.
-- **7 Systematic Ablation Schemes:**
-  - *Single-Domain (768-d):* `Face`, `Emotion`, `Age`
-  - *Dual-Domain (1,536-d):* `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`
-  - *Tri-Domain (2,304-d):* `Face ⊕ Emotion ⊕ Age`
-- **Leakage-Free Cross-Validation:** Preprocessing transformations (MinMaxScaler and PCA) are fitted strictly on training folds within `scikit-learn.pipeline.Pipeline` objects to prevent data leakage.
-- **Grid Search Space:** Evaluated a total of 1,086 parameter combinations ($38,010$ total cross-validation fits across 7 feature configurations and 4 classifier families).
+### 2. Pipeline Fusi Fitur & Optimasi Klasifikasi
+- **Ekstraksi Representasi Offline:** Representasi tingkat tinggi diekstraksi dari token `[CLS]` ternormalisasi ($\mathbf{z}_L^0 \in \mathbb{R}^{768}$) pada lapisan enkoder terakhir dari setiap backbone ViT-Base yang dibekukan (frozen).
+- **7 Skema Ablasi Sistematis:**
+  - *Single-Domain (768-D):* `Face`, `Emotion`, `Age`
+  - *Dual-Domain (1,536-D):* `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`
+  - *Tri-Domain (2,304-D):* `Face ⊕ Emotion ⊕ Age`
+- **Leakage-Free Cross-Validation:** Transformasi preprocessing (MinMaxScaler dan PCA) difitting secara ketat hanya pada training fold di dalam objek `scikit-learn.pipeline.Pipeline` untuk mencegah kebocoran data.
+- **Ruang Penjelajahan Grid Search:** Mengevaluasi total 1.086 kombinasi parameter ($38,010$ total cross-validation fits di seluruh 7 konfigurasi fitur dan 4 famili classifier).
 
 ---
 
-## Repository Structure
+## Struktur Repositori
 
 ```
 .
-├── .agents/skills/                        # Autonomous AI agent skills & peer review frameworks
-│   ├── ar-paper-reviewer/                 # Independent academic peer review simulation skill
-│   ├── ar-paper-revision/                 # Byte-level precision patching and revision application skill
-│   └── ar-paper-revision-coach/           # Review deconstruction, roadmap & rebuttal ledger coach
-├── authors.txt                            # Complete author profiles, affiliations, and ORCID IDs
-├── experiment/                            # Experimental logs, documentation, and source code
-│   ├── 00_overview.md - 05_results.md     # Comprehensive experimental logs and methodology audits
-│   ├── dataset_demogpairs.md              # Dataset specification and partition summary
+├── .agents/skills/                        # Kerangka kerja peer review mandiri & skill autonomous AI agent
+│   ├── ar-paper-reviewer/                 # Skill simulasi peer review akademik independen
+│   ├── ar-paper-revision/                 # Skill penerapan patch revisi presisi tingkat byte (byte-level patching)
+│   └── ar-paper-revision-coach/           # Coach dekonstruksi review, peta jalan revisi, & ledger sanggahan
+├── authors.txt                            # Profil lengkap penulis, afiliasi institusi, dan ORCID ID
+├── experiment/                            # Log eksperimen, dokumentasi metodologi, dan kode sumber
+│   ├── 00_overview.md - 05_results.md     # Log eksperimen komprehensif dan audit metodologi
+│   ├── dataset_demogpairs.md              # Spesifikasi dataset dan ringkasan partisi data
 │   └── code/
-│       ├── 1.1_vit-*_demogpairs.ipynb     # Feature extraction notebooks (Face, Emotion, Age)
-│       ├── 2.1.* - 2.5.*.ipynb            # Active Subject-Disjoint classifier notebooks (SVM, GNB, RF, LR)
-│       ├── 3.0_compare.ipynb              # Global 28-model comparison and benchmarking (Subject-Disjoint)
-│       ├── 3.1_statistical_significance.ipynb # Paired McNemar tests, Wilson Score CIs & EOD analysis
-│       ├── 4.0_test.ipynb                 # Held-out evaluation and test routines
-│       ├── app.py                         # Interactive Gradio demo web application
-│       ├── archive/                       # Historical Subject-Overlap Baseline Archive (Data Leakage Ablation)
-│       │   ├── audit_ledger.json          # Consolidated audit ledger comparing 28 Old vs 28 New models
-│       │   ├── md_old/                    # Markdown logs (35 files) & confusion matrices of legacy experiments
-│       │   ├── models_old/                # Serialized trained weights (.pkl) of 28 legacy models
-│       │   ├── notebook_old/              # 35 Jupyter notebooks of legacy experiments
-│       │   ├── results_old/               # 28 raw JSON result files of legacy subject-overlap models
-│       │   └── README.md                  # Detailed documentation on archive purpose and audit protocol
-│       ├── scripts/                       # Autonomous execution runners & automated queue scripts
-│       │   ├── auto_run_experiments.py    # Main automated batch runner for all 28 experiment pipelines
-│       │   ├── run_gnb_queue.py           # Dedicated queue runner for Gaussian Naive Bayes series
-│       │   ├── run_remaining_queue.py     # Resilient queue runner for remaining model workloads
-│       │   ├── run_experiments.bat        # Windows batch launcher for auto_run_experiments.py
-│       │   ├── run_gnb.bat                # Windows batch launcher for GNB queue
-│       │   └── README.md                  # Documentation on runner operations and execution commands
-│       ├── utils/                         # Modular utility library (constants, dataset, evaluation, etc.)
-│       ├── dataset/demogpairs/metadata/   # 6 metadata .txt files (1,800 rows each)
-│       ├── features/                      # Serialized 768-d feature embeddings (.pkl)
-│       ├── md/                            # Markdown exports of all notebooks & statistical reports
-│       ├── models/                        # Serialized trained weights (.pkl) of 28 active models
-│       ├── results/                       # 28 raw JSON result files of active Subject-Disjoint models
-│       └── images/                        # Confusion matrices and Wilson Score 95% CI plots
-├── images/                                # High-resolution architecture diagrams and sample figures
-├── paper/                                 # Modular manuscript draft in Markdown (IEEE style)
-│   ├── 00_abstract.md - 05_conclusion.md  # Core manuscript sections
-│   ├── 06_references.md                   # Standardized IEEE bibliography registry (entries [1]-[51])
-│   ├── 07_biographies.md                  # Section VII: Biographies & portrait assets
-│   ├── acronyms.txt                       # Centralized acronym registry
-│   ├── ref_part_*.md                      # 10 modular bibliographic audit logs (entries [1]-[51])
-│   ├── references.txt                     # Sentence-level citation tracking & verification registry
-│   └── references/                        # 51 bibliographic source files (.bib, .ris, .nbib, .bibtex)
-├── paper_latex_en/                        # Submission-ready English IEEE Access LaTeX package
-│   ├── access.tex                         # Master LaTeX entrypoint with \input{} sections
-│   ├── access.pdf                         # Compiled dual-column English manuscript PDF
-│   ├── ieeeaccess.cls / IEEEtran.bst      # Official IEEE Access style class and bibliography style
-│   ├── references.bib                     # Consolidated BibTeX database
-│   └── sections/                          # 21 modular LaTeX sections (00_title.tex s.d. 07_biographies.tex)
-├── paper_latex_id/                        # Reference Indonesian IEEE Access LaTeX package
-│   ├── access.tex / access.pdf            # Indonesian LaTeX source & compiled PDF
-│   └── sections/                          # Indonesian translation sections
-├── paper_outline.md                       # Complete publication outline & paragraph targets
-├── paper_reviews/                         # Internal multi-agent mock peer review audit system (Round 1 & 2)
-├── paper_reviews_ieee/                    # Official IEEE Access editorial decision & review dossier
-│   ├── Comments.md                        # Deconstructed reviewer comments and response matrix
-│   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Official decision & reviewer comments
-│   ├── IEEE-Access_Response-to-Reviewers-template.md              # Point-by-point response template
-│   ├── Request-for-Byline-Change.md                               # Formal author byline change form
-│   └── Resubmission-Checklist.md                                  # Resubmission 10-point compliance checklist
-├── paper_submission/                      # Formal submission packaging and IEEE compliance reports
-├── prompts.txt                            # Chronological log of experimental prompts and instructions
-├── README.ai.md                           # Master AI agent operational guide and ground-truth index
-├── README.md                              # Public research documentation (THIS FILE)
-├── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
-└── upload/                                # Packaged submission artifacts (PDF and source ZIP)
+│       ├── 1.1_vit-*_demogpairs.ipynb     # Notebook ekstraksi fitur (Face, Emotion, Age)
+│       ├── 2.1.* - 2.5.*.ipynb            # Notebook classifier aktif Subject-Disjoint (SVM, GNB, RF, LR)
+│       ├── 3.0_compare.ipynb              # Notebook perbandingan global 28 model & benchmarking (Subject-Disjoint)
+│       ├── 3.1_statistical_significance.ipynb # Uji McNemar berpasangan, 95% Wilson Score CI, & audit keadilan EOD
+│       ├── 4.0_test.ipynb                 # Rutinitas pengujian dan evaluasi model pada held-out test set
+│       ├── app.py                         # Aplikasi web demo inferensi interaktif berbasis Gradio
+│       ├── archive/                       # Arsip Baseline Historis Subject-Overlap (Ablasi Data Leakage)
+│       │   ├── audit_ledger.json          # Buku besar audit terpadu yang membandingkan 28 model Lama vs 28 model Baru
+│       │   ├── md_old/                    # Log Markdown (35 berkas) & confusion matrix dari eksperimen warisan
+│       │   ├── models_old/                # Bobot model terlatih ter-serialisasi (.pkl) dari 28 model warisan
+│       │   ├── notebook_old/              # 35 Jupyter Notebook dari eksperimen warisan (subject-overlap)
+│       │   ├── results_old/               # 28 berkas hasil JSON mentah dari model warisan subject-overlap
+│       │   └── README.md                  # Dokumentasi mendalam tentang tujuan arsip dan protokol audit
+│       ├── scripts/                       # Runner eksekusi otonom & skrip antrean otomatis
+│       │   ├── auto_run_experiments.py    # Skrip runner batch otomatis utama untuk seluruh 28 pipeline eksperimen
+│       │   ├── run_gnb_queue.py           # Skrip runner antrean khusus untuk rangkaian model Gaussian Naive Bayes
+│       │   ├── run_remaining_queue.py     # Skrip runner antrean tangguh untuk sisa beban kerja model
+│       │   ├── run_experiments.bat        # Berkas batch Windows peluncur auto_run_experiments.py
+│       │   ├── run_gnb.bat                # Berkas batch Windows peluncur antrean GNB
+│       │   └── README.md                  # Dokumentasi operasional runner dan perintah eksekusi
+│       ├── utils/                         # Modul pustaka utilitas (konstanta, dataset, evaluasi, dll.)
+│       ├── dataset/demogpairs/metadata/   # 6 berkas metadata .txt (masing-masing 1.800 baris)
+│       ├── features/                      # Vektor embedding fitur 768-D ter-serialisasi (.pkl)
+│       ├── md/                            # Ekspor Markdown dari seluruh notebook & laporan statistik
+│       ├── models/                        # Bobot model terlatih ter-serialisasi (.pkl) dari 28 model aktif
+│       ├── results/                       # 28 berkas hasil JSON mentah dari model aktif Subject-Disjoint
+│       └── images/                        # Plot kurva, confusion matrix, dan visualisasi 95% Wilson Score CI
+├── images/                                # Diagram arsitektur beresolusi tinggi dan gambar ilustrasi
+├── paper/                                 # Draf naskah modular dalam format Markdown (gaya IEEE Access)
+│   ├── 00_abstract.md - 05_conclusion.md  # Bagian-bagian utama naskah artikel ilmiah
+│   ├── 06_references.md                   # Repositori daftar pustaka IEEE terstandarisasi (entri [1]-[51])
+│   ├── 07_biographies.md                  # Bagian VII: Biografi penulis & aset foto potret
+│   ├── acronyms.txt                       # Registri akronim sentral naskah
+│   ├── ref_part_*.md                      # 10 log audit bibliografi modular (entri [1]-[51])
+│   ├── references.txt                     # Registri pelacakan & verifikasi sitasi tingkat kalimat
+│   └── references/                        # 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
+├── paper_latex_en/                        # Paket LaTeX IEEE Access siap submit (Bahasa Inggris)
+│   ├── access.tex                         # Entrypoint LaTeX master dengan perintah \input{} modular
+│   ├── access.pdf                         # Berkas PDF naskah Bahasa Inggris hasil kompilasi dua kolom
+│   ├── ieeeaccess.cls / IEEEtran.bst      # Kelas dokumen resmi IEEE Access dan format bibliografi
+│   ├── references.bib                     # Basis data terpadu BibTeX
+│   └── sections/                          # 21 berkas section LaTeX modular (00_title.tex s.d. 07_biographies.tex)
+├── paper_latex_id/                        # Paket LaTeX IEEE Access versi referensi Bahasa Indonesia
+│   ├── access.tex / access.pdf            # Berkas sumber LaTeX & hasil kompilasi PDF Bahasa Indonesia
+│   └── sections/                          # Bagian-bagian naskah terjemahan Bahasa Indonesia
+├── paper_outline.md                       # Kerangka outline publikasi lengkap & target struktur paragraf
+├── paper_reviews/                         # Sistem audit simulasi mock peer review internal multi-agent (Round 1 & 2)
+├── paper_reviews_ieee/                    # Berkas resmi keputusan editorial IEEE Access & dokumen revisi
+│   ├── Comments.md                        # Umpan balik reviewer yang didekonstruksi dan matriks tanggapan
+│   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Keputusan resmi & komentar reviewer
+│   ├── IEEE-Access_Response-to-Reviewers-template.md              # Templat tanggapan butir-per-butir
+│   ├── Request-for-Byline-Change.md                               # Formulir resmi perubahan susunan kepengarangan
+│   └── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+├── paper_submission/                      # Berkas pengemasan submisi formal & laporan kepatuhan IEEE
+├── prompts.txt                            # Catatan kronologis prompt dan instruksi rekayasa eksperimen
+├── README.ai.md                           # Panduan operasional agen AI utama dan indeks ground-truth
+├── README.md                              # Dokumentasi riset publik utama (BERKAS INI)
+├── WORKFLOW.md                            # Standard Operating Procedure (SOP) siklus pengembangan naskah
+└── upload/                                # Artefak paket pengajuan siap kirim (PDF dan arsip ZIP sumber)
 ```
 
 ---
 
-## Quick Start & Reproduction
+## Panduan Memulai Cepat & Reproduksi Eksperimen
 
-### 1. Environment Setup
+### 1. Penyiapan Lingkungan Komputasi (Environment Setup)
 
 ```bash
-# Create and activate conda virtual environment
+# Membuat dan mengaktifkan virtual environment conda
 conda create -n torch-gpu python=3.11 -y
 conda activate torch-gpu
 
-# Install required dependencies
+# Memasang dependensi yang dibutuhkan
 pip install torch torchvision transformers scikit-learn imbalanced-learn joblib pandas numpy pillow matplotlib seaborn tqdm gradio nbconvert
 ```
 
-### 2. Experimental Reproduction Workflow
+### 2. Alur Kerja Reproduksi Eksperimen
 
-#### Option A: Automated Batch Execution via Scripts ([`experiment/code/scripts/`](experiment/code/scripts/))
+#### Opsi A: Eksekusi Batch Otomatis via Skrip ([`experiment/code/scripts/`](experiment/code/scripts/))
 
 ```bash
 cd experiment/code
 python scripts/auto_run_experiments.py
 ```
 
-#### Option B: Step-by-Step Interactive Execution
+#### Opsi B: Eksekusi Interaktif Langkah-demi-Langkah
 
-1. **Extract ViT Embeddings:** Run `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, and `1.1_vit-age_demogpairs.ipynb` to generate embeddings in `features/`.
-2. **Train Classifiers (Subject-Disjoint):** Run notebooks:
-   - Logistic Regression: `2.5.1` to `2.5.7`
-   - Support Vector Machine: `2.1.1` to `2.1.7`
-   - Random Forest: `2.4.1` to `2.4.7`
-   - Gaussian Naive Bayes: `2.2.1` to `2.2.7`
-3. **Compare Results:** Run `3.0_compare.ipynb` to aggregate all 28 JSON result files into a consolidated benchmark leaderboard.
-4. **Statistical Significance Testing:** Run `3.1_statistical_significance.ipynb` for paired McNemar tests, Wilson Score 95% CIs, and EOD algorithmic fairness audits.
-5. **Interactive Web Demo:** Launch `python app.py` for real-time web inference.
+1. **Ekstraksi Fitur ViT (Feature Extraction):** Jalankan `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, dan `1.1_vit-age_demogpairs.ipynb` untuk menghasilkan representasi fitur di direktori `features/`.
+2. **Pelatihan Pengklasifikasi (Subject-Disjoint Classifier Training):** Jalankan notebook eksperimen:
+   - Logistic Regression: `2.5.1` hingga `2.5.7`
+   - Support Vector Machine: `2.1.1` hingga `2.1.7`
+   - Random Forest: `2.4.1` hingga `2.4.7`
+   - Gaussian Naive Bayes: `2.2.1` hingga `2.2.7`
+3. **Agregasi & Perbandingan Hasil:** Jalankan `3.0_compare.ipynb` untuk menggabungkan ke-28 berkas hasil JSON ke dalam papan peringkat benchmark terpadu.
+4. **Pengujian Signifikansi Statistik & Keadilan:** Jalankan `3.1_statistical_significance.ipynb` untuk menghitung uji McNemar berpasangan, 95% Wilson Score CI, dan audit keadilan algoritmik EOD (Equal Opportunity Difference).
+5. **Demo Web Interaktif:** Jalankan `python app.py` untuk mengaktifkan antarmuka web inferensi secara real-time.
 
 ---
 
-## Research Team
+## Tim Peneliti
 
-- **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0002-5515-7967)) — Corresponding Author (`rickyeka@unesa.ac.id`)
+- **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0002-5515-7967)) — Penulis Korespondensi (`rickyeka@unesa.ac.id`)
 - **Rezky Arisanti Putri, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0009-0000-8021-1833))
 - **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0000-0001-9719-3491))
 - **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID](https://orcid.org/0009-0003-6991-0694))
-- **Dr. Shukor Sanim Mohd Fauzi** ([ORCID](https://orcid.org/0000-0003-4333-7853)) (`shukorsanim@uitm.edu.my`)
+- **Assoc. Prof. Dr. Shukor Sanim Mohd Fauzi** ([ORCID](https://orcid.org/0000-0003-4333-7853)) (`shukorsanim@uitm.edu.my`)
 
-*Institutional Affiliations:*
-- **Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya**, Surabaya, East Java, Indonesia (Putra, Putri, Yamasari, Akbar).
-- **School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA**, Perlis Branch, Arau Campus, 02600 Arau, Perlis, Malaysia (Mohd Fauzi).
+*Afiliasi Institusi:*
+- **Departemen Informatika, Fakultas Informatika, Universitas Negeri Surabaya**, Surabaya, Jawa Timur, Indonesia (Putra, Putri, Yamasari, Akbar).
+- **School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA**, Cawangan Perlis, Kampus Arau, 02600 Arau, Perlis, Malaysia (Mohd Fauzi).
 
 ---
 
-## Citation
+## Sitasi
 
-If you find this research or codebase useful in your work, please cite:
+Jika Anda memanfaatkan penelitian atau basis kode ini dalam karya ilmiah Anda, silakan mensitasi publikasi berikut:
 
 ```bibtex
 @article{putra2026multidomain,

@@ -1,4 +1,4 @@
-# Standard Operating Procedure: Research Manuscript Pipeline (WORKFLOW.md)
+# Prosedur Operasional Standar: Alur Kerja Manuskrip Riset (WORKFLOW.md)
 
 Dokumen ini merupakan **panduan standar operasional universal (*Universal Research Manuscript Pipeline SOP*)** untuk mentransformasikan ide, metodologi, dan hasil eksperimen penelitian menjadi manuskrip publikasi jurnal internasional bereputasi tinggi (misal: IEEE, Elsevier, Springer, Nature, dsb.).
 
@@ -6,13 +6,13 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 
 ---
 
-## 🗺️ Kerangka Kerja Alur 5 Tahap (The 5-Stage Manuscript Lifecycle)
+## 🗺️ Kerangka Kerja Siklus 5 Tahap Manuskrip Riset (*The 5-Stage Manuscript Lifecycle*)
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                             TAHAP 1: OUTLINE MASTER                              │
 │                                (paper_outline.md)                                │
-│   - Cetak biru arsitektural (The Blueprint & Single Source of Truth)             │
+│   - Cetak biru arsitektur (Cetak Biru & Sumber Kebenaran Tunggal)                │
 │   - Memuat struktur bab, target jumlah kata per paragraf, dan alur narasi        │
 │   - Master formulasi matematis kanonikal, skema penomoran tabel & gambar         │
 │   - Wajib diaudit dan diverifikasi 100% sebelum masuk tahap penulisan draf       │
@@ -20,10 +20,10 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
                                          │
                                          ▼
 ┌──────────────────────────────────────────────────────────────────────────────────┐
-│                       TAHAP 2: MODULAR MARKDOWN DRAFTS                           │
+│                       TAHAP 2: DRAF MODULAR MARKDOWN                             │
 │                                   (paper/)                                       │
 │   - Penulisan naskah narasi lengkap per sub-bagian dalam format Markdown (.md)   │
-│   - Struktur modular: 1 file untuk 1 sub-seksi spesifik                          │
+│   - Struktur modular: 1 berkas untuk 1 sub-seksi spesifik                        │
 │   - Audit sitasi tingkat kalimat via paper/references.txt & paper/references/    │
 │   - Kepatuhan ketat terhadap target kata per paragraf & registri acronyms.txt    │
 │   - Integrasi tabel dan visualisasi data hasil eksperimen                        │
@@ -34,7 +34,7 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 ┌───────────────────────────────────────┐ ┌───────────────────────────────────────┐
 │     TAHAP 3: LATEX BAHASA INDONESIA   │ │      TAHAP 4: LATEX BAHASA INGGRIS    │
 │           (paper_latex_id/)           │ │           (paper_latex_en/)           │
-│ - Implementasi template IEEE Access   │ │ - Implementasi template IEEE Access   │
+│ - Implementasi templat IEEE Access    │ │ - Implementasi templat IEEE Access    │
 │   (ieeeaccess.cls & IEEEtran.bst)     │ │   (ieeeaccess.cls & IEEEtran.bst)     │
 │ - Modularisasi naskah (sections/*.tex)│ │ - Naskah final submission (Camera-    │
 │ - Kompilasi master: access.tex ->     │ │   Ready / Submission Package)         │
@@ -54,7 +54,7 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 │   - Langkah 5.2: Eksekusi Eksperimen Komparatif & Validasi Bebas Kebocoran Data │
 │   - Langkah 5.3: Pembaruan Naskah Modular Markdown (paper/*.md) & Traceability   │
 │   - Langkah 5.4: Sinkronisasi LaTeX & Pembangkitan Dua Berkas PDF (Clean/Yellow) │
-│   - Langkah 5.5: Finalisasi Point-by-Point Response Letter & Byline Change Form │
+│   - Langkah 5.5: Finalisasi Surat Tanggapan & Formulir Byline Change            │
 └──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -67,13 +67,13 @@ Dokumen outline master berfungsi sebagai **kontrak ilmiah** yang mengunci:
 - **Spesifikasi Dokumen:** Judul, profil penulis, afiliasi, abstrak terpadu, dan kata kunci.
 - **Batasan Kata Paragraf:** Rentang kata minimum dan maksimum per paragraf (contoh: 100-150 kata untuk paragraf umum, 150-275 kata untuk tinjauan literatur).
 - **Master Notasi Matematika:** Penomoran kanonikal persamaan $\text{Eq. } (1), (2), \dots, (N)$ beserta definisi simbol variabel.
-- **Master Tabel & Gambar:** Penomoran resmi Tabel I..N dan Gambar 1..N, lengkap dengan petunjuk layout (*column width* vs *full width span* `table*`/`figure*`).
+- **Master Tabel & Gambar:** Penomoran resmi Tabel I..N dan Gambar 1..N, lengkap dengan petunjuk tata letak (*column width* vs *full width span* `table*`/`figure*`).
 - **Matriks Sitasi:** Daftar artikel ilmiah pendukung yang wajib disitir per sub-bagian.
 
 ---
 
 ### 2. Tahap 2: Draf Modular Markdown (`paper/`)
-Semua draf naskah ditulis dalam folder `paper/` secara terpisah per sub-bagian agar memudahkan fokus penulisan, audit berkas, dan pelacakan versi (*version control*).
+Semua draf naskah ditulis dalam direktori `paper/` secara terpisah per sub-bagian agar memudahkan fokus penulisan, audit berkas, dan pelacakan versi (*version control*).
 
 #### Struktur Direktori Draf Modular Markdown:
 ```
@@ -108,15 +108,15 @@ paper/
 ---
 
 ### 3. Tahap 3 & 4: Modular LaTeX (`paper_latex_id/` & `paper_latex_en/`)
-Folder LaTeX mengimplementasikan template resmi penerbit IEEE Access (`ieeeaccess.cls` dan `IEEEtran.bst`).
+Direktori LaTeX mengimplementasikan templat resmi penerbit IEEE Access (`ieeeaccess.cls` dan `IEEEtran.bst`).
 
 #### Struktur Direktori LaTeX:
 ```
 paper_latex_[id|en]/
-├── access.tex                        # File induk LaTeX (memuat preamble, paket, dan perintah \input{})
+├── access.tex                        # Berkas induk LaTeX (memuat preamble, paket, dan perintah \input{})
 ├── access.pdf                        # Berkas PDF hasil kompilasi dua kolom standar IEEE Access
-├── ieeeaccess.cls                    # Official IEEE Access document class
-├── IEEEtran.bst                      # IEEE Access BibTeX bibliography style
+├── ieeeaccess.cls                    # Kelas dokumen resmi IEEE Access
+├── IEEEtran.bst                      # Gaya bibliografi BibTeX IEEE Access
 ├── references.bib                    # Basis data BibTeX terpadu dari seluruh sitasi naskah
 ├── images/                           # Aset visual diagram dan plot beresolusi tinggi
 └── sections/                         # 21 berkas naskah LaTeX modular
@@ -141,7 +141,7 @@ pdflatex access.tex
 
 ---
 
-### 4. Tahap 5: Siklus Hidup Revisi Peer Review & Resubmission IEEE Access (The 5th Stage: Peer Review & Resubmission SOP)
+### 4. Tahap 5: Siklus Hidup Revisi Peer Review & Resubmission IEEE Access
 
 Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal: keputusan biner *Reject & Resubmit* IEEE Access dengan tepat **satu kesempatan** perbaikan). Tahap ini menjamin seluruh poin masukan ditangani secara komprehensif, terstruktur, berbasis bukti empiris, dan dapat dilacak dengan presisi tinggi.
 
@@ -272,7 +272,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
 
 #### Langkah 5.5: Finalisasi Berkas Respons Tertulis (*Point-by-Point Author Response Letter*) & Formulir Perubahan Daftar Penulis (*Byline Change*)
 1. **Penyusunan Surat Tanggapan Resmi (*Author Response Letter*):**
-   - Gunakan format template resmi IEEE Access ([`paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md)).
+   - Gunakan format templat resmi IEEE Access ([`paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md)).
    - Setiap butir komentar wajib dijawab menggunakan struktur baku tripartit IEEE:
      - **(a) Reviewer's Concern:** Pernyataan atau kutipan langsung komentar penelaah.
      - **(b) Author's Response:** Penjelasan logis, argumentasi ilmiah, dan konfirmasi penerimaan saran.
@@ -297,7 +297,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
 
 ---
 
-## 🔄 Matriks Pemetaan Universal (Universal Mapping Matrix)
+## 🔄 Matriks Pemetaan Universal (*Universal Mapping Matrix*)
 
 | Modul Manuskrip | Draf Markdown (`paper/`) | Berkas LaTeX (`sections/*.tex`) | Elemen Standar yang Terkandung |
 |:---|:---|:---|:---|
@@ -326,7 +326,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
 
 ---
 
-## 🛡️ Standar Mutu Akademik & Aturan Eksekusi (Quality Assurance)
+## 🛡️ Standar Mutu Akademik & Penjaminan Mutu (*Quality Assurance*)
 
 Untuk memastikan manuskrip memenuhi standar jurnal internasional bereputasi tinggi:
 
@@ -339,7 +339,7 @@ Untuk memastikan manuskrip memenuhi standar jurnal internasional bereputasi ting
 3. **Pemberian Kalimat Topik & Kohesi Paragraf:**
    - Setiap paragraf harus diawali dengan kalimat topik (*topic sentence*) yang kuat, diikuti kalimat penjelas berbobot dan sitasi pendukung, serta ditutup dengan kalimat transisi kohesif menuju paragraf berikutnya.
 4. **Protokol Delegasi Subagent (Modular Drafting & Auditing):**
-   - Saat menulis atau mengaudit draf manuskrip, delegasikan **1 subagent independen untuk 1 file spesifik** dengan instruksi yang terfokus agar konteks penulisan dan akurasi tetap maksimal.
+   - Saat menulis atau mengaudit draf manuskrip, delegasikan **1 subagent independen untuk 1 berkas spesifik** dengan instruksi yang terfokus agar konteks penulisan dan akurasi tetap maksimal.
 5. **Kepatuhan Struktur Sintaksis SPOK & Kesiapan Translasi SVO:**
    - Setiap kalimat dalam draf naskah wajib memiliki struktur Subjek (S) dan Predikat (P) yang definitif untuk mencegah kalimat menggantung (*dangling sentences*). Variasikan antara pola S-P-O-K murni, transisi K-S-P-O terukur, dan bentuk pasif akademis objektif pada metodologi untuk mempermudah pemetaan ke struktur SVO/SVOC pada naskah LaTeX Bahasa Inggris standar IEEE.
 6. **Sistem Audit Sitasi Tingkat Kalimat (Sentence-Level Citation Audit):**

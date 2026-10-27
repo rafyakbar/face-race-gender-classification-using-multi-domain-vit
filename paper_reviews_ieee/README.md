@@ -32,10 +32,10 @@ Direktori ini diorganisasikan secara modular guna mendukung pelacakan revisi, au
 | :--- | :--- |
 | [`Comments.md`](Comments.md) | **Dokumen Anotasi & Rencana Tindak Lanjut Komprehensif.** Berisi translasi dwibahasa (Inggris–Indonesia) atas keputusan Associate Editor, 7 komentar Reviewer 1 (R1), dan 10 komentar Reviewer 2 (R2), dilengkapi matriks pemetaan bab (*traceability matrix*), signifikansi statistik, dan rencana perbaikan terperinci. |
 | [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) | **Surat Keputusan Editorial Asli.** Transkrip resmi notifikasi keputusan *Reject & Resubmit* dari Associate Editor Dr. Vincenzo Conti melalui sistem IEEE Manuscript Central/Atypon Rex tanggal 20 Oktober 2026. |
-| [`IEEE-Access_Response-to-Reviewers-template.md`](IEEE-Access_Response-to-Reviewers-template.md) | **Templat Resmi Tanggapan Penulis.** Rangka format standar IEEE Access untuk penyusunan respons terperinci berbasis butir-per-butir (*point-by-point*): *(a) Reviewer's concern*, *(b) Author response*, dan *(c) Action taken*. |
+| [`IEEE-Access_Response-to-Reviewers-template.md`](IEEE-Access_Response-to-Reviewers-template.md) | **Templat Resmi Tanggapan Penulis.** Rangka format standar IEEE Access untuk penyusunan respons terperinci berbasis butir-per-butir (*point-by-point*): *(a) Reviewer's concern* (masukan penelaah), *(b) Author response* (tanggapan penulis), dan *(c) Action taken* (tindakan perbaikan). |
 | [`Request-for-Byline-Change.md`](Request-for-Byline-Change.md) | **Formulir Permohonan Perubahan Susunan Penulis.** Dokumen pengajuan justifikasi formal kepada Editor-in-Chief IEEE Access perihal penambahan rekan penulis eksternal (**Assoc. Prof. Shukor Sanim Mohd Fauzi**, Universiti Teknologi MARA / UiTM Malaysia) berdasarkan IEEE Publishing Operations Manual Subsection 8.2.1.A.1. |
 | [`Resubmission-Checklist.md`](Resubmission-Checklist.md) | **Daftar Kepatuhan 10 Butir Standar IEEE Access.** Instrumen kendali mutu yang memuat verifikasi gramatika, format persamaan matematika (IEEE Math Guidelines), kesesuaian sitasi, kelengkapan berkas respons, *Highlighted PDF*, dan naskah bersih. |
-| `raw/` | **Folder Arsip Mentah.** Menyimpan berkas korespondensi asli berupa berkas HTML webmail Universitas Negeri Surabaya serta templat resmi IEEE Access berformat `.docx`. |
+| `raw/` | **Direktori Arsip Mentah.** Menyimpan berkas korespondensi asli berupa berkas HTML webmail Universitas Negeri Surabaya serta templat resmi IEEE Access berformat `.docx`. |
 
 ---
 
@@ -109,7 +109,7 @@ Portal IEEE Author Submission
 
 ### Rincian Spesifikasi Berkas:
 
-1. **Author's Response Files (`Author's Response Files`):**
+1. **Berkas Tanggapan Penulis (`Author's Response Files`):**
    - Disusun menggunakan struktur templat resmi IEEE Access (`IEEE-Access_Response-to-Reviewers-template.md`).
    - Menyajikan respons sistematis terhadap setiap masukan Associate Editor, Reviewer 1 (butir 1 s.d. 7), dan Reviewer 2 (butir 1 s.d. 10).
    - Format wajib per butir:
@@ -117,18 +117,18 @@ Portal IEEE Author Submission
      * **Response:** Tanggapan ilmiah, sanggahan sopan, atau penjelasan metodologis penulis.
      * **Action Taken:** Tindakan nyata perbaikan naskah disertai rujukan nomor halaman, kolom, nomor baris, dan penomoran gambar/tabel pada *Highlighted PDF*.
 
-2. **Highlighted PDF Manuscript (`Highlighted PDF`):**
+2. **Manuskrip PDF Tersorot (`Highlighted PDF`):**
    - Salinan naskah lengkap hasil revisi berformat PDF.
    - Menggunakan alat penyorot kuning (*yellow highlight tool*) pada setiap penambahan kalimat, perbaikan redaksional, perubahan data tabel, perbaruan rumus matematika, maupun penyempurnaan referensi.
    - Berfungsi mempermudah Associate Editor dan penelaah melacak implementasi revisi secara langsung.
 
-3. **Clean Main Manuscript (`Main Manuscript`):**
+3. **Naskah Utama Bersih (`Main Manuscript`):**
    - **Main Manuscript – PDF:** Berkas PDF final naskah bersih (*clean copy*) tanpa tanda sorotan kuning, berformat standar IEEE Access (dua kolom, spasi tunggal, memuat seluruh biografi penulis dan foto).
    - **Main Manuscript – Source:** Paket berkas sumber lengkap (`.zip` atau `.tar.gz`) yang memuat berkas master LaTeX (`.tex`), basis data sitasi BibTeX (`.bib`), makro gaya jurnal (`ieeeaccess.cls`), dan seluruh berkas ilustrasi beresolusi tinggi (`.png`, `.pdf`, atau `.eps`).
 
 4. **Berkas Administratif Tambahan:**
-   - **Formulir Byline Change:** Wajib diunggah sebagai *'Request for byline change form'* untuk melegalkan penambahan Dr. Shukor Sanim Mohd Fauzi (UiTM), disertai tanda tangan persetujuan seluruh penulis awal dan justifikasi kontribusi substantif.
-   - **Resubmission Checklist:** Memastikan kepatuhan terhadap 10 aspek teknis penerbitan IEEE sebelum tombol *Submit* ditekan.
+   - **Formulir Perubahan Susunan Penulis (*Byline Change*):** Wajib diunggah sebagai *'Request for byline change form'* untuk melegalkan penambahan Dr. Shukor Sanim Mohd Fauzi (UiTM), disertai tanda tangan persetujuan seluruh penulis awal dan justifikasi kontribusi substantif.
+   - **Daftar Periksa Pengajuan Ulang (*Resubmission Checklist*):** Memastikan kepatuhan terhadap 10 aspek teknis penerbitan IEEE sebelum tombol *Submit* ditekan.
 
 ---
 
@@ -144,16 +144,16 @@ flowchart TD
 
     subgraph Actions ["Paket Aksi Revisi"]
         A1["Subject-Disjoint Split (0% Overlap)"]
-        A2["Pemadatan Intro & Formalisasi Teoretis"]
-        A3["Redesain Figure 3 & Profil Komputasi"]
+        A2["Pemadatan Pendahuluan & Formalisasi Teori"]
+        A3["Perancangan Ulang Gambar 3 & Profil Komputasi"]
         A4["Kualifikasi Statistik & Batasan Klaim"]
-        A5["Administratif: Byline Form & Checklist"]
+        A5["Administratif: Formulir Byline & Checklist"]
     end
 
     subgraph Deliverables ["Berkas Final Resubmission"]
-        D1["Author's Response Files"]
-        D2["Highlighted PDF (Yellow Marks)"]
-        D3["Clean Main Manuscript (LaTeX + PDF)"]
+        D1["Berkas Tanggapan Penulis (Author's Response)"]
+        D2["Manuskrip PDF Tersorot (Highlighted PDF)"]
+        D3["Naskah Utama Bersih (Clean Manuscript)"]
     end
 
     AE --> Actions
