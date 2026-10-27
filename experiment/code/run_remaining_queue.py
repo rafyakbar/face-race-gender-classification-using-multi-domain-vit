@@ -59,8 +59,8 @@ REMAINING_QUEUE = [
     ("2.1.3_svm_vit-age_demogpairs.ipynb", "demogpairs_svm_vit-age_SVC.json"),
     ("2.1.4_svm_vit-face-age_demogpairs.ipynb", "demogpairs_svm_vit-face-age_SVC.json"),
     ("2.1.5_svm_vit-emotion-age_demogpairs.ipynb", "demogpairs_svm_vit-emotion-age_SVC.json"),
-    ("2.1.6_svm_vit-emotion-face_demogpairs.ipynb", "demogpairs_svm_vit-emotion-face_SVC.json"),
     ("2.1.7_svm_vit-face-emotion-age_demogpairs.ipynb", "demogpairs_svm_vit-face-emotion-age_SVC.json"),
+    ("2.1.6_svm_vit-emotion-face_demogpairs.ipynb", "demogpairs_svm_vit-emotion-face_SVC.json"),
 ]
 
 def log(msg):
