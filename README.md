@@ -251,9 +251,9 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 │       ├── app.py                         # Interactive Gradio demo web application
 │       ├── archive/                       # Historical Subject-Overlap Baseline Archive (Data Leakage Ablation)
 │       │   ├── audit_ledger.json          # Consolidated audit ledger comparing 28 Old vs 28 New models
-│       │   ├── md_old/                    # Markdown logs & confusion matrices of legacy experiments
+│       │   ├── md_old/                    # Markdown logs (35 files) & confusion matrices of legacy experiments
 │       │   ├── models_old/                # Serialized trained weights (.pkl) of 28 legacy models
-│       │   ├── notebook_old/              # 33 Jupyter notebooks of legacy experiments
+│       │   ├── notebook_old/              # 35 Jupyter notebooks of legacy experiments
 │       │   ├── results_old/               # 28 raw JSON result files of legacy subject-overlap models
 │       │   └── README.md                  # Detailed documentation on archive purpose and audit protocol
 │       ├── scripts/                       # Autonomous execution runners & automated queue scripts
@@ -297,7 +297,7 @@ Evaluated on the 6 intersectional demographic subgroups ($N = 360$ unseen test i
 │   └── Resubmission-Checklist.md                                  # Resubmission 10-point compliance checklist
 ├── paper_submission/                      # Formal submission packaging and IEEE compliance reports
 ├── prompts.txt                            # Chronological log of experimental prompts and instructions
-├── README.AI.md                           # Master AI agent operational guide and ground-truth index
+├── README.ai.md                           # Master AI agent operational guide and ground-truth index
 ├── README.md                              # Public research documentation (THIS FILE)
 ├── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 └── upload/                                # Packaged submission artifacts (PDF and source ZIP)

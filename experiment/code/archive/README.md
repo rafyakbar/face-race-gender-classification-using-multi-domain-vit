@@ -23,7 +23,7 @@ Arsip ini sengaja dipertahankan dan didokumentasikan secara transparan untuk men
 
 ## 📂 Struktur Direktori Arsip
 
-- **`notebook_old/`**: Salinan 33 file Jupyter Notebook versi lama (termasuk [`0.0_data_leakage_audit.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/archive/notebook_old/0.0_data_leakage_audit.ipynb) yang membuktikan secara empiris perbedaan kebocoran data antara partisi lama dan baru).
-- **`md_old/`**: Salinan hasil ekspor Markdown dari notebook lama beserta grafik confusion matrix historis.
+- **`notebook_old/`**: Salinan 35 file Jupyter Notebook versi lama (termasuk [`0.0_data_leakage_audit.ipynb`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/archive/notebook_old/0.0_data_leakage_audit.ipynb) yang membuktikan secara empiris perbedaan kebocoran data antara partisi lama dan baru).
+- **`md_old/`**: Salinan 35 hasil ekspor Markdown dari notebook lama beserta grafik confusion matrix historis.
 - **`results_old/`**: File metrik format JSON (28 file) hasil evaluasi held-out test set versi lama.
 - **`models_old/`**: Bobot model terlatih (`.pkl`) dari 28 konfigurasi model versi lama.

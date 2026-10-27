@@ -1,6 +1,6 @@
 # Master AI Agent Reference Guide: Intersectional Face Race & Gender Classification via Multi-Domain Vision Transformer Feature Fusion
 
-> **Critical Notice to AI Agents:** This file (`README.AI.md`) is the authoritative, self-contained single source of truth and comprehensive operational manual for this research repository. Any AI agent entering this project should read this document to understand the full context, research background, model architecture, dataset, feature extraction protocols, dual 28-model experimental benchmark (Subject-Disjoint Primary Benchmark vs. Subject-Overlap Historical Baseline), official IEEE Access peer review dossier, submission compliance artifacts, codebase utilities, reproduction workflows, and scientific writing rules without needing to explore or reconstruct context from disparate files.
+> **Critical Notice to AI Agents:** This file (`README.ai.md`) is the authoritative, self-contained single source of truth and comprehensive operational manual for this research repository. Any AI agent entering this project should read this document to understand the full context, research background, model architecture, dataset, feature extraction protocols, dual 28-model experimental benchmark (Subject-Disjoint Primary Benchmark vs. Subject-Overlap Historical Baseline), official IEEE Access peer review dossier, submission compliance artifacts, codebase utilities, reproduction workflows, and scientific writing rules without needing to explore or reconstruct context from disparate files.
 
 ---
 
@@ -448,7 +448,7 @@ Preserved for comparative reference:
 ```
 D:\Research\face-race-gender-multi-vit\
 ├── README.md                              # Public research documentation & summary
-├── README.AI.md                           # Master AI agent reference manual (THIS FILE)
+├── README.ai.md                           # Master AI agent reference manual (THIS FILE)
 ├── WORKFLOW.md                            # Standard Operating Procedure (SOP) for manuscript pipeline
 ├── paper_outline.md                       # Comprehensive paper outline & paragraph targets
 ├── folder_structure.txt                   # Complete directory tree and detailed file glossary
@@ -473,9 +473,9 @@ D:\Research\face-race-gender-multi-vit\
 │       ├── app.py                         # Interactive Gradio demo web application
 │       ├── archive/                       # Historical Subject-Overlap Baseline Archive (Data Leakage Ablation)
 │       │   ├── audit_ledger.json          # Consolidated audit ledger comparing 28 Old vs 28 New models
-│       │   ├── md_old/                    # Markdown logs & confusion matrices of legacy experiments
+│       │   ├── md_old/                    # Markdown logs (35 files) & confusion matrices of legacy experiments
 │       │   ├── models_old/                # Serialized trained weights (.pkl) of 28 legacy models
-│       │   ├── notebook_old/              # 33 Jupyter notebooks of legacy experiments
+│       │   ├── notebook_old/              # 35 Jupyter notebooks of legacy experiments
 │       │   ├── results_old/               # 28 raw JSON result files of legacy subject-overlap models
 │       │   └── README.md                  # Detailed documentation on archive purpose and audit protocol
 │       ├── scripts/                       # Autonomous execution runners & automated queue scripts
