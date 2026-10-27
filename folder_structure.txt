@@ -60,6 +60,8 @@ face-race-gender-classification-using-multi-domain-vit/
 │       ├── models/                            # Serialized model weights (.pkl) dari 28 model aktif
 │       ├── results/                           # 28 berkas metrik mentah format JSON hasil evaluasi aktif
 │       └── utils/                             # Modul pustaka Python (constants, dataset, evaluation, extraction, dll.)
+├── docs/                                      # Dokumentasi repositori terstruktur & log sesi pengerjaan AI
+│   └── sessions/                              # Catatan kronologis sesi kerja, audit, dan pedoman AI agent
 ├── folder_structure.txt                       # Berkas ini: diagram pohon direktori & glosarium berkas
 ├── images/                                    # Aset visual arsitektur beresolusi tinggi (Figure 1-4, sample demogpairs)
 ├── paper/                                     # Draf naskah publikasi modular Markdown (IEEE style, [1]-[51])
@@ -190,8 +192,8 @@ Sub-direktori experiment/code/:
   literature_matrix.md, sintesis_literatur.md, dan tren_analisis.md.
 - rules/
   Pedoman sitasi IEEE, aturan LaTeX, dan standardisasi penulisan Markdown.
-- sessions/
-  Log catatan riwayat sesi pengembangan repositori dan penjaminan mutu.
+- docs/ & sessions/
+  Direktori dokumentasi repositori terstruktur dan log catatan riwayat sesi pengembangan repositori serta pedoman AI agent (docs/sessions/ & sessions/).
 - paper_submission/ & upload/
   Paket kompilasi submission final (PDF bersih, highlighted PDF, dan arsip berkas sumber ZIP).
 ====================================================================================================

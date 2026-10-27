@@ -17,6 +17,8 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang tolong tuliskan semua dalam docs/sessions/tahun-bulan-tanggal_judul-session.md agar ai agent dalam sesi lainnya dapat paham isi sesi saat ini
+
 seharusnya berkas-berkas bertipe panduan/dokumentasi/readme pendukung cukup menggunakan bahasa indonesia saja, kecuali istilah akademik, tolong perbaiki, delegasikan ke subagent, buat commit, dan push
 
 buat commit dan push
