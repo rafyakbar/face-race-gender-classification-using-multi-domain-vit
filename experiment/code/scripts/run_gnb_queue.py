@@ -5,7 +5,8 @@ import json
 import subprocess
 from datetime import datetime
 
-EXPERIMENT_DIR = os.path.dirname(os.path.abspath(__file__))
+_curr = os.path.dirname(os.path.abspath(__file__))
+EXPERIMENT_DIR = os.path.dirname(_curr) if os.path.basename(_curr) == "scripts" else _curr
 RESULTS_DIR = os.path.join(EXPERIMENT_DIR, "results")
 LOG_FILE = os.path.join(RESULTS_DIR, "gnb_execution_log.txt")
 
