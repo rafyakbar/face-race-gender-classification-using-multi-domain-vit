@@ -256,7 +256,7 @@ Pada data uji held-out independen (360 citra per kelas, 20 subjek terisolasi per
 
 Urutan kelas pada sumbu matriks mengikuti penataan kanonikal dataset DemogPairs:
 
-| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Benar | Recall |
+| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Sampel (Support) | Recall |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Black_Males** | **316** | 0 | 23 | 6 | 15 | 0 | 360 | 0.8778 |
 | **White_Females** | 0 | **326** | 3 | 2 | 11 | 18 | 360 | 0.9056 |
@@ -278,7 +278,7 @@ Urutan kelas pada sumbu matriks mengikuti penataan kanonikal dataset DemogPairs:
 
 ### 1.6.4 Matriks Konfusi Model Juara 2 (SVM Tri-Domain, Akurasi: 0.8861)
 
-| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Benar | Recall |
+| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Sampel (Support) | Recall |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Black_Males** | **314** | 0 | 25 | 11 | 10 | 0 | 360 | 0.8722 |
 | **White_Females** | 0 | **328** | 2 | 2 | 7 | 21 | 360 | 0.9111 |
@@ -369,7 +369,7 @@ Protokol ini menyebabkan **100% dari 593 subjek uji** juga memiliki foto variasi
 - `vit-emotion-face` (Dual): 0.9241 / 0.9241 / 0.9241 / 0.9240 (C=0.1, lbfgs, pca=None, scaler=None)
 - `vit-face-age` (Dual): 0.9162 / 0.9162 / 0.9162 / 0.9162 (C=0.1, newton-cg, pca=None, scaler=None)
 - `vit-face` (Single): 0.9060 / 0.9060 / 0.9060 / 0.9059 (C=1, newton-cg, pca=None, scaler=MinMaxScaler)
-- `vit-emotion-age` (Dual): 0.9051 / 0.9052 | 0.9051 | 0.9051 (C=0.1, lbfgs, pca=None, scaler=None)
+- `vit-emotion-age` (Dual): 0.9051 / 0.9052 / 0.9051 / 0.9051 (C=0.1, lbfgs, pca=None, scaler=None)
 - `vit-emotion` (Single): 0.8847 / 0.8850 / 0.8847 / 0.8846 (C=1, saga, pca=None, scaler=MinMaxScaler)
 - `vit-age` (Single): 0.8648 / 0.8649 / 0.8648 / 0.8648 (C=0.1, lbfgs, pca=None, scaler=None)
 
@@ -397,7 +397,7 @@ Protokol ini menyebabkan **100% dari 593 subjek uji** juga memiliki foto variasi
 
 Pada eksperimen historis dengan kebocoran identitas 100%, SVM Tri-Domain menghasilkan akurasi 93,70% (2.024 dari 2.160 citra uji benar):
 
-| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Benar | Recall |
+| True \ Pred | Black_Males | White_Females | Asian_Males | White_Males | Black_Females | Asian_Females | Total Sampel (Support) | Recall |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Black_Males** | **339** | 0 | 9 | 4 | 8 | 0 | 360 | 0.9417 |
 | **White_Females** | 1 | **341** | 0 | 5 | 4 | 9 | 360 | 0.9472 |
@@ -484,16 +484,16 @@ Studi komparatif ini mengungkap variasi kerentanan yang sangat menarik antar-rum
 
 | Rumpun Klasifikator | Rata-rata Akurasi Lama (Overlap) | Rata-rata Akurasi Baru (Disjoint) | Rata-rata Drop Akurasi ($\Delta \text{Acc}$) | Rata-rata Drop Relatif (%) | Rentang Drop ($\min - \max$) | Interpretasi Karakteristik Induktif |
 |:---|:---:|:---:|:---:|:---:|:---:|:---|
-| **Support Vector Machine (SVM)** | **0.9147** | **0.8647** | **-0.0499 pp** | **-5.46%** | -4.40 pp s.d. -5.83 pp | **Kapasitas Memori Tinggi**: Kernel non-linier RBF/Poly pada 2.304-d paling sensitif menghafal ciri khas subjek. |
-| **Logistic Regression (LR)** | **0.9040** | **0.8615** | **-0.0425 pp** | **-4.71%** | -3.24 pp s.d. -5.00 pp | **Batas Keputusan Linier Kuat**: Regulerisasi $L_2$ (`C=0.1`) mencegah overfitting ekstrem, merebut ranking 1 global. |
-| **Random Forest (RF)** | **0.8281** | **0.8071** | **-0.0210 pp** | **-2.57%** | -0.93 pp s.d. -4.49 pp | **Resistensi Ansambel**: Pemilihan fitur acak pada pohon keputusan dan PCA meredam eksploitasi shortcut identitas. |
-| **Gaussian Naive Bayes (GNB)** | **0.7937** | **0.7836** | **-0.0101 pp** | **-1.29%** | -0.09 pp s.d. -2.55 pp | **Kapasitas Memori Terendah**: Asumsi independensi kondisional tidak mampu menghafal korelasi kompleks antar-fitur. |
+| **Support Vector Machine (SVM)** | **0.9147** | **0.8647** | **-4.99 pp (-0.0499)** | **-5.46%** | -4.40 pp s.d. -5.83 pp | **Kapasitas Memori Tinggi**: Kernel non-linier RBF/Poly pada 2.304-d paling sensitif menghafal ciri khas subjek. |
+| **Logistic Regression (LR)** | **0.9040** | **0.8618** | **-4.22 pp (-0.0422)** | **-4.67%** | -3.24 pp s.d. -5.00 pp | **Batas Keputusan Linier Kuat**: Regulerisasi $L_2$ (`C=0.1`) mencegah overfitting ekstrem, merebut ranking 1 global. |
+| **Random Forest (RF)** | **0.8281** | **0.8057** | **-2.24 pp (-0.0224)** | **-2.74%** | -0.93 pp s.d. -4.49 pp | **Resistensi Ansambel**: Pemilihan fitur acak pada pohon keputusan dan PCA meredam eksploitasi shortcut identitas. |
+| **Gaussian Naive Bayes (GNB)** | **0.7937** | **0.7837** | **-0.99 pp (-0.0099)** | **-1.31%** | -0.09 pp s.d. -2.55 pp | **Kapasitas Memori Terendah**: Asumsi independensi kondisional tidak mampu menghafal korelasi kompleks antar-fitur. |
 
 ### Temuan Saintifik Utama:
 1. **Penurunan Akurasi Bersifat Sistematis dan Wajar:** Seluruh 28 konfigurasi model mengalami penurunan skor numerik sebesar $-0.09$ pp hingga $-5.83$ pp. Hal ini membuktikan bahwa pada eksperimen awal, model memang memanfaatkan sebagian kecil petunjuk visual identitas individu (*shortcut learning*).
 2. **SVM Paling Rentan Overfitting Identitas:** SVM mengalami penurunan terbesar (rata-rata $-4.99$ pp). Kapasitas hipotesis kernel SVM pada ruang 2.304 dimensi memungkinkan batas keputusan meliuk mengelilingi titik data subjek tertentu.
-3. **Resistensi Alami LR:** Logistic Regression mengalami penurunan lebih rendah ($-4.25$ pp) dan pada protokol Subject-Disjoint berhasil melampaui SVM pada model Tri-Domain (**88.66% vs 88.61%**), menegaskan keunggulan generalisasi batas keputusan linier teregularisasi.
-4. **RF dan GNB Memiliki Penurunan Terendah:** Karena telah memanfaatkan reduksi dimensi PCA (`pca=PCA`) dan memiliki bias induktif independensi/ansambel, RF (drop $-2.10$ pp) dan GNB (drop $-1.01$ pp) hampir tidak terpengaruh oleh kebocoran identitas.
+3. **Resistensi Alami LR:** Logistic Regression mengalami penurunan lebih rendah ($-4.22$ pp) dan pada protokol Subject-Disjoint berhasil melampaui SVM pada model Tri-Domain (**88.66% vs 88.61%**), menegaskan keunggulan generalisasi batas keputusan linier teregularisasi.
+4. **RF dan GNB Memiliki Penurunan Terendah:** Karena telah memanfaatkan reduksi dimensi PCA (`pca=PCA`) dan memiliki bias induktif independensi/ansambel, RF (drop $-2.24$ pp) dan GNB (drop $-0.99$ pp) hampir tidak terpengaruh oleh kebocoran identitas.
 
 ---
 
