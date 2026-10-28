@@ -17,6 +17,23 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+audit ulang experiment/05_results.md dengan hasil eksperimen pada code:
+- verifikasi hasil Subject-Disjoint aktif (Primary Benchmark, 28 model):
+  * cocokkan dengan file mentah experiment/code/results/*.json (28 file JSON), experiment/code/md/3.0_compare.md, dan experiment/code/md/3.1_statistical_significance.md
+  * periksa akurasi, precision, recall, macro F1, 95% Wilson Score CI, rasio benar/2160, latensi (ms), ukuran model (MB), dan hyperparameter optimal
+  * periksa uji McNemar (Tabel 1 s.d. 4 pada Seksi 1.4: b, c, chi2, p-value)
+  * periksa metrik OvR per subkelompok dan matriks konfusi 6x6 untuk model LR Tri dan SVM Tri
+- verifikasi hasil Subject-Overlap historis (Baseline Kebocoran Data, 28 model):
+  * cocokkan dengan file mentah experiment/code/archive/results_old/*.json (28 file JSON) dan experiment/code/archive/audit_ledger.json
+  * periksa akurasi, precision, recall, macro F1, parameter optimal, dan matriks konfusi SVM Tri historis (Seksi 2.4)
+- verifikasi studi ablasi komparatif (Bagian 3):
+  * periksa Tabel 3.2: Akurasi Lama, Akurasi Baru, Delta Acc, Relative Drop %, Macro F1 Lama, Macro F1 Baru, Delta F1
+  * periksa rata-rata drop per rumpun klasifikator pada Tabel 3.3
+perhatikan:
+- buat skrip python otomatis untuk memverifikasi seluruh angka secara programatik
+- delegasikan ke subagent agar optimal
+- berikan instruksi dengan sangat jelas dan teliti
+
 sekarang tolong tuliskan semua dalam docs/sessions/tahun-bulan-tanggal_judul-session.md agar ai agent dalam sesi lainnya dapat paham isi sesi saat ini
 
 seharusnya berkas-berkas bertipe panduan/dokumentasi/readme pendukung cukup menggunakan bahasa indonesia saja, kecuali istilah akademik, tolong perbaiki, delegasikan ke subagent, buat commit, dan push
