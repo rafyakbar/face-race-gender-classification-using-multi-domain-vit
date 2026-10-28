@@ -2,6 +2,10 @@
 
 Repositori direktori ini memuat seluruh dokumentasi resmi, analisis telaah editorial, strategi penanganan komentar penelaah (*peer review*), serta instrumen kepatuhan administratif untuk proses pengajuan ulang (*resubmission*) naskah ilmiah pada jurnal **IEEE Access**.
 
+> [!TIP]
+> **Panduan Cepat Urutan Kerja:**  
+> Untuk mengetahui langkah-langkah yang wajib didahulukan dalam mengerjakan revisi, silakan buka dokumen otoritatif: **[`00_URUTAN_PRIORITAS_REVISI.md`](00_URUTAN_PRIORITAS_REVISI.md)** (memuat matriks prioritas P1, P2, P3 serta pemetaan berkas target di `paper/`).
+
 ---
 
 ## 1. Ringkasan Manuskrip & Status Editorial
@@ -30,6 +34,10 @@ Direktori ini diorganisasikan secara modular guna mendukung pelacakan revisi, au
 
 | Berkas | Deskripsi & Fungsi Dokumen |
 | :--- | :--- |
+| [`00_URUTAN_PRIORITAS_REVISI.md`](00_URUTAN_PRIORITAS_REVISI.md) | **Panduan Urutan Prioritas Eksekusi Utama.** Panduan langkah-demi-langkah (P1, P2, P3) yang merinci aksi konkret, bab naskah yang diedit, dan data rujukan yang dimasukkan. |
+| [`08_revision_roadmap.md`](08_revision_roadmap.md) | **Matriks Peta Jalan Revisi Terprioritas (Schema 7).** Analisis 21 butir masukan, pengelompokan sprint P1/P2/P3, pola silang reviewer, dan estimasi jam kerja. |
+| [`09_revision_tracking.md`](09_revision_tracking.md) | **Tabel Pelacakan & Nested Commitment Ledger (Schema 11 / #268).** Verifikasi invarian Kong et al. 2026, memastikan seluruh komitmen perbaikan terpetakan ke bukti nyata tanpa desinkronisasi indeks. |
+| [`10_response_letter_skeleton.md`](10_response_letter_skeleton.md) | **Rangka Formal Surat Tanggapan Penelaah (R $\to$ A $\to$ C).** Draf lengkap *Point-by-Point Response to Reviewers* resmi IEEE Access untuk AE, Reviewer 1, dan Reviewer 2. |
 | [`Comments.md`](Comments.md) | **Dokumen Anotasi & Rencana Tindak Lanjut Komprehensif.** Berisi translasi dwibahasa (Inggris–Indonesia) atas keputusan Associate Editor, 7 komentar Reviewer 1 (R1), dan 10 komentar Reviewer 2 (R2), dilengkapi matriks pemetaan bab (*traceability matrix*), signifikansi statistik, dan rencana perbaikan terperinci. |
 | [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) | **Surat Keputusan Editorial Asli.** Transkrip resmi notifikasi keputusan *Reject & Resubmit* dari Associate Editor Dr. Vincenzo Conti melalui sistem IEEE Manuscript Central/Atypon Rex tanggal 20 Oktober 2026. |
 | [`IEEE-Access_Response-to-Reviewers-template.md`](IEEE-Access_Response-to-Reviewers-template.md) | **Templat Resmi Tanggapan Penulis.** Rangka format standar IEEE Access untuk penyusunan respons terperinci berbasis butir-per-butir (*point-by-point*): *(a) Reviewer's concern* (masukan penelaah), *(b) Author response* (tanggapan penulis), dan *(c) Action taken* (tindakan perbaikan). |
