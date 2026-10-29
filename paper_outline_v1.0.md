@@ -1,6 +1,8 @@
-# Paper Outline Terperinci - IEEE Access / Q1 Journal
+# Paper Outline Terperinci (Versi 1.0 - Historis / Pra-Revisi) - IEEE Access / Q1 Journal
 
-> **Target Publikasi**: Artikel Jurnal Internasional Bereputasi (IEEE Access / Pattern Recognition / Image and Vision Computing)  
+> **Status Versi**: **Versi 1.0 (Arsip Historis / Baseline Pra-Revisi Subject-Overlap)**  
+> **Catatan Tata Kelola**: Berkas ini mengabadikan master outline orisinal saat manuskrip pertama kali diajukan ke IEEE Access (berbasis evaluasi Subject-Overlap 93.70% SVM). Untuk naskah revisi definitif yang memenuhi seluruh masukan penelaah IEEE Access (Primary Benchmark Subject-Disjoint 0% leakage, LR 88.66% / SVM 88.61%), silakan merujuk ke [paper_outline_v1.1.md](paper_outline_v1.1.md).  
+> **Target Publikasi Awal**: Artikel Jurnal Internasional Bereputasi (IEEE Access / Pattern Recognition / Image and Vision Computing)  
 > **Bahasa Naskah**: Bahasa Indonesia formal dengan istilah akademik/teknis tetap dalam Bahasa Inggris  
 > **Gaya Sitasi**: IEEE format (sitasi teks berbasis nama penulis dan judul tanpa penomoran numerik dulu)  
 > **Topik Riset**: Klasifikasi Ras & Gender Interseksional Berbasis Fusi Fitur Tri-Domain Vision Transformer dan Support Vector Machine Teroptimasi
