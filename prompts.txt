@@ -11,11 +11,47 @@ perhatikan:
 - jangan pernah baca file prompts.txt dan .ipynb
 - untuk .ipynb gantinya ada pada experiment/code/md/
 
+pelajari:
+- README.md
+- paper/
+- paper_reviews_ieee/
+- experiment/code/archive/md_old/
+- experiment/code/md/
+pelajari dengan cepat
+
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
 
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+coba audit ulang paper_outline.md berdasarkan apa yang ada pada:
+- paper_reviews_ieee/
+- experiment/code/archive/md_old/
+- experiment/code/md/
+perhatikan:
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm
+- sepertinya ada revisi mengenai related works yg diberi equation kalau tidak salah, bisa dicek pada related_works/summaries
+- delegasikan ke beberapa subagent untuk audit
+- berikan instruksi yang jelas
+
+sekarang perbaiki paper_outline.md berdasarkan apa yang ada pada:
+- paper_reviews_ieee/
+- experiment/code/archive/md_old/
+- experiment/code/md/
+perhatikan:
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm
+- sepertinya ada revisi mengenai related works yg diberi equation kalau tidak salah, bisa dicek pada related_works/summaries
+- gunakan bahasa indonesia, namun jika ada istilah akademik gunakan bahasa inggris
+- kerjakan dengan sangat teliti
+
+saat ini langsung mengubah isi dari paper_outlin.md ya, saya ingin yang lama ada pada paper_outline_v1.0.md, kemudian yang baru (yang telah diperbaiki), yg baru sudah saya stash, dan yg lama sudah saya rename menjadi paper_outline_v1.0.md, yg baru seharusnya paper_outline_v1.1.md, tolong cek dulu dan lakukan, jangan lupa perbarui dokumen-dokumen pendukung seperti readme, readme ae, folder structure dll, karena perubahan mengenai paper outlin
+
+lo, kenapa stash nya masih ada?
+
+btw di stash saya ada prompts.txt nya juga lo
+
+lanjutkan
 
 audit ulang experiment/05_results.md dengan hasil eksperimen pada code:
 - verifikasi hasil Subject-Disjoint aktif (Primary Benchmark, 28 model):
