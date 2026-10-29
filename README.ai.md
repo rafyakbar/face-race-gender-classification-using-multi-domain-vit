@@ -450,7 +450,8 @@ D:\Research\face-race-gender-multi-vit\
 ├── README.md                              # Dokumentasi ringkas & publikasi penelitian
 ├── README.ai.md                           # Panduan manual referensi utama AI agent (BERKAS INI)
 ├── WORKFLOW.md                            # Standar Operasional Prosedur (SOP) alur penulisan manuskrip
-├── paper_outline.md                       # Kerangka kerja komprehensif & target paragraf manuskrip
+├── paper_outline_v1.0.md                  # Kerangka master naskah v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_outline_v1.1.md                  # Kerangka master naskah v1.1 (Definitif revisi IEEE Access / Subject-Disjoint)
 ├── folder_structure.txt                   # Pohon direktori lengkap dan glosarium berkas mendalam
 ├── authors.txt                            # Profil akademik penulis, afiliasi & ID ORCID
 ├── prompts.txt                            # Log pencatatan kronologis riwayat instruksi prompt

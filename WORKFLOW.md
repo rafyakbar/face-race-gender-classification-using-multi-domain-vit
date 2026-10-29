@@ -11,7 +11,7 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                             TAHAP 1: OUTLINE MASTER                              │
-│                                (paper_outline.md)                                │
+│                      (paper_outline_v1.1.md / v1.0 arsip)                        │
 │   - Cetak biru arsitektur (Cetak Biru & Sumber Kebenaran Tunggal)                │
 │   - Memuat struktur bab, target jumlah kata per paragraf, dan alur narasi        │
 │   - Master formulasi matematis kanonikal, skema penomoran tabel & gambar         │
@@ -62,13 +62,14 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 
 ## 📑 Rincian Struktur & Konvensi Penamaan Modul
 
-### 1. Tahap 1: Outline Master (`paper_outline.md`)
+### 1. Tahap 1: Outline Master (paper_outline_v1.1.md / paper_outline_v1.0.md)
 Dokumen outline master berfungsi sebagai **kontrak ilmiah** yang mengunci:
 - **Spesifikasi Dokumen:** Judul, profil penulis, afiliasi, abstrak terpadu, dan kata kunci.
 - **Batasan Kata Paragraf:** Rentang kata minimum dan maksimum per paragraf (contoh: 100-150 kata untuk paragraf umum, 150-275 kata untuk tinjauan literatur).
 - **Master Notasi Matematika:** Penomoran kanonikal persamaan $\text{Eq. } (1), (2), \dots, (N)$ beserta definisi simbol variabel.
 - **Master Tabel & Gambar:** Penomoran resmi Tabel I..N dan Gambar 1..N, lengkap dengan petunjuk tata letak (*column width* vs *full width span* `table*`/`figure*`).
 - **Matriks Sitasi:** Daftar artikel ilmiah pendukung yang wajib disitir per sub-bagian.
+- **Tata Kelola Versi (*Outline Versioning*):** Versi historis pra-revisi disimpan pada paper_outline_v1.0.md (arsip baseline Subject-Overlap 93.70%), sedangkan outline definitif aktif pasca-revisi peer review dikelola pada paper_outline_v1.1.md (Subject-Disjoint primary benchmark, LR 88.66% / SVM 88.61%, zero leakage, McNemar test, Edge AI, fairness).
 
 ---
 

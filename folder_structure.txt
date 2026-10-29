@@ -80,7 +80,8 @@ face-race-gender-classification-using-multi-domain-vit/
 ├── paper_latex_id/                            # Paket naskah Bahasa Indonesia IEEE Access (Rujukan Internal)
 │   ├── access.tex / access.pdf                # Master sumber LaTeX & PDF Bahasa Indonesia
 │   └── sections/                              # Modul LaTeX terjemahan Bahasa Indonesia
-├── paper_outline.md                           # Kontrak master outline naskah & alokasi target per paragraf
+├── paper_outline_v1.0.md                      # Master outline naskah v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_outline_v1.1.md                      # Master outline naskah v1.1 (Definitif revisi IEEE Access / Subject-Disjoint)
 ├── paper_reviews/                             # Arsip simulasi internal mock peer review (Round 1 & 2)
 ├── paper_reviews_ieee/                        # Berkas resmi penelaahan editorial IEEE Access
 │   ├── README.md                              # Panduan lengkap dossier ulasan editorial dan alur resubmission
@@ -114,9 +115,14 @@ BAGIAN 2: PENJELASAN LENGKAP SETIAP DIREKTORI & BERKAS (DIRECTORY & FILE GLOSSAR
   seluruh alur kerja, ledger audit numerik, batasan klaim penulisan, dan protokol repositori.
 - WORKFLOW.md
   Standard Operating Procedure (SOP) alur kerja 4 tahap transformasi riset dari outline hingga submission.
-- paper_outline.md
-  Kontrak master naskah publikasi (paper blueprint) yang menetapkan struktur bab, target jumlah kata,
-  skema tabel/gambar, dan urutan pemunculan elemen naskah.
+- paper_outline_v1.0.md
+  Arsip historis master outline naskah versi 1.0 (baseline pra-revisi sebelum peer review IEEE Access)
+  yang berfokus pada evaluasi Subject-Overlap (akurasi 93.70% SVM).
+- paper_outline_v1.1.md
+  Kontrak master outline naskah publikasi definitif versi 1.1 yang mematuhi seluruh rekomendasi
+  peer review IEEE Access: Primary Benchmark Subject-Disjoint (0% leakage, LR 88.66% / SVM 88.61%),
+  Section II terstruktur dalam 3 subbab dengan Eq. (1)-(3), uji inferensial McNemar, analisis profil Edge AI,
+  kalibrasi fairness EOD, serta spesifikasi baku Figure 1-4, Table I-XVI, dan Eq. 1-22.
 - authors.txt
   Profil biografi akademik naratif lengkap seluruh penulis (termasuk afiliasi dan kepakaran).
 - prompts.txt

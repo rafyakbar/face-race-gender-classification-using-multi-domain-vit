@@ -325,7 +325,8 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 ├── paper_latex_id/                        # Paket LaTeX IEEE Access versi referensi Bahasa Indonesia
 │   ├── access.tex / access.pdf            # Berkas sumber LaTeX & hasil kompilasi PDF Bahasa Indonesia
 │   └── sections/                          # Bagian-bagian naskah terjemahan Bahasa Indonesia
-├── paper_outline.md                       # Kerangka outline publikasi lengkap & target struktur paragraf
+├── paper_outline_v1.0.md                  # Master outline naskah v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_outline_v1.1.md                  # Master outline naskah v1.1 (Definitif revisi IEEE Access / Subject-Disjoint)
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review internal multi-agent (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Berkas resmi keputusan editorial IEEE Access & dokumen revisi
 │   ├── Comments.md                        # Umpan balik reviewer yang didekonstruksi dan matriks tanggapan
