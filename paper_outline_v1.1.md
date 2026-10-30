@@ -1,7 +1,7 @@
 # Paper Outline Terperinci (Versi 1.1 - Definitif Revisi) - IEEE Access (Manuscript ID: Access-2026-50857)
 
 > **Status Versi**: **Versi 1.1 (Definitif Revisi IEEE Access / Subject-Disjoint Primary Benchmark)**  
-> **Catatan Tata Kelola**: Berkas ini memuat outline naskah revisi komprehensif yang memenuhi seluruh rekomendasi penelaah IEEE Access (Primary Benchmark Subject-Disjoint 0% leakage, LR 88.66% / SVM 88.61%, uji McNemar, profil Edge AI, kalibrasi fairness EOD, Table I-XVI, Figure 1-4, Eq. 1-22). Untuk outline orisinal pra-revisi (Subject-Overlap 93.70%), silakan merujuk ke [paper_outline_v1.0.md](paper_outline_v1.0.md).  
+> **Catatan Tata Kelola**: Berkas ini memuat outline naskah revisi komprehensif yang memenuhi seluruh rekomendasi penelaah IEEE Access (Primary Benchmark Subject-Disjoint 0% leakage, LR 88.66% / SVM 88.61%, uji McNemar, profil Edge AI, kalibrasi fairness EOD, Table I-XVI, Figure 1-4, Eq. 1-23). Untuk outline orisinal pra-revisi (Subject-Overlap 93.70%), silakan merujuk ke [paper_outline_v1.0.md](paper_outline_v1.0.md).  
 > **Target Publikasi**: IEEE Access (Open Access, Q1 / Impact Factor: 3.4)  
 > **Status Revisi**: *Reject & Resubmit* (Kesempatan Resubmission Tunggal Berbasis *Binary Peer Review*)  
 > **Bahasa Naskah**: Bahasa Indonesia formal akademik dengan istilah teknis/ilmiah tetap dipertahankan dalam Bahasa Inggris baku  
@@ -31,7 +31,7 @@
    - Dilarang keras menggunakan karakter *em dash* (—); gunakan tanda pisah biasa (- atau --), tanda kurung, atau koma.
    - Istilah pengklasifikasi distandardisasi: Support Vector Machine (SVM), Logistic Regression (LR), Random Forest (RF), Gaussian Naive Bayes (GNB).
    - Penamaan konfigurasi fitur seragam menggunakan direct sum `⊕`: `Face`, `Emotion`, `Age`, `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`, `Face ⊕ Emotion ⊕ Age`.
-   - Seluruh elemen berurutan kronologis ketat: **Figure 1–4**, **Table I–XVI**, dan **Eq. (1)–(22)**.
+   - Seluruh elemen berurutan kronologis ketat: **Figure 1–4**, **Table I–XVI**, dan **Eq. (1)–(23)**.
 
 ### B. Negative Constraints and Disallowed Claims
 1. **Dilarang menyembunyikan isu tumpang tindih identitas**: Wajib transparan menyajikan perbandingan *Subject-Disjoint* vs *Subject-Overlap*.
@@ -62,161 +62,316 @@ Satu paragraf padat terpadu (**target 180–220 kata**), terstruktur: **Latar Be
 - **Kesimpulan**: Studi ablasi kebocoran data membuktikan bahwa penurunan 5.09 pp dari baseline historis (93.70%) menguantifikasi hilangnya memorisasi identitas, menetapkan kerangka kerja fusi ini sebagai representasi demografis sejati yang sangat efisien untuk implementasi Edge AI.
 
 ### Keywords
-Facial demographic recognition, intersectional classification, multi-domain feature fusion, Vision Transformer, subject-disjoint evaluation, data leakage ablation, McNemar test, edge AI, DemogPairs.
+Biometrics, face recognition, feature extraction, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer.
 
 ---
 
-## I. INTRODUCTION (Dipadatkan ~28% — Jawaban Reviewer 1 #1 & Reviewer 2 #1)
+## I. INTRODUCTION
 
-Struktur narasi direorganisasi menjadi 7 paragraf padat dan fokus langsung pada esensi masalah:
+> **Catatan Respons Reviewer (R1 Poin 1):**  
+> - **Komentar Reviewer:** Reviewer 1 menilai bagian Pendahuluan (*Introduction*) terlalu panjang dan perlu diringkas (*"the introduction is too long need to be summarized"*).  
+> - **Rencana Mitigasi:** Memadatkan narasi pendahuluan sebesar ~28% (menjadi rentang 700–850 kata terfokus), membagi struktur narasi ke dalam 7 paragraf proporsional dengan alur logis yang padat, serta langsung menajamkan esensi tantangan klasifikasi interseksional.
+
+Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejelasan masalah, konteks literatur, dan ketegasan kontribusi:
 
 ```
-[Paragraph 1: Urgensi Pengenalan Demografis Wajah & Disparitas Interseksional]
+[Paragraph 1: Demographic Face Recognition and Intersectional Disparity]
                                │
                                ▼
-[Paragraph 2: Limitasi Pemodelan Atribut Terisolasi vs Pendekatan Interseksional]
+[Paragraph 2: From Isolated Tasks to Intersectional Classification]
                                │
                                ▼
-[Paragraph 3: Evolusi Arsitektur Visi Komputer & Representasi Vision Transformer]
+[Paragraph 3: Architectural Evolution and Vision Transformer Representations]
                                │
                                ▼
-[Paragraph 4: Kesenjangan Riset Metodologis & Tantangan Kebocoran Data]
+[Paragraph 4: Methodological Research Gaps and Data Leakage Challenges]
                                │ (Transisi Kohesif)
                                ▼
-[Paragraph 5: Kerangka Fusi Tri-Domain ViT & Protokol Subject-Disjoint]
+[Paragraph 5: Proposed Tri-Domain ViT Fusion and Subject-Disjoint Protocol]
                                │
                                ▼
-[Paragraph 6: Empat Kontribusi Ilmiah Utama Naskah Revisi]
+[Paragraph 6: Four Key Scientific Contributions of Revised Manuscript]
                                │
                                ▼
-[Paragraph 7: Sistematika Organisasi Artikel]
+[Paragraph 7: Paper Organization]
 ```
 
-### Paragraph 1: Urgensi Pengenalan Demografis Wajah & Disparitas Interseksional
-- **Target Kata**: 110–130 kata.
+### Paragraph 1: Demographic Face Recognition and Intersectional Performance Disparity
+> **Catatan Respons Reviewer (R1 Poin 1):**  
+> - **Komentar Reviewer:** Bagian pembuka dinilai terlalu umum dan bertele-tele dalam memaparkan latar belakang biometrik wajah.  
+> - **Rencana Mitigasi:** Membatasi panjang paragraf secara ketat pada 100–115 kata, langsung menyoroti urgensi tata kelola identitas digital dan disparitas performa sistem visi komputer komersial terhadap kelompok minoritas.
+- **Target Kata**: 100–115 kata.
+- **Tujuan**: Menjelaskan urgensi analisis atribut demografis wajah (ras dan gender) pada sistem visi komputer modern serta memaparkan tantangan kritis disparitas performa terhadap subkelompok tertentu.
 - **Poin Narasi**:
   1. Pengenalan otomatis atribut ras dan gender wajah memegang peranan krusial pada tata kelola identitas digital, kontrol akses biometrik, forensik, dan personalisasi antarmuka cerdas.
   2. Berbagai studi independen dan evaluasi NIST menunjukkan bahwa model visi komputer komersial memperlihatkan disparitas performa yang merugikan kelompok minoritas tertentu, khususnya wanita berkulit gelap.
-  3. Kesenjangan ini bersumber dari representasi fitur visual yang kurang tangguh terhadap variasi fenotipik dan pencahayaan lingkungan.
+  3. Kesenjangan ini bersumber dari karakteristik distribusi data latih dan representasi fitur visual yang kurang tangguh terhadap variasi fenotipik serta pencahayaan lingkungan.
+- **Transisi / Kalimat Penutup**: Keterbatasan penanganan variasi visual pada sistem konvensional ini memperlihatkan bahwa pengenalan atribut demografis yang akurat masih menghadapi tantangan, sehingga dibutuhkan pendekatan pengenalan demografis wajah yang mampu memodelkan interaksi ras dan gender secara terpadu.
 
-### Paragraph 2: Limitasi Pemodelan Atribut Terisolasi vs Pendekatan Interseksional
-- **Target Kata**: 110–130 kata.
+### Paragraph 2: From Isolated Tasks to Intersectional Classification
+- **Target Kata**: 100–115 kata.
+- **Tujuan**: Menjelaskan transisi dari klasifikasi atribut terisolasi (ras saja atau gender saja) menuju klasifikasi interseksional terpadu (kombinasi ras dan gender).
 - **Poin Narasi**:
-  1. Praktik umum memisahkan klasifikasi ras dan gender sebagai dua model independen gagal menangkap dinamika kesalahan pada persilangan subkelompok demografis tertentu.
-  2. Formulasi interseksional terpadu (3 Ras × 2 Gender = 6 kelas) pada kondisi evaluasi seimbang (*balanced evaluation*) memungkinkan audit performa yang adil tanpa distorsi jumlah sampel.
-  3. Namun, klasifikasi 6 kelas secara simultan menghadirkan batas keputusan (*decision boundary*) yang sangat kompleks akibat kemiripan visual antarsubkelompok.
+  1. Praktik umum dalam literatur memisahkan klasifikasi ras dan gender sebagai dua model independen yang berdiri sendiri.
+  2. Pendekatan terisolasi tersebut gagal menangkap dinamika kesalahan pada persilangan subkelompok demografis tertentu (seperti Black Females atau Asian Females), sehingga penurunan akurasi pada irisan demografis spesifik dapat luput dari audit.
+  3. Formulasi interseksional terpadu (3 Ras × 2 Gender = 6 kelas) pada kondisi evaluasi seimbang (*balanced evaluation*) memungkinkan audit performa yang adil dan objektif tanpa distorsi jumlah sampel.
+- **Transisi / Kalimat Penutup**: Pemodelan klasifikasi interseksional menuntut representasi visual yang kaya dan mampu memisahkan batas keputusan antarsubkelompok yang saling tumpang tindih secara fenotipik.
 
-### Paragraph 3: Evolusi Arsitektur Visi Komputer & Representasi Vision Transformer
-- **Target Kata**: 140–170 kata.
+### Paragraph 3: Architectural Evolution and Vision Transformer Representations
+> **Catatan Respons Reviewer (R1 Poin 1 & Pedoman Sitasi):**  
+> - **Komentar Reviewer:** Ulasan literatur dalam pendahuluan sebelumnya terlalu melebar dan membebani alur pembacaan naskah.  
+> - **Rencana Mitigasi:** Membatasi panjang paragraf pada 135–225 kata, merangkum evolusi dari CNN ke ViT secara padat, menerapkan aturan maksimal 3 sitasi per kalimat, serta menyertakan daftar 10 sitasi wajib tanpa penomoran braket angka.
+- **Target Kata**: 135–225 kata.
+- **Aturan Sitasi Khusus**: Usahakan maksimal 3 sitasi per kalimat untuk menjaga keterbacaan naskah.
+- **Tujuan**: Memberikan konteks perkembangan pendekatan arsitektur dari CNN konvensional ke Vision Transformer (ViT) serta metode pendukung lainnya dalam pengenalan atribut wajah.
 - **Poin Narasi**:
-  1. Transisi dari ekstraktor konvolusi lokal (CNN) menuju Vision Transformer (ViT) memungkinkan pemodelan relasi spasial global antarpatch wajah melalui mekanisme Multi-Head Self-Attention (MHSA).
-  2. Kajian literatur terkini mengeksplorasi berbagai varian arsitektur untuk atribut wajah: analisis regio tengah wajah (Belcar et al., 2022), pembelajaran multi-task multi-skala (Liao et al., 2022), atensi paralel (Chen et al., 2023), transformer multi-aksis (Kalkatawi & Saeed, 2024), dan mitigasi generatif (Ramachandran & Rattani, 2023).
-  3. Fusi multi-domain awal menggunakan representasi ganda (Putri et al. ICVEE 2025; JIEET 2025) membuktikan potensi penggabungan domain biometrik dengan emosi atau usia.
+  1. Pendekatan klasik berbasis fitur buatan tangan (*handcrafted features*: LBP, HOG, SIFT) dan Convolutional Neural Networks (CNN: VGG, ResNet, Xception) mengandalkan bias induktif lokal melalui *receptive field* terbatas, di mana penangkapan dependensi spasial global membutuhkan tumpukan lapisan yang lebih dalam.
+  2. Arsitektur Vision Transformer (ViT) memperkenalkan mekanisme Multi-Head Self-Attention (MHSA) yang memungkinkan pemodelan interaksi spasial global antarpatch citra secara langsung tanpa dibatasi *receptive field* lokal.
+  3. Berbagai variasi pendekatan telah dieksplorasi dalam literatur, mencakup model berbasis wilayah wajah tengah, pembelajaran multi-tugas multi-skala, modul atensi paralel, mitigasi bias berbasis model generatif, hingga arsitektur transformer multi-aksis (MaxViT).
+- **Daftar Sitasi Wajib Berdasarkan Judul Paper pada Related Works**:
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
+  - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
+  - *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
+  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer / ICPR Workshops 2023)
+  - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., JVCI 2023)
+  - *Classifying Gender Based on Face Images Using Vision Transformer* (Tahyudin et al., JOIV 2024)
+  - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
+  - *Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images* (Putri et al., IEEE ICVEE 2025)
+  - *MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition* (Putri et al., JIEET 2025)
+- **Transisi**: Terlepas dari pesatnya eksplorasi model berbasis visi dan transformer tersebut, telaah literatur mengidentifikasi sejumlah tantangan metodologis yang masih memerlukan kajian empiris terpadu.
 
-### Paragraph 4: Kesenjangan Riset Metodologis & Isu Kebocoran Data
-- **Target Kata**: 120–140 kata.
+### Paragraph 4: Methodological Research Gaps and Data Leakage Challenges
+> **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
+> - **Komentar Reviewer:** Reviewer 2 menyoroti risiko kebocoran identitas pada pemisahan data acak (*"image-level stratified split may allow images of the same identity to occur in both training and test sets"*) dan ketiadaan uji signifikansi inferensial pada studi literatur terdahulu.  
+> - **Rencana Mitigasi:** Mengidentifikasi secara eksplisit ancaman *identity leakage* sebagai *research gap* metodologis utama bersama dengan keterbatasan representasi domain tunggal dan ketiadaan validasi inferensial formal (100–115 kata).
+- **Target Kata**: 100–115 kata.
+- **Tujuan**: Merumuskan kesenjangan riset metodologis utama (*research gaps*) yang mengaitkan keterbatasan representasi domain tunggal, ancaman kebocoran identitas, dan ketiadaan validasi inferensial.
 - **Poin Narasi**:
-  1. *Keterbatasan Single-Domain*: Representasi geometri biometrik statis rentan terhadap distorsi ekspresi dinamis dan perubahan usia.
-  2. *Ancaman Identity Leakage*: Evaluasi konvensional berbasis *image-level random split* berisiko memasukkan foto dari orang yang sama ke subset latih dan uji, memicu model menghafal identitas individu (*shortcut learning*) alih-alih fitur demografis sejati.
-  3. *Ketiadaan Uji Inferensial & Profil Efisiensi*: Studi terdahulu minim pembuktian signifikansi statistik formal (McNemar) dan belum mengkaji profil komputasi (latensi dan ukuran model) untuk implementasi praktis.
+  1. *Keterbatasan Single-Domain*: Representasi geometri biometrik statis rentan terhadap distorsi ekspresi afektif dinamis dan perubahan morfologi penuaan biologis jika fitur terkait tidak diikutsertakan.
+  2. *Ancaman Identity Leakage*: Evaluasi konvensional berbasis *image-level random split* berisiko membagi foto dari subjek yang sama ke dalam set latih dan uji, memicu model menghafal identitas individu (*shortcut learning*) alih-alih mempelajari pola demografis sejati.
+  3. *Ketiadaan Uji Inferensial & Profil Efisiensi*: Studi terdahulu umumnya minim pembuktian signifikansi statistik formal (seperti uji berpasangan McNemar) dan belum mengkaji profil latensi serta jejak memori untuk implementasi praktis.
+- **Transisi Kohesif ke Usulan Solusi**: Guna menjembatani keterbatasan representasi domain tunggal dan memvalidasi generalisasi bebas kebocoran identitas tersebut, penelitian ini mengusulkan kerangka fusi tri-domain ViT di bawah protokol evaluasi ketat.
 
-### Paragraph 5: Kerangka Fusi Tri-Domain ViT & Protokol Subject-Disjoint
-- **Target Kata**: 140–165 kata.
+### Paragraph 5: Proposed Tri-Domain ViT Fusion Framework and Subject-Disjoint Protocol
+> **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 4):**  
+> - **Komentar Reviewer:** Reviewer 2 meminta evaluasi bebas kebocoran identitas (*"provide subject-disjoint evaluation to establish genuine generalization"*) serta rekonsiliasi aritmatika ruang pencarian hyperparameter (*"totals of 1,086 configurations, 38,010 fits, and 28 refits"*).  
+> - **Rencana Mitigasi:** Memaparkan arsitektur Dual-Benchmark (menetapkan *Strict Subject-Disjoint Partitioning* 0% kebocoran sebagai tolok ukur utama dan *Subject-Overlap* sebagai studi ablasi memorisasi) serta merinci pipeline optimasi 5-Fold StratifiedGroupKFold GridSearchCV (135–175 kata).
+- **Target Kata**: 135–175 kata.
+- **Tujuan**: Memaparkan kerangka kerja usulan yang menjawab seluruh kesenjangan riset pada Paragraf 4 secara sistematis, mencakup integrasi tri-domain, protokol evaluasi, dan pipeline optimasi hyperparameter.
 - **Poin Narasi**:
-  1. Mengusulkan kerangka fusi Tri-Domain ViT yang memadukan tiga representasi laten ortogonal: geometri biometrik statis (`ViT-Face`), ekspresi afektif dinamis (`ViT-Emotion`), dan morfologi penuaan biologis (`ViT-Age`).
-  2. Mengimplementasikan protokol **Strict Subject-Disjoint Partitioning** pada dataset DemogPairs (600 subjek unik) untuk memastikan 0% kebocoran data identitas pada pengujian.
-  3. Mengoptimasi 4 rumpun pengklasifikasi klasik (RF, GNB, LR, SVM) melalui pipeline modular Scaler-PCA bebas kebocoran dengan 38.010 penyesuaian validasi silang.
+  1. Mengusulkan kerangka kerja fusi Tri-Domain ViT yang memadukan tiga representasi laten ortogonal: geometri biometrik statis (`ViT-Face`), ekspresi afektif dinamis (`ViT-Emotion`), dan morfologi penuaan biologis (`ViT-Age`) melalui operasi konkatenasi langsung (`Face ⊕ Emotion ⊕ Age`).
+  2. Ekstraksi representasi laten token `[CLS]` dilakukan secara *offline* dari backbone Vision Transformer pra-latih yang dibekukan (*frozen*) guna mempertahankan efisiensi komputasi dan meminimalkan beban pelatihan.
+  3. Mengadopsi arsitektur evaluasi **Dual-Benchmark** yang menetapkan protokol **Strict Subject-Disjoint Partitioning** pada dataset DemogPairs (600 subjek unik, 0% kebocoran identitas) sebagai tolok ukur utama generalisasi, sekaligus mempertahankan evaluasi *subject-overlap* historis sebagai studi ablasi empiris untuk menguantifikasi beban memorisasi identitas wajah.
+  4. Melakukan optimasi hyperparameter komprehensif pada empat rumpun algoritma pembelajaran mesin klasik (RF, GNB, LR, SVM) melalui validasi silang 5-Fold StratifiedGroupKFold dengan pipeline modular Scaler-PCA yang difitting secara terisolasi pada fold latih guna menjamin pencegahan kebocoran informasi (mencakup total 38.010 penyesuaian validasi silang).
 
-### Paragraph 6: Empat Kontribusi Ilmiah Utama (Penegasan Kebaruan — R1-1 & R2-1)
-- **Target Kata**: 130–160 kata.
-- **Empat Butir Kontribusi Formal (Bilingual)**:
-  1. **A Multi-Domain ViT Latent Fusion Framework:** Merumuskan integrasi representasi laten dari tiga backbone Vision Transformer spesifik tugas yang dibekukan (`Face ⊕ Emotion ⊕ Age` = 2.304-d) untuk menghasilkan ruang fitur komplementer bagi klasifikasi interseksional.
-  2. **Strict Subject-Disjoint Benchmark & Data Leakage Ablation:** Menetapkan tolok ukur bebas kebocoran identitas pertama pada DemogPairs (LR 88.66% / SVM 88.61%) dan menyajikan studi komparatif ablasi kebocoran data untuk menguantifikasi beban memorisasi identitas (5.09 pp drop dari baseline overlap 93.70%).
-  3. **Inferential Hypothesis Testing & Asymptotic Saturation Characterization:** Membuktikan keunggulan signifikan multi-domain secara statistik ($p < 0.001$), membuktikan ekuivalensi prediktif LR vs SVM ($p = 1.0000$), serta mengkarakterisasi fenomena kejenuhan representasi asimtotik fitur usia pada SVM ($p = 0.7343$).
-  4. **Comprehensive Computational Efficiency & Edge AI Validation:** Menyajikan profil komputasi lengkap yang membuktikan Logistic Regression memberikan inferensi >820× lebih cepat (0.0054 ms) dan penyimpanan >330× lebih kompak (0.11 MB) dibanding SVM, merealisasikan solusi klasifikasi demografis siap pakai untuk perangkat komputasi tepi.
+### Paragraph 6: Four Key Scientific Contributions
+> **Catatan Respons Reviewer (R1 Poin 1 & R2 Poin 1):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta penegasan kontribusi ilmiah naskah yang terfokus, dan Reviewer 2 meminta distingsi kebaruan metodologis melampaui konkatenasi sederhana terhadap model dual/multi-domain sebelumnya (*"methodological novelty beyond concatenating three pretrained representations... should be clearly established"*).  
+> - **Rencana Mitigasi:** Menyajikan 4 butir kontribusi ilmiah utama secara elegan dalam format dwibahasa (Bahasa Inggris dan terjemahan Bahasa Indonesia) murni berbasis kebaruan konseptual tanpa memuat angka-angka hasil performa, menegaskan sinergi representasi multi-domain, tolok ukur subject-disjoint bebas kebocoran, pengujian inferensial, serta efisiensi komputasi tepi (125–150 kata).
+- **Target Kata**: 125–150 kata.
+- **Tujuan**: Menyajikan empat kontribusi ilmiah penelitian secara ringkas, elegan, dan terstruktur dalam format dwibahasa (Bahasa Inggris dan terjemahan Bahasa Indonesia) tanpa menyertakan angka-angka hasil empiris.
+- **Poin Narasi (English & Indonesian Translation)**:
+  1. **A Multi-Domain ViT Latent Fusion Framework:** Formulating an integration framework that combines frozen task-specific Vision Transformer backbones (craniofacial biometrics, affective expressions, and biological age) into a unified complementary feature space for intersectional demographic classification.  
+     *(Formulasi integrasi representasi laten multi-domain yang memadukan backbone Vision Transformer pra-latih yang dibekukan ke dalam ruang representasi terpadu untuk klasifikasi interseksional).*
+  2. **Strict Subject-Disjoint Benchmark & Data Leakage Ablation:** Establishing a zero-leakage benchmark on the DemogPairs dataset and providing a comparative ablation study to quantify the facial identity memorization effect inherent in conventional random splits.  
+     *(Penetapan tolok ukur evaluasi bebas kebocoran identitas dan studi komparatif ablasi kebocoran data guna menguantifikasi efek memorisasi identitas wajah).*
+  3. **Inferential Hypothesis Testing & Asymptotic Saturation Characterization:** Conducting rigorous paired inferential testing to validate multi-domain superiority, demonstrating cross-classifier predictive equivalence, and characterizing the asymptotic representation saturation in non-linear models.  
+     *(Pengujian hipotesis inferensial berpasangan yang memvalidasi keunggulan representasi multi-domain, membuktikan ekuivalensi prediktif lintas pengklasifikasi, serta mengkarakterisasi kejenuhan representasi asimtotik pada model non-linier).*
+  4. **Comprehensive Computational Efficiency & Edge AI Validation:** Delivering a comprehensive computational profiling of inference latency and model memory footprint, establishing an ultra-lightweight and deployment-ready architecture for edge computing and mobile environments.  
+     *(Penyajian profil efisiensi komputasi komprehensif mencakup latensi inferensi dan jejak memori yang merealisasikan arsitektur berbobot sangat ringan untuk implementasi komputasi tepi dan lingkungan bergerak).*
 
-### Paragraph 7: Sistematika Organisasi Artikel
-- **Target Kata**: 50–70 kata.
-- **Poin Narasi**: Menguraikan struktur naskah dari Section II (Related Works), Section III (Materials and Methods), Section IV (Results and Discussion), hingga Section V (Conclusion).
+### Paragraph 7: Paper Organization
+- **Target Kata**: 50–75 kata.
+- **Tujuan**: Menjelaskan sistematika dan fungsi setiap bab dalam artikel secara ringkas dan padat.
+- **Poin Narasi**:
+  Artikel ini disusun sebagai berikut: Section II mengulas sintesis literatur terkait (Related Works); Section III menjabarkan dataset, metodologi ekstraksi multi-domain ViT, pipeline pengklasifikasi, serta metrik evaluasi (Materials and Methods); Section IV memaparkan analisis komparatif performa global, studi ablasi kebocoran data, pengujian signifikansi inferensial, profil efisiensi komputasi, analisis performa subkelompok interseksional, pola kesalahan, dan perbandingan kontekstual dengan literatur terdahulu (Results and Discussion); Section V menyimpulkan temuan utama, keterbatasan penelitian, dan arah riset mendatang (Conclusion).
 
 ---
 
-## II. RELATED WORKS (Restrukturisasi Tematik & Penambahan Rumus — Jawaban Reviewer 1 #2)
+## II. RELATED WORKS
 
-Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **formulasi matematis formal**:
+> **Catatan Respons Reviewer (R1 Poin 2 & R2 Poin 1):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta restrukturisasi Related Works dengan alur yang lebih baik dan penambahan persamaan matematika (*"The related works needs to be modified in better way and add equations"*), sementara Reviewer 2 meminta distingsi kebaruan terhadap metode terdahulu.  
+> - **Rencana Mitigasi:** Merestrukturisasi tinjauan pustaka ke dalam 3 subseksi tematik ringkas $\times$ 2 paragraf (total 6 paragraf, 100–115 kata/paragraf), melengkapi setiap domain dengan formulasi matematis formal (Eq. 1 s.d. Eq. 4), serta menegaskan posisi kebaruan penelitian pada subseksi C.
 
-### A. Facial Demographic Attribute Estimation
-- **Target Kata**: 120–140 kata.
-- **Fokus Sintesis**: Menelusuri evolusi estimasi ras, etnisitas, dan gender dari deskriptor konvensional berbasis bagian tengah wajah (Belcar et al., 2022) dan rekayasa fitur manual ke representasi konvolusional dalam. Menyoroti kerentanan model terhadap bias dataset monorasial (Tahyudin et al., 2024), fenomena *Other-Race Effect*, serta keterbatasan lapisan *SoftMax end-to-end* yang rentan mengalami *overfitting* pada fitur berdimensi tinggi (Sunitha et al., 2022; Kalkatawi & Saeed, 2024).
+Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri atas **2 paragraf terstruktur (total 6 paragraf)** dengan target kata **100–115 kata per paragraf**:
 
-### B. Vision Transformers in Facial Visual Analysis
-- **Target Kata**: 140–160 kata.
-- **Fokus Sintesis**: Menganalisis landasan teoretis arsitektur Vision Transformer (Dosovitskiy et al., 2020) dalam memodelkan citra wajah. Berbeda dengan bias induktif lokal pada CNN, ViT membagi citra masukan menjadi $N$ patch visual berukuran $P \times P$ kanal $C$, memproyeksikannya secara linier ke dimensi laten $D$, dan memodelkan interaksi spasial global melalui Multi-Head Self-Attention (MHSA):
-  $$\mathbf{x}_p \in \mathbb{R}^{N \times (P^2 \cdot C)}, \quad N = \frac{HW}{P^2} \tag{1}$$
-  $$\text{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}}\right)\mathbf{V} \tag{2}$$
-- Mengulas eksplorasi transformer pada atribut wajah, analisis perambatan bias sosial pada encoder ViT berskala besar (Brinkmann et al., 2023), serta integrasi transformer multi-aksis (Kalkatawi & Saeed, 2024).
+```
+II. RELATED WORKS
+├── A. Demographic Face Recognition
+│   ├── Paragraph 1: Evolution from Handcrafted to Deep Convolutional Features
+│   └── Paragraph 2: Downstream Classifier Paradigms and Decision Boundaries [Eq. 1]
+├── B. Vision Transformers in Face Analysis
+│   ├── Paragraph 1: Theoretical Foundations and Spatial Self-Attention Mechanisms [Eq. 2 & 3]
+│   └── Paragraph 2: Demographic Disparities and Fairness Propagation in Vision Transformers
+└── C. Multi-Domain Feature Fusion
+    ├── Paragraph 1: Multi-Task Learning and Multi-Domain Representation Integration [Eq. 4]
+    └── Paragraph 2: Research Positioning and Novelty Affirmation
+```
 
-### C. Multi-Domain Representation and Feature Fusion
-- **Target Kata**: 140–170 kata.
-- **Fokus Sintesis**: Membahas perkembangan paradigma fusi fitur multi-skala dan multi-tugas untuk menangani kompleksitas wajah. Studi terdahulu mengembangkan jaringan berbagi paralel berbobot atensi (Chen et al., 2023) dan augmentasi generatif StyleGAN2 (Ramachandran & Rattani, 2023). Lebih lanjut, integrasi dual-domain berbasis ViT yang menggabungkan biometrik wajah dengan emosi (Putri et al. ICVEE 2025) atau usia (Putri et al. JIEET 2025) membuktikan keunggulan penggabungan representasi:
-  $$\mathbf{z}_{\text{fusion}} = [\mathbf{f}_1 \,\|\, \mathbf{f}_2 \,\|\, \dots \,\|\, \mathbf{f}_M] \in \mathbb{R}^{\sum_{m=1}^M d_m} \tag{3}$$
-- **Penempatan Kebaruan Riset**: Penelitian ini memperluas paradigma tersebut menuju integrasi Tri-Domain ViT (`Face ⊕ Emotion ⊕ Age` = 2.304-d) di bawah evaluasi bebas kebocoran identitas (*subject-disjoint*) dan optimasi komprehensif *classical machine learning*.
+### A. Demographic Face Recognition
+> **Catatan Respons Reviewer (R1 Poin 2):**  
+> - **Komentar Reviewer:** Belum adanya perumusan matematis untuk merepresentasikan metode klasifikasi atribut demografis wajah pada literatur sebelumnya.  
+> - **Rencana Mitigasi:** Menyajikan formulasi fungsi keputusan kernel KELM Eq. (1) dari Sunitha et al. (IVC 2022) pada Paragraf 2 guna memodelkan batas keputusan non-linier pengklasifikasi hilir pada ruang representasi demografis wajah.
+
+#### Paragraph 1: Evolution from Handcrafted to Deep Convolutional Features
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Menelusuri evolusi tugas pengenalan ras dan gender wajah dari deskriptor berbasis wilayah/bagian tengah wajah (Belcar et al., Sensors 2022) dan rekayasa fitur manual (*handcrafted features*: LBP, HOG, Gabor) ke model representasi mendalam (CNN). Menguraikan bagaimana representasi konvolusional klasik berinteraksi dengan variasi pencahayaan dan disparitas performa antarras (*Other-Race Effect*) sebagaimana dilaporkan dalam literatur empiris (Sunitha et al., IVC 2022), serta pergeseran menuju mekanisme atensi paralel adaptif (Chen et al., JVCI 2023).
+- **Sumber Literatur Terkait**:
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
+  - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., Journal of Visual Communication and Image Representation 2023)
+
+#### Paragraph 2: Downstream Classifier Paradigms and Decision Boundaries
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Membandingkan paradigma pengklasifikasi hilir antara lapisan SoftMax *end-to-end* (Belcar et al., Sensors 2022), model pohon ensemble (*Random Forest*), model probabilistik (*Gaussian Naive Bayes*), dan *Support Vector Machine* (SVM) serta *Kernel Extreme Learning Machine* (KELM) (Sunitha et al., Image and Vision Computing 2022; Liao et al., Applied Sciences 2022; Kalkatawi & Saeed, IJACSA 2024). Menjelaskan bagaimana fungsi keputusan kernel non-linier memetakan representasi fitur wajah berdimensi tinggi:
+  $$f(\mathbf{x}) = \mathbf{h}(\mathbf{x}) \mathbf{H}^T \left( \frac{\mathbf{I}}{C} + \mathbf{\Omega}_{\text{ELM}} \right)^{-1} \mathbf{Y} \tag{1}$$
+  di mana $\mathbf{\Omega}_{\text{ELM}(i, r)} = K(\mathbf{x}_i, \mathbf{x}_r)$ memetakan fitur ke ruang separasi kernel Mercer tanpa memerlukan optimasi *gradient descent*.
+- **Sumber Literatur Terkait**:
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
+  - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
+  - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
+
+### B. Vision Transformers in Face Analysis
+> **Catatan Respons Reviewer (R1 Poin 2 & R2 Poin 6):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta penambahan persamaan matematis arsitektur transformer, dan Reviewer 2 menyoroti telaah perambatan bias representasi (*fairness analysis scope*).  
+> - **Rencana Mitigasi:** Menambahkan persamaan formal proyeksi linier patch Eq. (2) dan atensi Multi-Head Self-Attention Eq. (3), serta mengkaji mekanisme perambatan bias representasi dari korpus pra-latih (Brinkmann et al. 2023; Ramachandran & Rattani 2023).
+
+#### Paragraph 1: Theoretical Foundations and Spatial Self-Attention Mechanisms
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Menganalisis landasan teoretis arsitektur Vision Transformer (Dosovitskiy et al., ICLR 2021) dalam memodelkan citra wajah. Berbeda dengan bias induktif lokal pada CNN, ViT membagi citra masukan menjadi $N$ patch visual berukuran $P \times P$ dengan $C$ kanal warna, memproyeksikannya secara linier ke dimensi laten $D$, dan memodelkan interaksi spasial global melalui Multi-Head Self-Attention (MHSA):
+  $$\mathbf{x}_p \in \mathbb{R}^{N \times (P^2 \cdot C)}, \quad N = \frac{HW}{P^2} \tag{2}$$
+  $$\text{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d_k}}\right)\mathbf{V} \tag{3}$$
+  Mengulas penerapan transformer pada klasifikasi atribut demografis wajah terstandarisasi (Tahyudin et al., JOIV 2024; Kalkatawi & Saeed, IJACSA 2024) serta eksplorasi varian transformer hibrida bertingkat seperti MaxViT.
+- **Sumber Literatur Terkait**:
+  - *An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale* (Dosovitskiy et al., ICLR 2021)
+  - *Classifying Gender Based on Face Images Using Vision Transformer* (Tahyudin et al., JOIV 2024)
+  - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
+
+#### Paragraph 2: Demographic Disparities and Fairness Propagation in Vision Transformers
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Menelaah fenomena disparitas performa dalam model visi transformer dan metodologi evaluasi demografis. Menguraikan bahwa pengujian pada dataset berdistribusi seimbang menyediakan kondisi eksperimen terkontrol untuk membandingkan performa antarsubkelompok tanpa distorsi ketimpangan sampel (namun keseimbangan tersebut tidak serta-merta menghilangkan bias sosial intrinsik). Menganalisis perambatan bias sosial dari korpus pra-latih berskala besar pada representasi laten encoder ViT (Brinkmann et al., ICCV 2023) serta teknik mitigasi generatif berbasis StyleGAN2 (Ramachandran & Rattani, Springer 2023).
+- **Sumber Literatur Terkait**:
+  - *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
+  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer / ICPR Workshops 2023)
+
+### C. Multi-Domain Feature Fusion
+> **Catatan Respons Reviewer (R1 Poin 2 & R2 Poin 1):**  
+> - **Komentar Reviewer:** Reviewer 2 menuntut kebaruan metodologis melampaui konkatenasi sederhana fitur pra-latih (*"methodological novelty beyond concatenating three pretrained representations"*).  
+> - **Rencana Mitigasi:** Memformulasikan vektor fusi representasi multi-domain Eq. (4) dan mendedikasikan Paragraf 2 khusus untuk penegasan kebaruan metodologis (*Research Positioning & Novelty Affirmation*) tanpa sitasi luar, menggarisbawahi evaluasi subject-disjoint bebas kebocoran, pengujian inferensial, dan karakterisasi saturasi fitur.
+
+#### Paragraph 1: Multi-Task Learning and Multi-Domain Representation Integration
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Membahas perkembangan pendekatan pembelajaran multi-tugas dan fusi representasi multi-domain pada atribut wajah (Liao et al., Applied Sciences 2022; Chen et al., JVCI 2023). Menguraikan keterbatasan model domain tunggal yang tidak mampu menangkap variasi visual wajah secara komplementer. Fusi representasi laten menggabungkan vektor fitur dari $M$ domain tugas khusus ke dalam ruang representasi bersama:
+  $$\mathbf{z}_{\text{fusion}} = [\mathbf{f}_1 \,\|\, \mathbf{f}_2 \,\|\, \dots \,\|\, \mathbf{f}_M] \in \mathbb{R}^{\sum_{m=1}^M d_m} \tag{4}$$
+  Menelaah temuan empiris penggabungan representasi biometrik wajah dengan ekspresi emosi (Putri et al., IEEE ICVEE 2025) atau estimasi usia biologis (Putri et al., JIEET 2025).
+- **Sumber Literatur Terkait**:
+  - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
+  - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., Journal of Visual Communication and Image Representation 2023)
+  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer / ICPR Workshops 2023)
+  - *Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images* (Putri et al., IEEE ICVEE 2025)
+  - *MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition* (Putri et al., Journal of Integrated and Advanced Engineering 2025)
+
+#### Paragraph 2: Research Positioning and Novelty Affirmation
+- **Target Kata**: 100–115 kata.
+- **Fokus Sintesis**: Memetakan posisi kebaruan metodologis penelitian ini secara tegas terhadap literatur terdahulu (tanpa menyertakan sitasi pustaka luar). Berbeda dari karya sebelumnya yang berfokus pada fusi dual-domain di bawah evaluasi pembagian acak tingkat citra (*image-level split* yang rentan tumpang tindih identitas), penelitian ini mengusulkan kerangka fusi Tri-Domain ViT terpadu (`Face ⊕ Emotion ⊕ Age` = 2.304 dimensi) di bawah protokol ketat **Strict Subject-Disjoint Partitioning** (0% kebocoran identitas), optimasi komprehensif empat algoritma pembelajaran mesin klasik (RF, GNB, LR, SVM), serta validasi inferensial berbasis uji statistik berpasangan McNemar.
+- **Sumber Literatur Terkait**:
+  - *Tanpa sitasi pustaka* (sintesis orisinal posisi penelitian terhadap seluruh literatur di atas).
 
 ---
 
 ## III. MATERIALS AND METHODS
 
 ### Overview
-- **Target Kata**: 150–190 kata.
-- **Tujuan**: Menjelaskan arsitektur kerangka kerja penelitian dari citra masukan DemogPairs, ekstraksi paralel tiga backbone ViT pra-latih yang dibekukan, fusi konkatenasi $\mathbf{z}_{\text{tri}}$, hingga optimasi 5-Fold StratifiedGroupKFold GridSearchCV.
-- **Elemen Wajib**: **Figure 1** (Diagram Kerangka Kerja End-to-End, Full Width `\begin{figure*}`).
-  *Caption:* **Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.**
+- **Target Kata**: 150–200 kata (minimal 150 kata hingga 200 kata).
+- **Tujuan**: Menjelaskan arsitektur keseluruhan kerangka kerja penelitian yang diusulkan (*end-to-end framework*) dari masukan citra wajah mentah, pemisahan partisi data subjek terisolasi (*Strict Subject-Disjoint*), ekstraksi fitur tri-domain ViT *offline*, fusi konkatenasi $\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$, hingga *pipeline* optimasi 5-Fold StratifiedGroupKFold GridSearchCV *classical classifier*.
+- **Sitasi Gambar Wajib**: Mensitasi diagram metode keseluruhan pada file `images/method.png` (Figure 1).
+- **Ketentuan Layout LaTeX**: Figure 1 harus berformat **full width (span two columns)** menggunakan environment `\begin{figure*} ... \end{figure*}`.
+- **Caption Figure**: **Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.**
+- **Visual Markdown**:  
+  ![Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.](images/method.png)
+- **Narasi Pendukung**: Menjelaskan alur pemrosesan: citra wajah berukuran $224 \times 224$ piksel dialirkan ke tiga model ViT-Base pra-latih yang dibekukan (*frozen*), representasi laten diekstraksi secara *offline*, digabungkan menjadi vektor fusi 2.304 dimensi, diproses melalui *pipeline* modular Scaler-PCA, dan diklasifikasikan ke dalam 6 kelas interseksional melalui 5-Fold StratifiedGroupKFold Cross-Validation pada empat pengklasifikasi (RF, GNB, LR, SVM).
 
-### A. Dataset & Subject-Disjoint Partitioning Protocol (R2-2 & R1-5)
-- **Target Kata**: 200–240 kata (2 paragraf).
-- **Paragraf 1 (Komposisi & Distribusi Subjek)**:
-  - Dataset DemogPairs (Hupont & Fernández, IEEE FG 2019): 10.800 citra wajah terdistribusi seimbang sempurna pada 6 kelas interseksional (1.800 citra/kelas).
-  - Terdiri atas **600 subjek/identitas unik** (100 subjek per kelas), di mana setiap subjek memiliki tepat 18 variasi foto dengan keragaman pose, pencahayaan, dan ekspresi.
-  - **Elemen Wajib**: **Figure 2** (Contoh Citra 6 Subkelompok DemogPairs, Full Width `\begin{figure*}`).
-    *Caption:* **Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.**
-- **Paragraf 2 (Protokol Subject-Disjoint Bebas Kebocoran)**:
-  - Mengisolasi subjek secara tegas menggunakan modul `split_demogpairs_subject_disjoint` dan `StratifiedGroupKFold` (groups = `subject_id`).
-  - **Data Latih**: 480 subjek (80 subjek/kelas = 8.640 citra, 80%).
-  - **Data Uji Held-Out**: 120 subjek (20 subjek/kelas = 2.160 citra, 20%) dengan **0.00% kebocoran identitas**.
-  - Prapemrosesan: Deteksi dan *face alignment* MTCNN, *cropping* terpusat, resolusi $224 \times 224$ piksel RGB, normalisasi intensitas kanal $[0, 1]$.
-- **Elemen Wajib**: **Table I** (Distribusi Partisi Data Subject-Disjoint DemogPairs).
+### A. Dataset
+> **Catatan Respons Reviewer (R1 Poin 5 & R2 Poin 2):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta rincian mendalam dataset DemogPairs (*"mention the dataset used in more detail"*), dan Reviewer 2 mempertanyakan tumpang tindih identitas (*"clarify whether identity overlap exists and provide subject-disjoint evaluation"*).  
+> - **Rencana Mitigasi:** Menguraikan struktur 600 identitas unik DemogPairs (100 subjek/kelas, 18 citra/subjek) dan mengimplementasikan partisi ketat *Strict Subject-Disjoint Partitioning* (480 subjek latih / 120 subjek uji held-out, tepat 0% kebocoran) pada Tabel I berbahasa Inggris, didukung visualisasi sampel 6 subkelompok pada Gambar 2.
+
+Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115 kata**:
+
+#### Paragraph 1: Dataset Composition and Subject Distribution
+- **Target Kata**: 100–115 kata.
+- **Tujuan**: Menjelaskan komposisi dataset **DemogPairs** (*DemogPairs: Quantifying the Impact of Demographic Imbalance in Deep Face Recognition*, Hupont & Fernández, IEEE FG 2019).
+- **Poin Narasi**:
+  1. Dataset DemogPairs memuat total 10.800 citra wajah yang terdistribusi secara seimbang sempurna pada 6 kelas interseksional (1.800 citra per subkelompok).
+  2. Terdiri atas 600 subjek/identitas unik (100 subjek per kelas), di mana setiap subjek memiliki tepat 18 variasi foto dengan keragaman pose, pencahayaan, dan ekspresi.
+  3. Distribusi kelas yang seimbang ini (*balanced evaluation setting*) menyediakan kondisi evaluasi yang terkontrol untuk membandingkan performa antarsubkelompok tanpa terdistorsi oleh ketidakseimbangan jumlah sampel per kelas.
+- **Sitasi Gambar Wajib**: Mensitasi contoh citra sampel dataset DemogPairs pada [Figure 2](#fig2) (Figure 2a s.d. 2f).
+- **Ketentuan Layout LaTeX**: Figure 2 disusun sebagai **satu gambar komposit (`sample_demogpairs.png`) berformat full width (`\begin{figure*}`)** dengan susunan **1 baris × 6 kolom** berurutan:
+  - Kolom 1-6: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, (f) White Males
+  - Label (a)-(f) dicetak tebal di atas masing-masing citra, dan **seluruh citra memiliki tinggi yang seragam** (komposit diregenerasi dari enam citra sumber dengan tinggi sama).
+- **Caption Figure**: **Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.**
+- **Visual Markdown**:
+  - *(a) Asian Females:*  
+    ![Figure 2(a). Sample Image of Asian Females](images/sample_Asian_Females.jpg)
+  - *(b) Asian Males:*  
+    ![Figure 2(b). Sample Image of Asian Males](images/sample_Asian_Males.jpg)
+  - *(c) Black Females:*  
+    ![Figure 2(c). Sample Image of Black Females](images/sample_Black_Females.jpg)
+  - *(d) Black Males:*  
+    ![Figure 2(d). Sample Image of Black Males](images/sample_Black_Males.jpg)
+  - *(e) White Females:*  
+    ![Figure 2(e). Sample Image of White Females](images/sample_White_Females.jpg)
+  - *(f) White Males:*  
+    ![Figure 2(f). Sample Image of White Males](images/sample_White_Males.jpg)
+
+#### Paragraph 2: Strict Subject-Disjoint Partitioning and Preprocessing
+- **Target Kata**: 100–115 kata.
+- **Tujuan**: Menjelaskan protokol pembagian data bebas kebocoran identitas (*Strict Subject-Disjoint Partitioning*) dan tahapan standardisasi citra (*preprocessing*).
+- **Poin Narasi**:
+  1. Isolasi subjek secara ketat menggunakan pembagian 80/20 berbasis identitas (`StratifiedGroupKFold`, groups = `subject_id`): 480 subjek latih (8.640 citra) dan 120 subjek uji *held-out* (2.160 citra) dengan tingkat kebocoran identitas tepat 0.00% sebagaimana dirincikan pada [Table I](#tab1).
+  2. Subset uji terisolasi sempurna dan tidak pernah dilibatkan selama proses pencarian hyperparameter maupun fitting PCA/Scaler.
+  3. Preprocessing citra mencakup konversi ke 3-channel RGB, deteksi dan *face alignment* MTCNN, resize ke resolusi $224 \times 224$ piksel, dan normalisasi intensitas kanal ke rentang $[0, 1]$.
+- **Table I (Dataset Partition and Distribution in English)**:
 
 **Table I. DemogPairs Dataset Partition and Subject-Disjoint Demographic Subgroup Distribution.**
 
-| Subgroup Interseksional | Ras Makro | Gender | Unique Subjects | Train Set (80% Subjects) | Held-Out Test Set (20% Subjects) | Total Citra |
+| Intersectional Subgroup | Macro Race | Gender | Unique Subjects | Train Set (80% Subjects) | Held-Out Test Set (20% Subjects) | Total Images |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Asian_Females** | Asian | Female | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **Asian_Males** | Asian | Male | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **Black_Females** | Black | Female | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **Black_Males** | Black | Male | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **White_Females** | White | Female | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **White_Males** | White | Male | 100 | 80 subjek (1,440 citra) | 20 subjek (360 citra) | 1,800 |
-| **Total** | **3 Ras** | **2 Gender** | **600 Subjek** | **480 Subjek (8,640 citra)** | **120 Subjek (2,160 citra)** | **10,800** |
+| **Asian_Females** | Asian | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Asian_Males** | Asian | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Black_Females** | Black | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Black_Males** | Black | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **White_Females** | White | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **White_Males** | White | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Total** | **3 Races** | **2 Genders** | **600 Subjects** | **480 Subjects (8,640 images)** | **120 Subjects (2,160 images)** | **10,800** |
 
-### B. Vision Transformer Multi-Domain Feature Extraction (R1-3 & R2-3)
+### B. Vision Transformer Multi-Domain Feature Extraction
+> **Catatan Respons Reviewer (R1 Poin 3 & R2 Poin 3):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta desain ulang Figure 3 yang kurang jelas (*"figure 3 needs to be redesigned and explained in better way"*), sedangkan Reviewer 2 meminta spesifikasi teknis checkpoint HuggingFace, normalisasi, dan alur ekstraksi token `[CLS]` untuk reproduktibilitas (*"specify exact checkpoint versions, normalization parameters, and feature extraction procedures"*).  
+> - **Rencana Mitigasi:** Menyajikan diagram vektor Figure 3 resolusi tinggi 300+ DPI berformat full-width, merinci spesifikasi resmi checkpoint HuggingFace beserta parameter normalisasi kanal pada Tabel II, serta merumuskan ekstraksi token `[CLS]` Layer 12 pada Eq. (7) dan fusi tri-domain pada Eq. (8).
 - **Target Kata**: 220–260 kata (2 paragraf).
 - **Paragraf 1 (Arsitektur ViT & Redesain Figure 3)**:
   - Struktur ViT-Base: 12 lapisan transformer encoder, 12 attention heads ($d_k = 64$), dimensi embedding tersembunyi $D = 768$, patch $16 \times 16$ ($N = 196$ patch).
   - Proyeksi linier dan embedding posisi:
-    $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}, \quad \mathbf{E} \in \mathbb{R}^{(P^2C) \times D}, \; \mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D} \tag{4}$$
+    $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}, \quad \mathbf{E} \in \mathbb{R}^{(P^2C) \times D}, \; \mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D} \tag{5}$$
   - Pemrosesan blok encoder:
-    $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}, \quad \mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{5}$$
+    $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}, \quad \mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{6}$$
   - **Elemen Wajib**: **Figure 3** (Diagram Vektor Resolusi Tinggi 300+ DPI Arsitektur Ekstraksi ViT Paralel & Fusi Konkatenasi, Full Width `\begin{figure*}`).
     *Caption:* **Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
+  - **Visual Markdown**:  
+    ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.0.png)
 - **Paragraf 2 (Spesifikasi Checkpoint HuggingFace & Fusi Konkatenasi)**:
   - Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen*):
     1. `ViT-Face` (`skutaada/VIT-VGGFace`): Pretrained pada VGGFace2 untuk biometrik geometri kraniofasial statis.
     2. `ViT-Emotion` (`dima806/facial_emotions_image_detection`): Pretrained untuk ekspresi afektif dinamis.
     3. `ViT-Age` (`dima806/facial_age_image_detection`): Pretrained untuk estimasi usia dan penuaan biologis.
   - Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
-    $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{6}$$
+    $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
   - Fusi Tri-Domain via konkatenasi (direct sum):
-    $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{7}$$
+    $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
 - **Elemen Wajib**:
   - **Table II** (Spesifikasi Checkpoint Model ViT Pra-Latih & Parameter Normalisasi — R2-3).
   - **Table III** (Skema Konfigurasi Fusi Fitur & Desain Studi Ablasi).
@@ -249,27 +404,30 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
 ### D. Gaussian Naive Bayes
 - **Target Kata**: 100–120 kata.
 - **Poin Pembahasan**: Pengklasifikasi probabilistik berbasis Teorema Bayes dengan asumsi independensi fitur Gaussian:
-  $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{8}$$
+  $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{9}$$
 - **Elemen Wajib**: **Table V** (Ruang Pencarian Hyperparameter GNB — 240 kombinasi, 1.200 fits).
 
 ### E. Logistic Regression
 - **Target Kata**: 100–120 kata.
 - **Poin Pembahasan**: Model multinomial Softmax ter-regularisasi $L_2$ dengan optimasi loss cross-entropy multi-kelas:
-  $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{9}$$
+  $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{10}$$
 - Penalaan kekuatan penalti $C$ dan solver konvergens (`lbfgs`, `saga`, `newton-cg`).
 - **Elemen Wajib**: **Table VI** (Ruang Pencarian Hyperparameter Logistic Regression — 270 kombinasi, 1.350 fits).
 
 ### F. Support Vector Machine
 - **Target Kata**: 110–130 kata.
 - **Poin Pembahasan**: Penentuan hyperplane pemisah margin maksimal non-linier menggunakan fungsi kernel (RBF dan polinomial):
-  $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d \in \{2, 3\} \tag{10}$$
+  $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d \in \{2, 3\} \tag{11}$$
   *(di mana parameter $\text{coef0} = 0.0$ default pada implementasi standar `sklearn.svm.SVC`)*.
 - **Elemen Wajib**: **Table VII** (Ruang Pencarian Hyperparameter SVM — 288 kombinasi, 1.440 fits).
 
-### G. Classification Pipeline & Search Space Reconciliation (R2-4)
+### G. Classification Pipeline & Search Space Reconciliation
+> **Catatan Respons Reviewer (R2 Poin 4):**  
+> - **Komentar Reviewer:** Reviewer 2 meminta rekonsiliasi aritmatika ruang pencarian hyperparameter (*"totals of 1,086 configurations, 38,010 cross-validation fits, and 28 final refits should be reconciled with individual search spaces"*).  
+> - **Rencana Mitigasi:** Menjabarkan rekonsiliasi matematis secara transparan: (SVM: 288 + LR: 270 + RF: 288 + GNB: 240) = 1.086 kombinasi $\times$ 5 folds = 5.430 fits per skema $\times$ 7 skema fitur = 38.010 fits validasi silang + 28 refits akhir, dengan isolasi penuh pipeline Scaler-PCA di dalam fold latih guna mencegah kebocoran informasi.
 - **Target Kata**: 120–150 kata.
 - **Arsitektur Rantai Transformasi Modular**:
-  $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\} \tag{11}$$
+  $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\} \tag{12}$$
 - **Rekonsiliasi Aritmatika Ruang Pencarian (Jawaban R2-4)**:
   - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits
   - LR: 270 kombinasi $\times$ 5 folds = 1.350 fits
@@ -279,33 +437,39 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
   - Melintasi 7 skema fitur: $5.430 \times 7 = \mathbf{38.010\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih.
   - Seluruh penskalaan dan PCA difitting secara terisolasi hanya pada fold latih di dalam `Pipeline` scikit-learn untuk menjamin pencegahan kebocoran data.
 
-### H. Evaluation Metrics & Inferential Statistical Testing (R2-5 & R2-6)
+### H. Evaluation Metrics & Statistical Testing
+> **Catatan Respons Reviewer (R2 Poin 5 & R2 Poin 6):**  
+> - **Komentar Reviewer:** Reviewer 2 menuntut pengujian hipotesis inferensial berpasangan McNemar yang tepat (*"claims should be appropriately qualified according to McNemar test"*), dan menuntut kejelasan batasan klaim keadilan algoritmik EOD (*"clarify scope and limitations of fairness claims"*).  
+> - **Rencana Mitigasi:** Menyertakan formulasi matematis Uji McNemar berpasangan dengan koreksi kontinuitas Edwards Eq. (21), Wilson Score 95% CI Eq. (22), serta mendefinisikan EOD Eq. (23) murni sebagai indikator disparitas performa subkelompok empiris tanpa overclaim jaminan keadilan universal.
 - **Target Kata**: 180–220 kata (2 paragraf).
 - **Paragraf 1 (Metrik Subkelompok OvR & Agregasi Global)**:
   - Formulasi evaluasi One-vs-Rest (OvR) per kelas $c \in \{1, \dots, K\}$:
-    $$\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c} \tag{12}$$
-    $$\text{Precision}_c = \frac{TP_c}{TP_c + FP_c} \tag{13}$$
-    $$\text{Recall}_c = \frac{TP_c}{TP_c + FN_c} \tag{14}$$
-    $$\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c} \tag{15}$$
+    $$\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c} \tag{13}$$
+    $$\text{Precision}_c = \frac{TP_c}{TP_c + FP_c} \tag{14}$$
+    $$\text{Recall}_c = \frac{TP_c}{TP_c + FN_c} \tag{15}$$
+    $$\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c} \tag{16}$$
   - Agregasi Global (Overall Accuracy dan Macro Average):
-    $$\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N} \tag{16}$$
-    $$\text{Precision}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{17}$$
-    $$\text{Recall}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{18}$$
-    $$\text{F1-Score}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{19}$$
+    $$\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N} \tag{17}$$
+    $$\text{Precision}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{18}$$
+    $$\text{Recall}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{19}$$
+    $$\text{F1-Score}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{20}$$
 - **Paragraf 2 (Uji McNemar Berpasangan, 95% Wilson CI & Metrik Keadilan EOD)**:
   - Uji McNemar berpasangan dengan koreksi kontinuitas Edwards untuk pasangan prediksi diskordan ($b$ dan $c$):
-    $$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} \tag{20}$$
+    $$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} \tag{21}$$
     didukung oleh uji eksak binomial dua arah (*exact two-sided binomial test*).
   - Interval Kepercayaan 95% Wilson Score untuk proporsi akurasi $p$:
-    $$\text{CI}_{95\%} = \frac{p + \frac{z^2}{2N} \pm z \sqrt{\frac{p(1-p)}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}, \quad z = 1.95996 \tag{21}$$
+    $$\text{CI}_{95\%} = \frac{p + \frac{z^2}{2N} \pm z \sqrt{\frac{p(1-p)}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}, \quad z = 1.95996 \tag{22}$$
   - Disparitas Keadilan Algoritmik Equal Opportunity Difference (EOD):
-    $$\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR} \tag{22}$$
+    $$\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR} \tag{23}$$
 
 ---
 
 ## IV. RESULTS AND DISCUSSION
 
-### A. Primary Benchmark Global Performance (Subject-Disjoint — R2-2)
+### A. Primary Benchmark Global Performance
+> **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 2):**  
+> - **Komentar Reviewer:** Reviewer 2 meminta evaluasi subject-disjoint bebas kebocoran, dan Reviewer 1 meminta perbandingan komprehensif melintasi model (*"compare proposed method with more methods to validate contribution"*).  
+> - **Rencana Mitigasi:** Menyajikan evaluasi komprehensif 28 model (4 famili pengklasifikasi $\times$ 7 skema fitur) di bawah tolok ukur utama Subject-Disjoint (Tabel VIII–XI) pada 120 subjek held-out ($N = 2.160$).
 - **Target Kata**: 350–420 kata (4 paragraf untuk 4 famili model + 1 paragraf sintesis).
 - **Paragraf 1 (Random Forest — Table VIII)**:
   - Puncak performa pada dual-domain `Emotion ⊕ Face` (Akurasi 84.86%, Macro F1 0.8479) dan tri-domain `Face ⊕ Emotion ⊕ Age` (Akurasi 85.00%, Macro F1 0.8493).
@@ -323,7 +487,10 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
   - **Table X** (Hasil Evaluasi Subject-Disjoint Logistic Regression).
   - **Table XI** (Hasil Evaluasi Subject-Disjoint Support Vector Machine).
 
-### B. Comparative Ablation Study on Data Leakage & Statistical Significance (R2-2 & R2-5)
+### B. Data Leakage Ablation and Statistical Significance
+> **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
+> - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi tumpang tindih identitas (*"clarify whether identity overlap exists"*) serta kualifikasi klaim signifikansi statistik dan saturasi fitur (*"claims of tri-domain superiority and feature saturation should be appropriately qualified"*).  
+> - **Rencana Mitigasi:** Menyajikan studi komparatif ablasi kebocoran data pada Tabel XII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas) dan menyajikan hasil uji McNemar berpasangan pada Tabel XIII yang membuktikan signifikansi fusi multi-domain ($p < 0.001$) sekaligus mengualifikasikan secara jujur fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$).
 - **Target Kata**: 250–300 kata (2 paragraf).
 - **Paragraf 1 (Ablasi Kebocoran Data: Overlap vs Disjoint — Table XII)**:
   - Membandingkan hasil historis (93.70% SVM Tri / 92.73% LR Tri) dengan tolok ukur *subject-disjoint* (88.61% SVM Tri / 88.66% LR Tri).
@@ -337,7 +504,10 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
   - **Table XII** (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint).
   - **Table XIII** (Hasil Uji McNemar Berpasangan dan Exact Binomial Test).
 
-### C. Computational Efficiency Profiling (R1-5 & R2-8)
+### C. Computational Efficiency Profiling
+> **Catatan Respons Reviewer (R1 Poin 5 & R2 Poin 8):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta evaluasi biaya waktu (*"consider the time cost in the evaluation"*), dan Reviewer 2 meminta profil komputasi lengkap (*"report feature extraction time, classifier training time, inference latency, memory consumption, and model storage"*).  
+> - **Rencana Mitigasi:** Menyajikan subseksi khusus dengan Tabel XIV yang merinci durasi ekstraksi GPU (~45.6 ms/citra), latensi inferensi per sampel (LR 0.0054 ms vs SVM 4.4481 ms; >820× lebih cepat), dan ukuran penyimpanan model (LR 0.11 MB vs SVM 36.60 MB; >330× lebih ringkas) untuk membuktikan keunggulan implementasi Edge AI.
 - **Target Kata**: 180–220 kata (1–2 paragraf).
 - **Poin Narasi**:
   1. Durasi ekstraksi fitur ViT offline pada GPU NVIDIA: ~15.2 ms/citra per domain (~45.6 ms untuk fusi tri-domain).
@@ -355,7 +525,10 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
 | Random Forest (RF) | Tri-Domain | 2,304 | ~45.6 ms | 0.0537 ms | 82.8× | 6.19 MB | 5.9× | Server / Desktop |
 | Gaussian Naive Bayes (GNB) | Dual-Domain | 1,536 | ~30.4 ms | 0.0083 ms | 535.9× | 0.78 MB | 46.9× | Embedded Systems |
 
-### D. Intersectional Subgroup Performance & Fairness Calibration (R2-6)
+### D. Intersectional Subgroup Performance and Fairness Calibration
+> **Catatan Respons Reviewer (R2 Poin 6):**  
+> - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi ruang lingkup dan batasan analisis keadilan algoritmik (*"reported EOD values do not establish comprehensive demographic fairness... clarify scope and limitations"*).  
+> - **Rencana Mitigasi:** Menyajikan Tabel XV performa granular 6 subkelompok dan secara transparan melaporkan nilai EOD (9.72 pp), dengan penegasan eksplisit bahwa nilai ini mencerminkan disparitas empiris antarsubkelompok akibat variasi fenotipik/pencahayaan, bukan jaminan keadilan universal.
 - **Target Kata**: 200–240 kata (2 paragraf).
 - **Paragraf 1 (Profil Subkelompok Model Teratas)**:
   - Evaluasi granular pada 6 subkelompok ($N = 360$ citra uji unseen per subkelompok) pada model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%).
@@ -366,7 +539,10 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
   - Penegasan objektif bahwa capaian ini mencerminkan tantangan variasi fenotipik dan kontras pencahayaan yang masih ada, serta **bukan bukti tercapainya keadilan algoritmik sempurna**.
 - **Elemen Wajib**: **Table XV** (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint).
 
-### E. Error Pattern Assessment (R1-4 & R2-9)
+### E. Error Pattern Assessment
+> **Catatan Respons Reviewer (R1 Poin 4 & R2 Poin 9):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta pembahasan grafik Figure 4 yang lebih mendalam (*"graph in figure 4 needs to be discussed in better way"*), dan Reviewer 2 mengingatkan agar tidak berspekulasi fenotipik berlebihan tanpa landasan data (*"interpretations concerning phenotypic overlap... should be qualified"*).  
+> - **Rencana Mitigasi:** Menganalisis secara mendalam matriks konfusi 6×6 Gambar 4 (penurunan total salah prediksi dari 294 ke 245 citra), membuktikan minimnya kesalahan lintas-gender (<0.4%), dan membatasi interpretasi tumpang tindih visual murni berdasarkan frekuensi sel off-diagonal matriks konfusi.
 - **Target Kata**: 280–340 kata (3 paragraf).
 - **Paragraf 1 (Dinamika Kesalahan 6×6 Figure 4)**:
   - Menganalisis matriks konfusi 6×6 pada data uji held-out ($N = 2.160$). Total kesalahan klasifikasi menurun dari 294 citra (Single Face 86.39%) menjadi 271 citra (Dual Emotion+Face 87.45%) dan mencapai titik terendah 245 citra pada Tri-Domain (88.66%).
@@ -377,8 +553,18 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
   - Membatasi pernyataan tumpang tindih visual murni berdasarkan frekuensi sel *off-diagonal* matriks konfusi tanpa spekulasi biologis berlebih.
 - **Elemen Wajib**: **Figure 4** (Matriks Konfusi Komparatif 6×6: Single, Dual, Tri-Domain pada Subject-Disjoint Test Set, Full Width `\begin{figure*}`).
   *Caption:* **Figure 4. Comparative 6×6 Confusion Matrices on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.**
+- **Visual Markdown**:
+  - *(a) Single-Domain Face Biometrics:*  
+    ![Figure 4(a). Confusion Matrix Single-Domain Face](images/confusion_matrix_single.png)
+  - *(b) Dual-Domain Emotion ⊕ Face:*  
+    ![Figure 4(b). Confusion Matrix Dual-Domain Emotion+Face](images/confusion_matrix_dual.png)
+  - *(c) Tri-Domain Face ⊕ Emotion ⊕ Age:*  
+    ![Figure 4(c). Confusion Matrix Tri-Domain](images/confusion_matrix_tri.png)
 
-### F. Contextual Comparison with Prior Studies on DemogPairs (R1-6 & R2-7)
+### F. Contextual Comparison with Prior Studies
+> **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
+> - **Komentar Reviewer:** Reviewer 1 meminta komparasi dengan metode terdahulu, dan Reviewer 2 menegaskan agar perbandingan dikualifikasikan sebagai kontekstual jika partisi datanya berbeda (*"comparison should be presented as contextual rather than a controlled benchmark"*).  
+> - **Rencana Mitigasi:** Menyajikan Tabel XVI perbandingan dengan studi terdahulu pada DemogPairs (Putri et al. 2025) dengan catatan metodologis tegas bahwa studi terdahulu menggunakan protokol *subject-overlap*, sehingga model usulan merupakan tolok ukur bebas kebocoran pertama.
 - **Target Kata**: 180–220 kata (2 paragraf).
 - **Paragraf 1 (Perbandingan Metrik Kuantitatif — Table XVI)**:
   - Membandingkan model usulan dengan studi terdahulu pada DemogPairs: MD-ViT + XGBoost (Putri et al. JIEET 2025: 89.07%), Dual-ViT + SVM (Putri et al. ICVEE 2025: 92.41%), dan baseline historis usulan (93.70%).
@@ -388,7 +574,10 @@ Bagian ini disusun dalam **3 subbab tematik terstruktur** yang dilengkapi **form
 
 ---
 
-## V. CONCLUSION & LIMITATIONS (R1-7 & R2-10)
+## V. CONCLUSION & LIMITATIONS
+> **Catatan Respons Reviewer (R1 Poin 7 & R2 Poin 10):**  
+> - **Komentar Reviewer:** Reviewer 1 menilai kesimpulan belum menampilkan kontribusi secara optimal (*"conclusion part does not show the contribution in good way"*), dan Reviewer 2 meminta pembatasan kesimpulan pada tolok ukur DemogPairs (*"conclusions should be restricted to evaluated DemogPairs benchmark"*).  
+> - **Rencana Mitigasi:** Merangkum temuan kunci secara padat pada Paragraf 1 (keberhasilan fusi, paritas prediktif LR vs SVM, efisiensi Edge AI), dan mendedikasikan Paragraf 2 untuk pernyataan jujur batasan cakupan 3 kelompok ras makro DemogPairs serta arah riset validasi eksternal (*in-the-wild datasets*).
 
 Bagian ini disusun dalam **2 paragraf terpadu tanpa sub-seksi**:
 
@@ -440,29 +629,30 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Figure 4** | Gambar | Section IV.E (Error Pattern) | *Comparative 6×6 Confusion Matrices on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.* | **Full Width (`figure*`)** |
 | **Table XVI** | Tabel | Section IV.F (Studi Terdahulu)| *Contextual Comparison of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | Column Width (`table`) |
 
-### Daftar Lengkap Urutan Persamaan Matematika (Eq. 1 s.d. 22)
+### Daftar Lengkap Urutan Persamaan Matematika (Eq. 1 s.d. 23)
 
 | Equation ID | Bab / Sub-seksi Kemunculan | Deskripsi Matematis / Nama Formula |
 |:---:|:---:|---|
-| **Eq. (1)** | Section II.B (*Related Works*) | *Patch Flattening and Sequence Linear Projection in Vision Transformers* |
-| **Eq. (2)** | Section II.B (*Related Works*) | *Scaled Dot-Product Multi-Head Self-Attention (MHSA) Formulation* |
-| **Eq. (3)** | Section II.C (*Related Works*) | *Multi-Domain Feature Concatenative Direct Sum Representation* |
-| **Eq. (4)** | Section III.B (*Vision Transformer*) | *Vision Transformer Input Patch and Learnable Positional Embedding* |
-| **Eq. (5)** | Section III.B (*Vision Transformer*) | *Transformer Encoder Layer Transformation (MHSA + MLP with LayerNorm)* |
-| **Eq. (6)** | Section III.B (*Vision Transformer*) | *Domain-Specific [CLS] Token Representation Extraction from Layer 12* |
-| **Eq. (7)** | Section III.B (*Vision Transformer*) | *Proposed Tri-Domain Feature Concatenation Vector ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$)* |
-| **Eq. (8)** | Section III.D (*Gaussian NB*) | *Conditional Gaussian Likelihood Formulation for Continuous Features* |
-| **Eq. (9)** | Section III.E (*Logistic Reg*) | *Multinomial Softmax Probability for Multi-Class Classification* |
-| **Eq. (10)** | Section III.F (*Support Vector*) | *Support Vector Machine Polynomial Kernel Function Formulation* |
-| **Eq. (11)** | Section III.G (*Pipeline*) | *Modular Transformation Pipeline: Scaler to PCA to Classifier* |
-| **Eq. (12)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Classification Accuracy Formulation* |
-| **Eq. (13)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Precision Formulation* |
-| **Eq. (14)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Recall / True Positive Rate Formulation* |
-| **Eq. (15)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) F1-Score Harmonic Mean Formulation* |
-| **Eq. (16)** | Section III.H (*Evaluation*) | *Overall Global Classification Accuracy on Held-Out Test Set* |
-| **Eq. (17)** | Section III.H (*Evaluation*) | *Macro-Averaged Global Precision Formulation across Six Intersectional Classes* |
-| **Eq. (18)** | Section III.H (*Evaluation*) | *Macro-Averaged Global Recall Formulation across Six Intersectional Classes* |
-| **Eq. (19)** | Section III.H (*Evaluation*) | *Macro-Averaged Global F1-Score Formulation across Six Intersectional Classes* |
-| **Eq. (20)** | Section III.H (*Evaluation*) | *Paired McNemar's Test Statistic with Edwards Continuity Correction* |
-| **Eq. (21)** | Section III.H (*Evaluation*) | *Wilson Score 95% Confidence Interval for Empirical Accuracy Proportion* |
-| **Eq. (22)** | Section III.H (*Evaluation*) | *Algorithmic Fairness Disparity Metric: Equal Opportunity Difference (EOD)* |
+| **Eq. (1)** | Section II.A (*Related Works*) | *Downstream Kernel Extreme Learning Machine (KELM) Decision Boundary Formulation* |
+| **Eq. (2)** | Section II.B (*Related Works*) | *Patch Flattening and Sequence Linear Projection in Vision Transformers* |
+| **Eq. (3)** | Section II.B (*Related Works*) | *Scaled Dot-Product Multi-Head Self-Attention (MHSA) Formulation* |
+| **Eq. (4)** | Section II.C (*Related Works*) | *Multi-Domain Feature Concatenative Direct Sum Representation* |
+| **Eq. (5)** | Section III.B (*Vision Transformer*) | *Vision Transformer Input Patch and Learnable Positional Embedding* |
+| **Eq. (6)** | Section III.B (*Vision Transformer*) | *Transformer Encoder Layer Transformation (MHSA + MLP with LayerNorm)* |
+| **Eq. (7)** | Section III.B (*Vision Transformer*) | *Domain-Specific [CLS] Token Representation Extraction from Layer 12* |
+| **Eq. (8)** | Section III.B (*Vision Transformer*) | *Proposed Tri-Domain Feature Concatenation Vector ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$)* |
+| **Eq. (9)** | Section III.D (*Gaussian NB*) | *Conditional Gaussian Likelihood Formulation for Continuous Features* |
+| **Eq. (10)** | Section III.E (*Logistic Reg*) | *Multinomial Softmax Probability for Multi-Class Classification* |
+| **Eq. (11)** | Section III.F (*Support Vector*) | *Support Vector Machine Polynomial Kernel Function Formulation* |
+| **Eq. (12)** | Section III.G (*Pipeline*) | *Modular Transformation Pipeline: Scaler to PCA to Classifier* |
+| **Eq. (13)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Classification Accuracy Formulation* |
+| **Eq. (14)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Precision Formulation* |
+| **Eq. (15)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) Recall / True Positive Rate Formulation* |
+| **Eq. (16)** | Section III.H (*Evaluation*) | *Subgroup-Level One-vs-Rest (OvR) F1-Score Harmonic Mean Formulation* |
+| **Eq. (17)** | Section III.H (*Evaluation*) | *Overall Global Classification Accuracy on Held-Out Test Set* |
+| **Eq. (18)** | Section III.H (*Evaluation*) | *Macro-Averaged Global Precision Formulation across Six Intersectional Classes* |
+| **Eq. (19)** | Section III.H (*Evaluation*) | *Macro-Averaged Global Recall Formulation across Six Intersectional Classes* |
+| **Eq. (20)** | Section III.H (*Evaluation*) | *Macro-Averaged Global F1-Score Formulation across Six Intersectional Classes* |
+| **Eq. (21)** | Section III.H (*Evaluation*) | *Paired McNemar's Test Statistic with Edwards Continuity Correction* |
+| **Eq. (22)** | Section III.H (*Evaluation*) | *Wilson Score 95% Confidence Interval for Empirical Accuracy Proportion* |
+| **Eq. (23)** | Section III.H (*Evaluation*) | *Algorithmic Fairness Disparity Metric: Equal Opportunity Difference (EOD)* |
