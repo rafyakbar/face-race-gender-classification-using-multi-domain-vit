@@ -25,6 +25,76 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+coba cek images/vit_v2.0.png apakah sudah sesuai dengan Reviewer 1 yang meminta desain ulang Figure 3 yang kurang jelas?
+
+buatkan prompt agar ai agent lain memperbaiki gambar tersebut
+
+jangan terlalu panjang, cukup satu paragraf singkat saja, tuliskan pada prompts.txt
+
+# ------------------------------------------------------------------------------
+# PROMPT SINGKAT UNTUK AI AGENT (PERBAIKAN FIGURE 3 - images/vit_v2.0.png):
+# ------------------------------------------------------------------------------
+Redesign and enhance `images/vit_v2.0.png` to satisfy Reviewer 1's feedback by explicitly illustrating the novelty of our proposed method while preserving its existing clean visual style and technical clarity: extend the right side of the diagram (after the layer-12 [CLS] token extraction) to demonstrate that this ViT feature extraction pipeline is deployed across three frozen task-specific backbones (`ViT-Face`, `ViT-Emotion`, and `ViT-Age`) yielding three 768-D latent vectors (f_face, f_emotion, f_age), which are then fused via direct sum concatenation into a unified 2,304-dimensional vector z_tri = f_face ⊕ f_emotion ⊕ f_age in R^2304 before feeding into downstream classical classifiers for 6-class intersectional demographic recognition.
+
+(Versi Bahasa Indonesia):
+Perbaiki dan lengkapi gambar `images/vit_v2.0.png` agar memenuhi masukan Reviewer 1 (menonjolkan kebaruan metode yang diusulkan) dengan tetap mempertahankan gaya visual dan ketajaman yang ada: pada bagian kanan diagram (setelah ekstraksi token [CLS] layer ke-12), perluas alur untuk menunjukkan bahwa mekanisme ekstraksi ViT-Base ini dieksekusi secara paralel pada tiga model backbone pra-latih yang dibekukan (`ViT-Face`, `ViT-Emotion`, dan `ViT-Age`) menghasilkan tiga vektor representasi 768-D (f_face, f_emotion, f_age), yang kemudian difusikan melalui operasi konkatenasi direct sum menjadi vektor terpadu 2.304 dimensi z_tri = f_face ⊕ f_emotion ⊕ f_age in R^2304 menuju pengklasifikasi hilir untuk pengenalan 6 kelas interseksional demografis wajah.
+# ------------------------------------------------------------------------------
+
+paper_outline_v1.1.md:
+Global:
+- Jika ada subsection atau paragraf untuk menjawab komentar reviewer, maka berikan note di bawahnya agar saya tahu mengenai komentar reviewernya apa dan mitigasinya bagaimana.
+I. INTRODUCTION:
+- Paragraph 6:
+  * jangan ada angka-angka hasil pada poin-poin kontribusi.
+II. RELATED WORKS:
+- A. Demographic Face Recognition: belum ada equationnya (bisa cek related_works/summaries).
+- cek juga equation yang lain apakah sudah tepat atau belum.
+III. MATERIALS AND METHODS:
+- Overview:
+  * samakan seperti sebelumnya.
+  * belum muncul figure seperti sebelumnya.
+A. Dataset:
+  * judul subsection cukup dataset saja.
+  * target kata harusnya per paragraf, sama seperti sebelumnya.
+  * belum muncul figure seperti sebelumnya.
+  * untuk tabel gunakan bahasa inggris.
+sementara kerjakan ini dulu. kerjakan dengan sangat amat teliti.
+
+pada paper outline keywords nya ganti menjadi: Biometrics, face recognition, feature extraction, intersectional demographic recognition,
+multi-domain feature fusion, Vision Transformer
+
+judul per paragraf gunakan bahasa inggris seperti sebelumnya
+
+sebelum melanjutkan, saya tanya dulu, untuk komentar reviewer 2 nomor 2 mengenai Potensi Kebocoran Data dan Generalisasi Tingkat Identitas itu maksudnya menyediakan 2 evaluasi (stratified split dan split berdasarkan identitas) atau bagaimana?
+
+berarti apakah paper_outline_v1.1.md pada introduction Paragraph 5 dan A. Dataset apakah sudah sesuai?
+
+ya, tolong tambahkan mengenai dual benchmark
+
+untuk II. RELATED WORKS apakah reviewer meminta dibuat menjadi subsection?
+
+ooh ok, sepertinya lebih baik dijadikan subsection, ini berarti satu subsection hanya memiliki satu paragraf? karena sebelumnya ada 6 paragraf
+
+paper_outline_v1.1.md:
+Global:
+- Jika ada subsection atau paragraf untuk menjawab komentar reviewer, maka berikan note di bawahnya agar saya tahu.
+I. INTRODUCTION:
+- Paragraph 1, 2, 4: 100–115 kata.
+- Paragraph 3:
+  * samakan seperti sebelumnya paper_outline_v1.0 namun dengan target kata 135-225
+  * berikan juga daftar sitasi wajib (cukup judul paper dan tahun dan sitasinya saja, tidak usah nomor).
+- Paragraph 5:
+  * 135–175 kata.
+  * poin terkait optimasi hyperparameter belum ada seperti outline sebelumnya.
+- Paragraph 6: 125–150 kata.
+- Paragraph 7: samakan sepereti sebelumnya saja.
+II. RELATED WORKS:
+- tolong perbaiki sesuai diskusi sebelumnya.
+- judul subsectionnya jangan terlalu panjang.
+- berikan juga Sumber Literatur Terkait seperti sebelumnya (cukup judul paper dan tahun dan sitasinya saja, tidak usah nomor).
+
+lanjutkan
+
 coba audit ulang paper_outline.md berdasarkan apa yang ada pada:
 - paper_reviews_ieee/
 - experiment/code/archive/md_old/
