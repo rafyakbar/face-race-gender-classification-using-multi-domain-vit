@@ -27,8 +27,28 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
-sekarang tolong audit "I. INTRODUCTION - Paragraph 3 & Paragraph 4" dan "II. RELATED WORKS" apakah sudah sesuai dengan "related_works/" atau belum, delegasikan ke subagent
+perbaiki paper_outline_v1.1.md:
+III. MATERIALS AND METHODS:
+A. Dataset: nama kolom pada Table I jangan terlalu panjang
+B. Vision Transformer:
+    - judul terlalu panjang.
+    - target kata harus per paragraf, tidak boleh gabungan.
+    - mengenai " (3) Model card tidak mendokumentasikan korpus pra-latih (klaim "VGGFace2" dan "FER-2013" pada draf lama tidak terverifikasi dan dihapus; jangan ditulis ulang tanpa sumber": ini sumbernya ada pada penelitian sebelumnya yang authornya ada nama rezky nya, coba cek.
+C., D., E., F.: ubah target kata menjadi 100-125 kata
+H. Evaluation Metrics: namanya cukup evaluation metrics saja.
+perbaiki dengan sangat amat teliti, jika ingin cek-cek folder atau file terkait bisa delegasi subagent.
 
+
+perbaiki paper_outline_v1.1.md:
+III. MATERIALS AND METHODS:
+A. Dataset: nama kolom pada Table I jangan terlalu panjang
+B. Vision Transformer:
+	- judul terlalu panjang.
+	- target kata harus per paragraf, tidak boleh gabungan.
+	- mengenai " (3) Model card tidak mendokumentasikan korpus pra-latih (klaim "VGGFace2" dan "FER-2013" pada draf lama tidak terverifikasi dan dihapus; jangan ditulis ulang tanpa sumber": ini sumbernya ada pada penelitian sebelumnya yang authornya ada nama rezky nya, coba cek.
+C., D., E., F.: ubah target kata menjadi 100-125 kata
+H. Evaluation Metrics: namanya cukup evaluation metrics saja.
+perbaiki dengan sangat amat teliti, jika ingin cek-cek folder atau file terkait bisa delegasi subagent.
 
 sekarang tolong audit "I. INTRODUCTION - Paragraph 3 & Paragraph 4" dan "II. RELATED WORKS" apakah sudah sesuai dengan "related_works/" atau belum, delegasikan ke subagent
 

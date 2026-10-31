@@ -113,6 +113,34 @@ Sesi kerja ini berfokus pada penyempurnaan dokumen panduan penulisan naskah revi
   3. **Pembersihan Rujukan II.C Paragraf 1:** Menghapus entri Ramachandran & Rattani (2023) dari daftar sumber II.C Paragraf 1 karena fokus paper tersebut berada pada mitigasi bias generatif di II.B Paragraf 2.
   4. **Koreksi Ekspansi Jurnal JIEET (Putri et al. 2025):** Memperbaiki penulisan kepanjangan JIEET dari *Journal of Integrated and Advanced Engineering* menjadi nama resmi *Journal of Information Engineering and Educational Technology* (UNESA).
 
+
+### D. Penyempurnaan Section III (Materials and Methods) Sesuai Panduan Penulisan & Verifikasi Literatur
+* **Permintaan Pengguna:**
+  ```text
+  perbaiki paper_outline_v1.1.md:
+  III. MATERIALS AND METHODS:
+  A. Dataset: nama kolom pada Table I jangan terlalu panjang
+  B. Vision Transformer:
+      - judul terlalu panjang.
+      - target kata harus per paragraf, tidak boleh gabungan.
+      - mengenai " (3) Model card tidak mendokumentasikan korpus pra-latih (klaim "VGGFace2" dan "FER-2013" pada draf lama tidak terverifikasi dan dihapus; jangan ditulis ulang tanpa sumber": ini sumbernya ada pada penelitian sebelumnya yang authornya ada nama rezky nya, coba cek.
+  C., D., E., F.: ubah target kata menjadi 100-125 kata
+  H. Evaluation Metrics: namanya cukup evaluation metrics saja.
+  perbaiki dengan sangat amat teliti, jika ingin cek-cek folder atau file terkait bisa delegasi subagent.
+  ```
+* **Tindakan yang Diambil:**
+  1. **Table I Header:** Memadatkan nama kolom tabel partisi dataset dari yang panjang menjadi ringkas dan proporsional untuk layout IEEE: `| Subgroup | Race | Gender | Subjects | Train (80%) | Test (20%) | Total Images |`.
+  2. **Section III.B (Vision Transformer Feature Extraction):**
+     - Memadatkan judul subseksi dari `### B. Vision Transformer Multi-Domain Feature Extraction` menjadi `### B. Vision Transformer Feature Extraction` (selaras dengan contoh konvensi pada `rules/md_rules.txt`).
+     - Memecah target kata gabungan menjadi target mandiri per paragraf: **Paragraph 1: 110–130 kata** dan **Paragraph 2: 110–130 kata**.
+     - Mengaudit dan menyitasi korpus fine-tuning domain spesifik dari studi prekursor terdahulu yang ditulis oleh Rezky Arisanti Putri:
+       * **VGGFace2** untuk `ViT-Face` (`skutaada/VIT-VGGFace`) disitasi dari Putri et al. (IEEE ICVEE 2025) dan Putri et al. (JIEET 2025).
+       * **FER-2013** untuk `ViT-Emotion` (`dima806/facial_emotions_image_detection`) disitasi dari Putri et al. (IEEE ICVEE 2025).
+       * **UTKFace dan IMDB-WIKI** untuk `ViT-Age` (`dima806/facial_age_image_detection`) disitasi dari Putri et al. (JIEET 2025).
+       * Memperbarui teks Paragraf 2, kolom deskripsi Table II, serta Catatan Verifikasi Table II Butir (3) dengan sitasi formal ke paper Putri et al. (2025).
+  3. **Section III.C s.d. III.F (Target Kata Classifier):** Menyeragamkan target kata keempat algoritma pengklasifikasi (Random Forest, Gaussian Naive Bayes, Logistic Regression, dan Support Vector Machine) menjadi **100–125 kata**.
+  4. **Section III.H Title:** Menyederhanakan judul subseksi dari `### H. Evaluation Metrics & Statistical Testing` menjadi `### H. Evaluation Metrics`.
+
 ---
 
 ## 3. HASIL VERIFIKASI FILE
