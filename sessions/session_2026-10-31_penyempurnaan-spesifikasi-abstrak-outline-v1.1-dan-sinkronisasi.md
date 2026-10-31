@@ -68,6 +68,36 @@ Sesi kerja ini berfokus pada penyempurnaan dokumen panduan penulisan naskah revi
      - **Kesimpulan**: Menguantifikasi penurunan nominal 5.09 pp akibat efek memorisasi identitas dan membuktikan generalisasi fusi fitur multi-domain pada subjek baru.
      - **Keywords**: `Biometrics, face recognition, feature extraction, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer.`
 
+
+### B. Penegakan Aturan Sitasi Global & Pembersihan Struktur Outline (Introduction & Related Works)
+* **Permintaan Pengguna:**
+  ```text
+  perbaiki paper_outline_v1.1.md:
+  GLOBAL:
+  - tambahkan aturan pada paper outline dan pada folder rules, kalau per kalimat itu hanya maksimal 2 sitasi.
+  I. INTRODUCTION:
+  - tidak usah ada diagram narasi pada paper outline.
+  - Paragraph 3: ubah target kata menjadi 135–250. dan beri note kalau per kalimat itu hanya maksimal 2 sitasi.
+  - Paragraph 5: jangan ada kata [CLS].
+  II. RELATED WORKS:
+  - tidak usah ada struktur seperti II. RELATED WORKS
+  ├── A.
+  perbaiki dengan sangat amat teliti, jika ingin cek-cek folder terkait bisa delegasi subagent.
+  ```
+* **Tindakan yang Diambil:**
+  1. **Folder Rules (`rules/`):**
+     - Memperbarui `rules/latex_rules.txt` (subseksi 6.1) dari batas 4 sitasi menjadi: *"Maksimal 2 sitasi dalam satu kalimat untuk mencegah penumpukan (*citation dumping*) dan menjaga keterbacaan naskah."*
+     - Memperbarui `rules/md_rules.txt` (subseksi 7.4) dari batas 4 sitasi menjadi: *"Maksimal 2 sitasi dalam satu kalimat untuk mencegah penumpukan sitasi (citation dumping) dan menjaga kepadatan sintaksis."*
+  2. **Global Rules pada `paper_outline_v1.1.md`:**
+     - Menambahkan Butir 8 pada Allowed Claims: *"Disiplin Sitasi Per Kalimat (Maksimal 2 Sitasi)"*.
+     - Menambahkan Butir 5 pada Negative Constraints: *"Dilarang menumpuk lebih dari 2 sitasi dalam satu kalimat"*.
+  3. **Introduction (`paper_outline_v1.1.md`):**
+     - Menghapus diagram alur naratif ASCII 7 paragraf di bawah heading `## I. INTRODUCTION`.
+     - Mengubah target kata Paragraph 3 dari 135–225 kata menjadi **135–250 kata**, serta mempertegas catatan aturan sitasi: *"Ditetapkan aturan ketat bahwa per kalimat hanya maksimal 2 sitasi untuk menjaga keterbacaan naskah dan mencegah penumpukan sitasi (*citation dumping*)"*.
+     - Menghapus penyebutan token arsitektur `[CLS]` pada Paragraf 5 Poin 2, diselaraskan menjadi: *"Ekstraksi representasi laten visual dilakukan secara offline dari backbone Vision Transformer pra-latih yang dibekukan (frozen)..."*.
+  4. **Related Works (`paper_outline_v1.1.md`):**
+     - Menghapus struktur pohon ASCII `II. RELATED WORKS ├── A. ...` sehingga outline bersih dari diagram struktural yang tidak diperlukan.
+
 ---
 
 ## 3. HASIL VERIFIKASI FILE
