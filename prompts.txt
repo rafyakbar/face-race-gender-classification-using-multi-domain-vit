@@ -12,11 +12,12 @@ perhatikan:
 - untuk .ipynb gantinya ada pada experiment/code/md/
 
 pelajari:
-- README.md
-- paper/
-- paper_reviews_ieee/
-- experiment/code/archive/md_old/
-- experiment/code/md/
+1. README.md
+2. paper/
+3. paper_reviews_ieee/
+4. experiment/code/archive/md_old/
+5. experiment/code/md/
+6. paper_outline_v1.1.md (ini paper outline yang baru)
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -25,20 +26,24 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+untuk itu bisa dicek dan dihitung dari:
+- experiment/code/md/1.1_vit-age.md
+- experiment/code/md/1.1_vit-emotion.md
+- experiment/code/md/1.1_vit-face.md
+- experiment/code/md
+coba cek dengan sangat amat teliti
+
+tolong audit paper_outline_v1.1.md apakah sudah sesuai dengan paper_reviews_ieee atau belum
+
+sekarang fokus pada komentar Reviewer 1 mengenai Perancangan Ulang dan Penjelasan Figure 3 (paper_reviews_ieee/Comments.md). apakah images/vit_v2.2.pptx sudah sesuai?
+
+sekarang fokus pada komentar Reviewer 1 mengenai Perancangan Ulang dan Penjelasan Figure 3 (paper_reviews_ieee/Comments.md). tolong perbaiki images/vit.pptx (jangan diedit, buat file baru)
+
 coba cek images/vit_v2.0.png apakah sudah sesuai dengan Reviewer 1 yang meminta desain ulang Figure 3 yang kurang jelas?
 
 buatkan prompt agar ai agent lain memperbaiki gambar tersebut
 
 jangan terlalu panjang, cukup satu paragraf singkat saja, tuliskan pada prompts.txt
-
-# ------------------------------------------------------------------------------
-# PROMPT SINGKAT UNTUK AI AGENT (PERBAIKAN FIGURE 3 - images/vit_v2.0.png):
-# ------------------------------------------------------------------------------
-Redesign and enhance `images/vit_v2.0.png` to satisfy Reviewer 1's feedback by explicitly illustrating the novelty of our proposed method while preserving its existing clean visual style and technical clarity: extend the right side of the diagram (after the layer-12 [CLS] token extraction) to demonstrate that this ViT feature extraction pipeline is deployed across three frozen task-specific backbones (`ViT-Face`, `ViT-Emotion`, and `ViT-Age`) yielding three 768-D latent vectors (f_face, f_emotion, f_age), which are then fused via direct sum concatenation into a unified 2,304-dimensional vector z_tri = f_face ⊕ f_emotion ⊕ f_age in R^2304 before feeding into downstream classical classifiers for 6-class intersectional demographic recognition.
-
-(Versi Bahasa Indonesia):
-Perbaiki dan lengkapi gambar `images/vit_v2.0.png` agar memenuhi masukan Reviewer 1 (menonjolkan kebaruan metode yang diusulkan) dengan tetap mempertahankan gaya visual dan ketajaman yang ada: pada bagian kanan diagram (setelah ekstraksi token [CLS] layer ke-12), perluas alur untuk menunjukkan bahwa mekanisme ekstraksi ViT-Base ini dieksekusi secara paralel pada tiga model backbone pra-latih yang dibekukan (`ViT-Face`, `ViT-Emotion`, dan `ViT-Age`) menghasilkan tiga vektor representasi 768-D (f_face, f_emotion, f_age), yang kemudian difusikan melalui operasi konkatenasi direct sum menjadi vektor terpadu 2.304 dimensi z_tri = f_face ⊕ f_emotion ⊕ f_age in R^2304 menuju pengklasifikasi hilir untuk pengenalan 6 kelas interseksional demografis wajah.
-# ------------------------------------------------------------------------------
 
 paper_outline_v1.1.md:
 Global:

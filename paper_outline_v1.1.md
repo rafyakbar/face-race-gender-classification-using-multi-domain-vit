@@ -22,7 +22,7 @@
    - Model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) terbukti **setara secara statistik** (*statistically equivalent*, $p = 1.0000$, selisih bersih hanya +1 citra).
    - Penambahan domain usia biologis pada SVM dikualifikasikan secara jujur mengalami **kejenuhan representasi fitur laten asimtotik (*asymptotic feature saturation*)** ($p = 0.7343 > 0.05$), sementara pada LR linier memberikan kenaikan signifikan ($p = 0.0073 < 0.01$).
 4. **Keunggulan Efisiensi Komputasi Ekstrem (Jawaban Reviewer 1 #5 & Reviewer 2 #8)**:
-   - Meskipun akurasinya ekuivalen dengan SVM, Logistic Regression menawarkan inferensi **>820× lebih cepat** (**0.0054 ms/sampel** vs 4.4481 ms pada SVM) dan ukuran penyimpanan model **>330× lebih ringkas** (**0.11 MB** vs 36.60 MB pada SVM), menetapkannya sebagai model terbaik untuk implementasi komputasi tepi (*Edge AI / Mobile deployment*).
+   - Melaporkan 5 dimensi efisiensi komputasi yang diminta R2 #8 hanya dengan angka yang **terukur dan terlacak ke log/JSON eksperimen**: (1) waktu ekstraksi fitur ViT offline (terukur pada **CPU**: Face 467,0 ms, Emotion 476,7 ms, Age 543,1 ms per citra; **~1.487 ms** untuk tri-domain; dihitung dari log `1.1_vit-*.md`), (2) durasi pelatihan 5-Fold GridSearchCV (LR Tri: **3.287,07 detik / 54,78 menit** vs SVM Tri: **30.666,02 detik / 511,10 menit**, atau **9,3× lebih cepat dilatih**; dari `train_time_seconds` pada JSON), (3) latensi inferensi per sampel (**0.0054 ms/sampel** pada LR vs 4.4481 ms pada SVM; **>820× lebih cepat**), (4) ukuran *feature cache* (30.8 MB/domain atau 92.4 MB untuk Tri-Domain; konsumsi *peak RAM* **belum diukur** dan wajib diprofilkan sebelum diklaim), serta (5) ukuran penyimpanan model (**0.11 MB** pada LR vs 36.60 MB pada SVM; **>330× lebih ringkas**), menetapkan Logistic Regression sebagai model paling optimal untuk komputasi tepi (*Edge AI / Mobile deployment*).
 5. **Kalibrasi Klaim Keadilan Algoritmik (Jawaban Reviewer 2 #6)**:
    - Metrik *Equal Opportunity Difference* ($\text{EOD} = 9.72\text{ pp}$ antara White Males 94.44% vs Black Females 84.72%) dilaporkan murni sebagai indikator disparitas performa subkelompok empiris, dan secara tegas **tidak diklaim sebagai jaminan keadilan algoritmik universal**.
 6. **Konteks Komparasi Literatur (Jawaban Reviewer 1 #6 & Reviewer 2 #7)**:
@@ -50,7 +50,7 @@
 ### Authors & Affiliations (5 Penulis Sesuai Formulir Byline Change IEEE Access)
 1. **Dr. Ir. Ricky Eka Putra, S.Kom., M.Kom.** ([ORCID: 0000-0002-5515-7967](https://orcid.org/0000-0002-5515-7967)) — *Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia* (Corresponding Author: `rickyeka@unesa.ac.id`)
 2. **Rezky Arisanti Putri, S.Kom., M.Kom.** ([ORCID: 0009-0000-8021-1833](https://orcid.org/0009-0000-8021-1833)) — *Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia*
-3. **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID: 0001-9719-3491](https://orcid.org/0001-9719-3491)) — *Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia*
+3. **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID: 0000-0001-9719-3491](https://orcid.org/0000-0001-9719-3491)) — *Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia*
 4. **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID: 0009-0003-6991-0694](https://orcid.org/0009-0003-6991-0694)) — *Department of Informatics, Faculty of Informatics, Universitas Negeri Surabaya, Surabaya 60231, Indonesia*
 5. **Assoc. Prof. Dr. Shukor Sanim Mohd Fauzi** ([ORCID: 0000-0003-4333-7853](https://orcid.org/0000-0003-4333-7853)) — *School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA, Cawangan Perlis, Kampus Arau, 02600 Arau, Perlis, Malaysia* (`shukorsanim@uitm.edu.my`)
 
@@ -362,7 +362,13 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
   - **Elemen Wajib**: **Figure 3** (Diagram Vektor Resolusi Tinggi 300+ DPI Arsitektur Ekstraksi ViT Paralel & Fusi Konkatenasi, Full Width `\begin{figure*}`).
     *Caption:* **Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
   - **Visual Markdown**:  
-    ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.0.png)
+    ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
+  - **Panduan Narasi Figure 3 (Jawaban R1 #3 *"explained in better way to show the novelty"*)**: Narasi wajib merujuk eksplisit ke nomor tahapan pada gambar:
+    1. **Tahap ①–④ (Tokenisasi, Persamaan 5-6)**: Citra $224 \times 224 \times 3$ dipartisi menjadi 196 patch $16 \times 16$ (Tahap ②), diproyeksikan linier ke $D = 768$ (Tahap ③), lalu ditambah token `[CLS]` dan $\mathbf{E}_{\text{pos}}$ menjadi 197 token (Tahap ④).
+    2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik, tetapi *image processor* tiap checkpoint berbeda (Table II).
+    3. **Tahap ⑤ (Persamaan 7)**: Ketiga backbone yang dibekukan menghasilkan $\mathbf{f}_{\text{face}}, \mathbf{f}_{\text{emotion}}, \mathbf{f}_{\text{age}} \in \mathbb{R}^{768}$ dari token `[CLS]` layer 12.
+    4. **Tahap ⑥–⑦ (Persamaan 8, 12)**: Fusi $\oplus$ menghasilkan $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ yang diteruskan ke empat pengklasifikasi (LR, SVM, RF, GNB) untuk 6 kelas interseksional.
+    5. **Posisi Kebaruan**: Novelty dinyatakan pada tingkat *kerangka evaluasi* (fusi tri-domain tanpa fine-tuning + protokol subject-disjoint + uji inferensial + profil efisiensi), **bukan** pada arsitektur ViT yang digunakan apa adanya. Jangan mengklaim arsitektur ViT baru.
 - **Paragraf 2 (Spesifikasi Checkpoint HuggingFace & Fusi Konkatenasi)**:
   - Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen*):
     1. `ViT-Face` (`skutaada/VIT-VGGFace`): Pretrained pada VGGFace2 untuk biometrik geometri kraniofasial statis.
@@ -378,12 +384,13 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 
 **Table II. Pre-trained Vision Transformer Backbone Specifications and Preprocessing Parameters.**
 
-| Domain Model | HuggingFace Checkpoint Identifier | Pre-training Task & Corpus | Input Size | Per-Channel Normalization ($\mu, \sigma$) | Output Representation |
-|---|---|---|:---:|---|:---:|
-| **`ViT-Face`** | `skutaada/VIT-VGGFace` | Facial Biometrics (VGGFace2) | $224 \times 224 \times 3$ | $\mu = [0.485, 0.456, 0.406]$, $\sigma = [0.229, 0.224, 0.225]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Emotion`** | `dima806/facial_emotions_image_detection` | Facial Expression (FER-2013) | $224 \times 224 \times 3$ | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Age`** | `dima806/facial_age_image_detection` | Biological Age Estimation | $224 \times 224 \times 3$ | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| Domain Model | HuggingFace Checkpoint (Revision SHA) | Base Model & Task | Input Size | Resize / Interpolation | Per-Channel Normalization ($\mu, \sigma$) | Output Representation |
+|---|---|---|:---:|:---:|---|:---:|
+| **`ViT-Face`** | `skutaada/VIT-VGGFace` (`e85f0c9`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; facial identity/biometrics | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| **`ViT-Emotion`** | `dima806/facial_emotions_image_detection` (`747cf16`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; facial emotion classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| **`ViT-Age`** | `dima806/facial_age_image_detection` (`ad35933`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; age-bin classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
 
+> **Catatan Verifikasi Table II (diverifikasi dari `preprocessor_config.json`, `config.json`, dan model card HuggingFace pada 2026-10-31):** (1) Ketiga checkpoint memakai `image_mean = image_std = [0.5, 0.5, 0.5]`; nilai ImageNet `[0.485, 0.456, 0.406]` yang sebelumnya tertulis untuk ViT-Face **salah dan sudah dikoreksi**. (2) Ketiganya adalah ViT-Base/16 (12 layer, hidden 768) hasil fine-tuning dari `google/vit-base-patch16-224-in21k`. (3) Model card **tidak mendokumentasikan korpus pra-latih** (klaim "VGGFace2" dan "FER-2013" pada draf lama tidak terverifikasi dan dihapus; jangan ditulis ulang tanpa sumber). (4) SHA adalah HEAD `main` saat diambil; **konfirmasi bahwa revisi tidak berubah sejak ekstraksi fitur** atau pin SHA tersebut pada `from_pretrained(..., revision=...)` sebelum submit. (5) Ekstraksi memakai `AutoImageProcessor` dan `model.vit(...).last_hidden_state[:, 0, :]` dengan `torch.no_grad()` (`utils/extraction.py`). **Perhatikan:** kode ekstraksi mengambil `last_hidden_state`, yang sudah melewati `LayerNorm` akhir pada `ViTModel`, sehingga selaras dengan Eq. (7).
 **Table III. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
 
 | # | Feature Scheme | Category | Input Source Domains | Feature Dimension |
@@ -480,7 +487,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 - **Paragraf 4 (Support Vector Machine — Table XI — Model Runner-up 1)**:
   - SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih Akurasi **88.61%**, Macro F1 **0.8863**, 95% Wilson CI **[87.20%, 89.88%]** ($C=10$, kernel RBF, gamma scale, tanpa PCA). Dual-domain `Emotion ⊕ Face` mencapai 88.43%.
 - **Paragraf 5 (Sintesis Global 28 Model)**:
-  - Urutan rerata performa lintas famili: $\text{SVM } (86.81\%) > \text{LR } (86.18\%) > \text{RF } (80.57\%) > \text{GNB } (78.37\%)$.
+  - Urutan rerata performa lintas famili: $\text{SVM } (86.47\%) > \text{LR } (86.18\%) > \text{RF } (80.57\%) > \text{GNB } (78.37\%)$ (rerata akurasi 7 skema fitur per famili; angka SVM dikoreksi dari 86.81% setelah dihitung ulang dari JSON).
 - **Elemen Wajib**:
   - **Table VIII** (Hasil Evaluasi Subject-Disjoint Random Forest).
   - **Table IX** (Hasil Evaluasi Subject-Disjoint Gaussian Naive Bayes).
@@ -499,7 +506,8 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 - **Paragraf 2 (Pengujian Signifikansi Inferensial McNemar — Table XIII)**:
   - **Multi-domain vs Single Face**: SVM Tri vs Face ($+2.45\text{ pp}$, $\chi^2 = 20.9612, p = 3.46 \times 10^{-6} < 0.001$) dan LR Tri vs Face ($+2.27\text{ pp}$, $\chi^2 = 19.6923, p = 6.78 \times 10^{-6} < 0.001$) terbukti signifikan secara statistik, menolak hipotesis bahwa peningkatan fusi hanyalah artefak kebocoran data.
   - **Tri vs Dual (Saturasi Fitur Asimtotik)**: SVM Tri vs Dual ($+0.19\text{ pp}$, $+4\text{ citra}$, $p = 0.7343$) mengonfirmasi kejenuhan representasi laten pada model non-linier RBF, sedangkan pada LR linier penambahan usia memberikan kenaikan signifikan ($+1.20\text{ pp}$, $+26\text{ citra}$, $p = 0.0073 < 0.01$).
-  - **Paritas Prediktif LR vs SVM**: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.0000$ dan $p = 1.0000$ (selisih bersih +1 citra), mengonfirmasi kesetaraan inferensial keduanya.
+  - **Paritas Prediktif LR vs SVM**: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.0000$ dan $p = 1.0000$ (selisih bersih +1 citra). Karena $p > 0.05$, hasil ini hanya menunjukkan **tidak adanya bukti perbedaan**; frasa "setara/ekuivalen" tidak boleh diartikan sebagai ekuivalensi terbukti (itu memerlukan uji ekuivalensi seperti TOST). Gunakan "tidak berbeda secara signifikan".
+  - **Catatan p-value (diverifikasi ulang dari `y_test`/`y_pred`)**: Nilai $p$ pada Table XIII ($3.46 \times 10^{-6}$, $6.78 \times 10^{-6}$, $0.0073$, $0.7343$, $1.0000$) adalah **p eksak binomial dua arah**, bukan p dari distribusi $\chi^2$. Statistik $\chi^2$ (20.9612, 19.6923, 7.1023, 0.1154, 0.0000) dilaporkan berdampingan; kedua kolom harus diberi label terpisah agar tidak tertukar. Seluruh nilai telah direproduksi dan cocok.
 - **Elemen Wajib**:
   - **Table XII** (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint).
   - **Table XIII** (Hasil Uji McNemar Berpasangan dan Exact Binomial Test).
@@ -507,24 +515,27 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 ### C. Computational Efficiency Profiling
 > **Catatan Respons Reviewer (R1 Poin 5 & R2 Poin 8):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta evaluasi biaya waktu (*"consider the time cost in the evaluation"*), dan Reviewer 2 meminta profil komputasi lengkap (*"report feature extraction time, classifier training time, inference latency, memory consumption, and model storage"*).  
-> - **Rencana Mitigasi:** Menyajikan subseksi khusus dengan Tabel XIV yang merinci durasi ekstraksi GPU (~45.6 ms/citra), latensi inferensi per sampel (LR 0.0054 ms vs SVM 4.4481 ms; >820× lebih cepat), dan ukuran penyimpanan model (LR 0.11 MB vs SVM 36.60 MB; >330× lebih ringkas) untuk membuktikan keunggulan implementasi Edge AI.
-- **Target Kata**: 180–220 kata (1–2 paragraf).
-- **Poin Narasi**:
-  1. Durasi ekstraksi fitur ViT offline pada GPU NVIDIA: ~15.2 ms/citra per domain (~45.6 ms untuk fusi tri-domain).
-  2. Latensi inferensi pengklasifikasi per sampel: **Logistic Regression mencatat 0.0054 ms/sampel**, >820× lebih cepat dari SVM (4.4481 ms) dan 10× lebih cepat dari Random Forest (0.0537 ms).
-  3. Jejak penyimpanan model (*model footprint*): **LR hanya membutuhkan 0.11 MB**, >330× lebih ringkas dari bobot kernel SVM (36.60 MB) dan Random Forest (6.19 MB).
-  4. Penegasan bahwa kombinasi `ViT Offline + Logistic Regression` merupakan arsitektur paling ideal dan tangguh untuk penyebaran pada komputasi tepi (*Edge AI / Internet of Things*).
+> - **Rencana Mitigasi:** Menyajikan subseksi khusus dengan Tabel XIV yang merinci durasi ekstraksi terukur pada CPU (Face 467,0 ms, Emotion 476,7 ms, Age 543,1 ms; tri-domain ~1.487 ms/citra), durasi pelatihan 5-fold (LR Tri 54,8 menit vs SVM Tri 511,1 menit; 9,3× lebih cepat), latensi inferensi per sampel (LR 0.0054 ms vs SVM 4.4481 ms; >820× lebih cepat), dan ukuran penyimpanan model (LR 0.11 MB vs SVM 36.60 MB; >330× lebih ringkas) untuk membuktikan keunggulan komputasi pengklasifikasi hilir yang sangat ringan.
+- **Target Kata**: 220–260 kata (2 paragraf).
+- **Poin Narasi (semua angka terlacak ke log/JSON eksperimen)**:
+  1. **Ekstraksi fitur offline (CPU, dari log `1.1_vit-*.md`, 10.800 citra)**: Face 1:24:04 (467,0 ms/citra), Emotion 1:25:48 (476,7 ms/citra), Age 1:37:45 (543,1 ms/citra); tri-domain **~1.487 ms/citra** (jumlah ketiganya, karena dijalankan sekuensial). Biaya satu kali ini bersifat *offline* dan dapat di-*cache* (30.8 MB per domain).
+  2. **Durasi pelatihan 5-Fold GridSearchCV (field `train_time_seconds`)**: LR Tri 3.287,07 s (54,78 menit); RF Tri 6.628,03 s (110,47 menit); SVM Tri 30.666,02 s (511,10 menit); GNB Tri 3.250,06 s (54,17 menit). LR dilatih **9,3× lebih cepat** daripada SVM pada konfigurasi yang sama.
+  3. **Latensi inferensi pengklasifikasi**: LR **0.0054 ms/sampel**, >820× lebih cepat dari SVM (4.4481 ms) dan ~10× lebih cepat dari RF (0.0537 ms).
+  4. **Ukuran model tersimpan**: LR **0.11 MB**, >330× lebih ringkas dari SVM (36.60 MB) dan ~56× dari RF (6.19 MB).
+  5. **Kualifikasi wajib (kalibrasi klaim Edge AI)**: Latensi pengklasifikasi diukur sebagai rata-rata *batch predict* atas 2.160 sampel (`inf_elapsed / len(x_test)`), bukan latensi satu sampel tunggal. Selain itu, pada pipeline lengkap biaya didominasi tiga forward pass ViT-Base (~1.487 ms/citra pada CPU), sehingga keunggulan >820× LR hanya berarti pada tahap klasifikasi dan **tidak** mengubah ordo latensi ujung-ke-ujung. Klaim "cocok untuk Edge AI" harus dibingkai sebagai "pengklasifikasi hilir yang sangat ringan", bukan "sistem lengkap berlatensi rendah".
+  6. **Memori (R2 #8)**: Ukuran *feature cache* tersedia (92.4 MB untuk tri-domain). **Konsumsi RAM/VRAM puncak belum pernah diukur**; angka "~2.4 GB" dan "~15.2 ms GPU" serta "~3.8 jam" pada `10_response_letter_skeleton.md` **tidak terdukung log mana pun** dan harus diganti dengan hasil pengukuran ulang (mis. `tracemalloc`/`psutil` untuk RAM, `torch.cuda.max_memory_allocated` bila memakai GPU) sebelum submit.
 - **Elemen Wajib**: **Table XIV** (Profil Efisiensi Waktu dan Jejak Komputasi Komparatif).
 
 **Table XIV. Comprehensive Computational Efficiency and Memory Footprint Profile.**
 
-| Classifier Model | Feature Scheme | Feature Dimension | Offline Extraction Time (GPU) | Inference Latency (ms/sample) | Speedup vs SVM | Serialized Model Size (MB) | Size Reduction vs SVM | Target Deployment Environment |
-|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| **Logistic Regression (LR)** | **Tri-Domain** | **2,304** | **~45.6 ms** | **0.0054 ms** | **823.7×** | **0.11 MB** | **332.7×** | **Edge AI / Mobile / Embedded Systems** |
-| Support Vector Machine (SVM) | Tri-Domain | 2,304 | ~45.6 ms | 4.4481 ms | 1.0× (Baseline) | 36.60 MB | 1.0× (Baseline) | High-Performance Server / Cloud |
-| Random Forest (RF) | Tri-Domain | 2,304 | ~45.6 ms | 0.0537 ms | 82.8× | 6.19 MB | 5.9× | Server / Desktop |
-| Gaussian Naive Bayes (GNB) | Dual-Domain | 1,536 | ~30.4 ms | 0.0083 ms | 535.9× | 0.78 MB | 46.9× | Embedded Systems |
+| Classifier Model | Feature Scheme | Feature Dim. | Offline Extraction (CPU, ms/image) | GridSearchCV Training Time | Inference Latency (ms/sample, batch-avg) | Speedup vs SVM | Serialized Model Size (MB) | Size Reduction vs SVM | Peak RAM |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Logistic Regression (LR)** | **Tri-Domain** | **2,304** | **~1,487** | **3,287 s (54.8 min)** | **0.0054** | **823.7×** | **0.11** | **332.7×** | *TBD (to be measured)* |
+| Support Vector Machine (SVM) | Tri-Domain | 2,304 | ~1,487 | 30,666 s (511.1 min) | 4.4481 | 1.0× (Baseline) | 36.60 | 1.0× (Baseline) | *TBD* |
+| Random Forest (RF) | Tri-Domain | 2,304 | ~1,487 | 6,628 s (110.5 min) | 0.0537 | 82.8× | 6.19 | 5.9× | *TBD* |
+| Gaussian Naive Bayes (GNB) | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | ~944 | 1,529 s (25.5 min) | 0.0083 | 535.9× | 0.78 | 46.9× | *TBD* |
 
+> **Catatan Table XIV:** Waktu pelatihan mencakup seluruh GridSearchCV 5-fold untuk satu konfigurasi fitur (LR 1.350 fits, SVM 1.440, RF 1.440, GNB Dual 1.200) ditambah refit akhir, sebagai *wall-clock*. Seluruh baris pada tabel adalah konfigurasi puncak masing-masing famili (GNB puncak pada Dual-Domain). Kolom *Peak RAM* sengaja dibiarkan *TBD* sampai diukur.
 ### D. Intersectional Subgroup Performance and Fairness Calibration
 > **Catatan Respons Reviewer (R2 Poin 6):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi ruang lingkup dan batasan analisis keadilan algoritmik (*"reported EOD values do not establish comprehensive demographic fairness... clarify scope and limitations"*).  
@@ -542,36 +553,59 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 ### E. Error Pattern Assessment
 > **Catatan Respons Reviewer (R1 Poin 4 & R2 Poin 9):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta pembahasan grafik Figure 4 yang lebih mendalam (*"graph in figure 4 needs to be discussed in better way"*), dan Reviewer 2 mengingatkan agar tidak berspekulasi fenotipik berlebihan tanpa landasan data (*"interpretations concerning phenotypic overlap... should be qualified"*).  
-> - **Rencana Mitigasi:** Menganalisis secara mendalam matriks konfusi 6×6 Gambar 4 (penurunan total salah prediksi dari 294 ke 245 citra), membuktikan minimnya kesalahan lintas-gender (<0.4%), dan membatasi interpretasi tumpang tindih visual murni berdasarkan frekuensi sel off-diagonal matriks konfusi.
-- **Target Kata**: 280–340 kata (3 paragraf).
-- **Paragraf 1 (Dinamika Kesalahan 6×6 Figure 4)**:
-  - Menganalisis matriks konfusi 6×6 pada data uji held-out ($N = 2.160$). Total kesalahan klasifikasi menurun dari 294 citra (Single Face 86.39%) menjadi 271 citra (Dual Emotion+Face 87.45%) dan mencapai titik terendah 245 citra pada Tri-Domain (88.66%).
-- **Paragraf 2 (Dominasi Kesalahan Intra-Gender Lintas-Ras vs Minimnya Gender Confusion)**:
-  - Kesalahan mayoritas terkonsentrasi antar-ras dalam gender yang sama (*same-gender cross-race*), misalnya `Asian_Females` keliru diprediksi sebagai `White_Females` atau `Black_Females`.
-  - Sebaliknya, kesalahan lintas-gender (*cross-gender confusion*, misal wanita diprediksi pria) mendekati **0% (<0.4%)**, membuktikan bahwa representasi ViT mampu mengisolasi fitur gender secara kokoh.
-- **Paragraf 3 (Kualifikasi Interpretasi Fenotipik Empiris)**:
-  - Membatasi pernyataan tumpang tindih visual murni berdasarkan frekuensi sel *off-diagonal* matriks konfusi tanpa spekulasi biologis berlebih.
-- **Elemen Wajib**: **Figure 4** (Matriks Konfusi Komparatif 6×6: Single, Dual, Tri-Domain pada Subject-Disjoint Test Set, Full Width `\begin{figure*}`).
-  *Caption:* **Figure 4. Comparative 6×6 Confusion Matrices on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.**
+> - **Rencana Mitigasi:** Menganalisis secara mendalam matriks konfusi 6×6 Gambar 4 (penurunan total salah prediksi dari 294 ke 245 citra), mengkuantifikasi proporsi kesalahan intra-gender lintas-ras (67,3% dari seluruh kesalahan LR Tri) versus lintas-gender (80 citra atau 3,70% dari N; 32,7% dari kesalahan), dan membatasi interpretasi tumpang tindih visual murni berdasarkan frekuensi sel off-diagonal matriks konfusi.
+- **Target Kata**: 300–360 kata (3 paragraf). **Semua angka dihitung ulang dari `y_test`/`y_pred` pada JSON `demogpairs_lr_*` dan diverifikasi terhadap gambar `cm_lr_*.png`; pemetaan label memakai `DEMOGPairs_LABEL_TO_IDX`.**
+- **Paragraf 1 (Dinamika Kesalahan 6×6 Figure 4, LR)**:
+  - Total kesalahan pada data uji held-out ($N = 2.160$) menurun dari **294** citra (Single `Face`, 86.39%) menjadi **271** (Dual `Emotion ⊕ Face`, 87.45%) dan **245** (Tri-Domain, 88.66%).
+  - Komposisi kesalahan (LR): intra-gender lintas-ras (*same-gender cross-race*) **194 → 185 → 165**; lintas-gender ras sama (*same-race cross-gender*) **76 → 68 → 62**; lintas-ras sekaligus lintas-gender **24 → 18 → 18**.
+- **Paragraf 2 (Dominasi Kesalahan Intra-Gender Lintas-Ras; Kesalahan Lintas-Gender Tidak Nol)**:
+  - Pada Tri-Domain, kesalahan intra-gender lintas-ras berjumlah 165 citra (**67,3%** dari seluruh kesalahan; 7,64% dari $N$), sehingga mayoritas kesalahan memang terjadi antar-ras dalam gender yang sama. Sel terbesar: `Black_Males`→`Asian_Males` (23), `Black_Females`→`White_Females` (23), `Asian_Females`→`Black_Females` (23).
+  - **Koreksi klaim lama:** kesalahan lintas-gender **tidak** mendekati 0%. Totalnya **80 citra (3,70% dari $N$; 32,7% dari kesalahan)**, mis. `Asian_Females`→`Asian_Males` (18) dan `Asian_Males`→`Asian_Females` (17). Klaim "<0.4%" pada draf sebelumnya tidak sesuai data dan **dilarang dipakai**. Formulasi yang benar: "kesalahan lintas-gender lebih sedikit daripada kesalahan intra-gender lintas-ras, tetapi tidak dapat diabaikan".
+  - Karena `Black_Females` memiliki recall terendah (84.72%), hubungkan dengan sel `Black_Females`→`White_Females` (23) dan `Asian_Females` (17) sebagai deskripsi pola, bukan penjelasan kausal.
+- **Paragraf 3 (Kualifikasi Interpretasi Fenotipik Empiris, R2 #9)**:
+  - Batasi pernyataan hanya pada frekuensi sel *off-diagonal*. Frasa "tumpang tindih fenotipik" boleh muncul hanya sebagai kemungkinan yang **tidak diuji** (tanpa analisis tambahan seperti ablasi per-atribut atau analisis fitur, matriks konfusi saja tidak membuktikan penyebab).
+  - Kontribusi domain usia dinyatakan lewat perubahan kuantitatif yang terukur (kesalahan intra-gender lintas-ras 185 → 165; McNemar LR Tri vs Dual $p = 0.0073$), bukan lewat klaim tentang tekstur kulit atau penuaan epidermal.- **Elemen Wajib**: **Figure 4** (Matriks Konfusi Komparatif 6×6: Single, Dual, Tri-Domain pada Subject-Disjoint Test Set, Full Width `\begin{figure*}`).
+  *Caption:* **Figure 4. Comparative 6×6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.**
 - **Visual Markdown**:
   - *(a) Single-Domain Face Biometrics:*  
-    ![Figure 4(a). Confusion Matrix Single-Domain Face](images/confusion_matrix_single.png)
+    ![Figure 4(a). Confusion Matrix Single-Domain Face](images/confusion_matrix_lr_single_v1.1.png)
   - *(b) Dual-Domain Emotion ⊕ Face:*  
-    ![Figure 4(b). Confusion Matrix Dual-Domain Emotion+Face](images/confusion_matrix_dual.png)
+    ![Figure 4(b). Confusion Matrix Dual-Domain Emotion+Face](images/confusion_matrix_lr_dual_v1.1.png)
   - *(c) Tri-Domain Face ⊕ Emotion ⊕ Age:*  
-    ![Figure 4(c). Confusion Matrix Tri-Domain](images/confusion_matrix_tri.png)
+    ![Figure 4(c). Confusion Matrix Tri-Domain](images/confusion_matrix_lr_tri_v1.1.png)
 
 ### F. Contextual Comparison with Prior Studies
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta komparasi dengan metode terdahulu, dan Reviewer 2 menegaskan agar perbandingan dikualifikasikan sebagai kontekstual jika partisi datanya berbeda (*"comparison should be presented as contextual rather than a controlled benchmark"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XVI perbandingan dengan studi terdahulu pada DemogPairs (Putri et al. 2025) dengan catatan metodologis tegas bahwa studi terdahulu menggunakan protokol *subject-overlap*, sehingga model usulan merupakan tolok ukur bebas kebocoran pertama.
-- **Target Kata**: 180–220 kata (2 paragraf).
-- **Paragraf 1 (Perbandingan Metrik Kuantitatif — Table XVI)**:
-  - Membandingkan model usulan dengan studi terdahulu pada DemogPairs: MD-ViT + XGBoost (Putri et al. JIEET 2025: 89.07%), Dual-ViT + SVM (Putri et al. ICVEE 2025: 92.41%), dan baseline historis usulan (93.70%).
-- **Paragraf 2 (Kualifikasi Protokol Partisi Kontekstual)**:
-  - Memberikan catatan penegasan bahwa studi terdahulu menggunakan protokol *random stratified overlap*, sehingga perbandingan disajikan secara **kontekstual**, bukan sebagai tolok ukur terkontrol (*controlled benchmark*). Model subject-disjoint kita (88.66% LR / 88.61% SVM) merupakan tolok ukur bebas kebocoran pertama pada dataset ini.
-- **Elemen Wajib**: **Table XVI** (Perbandingan Kontekstual terhadap Studi Terdahulu pada DemogPairs).
+> - **Rencana Mitigasi:** Menyajikan Tabel XVI perbandingan dengan studi terdahulu pada DemogPairs (Putri et al. 2025) dengan catatan metodologis tegas bahwa studi terdahulu menggunakan protokol *subject-overlap*, sehingga angka terdahulu hanya dapat disajikan sebagai konteks dan tidak dapat diperingkatkan terhadap hasil subject-disjoint.
+- **Target Kata**: 220–280 kata (2 paragraf).
+- **Paragraf 1 (Dua Kelompok Pembanding, Table XVI)**:
+  - **Bagian A, komparasi kontekstual (protokol berbeda, tidak terkontrol)**: MD-ViT + XGBoost (Putri et al. JIEET 2025: 89.07%), Dual-ViT + SVM (Putri et al. ICVEE 2025: 92.41%), dan baseline historis usulan Tri-Domain + SVM pada *subject-overlap* (93.70%).
+  - **Bagian B, komparasi terkontrol (protokol identik: subject-disjoint, 480/120 subjek, GridSearchCV yang sama)**: baseline *single-domain* terbaik (`Face`: LR 86.39% / SVM 86.16%; `Emotion`: SVM 85.79%; `Age`: SVM 82.55%), RF Tri 85.00%, GNB Dual 84.31%, dibandingkan dengan LR Tri 88.66% dan SVM Tri 88.61%. Inilah jawaban R1 #6 yang dapat dipertanggungjawabkan, karena seluruhnya telah dieksperimenkan pada partisi yang sama.
+- **Paragraf 2 (Kualifikasi Protokol Partisi Kontekstual, R2 #7)**:
+  - Tegaskan bahwa Bagian A **bukan** *controlled benchmark*: studi terdahulu memakai *random stratified* tingkat citra (identitas tumpang tindih), sehingga angkanya tidak dapat dibandingkan langsung dengan 88.66% / 88.61%. Satu-satunya perbandingan yang adil terhadap hasil subject-overlap adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XII). Praproses dan *image processor* studi terdahulu belum tentu identik; nyatakan sebagai batasan.
+  - **Hindari klaim "tolok ukur bebas kebocoran pertama"** kecuali telah diverifikasi lewat pencarian literatur. Formulasi aman: "sepengetahuan penulis, belum ada hasil klasifikasi 6-kelas subject-disjoint pada DemogPairs yang dilaporkan pada studi yang kami telaah".
+  - **Peringatan konsistensi dokumen:** `10_response_letter_skeleton.md` (R1-6) menjanjikan "perluasan dari 3 menjadi 7 baseline" yang mencakup model CNN multi-task, baseline VGGFace, dan ResNet-50. **Tidak ada eksperimen untuk model tersebut di repositori.** Pilih salah satu sebelum submit: (a) menjalankan baseline tersebut pada partisi subject-disjoint yang sama (mis. ekstraksi fitur ResNet-50/VGGFace + pengklasifikasi yang sama), atau (b) merevisi surat tanggapan agar hanya menyebut baseline internal terkontrol pada Bagian B.
+- **Elemen Wajib**: **Table XVI** (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs).
 
+**Table XVI. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
+
+| Part | Method | Partition Protocol | Comparability | Accuracy | Macro F1 |
+|:---:|---|---|---|:---:|:---:|
+| A | MD-ViT (Face + Age) + XGBoost (Putri et al., JIEET 2025) | Random stratified (subject-overlap) | Contextual only | 89.07% | 0.8901 |
+| A | Dual-ViT (Face + Emotion) + SVM (Putri et al., ICVEE 2025) | Random stratified (subject-overlap) | Contextual only | 92.41% | 0.9238 |
+| A | Proposed Tri-Domain + SVM (historical baseline) | Random stratified (subject-overlap) | Contextual (same authors' protocol) | 93.70% | 0.9369 |
+| B | Single-Domain `Face` + LR | Subject-disjoint | Controlled | 86.39% | 0.8640 |
+| B | Single-Domain `Face` + SVM | Subject-disjoint | Controlled | 86.16% | 0.8619 |
+| B | Single-Domain `Emotion` + SVM | Subject-disjoint | Controlled | 85.79% | 0.8580 |
+| B | Single-Domain `Age` + SVM | Subject-disjoint | Controlled | 82.55% | 0.8258 |
+| B | Dual-Domain `Emotion ⊕ Face` + SVM | Subject-disjoint | Controlled | 88.43% | 0.8844 |
+| B | Tri-Domain + RF | Subject-disjoint | Controlled | 85.00% | 0.8493 |
+| B | Dual-Domain `Emotion ⊕ Face` + GNB | Subject-disjoint | Controlled | 84.31% | 0.8430 |
+| B | **Proposed Tri-Domain + LR** | **Subject-disjoint** | **Controlled** | **88.66%** | **0.8868** |
+| B | **Proposed Tri-Domain + SVM** | **Subject-disjoint** | **Controlled** | **88.61%** | **0.8863** |
+
+> **Catatan Table XVI:** Angka Bagian B diambil dari `experiment/code/results/*.json` (leaderboard 28 model). Angka Bagian A dikutip dari publikasi masing-masing dan tidak direproduksi ulang. Bagian A dan B tidak boleh diperingkatkan dalam satu urutan.
 ---
 
 ## V. CONCLUSION & LIMITATIONS
