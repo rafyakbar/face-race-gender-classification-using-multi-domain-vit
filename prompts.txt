@@ -27,6 +27,25 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+INI PAPER OUTLINE, JANGAN DIKASIH DRAF LANGSUNG DI SANA
+
+
+perbaiki paper_outline_v1.1.md:
+Abstract:
+- ubah target kata menjadi 150 - 250.
+- tidak usah ada kata [CLS].
+- jangan kata seperti ViT-Face/Emotion/Age, coba cek referensi abstrak yang lama (paper/00_abstract.md)
+- tidak usah menyebutkan seperti 120 subjek atau ukuran model
+- tidak usah menyebutkan seperti parameter, coba cek referensi abstrak yang lama (paper/00_abstract.md)
+- seharusnya ada juga hasil dari Zero Identity Leakage dan juga yang split stratified class biasa
+- keywordnya tetap: Biometrics, face recognition, feature extraction, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer
+- coba cek referensi abstrak yang lama (paper/00_abstract.md)
+perbaiki dengan sangat amat teliti, jika ingin cek-cek folder terkait bisa delegasi subagent.
+
+perbaiki paper outline dengan teliti
+
+saya sudah melakukan git pull, coba baca docs/sessions
+
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
 
 apa vit nya itu basicnya tensorflow ya?
