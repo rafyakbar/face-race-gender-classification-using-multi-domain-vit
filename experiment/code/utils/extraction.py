@@ -7,6 +7,16 @@ import torch
 from PIL import Image
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 
+# Global cache to prevent reloading processor from disk on every single image
+_PROCESSOR_CACHE: dict[str, AutoImageProcessor] = {}
+
+
+def get_image_processor(model_path_or_name: str) -> AutoImageProcessor:
+    """Get cached AutoImageProcessor or load and cache it."""
+    if model_path_or_name not in _PROCESSOR_CACHE:
+        _PROCESSOR_CACHE[model_path_or_name] = AutoImageProcessor.from_pretrained(model_path_or_name)
+    return _PROCESSOR_CACHE[model_path_or_name]
+
 
 def extract_vit_features(
     img: str | np.ndarray,
@@ -14,6 +24,7 @@ def extract_vit_features(
     model_path: str | None = None,
     device: Optional[torch.device] = None,
     feature_type: str = "cls",
+    processor: Optional[AutoImageProcessor] = None,
 ) -> np.ndarray:
     """
     Extract features from a ViT model using [CLS] token or mean pooling.
@@ -24,6 +35,7 @@ def extract_vit_features(
         model_path: HuggingFace model path or local directory. Must be provided if model is None.
         device: torch device. Auto-detects CUDA if None.
         feature_type: 'cls' for [CLS] token, 'pool' for mean pooling.
+        processor: Pre-loaded AutoImageProcessor. If None, uses cached processor.
 
     Returns:
         1D NumPy array of shape (hidden_dim,).
@@ -38,11 +50,12 @@ def extract_vit_features(
     model = model.to(device)
     model.eval()
 
-    if model_path is not None:
-        processor = AutoImageProcessor.from_pretrained(model_path)
-    else:
-        # Fallback ke config model jika model sudah pre-loaded
-        processor = AutoImageProcessor.from_pretrained(model.config.name_or_path)
+    if processor is None:
+        cache_key = model_path if model_path is not None else getattr(model.config, "name_or_path", None)
+        if cache_key is not None:
+            processor = get_image_processor(cache_key)
+        else:
+            processor = AutoImageProcessor.from_pretrained(model.config.name_or_path)
 
     # Load image
     if isinstance(img, str):

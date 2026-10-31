@@ -65,7 +65,7 @@ from .serialization import save_object, load_object, save_json, load_json
 from .dataset import load_demogpairs, split_demogpairs_subject_disjoint
 
 # Feature Extraction
-from .extraction import extract_vit_features
+from .extraction import extract_vit_features, get_image_processor
 
 # Display
 from .display import printhtml, html_br, h, display_table, index_ranges, IS_NOTEBOOK
