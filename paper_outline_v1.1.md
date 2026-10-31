@@ -32,12 +32,15 @@
    - Istilah pengklasifikasi distandardisasi: Support Vector Machine (SVM), Logistic Regression (LR), Random Forest (RF), Gaussian Naive Bayes (GNB).
    - Penamaan konfigurasi fitur seragam menggunakan direct sum `⊕`: `Face`, `Emotion`, `Age`, `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`, `Face ⊕ Emotion ⊕ Age`.
    - Seluruh elemen berurutan kronologis ketat: **Figure 1–4**, **Table I–XVI**, dan **Eq. (1)–(23)**.
+8. **Disiplin Sitasi Per Kalimat (Maksimal 2 Sitasi)**:
+   - Ditetapkan aturan baku bahwa **setiap kalimat naratif hanya diperbolehkan memuat maksimal 2 sitasi** ([X] atau [X], [Y]) di seluruh bab naskah. Hal ini bertujuan untuk mencegah penumpukan sitasi (*citation dumping*), menjaga kelancaran alur pembacaan, dan memastikan kepadatan struktur kalimat ilmiah standar IEEE Access.
 
 ### B. Negative Constraints and Disallowed Claims
 1. **Dilarang menyembunyikan isu tumpang tindih identitas**: Wajib transparan menyajikan perbandingan *Subject-Disjoint* vs *Subject-Overlap*.
 2. **Dilarang mengklaim "universal improvement"**: Akui secara objektif bahwa pada Random Forest dan GNB, konfigurasi dual-domain mencatatkan akurasi yang kompetitif/puncak dibanding tri-domain.
 3. **Dilarang berspekulasi fenotipik berlebihan**: Penjelasan matriks konfusi harus didasarkan murni pada data distribusi frekuensi kesalahan, bukan asumsi antropologi biologis yang tidak terverifikasi.
 4. **Dilarang overclaim generalisasi**: Kesimpulan dibatasi secara eksplisit pada 3 kelompok ras makro dataset DemogPairs (Asian, Black, White).
+5. **Dilarang menumpuk lebih dari 2 sitasi dalam satu kalimat**: Setiap kalimat naratif dibatasi secara ketat maksimal 2 sitasi. Jika suatu argumen memerlukan lebih dari dua rujukan literatur, pecah narasi menjadi kalimat-kalimat terpisah yang kohesif.
 
 ---
 
@@ -74,29 +77,7 @@ Biometrics, face recognition, feature extraction, intersectional demographic rec
 > - **Komentar Reviewer:** Reviewer 1 menilai bagian Pendahuluan (*Introduction*) terlalu panjang dan perlu diringkas (*"the introduction is too long need to be summarized"*).  
 > - **Rencana Mitigasi:** Memadatkan narasi pendahuluan sebesar ~28% (menjadi rentang 700–850 kata terfokus), membagi struktur narasi ke dalam 7 paragraf proporsional dengan alur logis yang padat, serta langsung menajamkan esensi tantangan klasifikasi interseksional.
 
-Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejelasan masalah, konteks literatur, dan ketegasan kontribusi:
-
-```
-[Paragraph 1: Demographic Face Recognition and Intersectional Disparity]
-                               │
-                               ▼
-[Paragraph 2: From Isolated Tasks to Intersectional Classification]
-                               │
-                               ▼
-[Paragraph 3: Architectural Evolution and Vision Transformer Representations]
-                               │
-                               ▼
-[Paragraph 4: Methodological Research Gaps and Data Leakage Challenges]
-                               │ (Transisi Kohesif)
-                               ▼
-[Paragraph 5: Proposed Tri-Domain ViT Fusion and Subject-Disjoint Protocol]
-                               │
-                               ▼
-[Paragraph 6: Four Key Scientific Contributions of Revised Manuscript]
-                               │
-                               ▼
-[Paragraph 7: Paper Organization]
-```
+Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejelasan masalah, konteks literatur, dan ketegasan kontribusi.
 
 ### Paragraph 1: Demographic Face Recognition and Intersectional Performance Disparity
 > **Catatan Respons Reviewer (R1 Poin 1):**  
@@ -122,9 +103,9 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
 ### Paragraph 3: Architectural Evolution and Vision Transformer Representations
 > **Catatan Respons Reviewer (R1 Poin 1 & Pedoman Sitasi):**  
 > - **Komentar Reviewer:** Ulasan literatur dalam pendahuluan sebelumnya terlalu melebar dan membebani alur pembacaan naskah.  
-> - **Rencana Mitigasi:** Membatasi panjang paragraf pada 135–225 kata, merangkum evolusi dari CNN ke ViT secara padat, menerapkan aturan maksimal 3 sitasi per kalimat, serta menyertakan daftar 10 sitasi wajib tanpa penomoran braket angka.
-- **Target Kata**: 135–225 kata.
-- **Aturan Sitasi Khusus**: Usahakan maksimal 3 sitasi per kalimat untuk menjaga keterbacaan naskah.
+> - **Rencana Mitigasi:** Membatasi panjang paragraf pada 135–250 kata, merangkum evolusi dari CNN ke ViT secara padat, menerapkan aturan ketat maksimal 2 sitasi per kalimat, serta menyertakan daftar 10 sitasi wajib tanpa penomoran braket angka.
+- **Target Kata**: 135–250 kata.
+- **Aturan Sitasi Khusus**: Ditetapkan aturan ketat bahwa per kalimat hanya maksimal 2 sitasi untuk menjaga keterbacaan naskah dan mencegah penumpukan sitasi (*citation dumping*).
 - **Tujuan**: Memberikan konteks perkembangan pendekatan arsitektur dari CNN konvensional ke Vision Transformer (ViT) serta metode pendukung lainnya dalam pengenalan atribut wajah.
 - **Poin Narasi**:
   1. Pendekatan klasik berbasis fitur buatan tangan (*handcrafted features*: LBP, HOG, SIFT) dan Convolutional Neural Networks (CNN: VGG, ResNet, Xception) mengandalkan bias induktif lokal melalui *receptive field* terbatas, di mana penangkapan dependensi spasial global membutuhkan tumpukan lapisan yang lebih dalam.
@@ -163,7 +144,7 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
 - **Tujuan**: Memaparkan kerangka kerja usulan yang menjawab seluruh kesenjangan riset pada Paragraf 4 secara sistematis, mencakup integrasi tri-domain, protokol evaluasi, dan pipeline optimasi hyperparameter.
 - **Poin Narasi**:
   1. Mengusulkan kerangka kerja fusi Tri-Domain ViT yang memadukan tiga representasi laten ortogonal: geometri biometrik statis (`ViT-Face`), ekspresi afektif dinamis (`ViT-Emotion`), dan morfologi penuaan biologis (`ViT-Age`) melalui operasi konkatenasi langsung (`Face ⊕ Emotion ⊕ Age`).
-  2. Ekstraksi representasi laten token `[CLS]` dilakukan secara *offline* dari backbone Vision Transformer pra-latih yang dibekukan (*frozen*) guna mempertahankan efisiensi komputasi dan meminimalkan beban pelatihan.
+  2. Ekstraksi representasi laten visual dilakukan secara *offline* dari backbone Vision Transformer pra-latih yang dibekukan (*frozen*) guna mempertahankan efisiensi komputasi dan meminimalkan beban pelatihan.
   3. Mengadopsi arsitektur evaluasi **Dual-Benchmark** yang menetapkan protokol **Strict Subject-Disjoint Partitioning** pada dataset DemogPairs (600 subjek unik, 0% kebocoran identitas) sebagai tolok ukur utama generalisasi, sekaligus mempertahankan evaluasi *subject-overlap* historis sebagai studi ablasi empiris untuk menguantifikasi beban memorisasi identitas wajah.
   4. Melakukan optimasi hyperparameter komprehensif pada empat rumpun algoritma pembelajaran mesin klasik (RF, GNB, LR, SVM) melalui validasi silang 5-Fold StratifiedGroupKFold dengan pipeline modular Scaler-PCA yang difitting secara terisolasi pada fold latih guna menjamin pencegahan kebocoran informasi (mencakup total 38.010 penyesuaian validasi silang).
 
@@ -197,20 +178,7 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
 > - **Komentar Reviewer:** Reviewer 1 meminta restrukturisasi Related Works dengan alur yang lebih baik dan penambahan persamaan matematika (*"The related works needs to be modified in better way and add equations"*), sementara Reviewer 2 meminta distingsi kebaruan terhadap metode terdahulu.  
 > - **Rencana Mitigasi:** Merestrukturisasi tinjauan pustaka ke dalam 3 subseksi tematik ringkas $\times$ 2 paragraf (total 6 paragraf, 100–115 kata/paragraf), melengkapi setiap domain dengan formulasi matematis formal (Eq. 1 s.d. Eq. 4), serta menegaskan posisi kebaruan penelitian pada subseksi C.
 
-Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri atas **2 paragraf terstruktur (total 6 paragraf)** dengan target kata **100–115 kata per paragraf**:
-
-```
-II. RELATED WORKS
-├── A. Demographic Face Recognition
-│   ├── Paragraph 1: Evolution from Handcrafted to Deep Convolutional Features
-│   └── Paragraph 2: Downstream Classifier Paradigms and Decision Boundaries [Eq. 1]
-├── B. Vision Transformers in Face Analysis
-│   ├── Paragraph 1: Theoretical Foundations and Spatial Self-Attention Mechanisms [Eq. 2 & 3]
-│   └── Paragraph 2: Demographic Disparities and Fairness Propagation in Vision Transformers
-└── C. Multi-Domain Feature Fusion
-    ├── Paragraph 1: Multi-Task Learning and Multi-Domain Representation Integration [Eq. 4]
-    └── Paragraph 2: Research Positioning and Novelty Affirmation
-```
+Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri atas **2 paragraf terstruktur (total 6 paragraf)** dengan target kata **100–115 kata per paragraf**.
 
 ### A. Demographic Face Recognition
 > **Catatan Respons Reviewer (R1 Poin 2):**  
