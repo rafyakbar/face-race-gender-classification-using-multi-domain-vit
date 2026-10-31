@@ -18,6 +18,7 @@ pelajari:
 4. experiment/code/archive/md_old/
 5. experiment/code/md/
 6. paper_outline_v1.1.md (ini paper outline yang baru)
+7. docs/sessions
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -25,6 +26,22 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
+
+apa vit nya itu basicnya tensorflow ya?
+
+ketika saya jalankan perkiraan selesainya lebih dari 3 jam, padahal cuda
+
+pada:
+- experiment/code/1.1_vit-age_demogpairs.ipynb
+- experiment/code/1.1_vit-emotion_demogpairs.ipynb
+- experiment/code/1.1_vit-face_demogpairs.ipynb
+tambahkan kode:
+- simpan waktu ekstraksi fitur per citra
+- total waktu
+- rata-rata waktu
+- simpan ke dalam experiment/code/times/features_vit-....json
 
 untuk itu bisa dicek dan dihitung dari:
 - experiment/code/md/1.1_vit-age.md
