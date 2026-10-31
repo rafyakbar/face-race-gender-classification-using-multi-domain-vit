@@ -112,7 +112,7 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
   2. Arsitektur Vision Transformer (ViT) memperkenalkan mekanisme Multi-Head Self-Attention (MHSA) yang memungkinkan pemodelan interaksi spasial global antarpatch citra secara langsung tanpa dibatasi *receptive field* lokal.
   3. Berbagai variasi pendekatan telah dieksplorasi dalam literatur, mencakup model berbasis wilayah wajah tengah, pembelajaran multi-tugas multi-skala, modul atensi paralel, mitigasi bias berbasis model generatif, hingga arsitektur transformer multi-aksis (MaxViT).
 - **Daftar Sitasi Wajib Berdasarkan Judul Paper pada Related Works**:
-  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Informatics 2022)
   - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
   - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
   - *A Multidimensional Analysis of Social Biases in Vision Transformers* (Brinkmann et al., ICCV 2023)
@@ -187,19 +187,19 @@ Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri a
 
 #### Paragraph 1: Evolution from Handcrafted to Deep Convolutional Features
 - **Target Kata**: 100–115 kata.
-- **Fokus Sintesis**: Menelusuri evolusi tugas pengenalan ras dan gender wajah dari deskriptor berbasis wilayah/bagian tengah wajah (Belcar et al., Sensors 2022) dan rekayasa fitur manual (*handcrafted features*: LBP, HOG, Gabor) ke model representasi mendalam (CNN). Menguraikan bagaimana representasi konvolusional klasik berinteraksi dengan variasi pencahayaan dan disparitas performa antarras (*Other-Race Effect*) sebagaimana dilaporkan dalam literatur empiris (Sunitha et al., IVC 2022), serta pergeseran menuju mekanisme atensi paralel adaptif (Chen et al., JVCI 2023).
+- **Fokus Sintesis**: Menelusuri evolusi tugas pengenalan ras dan gender wajah dari deskriptor berbasis wilayah/bagian tengah wajah (Belcar et al., Informatics 2022) dan rekayasa fitur manual (*handcrafted features*: LBP, HOG, Gabor) ke model representasi mendalam (CNN). Menguraikan bagaimana representasi konvolusional klasik berinteraksi dengan variasi pencahayaan dan disparitas performa antarras (*Other-Race Effect*) sebagaimana dilaporkan dalam literatur empiris (Sunitha et al., IVC 2022), serta pergeseran menuju mekanisme atensi paralel adaptif (Chen et al., JVCI 2023).
 - **Sumber Literatur Terkait**:
-  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Informatics 2022)
   - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
   - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., Journal of Visual Communication and Image Representation 2023)
 
 #### Paragraph 2: Downstream Classifier Paradigms and Decision Boundaries
 - **Target Kata**: 100–115 kata.
-- **Fokus Sintesis**: Membandingkan paradigma pengklasifikasi hilir antara lapisan SoftMax *end-to-end* (Belcar et al., Sensors 2022), model pohon ensemble (*Random Forest*), model probabilistik (*Gaussian Naive Bayes*), dan *Support Vector Machine* (SVM) serta *Kernel Extreme Learning Machine* (KELM) (Sunitha et al., Image and Vision Computing 2022; Liao et al., Applied Sciences 2022; Kalkatawi & Saeed, IJACSA 2024). Menjelaskan bagaimana fungsi keputusan kernel non-linier memetakan representasi fitur wajah berdimensi tinggi:
+- **Fokus Sintesis**: Membandingkan paradigma pengklasifikasi hilir antara lapisan SoftMax *end-to-end* (Belcar et al., Informatics 2022) dan model pohon keputusan ansambel seperti Deep Random Forest (Liao et al., Applied Sciences 2022). Selain itu, tinjauan mencakup efektivitas pengklasifikasi berbasis margin optimal seperti Support Vector Machine (SVM) dan Kernel Extreme Learning Machine (KELM) dalam memetakan representasi fitur wajah berdimensi tinggi tanpa optimasi gradient descent (Sunitha et al., Image and Vision Computing 2022; Kalkatawi & Saeed, IJACSA 2024). Menjelaskan bagaimana fungsi keputusan kernel non-linier memetakan representasi fitur wajah berdimensi tinggi:
   $$f(\mathbf{x}) = \mathbf{h}(\mathbf{x}) \mathbf{H}^T \left( \frac{\mathbf{I}}{C} + \mathbf{\Omega}_{\text{ELM}} \right)^{-1} \mathbf{Y} \tag{1}$$
   di mana $\mathbf{\Omega}_{\text{ELM}(i, r)} = K(\mathbf{x}_i, \mathbf{x}_r)$ memetakan fitur ke ruang separasi kernel Mercer tanpa memerlukan optimasi *gradient descent*.
 - **Sumber Literatur Terkait**:
-  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Sensors 2022)
+  - *Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks* (Belcar et al., Informatics 2022)
   - *Intelligent deep learning based ethnicity recognition and classification using facial images* (Sunitha et al., Image and Vision Computing 2022)
   - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
   - *Ethnicity Classification Based on Facial Images using Deep Learning Approach* (Kalkatawi & Saeed, IJACSA 2024)
@@ -240,9 +240,8 @@ Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri a
 - **Sumber Literatur Terkait**:
   - *Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning* (Liao et al., Applied Sciences 2022)
   - *Learning an attention-aware parallel sharing network for facial attribute recognition* (Chen et al., Journal of Visual Communication and Image Representation 2023)
-  - *Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups* (Ramachandran & Rattani, Springer / ICPR Workshops 2023)
   - *Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images* (Putri et al., IEEE ICVEE 2025)
-  - *MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition* (Putri et al., Journal of Integrated and Advanced Engineering 2025)
+  - *MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition* (Putri et al., Journal of Information Engineering and Educational Technology 2025)
 
 #### Paragraph 2: Research Positioning and Novelty Affirmation
 - **Target Kata**: 100–115 kata.

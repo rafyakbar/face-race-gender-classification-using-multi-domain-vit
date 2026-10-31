@@ -11,7 +11,7 @@
 
 | No | Judul Paper | Tahun | Penulis | Journal / Conference | Publisher | Jenis Paper |
 |:--:|-------------|:-----:|---------|----------------------|:---------:|:-----------:|
-| 1 | Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks | 2022 | Belcar, Ribarić, & Vrbanovský | Sensors, Vol. 22, Art. 5940 | MDPI | Eksperimen |
+| 1 | Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks | 2022 | Belcar, Grd, & Tomičić | Informatics, Vol. 9(1), Art. 18 | MDPI | Eksperimen |
 | 2 | Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning | 2022 | Liao, Yuan, Wu, Zhong, Jin, & Xiong | Applied Sciences, Vol. 12, Art. 12432 | MDPI | Eksperimen |
 | 3 | Intelligent deep learning based ethnicity recognition and classification using facial images | 2022 | Sunitha, Geetha, Neelakandan, Pundir, Hemalatha, & Kumar | Image and Vision Computing, Vol. 121, Art. 104404 | Elsevier | Eksperimen |
 | 4 | A Multidimensional Analysis of Social Biases in Vision Transformers | 2023 | Brinkmann, Swoboda, & Bartelt | IEEE/CVF International Conference on Computer Vision (ICCV 2023) | IEEE / CVF | Eksperimen & Analisis Bias |
