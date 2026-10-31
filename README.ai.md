@@ -26,6 +26,7 @@
 14. [Alur Kerja Eksekusi, Reproduksi & Kompilasi Manuskrip](#14-alur-kerja-eksekusi-reproduksi--kompilasi-manuskrip)
 15. [Batasan Klaim Ilmiah & Direktif Penulisan Akademik (28 Aturan/Direktif)](#15-batasan-klaim-ilmiah--direktif-penulisan-akademik-28-aturandirektif)
 16. [Profil Penulis Utama, Provenance Akademik & Metadata Sitasi](#16-profil-penulis-utama-provenance-akademik--metadata-sitasi)
+17. [Riwayat Sesi Kerja AI Agent & Log Kronologis (`docs/sessions/`)](#17-riwayat-sesi-kerja-ai-agent--log-kronologis-docssessions)
 
 ---
 
@@ -243,6 +244,17 @@ Ketiga model dibangun berdasarkan arsitektur **ViT-Base (`vit-base-patch16-224`)
 - `demogpairs_vit-face.pkl` (30.8 MB)
 - `demogpairs_vit-emotion.pkl` (30.8 MB)
 - `demogpairs_vit-age.pkl` (30.8 MB)
+
+### 5.3 Metrik Waktu Ekstraksi Fitur & Direktori `experiment/code/times/`
+Pencatatan waktu ekstraksi fitur tingkat citra dan ringkasan performa agregat tersimpan pada direktori `experiment/code/times/` dalam format JSON terstandarisasi:
+- `features_vit-face.json` (skutaada/VIT-VGGFace: total 5.044,0 s / 467,04 ms per citra pada CPU; ~42 ms pada GPU RTX 4060)
+- `features_vit-emotion.json` (dima806/facial_emotions_...: total 5.148,0 s / 476,67 ms per citra pada CPU)
+- `features_vit-age.json` (dima806/facial_age_...: total 5.865,0 s / 543,06 ms per citra pada CPU)
+
+Setiap berkas JSON memuat `model_name`, `feature_name`, `device`, `total_images`, `total_time_seconds`, `total_time_formatted`, `avg_time_per_image_seconds`, `avg_time_per_image_ms`, serta kamus lengkap `times_per_image` yang memetakan seluruh 10.800 path citra ke durasi ekstraksinya masing-masing.
+
+> [!TIP]
+> **In-Memory Caching Processor & Resolusi Bottleneck:** Modul `utils/extraction.py` telah dilengkapi *global in-memory caching* (`_PROCESSOR_CACHE`) dan helper `get_image_processor()` untuk mengeliminasi pemanggilan `AutoImageProcessor.from_pretrained` berulang sebanyak 10.800 kali dari disk. Optimasi ini memangkas latensi GPU per citra dari ~1.280 ms menjadi ~42 ms (peningkatan kecepatan ~30×), sehingga total waktu ekstraksi 10.800 citra pada CUDA GPU tuntas hanya dalam ~7,6 menit (bukan >3,8 jam).
 
 ---
 
@@ -462,6 +474,8 @@ D:\Research\face-race-gender-multi-vit\
 │   ├── ar-paper-revision/                 # Skill eksekusi revisi teks presisi tingkat byte & patching
 │   └── ar-paper-revision-coach/           # Skill dekonstruksi komentar reviewer, roadmap & rebuttal ledger
 │
+├── docs/                                  # Dokumentasi tata kelola riset dan log sesi kerja
+│   └── sessions/                          # Log sesi kerja otonom AI agent kronologis (2026-10-27 s.d. terkini)
 ├── experiment/                            # Dokumentasi eksperimen, dataset & kode sumber
 │   ├── 00_overview.md - 05_results.md     # Log eksperimental terstruktur & audit
 │   ├── dataset_demogpairs.md              # Spesifikasi dataset dan ringkasan partisi
@@ -489,6 +503,7 @@ D:\Research\face-race-gender-multi-vit\
 │       ├── utils/                         # Paket utilitas Python modular (constants, dataset, evaluation, dll.)
 │       ├── dataset/demogpairs/metadata/   # 6 berkas metadata .txt (masing-masing 1.800 baris)
 │       ├── features/                      # Vektor embedding fitur 768-d hasil serialisasi (.pkl)
+│       ├── times/                         # Berkas metrik JSON waktu ekstraksi fitur (Face, Emotion, Age)
 │       ├── md/                            # Ekspor Markdown seluruh notebook & laporan statistik
 │       ├── models/                        # Bobot model terlatih (.pkl) dari 28 model aktif
 │       ├── results/                       # 28 berkas hasil mentah JSON dari model aktif Subject-Disjoint
@@ -515,6 +530,7 @@ D:\Research\face-race-gender-multi-vit\
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review multi-agent (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Dossier keputusan editorial & review resmi IEEE Access
 ├── paper_submission/                      # Paket formal submission & laporan kepatuhan IEEE Access
+├── sessions/                              # Cermin direktori sesi kerja kronologis
 ├── template/                              # Distribusi paket template LaTeX mentah resmi IEEE Access
 └── upload/                                # Artefak berkas akhir siap unggah (PDF dan ZIP kode sumber)
 ```
@@ -557,7 +573,7 @@ Berlokasi pada direktori `experiment/code/utils/`, modul ini menyediakan logika 
 - **`dataset.py`**:
   - `load_demogpairs(metadata_path, images_path) -> list[dict]`: Membaca dan mem-parsing berkas metadata teks.
   - `split_demogpairs_subject_disjoint(...)`: Mengimplementasikan pembagian partisi *subject-disjoint* yang ketat (480 subjek latih / 120 subjek uji; kebocoran data identitas 0.00%).
-- **`extraction.py`**: Rutinitas ekstraksi fitur ViT HuggingFace melalui representasi vektor token `[CLS]` ternormalisasi berdimensi `(768,)`.
+- **`extraction.py`**: Rutinitas ekstraksi fitur ViT HuggingFace melalui representasi vektor token `[CLS]` ternormalisasi berdimensi `(768,)`. Dilengkapi *global in-memory caching* (`_PROCESSOR_CACHE`) dan helper `get_image_processor()` untuk mengeliminasi pemuatan ulang pra-pemroses per citra dari disk.
 - **`evaluation.py`**: Rutinitas evaluasi terpadu, pelatihan pipeline *GridSearchCV*, pembangkitan metrik One-vs-Rest (OvR), serta penulisan serialisasi ke format JSON.
 - **`serialization.py`**: Serialisasi model berkinerja tinggi menggunakan Joblib (`save_object`, `load_object`) serta utilitas penyimpanan format JSON terstruktur.
 - **`display.py` & `time_helpers.py`**: Utilitas visualisasi tabel terformat dan pelacakan pewaktu durasi eksekusi program.
@@ -582,7 +598,7 @@ python scripts/auto_run_experiments.py
 ```
 
 #### Eksekusi Interaktif Langkah Demi Langkah:
-1. **Ekstraksi Fitur:** Jalankan notebook `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, dan `1.1_vit-age_demogpairs.ipynb` secara berurutan.
+1. **Ekstraksi Fitur:** Jalankan notebook `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, dan `1.1_vit-age_demogpairs.ipynb` secara berurutan. Di bawah akselerasi CUDA GPU dengan in-memory processor caching, ekstraksi 10.800 citra selesai dalam ~7,6 menit per domain (~42 ms/citra). Waktu ekstraksi otomatis dicatat ke `times/features_vit-*.json`.
 2. **Pelatihan & Optimasi Model:** Eksekusi notebook classifier aktif:
    - Logistic Regression: `2.5.1` sampai `2.5.7`
    - Support Vector Machine: `2.1.1` sampai `2.1.7`
@@ -654,12 +670,13 @@ Seluruh penulis beridentitas resmi di bawah naungan **Departemen Informatika, Fa
 2. **Rezky Arisanti Putri, S.Kom., M.Kom.** ([ORCID: 0009-0000-8021-1833](https://orcid.org/0009-0000-8021-1833))
 3. **Dr. Yuni Yamasari, S.Kom., M.Kom.** ([ORCID: 0000-0001-9719-3491](https://orcid.org/0000-0001-9719-3491))
 4. **Rafy Aulia Akbar, S.Kom., M.Kom.** ([ORCID: 0009-0003-6991-0694](https://orcid.org/0009-0003-6991-0694))
+5. **Assoc. Prof. Dr. Shukor Sanim Mohd Fauzi** ([ORCID: 0000-0003-4333-7853](https://orcid.org/0000-0003-4333-7853)) - School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA, Cawangan Perlis, Kampus Arau, 02600 Arau, Perlis, Malaysia (`shukorsanim@uitm.edu.my`)
 
 ### 16.2 Entri Metadata Sitasi
 ```bibtex
 @article{putra2026multidomain,
   title={Multi-Domain Vision Transformer Fusion for Intersectional Demographic Classification from Facial Images},
-  author={Putra, Ricky Eka and Putri, Rezky Arisanti and Yamasari, Yuni and Akbar, Rafy Aulia},
+  author={Putra, Ricky Eka and Putri, Rezky Arisanti and Yamasari, Yuni and Akbar, Rafy Aulia and Mohd Fauzi, Shukor Sanim},
   journal={IEEE Access},
   year={2026}
 }
@@ -692,3 +709,18 @@ Seluruh penulis beridentitas resmi di bawah naungan **Departemen Informatika, Fa
   doi={10.1109/FG.2019.8756625}
 }
 ```
+
+---
+
+## 17. Riwayat Sesi Kerja AI Agent & Log Kronologis (`docs/sessions/` & `sessions/`)
+
+Seluruh sesi kerja terpadu otonom dicatat secara teliti ke dalam direktori `docs/sessions/` dan dicerminkan pada `sessions/` untuk transparansi dan auditabilitas riset:
+
+1. **`2026-09-06`**: Audit Paper dan Sinkronisasi LaTeX ID (`session_2026-09-06_agy_audit-paper-dan-sinkronisasi-latex-id.md`).
+2. **`2026-09-07`**: Audit Sitasi dan Pembaruan Dokumentasi Sistem (`session_2026-09-07_agy_audit-sitasi-dan-pembaruan-dokumentasi-sistem.md`).
+3. **`2026-09-08`**: Standardisasi IEEE dan Sitasi Interaktif Manuskrip (`session_2026-09-08_agy_standardisasi-ieee-dan-sitasi-interaktif-manuskrip.md`).
+4. **`2026-10-27`**: Standardisasi Arsip Historis, Re-eksekusi 33 Notebook Aktif berbasis *instant cached weights*, Cermin Markdown `md/`, dan Formalisasi Paradigma Dual-Benchmark (`2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`).
+5. **`2026-10-28`**: Dekonstruksi Review Resmi IEEE Access via Skill `ar-paper-revision-coach`, Penyusunan Roadmap Schema 7 (`08_revision_roadmap.md`), Nested Commitment Ledger Schema 11 (`09_revision_tracking.md`), Rangka Surat Sanggahan (`10_response_letter_skeleton.md`), dan Audit 856 Angka Numerik di `05_results.md` (`2026-10-28_dekonstruksi-review-ieee-roadmap-revisi-dan-audit-numerik-hasil.md`).
+6. **`2026-10-29`**: Penyempurnaan Master Outline Manuskrip v1.1 (`paper_outline_v1.1.md`), Standardisasi Persamaan Eq. (1) s.d. (23), Evaluasi Figure 3 ViT v2.0 (`2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`).
+7. **`2026-10-31 (Sesi 1)`**: Audit Latensi Ekstraksi CPU Empiris (~1.487 ms Tri-Domain), Redesain Figure 3 ViT ke Format Vektor 300 DPI (`images/vit_v2.2.png`), Regenerasi Matriks Konfusi 6×6 Figure 4 v1.1, dan Penyelarasan Tabel Efisiensi Komputasi XIV & Komparasi Literatur XVI (`2026-10-31_audit-latensi-ekstraksi-cpu-redesign-figure3-v2.2-dan-sinkronisasi-outline.md`).
+8. **`2026-10-31 (Sesi 2)`**: Instrumentasi Waktu Ekstraksi pada `1.1_vit-*.ipynb`, Pembangkitan Berkas JSON Metrik Waktu `experiment/code/times/`, Investigasi Bottleneck CUDA via `systematic-debugging` (In-Memory Processor Caching di `extraction.py`, speedup 30× ke ~42 ms/citra pada GPU RTX 4060), dan Verifikasi Native PyTorch (`2026-10-31_instrumentasi-waktu-ekstraksi-caching-processor-dan-debugging-cuda.md`).
