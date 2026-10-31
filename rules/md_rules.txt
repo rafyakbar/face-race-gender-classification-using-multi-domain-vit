@@ -207,7 +207,7 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
   - Sitasi WAJIB diletakkan SEBELUM tanda baca titik (.) atau koma (,).
     * BENAR : "... metode pembelajaran terawasi [1], [2]."
     * SALAH : "... metode pembelajaran terawasi. [1], [2]"
-  - Maksimal 4 nomor sitasi dalam satu kalimat untuk mencegah citation dumping.
+  - Maksimal 2 sitasi dalam satu kalimat untuk mencegah penumpukan sitasi (citation dumping) dan menjaga kepadatan sintaksis.
 
 7.5. Larangan Kata-Kata Tertentu (Forbidden Words)
   - DILARANG menggunakan kata-kata berikut di seluruh teks naskah Markdown:

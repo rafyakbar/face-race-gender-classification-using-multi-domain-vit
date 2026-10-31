@@ -170,7 +170,7 @@ Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal 
   - Posisi Sitasi: WAJIB SEBELUM tanda baca titik atau koma.
     * BENAR : "... representasi fitur yang terpadu \cite{ref1}."
     * SALAH : "... representasi fitur yang terpadu. \cite{ref1}"
-  - Maksimal 4 sitasi dalam satu kalimat untuk mencegah penumpukan (*citation dumping*).
+  - Maksimal 2 sitasi dalam satu kalimat untuk mencegah penumpukan (*citation dumping*) dan menjaga keterbacaan naskah.
 
 6.2. Penataan Database `references.bib`
   - Setiap entri BibTeX wajib memiliki field lengkap sesuai tipe publikasi.
