@@ -98,6 +98,21 @@ Sesi kerja ini berfokus pada penyempurnaan dokumen panduan penulisan naskah revi
   4. **Related Works (`paper_outline_v1.1.md`):**
      - Menghapus struktur pohon ASCII `II. RELATED WORKS ├── A. ...` sehingga outline bersih dari diagram struktural yang tidak diperlukan.
 
+
+### C. Audit Akademik Komprehensif Introduction (P3 & P4) & Related Works via Subagent
+* **Permintaan Pengguna:**
+  ```text
+  sekarang tolong audit "I. INTRODUCTION - Paragraph 3 & Paragraph 4" dan "II. RELATED WORKS" apakah sudah sesuai dengan "related_works/" atau belum, delegasikan ke subagent
+  ```
+* **Hasil Eksekusi Subagent:**
+  - Pendelegasian tugas audit komprehensif kepada subagent riset (`research`) untuk membandingkan Section I (P3 & P4) dan Section II (II.A–C beserta Eq. 1–4) terhadap berkas ground truth di direktori `related_works/` (`gap_analysis.md`, `literature_matrix.md`, `sintesis_literatur.md`, `tren_analisis.md`, dan 10 berkas `summaries/*.md`).
+  - **Verdict Subagent**: **MINOR FIXES (Tingkat Keselarasan ~95%)**. Formulasi matematika Eq. 1 (KELM), Eq. 2 (Patch Flattening), Eq. 3 (MHSA), dan Eq. 4 (Concatenative Direct Sum) terbukti 100% akurat secara matematis dan selaras dengan literatur. Tiga pilar research gap pada Paragraf 4 juga 100% selaras dengan `gap_analysis.md`.
+* **Tindakan Perbaikan yang Diterapkan:**
+  1. **Koreksi Venue Belcar et al. (2022):** Mengoreksi atribusi jurnal dari *Sensors 2022* menjadi *Informatics 2022* (MDPI, Vol. 9, Art. 18, penulis: Belcar, Grd, & Tomičić) pada 5 lokasi di `paper_outline_v1.1.md` dan tabel `related_works/literature_matrix.md`.
+  2. **Dekonstruksi Kalimat II.A Paragraf 2:** Memecah kalimat komparasi pengklasifikasi hilir yang sebelumnya menumpuk 4 sitasi (dan 3 sitasi sekaligus di akhir) menjadi 2 kalimat terpisah yang kohesif guna mematuhi aturan baku maksimal 2 sitasi per kalimat.
+  3. **Pembersihan Rujukan II.C Paragraf 1:** Menghapus entri Ramachandran & Rattani (2023) dari daftar sumber II.C Paragraf 1 karena fokus paper tersebut berada pada mitigasi bias generatif di II.B Paragraf 2.
+  4. **Koreksi Ekspansi Jurnal JIEET (Putri et al. 2025):** Memperbaiki penulisan kepanjangan JIEET dari *Journal of Integrated and Advanced Engineering* menjadi nama resmi *Journal of Information Engineering and Educational Technology* (UNESA).
+
 ---
 
 ## 3. HASIL VERIFIKASI FILE

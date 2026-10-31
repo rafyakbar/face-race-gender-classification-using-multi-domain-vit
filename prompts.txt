@@ -27,6 +27,35 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang tolong audit "I. INTRODUCTION - Paragraph 3 & Paragraph 4" dan "II. RELATED WORKS" apakah sudah sesuai dengan "related_works/" atau belum, delegasikan ke subagent
+
+
+sekarang tolong audit "I. INTRODUCTION - Paragraph 3 & Paragraph 4" dan "II. RELATED WORKS" apakah sudah sesuai dengan "related_works/" atau belum, delegasikan ke subagent
+
+perbaiki paper_outline_v1.1.md:
+GLOBAL:
+- tambahkan aturan pada paper outline dan pada folder rules, kalau per kalimat itu hanya maksimal 2 sitasi.
+I. INTRODUCTION:
+- tidak usah ada diagram narasi pada paper outline.
+- Paragraph 3: ubah target kata menjadi 135–250. dan beri note kalau per kalimat itu hanya maksimal 2 sitasi.
+- Paragraph 5: jangan ada kata [CLS].
+II. RELATED WORKS:
+- tidak usah ada struktur seperti II. RELATED WORKS
+├── A.
+perbaiki dengan sangat amat teliti, jika ingin cek-cek folder terkait bisa delegasi subagent.
+
+perbaiki paper_outline_v1.1.md:
+Abstract:
+- ubah target kata menjadi 150 - 250.
+- tidak usah ada kata [CLS].
+- jangan kata seperti ViT-Face/Emotion/Age, coba cek referensi abstrak yang lama (paper/00_abstract.md)
+- tidak usah menyebutkan seperti 120 subjek atau ukuran model
+- tidak usah menyebutkan seperti parameter, coba cek referensi abstrak yang lama (paper/00_abstract.md)
+- seharusnya ada juga hasil dari Zero Identity Leakage dan juga yang split stratified class biasa
+- keywordnya tetap: Biometrics, face recognition, feature extraction, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer
+- coba cek referensi abstrak yang lama (paper/00_abstract.md)
+perbaiki dengan sangat amat teliti, jika ingin cek-cek folder terkait bisa delegasi subagent.
+
 perbaiki paper_outline_v1.1.md:
 GLOBAL:
 - tambahkan aturan pada paper outline dan pada folder rules, kalau per kalimat itu hanya maksimal 2 sitasi.
