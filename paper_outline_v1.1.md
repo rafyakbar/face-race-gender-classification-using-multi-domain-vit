@@ -307,7 +307,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 
 **Table I. DemogPairs Dataset Partition and Subject-Disjoint Demographic Subgroup Distribution.**
 
-| Intersectional Subgroup | Macro Race | Gender | Unique Subjects | Train Set (80% Subjects) | Held-Out Test Set (20% Subjects) | Total Images |
+| Subgroup | Race | Gender | Subjects | Train (80%) | Test (20%) | Total Images |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Asian_Females** | Asian | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
 | **Asian_Males** | Asian | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
@@ -317,50 +317,58 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 | **White_Males** | White | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
 | **Total** | **3 Races** | **2 Genders** | **600 Subjects** | **480 Subjects (8,640 images)** | **120 Subjects (2,160 images)** | **10,800** |
 
-### B. Vision Transformer Multi-Domain Feature Extraction
+### B. Vision Transformer Feature Extraction
 > **Catatan Respons Reviewer (R1 Poin 3 & R2 Poin 3):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta desain ulang Figure 3 yang kurang jelas (*"figure 3 needs to be redesigned and explained in better way"*), sedangkan Reviewer 2 meminta spesifikasi teknis checkpoint HuggingFace, normalisasi, dan alur ekstraksi token `[CLS]` untuk reproduktibilitas (*"specify exact checkpoint versions, normalization parameters, and feature extraction procedures"*).  
 > - **Rencana Mitigasi:** Menyajikan diagram vektor Figure 3 resolusi tinggi 300+ DPI berformat full-width, merinci spesifikasi resmi checkpoint HuggingFace beserta parameter normalisasi kanal pada Tabel II, serta merumuskan ekstraksi token `[CLS]` Layer 12 pada Eq. (7) dan fusi tri-domain pada Eq. (8).
-- **Target Kata**: 220–260 kata (2 paragraf).
-- **Paragraf 1 (Arsitektur ViT & Redesain Figure 3)**:
-  - Struktur ViT-Base: 12 lapisan transformer encoder, 12 attention heads ($d_k = 64$), dimensi embedding tersembunyi $D = 768$, patch $16 \times 16$ ($N = 196$ patch).
-  - Proyeksi linier dan embedding posisi:
+Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130 kata**:
+
+#### Paragraph 1: Vision Transformer Architecture and Patch Tokenization
+- **Target Kata**: 110–130 kata.
+- **Tujuan**: Memaparkan arsitektur Vision Transformer (ViT-Base), mekanisme tokenisasi patch citra, proyeksi linier ke ruang laten, embedding posisi, serta transformasi blok encoder transformer.
+- **Poin Narasi**:
+  1. Struktur ViT-Base: 12 lapisan transformer encoder, 12 attention heads ($d_k = 64$), dimensi embedding tersembunyi $D = 768$, patch $16 \times 16$ ($N = 196$ patch).
+  2. Proyeksi linier dan embedding posisi:
     $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}, \quad \mathbf{E} \in \mathbb{R}^{(P^2C) \times D}, \; \mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D} \tag{5}$$
-  - Pemrosesan blok encoder:
+  3. Pemrosesan blok encoder:
     $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}, \quad \mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{6}$$
-  - **Elemen Wajib**: **Figure 3** (Diagram Vektor Resolusi Tinggi 300+ DPI Arsitektur Ekstraksi ViT Paralel & Fusi Konkatenasi, Full Width `\begin{figure*}`).
-    *Caption:* **Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
-  - **Visual Markdown**:  
-    ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
-  - **Panduan Narasi Figure 3 (Jawaban R1 #3 *"explained in better way to show the novelty"*)**: Narasi wajib merujuk eksplisit ke nomor tahapan pada gambar:
-    1. **Tahap ①–④ (Tokenisasi, Persamaan 5-6)**: Citra $224 \times 224 \times 3$ dipartisi menjadi 196 patch $16 \times 16$ (Tahap ②), diproyeksikan linier ke $D = 768$ (Tahap ③), lalu ditambah token `[CLS]` dan $\mathbf{E}_{\text{pos}}$ menjadi 197 token (Tahap ④).
-    2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik, tetapi *image processor* tiap checkpoint berbeda (Table II).
-    3. **Tahap ⑤ (Persamaan 7)**: Ketiga backbone yang dibekukan menghasilkan $\mathbf{f}_{\text{face}}, \mathbf{f}_{\text{emotion}}, \mathbf{f}_{\text{age}} \in \mathbb{R}^{768}$ dari token `[CLS]` layer 12.
-    4. **Tahap ⑥–⑦ (Persamaan 8, 12)**: Fusi $\oplus$ menghasilkan $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ yang diteruskan ke empat pengklasifikasi (LR, SVM, RF, GNB) untuk 6 kelas interseksional.
-    5. **Posisi Kebaruan**: Novelty dinyatakan pada tingkat *kerangka evaluasi* (fusi tri-domain tanpa fine-tuning + protokol subject-disjoint + uji inferensial + profil efisiensi), **bukan** pada arsitektur ViT yang digunakan apa adanya. Jangan mengklaim arsitektur ViT baru.
-- **Paragraf 2 (Spesifikasi Checkpoint HuggingFace & Fusi Konkatenasi)**:
-  - Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen*):
-    1. `ViT-Face` (`skutaada/VIT-VGGFace`): Fine-tuned dari `google/vit-base-patch16-224-in21k` untuk representasi identitas dan biometrik kraniofasial statis.
-    2. `ViT-Emotion` (`dima806/facial_emotions_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` untuk representasi ekspresi afektif dinamis.
-    3. `ViT-Age` (`dima806/facial_age_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` untuk estimasi umur dan morfologi penuaan biologis.
-  - Implementasi ekstraksi fitur memanfaatkan *in-memory processor caching* (`_PROCESSOR_CACHE` pada `utils/extraction.py`) untuk mengeliminasi disk I/O reload berulang pada 10.800 citra, serta mencatat instrumentasi latensi berpresisi tinggi ke berkas JSON `experiment/code/times/features_vit-*.json`.
-  - Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
-    $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
-  - Fusi Tri-Domain via konkatenasi (direct sum):
-    $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
+- **Elemen Wajib**: **Figure 3** (Diagram Vektor Resolusi Tinggi 300+ DPI Arsitektur Ekstraksi ViT Paralel & Fusi Konkatenasi, Full Width `\begin{figure*}`).
+  *Caption:* **Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
+- **Visual Markdown**:  
+  ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
+- **Panduan Narasi Figure 3 (Jawaban R1 #3 *"explained in better way to show the novelty"*)**: Narasi wajib merujuk eksplisit ke nomor tahapan pada gambar:
+  1. **Tahap ①–④ (Tokenisasi, Persamaan 5-6)**: Citra $224 \times 224 \times 3$ dipartisi menjadi 196 patch $16 \times 16$ (Tahap ②), diproyeksikan linier ke $D = 768$ (Tahap ③), lalu ditambah token `[CLS]` dan $\mathbf{E}_{\text{pos}}$ menjadi 197 token (Tahap ④).
+  2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik, tetapi *image processor* tiap checkpoint berbeda (Table II).
+  3. **Tahap ⑤ (Persamaan 7)**: Ketiga backbone yang dibekukan menghasilkan $\mathbf{f}_{\text{face}}, \mathbf{f}_{\text{emotion}}, \mathbf{f}_{\text{age}} \in \mathbb{R}^{768}$ dari token `[CLS]` layer 12.
+  4. **Tahap ⑥–⑦ (Persamaan 8, 12)**: Fusi $\oplus$ menghasilkan $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ yang diteruskan ke empat pengklasifikasi (LR, SVM, RF, GNB) untuk 6 kelas interseksional.
+  5. **Posisi Kebaruan**: Novelty dinyatakan pada tingkat *kerangka evaluasi* (fusi tri-domain tanpa fine-tuning + protokol subject-disjoint + uji inferensial + profil efisiensi), **bukan** pada arsitektur ViT yang digunakan apa adanya. Jangan mengklaim arsitektur ViT baru.
+
+#### Paragraph 2: Pre-trained Checkpoint Specifications and Feature Concatenation
+- **Target Kata**: 110–130 kata.
+- **Tujuan**: Merinci spesifikasi checkpoint HuggingFace pra-latih yang dibekukan, korpus fine-tuning spesifik domain berdasarkan studi literatur terdahulu, prosedur ekstraksi token representasi Layer 12, akselerasi caching pra-pemroses, dan formulasi fusi konkatenasi.
+- **Poin Narasi**:
+  1. Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen*):
+     - `ViT-Face` (`skutaada/VIT-VGGFace`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus VGGFace2 untuk representasi identitas dan biometrik kraniofasial statis (Putri et al., IEEE ICVEE 2025; Putri et al., JIEET 2025).
+     - `ViT-Emotion` (`dima806/facial_emotions_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus FER-2013 untuk representasi ekspresi afektif dinamis (Putri et al., IEEE ICVEE 2025).
+     - `ViT-Age` (`dima806/facial_age_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus UTKFace dan IMDB-WIKI untuk estimasi umur dan morfologi penuaan biologis (Putri et al., JIEET 2025).
+  2. Implementasi ekstraksi fitur memanfaatkan *in-memory processor caching* (`_PROCESSOR_CACHE` pada `utils/extraction.py`) untuk mengeliminasi disk I/O reload berulang pada 10.800 citra, serta mencatat instrumentasi latensi berpresisi tinggi ke berkas JSON `experiment/code/times/features_vit-*.json`.
+  3. Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
+     $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
+  4. Fusi Tri-Domain via konkatenasi (direct sum):
+     $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
 - **Elemen Wajib**:
   - **Table II** (Spesifikasi Checkpoint Model ViT Pra-Latih & Parameter Normalisasi — R2-3).
   - **Table III** (Skema Konfigurasi Fusi Fitur & Desain Studi Ablasi).
 
 **Table II. Pre-trained Vision Transformer Backbone Specifications and Preprocessing Parameters.**
 
-| Domain Model | HuggingFace Checkpoint (Revision SHA) | Base Model & Task | Input Size | Resize / Interpolation | Per-Channel Normalization ($\mu, \sigma$) | Output Representation |
+| Domain Model | HuggingFace Checkpoint (Revision SHA) | Base Model, Training Corpus & Task | Input Size | Resize / Interpolation | Per-Channel Normalization ($\mu, \sigma$) | Output Representation |
 |---|---|---|:---:|:---:|---|:---:|
-| **`ViT-Face`** | `skutaada/VIT-VGGFace` (`e85f0c9`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; facial identity/biometrics | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Emotion`** | `dima806/facial_emotions_image_detection` (`747cf16`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; facial emotion classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Age`** | `dima806/facial_age_image_detection` (`ad35933`) | Fine-tuned from `google/vit-base-patch16-224-in21k`; age-bin classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| **`ViT-Face`** | `skutaada/VIT-VGGFace` (`e85f0c9`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on VGGFace2 (Putri et al., 2025); facial identity/biometrics | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| **`ViT-Emotion`** | `dima806/facial_emotions_image_detection` (`747cf16`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on FER-2013 (Putri et al., 2025); facial emotion classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
+| **`ViT-Age`** | `dima806/facial_age_image_detection` (`ad35933`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on UTKFace/IMDB-WIKI (Putri et al., 2025); age estimation | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
 
-> **Catatan Verifikasi Table II (diverifikasi dari `preprocessor_config.json`, `config.json`, dan model card HuggingFace pada 2026-10-31):** (1) Ketiga checkpoint memakai `image_mean = image_std = [0.5, 0.5, 0.5]`; nilai ImageNet `[0.485, 0.456, 0.406]` yang sebelumnya tertulis untuk ViT-Face **salah dan sudah dikoreksi**. (2) Ketiganya adalah ViT-Base/16 (12 layer, hidden 768) hasil fine-tuning dari `google/vit-base-patch16-224-in21k`. (3) Model card **tidak mendokumentasikan korpus pra-latih** (klaim "VGGFace2" dan "FER-2013" pada draf lama tidak terverifikasi dan dihapus; jangan ditulis ulang tanpa sumber). (4) SHA adalah HEAD `main` saat diambil; **konfirmasi bahwa revisi tidak berubah sejak ekstraksi fitur** atau pin SHA tersebut pada `from_pretrained(..., revision=...)` sebelum submit. (5) Ekstraksi memakai `AutoImageProcessor` dan `model.vit(...).last_hidden_state[:, 0, :]` dengan `torch.no_grad()` (`utils/extraction.py`). **Perhatikan:** kode ekstraksi mengambil `last_hidden_state`, yang sudah melewati `LayerNorm` akhir pada `ViTModel`, sehingga selaras dengan Eq. (7).
+> **Catatan Verifikasi Table II (diverifikasi dari `preprocessor_config.json`, `config.json`, model card HuggingFace, dan studi literatur terdahulu):** (1) Ketiga checkpoint memakai `image_mean = image_std = [0.5, 0.5, 0.5]`; nilai ImageNet `[0.485, 0.456, 0.406]` yang sebelumnya tertulis untuk ViT-Face **salah dan sudah dikoreksi**. (2) Ketiganya adalah ViT-Base/16 (12 layer, hidden 768) hasil fine-tuning dari `google/vit-base-patch16-224-in21k`. (3) Korpus fine-tuning domain spesifik masing-masing checkpoint didokumentasikan dan disitasi dari studi terdahulu: VGGFace2 untuk ViT-Face dan FER-2013 untuk ViT-Emotion (Putri et al., IEEE ICVEE 2025), serta UTKFace dan IMDB-WIKI untuk ViT-Age (Putri et al., JIEET 2025). (4) SHA adalah HEAD `main` saat diambil; **konfirmasi bahwa revisi tidak berubah sejak ekstraksi fitur** atau pin SHA tersebut pada `from_pretrained(..., revision=...)` sebelum submit. (5) Ekstraksi memakai `AutoImageProcessor` dan `model.vit(...).last_hidden_state[:, 0, :]` dengan `torch.no_grad()` (`utils/extraction.py`). **Perhatikan:** kode ekstraksi mengambil `last_hidden_state`, yang sudah melewati `LayerNorm` akhir pada `ViTModel`, sehingga selaras dengan Eq. (7).
 **Table III. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
 
 | # | Feature Scheme | Category | Input Source Domains | Feature Dimension |
@@ -374,25 +382,25 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 | 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | Biometrics + Affective Dynamics + Aging Morphology | 2,304 |
 
 ### C. Random Forest
-- **Target Kata**: 100–120 kata.
+- **Target Kata**: 100–125 kata.
 - **Poin Pembahasan**: Ensemble bagging dengan $B$ pohon keputusan, parameter subspace `max_features` ($\in \{\text{'sqrt'}, \text{'log2'}\}$), kedalaman pohon, kriteria Gini impurity, dan penalaan grid search.
 - **Elemen Wajib**: **Table IV** (Ruang Pencarian Hyperparameter Random Forest — 288 kombinasi, 1.440 fits).
 
 ### D. Gaussian Naive Bayes
-- **Target Kata**: 100–120 kata.
+- **Target Kata**: 100–125 kata.
 - **Poin Pembahasan**: Pengklasifikasi probabilistik berbasis Teorema Bayes dengan asumsi independensi fitur Gaussian:
   $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{9}$$
 - **Elemen Wajib**: **Table V** (Ruang Pencarian Hyperparameter GNB — 240 kombinasi, 1.200 fits).
 
 ### E. Logistic Regression
-- **Target Kata**: 100–120 kata.
+- **Target Kata**: 100–125 kata.
 - **Poin Pembahasan**: Model multinomial Softmax ter-regularisasi $L_2$ dengan optimasi loss cross-entropy multi-kelas:
   $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{10}$$
 - Penalaan kekuatan penalti $C$ dan solver konvergens (`lbfgs`, `saga`, `newton-cg`).
 - **Elemen Wajib**: **Table VI** (Ruang Pencarian Hyperparameter Logistic Regression — 270 kombinasi, 1.350 fits).
 
 ### F. Support Vector Machine
-- **Target Kata**: 110–130 kata.
+- **Target Kata**: 100–125 kata.
 - **Poin Pembahasan**: Penentuan hyperplane pemisah margin maksimal non-linier menggunakan fungsi kernel (RBF dan polinomial):
   $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d \in \{2, 3\} \tag{11}$$
   *(di mana parameter $\text{coef0} = 0.0$ default pada implementasi standar `sklearn.svm.SVC`)*.
@@ -414,7 +422,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
   - Melintasi 7 skema fitur: $5.430 \times 7 = \mathbf{38.010\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih.
   - Seluruh penskalaan dan PCA difitting secara terisolasi hanya pada fold latih di dalam `Pipeline` scikit-learn untuk menjamin pencegahan kebocoran data.
 
-### H. Evaluation Metrics & Statistical Testing
+### H. Evaluation Metrics
 > **Catatan Respons Reviewer (R2 Poin 5 & R2 Poin 6):**  
 > - **Komentar Reviewer:** Reviewer 2 menuntut pengujian hipotesis inferensial berpasangan McNemar yang tepat (*"claims should be appropriately qualified according to McNemar test"*), dan menuntut kejelasan batasan klaim keadilan algoritmik EOD (*"clarify scope and limitations of fairness claims"*).  
 > - **Rencana Mitigasi:** Menyertakan formulasi matematis Uji McNemar berpasangan dengan koreksi kontinuitas Edwards Eq. (21), Wilson Score 95% CI Eq. (22), serta mendefinisikan EOD Eq. (23) murni sebagai indikator disparitas performa subkelompok empiris tanpa overclaim jaminan keadilan universal.
