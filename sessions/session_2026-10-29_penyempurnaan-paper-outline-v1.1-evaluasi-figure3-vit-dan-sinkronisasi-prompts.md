@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`  
-**Cermin Berkas**: `sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`  
+**Nama Berkas**: `sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`  
 **Tanggal**: 29–30 Oktober 2026  
 **Waktu Sesi**: 13:30:00 (29 Okt) – 10:15:00 (30 Okt) WIB  
 **Workspace**: `D:\Research\face-race-gender-classification-using-multi-domain-vit`  
@@ -131,8 +130,7 @@ Sasaran strategis utama yang berhasil dicapai dalam sesi ini:
 | 1 | [`paper_outline_v1.1.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper_outline_v1.1.md) | Diperbarui (*Modified*) | Menyelaraskan catatan respons reviewer terstruktur, kata kunci, target kata Bab I, formulasi matematis Bab II (Eq. 1–4), visualisasi Figure 1–3 Bab III, penomoran Eq. 1–23, dan tabel master. |
 | 2 | [`images/vit_v2.0.png`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/images/vit_v2.0.png) | Ditambahkan (*Added*) | Gambar resolusi tinggi vektor redesign Figure 3 yang memvisualisasikan alur ViT-Base dan fusi paralel 3-domain hingga klasifikasi hilir. |
 | 3 | [`prompts.txt`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/prompts.txt) | Diperbarui (*Modified*) | Mencatat riwayat prompt aktif pengguna dan menyematkan prompt ringkas perbaikan Figure 3 untuk AI agent. |
-| 4 | [`docs/sessions/2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/docs/sessions/2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md) | Dibuat (*New*) | Dokumentasi resmi sesi kerja komprehensif pada direktori `docs/sessions/`. |
-| 5 | [`sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md) | Dibuat (*New*) | Berkas cermin dokumentasi sesi kerja pada direktori `sessions/`. |
+| 4 | [`sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/sessions/session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md) | Dibuat (*New*) | Dokumentasi resmi sesi kerja komprehensif pada direktori `sessions/`. |
 
 ---
 

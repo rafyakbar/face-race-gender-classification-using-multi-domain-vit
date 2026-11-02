@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-28_dekonstruksi-review-ieee-roadmap-revisi-dan-audit-numerik-hasil.md`  
-**Cermin Berkas**: `sessions/session_2026-10-28_dekonstruksi-review-ieee-roadmap-revisi-dan-audit-numerik-hasil.md`  
+**Nama Berkas**: `sessions/session_2026-10-28_dekonstruksi-review-ieee-roadmap-revisi-dan-audit-numerik-hasil.md`  
 **Tanggal**: 28 Oktober 2026  
 **Waktu Sesi**: 19:15:00 – 21:40:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-multi-vit`  
@@ -15,7 +14,7 @@
 Sesi kerja intensif pada 28 Oktober 2026 difokuskan pada transisi strategis dari fase infrastruktur kode dan benchmark eksperimental menuju **Tahap 5 Workflow: Penanganan Peer-Review dan Perencanaan Eksekusi Revisi Manuskrip Ilmiah IEEE Access**. 
 
 Rangkaian sasaran utama yang berhasil direalisasikan pada sesi ini meliputi:
-1. **Internalisasi Konteks Otoritatif Repositori:** Membaca dan memahami secara menyeluruh berkas panduan referensi utama [`README.ai.md`](file:///D:/Research/face-race-gender-multi-vit/README.ai.md) (693 baris), log sesi sebelumnya ([`docs/sessions/2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`](file:///D:/Research/face-race-gender-multi-vit/docs/sessions/2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md)), serta membedah keterkaitan 4 pilar direktori naskah dan hasil eksperimen (`paper/`, `paper_reviews_ieee/`, `archive/md_old/`, dan `md/`).
+1. **Internalisasi Konteks Otoritatif Repositori:** Membaca dan memahami secara menyeluruh berkas panduan referensi utama [`README.ai.md`](file:///D:/Research/face-race-gender-multi-vit/README.ai.md) (693 baris), log sesi sebelumnya ([`sessions/session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`](file:///D:/Research/face-race-gender-multi-vit/sessions/session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md)), serta membedah keterkaitan 4 pilar direktori naskah dan hasil eksperimen (`paper/`, `paper_reviews_ieee/`, `archive/md_old/`, dan `md/`).
 2. **Dekonstruksi Komentar Reviewer IEEE Access melalui Skill `ar-paper-revision-coach`:**
    - Membedah secara mendalam seluruh 17 butir komentar reviewer (7 komentar Reviewer 1 dan 10 komentar kritis Reviewer 2) serta 4 direktif prosedural Associate Editor Dr. Vincenzo Conti.
    - Menghasilkan 3 artefak bebestari resmi berstandar internasional di direktori [`paper_reviews_ieee/`](file:///D:/Research/face-race-gender-multi-vit/paper_reviews_ieee/):
@@ -43,10 +42,10 @@ Rangkaian sasaran utama yang berhasil direalisasikan pada sesi ini meliputi:
   - Membaca secara tuntas berkas [`README.ai.md`](file:///D:/Research/face-race-gender-multi-vit/README.ai.md) (693 baris).
   - Menguasai seluruh konteks naskah: identitas kepengarangan UNESA, target IEEE Access, tonggak *Reject & Resubmit* (20 Oktober 2026), arsitektur fusi tri-domain ViT (Wajah, Emosi, Usia), dataset DemogPairs (10.800 citra, 600 subjek seimbang), arsitektur *Dual-Benchmark*, serta 28 batasan dan direktif ilmiah wajib.
 
-### B. Eksplorasi Dokumentasi Sesi (`docs/sessions/`)
+### B. Eksplorasi Dokumentasi Sesi (`sessions/`)
 * **Permintaan Pengguna:** *"pelajari docs/sessions"*
 * **Tindakan yang Diambil:**
-  - Memeriksa direktori `docs/sessions/` dan membaca berkas [`2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`](file:///D:/Research/face-race-gender-multi-vit/docs/sessions/2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md).
+  - Memeriksa direktori `sessions/` dan membaca berkas [`session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`](file:///D:/Research/face-race-gender-multi-vit/sessions/session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md).
   - Menarik benang merah bahwa infrastruktur komputasi telah 100% matang (33 notebook aktif seragam 16 sel, re-eksekusi berbasis bobot tersimpan tanpa re-training, cermin Markdown sinkron, dan dokumentasi berbahasa Indonesia baku akademik).
 
 ### C. Pembelajaran Cepat 4 Pilar Repositori

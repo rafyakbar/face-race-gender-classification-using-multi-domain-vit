@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`  
-**Cermin Berkas**: `sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`  
+**Nama Berkas**: `sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`  
 **Tanggal**: 31 Oktober 2026 – 1 November 2026  
 **Waktu Sesi**: 21:30:00 – 00:15:00 WIB  
 **Workspace**: `D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit`  
@@ -225,20 +224,19 @@ Sesi kerja intensif ini berfokus pada audit akademik menyeluruh, penyempurnaan s
 | [`rules/md_rules.txt`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/rules/md_rules.txt) | **VALIDATED** | Pembaruan aturan sitasi per kalimat (subseksi 7.4) menjadi maksimal 2 sitasi per kalimat. |
 | [`related_works/literature_matrix.md`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/related_works/literature_matrix.md) | **VALIDATED** | Koreksi entri venue Belcar et al. (2022) menjadi MDPI Informatics 2022. |
 | [`prompts.txt`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/prompts.txt) | **VALIDATED** | Pembersihan duplikasi dan sinkronisasi seluruh riwayat prompt secara kronologis terbalik. |
-| [`docs/sessions/2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/docs/sessions/2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md) | **UPDATED** | Dokumentasi komprehensif seluruh audit, perbaikan outline, dan sinkronisasi berkas sesi kerja. |
-| [`sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md) | **UPDATED** | Berkas cermin 1-to-1 dokumentasi sesi kerja di folder root. |
+| [`sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md`](file:///D:/Rafy/Research/face-race-gender-classification-using-multi-domain-vit/sessions/session_2026-10-31_penyempurnaan-spesifikasi-abstrak-outline-v1.1-dan-sinkronisasi.md) | **UPDATED** | Dokumentasi komprehensif seluruh audit, perbaikan outline, dan sinkronisasi berkas sesi kerja. |
 
 ---
 
 ## 4. STATUS GIT DAN LANGKAH SELANJUTNYA
 
-- Seluruh modifikasi pada naskah panduan `paper_outline_v1.1.md`, berkas `rules/`, `related_works/`, `prompts.txt`, serta dokumentasi sesi di `docs/sessions/` dan `sessions/` telah disinkronkan dan diverifikasi.
+- Seluruh modifikasi pada naskah panduan `paper_outline_v1.1.md`, berkas `rules/`, `related_works/`, `prompts.txt`, serta dokumentasi sesi di `sessions/` telah disinkronkan dan diverifikasi.
 - Riwayat git commit sesi ini:
   * `6a4cf26`: `fix(outline): align literature citations and fix sentence clustering in outline v1.1`
   * `6505067`: `docs: record audit findings and synchronize session documentation`
   * `af873c2`: `docs(outline): refine Section III specifications, headings, and pretraining corpus citations`
   * `d14b4e2`: `docs: record Section III refinements and synchronize prompt log`
-  * Commit berikutnya: Mengonsolidasikan dokumentasi komprehensif sesi, sinkronisasi cermin `sessions/`, dan pembersihan `prompts.txt`.
+  * Commit berikutnya: Mengonsolidasikan dokumentasi komprehensif sesi, sinkronisasi dokumentasi `sessions/`, dan pembersihan `prompts.txt`.
 - **Langkah Kerja Berikutnya**:
   1. Melakukan commit dan push ke remote repository `origin/main`.
   2. Melanjutkan penulisan naskah revisi IEEE Access berbasis panduan `paper_outline_v1.1.md` yang telah terverifikasi secara matematis, empiris, dan literatur.

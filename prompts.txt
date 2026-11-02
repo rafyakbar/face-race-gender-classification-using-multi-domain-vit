@@ -18,7 +18,7 @@ pelajari:
 4. experiment/code/archive/md_old/
 5. experiment/code/md/
 6. paper_outline_v1.1.md (ini paper outline yang baru)
-7. docs/sessions
+7. sessions/
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -26,6 +26,8 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+saat ini sessions ada di 2 tempat, yaitu docs/sessions/ dan sessions/, seharusnya jadi satu saja pada sessions/
 
 tuliskan/update session ini pada docs
 

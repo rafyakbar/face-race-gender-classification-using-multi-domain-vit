@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`  
-**Cermin Berkas**: `sessions/session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`  
+**Nama Berkas**: `sessions/session_2026-10-27_standardisasi-arsip-re-eksekusi-notebook-dan-dokumentasi-dual-benchmark.md`  
 **Tanggal**: 27 Oktober 2026  
 **Waktu Sesi**: 17:00:00 – 21:30:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-multi-vit`  

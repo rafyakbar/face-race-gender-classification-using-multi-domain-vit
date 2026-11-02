@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-31_audit-latensi-ekstraksi-cpu-redesign-figure3-v2.2-dan-sinkronisasi-outline.md`  
-**Cermin Berkas**: `sessions/session_2026-10-31_audit-latensi-ekstraksi-cpu-redesign-figure3-v2.2-dan-sinkronisasi-outline.md`  
+**Nama Berkas**: `sessions/session_2026-10-31_audit-latensi-ekstraksi-cpu-redesign-figure3-v2.2-dan-sinkronisasi-outline.md`  
 **Tanggal**: 31 Oktober 2026  
 **Waktu Sesi**: 19:15:00 – 20:00:00 WIB  
 **Workspace**: `D:\Rafy\Research\face-race-gender-classification-using-multi-domain-vit`  

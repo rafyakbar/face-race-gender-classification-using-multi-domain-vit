@@ -1,6 +1,5 @@
 # DOKUMENTASI SESI KERJA ANTIGRAVITY (AGY)
-**Nama Berkas**: `docs/sessions/2026-10-31_instrumentasi-waktu-ekstraksi-caching-processor-dan-debugging-cuda.md`  
-**Cermin Berkas**: `sessions/session_2026-10-31_instrumentasi-waktu-ekstraksi-caching-processor-dan-debugging-cuda.md`  
+**Nama Berkas**: `sessions/session_2026-10-31_instrumentasi-waktu-ekstraksi-caching-processor-dan-debugging-cuda.md`  
 **Tanggal**: 31 Oktober 2026  
 **Waktu Sesi**: 20:00:00 – 21:15:00 WIB  
 **Workspace**: `D:\Research\face-race-gender-multi-vit`  
@@ -92,4 +91,4 @@ Sesi kerja lanjutan pada malam hari 31 Oktober 2026 difokuskan pada tiga pencapa
 | 10 | `experiment/code/times/features_vit-emotion.json` | Metrik waktu empiris Emotion ViT (10.800 citra) | ✅ Terverifikasi (491 KB) |
 | 11 | `experiment/code/times/features_vit-age.json` | Metrik waktu empiris Age ViT (10.800 citra) | ✅ Terverifikasi (491 KB) |
 | 12 | `prompts.txt` | Pencatatan riwayat prompt aktif | ✅ Terverifikasi |
-| 13 | `docs/sessions/` & `sessions/` | Dokumentasi sesi kerja lengkap | ✅ Terverifikasi |
+| 13 | `sessions/` | Dokumentasi sesi kerja lengkap | ✅ Terverifikasi |
