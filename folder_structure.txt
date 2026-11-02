@@ -94,7 +94,15 @@ face-race-gender-classification-using-multi-domain-vit/
 ├── README.md                                  # Dokumentasi publik utama penelitian & ringkasan Dual-Benchmark
 ├── rules/                                     # Pedoman sitasi IEEE, aturan LaTeX, dan aturan draf Markdown
 ├── scopus_query.txt                           # Kueri penelusuran Scopus untuk literatur terkait
-├── sessions/                                  # Log riwayat sesi audit, perbaikan sitasi, dan standardisasi
+├── sessions/                                  # Log riwayat sesi kerja otonom AI agent (8 berkas konsolidasi)
+│   ├── session_2026-09-06_agy_*.md            # Audit manuskrip Markdown & sinkronisasi awal LaTeX ID
+│   ├── session_2026-09-07_agy_*.md            # Audit sitasi dan pembaruan arsitektur sistem dokumentasi
+│   ├── session_2026-09-08_standardisasi_*.md  # Standardisasi IEEE, audit 51 pustaka, sitasi interaktif & LaTeX
+│   ├── session_2026-10-27_standardisasi_*.md  # Standardisasi arsip, re-eksekusi 33 notebook aktif & dual-benchmark
+│   ├── session_2026-10-28_dekonstruksi_*.md   # Dekonstruksi review IEEE, Roadmap, Ledger, & audit numerik
+│   ├── session_2026-10-29_penyempurnaan_*.md  # Penyempurnaan outline v1.1, Eq. (1)-(23), evaluasi Figure 3
+│   ├── session_2026-10-31_audit-latensi_*.md  # Konsolidasi 3 fase: audit latensi CPU, instrumentasi, caching (30x), outline
+│   └── session_2026-11-02_unifikasi_*.md      # Unifikasi direktori sessions dan konsolidasi 1 berkas per tanggal
 ├── upload/                                    # Berkas artefak paket submit (PDF bersih, highlighted, & source ZIP)
 └── WORKFLOW.md                                # SOP universal 4 tahap siklus hidup manuskrip riset
 
@@ -197,7 +205,7 @@ Sub-direktori experiment/code/:
 - rules/
   Pedoman sitasi IEEE, aturan LaTeX, dan standardisasi penulisan Markdown.
 - sessions/
-  Direktori catatan kronologis log riwayat sesi kerja otonom AI agent, audit naskah, perbaikan sitasi, dan standardisasi repositori.
+  Direktori catatan kronologis log riwayat sesi kerja otonom AI agent, audit naskah, perbaikan sitasi, dan standardisasi repositori (8 berkas master terkonsolidasi per tanggal kalender).
 - paper_submission/ & upload/
   Paket kompilasi submission final (PDF bersih, highlighted PDF, dan arsip berkas sumber ZIP).
 ====================================================================================================

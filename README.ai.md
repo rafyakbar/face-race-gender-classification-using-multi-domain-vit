@@ -528,7 +528,7 @@ D:\Research\face-race-gender-multi-vit\
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review multi-agent (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Dossier keputusan editorial & review resmi IEEE Access
 ├── paper_submission/                      # Paket formal submission & laporan kepatuhan IEEE Access
-├── sessions/                              # Log riwayat sesi kerja otonom AI agent kronologis
+├── sessions/                              # Log riwayat sesi kerja otonom AI agent (8 berkas konsolidasi per tanggal)
 ├── template/                              # Distribusi paket template LaTeX mentah resmi IEEE Access
 └── upload/                                # Artefak berkas akhir siap unggah (PDF dan ZIP kode sumber)
 ```
