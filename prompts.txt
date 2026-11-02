@@ -27,6 +27,39 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+perbaiki paper_outline_v1.1.md:
+III. MATERIALS AND METHODS
+A. Dataset:
+- Table I.: kolomnya cukup: Subgroup, Subjects, Train (80%), Test (20%), Total.
+B. Vision Transformer:
+- judul cukup "Vision Transformer".
+- mungkin bisa dibagi menjadi 3 paragraf saja, paragraf pertama membahas tentang arsitektur vit sebagai ekstraksi fitur, paragraf pertama dan kedua tentukan sendiri, kamu bisa cek paper_outline_v1.0.md sebagai referensi.
+- sepertinya "Table II. Pre-trained Vision Transformer Backbone Specifications and Preprocessing Parameters" tidak perlu, jadi cukup dijelaskan dalam bentuk paragraf, makanya saya jadikan menjadi 3 paragraf.
+C. Random Forest:
+- samakan seperti paper_outline_v1.0.md.
+D. Gaussian Naive Bayes:
+- samakan seperti paper_outline_v1.0.md.
+E. Logistic Regression:
+- samakan seperti paper_outline_v1.0.md.
+F. Support Vector Machine:
+- samakan seperti paper_outline_v1.0.md.
+G. Classification Pipeline & Search Space Reconciliation:
+- judulnya terlalu panjang, buat menjadi lebih singkat.
+- ubah target kata menjadi 125-150.
+- audit subsection ini apakah sudah sesuai dengan experiment/code/md/ atau belum, karena ini menyangkut jawaban reviewer.
+- bila perlu bisa cari di internet.
+- bisa delegasikan ke subagent untuk audit dan cek.
+H. Evaluation Metrics:
+- target kata harusnya per paragraf seperti paper_outline_v1.0.md.
+- audit subsection ini apakah sudah sesuai dengan experiment/code/ atau belum, karena ini menyangkut jawaban reviewer.
+- bila perlu bisa cari di internet.
+- bisa delegasikan ke subagent untuk audit dan cek.
+perhatikan:
+- jangan mengubah diluar yang diminta.
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm.
+- jika ingin cek-cek folder terkait bisa delegasi subagent.
+- perbaiki dengan sangat amat teliti.
+
 buat agar sessions/ menjadi lebih sederhana, maksud saya untuk tanggal yang sama jadikan satu saja
 
 saat ini sessions ada di 2 tempat, yaitu docs/sessions/ dan sessions/, seharusnya jadi satu saja pada sessions/

@@ -1,7 +1,7 @@
 # Paper Outline Terperinci (Versi 1.1 - Definitif Revisi) - IEEE Access (Manuscript ID: Access-2026-50857)
 
 > **Status Versi**: **Versi 1.1 (Definitif Revisi IEEE Access / Subject-Disjoint Primary Benchmark)**  
-> **Catatan Tata Kelola**: Berkas ini memuat outline naskah revisi komprehensif yang memenuhi seluruh rekomendasi penelaah IEEE Access (Primary Benchmark Subject-Disjoint 0% leakage, LR 88.66% / SVM 88.61%, uji McNemar, profil Edge AI, kalibrasi fairness EOD, Table I-XVI, Figure 1-4, Eq. 1-23). Untuk outline orisinal pra-revisi (Subject-Overlap 93.70%), silakan merujuk ke [paper_outline_v1.0.md](paper_outline_v1.0.md).  
+> **Catatan Tata Kelola**: Berkas ini memuat outline naskah revisi komprehensif yang memenuhi seluruh rekomendasi penelaah IEEE Access (Primary Benchmark Subject-Disjoint 0% leakage, LR 88.66% / SVM 88.61%, uji McNemar, profil Edge AI, kalibrasi fairness EOD, Table I-XV, Figure 1-4, Eq. 1-23). Untuk outline orisinal pra-revisi (Subject-Overlap 93.70%), silakan merujuk ke [paper_outline_v1.0.md](paper_outline_v1.0.md).  
 > **Target Publikasi**: IEEE Access (Open Access, Q1 / Impact Factor: 3.4)  
 > **Status Revisi**: *Reject & Resubmit* (Kesempatan Resubmission Tunggal Berbasis *Binary Peer Review*)  
 > **Bahasa Naskah**: Bahasa Indonesia formal akademik dengan istilah teknis/ilmiah tetap dipertahankan dalam Bahasa Inggris baku  
@@ -31,7 +31,7 @@
    - Dilarang keras menggunakan karakter *em dash* (—); gunakan tanda pisah biasa (- atau --), tanda kurung, atau koma.
    - Istilah pengklasifikasi distandardisasi: Support Vector Machine (SVM), Logistic Regression (LR), Random Forest (RF), Gaussian Naive Bayes (GNB).
    - Penamaan konfigurasi fitur seragam menggunakan direct sum `⊕`: `Face`, `Emotion`, `Age`, `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`, `Face ⊕ Emotion ⊕ Age`.
-   - Seluruh elemen berurutan kronologis ketat: **Figure 1–4**, **Table I–XVI**, dan **Eq. (1)–(23)**.
+   - Seluruh elemen berurutan kronologis ketat: **Figure 1–4**, **Table I–XV**, dan **Eq. (1)–(23)**.
 8. **Disiplin Sitasi Per Kalimat (Maksimal 2 Sitasi)**:
    - Ditetapkan aturan baku bahwa **setiap kalimat naratif hanya diperbolehkan memuat maksimal 2 sitasi** ([X] atau [X], [Y]) di seluruh bab naskah. Hal ini bertujuan untuk mencegah penumpukan sitasi (*citation dumping*), menjaga kelancaran alur pembacaan, dan memastikan kepadatan struktur kalimat ilmiah standar IEEE Access.
 
@@ -307,27 +307,28 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–115
 
 **Table I. DemogPairs Dataset Partition and Subject-Disjoint Demographic Subgroup Distribution.**
 
-| Subgroup | Race | Gender | Subjects | Train (80%) | Test (20%) | Total Images |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Asian_Females** | Asian | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **Asian_Males** | Asian | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **Black_Females** | Black | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **Black_Males** | Black | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **White_Females** | White | Female | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **White_Males** | White | Male | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
-| **Total** | **3 Races** | **2 Genders** | **600 Subjects** | **480 Subjects (8,640 images)** | **120 Subjects (2,160 images)** | **10,800** |
+| Subgroup | Subjects | Train (80%) | Test (20%) | Total |
+|---|:---:|:---:|:---:|:---:|
+| **Asian_Females** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Asian_Males** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Black_Females** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Black_Males** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **White_Females** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **White_Males** | 100 | 80 subjects (1,440 images) | 20 subjects (360 images) | 1,800 |
+| **Total** | **600 Subjects** | **480 Subjects (8,640 images)** | **120 Subjects (2,160 images)** | **10,800** |
 
-### B. Vision Transformer Feature Extraction
+### B. Vision Transformer
 > **Catatan Respons Reviewer (R1 Poin 3 & R2 Poin 3):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta desain ulang Figure 3 yang kurang jelas (*"figure 3 needs to be redesigned and explained in better way"*), sedangkan Reviewer 2 meminta spesifikasi teknis checkpoint HuggingFace, normalisasi, dan alur ekstraksi token `[CLS]` untuk reproduktibilitas (*"specify exact checkpoint versions, normalization parameters, and feature extraction procedures"*).  
-> - **Rencana Mitigasi:** Menyajikan diagram vektor Figure 3 resolusi tinggi 300+ DPI berformat full-width, merinci spesifikasi resmi checkpoint HuggingFace beserta parameter normalisasi kanal pada Tabel II, serta merumuskan ekstraksi token `[CLS]` Layer 12 pada Eq. (7) dan fusi tri-domain pada Eq. (8).
-Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130 kata**:
+> - **Rencana Mitigasi:** Menyajikan diagram vektor Figure 3 resolusi tinggi 300+ DPI berformat full-width, merinci spesifikasi resmi checkpoint HuggingFace beserta parameter normalisasi kanal secara naratif pada Paragraf 2, merumuskan ekstraksi token `[CLS]` Layer 12 pada Eq. (7) dan fusi tri-domain pada Eq. (8), serta menyajikan skema konfigurasi fusi fitur dan desain studi ablasi pada Tabel II.
 
-#### Paragraph 1: Vision Transformer Architecture and Patch Tokenization
-- **Target Kata**: 110–130 kata.
-- **Tujuan**: Memaparkan arsitektur Vision Transformer (ViT-Base), mekanisme tokenisasi patch citra, proyeksi linier ke ruang laten, embedding posisi, serta transformasi blok encoder transformer.
+Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125 kata**:
+
+#### Paragraph 1: Vision Transformer Architecture and Patch Feature Extraction
+- **Target Kata**: 100–125 kata.
+- **Tujuan**: Memaparkan arsitektur fundamental Vision Transformer (ViT-Base), mekanisme tokenisasi patch citra, proyeksi linier ke ruang laten, embedding posisi, transformasi blok encoder transformer, dan perannya sebagai ekstraktor fitur visual.
 - **Poin Narasi**:
-  1. Struktur ViT-Base: 12 lapisan transformer encoder, 12 attention heads ($d_k = 64$), dimensi embedding tersembunyi $D = 768$, patch $16 \times 16$ ($N = 196$ patch).
+  1. Struktur ViT-Base: 12 lapisan transformer encoder, 12 attention heads ($d_k = 64$), dimensi embedding tersembunyi $D = 768$, patch $16 	imes 16$ ($N = 196$ patch).
   2. Proyeksi linier dan embedding posisi:
     $$\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}, \quad \mathbf{E} \in \mathbb{R}^{(P^2C) \times D}, \; \mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D} \tag{5}$$
   3. Pemrosesan blok encoder:
@@ -338,38 +339,37 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
   ![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
 - **Panduan Narasi Figure 3 (Jawaban R1 #3 *"explained in better way to show the novelty"*)**: Narasi wajib merujuk eksplisit ke nomor tahapan pada gambar:
   1. **Tahap ①–④ (Tokenisasi, Persamaan 5-6)**: Citra $224 \times 224 \times 3$ dipartisi menjadi 196 patch $16 \times 16$ (Tahap ②), diproyeksikan linier ke $D = 768$ (Tahap ③), lalu ditambah token `[CLS]` dan $\mathbf{E}_{\text{pos}}$ menjadi 197 token (Tahap ④).
-  2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik, tetapi *image processor* tiap checkpoint berbeda (Table II).
+  2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik, tetapi *image processor* tiap checkpoint berbeda.
   3. **Tahap ⑤ (Persamaan 7)**: Ketiga backbone yang dibekukan menghasilkan $\mathbf{f}_{\text{face}}, \mathbf{f}_{\text{emotion}}, \mathbf{f}_{\text{age}} \in \mathbb{R}^{768}$ dari token `[CLS]` layer 12.
   4. **Tahap ⑥–⑦ (Persamaan 8, 12)**: Fusi $\oplus$ menghasilkan $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ yang diteruskan ke empat pengklasifikasi (LR, SVM, RF, GNB) untuk 6 kelas interseksional.
   5. **Posisi Kebaruan**: Novelty dinyatakan pada tingkat *kerangka evaluasi* (fusi tri-domain tanpa fine-tuning + protokol subject-disjoint + uji inferensial + profil efisiensi), **bukan** pada arsitektur ViT yang digunakan apa adanya. Jangan mengklaim arsitektur ViT baru.
 
-#### Paragraph 2: Pre-trained Checkpoint Specifications and Feature Concatenation
-- **Target Kata**: 110–130 kata.
-- **Tujuan**: Merinci spesifikasi checkpoint HuggingFace pra-latih yang dibekukan, korpus fine-tuning spesifik domain berdasarkan studi literatur terdahulu, prosedur ekstraksi token representasi Layer 12, akselerasi caching pra-pemroses, dan formulasi fusi konkatenasi.
+#### Paragraph 2: Pre-trained Domain Backbones and Preprocessing Specifications
+- **Target Kata**: 100–125 kata.
+- **Tujuan**: Merinci spesifikasi teknis checkpoint HuggingFace pra-latih yang dibekukan (*frozen*), korpus pra-latih/fine-tuning spesifik domain berdasarkan studi literatur terdahulu, parameter pra-pemrosesan citra terstandardisasi, dan akselerasi caching pra-pemroses secara naratif (R2-3).
 - **Poin Narasi**:
-  1. Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen*):
-     - `ViT-Face` (`skutaada/VIT-VGGFace`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus VGGFace2 untuk representasi identitas dan biometrik kraniofasial statis (Putri et al., IEEE ICVEE 2025; Putri et al., JIEET 2025).
-     - `ViT-Emotion` (`dima806/facial_emotions_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus FER-2013 untuk representasi ekspresi afektif dinamis (Putri et al., IEEE ICVEE 2025).
-     - `ViT-Age` (`dima806/facial_age_image_detection`): Fine-tuned dari `google/vit-base-patch16-224-in21k` pada korpus UTKFace dan IMDB-WIKI untuk estimasi umur dan morfologi penuaan biologis (Putri et al., JIEET 2025).
-  2. Implementasi ekstraksi fitur memanfaatkan *in-memory processor caching* (`_PROCESSOR_CACHE` pada `utils/extraction.py`) untuk mengeliminasi disk I/O reload berulang pada 10.800 citra, serta mencatat instrumentasi latensi berpresisi tinggi ke berkas JSON `experiment/code/times/features_vit-*.json`.
-  3. Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
+  1. Dokumentasi resmi 3 checkpoint pra-latih yang dibekukan (*frozen weights*), ketiganya berbasis arsitektur ViT-Base/16 (12 layer, 768 hidden dimension) yang di-fine-tune dari `google/vit-base-patch16-224-in21k`:
+     - `ViT-Face` (`skutaada/VIT-VGGFace`, Git revision SHA: `e85f0c9`): Fine-tuned pada korpus VGGFace2 untuk representasi identitas dan geometri biometrik kraniofasial statis (Putri et al., IEEE ICVEE 2025; Putri et al., JIEET 2025).
+     - `ViT-Emotion` (`dima806/facial_emotions_image_detection`, Git revision SHA: `747cf16`): Fine-tuned pada korpus FER-2013 untuk representasi ekspresi afektif wajah dinamis (Putri et al., IEEE ICVEE 2025).
+     - `ViT-Age` (`dima806/facial_age_image_detection`, Git revision SHA: `ad35933`): Fine-tuned pada korpus gabungan UTKFace dan IMDB-WIKI untuk estimasi umur dan morfologi penuaan biologis (Putri et al., JIEET 2025).
+  2. Parameter pra-pemrosesan citra terstandardisasi: Citra masukan diformat ke 3-channel RGB, di-resize menggunakan interpolasi bilinear ke resolusi $224 \times 224 \times 3$ piksel, dan dinormalisasi per kanal menggunakan nilai rata-rata dan deviasi standar yang seragam untuk ketiga model: $\mu = [0.5, 0.5, 0.5]$ dan $\sigma = [0.5, 0.5, 0.5]$ (diverifikasi dari `preprocessor_config.json`, bukan nilai bawaan ImageNet).
+  3. Implementasi ekstraksi fitur memanfaatkan *in-memory processor caching* (`_PROCESSOR_CACHE` pada `utils/extraction.py`) untuk mengeliminasi disk I/O reload berulang pada 10.800 citra, serta mencatat instrumentasi latensi berpresisi tinggi ke berkas JSON `experiment/code/times/features_vit-*.json`.
+
+#### Paragraph 3: CLS Token Extraction and Multi-Domain Feature Fusion Design
+- **Target Kata**: 100–125 kata.
+- **Tujuan**: Menjelaskan formulasi matematis ekstraksi token representasi `[CLS]` Layer 12, pembentukan vektor representasi gabungan tri-domain $\mathbf{z}_{\text{tri}}$, serta desain sistematis studi ablasi melintasi 7 konfigurasi fitur pada [Table II](#tab2).
+- **Poin Narasi**:
+  1. Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
      $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
-  4. Fusi Tri-Domain via konkatenasi (direct sum):
+     *(di mana $\mathbf{z}_L^0$ diambil dari output `last_hidden_state[:, 0, :]` yang telah melewati LayerNorm akhir pada `ViTModel` dengan `torch.no_grad()`)*.
+  2. Fusi Tri-Domain via konkatenasi terurut (direct sum):
      $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
+     menghasilkan ruang representasi komplementer 2.304 dimensi yang memadukan biometrik statis, ekspresi emosional, dan penuaan biologis.
+  3. Desain ablasi fitur sistematis dirancang melintasi 7 konfigurasi fitur: 3 skema *single-domain* (768 dimensi), 3 skema *dual-domain* (1.536 dimensi), dan 1 skema *tri-domain* usulan (2.304 dimensi) sebagaimana disajikan pada [Table II](#tab2).
 - **Elemen Wajib**:
-  - **Table II** (Spesifikasi Checkpoint Model ViT Pra-Latih & Parameter Normalisasi — R2-3).
-  - **Table III** (Skema Konfigurasi Fusi Fitur & Desain Studi Ablasi).
+  - **Table II** (Skema Konfigurasi Fusi Fitur & Desain Studi Ablasi).
 
-**Table II. Pre-trained Vision Transformer Backbone Specifications and Preprocessing Parameters.**
-
-| Domain Model | HuggingFace Checkpoint (Revision SHA) | Base Model, Training Corpus & Task | Input Size | Resize / Interpolation | Per-Channel Normalization ($\mu, \sigma$) | Output Representation |
-|---|---|---|:---:|:---:|---|:---:|
-| **`ViT-Face`** | `skutaada/VIT-VGGFace` (`e85f0c9`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on VGGFace2 (Putri et al., 2025); facial identity/biometrics | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Emotion`** | `dima806/facial_emotions_image_detection` (`747cf16`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on FER-2013 (Putri et al., 2025); facial emotion classification | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-| **`ViT-Age`** | `dima806/facial_age_image_detection` (`ad35933`) | Fine-tuned from `google/vit-base-patch16-224-in21k` on UTKFace/IMDB-WIKI (Putri et al., 2025); age estimation | $224 \times 224 \times 3$ | Bilinear | $\mu = [0.5, 0.5, 0.5]$, $\sigma = [0.5, 0.5, 0.5]$ | Token `[CLS]` Layer 12 (768-D) |
-
-> **Catatan Verifikasi Table II (diverifikasi dari `preprocessor_config.json`, `config.json`, model card HuggingFace, dan studi literatur terdahulu):** (1) Ketiga checkpoint memakai `image_mean = image_std = [0.5, 0.5, 0.5]`; nilai ImageNet `[0.485, 0.456, 0.406]` yang sebelumnya tertulis untuk ViT-Face **salah dan sudah dikoreksi**. (2) Ketiganya adalah ViT-Base/16 (12 layer, hidden 768) hasil fine-tuning dari `google/vit-base-patch16-224-in21k`. (3) Korpus fine-tuning domain spesifik masing-masing checkpoint didokumentasikan dan disitasi dari studi terdahulu: VGGFace2 untuk ViT-Face dan FER-2013 untuk ViT-Emotion (Putri et al., IEEE ICVEE 2025), serta UTKFace dan IMDB-WIKI untuk ViT-Age (Putri et al., JIEET 2025). (4) SHA adalah HEAD `main` saat diambil; **konfirmasi bahwa revisi tidak berubah sejak ekstraksi fitur** atau pin SHA tersebut pada `from_pretrained(..., revision=...)` sebelum submit. (5) Ekstraksi memakai `AutoImageProcessor` dan `model.vit(...).last_hidden_state[:, 0, :]` dengan `torch.no_grad()` (`utils/extraction.py`). **Perhatikan:** kode ekstraksi mengambil `last_hidden_state`, yang sudah melewati `LayerNorm` akhir pada `ViTModel`, sehingga selaras dengan Eq. (7).
-**Table III. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
+**Table II. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
 
 | # | Feature Scheme | Category | Input Source Domains | Feature Dimension |
 |:---:|---|:---:|---|:---:|
@@ -382,71 +382,136 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 | 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | Biometrics + Affective Dynamics + Aging Morphology | 2,304 |
 
 ### C. Random Forest
-- **Target Kata**: 100–125 kata.
-- **Poin Pembahasan**: Ensemble bagging dengan $B$ pohon keputusan, parameter subspace `max_features` ($\in \{\text{'sqrt'}, \text{'log2'}\}$), kedalaman pohon, kriteria Gini impurity, dan penalaan grid search.
-- **Elemen Wajib**: **Table IV** (Ruang Pencarian Hyperparameter Random Forest — 288 kombinasi, 1.440 fits).
+- **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
+- **Tujuan**: Menjelaskan arsitektur ensemble Random Forest (RF) berbasis bootstrap aggregating (bagging) dan random subspace method.
+- **Poin Pembahasan**: Pembentukan $B$ pohon keputusan independen, pemilihan fitur acak pada percabangan (`max_features` $\in \{\text{'sqrt'}, \text{'log2'}\}$), batas kedalaman pohon (`max_depth`), kriteria split Gini impurity, serta agregasi prediksi via majority voting sesuai ruang pencarian hyperparameter pada [Table III](#tab3).
+- **Tabel III (Ruang Pencarian Hyperparameter Random Forest)**:
+
+**Table III. Hyperparameter Search Space for Random Forest Classifier.**
+
+| Component / Hyperparameter | Evaluated Values | Count |
+|---|---|:---:|
+| Feature Scaler | `None`, `MinMaxScaler` | 2 |
+| Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
+| Number of Estimators | `100`, `200` | 2 |
+| Maximum Tree Depth | `None`, `20`, `30` | 3 |
+| Feature Subspace | `'sqrt'`, `'log2'` | 2 |
+| Minimum Samples Split | `2`, `5` | 2 |
+| Minimum Samples Leaf | `1`, `2` | 2 |
+| **Total Grid Combinations** | - | **288 (1,440 fits)** |
 
 ### D. Gaussian Naive Bayes
-- **Target Kata**: 100–125 kata.
-- **Poin Pembahasan**: Pengklasifikasi probabilistik berbasis Teorema Bayes dengan asumsi independensi fitur Gaussian:
+- **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
+- **Tujuan**: Menjelaskan pengklasifikasi probabilistik Gaussian Naive Bayes (GNB) berbasis Teorema Bayes dengan asumsi independensi fitur kontinu.
+- **Formulasi Likelihood Gaussian**:
   $$P(x_i \mid y = c) = \frac{1}{\sqrt{2\pi\sigma_{c,i}^2}} \exp\left(-\frac{(x_i - \mu_{c,i})^2}{2\sigma_{c,i}^2}\right) \tag{9}$$
-- **Elemen Wajib**: **Table V** (Ruang Pencarian Hyperparameter GNB — 240 kombinasi, 1.200 fits).
+- **Poin Pembahasan**: Estimasi parameter mean $\mu_{c,i}$ dan varians $\sigma_{c,i}^2$, serta penalaan stabilitas numerik melalui parameter penghalusan varians yang dieksplorasi secara logaritmik sesuai ruang pencarian pada [Table IV](#tab4).
+- **Tabel IV (Ruang Pencarian Hyperparameter Gaussian Naive Bayes)**:
+
+**Table IV. Hyperparameter Search Space for Gaussian Naive Bayes Classifier.**
+
+| Component / Hyperparameter | Evaluated Values | Count |
+|---|---|:---:|
+| Feature Scaler | `None`, `MinMaxScaler` | 2 |
+| Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
+| Variance Smoothing | $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 \times 10^{2}$) | 40 |
+| **Total Grid Combinations** | - | **240 (1,200 fits)** |
 
 ### E. Logistic Regression
-- **Target Kata**: 100–125 kata.
-- **Poin Pembahasan**: Model multinomial Softmax ter-regularisasi $L_2$ dengan optimasi loss cross-entropy multi-kelas:
+- **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
+- **Tujuan**: Menjelaskan formulasi multinomial Logistic Regression (LR) / Softmax regression untuk klasifikasi multi-kelas.
+- **Formulasi Probabilitas Softmax**:
   $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{10}$$
-- Penalaan kekuatan penalti $C$ dan solver konvergens (`lbfgs`, `saga`, `newton-cg`).
-- **Elemen Wajib**: **Table VI** (Ruang Pencarian Hyperparameter Logistic Regression — 270 kombinasi, 1.350 fits).
+- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti regularisasi, dan batas konvergensi jumlah iterasi sesuai ruang pencarian pada [Table V](#tab5).
+- **Tabel V (Ruang Pencarian Hyperparameter Logistic Regression)**:
+
+**Table V. Hyperparameter Search Space for Logistic Regression Classifier.**
+
+| Component / Hyperparameter | Evaluated Values | Count |
+|---|---|:---:|
+| Feature Scaler | `None`, `MinMaxScaler` | 2 |
+| Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
+| Regularization Strength | `0.01`, `0.1`, `1`, `10`, `100` | 5 |
+| Optimization Solver | `'lbfgs'`, `'saga'`, `'newton-cg'` | 3 |
+| Maximum Iterations | `500`, `1000`, `2000` | 3 |
+| **Total Grid Combinations** | - | **270 (1,350 fits)** |
 
 ### F. Support Vector Machine
-- **Target Kata**: 100–125 kata.
-- **Poin Pembahasan**: Penentuan hyperplane pemisah margin maksimal non-linier menggunakan fungsi kernel (RBF dan polinomial):
+- **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
+- **Tujuan**: Menjelaskan formulasi Support Vector Machine (SVM) dan optimasi hyperplane pemisah multi-kelas untuk klasifikasi representasi laten wajah.
+- **Formulasi Kernel Polinomial**:
   $$K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d \in \{2, 3\} \tag{11}$$
-  *(di mana parameter $\text{coef0} = 0.0$ default pada implementasi standar `sklearn.svm.SVC`)*.
-- **Elemen Wajib**: **Table VII** (Ruang Pencarian Hyperparameter SVM — 288 kombinasi, 1.440 fits).
+  *(di mana parameter $\text{coef0} = 0.0$ default pada implementasi standar `sklearn.svm.SVC` dan tidak diikutsertakan sebagai hyperparameter yang divariasikan dalam grid search)*.
+- **Poin Pembahasan**: Karakteristik pembentukan batas keputusan (*decision boundary*) pada ruang laten berdimensi tinggi, pemilihan fungsi kernel (linear, RBF, polinomial), parameter regularisasi, koefisien kernel, dan derajat polinomial sesuai ruang pencarian pada [Table VI](#tab6).
+- **Tabel VI (Ruang Pencarian Hyperparameter Support Vector Machine)**:
 
-### G. Classification Pipeline & Search Space Reconciliation
+**Table VI. Hyperparameter Search Space for Support Vector Machine.**
+
+| Component / Hyperparameter | Evaluated Values | Count |
+|---|---|:---:|
+| Feature Scaler | `None`, `MinMaxScaler` | 2 |
+| Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
+| Regularization Parameter | `0.01`, `0.1`, `1`, `10` | 4 |
+| Kernel Function | `'linear'`, `'rbf'`, `'poly'` | 3 |
+| Polynomial Degree | `2`, `3` | 2 |
+| Kernel Coefficient | `'scale'`, `'auto'` | 2 |
+| **Total Grid Combinations** | - | **288 (1,440 fits)** |
+
+### G. Classification Pipeline
 > **Catatan Respons Reviewer (R2 Poin 4):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta rekonsiliasi aritmatika ruang pencarian hyperparameter (*"totals of 1,086 configurations, 38,010 cross-validation fits, and 28 final refits should be reconciled with individual search spaces"*).  
 > - **Rencana Mitigasi:** Menjabarkan rekonsiliasi matematis secara transparan: (SVM: 288 + LR: 270 + RF: 288 + GNB: 240) = 1.086 kombinasi $\times$ 5 folds = 5.430 fits per skema $\times$ 7 skema fitur = 38.010 fits validasi silang + 28 refits akhir, dengan isolasi penuh pipeline Scaler-PCA di dalam fold latih guna mencegah kebocoran informasi.
-- **Target Kata**: 120–150 kata.
+- **Target Kata**: 125–150 kata (minimal 125 kata, maksimal 150 kata).
+- **Tujuan**: Menjelaskan arsitektur pipeline modular Scaler - PCA - Classifier, protokol 5-Fold StratifiedGroupKFold Cross-Validation berbasis identitas subjek, pencegahan kebocoran data, dan rekonsiliasi aritmatika ruang pencarian hyperparameter.
 - **Arsitektur Rantai Transformasi Modular**:
   $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\} \tag{12}$$
-- **Rekonsiliasi Aritmatika Ruang Pencarian (Jawaban R2-4)**:
-  - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits
-  - LR: 270 kombinasi $\times$ 5 folds = 1.350 fits
-  - RF: 288 kombinasi $\times$ 5 folds = 1.440 fits
-  - GNB: 240 kombinasi $\times$ 5 folds = 1.200 fits
-  - Total: **1.086 kombinasi hyperparameter** $\times$ 5 folds = 5.430 fits per skema fitur.
-  - Melintasi 7 skema fitur: $5.430 \times 7 = \mathbf{38.010\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih.
-  - Seluruh penskalaan dan PCA difitting secara terisolasi hanya pada fold latih di dalam `Pipeline` scikit-learn untuk menjamin pencegahan kebocoran data.
+- **Poin Narasi & Rekonsiliasi Aritmatika Ruang Pencarian (Jawaban R2-4)**:
+  1. Pipeline modular scikit-learn merangkai Scaler (`None`, `MinMaxScaler`), reduksi dimensi PCA (`None`, 0.50, 0.75), dan pengklasifikasi hilir (RF, GNB, LR, SVM) dalam satu kesatuan eksekusi terisolasi.
+  2. Protokol validasi menggunakan 5-Fold `StratifiedGroupKFold` (`n_splits=5`, `shuffle=True`, `random_state=42`) pada set latih 480 subjek (8.640 citra) dengan pengelompokan ketat berbasis identitas (`groups = subject_id`), menjamin citra dari subjek yang sama tidak pernah terbagi di antara fold latih dan validasi.
+  3. Penskalaan fitur dan proyeksi PCA di-fit secara eksklusif hanya pada fold latih di setiap iterasi cross-validation, menjamin pencegahan kebocoran data identitas maupun informasi statistik (*zero data leakage*).
+  4. Rekonsiliasi aritmatika ruang pencarian:
+     - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits
+     - LR: 270 kombinasi $\times$ 5 folds = 1.350 fits
+     - RF: 288 kombinasi $\times$ 5 folds = 1.440 fits
+     - GNB: 240 kombinasi $\times$ 5 folds = 1.200 fits
+     - Total: **1.086 kombinasi hyperparameter** $\times$ 5 folds = 5.430 fits per skema fitur.
+     - Melintasi 7 skema fitur: $5.430 \times 7 = \mathbf{38.010\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih (480 subjek).
 
 ### H. Evaluation Metrics
 > **Catatan Respons Reviewer (R2 Poin 5 & R2 Poin 6):**  
 > - **Komentar Reviewer:** Reviewer 2 menuntut pengujian hipotesis inferensial berpasangan McNemar yang tepat (*"claims should be appropriately qualified according to McNemar test"*), dan menuntut kejelasan batasan klaim keadilan algoritmik EOD (*"clarify scope and limitations of fairness claims"*).  
-> - **Rencana Mitigasi:** Menyertakan formulasi matematis Uji McNemar berpasangan dengan koreksi kontinuitas Edwards Eq. (21), Wilson Score 95% CI Eq. (22), serta mendefinisikan EOD Eq. (23) murni sebagai indikator disparitas performa subkelompok empiris tanpa overclaim jaminan keadilan universal.
-- **Target Kata**: 180–220 kata (2 paragraf).
-- **Paragraf 1 (Metrik Subkelompok OvR & Agregasi Global)**:
-  - Formulasi evaluasi One-vs-Rest (OvR) per kelas $c \in \{1, \dots, K\}$:
-    $$\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c} \tag{13}$$
-    $$\text{Precision}_c = \frac{TP_c}{TP_c + FP_c} \tag{14}$$
-    $$\text{Recall}_c = \frac{TP_c}{TP_c + FN_c} \tag{15}$$
-    $$\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c} \tag{16}$$
-  - Agregasi Global (Overall Accuracy dan Macro Average):
-    $$\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N} \tag{17}$$
-    $$\text{Precision}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{18}$$
-    $$\text{Recall}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{19}$$
-    $$\text{F1-Score}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{20}$$
-- **Paragraf 2 (Uji McNemar Berpasangan, 95% Wilson CI & Metrik Keadilan EOD)**:
-  - Uji McNemar berpasangan dengan koreksi kontinuitas Edwards untuk pasangan prediksi diskordan ($b$ dan $c$):
-    $$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} \tag{21}$$
-    didukung oleh uji eksak binomial dua arah (*exact two-sided binomial test*).
-  - Interval Kepercayaan 95% Wilson Score untuk proporsi akurasi $p$:
-    $$\text{CI}_{95\%} = \frac{p + \frac{z^2}{2N} \pm z \sqrt{\frac{p(1-p)}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}, \quad z = 1.95996 \tag{22}$$
-  - Disparitas Keadilan Algoritmik Equal Opportunity Difference (EOD):
-    $$\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR} \tag{23}$$
+> - **Rencana Mitigasi:** Menyertakan formulasi matematis metrik subkelompok OvR dan agregasi global, Uji McNemar berpasangan dengan koreksi kontinuitas Edwards Eq. (21), Wilson Score 95% CI Eq. (22), serta mendefinisikan EOD Eq. (23) murni sebagai indikator disparitas performa subkelompok empiris tanpa overclaim jaminan keadilan universal.
 
+Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120 kata**:
+
+#### Paragraph 1: Subgroup-Level One-vs-Rest and Global Performance Metrics
+- **Target Kata**: 100–120 kata (minimal 100 kata, maksimal 120 kata).
+- **Tujuan**: Menjelaskan formulasi matematis metrik evaluasi klasifikasi biner One-vs-Rest (OvR) untuk masing-masing dari 6 subkelompok demografis ($c \in \{1, \dots, K\}$) serta formulasi agregasi metrik performa global (Overall Accuracy dan Macro Average).
+- **Poin Narasi**:
+  1. Klasifikasi 6 kelas interseksional dievaluasi pada tingkat subkelompok menggunakan skema biner One-vs-Rest (OvR) berbasis komponen matriks konfusi ($TP_c, TN_c, FP_c, FN_c$):
+     $$\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c} \tag{13}$$
+     $$\text{Precision}_c = \frac{TP_c}{TP_c + FP_c} \tag{14}$$
+     $$\text{Recall}_c = \frac{TP_c}{TP_c + FN_c} \tag{15}$$
+     $$\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c} \tag{16}$$
+  2. Untuk mengevaluasi efektivitas sistem secara menyeluruh pada dataset held-out ($N=2.160$), metrik subkelompok diagregasikan menjadi metrik performa global:
+     $$\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N} \tag{17}$$
+     $$\text{Precision}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{18}$$
+     $$\text{Recall}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{19}$$
+     $$\text{F1-Score}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{20}$$
+     Perataan tanpa bobot (*unweighted macro average*) memastikan setiap subkelompok demografis memiliki bobot evaluasi yang setara.
+
+#### Paragraph 2: Inferential Hypothesis Testing, Wilson Score CI, and Fairness Calibration
+- **Target Kata**: 100–120 kata (minimal 100 kata, maksimal 120 kata).
+- **Tujuan**: Menjelaskan metodologi pengujian signifikansi statistik inferensial McNemar dengan koreksi kontinuitas Edwards, estimasi interval kepercayaan Wilson Score 95%, dan metrik disparitas keadilan empiris Equal Opportunity Difference (EOD).
+- **Poin Narasi**:
+  1. Uji McNemar berpasangan dengan koreksi kontinuitas Edwards diterapkan pada pasangan prediksi diskordan ($b$ dan $c$) untuk menguji signifikansi komparatif antarmodel:
+     $$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} \tag{21}$$
+     yang didukung oleh uji eksak binomial dua arah (*exact two-sided binomial test*) untuk presisi inferensi statistik.
+  2. Ketidakpastian estimasi akurasi empiris pada $N=2.160$ sampel uji held-out diukur menggunakan Interval Kepercayaan 95% Wilson Score:
+     $$\text{CI}_{95\%} = \frac{p + \frac{z^2}{2N} \pm z \sqrt{\frac{p(1-p)}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}, \quad z = 1.95996 \tag{22}$$
+  3. Keadilan algoritmik diukur melalui Equal Opportunity Difference (EOD):
+     $$\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR} \tag{23}$$
+     Metrik ini dikalibrasi secara objektif murni sebagai indikator disparitas performa empiris antarsubkelompok, bukan sebagai jaminan matematis keadilan universal.
 ---
 
 ## IV. RESULTS AND DISCUSSION
@@ -454,46 +519,46 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 ### A. Primary Benchmark Global Performance
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 2):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta evaluasi subject-disjoint bebas kebocoran, dan Reviewer 1 meminta perbandingan komprehensif melintasi model (*"compare proposed method with more methods to validate contribution"*).  
-> - **Rencana Mitigasi:** Menyajikan evaluasi komprehensif 28 model (4 famili pengklasifikasi $\times$ 7 skema fitur) di bawah tolok ukur utama Subject-Disjoint (Tabel VIII–XI) pada 120 subjek held-out ($N = 2.160$).
+> - **Rencana Mitigasi:** Menyajikan evaluasi komprehensif 28 model (4 famili pengklasifikasi $\times$ 7 skema fitur) di bawah tolok ukur utama Subject-Disjoint (Tabel VII–X) pada 120 subjek held-out ($N = 2.160$).
 - **Target Kata**: 350–420 kata (4 paragraf untuk 4 famili model + 1 paragraf sintesis).
-- **Paragraf 1 (Random Forest — Table VIII)**:
+- **Paragraf 1 (Random Forest — Table VII)**:
   - Puncak performa pada dual-domain `Emotion ⊕ Face` (Akurasi 84.86%, Macro F1 0.8479) dan tri-domain `Face ⊕ Emotion ⊕ Age` (Akurasi 85.00%, Macro F1 0.8493).
-- **Paragraf 2 (Gaussian Naive Bayes — Table IX)**:
+- **Paragraf 2 (Gaussian Naive Bayes — Table VIII)**:
   - Puncak performa pada dual-domain `Emotion ⊕ Face` (Akurasi 84.31%, Macro F1 0.8430), sedangkan tri-domain mencapai 83.61%. Seluruh konfigurasi memilih PCA 0.75.
-- **Paragraf 3 (Logistic Regression — Table X — Model Juara 1)**:
+- **Paragraf 3 (Logistic Regression — Table IX — Model Juara 1)**:
   - LR Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih performa tertinggi di seluruh pengujian: Akurasi **88.66%**, Macro F1 **0.8868**, 95% Wilson CI **[87.25%, 89.93%]** ($C=0.1$, solver saga, scaler MinMaxScaler, tanpa PCA). Mengungguli dual-domain terbaik (87.45%) dan single biometrik wajah (86.39%).
-- **Paragraf 4 (Support Vector Machine — Table XI — Model Runner-up 1)**:
+- **Paragraf 4 (Support Vector Machine — Table X — Model Runner-up 1)**:
   - SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` meraih Akurasi **88.61%**, Macro F1 **0.8863**, 95% Wilson CI **[87.20%, 89.88%]** ($C=10$, kernel RBF, gamma scale, tanpa PCA). Dual-domain `Emotion ⊕ Face` mencapai 88.43%.
 - **Paragraf 5 (Sintesis Global 28 Model)**:
   - Urutan rerata performa lintas famili: $\text{SVM } (86.47\%) > \text{LR } (86.18\%) > \text{RF } (80.57\%) > \text{GNB } (78.37\%)$ (rerata akurasi 7 skema fitur per famili; angka SVM dikoreksi dari 86.81% setelah dihitung ulang dari JSON).
 - **Elemen Wajib**:
-  - **Table VIII** (Hasil Evaluasi Subject-Disjoint Random Forest).
-  - **Table IX** (Hasil Evaluasi Subject-Disjoint Gaussian Naive Bayes).
-  - **Table X** (Hasil Evaluasi Subject-Disjoint Logistic Regression).
-  - **Table XI** (Hasil Evaluasi Subject-Disjoint Support Vector Machine).
+  - **Table VII** (Hasil Evaluasi Subject-Disjoint Random Forest).
+  - **Table VIII** (Hasil Evaluasi Subject-Disjoint Gaussian Naive Bayes).
+  - **Table IX** (Hasil Evaluasi Subject-Disjoint Logistic Regression).
+  - **Table X** (Hasil Evaluasi Subject-Disjoint Support Vector Machine).
 
 ### B. Data Leakage Ablation and Statistical Significance
 > **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi tumpang tindih identitas (*"clarify whether identity overlap exists"*) serta kualifikasi klaim signifikansi statistik dan saturasi fitur (*"claims of tri-domain superiority and feature saturation should be appropriately qualified"*).  
-> - **Rencana Mitigasi:** Menyajikan studi komparatif ablasi kebocoran data pada Tabel XII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas) dan menyajikan hasil uji McNemar berpasangan pada Tabel XIII yang membuktikan signifikansi fusi multi-domain ($p < 0.001$) sekaligus mengualifikasikan secara jujur fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$).
+> - **Rencana Mitigasi:** Menyajikan studi komparatif ablasi kebocoran data pada Tabel XI (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas) dan menyajikan hasil uji McNemar berpasangan pada Tabel XII yang membuktikan signifikansi fusi multi-domain ($p < 0.001$) sekaligus mengualifikasikan secara jujur fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$).
 - **Target Kata**: 250–300 kata (2 paragraf).
-- **Paragraf 1 (Ablasi Kebocoran Data: Overlap vs Disjoint — Table XII)**:
+- **Paragraf 1 (Ablasi Kebocoran Data: Overlap vs Disjoint — Table XI)**:
   - Membandingkan hasil historis (93.70% SVM Tri / 92.73% LR Tri) dengan tolok ukur *subject-disjoint* (88.61% SVM Tri / 88.66% LR Tri).
   - Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM dan $\Delta = -4.07\text{ pp}$ pada LR membuktikan dan menguantifikasi besaran efek memorisasi identitas (*identity memorization*).
   - Penurunan terkecil pada LR Tri membuktikan stabilitas generalisasi model linier teratur terhadap data subjek baru.
-- **Paragraf 2 (Pengujian Signifikansi Inferensial McNemar — Table XIII)**:
+- **Paragraf 2 (Pengujian Signifikansi Inferensial McNemar — Table XII)**:
   - **Multi-domain vs Single Face**: SVM Tri vs Face ($+2.45\text{ pp}$, $\chi^2 = 20.9612, p = 3.46 \times 10^{-6} < 0.001$) dan LR Tri vs Face ($+2.27\text{ pp}$, $\chi^2 = 19.6923, p = 6.78 \times 10^{-6} < 0.001$) terbukti signifikan secara statistik, menolak hipotesis bahwa peningkatan fusi hanyalah artefak kebocoran data.
   - **Tri vs Dual (Saturasi Fitur Asimtotik)**: SVM Tri vs Dual ($+0.19\text{ pp}$, $+4\text{ citra}$, $p = 0.7343$) mengonfirmasi kejenuhan representasi laten pada model non-linier RBF, sedangkan pada LR linier penambahan usia memberikan kenaikan signifikan ($+1.20\text{ pp}$, $+26\text{ citra}$, $p = 0.0073 < 0.01$).
   - **Paritas Prediktif LR vs SVM**: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.0000$ dan $p = 1.0000$ (selisih bersih +1 citra). Karena $p > 0.05$, hasil ini hanya menunjukkan **tidak adanya bukti perbedaan**; frasa "setara/ekuivalen" tidak boleh diartikan sebagai ekuivalensi terbukti (itu memerlukan uji ekuivalensi seperti TOST). Gunakan "tidak berbeda secara signifikan".
-  - **Catatan p-value (diverifikasi ulang dari `y_test`/`y_pred`)**: Nilai $p$ pada Table XIII ($3.46 \times 10^{-6}$, $6.78 \times 10^{-6}$, $0.0073$, $0.7343$, $1.0000$) adalah **p eksak binomial dua arah**, bukan p dari distribusi $\chi^2$. Statistik $\chi^2$ (20.9612, 19.6923, 7.1023, 0.1154, 0.0000) dilaporkan berdampingan; kedua kolom harus diberi label terpisah agar tidak tertukar. Seluruh nilai telah direproduksi dan cocok.
+  - **Catatan p-value (diverifikasi ulang dari `y_test`/`y_pred`)**: Nilai $p$ pada Table XII ($3.46 \times 10^{-6}$, $6.78 \times 10^{-6}$, $0.0073$, $0.7343$, $1.0000$) adalah **p eksak binomial dua arah**, bukan p dari distribusi $\chi^2$. Statistik $\chi^2$ (20.9612, 19.6923, 7.1023, 0.1154, 0.0000) dilaporkan berdampingan; kedua kolom harus diberi label terpisah agar tidak tertukar. Seluruh nilai telah direproduksi dan cocok.
 - **Elemen Wajib**:
-  - **Table XII** (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint).
-  - **Table XIII** (Hasil Uji McNemar Berpasangan dan Exact Binomial Test).
+  - **Table XI** (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint).
+  - **Table XII** (Hasil Uji McNemar Berpasangan dan Exact Binomial Test).
 
 ### C. Computational Efficiency Profiling
 > **Catatan Respons Reviewer (R1 Poin 5 & R2 Poin 8):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta evaluasi biaya waktu (*"consider the time cost in the evaluation"*), dan Reviewer 2 meminta profil komputasi lengkap (*"report feature extraction time, classifier training time, inference latency, memory consumption, and model storage"*).  
-> - **Rencana Mitigasi:** Menyajikan subseksi khusus dengan Tabel XIV yang merinci durasi ekstraksi komparatif terukur pada CPU (Face 467,0 ms, Emotion 476,7 ms, Age 543,1 ms; tri-domain ~1.487 ms/citra) dan GPU terakselerasi NVIDIA RTX 4060 dengan in-memory processor caching (Face 39,7 ms, Emotion 39,7 ms, Age 45,1 ms; tri-domain 124,5 ms/citra; 11,9× lebih cepat), durasi pelatihan 5-fold (LR Tri 54,8 menit vs SVM Tri 511,1 menit; 9,3× lebih cepat), latensi inferensi per sampel (LR 0.0054 ms vs SVM 4.4481 ms; >820× lebih cepat), dan ukuran penyimpanan model (LR 0.11 MB vs SVM 36.60 MB; >330× lebih ringkas) untuk membuktikan keunggulan komputasi pengklasifikasi hilir yang sangat ringan.
+> - **Rencana Mitigasi:** Menyajikan subseksi khusus dengan Tabel XIII yang merinci durasi ekstraksi komparatif terukur pada CPU (Face 467,0 ms, Emotion 476,7 ms, Age 543,1 ms; tri-domain ~1.487 ms/citra) dan GPU terakselerasi NVIDIA RTX 4060 dengan in-memory processor caching (Face 39,7 ms, Emotion 39,7 ms, Age 45,1 ms; tri-domain 124,5 ms/citra; 11,9× lebih cepat), durasi pelatihan 5-fold (LR Tri 54,8 menit vs SVM Tri 511,1 menit; 9,3× lebih cepat), latensi inferensi per sampel (LR 0.0054 ms vs SVM 4.4481 ms; >820× lebih cepat), dan ukuran penyimpanan model (LR 0.11 MB vs SVM 36.60 MB; >330× lebih ringkas) untuk membuktikan keunggulan komputasi pengklasifikasi hilir yang sangat ringan.
 - **Target Kata**: 220–260 kata (2 paragraf).
 - **Poin Narasi (semua angka terlacak ke log/JSON eksperimen)**:
   1. **Ekstraksi fitur offline komparatif (CPU vs GPU terakselerasi, 10.800 citra)**:
@@ -505,9 +570,9 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
   4. **Ukuran model tersimpan**: LR **0.11 MB**, >330× lebih ringkas dari SVM (36.60 MB) dan ~56× dari RF (6.19 MB).
   5. **Kualifikasi wajib (kalibrasi klaim Edge AI & Latensi Ujung-ke-Ujung)**: Latensi pengklasifikasi diukur sebagai rata-rata *batch predict* atas 2.160 sampel (`inf_elapsed / len(x_test)`: LR 0.0054 ms/sampel, SVM 4.4481 ms). Pada pipeline ujung-ke-ujung (dari citra mentah piksel hingga prediksi kelas demografis), waktu komputasi didominasi oleh forward pass ViT-Base (~1.487 ms pada CPU atau ~125 ms pada GPU). Komponen pengklasifikasi Logistic Regression (0.0054 ms) hanya memakan porsi <0.004% dari total siklus komputasi GPU dan <0.0004% pada CPU. Dengan demikian, klaim efisiensi LR dibingkai secara presisi sebagai "pengklasifikasi hilir yang ultra-ringan dan instan", sedangkan tahap ekstraksi visual dapat diakselerasi melalui perangkat GPU atau inference engine tepi.
   6. **Konsumsi Memori & Jejak Penyimpanan (R2 #8)**: Ukuran file cache fitur terkuantifikasi sebesar 30.8 MB per domain (92.4 MB untuk Tri-Domain). Ukuran model tersimpan LR adalah 0.11 MB vs SVM 36.60 MB (>330× lebih hemat). Jejak array fitur float32 dalam RAM saat inferensi hanya sebesar 18.98 MB untuk seluruh 2.160 citra uji (2.160 × 2.304 × 4 byte). Angka spekulatif draf lama ("~2.4 GB" dan "~15.2 ms GPU") telah dibersihkan dan digantikan dengan angka empiris yang terverifikasi.
-- **Elemen Wajib**: **Table XIV** (Profil Efisiensi Waktu dan Jejak Komputasi Komparatif).
+- **Elemen Wajib**: **Table XIII** (Profil Efisiensi Waktu dan Jejak Komputasi Komparatif).
 
-**Table XIV. Comprehensive Computational Efficiency and Memory Footprint Profile.**
+**Table XIII. Comprehensive Computational Efficiency and Memory Footprint Profile.**
 
 | Classifier Model | Feature Scheme | Feature Dim. | Offline Extraction (CPU, ms/image) | Offline Extraction (GPU, ms/image) | GridSearchCV Training Time | Inference Latency (ms/sample, batch-avg) | Speedup vs SVM | Serialized Model Size (MB) | Size Reduction vs SVM | RAM Footprint (Test Set Array) |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -516,11 +581,11 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 | Random Forest (RF) | Tri-Domain | 2,304 | ~1,487 | 124.5 | 6,628 s (110.5 min) | 0.0537 | 82.8× | 6.19 | 5.9× | 18.98 MB |
 | Gaussian Naive Bayes (GNB) | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | ~944 | 79.4 | 1,529 s (25.5 min) | 0.0083 | 535.9× | 0.78 | 46.9× | 12.66 MB |
 
-> **Catatan Table XIV:** (1) Offline Extraction CPU dihitung dari log tqdm `1.1_vit-*.md` (unbatched, serial, batch size = 1). (2) Offline Extraction GPU diukur langsung pada NVIDIA GeForce RTX 4060 Laptop GPU dengan in-memory processor caching (`experiment/code/times/*.json`). (3) Waktu pelatihan mencakup seluruh GridSearchCV 5-fold (LR 1.350 fits, SVM 1.440, RF 1.440, GNB Dual 1.200) ditambah refit akhir, sebagai wall-clock. (4) Seluruh baris adalah konfigurasi puncak masing-masing famili (GNB puncak pada Dual-Domain). (5) RAM Footprint dihitung eksak dari representasi array NumPy float32 untuk 2.160 sampel uji ($N \times D \times 4\text{ bytes}$).
+> **Catatan Table XIII:** (1) Offline Extraction CPU dihitung dari log tqdm `1.1_vit-*.md` (unbatched, serial, batch size = 1). (2) Offline Extraction GPU diukur langsung pada NVIDIA GeForce RTX 4060 Laptop GPU dengan in-memory processor caching (`experiment/code/times/*.json`). (3) Waktu pelatihan mencakup seluruh GridSearchCV 5-fold (LR 1.350 fits, SVM 1.440, RF 1.440, GNB Dual 1.200) ditambah refit akhir, sebagai wall-clock. (4) Seluruh baris adalah konfigurasi puncak masing-masing famili (GNB puncak pada Dual-Domain). (5) RAM Footprint dihitung eksak dari representasi array NumPy float32 untuk 2.160 sampel uji ($N \times D \times 4\text{ bytes}$).
 ### D. Intersectional Subgroup Performance and Fairness Calibration
 > **Catatan Respons Reviewer (R2 Poin 6):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi ruang lingkup dan batasan analisis keadilan algoritmik (*"reported EOD values do not establish comprehensive demographic fairness... clarify scope and limitations"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XV performa granular 6 subkelompok dan secara transparan melaporkan nilai EOD (9.72 pp), dengan penegasan eksplisit bahwa nilai ini mencerminkan disparitas empiris antarsubkelompok akibat variasi fenotipik/pencahayaan, bukan jaminan keadilan universal.
+> - **Rencana Mitigasi:** Menyajikan Tabel XIV performa granular 6 subkelompok dan secara transparan melaporkan nilai EOD (9.72 pp), dengan penegasan eksplisit bahwa nilai ini mencerminkan disparitas empiris antarsubkelompok akibat variasi fenotipik/pencahayaan, bukan jaminan keadilan universal.
 - **Target Kata**: 200–240 kata (2 paragraf).
 - **Paragraf 1 (Profil Subkelompok Model Teratas)**:
   - Evaluasi granular pada 6 subkelompok ($N = 360$ citra uji unseen per subkelompok) pada model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%).
@@ -529,7 +594,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 - **Paragraf 2 (Kalibrasi Batasan Keadilan Algoritmik)**:
   - Disparitas Equal Opportunity ($\text{EOD} = \text{Max TPR} - \text{Min TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$) dilaporkan secara transparan.
   - Penegasan objektif bahwa capaian ini mencerminkan tantangan variasi fenotipik dan kontras pencahayaan yang masih ada, serta **bukan bukti tercapainya keadilan algoritmik sempurna**.
-- **Elemen Wajib**: **Table XV** (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint).
+- **Elemen Wajib**: **Table XIV** (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint).
 
 ### E. Error Pattern Assessment
 > **Catatan Respons Reviewer (R1 Poin 4 & R2 Poin 9):**  
@@ -558,18 +623,18 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 ### F. Contextual Comparison with Prior Studies
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta komparasi dengan metode terdahulu, dan Reviewer 2 menegaskan agar perbandingan dikualifikasikan sebagai kontekstual jika partisi datanya berbeda (*"comparison should be presented as contextual rather than a controlled benchmark"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XVI perbandingan dengan studi terdahulu pada DemogPairs (Putri et al. 2025) dengan catatan metodologis tegas bahwa studi terdahulu menggunakan protokol *subject-overlap*, sehingga angka terdahulu hanya dapat disajikan sebagai konteks dan tidak dapat diperingkatkan terhadap hasil subject-disjoint.
+> - **Rencana Mitigasi:** Menyajikan Tabel XV perbandingan dengan studi terdahulu pada DemogPairs (Putri et al. 2025) dengan catatan metodologis tegas bahwa studi terdahulu menggunakan protokol *subject-overlap*, sehingga angka terdahulu hanya dapat disajikan sebagai konteks dan tidak dapat diperingkatkan terhadap hasil subject-disjoint.
 - **Target Kata**: 220–280 kata (2 paragraf).
-- **Paragraf 1 (Dua Kelompok Pembanding, Table XVI)**:
+- **Paragraf 1 (Dua Kelompok Pembanding, Table XV)**:
   - **Bagian A, komparasi kontekstual (protokol berbeda, tidak terkontrol)**: MD-ViT + XGBoost (Putri et al. JIEET 2025: 89.07%), Dual-ViT + SVM (Putri et al. ICVEE 2025: 92.41%), dan baseline historis usulan Tri-Domain + SVM pada *subject-overlap* (93.70%).
   - **Bagian B, komparasi terkontrol (protokol identik: subject-disjoint, 480/120 subjek, GridSearchCV yang sama)**: baseline *single-domain* terbaik (`Face`: LR 86.39% / SVM 86.16%; `Emotion`: SVM 85.79%; `Age`: SVM 82.55%), RF Tri 85.00%, GNB Dual 84.31%, dibandingkan dengan LR Tri 88.66% dan SVM Tri 88.61%. Inilah jawaban R1 #6 yang dapat dipertanggungjawabkan, karena seluruhnya telah dieksperimenkan pada partisi yang sama.
 - **Paragraf 2 (Kualifikasi Protokol Partisi Kontekstual, R2 #7)**:
-  - Tegaskan bahwa Bagian A **bukan** *controlled benchmark*: studi terdahulu memakai *random stratified* tingkat citra (identitas tumpang tindih), sehingga angkanya tidak dapat dibandingkan langsung dengan 88.66% / 88.61%. Satu-satunya perbandingan yang adil terhadap hasil subject-overlap adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XII). Praproses dan *image processor* studi terdahulu belum tentu identik; nyatakan sebagai batasan.
+  - Tegaskan bahwa Bagian A **bukan** *controlled benchmark*: studi terdahulu memakai *random stratified* tingkat citra (identitas tumpang tindih), sehingga angkanya tidak dapat dibandingkan langsung dengan 88.66% / 88.61%. Satu-satunya perbandingan yang adil terhadap hasil subject-overlap adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XI). Praproses dan *image processor* studi terdahulu belum tentu identik; nyatakan sebagai batasan.
   - **Hindari klaim "tolok ukur bebas kebocoran pertama"** kecuali telah diverifikasi lewat pencarian literatur. Formulasi aman: "sepengetahuan penulis, belum ada hasil klasifikasi 6-kelas subject-disjoint pada DemogPairs yang dilaporkan pada studi yang kami telaah".
   - **Peringatan konsistensi dokumen:** `10_response_letter_skeleton.md` (R1-6) menjanjikan "perluasan dari 3 menjadi 7 baseline" yang mencakup model CNN multi-task, baseline VGGFace, dan ResNet-50. **Tidak ada eksperimen untuk model tersebut di repositori.** Pilih salah satu sebelum submit: (a) menjalankan baseline tersebut pada partisi subject-disjoint yang sama (mis. ekstraksi fitur ResNet-50/VGGFace + pengklasifikasi yang sama), atau (b) merevisi surat tanggapan agar hanya menyebut baseline internal terkontrol pada Bagian B.
-- **Elemen Wajib**: **Table XVI** (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs).
+- **Elemen Wajib**: **Table XV** (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs).
 
-**Table XVI. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
+**Table XV. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
 
 | Part | Method | Partition Protocol | Comparability | Accuracy | Macro F1 |
 |:---:|---|---|---|:---:|:---:|
@@ -586,7 +651,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **110–130
 | B | **Proposed Tri-Domain + LR** | **Subject-disjoint** | **Controlled** | **88.66%** | **0.8868** |
 | B | **Proposed Tri-Domain + SVM** | **Subject-disjoint** | **Controlled** | **88.61%** | **0.8863** |
 
-> **Catatan Table XVI:** Angka Bagian B diambil dari `experiment/code/results/*.json` (leaderboard 28 model). Angka Bagian A dikutip dari publikasi masing-masing dan tidak direproduksi ulang. Bagian A dan B tidak boleh diperingkatkan dalam satu urutan.
+> **Catatan Table XV:** Angka Bagian B diambil dari `experiment/code/results/*.json` (leaderboard 28 model). Angka Bagian A dikutip dari publikasi masing-masing dan tidak direproduksi ulang. Bagian A dan B tidak boleh diperingkatkan dalam satu urutan.
 ---
 
 ## V. CONCLUSION & LIMITATIONS
@@ -627,22 +692,21 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Figure 2** | Gambar | Section III.A (Paragraph 1) | *Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.* | **Full Width (`figure*`)** |
 | **Table I** | Tabel | Section III.A (Paragraph 2) | *DemogPairs Dataset Partition and Subject-Disjoint Demographic Subgroup Distribution.* | Column Width (`table`) |
 | **Figure 3** | Gambar | Section III.B (Paragraph 1) | *Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.* | **Full Width (`figure*`)** |
-| **Table II** | Tabel | Section III.B (Paragraph 1) | *Pre-trained Vision Transformer Backbone Specifications and Preprocessing Parameters.* | Column Width (`table`) |
-| **Table III** | Tabel | Section III.B (Paragraph 2) | *Multi-Domain Feature Fusion and Systematic Ablation Configurations.* | Column Width (`table`) |
-| **Table IV** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | **Full Width (`table*`)** |
-| **Table V** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | **Full Width (`table*`)** |
-| **Table VI** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | **Full Width (`table*`)** |
-| **Table VII** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Machine Classifier.* | **Full Width (`table*`)** |
-| **Table VIII** | Tabel | Section IV.A (Random Forest) | *Primary Benchmark Performance of Random Forest across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
-| **Table IX** | Tabel | Section IV.A (Gaussian NB) | *Primary Benchmark Performance of Gaussian Naive Bayes across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
-| **Table X** | Tabel | Section IV.A (Logistic Reg) | *Primary Benchmark Performance of Logistic Regression across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
-| **Table XI** | Tabel | Section IV.A (Support Vector) | *Primary Benchmark Performance of Support Vector Machine across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
-| **Table XII** | Tabel | Section IV.B (Ablasi Leakage)| *Comparative Ablation Study on Data Leakage: Historical Baseline (Subject-Overlap, 100% Identity Leakage) vs. Primary Benchmark (Subject-Disjoint, Zero Leakage) across Key Configurations.* | **Full Width (`table*`)** |
-| **Table XIII** | Tabel | Section IV.B (Uji Statistik) | *Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test) for Feature Fusion and Cross-Classifier Comparisons.* | **Full Width (`table*`)** |
-| **Table XIV** | Tabel | Section IV.C (Komputasi) | *Comprehensive Computational Efficiency and Memory Footprint Profile.* | **Full Width (`table*`)** |
-| **Table XV** | Tabel | Section IV.D (Subkelompok) | *Intersectional Subgroup Performance and Algorithmic Fairness Profile for Top-Performing Tri-Domain Models on the Held-Out Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table II** | Tabel | Section III.B (Paragraph 3) | *Multi-Domain Feature Fusion and Systematic Ablation Configurations.* | Column Width (`table`) |
+| **Table III** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | **Full Width (`table*`)** |
+| **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | **Full Width (`table*`)** |
+| **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | **Full Width (`table*`)** |
+| **Table VI** | Tabel | Section III.F (Support Vector) | *Hyperparameter Search Space for Support Vector Machine Classifier.* | **Full Width (`table*`)** |
+| **Table VII** | Tabel | Section IV.A (Random Forest) | *Primary Benchmark Performance of Random Forest across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table VIII** | Tabel | Section IV.A (Gaussian NB) | *Primary Benchmark Performance of Gaussian Naive Bayes across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table IX** | Tabel | Section IV.A (Logistic Reg) | *Primary Benchmark Performance of Logistic Regression across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table X** | Tabel | Section IV.A (Support Vector) | *Primary Benchmark Performance of Support Vector Machine across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table XI** | Tabel | Section IV.B (Ablasi Leakage)| *Comparative Ablation Study on Data Leakage: Historical Baseline (Subject-Overlap, 100% Identity Leakage) vs. Primary Benchmark (Subject-Disjoint, Zero Leakage) across Key Configurations.* | **Full Width (`table*`)** |
+| **Table XII** | Tabel | Section IV.B (Uji Statistik) | *Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test) for Feature Fusion and Cross-Classifier Comparisons.* | **Full Width (`table*`)** |
+| **Table XIII** | Tabel | Section IV.C (Komputasi) | *Comprehensive Computational Efficiency and Memory Footprint Profile.* | **Full Width (`table*`)** |
+| **Table XIV** | Tabel | Section IV.D (Subkelompok) | *Intersectional Subgroup Performance and Algorithmic Fairness Profile for Top-Performing Tri-Domain Models on the Held-Out Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
 | **Figure 4** | Gambar | Section IV.E (Error Pattern) | *Comparative 6×6 Confusion Matrices on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.* | **Full Width (`figure*`)** |
-| **Table XVI** | Tabel | Section IV.F (Studi Terdahulu)| *Contextual Comparison of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | Column Width (`table`) |
+| **Table XV** | Tabel | Section IV.F (Studi Terdahulu)| *Contextual Comparison of Proposed Framework against Prior Studies on the DemogPairs Dataset.* | Column Width (`table`) |
 
 ### Daftar Lengkap Urutan Persamaan Matematika (Eq. 1 s.d. 23)
 
