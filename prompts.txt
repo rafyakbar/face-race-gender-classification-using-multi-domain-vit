@@ -27,6 +27,8 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+buat agar sessions/ menjadi lebih sederhana, maksud saya untuk tanggal yang sama jadikan satu saja
+
 saat ini sessions ada di 2 tempat, yaitu docs/sessions/ dan sessions/, seharusnya jadi satu saja pada sessions/
 
 tuliskan/update session ini pada docs
