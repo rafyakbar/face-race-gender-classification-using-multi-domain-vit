@@ -28,6 +28,37 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # ==============================================================================
 
 perbaiki paper_outline_v1.1.md:
+- saat ini seperti tabel/figure masih ada yang belum ditampilkan.
+- seharusnya ditampilkan juga seperti pada paper_outline_v1.0.md.
+perhatikan:
+- jangan mengubah diluar yang diminta.
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm.
+- jika ingin cek-cek folder terkait bisa delegasi subagent.
+- perbaiki dengan sangat amat teliti.
+
+perbaiki paper_outline_v1.1.md:
+III. MATERIALS AND METHODS:
+- seharusnya ada section yg membahas seperti:
+  * Core i9-13900H
+  * RAM 32GB DDR5
+  * NVIDIA RTX 4060 8GB
+  * ekstraksi fitur menggunakan nvidia, sedangkan untuk training menggunakan CPU
+  * menggunakan python, torch, sklearn
+- terdiri dari 100-115 kata
+IV. RESULTS AND DISCUSSION
+Keseluruhan:
+- seharusnya juga ada tabel-tabel yg ditampilkan seperti pada paper_outline_v1.0.md.
+A. Global Performance:
+- seharusnya juga ada tabel-tabel yg ditampilkan seperti pada paper_outline_v1.0.md, akan tetapi hasil dari Subject-Disjoint yang mana bisa dicek pada experiment/code/md/. delegasikan ke beberapa subagent untuk cek.
+- pada tabel yang menyajikan Computational tidak perlu ada ekstraksi menggunakan cpu, buat nama kolomnya menjadi lebih singkat, tidak perlu ada kolom versus, training time dalam menit, dan harus full width pada latex.
+perhatikan:
+- jangan mengubah diluar yang diminta.
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm.
+- jika ingin cek-cek folder terkait bisa delegasi subagent.
+- perbaiki dengan sangat amat teliti.
+
+
+perbaiki paper_outline_v1.1.md:
 III. MATERIALS AND METHODS
 A. Dataset:
 - Table I.: kolomnya cukup: Subgroup, Subjects, Train (80%), Test (20%), Total.
