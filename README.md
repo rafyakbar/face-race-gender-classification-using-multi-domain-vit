@@ -338,6 +338,7 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 ├── prompts.txt                            # Catatan kronologis prompt dan instruksi rekayasa eksperimen
 ├── README.ai.md                           # Panduan operasional agen AI utama dan indeks ground-truth
 ├── README.md                              # Dokumentasi riset publik utama (BERKAS INI)
+├── sessions/                              # Log riwayat sesi kerja otonom AI agent (9 berkas konsolidasi per tanggal)
 ├── WORKFLOW.md                            # Standard Operating Procedure (SOP) siklus pengembangan naskah
 └── upload/                                # Artefak paket pengajuan siap kirim (PDF dan arsip ZIP sumber)
 ```

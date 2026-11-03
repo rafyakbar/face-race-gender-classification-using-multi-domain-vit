@@ -94,7 +94,7 @@ face-race-gender-classification-using-multi-domain-vit/
 ├── README.md                                  # Dokumentasi publik utama penelitian & ringkasan Dual-Benchmark
 ├── rules/                                     # Pedoman sitasi IEEE, aturan LaTeX, dan aturan draf Markdown
 ├── scopus_query.txt                           # Kueri penelusuran Scopus untuk literatur terkait
-├── sessions/                                  # Log riwayat sesi kerja otonom AI agent (8 berkas konsolidasi)
+├── sessions/                                  # Log riwayat sesi kerja otonom AI agent (9 berkas konsolidasi)
 │   ├── session_2026-09-06_agy_*.md            # Audit manuskrip Markdown & sinkronisasi awal LaTeX ID
 │   ├── session_2026-09-07_agy_*.md            # Audit sitasi dan pembaruan arsitektur sistem dokumentasi
 │   ├── session_2026-09-08_standardisasi_*.md  # Standardisasi IEEE, audit 51 pustaka, sitasi interaktif & LaTeX
@@ -102,7 +102,8 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── session_2026-10-28_dekonstruksi_*.md   # Dekonstruksi review IEEE, Roadmap, Ledger, & audit numerik
 │   ├── session_2026-10-29_penyempurnaan_*.md  # Penyempurnaan outline v1.1, Eq. (1)-(23), evaluasi Figure 3
 │   ├── session_2026-10-31_audit-latensi_*.md  # Konsolidasi 3 fase: audit latensi CPU, instrumentasi, caching (30x), outline
-│   └── session_2026-11-02_unifikasi_*.md      # Unifikasi direktori sessions dan konsolidasi 1 berkas per tanggal
+│   ├── session_2026-11-02_unifikasi_*.md      # Unifikasi direktori sessions dan konsolidasi 1 berkas per tanggal
+│   └── session_2026-11-03_penyempurnaan_*.md  # Penyempurnaan Section III-IV, Subject-Disjoint, paritas v1.0, & eliminasi 95% CI
 ├── upload/                                    # Berkas artefak paket submit (PDF bersih, highlighted, & source ZIP)
 └── WORKFLOW.md                                # SOP universal 4 tahap siklus hidup manuskrip riset
 
@@ -128,7 +129,7 @@ BAGIAN 2: PENJELASAN LENGKAP SETIAP DIREKTORI & BERKAS (DIRECTORY & FILE GLOSSAR
   Kontrak master outline naskah publikasi definitif versi 1.1 yang mematuhi seluruh rekomendasi
   peer review IEEE Access: Primary Benchmark Subject-Disjoint (0% leakage, LR 88.66% / SVM 88.61%),
   Section II terstruktur dalam 3 subbab dengan Eq. (1)-(3), uji inferensial McNemar, analisis profil Edge AI,
-  kalibrasi fairness EOD, serta spesifikasi baku Figure 1-4, Table I-XVI, dan Eq. 1-22.
+  kalibrasi fairness EOD, serta spesifikasi baku Figure 1-4, Table I-XV, dan Eq. 1-23.
 - authors.txt
   Profil biografi akademik naratif lengkap seluruh penulis (termasuk afiliasi dan kepakaran).
 - prompts.txt
@@ -205,7 +206,7 @@ Sub-direktori experiment/code/:
 - rules/
   Pedoman sitasi IEEE, aturan LaTeX, dan standardisasi penulisan Markdown.
 - sessions/
-  Direktori catatan kronologis log riwayat sesi kerja otonom AI agent, audit naskah, perbaikan sitasi, dan standardisasi repositori (8 berkas master terkonsolidasi per tanggal kalender).
+  Direktori catatan kronologis log riwayat sesi kerja otonom AI agent, audit naskah, perbaikan sitasi, dan standardisasi repositori (9 berkas master terkonsolidasi per tanggal kalender).
 - paper_submission/ & upload/
   Paket kompilasi submission final (PDF bersih, highlighted PDF, dan arsip berkas sumber ZIP).
 ====================================================================================================
