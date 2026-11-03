@@ -37,6 +37,7 @@
   - [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) — Templat resmi surat tanggapan butir-per-butir (point-by-point response letter).
   - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formulir resmi perubahan susunan kepengarangan (author byline change form).
   - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Daftar periksa kepatuhan resubmisi 10 poin resmi.
+  - [paper_outline_audit/](paper_reviews_ieee/paper_outline_audit/) — Berkas laporan audit multi-model independen dan sintesis terpadu terhadap kepatuhan ulasan IEEE Access.
 - **Panduan Operasional:**
   - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure (SOP) untuk siklus hidup naskah riset 5 tahap.
   - [`README.ai.md`](README.ai.md) — Panduan referensi teknis utama dan single source of truth untuk autonomous agents.
@@ -333,7 +334,8 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Keputusan resmi & komentar reviewer
 │   ├── IEEE-Access_Response-to-Reviewers-template.md              # Templat tanggapan butir-per-butir
 │   ├── Request-for-Byline-Change.md                               # Formulir resmi perubahan susunan kepengarangan
-│   └── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+│   ├── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+│   └── paper_outline_audit/                                       # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                      # Berkas pengemasan submisi formal & laporan kepatuhan IEEE
 ├── prompts.txt                            # Catatan kronologis prompt dan instruksi rekayasa eksperimen
 ├── README.ai.md                           # Panduan operasional agen AI utama dan indeks ground-truth

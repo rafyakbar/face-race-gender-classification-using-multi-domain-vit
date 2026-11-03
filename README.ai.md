@@ -120,6 +120,7 @@ Manuskrip ini diajukan secara resmi ke IEEE Access dan memperoleh surat keputusa
 | **Response to Reviewers Template** | [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) | Struktur standar respons IEEE Access: tanggapan poin-demi-poin terhadap komentar reviewer, respons penulis, dan tindakan perbaikan yang diambil. |
 | **Request for Byline Change** | [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) | Formulir resmi dan justifikasi rinci yang diwajibkan apabila terjadi perubahan daftar/urutan penulis antara pengajuan awal dan revisi. |
 | **Resubmission Checklist** | [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) | Daftar periksa kepatuhan 10 poin: respons reviewer, alat bantu tata bahasa, formula matematika, referensi, PDF tersorot (*highlighted PDF*), dan berkas utama. |
+| **Outline Compliance Audits** | [`paper_outline_audit/`](paper_reviews_ieee/paper_outline_audit/) | Direktori laporan audit multi-model independen (`claude-sonnet-5.5-medium`, `gemini-3.8-flash-high`, `gemini-4-argon-medium`) dan laporan sintesis terpadu `2026-11-03_all.md` yang memverifikasi kepatuhan outline terhadap ulasan IEEE Access. |
 
 ### 2.3 Dekonstruksi Rinci Komentar Reviewer
 
@@ -527,6 +528,12 @@ D:\Research\face-race-gender-multi-vit\
 ├── paper_latex_id/                        # Paket referensi LaTeX IEEE Access Bahasa Indonesia
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review multi-agent (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Dossier keputusan editorial & review resmi IEEE Access
+│   ├── Comments.md                        # Umpan balik reviewer yang didekonstruksi dan matriks tanggapan
+│   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Keputusan resmi & komentar reviewer
+│   ├── IEEE-Access_Response-to-Reviewers-template.md              # Templat tanggapan butir-per-butir
+│   ├── Request-for-Byline-Change.md                               # Formulir resmi perubahan susunan kepengarangan
+│   ├── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+│   └── paper_outline_audit/               # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                      # Paket formal submission & laporan kepatuhan IEEE Access
 ├── sessions/                              # Log riwayat sesi kerja otonom AI agent (9 berkas konsolidasi per tanggal)
 ├── template/                              # Distribusi paket template LaTeX mentah resmi IEEE Access
@@ -722,4 +729,4 @@ Seluruh sesi kerja terpadu otonom dicatat secara teliti ke dalam direktori `sess
 6. **`2026-10-29`**: Penyempurnaan Master Outline Manuskrip v1.1 (`paper_outline_v1.1.md`), Standardisasi Persamaan Eq. (1) s.d. (23), Evaluasi Figure 3 ViT v2.0 (`session_2026-10-29_penyempurnaan-paper-outline-v1.1-evaluasi-figure3-vit-dan-sinkronisasi-prompts.md`).
 7. **`2026-10-31`**: Audit Latensi Ekstraksi CPU, Redesain Figure 3 ViT v2.2, Instrumentasi Waktu Ekstraksi, In-Memory Caching (30× speedup), dan Penyempurnaan Master Outline v1.1 (`session_2026-10-31_audit-latensi-instrumentasi-waktu-dan-penyempurnaan-outline.md`).
 8. **`2026-11-02`**: Unifikasi dan Simplifikasi Direktori Sesi Kerja Otonom (`sessions/`), Eliminasi Duplikasi Tanggal Ganda menjadi Satu Berkas per Tanggal (`session_2026-11-02_unifikasi-dan-simplifikasi-direktori-sessions.md`).
-9. **`2026-11-03`**: Penyempurnaan Section III (Materials and Methods), Section IV (Results and Discussion), Integrasi Benchmark Subject-Disjoint, Paritas Visual Outline v1.0, dan Penghapusan Kolom 95% CI pada Master Outline v1.1 (`session_2026-11-03_penyempurnaan-materials-methods-results-discussion-dan-paritas-tabel-outline.md`).
+9. **`2026-11-03`**: Penyempurnaan Section III-IV Master Outline v1.1, Audit Kepatuhan Multi-Model (`paper_outline_audit/`), Penyusunan Sintesis Meta-Audit Terpadu (`2026-11-03_all.md`), dan Pemutakhiran Berkas Pendukung Repositori (`session_2026-11-03_penyempurnaan-materials-methods-results-discussion-dan-paritas-tabel-outline.md`).

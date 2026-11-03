@@ -87,7 +87,8 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Surat keputusan editorial resmi
 │   ├── IEEE-Access_Response-to-Reviewers-template.md # Template resmi surat tanggapan point-by-point
 │   ├── Request-for-Byline-Change.md           # Formulir administratif penambahan/perubahan susunan penulis
-│   └── Resubmission-Checklist.md              # 10-point compliance checklist resubmission IEEE Access
+│   ├── Resubmission-Checklist.md              # 10-point compliance checklist resubmission IEEE Access
+│   └── paper_outline_audit/                   # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                          # Laporan penjaminan mutu dan audit kepatuhan submit
 ├── prompts.txt                                # Catatan riwayat prompt dan instruksi pengguna kronologis
 ├── README.ai.md                               # Panduan master referensi AI Agent & single source of truth
@@ -103,7 +104,7 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── session_2026-10-29_penyempurnaan_*.md  # Penyempurnaan outline v1.1, Eq. (1)-(23), evaluasi Figure 3
 │   ├── session_2026-10-31_audit-latensi_*.md  # Konsolidasi 3 fase: audit latensi CPU, instrumentasi, caching (30x), outline
 │   ├── session_2026-11-02_unifikasi_*.md      # Unifikasi direktori sessions dan konsolidasi 1 berkas per tanggal
-│   └── session_2026-11-03_penyempurnaan_*.md  # Penyempurnaan Section III-IV, Subject-Disjoint, paritas v1.0, & eliminasi 95% CI
+│   └── session_2026-11-03_penyempurnaan_*.md  # Penyempurnaan Section III-IV, Subject-Disjoint, paritas v1.0, audit multi-model, & sintesis meta-audit
 ├── upload/                                    # Berkas artefak paket submit (PDF bersih, highlighted, & source ZIP)
 └── WORKFLOW.md                                # SOP universal 4 tahap siklus hidup manuskrip riset
 
@@ -189,7 +190,7 @@ Sub-direktori experiment/code/:
 - paper_reviews_ieee/
   Dossier resmi penelaahan editorial IEEE Access (Access-2026-50857).
   Memuat README.md (panduan dossier), penelaahan editorial IEEE Access (Access-2026-50857), memuat Comments.md (ulasan R1 & R2),
-  surat keputusan, template author response point-by-point, byline change form, dan resubmission checklist.
+  surat keputusan, template author response point-by-point, byline change form, resubmission checklist, dan direktori audit paper_outline_audit/.
 - paper_reviews/
   Arsip simulasi internal mock peer review multi-agen (Round 1 & 2) sebelum penyerahan naskah.
 - .agents/skills/

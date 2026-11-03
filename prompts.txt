@@ -27,6 +27,20 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+tolong perbarui file2 pendukung seperti readme, readme ai md, folder structure, dll. kemudian buat commit dan push
+
+baca dan pahami semua yang ada pada paper_reviews_ieee/paper_outline_audit/, kemudian jadikan satu/rangkum dan tuliskan pada paper_reviews_ieee/paper_outline_audit/[tahun]-[bulan]-[hari]_all.md
+
+tolong audit paper_outline_v1.1.md apakah sudah sesuai dengan paper_reviews_ieee atau belum. perhatikan:
+- audit dengan sangat amat teliti.
+- tuliskan hasilnya pada paper_reviews_ieee/paper_outline_audit/[tahun]-[bulan]-[hari]_[nama-model].md, contoh:
+  * 2026-11-03_claude-sonnet-5.5-medium.md
+  * 2026-11-03_gemini-3.8-flash-high.md
+  * 2026-11-03_gemini-4-argon-medium.md
+jika sudah selesai, maka cukup jawab "Sudah selesai audit, cek hasilnya pada [path]."
+
+pada paper_outline_v1.1.md A. Global Performance apakah perlu ada tabel untuk menampilkan hasil dari split stratified?
+
 jangan lupa commit dan push
 
 apakah sudah update readme readme ai sessions?
@@ -177,8 +191,6 @@ untuk itu bisa dicek dan dihitung dari:
 - experiment/code/md/1.1_vit-face.md
 - experiment/code/md
 coba cek dengan sangat amat teliti
-
-tolong audit paper_outline_v1.1.md apakah sudah sesuai dengan paper_reviews_ieee atau belum
 
 sekarang fokus pada komentar Reviewer 1 mengenai Perancangan Ulang dan Penjelasan Figure 3 (paper_reviews_ieee/Comments.md). apakah images/vit_v2.2.pptx sudah sesuai?
 
