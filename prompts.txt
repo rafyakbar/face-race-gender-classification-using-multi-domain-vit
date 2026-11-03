@@ -27,6 +27,17 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+jangan lupa commit dan push
+
+apakah sudah update readme readme ai sessions?
+
+buat commit dan push
+
+ok hilangkan
+
+pada A. Global Performance apakah perlu ada kolom 95% CI?
+
+
 perbaiki paper_outline_v1.1.md:
 - saat ini seperti tabel/figure masih ada yang belum ditampilkan.
 - seharusnya ditampilkan juga seperti pada paper_outline_v1.0.md.
