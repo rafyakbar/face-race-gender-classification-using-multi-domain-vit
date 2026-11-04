@@ -18,7 +18,8 @@ pelajari:
 4. experiment/code/archive/md_old/
 5. experiment/code/md/
 6. paper_outline_v1.1.md (ini paper outline yang baru)
-7. sessions/
+7. paper_reviews_ieee/paper_outline_audit/
+8. sessions/
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -26,6 +27,16 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+buat commit dan push
+
+baik, perbaiki paper_outline_v1.1.md, jangan mengubah selain yg diminta. kemudian jangan lupa perbarui paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "A. Temuan Kritis" nomor "2. Korupsi dan Permutasi Label pada Tabel Acuan Matriks Konfusi Subseksi IV.D (R1 #4)". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/) untuk semua ML yang digunakan, tidak hanya LR saja. delegasikan ke banyak subagent agar cepat!
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "A. Temuan Kritis" nomor "1. Diskrepansi Ruang Pencarian Logistic Regression dan Total Fits (R2 #4)". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/) untuk semua ML yang digunakan, tidak hanya LR saja. delegasikan ke banyak subagent agar cepat!
+
+coba audit experiment/code/md/ dengan experiment/code/*.ipynb, apakah sudah sama atau belum, atau biar lebih cepat bisa diconvert ulang. delegasikan ke banyak subagent agar cepat!
 
 tolong perbarui file2 pendukung seperti readme, readme ai md, folder structure, dll. kemudian buat commit dan push
 

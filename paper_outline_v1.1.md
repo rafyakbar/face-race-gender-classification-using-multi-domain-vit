@@ -146,7 +146,7 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
   1. Mengusulkan kerangka kerja fusi Tri-Domain ViT yang memadukan tiga representasi laten ortogonal: geometri biometrik statis (`ViT-Face`), ekspresi afektif dinamis (`ViT-Emotion`), dan morfologi penuaan biologis (`ViT-Age`) melalui operasi konkatenasi langsung (`Face ⊕ Emotion ⊕ Age`).
   2. Ekstraksi representasi laten visual dilakukan secara *offline* dari backbone Vision Transformer pra-latih yang dibekukan (*frozen*) guna mempertahankan efisiensi komputasi dan meminimalkan beban pelatihan.
   3. Mengadopsi arsitektur evaluasi **Dual-Benchmark** yang menetapkan protokol **Strict Subject-Disjoint Partitioning** pada dataset DemogPairs (600 subjek unik, 0% kebocoran identitas) sebagai tolok ukur utama generalisasi, sekaligus mempertahankan evaluasi *subject-overlap* historis sebagai studi ablasi empiris untuk menguantifikasi beban memorisasi identitas wajah.
-  4. Melakukan optimasi hyperparameter komprehensif pada empat rumpun algoritma pembelajaran mesin klasik (RF, GNB, LR, SVM) melalui validasi silang 5-Fold StratifiedGroupKFold dengan pipeline modular Scaler-PCA yang difitting secara terisolasi pada fold latih guna menjamin pencegahan kebocoran informasi (mencakup total 38.010 penyesuaian validasi silang).
+  4. Melakukan optimasi hyperparameter komprehensif pada empat rumpun algoritma pembelajaran mesin klasik (RF, GNB, LR, SVM) melalui validasi silang 5-Fold StratifiedGroupKFold dengan pipeline modular Scaler-PCA yang difitting secara terisolasi pada fold latih guna menjamin pencegahan kebocoran informasi (mencakup total 31.920 penyesuaian validasi silang).
 
 ### Paragraph 6: Four Key Scientific Contributions
 > **Catatan Respons Reviewer (R1 Poin 1 & R2 Poin 1):**  
@@ -427,7 +427,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 - **Tujuan**: Menjelaskan formulasi multinomial Logistic Regression (LR) / Softmax regression untuk klasifikasi multi-kelas.
 - **Formulasi Probabilitas Softmax**:
   $$P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}} \tag{10}$$
-- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `newton-cg`, `saga`), parameter penalti regularisasi, dan batas konvergensi jumlah iterasi sesuai ruang pencarian pada [Table V](#tab5).
+- **Poin Pembahasan**: Optimasi fungsi kerugian cross-entropy ter-regularisasi $L_2$ menggunakan algoritma solver (`lbfgs`, `saga`), parameter penalti regularisasi, dan batas konvergensi jumlah iterasi sesuai ruang pencarian pada [Table V](#tab5).
 - **Tabel V (Ruang Pencarian Hyperparameter Logistic Regression)**:
 
 **Table V. Hyperparameter Search Space for Logistic Regression Classifier.**
@@ -436,10 +436,10 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 |---|---|:---:|
 | Feature Scaler | `None`, `MinMaxScaler` | 2 |
 | Dimensionality Reduction (PCA) | `None`, `0.50`, `0.75` | 3 |
-| Regularization Strength | `0.01`, `0.1`, `1`, `10`, `100` | 5 |
-| Optimization Solver | `'lbfgs'`, `'saga'`, `'newton-cg'` | 3 |
-| Maximum Iterations | `500`, `1000`, `2000` | 3 |
-| **Total Grid Combinations** | - | **270 (1,350 fits)** |
+| Regularization Strength | `0.01`, `0.1`, `1`, `10` | 4 |
+| Optimization Solver | `'lbfgs'`, `'saga'` | 2 |
+| Maximum Iterations | `500`, `1000` | 2 |
+| **Total Grid Combinations** | - | **96 (480 fits)** |
 
 ### F. Support Vector Machine
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
@@ -462,10 +462,12 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 | Kernel Coefficient | `'scale'`, `'auto'` | 2 |
 | **Total Grid Combinations** | - | **288 (1,440 fits)** |
 
+> **Catatan Table VI:** Evaluasi GridSearchCV scikit-learn mengeksekusi penuh seluruh 288 kombinasi Cartesian parameter grid (1.440 fits per skema). Secara fungsional unik, terdapat 108 konfigurasi efektif karena parameter polynomial degree hanya aktif pada kernel poly dan gamma tidak berpengaruh pada kernel linear.
+
 ### G. Classification Pipeline
 > **Catatan Respons Reviewer (R2 Poin 4):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta rekonsiliasi aritmatika ruang pencarian hyperparameter (*"totals of 1,086 configurations, 38,010 cross-validation fits, and 28 final refits should be reconciled with individual search spaces"*).  
-> - **Rencana Mitigasi:** Menjabarkan rekonsiliasi matematis secara transparan: (SVM: 288 + LR: 270 + RF: 288 + GNB: 240) = 1.086 kombinasi $\times$ 5 folds = 5.430 fits per skema $\times$ 7 skema fitur = 38.010 fits validasi silang + 28 refits akhir, dengan isolasi penuh pipeline Scaler-PCA di dalam fold latih guna mencegah kebocoran informasi.
+> - **Rencana Mitigasi:** Menjabarkan rekonsiliasi matematis secara transparan: (SVM: 288 + LR: 96 + RF: 288 + GNB: 240) = 912 kombinasi $\times$ 5 folds = 4.560 fits per skema $\times$ 7 skema fitur = 31.920 fits validasi silang + 28 refits akhir, dengan isolasi penuh pipeline Scaler-PCA di dalam fold latih guna mencegah kebocoran informasi.
 - **Target Kata**: 125–150 kata (minimal 125 kata, maksimal 150 kata).
 - **Tujuan**: Menjelaskan arsitektur pipeline modular Scaler - PCA - Classifier, protokol 5-Fold StratifiedGroupKFold Cross-Validation berbasis identitas subjek, pencegahan kebocoran data, dan rekonsiliasi aritmatika ruang pencarian hyperparameter.
 - **Arsitektur Rantai Transformasi Modular**:
@@ -475,12 +477,12 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
   2. Protokol validasi menggunakan 5-Fold `StratifiedGroupKFold` (`n_splits=5`, `shuffle=True`, `random_state=42`) pada set latih 480 subjek (8.640 citra) dengan pengelompokan ketat berbasis identitas (`groups = subject_id`), menjamin citra dari subjek yang sama tidak pernah terbagi di antara fold latih dan validasi.
   3. Penskalaan fitur dan proyeksi PCA di-fit secara eksklusif hanya pada fold latih di setiap iterasi cross-validation, menjamin pencegahan kebocoran data identitas maupun informasi statistik (*zero data leakage*).
   4. Rekonsiliasi aritmatika ruang pencarian:
-     - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits
-     - LR: 270 kombinasi $\times$ 5 folds = 1.350 fits
+     - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits (108 konfigurasi unik efektif)
+     - LR: 96 kombinasi $\times$ 5 folds = 480 fits
      - RF: 288 kombinasi $\times$ 5 folds = 1.440 fits
      - GNB: 240 kombinasi $\times$ 5 folds = 1.200 fits
-     - Total: **1.086 kombinasi hyperparameter** $\times$ 5 folds = 5.430 fits per skema fitur.
-     - Melintasi 7 skema fitur: $5.430 \times 7 = \mathbf{38.010\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih (480 subjek).
+     - Total: **912 kombinasi hyperparameter** $\times$ 5 folds = 4.560 fits per skema fitur.
+     - Melintasi 7 skema fitur: $4.560 \times 7 = \mathbf{31.920\text{ CV fits}}$ ditambah **28 refits akhir** pada keseluruhan set latih (480 subjek).
 
 ### H. Evaluation Metrics
 > **Catatan Respons Reviewer (R2 Poin 5 & R2 Poin 6):**  
@@ -746,7 +748,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 
 #### Paragraph 2: Dominance of Same-Gender Cross-Race Misclassifications and Gender Boundary Clarification
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Menganalisis distribusi kesalahan secara granular: Pada model Tri-Domain, kesalahan intra-gender lintas-ras (*same-gender cross-race*) berjumlah 165 citra (**67.3%** dari total kesalahan; 7.64% dari $N$), dengan sel kesalahan terbesar terjadi pada `Black_Males` $\to$ `Asian_Males` (23), `Black_Females` $\to$ `White_Females` (23), dan `Asian_Females` $\to$ `Black_Females` (23). Kesalahan lintas-gender berjumlah **80 citra (3.70% dari $N$; 32.7% dari total kesalahan)**, seperti `Asian_Females` $\to$ `Asian_Males` (18) dan `Asian_Males` $\to$ `Asian_Females` (17). Narasi menegaskan bahwa kesalahan lintas-gender jauh lebih sedikit dibandingkan kesalahan antarras dalam gender yang sama, namun tidak dapat diabaikan. Hubungkan recall terendah `Black_Females` (84.72%) dengan pola konfusi ke `White_Females` (23) dan `Asian_Females` (17).
+- **Fokus Narasi**: Menganalisis distribusi kesalahan secara granular: Pada model Tri-Domain, kesalahan intra-gender lintas-ras (*same-gender cross-race*) berjumlah 165 citra (**67.3%** dari total kesalahan; 7.64% dari $N$), dengan sel kesalahan terbesar terjadi pada `Black_Males` $\to$ `Asian_Males` (23), `Black_Females` $\to$ `White_Females` (23), dan `Asian_Females` $\to$ `Black_Females` (23). Kesalahan lintas-gender berjumlah **80 citra (3.70% dari $N$; 32.7% dari total kesalahan)**, seperti `Asian_Females` $\to$ `Asian_Males` (18) dan `Asian_Males` $\to$ `Asian_Females` (17). Narasi menegaskan bahwa kesalahan lintas-gender jauh lebih sedikit dibandingkan kesalahan antarras dalam gender yang sama, namun tidak dapat diabaikan. Hubungkan recall terendah `Black_Females` (84.72%) dengan pola konfusi ke `White_Females` (23) dan `Asian_Females` (14).
 
 #### Paragraph 3: Empirical Qualification of Phenotypic Overlap without Speculative Biological Claims (Jawaban R2 #9)
 - **Target Kata**: 100–120 kata.
@@ -758,37 +760,37 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 
 | Actual \ Predicted | Asian_Females | Asian_Males | Black_Females | Black_Males | White_Females | White_Males | Total Actual |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Asian_Females** | **316** | 0 | 21 | 6 | 17 | 0 | 360 |
-| **Asian_Males** | 0 | **314** | 3 | 4 | 7 | 32 | 360 |
-| **Black_Females** | 24 | 0 | **302** | 10 | 6 | 18 | 360 |
-| **Black_Males** | 9 | 2 | 14 | **334** | 1 | 0 | 360 |
-| **White_Females** | 21 | 22 | 12 | 1 | **287** | 17 | 360 |
-| **White_Males** | 0 | 8 | 14 | 1 | 24 | **313** | 360 |
-| **Total Predicted** | 370 | 346 | 366 | 356 | 342 | 380 | **2,160** |
+| **Asian_Females** | **313** | 14 | 24 | 0 | 8 | 1 | 360 |
+| **Asian_Males** | 18 | **302** | 6 | 24 | 0 | 10 | 360 |
+| **Black_Females** | 17 | 12 | **287** | 21 | 22 | 1 | 360 |
+| **Black_Males** | 0 | 21 | 17 | **316** | 0 | 6 | 360 |
+| **White_Females** | 32 | 3 | 7 | 0 | **314** | 4 | 360 |
+| **White_Males** | 0 | 14 | 1 | 9 | 2 | **334** | 360 |
+| **Total Predicted** | 380 | 366 | 342 | 370 | 346 | 356 | **2,160** |
 
 *(b) Dual-Domain: `Emotion ⊕ Face` (Accuracy: 87.45% | Total Errors: 271)*
 
 | Actual \ Predicted | Asian_Females | Asian_Males | Black_Females | Black_Males | White_Females | White_Males | Total Actual |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Asian_Females** | **309** | 1 | 24 | 9 | 17 | 0 | 360 |
-| **Asian_Males** | 0 | **317** | 1 | 4 | 12 | 26 | 360 |
-| **Black_Females** | 17 | 0 | **311** | 7 | 7 | 18 | 360 |
-| **Black_Males** | 3 | 1 | 17 | **338** | 1 | 0 | 360 |
-| **White_Females** | 9 | 17 | 5 | 2 | **310** | 17 | 360 |
-| **White_Males** | 0 | 10 | 19 | 1 | 26 | **304** | 360 |
-| **Total Predicted** | 338 | 346 | 377 | 361 | 373 | 365 | **2,160** |
+| **Asian_Females** | **304** | 19 | 26 | 0 | 10 | 1 | 360 |
+| **Asian_Males** | 18 | **311** | 7 | 17 | 0 | 7 | 360 |
+| **Black_Females** | 17 | 5 | **310** | 9 | 17 | 2 | 360 |
+| **Black_Males** | 0 | 24 | 17 | **309** | 1 | 9 | 360 |
+| **White_Females** | 26 | 1 | 12 | 0 | **317** | 4 | 360 |
+| **White_Males** | 0 | 17 | 1 | 3 | 1 | **338** | 360 |
+| **Total Predicted** | 365 | 377 | 373 | 338 | 346 | 361 | **2,160** |
 
 *(c) Tri-Domain: `Face ⊕ Emotion ⊕ Age` (Accuracy: 88.66% | Total Errors: 245)*
 
 | Actual \ Predicted | Asian_Females | Asian_Males | Black_Females | Black_Males | White_Females | White_Males | Total Actual |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Asian_Females** | **316** | 0 | 23 | 6 | 15 | 0 | 360 |
-| **Asian_Males** | 0 | **326** | 3 | 2 | 11 | 18 | 360 |
-| **Black_Females** | 17 | 0 | **316** | 6 | 4 | 17 | 360 |
-| **Black_Males** | 4 | 2 | 14 | **340** | 0 | 0 | 360 |
-| **White_Females** | 8 | 23 | 8 | 2 | **305** | 14 | 360 |
-| **White_Males** | 0 | 6 | 18 | 1 | 23 | **312** | 360 |
-| **Total Predicted** | 345 | 357 | 382 | 357 | 358 | 361 | **2,160** |
+| **Asian_Females** | **312** | 18 | 23 | 0 | 6 | 1 | 360 |
+| **Asian_Males** | 17 | **316** | 4 | 17 | 0 | 6 | 360 |
+| **Black_Females** | 14 | 8 | **305** | 8 | 23 | 2 | 360 |
+| **Black_Males** | 0 | 23 | 15 | **316** | 0 | 6 | 360 |
+| **White_Females** | 18 | 3 | 11 | 0 | **326** | 2 | 360 |
+| **White_Males** | 0 | 14 | 0 | 4 | 2 | **340** | 360 |
+| **Total Predicted** | 361 | 382 | 358 | 345 | 357 | 357 | **2,160** |
 
 ### E. Comparison with Prior Studies
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
