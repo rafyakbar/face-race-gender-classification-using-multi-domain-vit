@@ -44,7 +44,6 @@ Direktori ini diorganisasikan secara modular guna mendukung pelacakan revisi, au
 | [`Request-for-Byline-Change.md`](Request-for-Byline-Change.md) | **Formulir Permohonan Perubahan Susunan Penulis.** Dokumen pengajuan justifikasi formal kepada Editor-in-Chief IEEE Access perihal penambahan rekan penulis eksternal (**Assoc. Prof. Shukor Sanim Mohd Fauzi**, Universiti Teknologi MARA / UiTM Malaysia) berdasarkan IEEE Publishing Operations Manual Subsection 8.2.1.A.1. |
 | [`Resubmission-Checklist.md`](Resubmission-Checklist.md) | **Daftar Kepatuhan 10 Butir Standar IEEE Access.** Instrumen kendali mutu yang memuat verifikasi gramatika, format persamaan matematika (IEEE Math Guidelines), kesesuaian sitasi, kelengkapan berkas respons, *Highlighted PDF*, dan naskah bersih. |
 | [`paper_outline_audit/`](paper_outline_audit/) | **Direktori Laporan Audit Kepatuhan Outline.** Berisi laporan audit independen dari multi-model AI (`2026-11-03_claude-sonnet-5.5-medium.md`, `2026-11-03_gemini-3.8-flash-high.md`, `2026-11-03_gemini-4-argon-medium.md`) dan laporan sintesis terpadu `2026-11-03_all.md`. |
-| [paper_outline_audit/](paper_outline_audit/) | **Direktori Laporan Audit Kepatuhan Outline.** Berisi laporan audit independen dari multi-model AI (2026-11-03_claude-sonnet-5.5-medium.md, 2026-11-03_gemini-3.8-flash-high.md, 2026-11-03_gemini-4-argon-medium.md) dan laporan sintesis terpadu 2026-11-03_all.md. |
 | `raw/` | **Direktori Arsip Mentah.** Menyimpan berkas korespondensi asli berupa berkas HTML webmail Universitas Negeri Surabaya serta templat resmi IEEE Access berformat `.docx`. |
 
 ---
@@ -83,19 +82,20 @@ Seluruh 17 butir komentar dari penelaah independen (7 dari Reviewer 1 dan 10 dar
 ### E. Reviewer 1 #4 & Reviewer 2 #8: Analisis Pola Kesalahan & Profil Efisiensi Komputasi
 - **Isu Kritis:** Pembahasan *Figure 4* belum mengelaborasi dinamika *confusion matrix*, serta naskah belum menyajikan data empiris waktu komputasi, latensi inferensi, dan konsumsi memori untuk membuktikan klaim efisiensi.
 - **Tindakan & Solusi:**
-  - **Analisis Mendalam Confusion Matrix (R1 #4 & R2 #9):** Menguraikan pola kesalahan asimetris pada matriks 6×6, yang membuktikan bahwa kesalahan klasifikasi didominasi oleh kekeliruan antar-ras dalam gender yang sama (*same-gender cross-race error*), sedangkan kesalahan lintas-gender (*gender confusion*) mendekati 0%. Klaim fenotipik dikoreksi agar berpijak murni pada fakta distribusi data tanpa spekulasi berlebih.
-  - **Profil Lengkap Efisiensi Komputasi (R2 #8):** Menambahkan tabel metrik komputasi kuantitatif di *Section IV*, mencakup:
-    * Waktu ekstraksi fitur per citra per domain (~15 ms pada GPU)
-    * Latensi inferensi pengklasifikasi *downstream* (<1 ms untuk SVM/LR, ~5 ms untuk Random Forest)
-    * Durasi pelatihan *hyperparameter tuning* (38.010 penyesuaian validasi silang)
-    * Jejak memori RAM/VRAM saat inferensi serta ukuran *cache* representasi fitur (~30 MB per domain).
+  - **Analisis Mendalam Confusion Matrix (R1 #4 & R2 #9):** Menguraikan pola kesalahan asimetris pada matriks 6×6 ($N=2.160$, 245 error pada LR Tri-Domain), yang menunjukkan bahwa kesalahan klasifikasi didominasi oleh kekeliruan antar-ras dalam gender yang sama (**165 citra / 67,3% dari total error; 7,64% dari $N$**), sedangkan kesalahan lintas-gender (*cross-gender confusion*) berjumlah **80 citra (32,7% dari total error; 3,70% dari $N$)**. Klaim fenotipik dan pencahayaan dikoreksi agar berpijak murni pada fakta observasional distribusi data tanpa spekulasi kausal.
+  - **Profil Lengkap Efisiensi Komputasi (R2 #8):** Menambahkan **Tabel XI** metrik komputasi kuantitatif di *Section IV-A*, mencakup:
+    * Waktu ekstraksi fitur offline (10.800 citra): **124,5 ms/citra pada GPU RTX 4060** (39,7 ms Face + 39,7 ms Emotion + 45,1 ms Age; total 22,41 menit) berbanding **~1.487 ms/citra pada CPU baseline** (total 4,46 jam; akselerasi GPU 11,9×)
+    * Latensi inferensi kepala pengklasifikasi *downstream* (**LR: 0,0046 ms**, **SVM: 4,6785 ms** [>1.000× lebih cepat; total *end-to-end* GPU $\approx 124,505\text{ ms/citra}$], **RF: 0,0334 ms**, **GNB Dual: 0,0088 ms**)
+    * Durasi pelatihan *hyperparameter tuning* (**31.920 penyesuaian validasi silang**: LR Tri 54,8 menit vs SVM Tri 511,1 menit; 9,3× lebih cepat dilatih)
+    * Jejak memori RAM array uji (**18,98 MB** untuk Tri-Domain), ukuran model (**0,11 MB** pada LR vs **36,60 MB** pada SVM; >330× lebih ringkas), serta ukuran *cache* representasi fitur (**30,8 MB per domain** / **92,4 MB** Tri-Domain).
 
 ### F. Rekonsiliasi Metodologis & Klarifikasi Tambahan
-- **Rekonsiliasi Ruang Pencarian (R2 #4):** Memverifikasi integritas formulasi kombinasi hyperparameter:
-  $$\text{Total Fits} = (288_{\text{SVM}} + 270_{\text{LR}} + 288_{\text{RF}} + 240_{\text{GNB}}) \times 5\text{-folds} \times 7\text{ skema fitur} = 1.086 \times 5 \times 7 = 38.010\text{ fits} + 28\text{ refits}$$
-- **Kualifikasi Uji Signifikansi McNemar (R2 #5):** Mengklarifikasi secara objektif bahwa selisih performa antara *dual-domain* (93,29%) dan *tri-domain* (93,70%) dengan nilai $p = 0,3057$ mencerminkan kondisi *asymptotic feature saturation*, bukan dominasi statistik mutlak.
-- **Kualifikasi Keadilan Algoritmik (R2 #6):** Menegaskan bahwa evaluasi *Equal Opportunity Difference* (EOD) berfungsi sebagai audit disparitas subkelompok (*subgroup performance gap*), bukan pembuktian keadilan demografis universal.
-- **Kontekstualisasi Komparasi Literatur (R2 #7):** Menandai perbandingan dengan studi terdahulu pada Tabel 12 sebagai komparasi kontekstual (*contextual comparison*), bukan *controlled benchmark*, mengingat variasi dataset acuan.
+- **Rekonsiliasi Ruang Pencarian (R2 #4):** Memverifikasi integritas formulasi kombinasi hyperparameter aktual pada kode:
+  $$\text{Total Fits} = (288_{\text{RF}} + 240_{\text{GNB}} + 96_{\text{LR}} + 288_{\text{SVM}}) \times 5\text{-folds} \times 7\text{ skema fitur} = 912 \times 5 \times 7 = 31.920\text{ fits} + 28\text{ refits}$$
+  *(dengan catatan bahwa 288 evaluasi Cartesian pada SVM menghasilkan 108 konfigurasi unik efektif).*
+- **Kualifikasi Uji Signifikansi McNemar (R2 #5):** Mengklarifikasi secara objektif pada **Tabel XIII** bahwa keunggulan Tri-Domain atas Single `Face` sangat signifikan ($p < 0,001$), transisi dari Dual (`Emotion ⊕ Face` 88,43%) ke Tri-Domain (88,61%) pada SVM dengan $p = 0,7343$ mengindikasikan *asymptotic feature saturation* (meskipun terhadap `Face ⊕ Age` 87,55% tetap signifikan dengan $p = 0,0086$), sedangkan pada LR linier penambahan domain usia signifikan ($87,45\% \to 88,66\%, p = 0,0073 < 0,01$), dan perbandingan LR Tri vs SVM Tri menunjukkan ketiadaan perbedaan performa prediktif yang signifikan secara statistik ($p = 1,0000$).
+- **Kualifikasi Keadilan Algoritmik (R2 #6):** Menegaskan pada **Tabel XIV** bahwa evaluasi *Equal Opportunity Difference* ($\text{EOD} = 9,72\text{ pp}$) berfungsi sebagai audit disparitas performa subkelompok (*subgroup performance gap*), bukan pembuktian keadilan demografis universal.
+- **Kontekstualisasi Komparasi Literatur (R2 #7):** Memisahkan **Tabel XV** menjadi Part A (*Contextual Comparison* untuk studi terdahulu berprotokol *subject-overlap*) dan Part B (*Controlled Comparison* untuk baseline berprotokol *subject-disjoint* ketat).
 
 ---
 
@@ -184,7 +184,7 @@ flowchart TD
 | **R2 - #1** | Distingsi Kebaruan Metodologi Multi-Domain | Sec. I, III | Selesai / Sinergi Fitur Dielaborasi |
 | **R2 - #2** | Pencegahan Kebocoran Data (*Subject-Disjoint Split*) | Sec. III-A, IV | Selesai / Partisi 480/120 & Ablasi |
 | **R2 - #3** | Rincian Checkpoint Pretrained & Reproduktibilitas | Sec. III-B | Selesai / Parameter Normalisasi Lengkap |
-| **R2 - #4** | Rekonsiliasi Ruang Pencarian Hyperparameter | Sec. III-G | Selesai / 38.010 Fits Terekonsiliasi |
+| **R2 - #4** | Rekonsiliasi Ruang Pencarian Hyperparameter | Sec. III-G | Selesai / 31.920 Fits Terekonsiliasi |
 | **R2 - #5** | Kualifikasi Uji McNemar & Kejenuhan Fitur | Sec. IV-A | Selesai / Dinyatakan Asymptotic |
 | **R2 - #6** | Batasan Klaim Keadilan Algoritmik (EOD) | Sec. IV-C | Selesai / Dibatasi Gap Subkelompok |
 | **R2 - #7** | Kualifikasi Komparasi Baseline Literatur | Sec. IV-E | Selesai / Ditetapkan Non-Benchmark |

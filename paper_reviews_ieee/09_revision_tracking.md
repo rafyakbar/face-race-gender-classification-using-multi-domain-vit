@@ -20,15 +20,15 @@
 | `R1-5` | R1 | `Major` | `03_materials-and-methods_a-dataset.md` | Detail Dataset & Biaya Waktu (*Time Cost*) | Merinci spesifikasi subjek DemogPairs dan menyajikan tabel profil efisiensi waktu komputasi. | `03_materials-and-methods_a-dataset.md` | `RESOLVED` | - |
 | `R1-6` | R1 | `Minor` | `04_results-and-discussion_e-comparison-with-prior-studies.md` | Perluasan Baseline Pembanding Literatur | Memperluas perbandingan terhadap literatur demografi wajah dan memberi kualifikasi protokol partisi. | `04_results-and-discussion_e-comparison-with-prior-studies.md` | `RESOLVED` | - |
 | `R1-7` | R1 | `Minor` | `05_conclusion.md` | Penyempurnaan Kesimpulan & Kontribusi | Menulis ulang Seksi V agar padat, menyajikan capaian tolok ukur utama secara objektif. | `05_conclusion.md` | `RESOLVED` | - |
-| `R2-1` | R2 | `Major` | `01_introduction.md` | Distingsi Kebaruan Metodologis | Menjelaskan kebaruan sinergi fitur ortogonal multi-domain ViT dan isolasi pipeline tuning. | `01_introduction.md` | `RESOLVED` | - |
-| `R2-2` | R2 | `Major` | `03_materials-and-methods_a-dataset.md` | Kebocoran Data & Generalisasi Subjek | Menerapkan partisi Subject-Disjoint (0% leakage) sebagai tolok ukur utama dan menyajikan ablasi leakage. | `03_materials-and-methods_a-dataset.md` | `RESOLVED` | - |
-| `R2-3` | R2 | `Minor` | `03_materials-and-methods_b-vision-transformer.md` | Spesifikasi Preprocessing & Reproduktibilitas | Mencantumkan ID checkpoint HuggingFace resmi, nilai normalisasi kanal, dan formulasi token CLS. | `03_materials-and-methods_b-vision-transformer.md` | `RESOLVED` | - |
-| `R2-4` | R2 | `Minor` | `03_materials-and-methods_g-classification-pipeline.md` | Rekonsiliasi Ruang Pencarian Hyperparameter | Merekonsiliasikan total 1.086 konfigurasi dan 38.010 CV fits secara konsisten pada teks dan tabel. | `03_materials-and-methods_g-classification-pipeline.md` | `RESOLVED` | - |
-| `R2-5` | R2 | `Major` | `04_results-and-discussion_a-global-performance.md` | Interpretasi Signifikansi Uji McNemar | Menyajikan p-value McNemar, 95% Wilson CI, dan mengualifikasikan fenomena saturasi fitur asimtotik. | `04_results-and-discussion_a-global-performance.md` | `RESOLVED` | - |
-| `R2-6` | R2 | `Major` | `04_results-and-discussion_c-intersectional-subgroup-performance.md` | Batasan Analisis Keadilan Algoritmik | Membatasi klaim keadilan formal, menegaskan EOD sebagai metrik disparitas performa subkelompok. | `04_results-and-discussion_c-intersectional-subgroup-performance.md` | `RESOLVED` | - |
-| `R2-7` | R2 | `Minor` | `04_results-and-discussion_e-comparison-with-prior-studies.md` | Kualifikasi Komparasi Baseline Literatur | Menegaskan bahwa perbandingan dengan literatur terdahulu bersifat kontekstual karena variasi partisi. | `04_results-and-discussion_e-comparison-with-prior-studies.md` | `RESOLVED` | - |
-| `R2-8` | R2 | `Major` | `04_results-and-discussion_a-global-performance.md` | Profil Efisiensi Komputasi Lengkap | Menyajikan tabel komparasi latensi inferensi per sampel, konsumsi memori, dan ukuran berkas model. | `04_results-and-discussion_a-global-performance.md` | `RESOLVED` | - |
-| `R2-9` | R2 | `Minor` | `04_results-and-discussion_d-error-pattern-assessment.md` | Penguatan Landasan Klaim Fenotipik | Menyelaraskan analisis tumpang tindih visual murni berdasarkan data empiris matriks konfusi 6×6. | `04_results-and-discussion_d-error-pattern-assessment.md` | `RESOLVED` | - |
+| `R2-1` | R2 | `Major` | `01_introduction.md` | Distingsi Kebaruan Metodologis | Menjelaskan kebaruan sinergi fitur komplementer multi-domain ViT dan isolasi pipeline tuning. | `01_introduction.md` | `RESOLVED` | - |
+| `R2-2` | R2 | `Major` | `03_materials-and-methods_a-dataset.md` | Kebocoran Data & Generalisasi Subjek | Menerapkan partisi Subject-Disjoint (`train_test_split` seed 42 per kelas, 0% leakage, diikuti 5-Fold `StratifiedGroupKFold`) sebagai tolok ukur utama dan menyajikan ablasi leakage (Tabel XII). | `03_materials-and-methods_a-dataset.md`, `04_results-and-discussion_a-global-performance.md`, `04_results-and-discussion_b-feature-ablation-study.md` | `RESOLVED` | - |
+| `R2-3` | R2 | `Minor` | `03_materials-and-methods_b-vision-transformer.md` | Spesifikasi Preprocessing & Reproduktibilitas | Mencantumkan ID checkpoint HuggingFace resmi beserta Git SHA, normalisasi seragam $\mu=\sigma=[0.5, 0.5, 0.5]$ tanpa MTCNN, dan formulasi token CLS. | `03_materials-and-methods_b-vision-transformer.md` | `RESOLVED` | - |
+| `R2-4` | R2 | `Minor` | `03_materials-and-methods_g-classification-pipeline.md` | Rekonsiliasi Ruang Pencarian Hyperparameter | Merekonsiliasikan total 912 kombinasi per skema (LR 96, SVM 288 [108 unik efektif], RF 288, GNB 240) dan 31.920 CV fits secara konsisten pada teks dan Tabel III–VI. | `03_materials-and-methods_g-classification-pipeline.md` | `RESOLVED` | - |
+| `R2-5` | R2 | `Major` | `04_results-and-discussion_a-global-performance.md` | Interpretasi Signifikansi Uji McNemar | Menyajikan p-value McNemar (Tabel XIII), 95% Wilson CI, paritas prediktif LR vs SVM ($p=1.0000$), dan mengualifikasikan saturasi fitur asimtotik SVM terhadap `Emotion ⊕ Face` ($p=0.7343$). | `04_results-and-discussion_a-global-performance.md`, `04_results-and-discussion_b-feature-ablation-study.md` | `RESOLVED` | - |
+| `R2-6` | R2 | `Major` | `04_results-and-discussion_c-intersectional-subgroup-performance.md` | Batasan Analisis Keadilan Algoritmik | Membatasi klaim keadilan formal, menegaskan EOD (9.72 pp, Tabel XIV) sebagai metrik disparitas performa subkelompok. | `04_results-and-discussion_c-intersectional-subgroup-performance.md` | `RESOLVED` | - |
+| `R2-7` | R2 | `Minor` | `04_results-and-discussion_e-comparison-with-prior-studies.md` | Kualifikasi Komparasi Baseline Literatur | Menegaskan bahwa perbandingan dengan literatur terdahulu pada Tabel XV Part A bersifat kontekstual karena variasi partisi, terpisah dari Part B terkontrol. | `04_results-and-discussion_e-comparison-with-prior-studies.md` | `RESOLVED` | - |
+| `R2-8` | R2 | `Major` | `04_results-and-discussion_a-global-performance.md` | Profil Efisiensi Komputasi Lengkap | Menyajikan Tabel XI komparasi waktu ekstraksi GPU (124.5 ms/citra) vs CPU (~1.487 ms/citra), durasi pelatihan, latensi inferensi hilir (LR 0.0046 ms vs SVM 4.6785 ms), konsumsi RAM (18.98 MB), dan ukuran model (0.11 MB vs 36.60 MB). | `04_results-and-discussion_a-global-performance.md` | `RESOLVED` | - |
+| `R2-9` | R2 | `Minor` | `04_results-and-discussion_d-error-pattern-assessment.md` | Penguatan Landasan Klaim Fenotipik | Menghapus spekulasi kausal fenotipik/pencahayaan di IV-C & IV-D; menyelaraskan analisis murni berdasarkan data empiris matriks konfusi 6×6. | `04_results-and-discussion_c-intersectional-subgroup-performance.md`, `04_results-and-discussion_d-error-pattern-assessment.md` | `RESOLVED` | - |
 | `R2-10` | R2 | `Minor` | `05_conclusion.md` | Pembatasan Generalisasi pada DemogPairs | Menyatakan batas generalisasi model secara eksplisit hanya pada 3 ras makro dataset DemogPairs. | `05_conclusion.md` | `RESOLVED` | - |
 
 ---
@@ -132,34 +132,34 @@
 
 - concern_id: "R2-4"
   commitment_extracted:
-    - commitment_text: "Merekonsiliasikan aritmatika kombinasi hyperparameter: 1.086 kombinasi x 5 folds x 7 skema = 38.010 fits + 28 refits."
+    - commitment_text: "Merekonsiliasikan aritmatika kombinasi hyperparameter: 912 kombinasi (RF 288 + GNB 240 + LR 96 + SVM 288 [108 unik efektif]) x 5 folds x 7 skema = 31.920 fits + 28 refits."
       commitment_type: add_clarification
       required_evidence_type: methods_paragraph
 
 - concern_id: "R2-5"
   commitment_extracted:
-    - commitment_text: "Melaporkan nilai p-value uji McNemar berpasangan dan 95% Wilson Score CI untuk seluruh skema fitur."
+    - commitment_text: "Melaporkan nilai p-value uji McNemar berpasangan (Tabel XIII) dan 95% Wilson Score CI untuk skema fitur."
       commitment_type: add_analysis
       required_evidence_type: new_table
-    - commitment_text: "Mengualifikasikan klaim saintifik: keunggulan tri-domain signifikan atas single-domain, dan saturasi asimtotik pada SVM."
+    - commitment_text: "Mengualifikasikan klaim saintifik: keunggulan tri-domain signifikan atas single-domain (p<0.001), ketiadaan perbedaan signifikan LR vs SVM (p=1.0000), dan saturasi asimtotik pada SVM terhadap Emotion+Face (p=0.7343)."
       commitment_type: add_clarification
       required_evidence_type: discussion_paragraph
 
 - concern_id: "R2-6"
   commitment_extracted:
-    - commitment_text: "Mengkualifikasikan ruang lingkup klaim keadilan formal; menegaskan EOD sebagai metrik disparitas subkelompok."
+    - commitment_text: "Mengkualifikasikan ruang lingkup klaim keadilan formal; menegaskan EOD (9.72 pp, Tabel XIV) sebagai metrik disparitas subkelompok."
       commitment_type: add_clarification
       required_evidence_type: discussion_paragraph
 
 - concern_id: "R2-7"
   commitment_extracted:
-    - commitment_text: "Menyajikan perbandingan dengan literatur terdahulu sebagai komparasi kontekstual akibat perbedaan partisi data."
+    - commitment_text: "Menyajikan perbandingan dengan literatur terdahulu pada Tabel XV Part A sebagai komparasi kontekstual akibat perbedaan partisi data, terpisah dari Part B terkontrol."
       commitment_type: add_clarification
       required_evidence_type: discussion_paragraph
 
 - concern_id: "R2-8"
   commitment_extracted:
-    - commitment_text: "Menyajikan profil efisiensi komputasi kuantitatif lengkap (latensi inferensi LR 0.0054 ms vs SVM 4.4481 ms, ukuran model, dan RAM)."
+    - commitment_text: "Menyajikan profil efisiensi komputasi kuantitatif lengkap pada Tabel XI (ekstraksi GPU 124.5 ms/citra vs CPU ~1.487 ms/citra, latensi inferensi hilir LR 0.0046 ms vs SVM 4.6785 ms, durasi pelatihan, ukuran model 0.11 MB vs 36.60 MB, dan RAM 18.98 MB)."
       commitment_type: add_analysis
       required_evidence_type: new_table
 

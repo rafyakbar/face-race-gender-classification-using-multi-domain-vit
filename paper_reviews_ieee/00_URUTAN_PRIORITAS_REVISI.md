@@ -55,33 +55,34 @@ Berdasarkan analisis tingkat keparahan (*severity*) dan risiko penolakan permane
 * **Berkas Naskah yang Diedit:** [`paper/04_results-and-discussion_a-global-performance.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_a-global-performance.md)
 * **Tindakan Konkret:**
   1. Ganti seluruh angka Tabel VII (RF), VIII (GNB), IX (LR), dan X (SVM) menggunakan hasil evaluasi *Subject-Disjoint* ($N = 2.160$). Puncak performa baru adalah **Logistic Regression Tri-Domain (88.66%)** dan **SVM Tri-Domain (88.61%)**.
-  2. Tambahkan subbab baru: **"Comparative Ablation Study on Data Leakage"** (Tabel XI baru). Tampilkan komparasi *Subject-Overlap* (93.70%) vs *Subject-Disjoint* (88.61%), yang membuktikan dan menguantifikasi beban memorisasi identitas sebesar 5.09 percentage points.
-* **Sumber Data Rujukan:** Tabel komparasi di [`README.ai.md` Seksi 7.1 & 7.3](file:///D:/Research/face-race-gender-multi-vit/README.ai.md#71-leaderboard-utama-subject-disjoint-leaderboard-28-model).
+  2. Tambahkan subbab baru di Section IV-B: **"Comparative Ablation Study on Data Leakage"** (Tabel XII). Tampilkan komparasi *Subject-Overlap* (93.70% SVM / 92.73% LR) vs *Subject-Disjoint* (88.61% SVM / 88.66% LR), yang menguantifikasi beban memorisasi identitas sebesar 5.09 percentage points pada SVM (dan 4.07 pp pada LR).
+* **Sumber Data Rujukan:** Tabel komparasi di [`README.ai.md` Seksi 7.1 & 7.3](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/README.ai.md#71-leaderboard-utama-subject-disjoint-leaderboard-28-model).
 
 ---
 
 ### Langkah 1.3: Integrasi Hasil Uji Signifikansi Inferensial (Paired McNemar & 95% CI)
 * **ID Komentar Terkait:** `R2-5`
-* **Berkas Naskah yang Diedit:** [`paper/04_results-and-discussion_a-global-performance.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_a-global-performance.md) & [`paper/04_results-and-discussion_b-feature-ablation-study.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_b-feature-ablation-study.md)
+* **Berkas Naskah yang Diedit:** [`paper/04_results-and-discussion_a-global-performance.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/04_results-and-discussion_a-global-performance.md) & [`paper/04_results-and-discussion_b-feature-ablation-study.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/04_results-and-discussion_b-feature-ablation-study.md)
 * **Tindakan Konkret:**
-  1. Tambahkan kolom rentang **95% Wilson Score Confidence Interval** pada Tabel VII s.d. X.
-  2. Paparkan hasil uji McNemar berpasangan:
+  1. Cantumkan rentang **95% Wilson Score Confidence Interval** di dalam narasi pembahasan Tabel VII s.d. X.
+  2. Paparkan hasil uji McNemar berpasangan pada **Tabel XIII**:
      * Fusi multi-domain terbukti unggul signifikan secara statistik dibanding biometrik wajah murni ($p = 3.46 \times 10^{-6} < 0.001$ pada SVM; $p = 6.78 \times 10^{-6} < 0.001$ pada LR).
-     * Akurasi LR Tri (88.66%) dan SVM Tri (88.61%) terbukti **setara secara statistik** ($p = 1.0000$, selisih bersih +1 citra).
-     * Pada SVM non-linear, penambahan domain usia mengalami **kejenuhan fitur asimtotik (*asymptotic feature saturation*)** ($p = 0.7343$), sedangkan pada LR linear memberikan kenaikan signifikan ($p = 0.0073 < 0.01$).
-* **Sumber Data Rujukan:** [`experiment/code/md/3.1_statistical_significance.md`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/md/3.1_statistical_significance.md).
+     * Akurasi LR Tri (88.66%) dan SVM Tri (88.61%) menunjukkan **ketiadaan perbedaan performa prediktif yang signifikan secara statistik / paritas prediktif** ($p = 1.0000$, selisih bersih +1 citra: 1.915 vs 1.914).
+     * Pada SVM non-linear, penambahan domain usia di atas `Emotion ⊕ Face` mengindikasikan **kejenuhan fitur asimtotik (*asymptotic feature saturation*)** ($p = 0.7343$, meskipun terhadap `Face ⊕ Age` 87.55% tetap signifikan pada $p = 0.0086$), sedangkan pada LR linear memberikan kenaikan signifikan ($p = 0.0073 < 0.01$).
+* **Sumber Data Rujukan:** [`experiment/code/md/3.1_statistical_significance.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/experiment/code/md/3.1_statistical_significance.md).
 
 ---
 
 ### Langkah 1.4: Penyusunan Tabel Profil Efisiensi Komputasi
 * **ID Komentar Terkait:** `R2-8`, `R1-5`
-* **Berkas Naskah yang Diedit:** [`paper/04_results-and-discussion_a-global-performance.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_a-global-performance.md) (subseksi komputasi)
+* **Berkas Naskah yang Diedit:** [`paper/04_results-and-discussion_a-global-performance.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/04_results-and-discussion_a-global-performance.md) (Paragraf 6, **Tabel XI**)
 * **Tindakan Konkret:**
-  1. Sajikan tabel kuantitatif metrik komputasi:
-     * Waktu ekstraksi fitur per domain: ~15.2 ms/citra pada GPU (~45.6 ms untuk fusi tri-domain).
-     * Latensi inferensi per sampel: **LR = 0.0054 ms** (sangat cepat), **SVM = 4.4481 ms**, RF = 0.0537 ms, GNB = 0.0081 ms.
-     * Ukuran model tersimpan: **LR = 0.11 MB** (>330× lebih hemat), **SVM = 36.60 MB**, RF = 6.19 MB, GNB = 1.36 MB.
-  2. Tekankan argumen bahwa Logistic Regression merupakan model paling unggul untuk implementasi komputasi tepi (*edge computing / mobile AI*).
+  1. Sajikan **Tabel XI** kuantitatif metrik komputasi:
+     * Waktu ekstraksi fitur offline (10.800 citra): **124.5 ms/citra pada GPU RTX 4060** (39.7 ms Face + 39.7 ms Emotion + 45.1 ms Age; total 22.41 menit) vs **~1.487 ms/citra pada CPU baseline** (total 4.46 jam; akselerasi GPU 11.9×).
+     * Durasi pelatihan 5-Fold GridSearchCV (31.920 CV fits): **LR Tri = 54.8 menit** vs **SVM Tri = 511.1 menit** (9.3× lebih cepat dilatih), RF Tri = 110.5 menit, GNB Dual = 25.5 menit.
+     * Latensi inferensi kepala pengklasifikasi hilir per sampel: **LR = 0.0046 ms** (>1.000× lebih cepat; total *end-to-end* GPU $\approx 124.505\text{ ms/citra}$), **SVM = 4.6785 ms**, RF = 0.0334 ms, GNB Dual = 0.0088 ms.
+     * Ukuran model tersimpan & RAM: **LR = 0.11 MB** (>330× lebih hemat), **SVM = 36.60 MB**, RF = 6.19 MB, GNB Dual = 0.78 MB (GNB Tri = 1.36 MB); jejak RAM array uji 18.98 MB (cache fitur 30.8 MB/domain).
+  2. Kualifikasikan bahwa keunggulan `0.11 MB` dan `0.0046 ms` berada pada kepala pengklasifikasi hilir (*downstream classification head*), sementara deployment *end-to-end* pada *Edge AI* berdaya rendah diarahkan pada kuantisasi/distilasi ketiga backbone ViT.
 * **Sumber Data Rujukan:** Berkas JSON di [`experiment/code/results/`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/results/) dan [`experiment/code/md/3.0_compare.md`](file:///D:/Research/face-race-gender-multi-vit/experiment/code/md/3.0_compare.md).
 
 ---
@@ -121,23 +122,23 @@ Berdasarkan analisis tingkat keparahan (*severity*) dan risiko penolakan permane
 
 ### Langkah 2.3: Dokumentasi Checkpoint HuggingFace & Reproduktibilitas
 * **ID Komentar Terkait:** `R2-3`
-* **Berkas Naskah:** [`paper/03_materials-and-methods_b-vision-transformer.md`](file:///D:/Research/face-race-gender-multi-vit/paper/03_materials-and-methods_b-vision-transformer.md)
-* **Tindakan:** Buat tabel ringkasan parameter prapemrosesan: ID resmi checkpoint HuggingFace, resolusi input $224 \times 224$, nilai mean dan standard deviation normalisasi tiap kanal, serta formulasi penarikan token `[CLS]` dari lapisan ke-12 ($\mathbf{z}_L^0$).
+* **Berkas Naskah:** [`paper/03_materials-and-methods_b-vision-transformer.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/03_materials-and-methods_b-vision-transformer.md)
+* **Tindakan:** Dokumentasikan parameter prapemrosesan secara presisi: ID resmi checkpoint HuggingFace beserta Git commit SHA (`skutaada/VIT-VGGFace` [`e85f0c9`], `dima806/facial_emotions_image_detection` [`747cf16`], `dima806/facial_age_image_detection` [`ad35933`]), resolusi input $224 \times 224$ dari citra *pre-cropped* tanpa MTCNN, rescale $1/255$ dan normalisasi seragam $\mu = \sigma = [0.5, 0.5, 0.5]$ ke $[-1, 1]$, serta formulasi penarikan token `[CLS]` dari lapisan ke-12 ($\mathbf{z}_L^0$).
 
 ### Langkah 2.4: Rekonsiliasi Ruang Pencarian Hyperparameter
 * **ID Komentar Terkait:** `R2-4`
-* **Berkas Naskah:** [`paper/03_materials-and-methods_g-classification-pipeline.md`](file:///D:/Research/face-race-gender-multi-vit/paper/03_materials-and-methods_g-classification-pipeline.md)
-* **Tindakan:** Selaraskan narasi ruang pencarian hyperparameter: SVM 288 + LR 270 + RF 288 + GNB 240 = 1.086 kombinasi $\times$ 5 folds $\times$ 7 skema fitur = **38.010 CV fits** + 28 refits akhir.
+* **Berkas Naskah:** [`paper/03_materials-and-methods_g-classification-pipeline.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/03_materials-and-methods_g-classification-pipeline.md)
+* **Tindakan:** Selaraskan narasi dan Tabel III–VI ruang pencarian hyperparameter: RF 288 + GNB 240 + LR 96 + SVM 288 (108 konfigurasi unik efektif) = **912 kombinasi** $\times$ 5 folds $\times$ 7 skema fitur = **31.920 CV fits** + 28 refits akhir.
 
 ### Langkah 2.5: Pendalaman Analisis Matriks Konfusi 6×6 & Pola Error (Figure 4)
 * **ID Komentar Terkait:** `R1-4`, `R2-9`
-* **Berkas Naskah:** [`paper/04_results-and-discussion_d-error-pattern-assessment.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_d-error-pattern-assessment.md)
-* **Tindakan:** Bahas asimetri kesalahan pada matriks konfusi 6×6. Tunjukkan bahwa kesalahan mayoritas terjadi antar-ras dalam gender yang sama (*same-gender cross-race*), sedangkan kesalahan gender mendekati 0%. Hilangkan spekulasi fenotipik biologis yang berlebihan; batasi murni pada data distribusi matriks konfusi.
+* **Berkas Naskah:** [`paper/04_results-and-discussion_d-error-pattern-assessment.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/04_results-and-discussion_d-error-pattern-assessment.md)
+* **Tindakan:** Bahas dekomposisi kuantitatif kesalahan pada matriks konfusi 6×6 ($N=2.160$, 245 error pada LR Tri-Domain): kesalahan didominasi oleh kekeliruan antar-ras dalam gender yang sama (**165 citra / 67.3% dari total error; 7.64% dari $N$**), sedangkan kesalahan lintas-gender berjumlah **80 citra (32.7% dari total error; 3.70% dari $N$)**. Hilangkan spekulasi kausal fenotipik biologis dan pencahayaan; batasi murni pada data distribusi frekuensi matriks konfusi.
 
 ### Langkah 2.6: Perluasan Komparasi Literatur Baseline
 * **ID Komentar Terkait:** `R1-6`, `R2-7`
-* **Berkas Naskah:** [`paper/04_results-and-discussion_e-comparison-with-prior-studies.md`](file:///D:/Research/face-race-gender-multi-vit/paper/04_results-and-discussion_e-comparison-with-prior-studies.md)
-* **Tindakan:** Perluas Tabel XII dengan menambahkan baseline literatur lebih luas. Beri catatan kaki/penjelasan eksplisit bahwa studi terdahulu (seperti Putri et al. 2025) menggunakan partisi *image-level overlap*, sehingga komparasi ini disajikan secara **kontekstual**, bukan sebagai tolok ukur terkontrol (*controlled benchmark*).
+* **Berkas Naskah:** [`paper/04_results-and-discussion_e-comparison-with-prior-studies.md`](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper/04_results-and-discussion_e-comparison-with-prior-studies.md)
+* **Tindakan:** Sajikan **Tabel XV** dengan memisahkan **Part A (Contextual Comparison — Subject-Overlap)** untuk studi terdahulu (Putri et al. 2025) dan **Part B (Controlled Comparison — Strict Subject-Disjoint)** untuk baseline CNN/ViT pada partisi bebas kebocoran yang identik.
 
 ### Langkah 2.7: Revisi Bab Kesimpulan & Delimitasi Batasan Studi
 * **ID Komentar Terkait:** `R1-7`, `R2-10`
