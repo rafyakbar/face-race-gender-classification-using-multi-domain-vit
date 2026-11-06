@@ -48,7 +48,7 @@ Penelitian ini mengusulkan sebuah kerangka kerja *offline feature fusion* untuk 
 2. **ViT-Emotion** (`dima806/facial_emotions_image_detection`): Menangkap ekspresi afektif dinamis dan *facial action units* terdelokalisasi.
 3. **ViT-Age** (`dima806/facial_age_image_detection`): Menangkap morfologi penuaan biologis dan pola tekstur epidermal.
 
-Vektor token `[CLS]` tingkat tinggi (768-d per domain) digabungkan (*concatenated*) menjadi **representasi Tri-Domain** ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$) dan diumpankan ke *classifier* klasik hilir yang dioptimasi secara menyeluruh melalui 5-Fold Stratified GridSearchCV (mengevaluasi 1.086 kombinasi *hyperparameter* dan total 38.010 *cross-validation fits* pada 4 famili *classifier*: SVM, Logistic Regression, Random Forest, dan Gaussian Naive Bayes).
+Vektor token `[CLS]` tingkat tinggi (768-d per domain) digabungkan (*concatenated*) menjadi **representasi Tri-Domain** ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$) dan diumpankan ke *classifier* klasik hilir yang dioptimasi secara menyeluruh melalui 5-Fold StratifiedGroupKFold GridSearchCV (mengevaluasi **912 kombinasi *hyperparameter* per skema** [RF: 288, GNB: 240, LR: 96, SVM: 288 Cartesian / 108 unik efektif] dan total **31.920 *cross-validation fits*** + 28 *final refits* pada 4 famili *classifier*: SVM, Logistic Regression, Random Forest, dan Gaussian Naive Bayes).
 
 ### 1.3 Arsitektur Dual Benchmark & Pencapaian Utama
 
@@ -78,15 +78,15 @@ Vektor token `[CLS]` tingkat tinggi (768-d per domain) digabungkan (*concatenate
      - **Test Accuracy:** **88.66%** (1.915 prediksi benar dari 2.160 sampel uji *held-out* dari 120 subjek tak terlihat).
      - **Macro Precision:** **0.8875** | **Macro Recall:** **0.8866** | **Macro F1-Score:** **0.8868**
      - **95% Wilson Score CI:** **[87.25%, 89.93%]**
-     - **Inference Latency:** **0.0054 ms/sampel** (>800x lebih cepat dibanding SVM)
-     - **Penyimpanan Model:** **0.11 MB** (>330x lebih ringkas dibanding SVM)
+     - **Inference Latency (Downstream Head):** **0.0046 ms/sampel** (**>1.000× lebih cepat** dibanding kepala klasifikasi SVM 4.6785 ms; total latensi *end-to-end* GPU termasuk ekstraksi 3 ViT $\approx 124,505\text{ ms/citra}$ vs. $\approx 129,179\text{ ms/citra}$)
+     - **Penyimpanan Model:** **0.11 MB** (>330× lebih ringkas dibanding SVM 36.60 MB)
      - **Hyperparameter Terbaik:** $C = 0.1$, solver = `'saga'`, max_iter = 500, Scaler = `'MinMaxScaler'`, PCA = `None`.
    - **Model Runner-Up:** **Support Vector Machine (SVM) + Tri-Domain ViT Fusion** (`vit-face-emotion-age`, 2.304-d)
      - **Test Accuracy:** **88.61%** (1.914 prediksi benar dari 2.160 sampel uji).
      - **Macro Precision:** **0.8871** | **Macro Recall:** **0.8861** | **Macro F1-Score:** **0.8863**
      - **95% Wilson Score CI:** **[87.20%, 89.88%]**
      - **Hyperparameter Terbaik:** $C = 10$, kernel = `'rbf'`, gamma = `'scale'`, Scaler = `'MinMaxScaler'`, PCA = `None`.
-   - **Ekuivalensi Statistik (LR vs. SVM):** Paired McNemar test mengonfirmasi $p = 1.0000$ (keuntungan bersih +1 citra), membuktikan paritas performa prediktif yang setara secara statistik sementara LR memberikan keunggulan komputasi tepi (*edge computing*) yang sangat dominan.
+   - **Paritas Statistik & Efisiensi Hilir (LR vs. SVM):** Paired McNemar test mengonfirmasi $p = 1.0000$ (selisih bersih +1 citra), menunjukkan tidak adanya perbedaan performa prediktif yang signifikan secara statistik (*predictive parity*), sementara kepala pengklasifikasi hilir LR memberikan efisiensi komputasi yang sangat dominan.
    - **Dominasi Tri-Domain:** Fusi tri-domain meraih performa puncak pada **3 dari 4 classifier** di bawah kondisi *subject-disjoint* (LR: 88.66%, SVM: 88.61%, RF: 85.00%). GNB mencapai puncak pada dual-domain `Emotion ⊕ Face` (84.31%).
 
 2. **Historical Benchmark: Subject-Overlap Baseline (Baseline 100% Identity Leakage):**
@@ -137,7 +137,7 @@ Manuskrip ini diajukan secara resmi ke IEEE Access dan memperoleh surat keputusa
 1. **Kebaruan & Kontribusi Metodologi:** Perjelas kontribusi metodologis fusi fitur tri-domain dibandingkan sekadar konkatenasi vektor sederhana.
 2. **Data Leakage & Generalisasi Subject-Disjoint:** **(PERHATIAN KRITIS / CRITICAL CONCERN)** Mempertanyakan apakah citra dari identitas yang sama muncul di kedua partisi latih dan uji akibat pembagian acak (*random splitting*); meminta evaluasi di bawah kondisi *subject-disjoint* yang ketat.
 3. **Pra-pemrosesan & Reproduksibilitas:** Sebutkan *checkpoint identifier* resmi HuggingFace, parameter *image processor*, dan prosedur normalisasi secara presisi.
-4. **Konsistensi Ruang Pencarian Hyperparameter:** Rekonsiliasikan metrik ruang pencarian yang dilaporkan (1.086 kombinasi, 38.010 *cross-validation fits*, 28 *final refits*).
+4. **Konsistensi Ruang Pencarian Hyperparameter:** Rekonsiliasikan metrik ruang pencarian yang dilaporkan menjadi **912 kombinasi per skema** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [108 unik efektif]}$), **4.560 *fits* per skema**, dan **31.920 *cross-validation fits*** + 28 *final refits*.
 5. **Signifikansi Statistik & Uji McNemar:** Laporkan pengujian hipotesis statistik inferensial (uji McNemar) untuk memvalidasi perbedaan performa dan menguji klaim keunggulan tri-domain secara sahih.
 6. **Cakupan Analisis Keadilan (Fairness):** Perbaiki cakupan klaim keadilan; tegaskan bahwa EOD memberikan wawasan disparitas subkelompok namun bukan audit keadilan algoritmik yang komprehensif/lengkap.
 7. **Kondisi Benchmark Baseline Literatur:** Perjelas apakah metode-metode terdahulu yang dievaluasi pada DemogPairs menggunakan partisi identik; perlakukan perbandingan tersebut secara kontekstual.
@@ -248,14 +248,15 @@ Ketiga model dibangun berdasarkan arsitektur **ViT-Base (`vit-base-patch16-224`)
 
 ### 5.3 Metrik Waktu Ekstraksi Fitur & Direktori `experiment/code/times/`
 Pencatatan waktu ekstraksi fitur tingkat citra dan ringkasan performa agregat tersimpan pada direktori `experiment/code/times/` dalam format JSON terstandarisasi:
-- `features_vit-face.json` (skutaada/VIT-VGGFace: total 5.044,0 s / 467,04 ms per citra pada CPU; ~42 ms pada GPU RTX 4060)
-- `features_vit-emotion.json` (dima806/facial_emotions_...: total 5.148,0 s / 476,67 ms per citra pada CPU)
-- `features_vit-age.json` (dima806/facial_age_...: total 5.865,0 s / 543,06 ms per citra pada CPU)
+- `features_vit-face.json` (`skutaada/VIT-VGGFace`: GPU RTX 4060 **428,3 s [7,14 menit] / 39,65 ms per citra**; CPU baseline 5.044,0 s / 467,04 ms per citra)
+- `features_vit-emotion.json` (`dima806/facial_emotions_...`: GPU RTX 4060 **429,2 s [7,15 menit] / 39,74 ms per citra**; CPU baseline 5.148,0 s / 476,67 ms per citra)
+- `features_vit-age.json` (`dima806/facial_age_...`: GPU RTX 4060 **487,2 s [8,12 menit] / 45,11 ms per citra**; CPU baseline 5.865,0 s / 543,06 ms per citra)
+- **Agregat Tri-Domain (3 Backbone):** Total waktu ekstraksi GPU = **1.344,7 s (22,41 menit) / 124,50 ms per citra** (rata-rata ~7,47 menit per domain), dibandingkan baseline serial CPU = **16.057,0 s (4,46 jam) / ~1.486,8 ms per citra** (akselerasi GPU **11,9× lebih cepat**).
 
 Setiap berkas JSON memuat `model_name`, `feature_name`, `device`, `total_images`, `total_time_seconds`, `total_time_formatted`, `avg_time_per_image_seconds`, `avg_time_per_image_ms`, serta kamus lengkap `times_per_image` yang memetakan seluruh 10.800 path citra ke durasi ekstraksinya masing-masing.
 
 > [!TIP]
-> **In-Memory Caching Processor & Resolusi Bottleneck:** Modul `utils/extraction.py` telah dilengkapi *global in-memory caching* (`_PROCESSOR_CACHE`) dan helper `get_image_processor()` untuk mengeliminasi pemanggilan `AutoImageProcessor.from_pretrained` berulang sebanyak 10.800 kali dari disk. Optimasi ini memangkas latensi GPU per citra dari ~1.280 ms menjadi ~42 ms (peningkatan kecepatan ~30×), sehingga total waktu ekstraksi 10.800 citra pada CUDA GPU tuntas hanya dalam ~7,6 menit (bukan >3,8 jam).
+> **In-Memory Caching Processor & Resolusi Bottleneck:** Modul `utils/extraction.py` telah dilengkapi *global in-memory caching* (`_PROCESSOR_CACHE`) dan helper `get_image_processor()` untuk mengeliminasi pemanggilan `AutoImageProcessor.from_pretrained` berulang sebanyak 10.800 kali dari disk. Optimasi ini memangkas latensi GPU per citra per domain dari ~1.280 ms menjadi **39,7–45,1 ms** (peningkatan kecepatan ~30×), sehingga ekstraksi 10.800 citra pada CUDA GPU tuntas dalam **7,14–8,12 menit per domain** (total **22,41 menit** untuk seluruh 3 domain, bukan >3,8 jam per domain).
 
 ---
 
@@ -265,74 +266,74 @@ Setiap berkas JSON memuat `model_name`, `feature_name`, `device`, `total_images`
 $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\}$$
 
 ### 6.2 Ruang Pencarian Hyperparameter per Classifier
-- **Support Vector Machine (SVM) – 288 konfigurasi per skema:**
-  - `scaler`: `[None, MinMaxScaler()]`
-  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
-  - `classifier__C`: `[0.1, 1, 10, 100]`
-  - `classifier__kernel`: `['linear', 'rbf', 'poly']`
-  - `classifier__degree`: `[2, 3]`
-  - `classifier__gamma`: `['scale', 'auto']`
-- **Logistic Regression (LR) – 270 konfigurasi per skema:**
-  - `scaler`: `[None, MinMaxScaler()]`
-  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
-  - `classifier__C`: `[0.01, 0.1, 1, 10, 100]`
-  - `classifier__solver`: `['lbfgs', 'saga', 'newton-cg']`
-  - `classifier__max_iter`: `[200, 500, 2000]`
+- **Support Vector Machine (SVM) – 288 evaluasi Cartesian per skema (108 konfigurasi unik efektif):**
+  - `scaler`: `[None, MinMaxScaler()]` (2)
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]` (3)
+  - `classifier__C`: `[0.01, 0.1, 1, 10]` (4)
+  - `classifier__kernel`: `['linear', 'rbf', 'poly']` (3)
+  - `classifier__degree`: `[2, 3]` (2 — secara fungsional hanya aktif pada kernel `'poly'`)
+  - `classifier__gamma`: `['scale', 'auto']` (2 — secara fungsional hanya aktif pada kernel `'rbf'` dan `'poly'`)
+- **Logistic Regression (LR) – 96 konfigurasi per skema:**
+  - `scaler`: `[None, MinMaxScaler()]` (2)
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]` (3)
+  - `classifier__C`: `[0.01, 0.1, 1, 10]` (4)
+  - `classifier__solver`: `['lbfgs', 'saga']` (2)
+  - `classifier__max_iter`: `[500, 1000]` (2)
 - **Random Forest (RF) – 288 konfigurasi per skema:**
-  - `scaler`: `[None, MinMaxScaler()]`
-  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
-  - `classifier__n_estimators`: `[100, 200]`
-  - `classifier__max_depth`: `[None, 10, 30]`
-  - `classifier__max_features`: `['sqrt', 'log2']`
-  - `classifier__min_samples_split`: `[2, 5]`
-  - `classifier__min_samples_leaf`: `[1, 2]`
+  - `scaler`: `[None, MinMaxScaler()]` (2)
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]` (3)
+  - `classifier__n_estimators`: `[100, 200]` (2)
+  - `classifier__max_depth`: `[None, 20, 30]` (3)
+  - `classifier__max_features`: `['sqrt', 'log2']` (2)
+  - `classifier__min_samples_split`: `[2, 5]` (2)
+  - `classifier__min_samples_leaf`: `[1, 2]` (2)
 - **Gaussian Naive Bayes (GNB) – 240 konfigurasi per skema:**
-  - `scaler`: `[None, MinMaxScaler()]`
-  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]`
-  - `classifier__var_smoothing`: 40 nilai logaritmik dari $10^{-9}$ hingga $10^{2}$ (`np.logspace(-9, 2, 40)`)
+  - `scaler`: `[None, MinMaxScaler()]` (2)
+  - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]` (3)
+  - `classifier__var_smoothing`: 40 nilai logaritmik dari $10^{-9}$ hingga $10^{2}$ (`np.logspace(-9, 2, 40)`) (40)
 
 ### 6.3 Ringkasan Skala Optimasi
-- Total kombinasi per skema fitur: $288 + 270 + 288 + 240 = \mathbf{1.086}$ kombinasi.
-- Total *cross-validation fits* (5-Fold) per skema: $1.086 \times 5 = \mathbf{5.430}$ *fits*.
-- Total keseluruhan untuk 7 skema fitur: $5.430 \times 7 = \mathbf{38.010}$ *cross-validation fits* + 28 model *final refit*.
+- Total kombinasi per skema fitur: $288\text{ (RF)} + 240\text{ (GNB)} + 96\text{ (LR)} + 288\text{ (SVM)} = \mathbf{912}$ kombinasi.
+- Total *cross-validation fits* (5-Fold `StratifiedGroupKFold`) per skema: $912 \times 5 = \mathbf{4.560}$ *fits*.
+- Total keseluruhan untuk 7 skema fitur: $4.560 \times 7 = \mathbf{31.920}$ *cross-validation fits* + **28 model *final refit***.
 
 ---
 
 ## 7. Benchmark Eksperimental Ganda Komprehensif
 
 ### 7.1 Leaderboard Utama: Subject-Disjoint Leaderboard (28 Model)
-Dievaluasi pada partisi uji independen *subject-disjoint* ($N = 2.160$ sampel dari 120 subjek baru). Data diekstraksi secara presisi dari berkas JSON aktif di `experiment/code/results/*.json`:
+Dievaluasi pada partisi uji independen *subject-disjoint* ($N = 2.160$ sampel dari 120 subjek baru). Data diekstraksi secara presisi dari berkas JSON aktif di `experiment/code/results/*.json` dan `experiment/code/md/3.0_compare.md`:
 
 | Rank | Classifier | Skema Fitur | Kategori | Dimensi | Test Accuracy | Precision | Recall | F1-Score | 95% CI (Wilson) | Latency (ms) | Size (MB) | Hyperparameter Terbaik |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| 🥇 **1** | **LR** | **`vit-face-emotion-age`** | **Tri** | **2.304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | **0.0054** | **0.11** | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 🥈 **2** | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2.304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.4481 | 36.60 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 🥉 **3** | SVM | `vit-emotion-face` | Dual | 1.536 | **88.43%** | 0.8850 | 0.8843 | 0.8844 | [87.01%, 89.71%] | 0.9707 | 15.27 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 4 | SVM | `vit-face-age` | Dual | 1.536 | 87.55% | 0.8766 | 0.8755 | 0.8757 | [86.09%, 88.87%] | 2.2581 | 23.48 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 5 | LR | `vit-emotion-face` | Dual | 1.536 | 87.45% | 0.8759 | 0.8745 | 0.8749 | [85.99%, 88.78%] | 0.0039 | 0.08 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 6 | LR | `vit-face-age` | Dual | 1.536 | 87.41% | 0.8744 | 0.8741 | 0.8740 | [85.94%, 88.74%] | 0.0090 | 0.11 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 7 | LR | `vit-emotion-age` | Dual | 1.536 | 86.67% | 0.8668 | 0.8667 | 0.8667 | [85.17%, 88.04%] | 0.0040 | 0.08 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 8 | LR | `vit-face` | Single | 768 | 86.39% | 0.8646 | 0.8639 | 0.8640 | [84.88%, 87.77%] | 0.0008 | 0.04 | `C=1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 9 | SVM | `vit-emotion-age` | Dual | 1.536 | 86.25% | 0.8626 | 0.8625 | 0.8624 | [84.73%, 87.64%] | 3.1451 | 32.76 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 10 | SVM | `vit-face` | Single | 768 | 86.16% | 0.8624 | 0.8616 | 0.8619 | [84.64%, 87.55%] | 3.0653 | 7.56 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 11 | SVM | `vit-emotion` | Single | 768 | 85.79% | 0.8584 | 0.8579 | 0.8580 | [84.25%, 87.20%] | 1.8871 | 15.30 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 12 | LR | `vit-emotion` | Single | 768 | 85.23% | 0.8535 | 0.8523 | 0.8527 | [83.67%, 86.67%] | 0.0037 | 0.06 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 13 | RF | `vit-face-emotion-age` | Tri | 2.304 | 85.00% | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0537 | 6.19 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 14 | RF | `vit-emotion-face` | Dual | 1.536 | 84.86% | 0.8493 | 0.8486 | 0.8479 | [83.29%, 86.31%] | 0.0316 | 8.58 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 15 | RF | `vit-face-age` | Dual | 1.536 | 84.86% | 0.8488 | 0.8486 | 0.8478 | [83.29%, 86.31%] | 0.0310 | 6.19 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 16 | GNB | `vit-emotion-face` | Dual | 1.536 | 84.31% | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0083 | 0.78 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 17 | RF | `vit-face` | Single | 768 | 84.03% | 0.8413 | 0.8403 | 0.8403 | [82.42%, 85.51%] | 0.0314 | 5.99 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 18 | GNB | `vit-face-emotion-age` | Tri | 2.304 | 83.61% | 0.8379 | 0.8361 | 0.8364 | [81.99%, 85.11%] | 0.0081 | 1.36 | `var_smoothing=0.005878, pca=PCA(0.75), scaler=None` |
-| 19 | GNB | `vit-face-age` | Dual | 1.536 | 83.06% | 0.8347 | 0.8306 | 0.8310 | [81.42%, 84.58%] | 0.0080 | 0.75 | `var_smoothing=0.011253, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 20 | SVM | `vit-age` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8258 | [80.89%, 84.09%] | 2.0104 | 18.22 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 21 | GNB | `vit-face` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8250 | [80.89%, 84.09%] | 0.0031 | 0.19 | `var_smoothing=0.041246, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 22 | LR | `vit-age` | Single | 768 | 81.48% | 0.8145 | 0.8148 | 0.8146 | [79.79%, 83.06%] | 0.0028 | 0.06 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 23 | RF | `vit-emotion-age` | Dual | 1.536 | 77.31% | 0.7734 | 0.7731 | 0.7728 | [75.50%, 79.03%] | 0.0392 | 12.35 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
-| 24 | RF | `vit-emotion` | Single | 768 | 76.11% | 0.7602 | 0.7611 | 0.7603 | [74.27%, 77.86%] | 0.0316 | 10.34 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 25 | GNB | `vit-emotion-age` | Dual | 1.536 | 75.88% | 0.7597 | 0.7588 | 0.7578 | [74.03%, 77.64%] | 0.0048 | 0.24 | `var_smoothing=0.001604, pca=PCA(0.75), scaler=MinMaxScaler` |
-| 26 | GNB | `vit-emotion` | Single | 768 | 72.13% | 0.7251 | 0.7213 | 0.7199 | [70.20%, 73.98%] | 0.0031 | 0.13 | `var_smoothing=0.003070, pca=PCA(0.75), scaler=None` |
-| 27 | RF | `vit-age` | Single | 768 | 71.81% | 0.7176 | 0.7181 | 0.7170 | [69.87%, 73.66%] | 0.0327 | 11.21 | `n_estimators=200, max_depth=30, max_features='log2', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 28 | GNB | `vit-age` | Single | 768 | 67.08% | 0.6691 | 0.6708 | 0.6686 | [65.07%, 69.03%] | 0.0045 | 0.37 | `var_smoothing=0.000438, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 🥇 **1** | **LR** | **`vit-face-emotion-age`** | **Tri** | **2.304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | **0.0046** | **0.11** | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 🥈 **2** | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2.304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.6785 | 36.60 | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
+| 🥉 **3** | SVM | `vit-emotion-face` | Dual | 1.536 | **88.43%** | 0.8850 | 0.8843 | 0.8844 | [87.01%, 89.71%] | 0.9490 | 15.27 | `C=0.1, kernel='poly', degree=2, gamma='scale', scaler=MinMaxScaler, pca=None` |
+| 4 | SVM | `vit-face-age` | Dual | 1.536 | 87.55% | 0.8766 | 0.8755 | 0.8757 | [86.09%, 88.87%] | 2.5468 | 23.48 | `C=10, kernel='rbf', gamma='scale', scaler=None, pca=None` |
+| 5 | LR | `vit-emotion-face` | Dual | 1.536 | 87.45% | 0.8759 | 0.8745 | 0.8749 | [85.99%, 88.78%] | 0.0035 | 0.08 | `C=1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 6 | LR | `vit-face-age` | Dual | 1.536 | 87.41% | 0.8744 | 0.8741 | 0.8740 | [85.94%, 88.74%] | 0.0056 | 0.11 | `C=0.1, solver='lbfgs', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 7 | LR | `vit-emotion-age` | Dual | 1.536 | 86.67% | 0.8668 | 0.8667 | 0.8667 | [85.17%, 88.04%] | 0.0035 | 0.08 | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 8 | LR | `vit-face` | Single | 768 | 86.39% | 0.8646 | 0.8639 | 0.8640 | [84.88%, 87.77%] | 0.0008 | 0.04 | `C=0.1, solver='saga', max_iter=500, scaler=None, pca=None` |
+| 9 | SVM | `vit-emotion-age` | Dual | 1.536 | 86.25% | 0.8626 | 0.8625 | 0.8624 | [84.73%, 87.64%] | 3.7228 | 32.76 | `C=10, kernel='rbf', gamma='scale', scaler=None, pca=None` |
+| 10 | SVM | `vit-face` | Single | 768 | 86.16% | 0.8624 | 0.8616 | 0.8619 | [84.64%, 87.55%] | 0.3638 | 7.56 | `C=0.01, kernel='poly', degree=3, gamma='scale', scaler=MinMaxScaler, pca=None` |
+| 11 | SVM | `vit-emotion` | Single | 768 | 85.79% | 0.8584 | 0.8579 | 0.8580 | [84.25%, 87.20%] | 1.7478 | 15.30 | `C=10, kernel='rbf', gamma='scale', scaler=None, pca=None` |
+| 12 | LR | `vit-emotion` | Single | 768 | 85.23% | 0.8535 | 0.8523 | 0.8527 | [83.67%, 86.67%] | 0.0032 | 0.06 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
+| 13 | RF | `vit-face-emotion-age` | Tri | 2.304 | 85.00% | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0334 | 6.19 | `n_estimators=200, max_depth=30, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=None, scaler=MinMaxScaler` |
+| 14 | RF | `vit-emotion-face` | Dual | 1.536 | 84.86% | 0.8493 | 0.8486 | 0.8479 | [83.29%, 86.31%] | 0.0286 | 8.58 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 15 | RF | `vit-face-age` | Dual | 1.536 | 84.86% | 0.8488 | 0.8486 | 0.8478 | [83.29%, 86.31%] | 0.0312 | 6.19 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=None, scaler=None` |
+| 16 | GNB | `vit-emotion-face` | Dual | 1.536 | 84.31% | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0088 | 0.78 | `var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 17 | RF | `vit-face` | Single | 768 | 84.03% | 0.8413 | 0.8403 | 0.8403 | [82.42%, 85.51%] | 0.0332 | 5.99 | `n_estimators=200, max_depth=20, max_features='log2', min_samples_split=5, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
+| 18 | GNB | `vit-face-emotion-age` | Tri | 2.304 | 83.61% | 0.8379 | 0.8361 | 0.8364 | [81.99%, 85.11%] | 0.0064 | 1.36 | `var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=None` |
+| 19 | GNB | `vit-face-age` | Dual | 1.536 | 83.06% | 0.8347 | 0.8306 | 0.8310 | [81.42%, 84.58%] | 0.0069 | 0.75 | `var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 20 | SVM | `vit-age` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8258 | [80.89%, 84.09%] | 2.2188 | 18.22 | `C=10, kernel='rbf', gamma='scale', scaler=None, pca=None` |
+| 21 | GNB | `vit-face` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8250 | [80.89%, 84.09%] | 0.0035 | 0.19 | `var_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 22 | LR | `vit-age` | Single | 768 | 81.48% | 0.8145 | 0.8148 | 0.8146 | [79.79%, 83.06%] | 0.0019 | 0.06 | `C=0.1, solver='lbfgs', max_iter=500, scaler=None, pca=None` |
+| 23 | RF | `vit-emotion-age` | Dual | 1.536 | 77.31% | 0.7734 | 0.7731 | 0.7728 | [75.50%, 79.03%] | 0.0325 | 12.35 | `n_estimators=200, max_depth=20, max_features='log2', min_samples_split=2, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
+| 24 | RF | `vit-emotion` | Single | 768 | 76.11% | 0.7602 | 0.7611 | 0.7603 | [74.27%, 77.86%] | 0.0321 | 10.34 | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
+| 25 | GNB | `vit-emotion-age` | Dual | 1.536 | 75.88% | 0.7597 | 0.7588 | 0.7578 | [74.03%, 77.64%] | 0.0042 | 0.24 | `var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 26 | GNB | `vit-emotion` | Single | 768 | 72.13% | 0.7251 | 0.7213 | 0.7199 | [70.20%, 73.98%] | 0.0024 | 0.13 | `var_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 27 | RF | `vit-age` | Single | 768 | 71.81% | 0.7176 | 0.7181 | 0.7170 | [69.87%, 73.66%] | 0.0252 | 11.21 | `n_estimators=200, max_depth=None, max_features='log2', min_samples_split=5, min_samples_leaf=2, pca=PCA(0.75), scaler=None` |
+| 28 | GNB | `vit-age` | Single | 768 | 67.08% | 0.6691 | 0.6708 | 0.6686 | [65.07%, 69.03%] | 0.0035 | 0.37 | `var_smoothing=8.3768e-04, pca=PCA(0.75), scaler=MinMaxScaler` |
 
 ### 7.2 Leaderboard Historis: Subject-Overlap Leaderboard (28 Model)
 Dipreservasi di dalam `experiment/code/archive/results_old/*.json` dan `audit_ledger.json` sebagai baseline komparatif:
@@ -390,12 +391,12 @@ Dihitung dari tabel kontingensi pasangan diskordan (*discordant pairs contingenc
    - **Logistic Regression:** Tri-Domain (88.66%) vs. Face (86.39%) $\implies \Delta = +2.27\%$, Keuntungan Bersih = $+49$ citra ($b=83, c=34$), $\chi^2 = 19.6923$, **$p = 6.78 \times 10^{-6} < 0.001$ (Sangat Signifikan secara Statistik)**.
    - **Random Forest:** Tri-Domain (85.00%) vs. Face (84.03%) $\implies \Delta = +0.97\%$, Keuntungan Bersih = $+21$ citra ($b=50, c=29$), $\chi^2 = 5.0633$, **$p = 0.0238 < 0.05$ (Signifikan secara Statistik)**.
    - **Gaussian Naive Bayes:** Tri-Domain (83.61%) vs. Face (82.55%) $\implies \Delta = +1.06\%$, Keuntungan Bersih = $+23$ citra ($b=97, c=74$), $\chi^2 = 2.8304$, $p = 0.0922$ (Tidak signifikan).
-2. **Tri-Domain vs. Dual-Domain (`vit-emotion-face`):**
-   - **Logistic Regression:** Tri-Domain (88.66%) vs. Dual-Domain (87.45%) $\implies \Delta = +1.20\%$, Keuntungan Bersih = $+26$ citra ($b=57, c=31$), $\chi^2 = 7.1023$, **$p = 0.0073 < 0.01$ (Signifikan secara Statistik)**.
-   - **SVM:** Tri-Domain (88.61%) vs. Dual-Domain (88.43%) $\implies \Delta = +0.19\%$, Keuntungan Bersih = $+4$ citra ($b=41, c=37$), $\chi^2 = 0.1154$, $p = 0.7343$ (Tidak signifikan; membuktikan terjadinya saturasi fitur asimtotik pada kernel non-linear RBF).
+2. **Tri-Domain vs. Dual-Domain (`vit-emotion-face` & `vit-face-age`):**
+   - **Logistic Regression:** Tri-Domain (88.66%) vs. Dual-Domain `Emotion ⊕ Face` (87.45%) $\implies \Delta = +1.20\text{ pp}$, Keuntungan Bersih = $+26$ citra ($b=57, c=31$), $\chi^2 = 7.1023$, **$p = 0.0073 < 0.01$ (Signifikan secara Statistik)**.
+   - **SVM:** Peningkatan dari Dual-Domain `Face ⊕ Age` (87.55%) ke Tri-Domain (88.61%) tetap signifikan secara statistik ($\Delta = +1.06\text{ pp}$, $+23$ citra bersih, $b=47, c=24, \chi^2 = 6.8169, p = 0.0086 < 0.01$), namun transisi dari Dual-Domain `Emotion ⊕ Face` (88.43%) ke Tri-Domain (88.61%) menghasilkan $\Delta = +0.19\text{ pp}$, Keuntungan Bersih = $+4$ citra ($b=41, c=37$), $\chi^2 = 0.1154$, $p = 0.7343$ (Tidak signifikan; mengonfirmasi terjadinya saturasi fitur spesifik saat domain penuaan ditambahkan ke kombinasi biometrik-afektif pada kernel non-linear RBF).
 3. **Komparasi Arsitektur Puncak (LR Tri vs. SVM Tri):**
-   - LR Tri (88.66%) vs. SVM Tri (88.61%) $\implies \Delta = +0.05\%$, Keuntungan Bersih = $+1$ citra ($b=36, c=35$), $\chi^2 = 0.0000$, **$p = 1.0000$ (Ekuivalen secara Statistik)**.
-   - *Trade-off* Efisiensi Komputasi: LR terbukti **>800x lebih cepat dalam latensi inferensi** (0.0054 ms vs 4.4481 ms) dan **>330x lebih ringkas dalam ukuran model** (0.11 MB vs 36.60 MB).
+   - LR Tri (88.66%) vs. SVM Tri (88.61%) $\implies \Delta = +0.05\text{ pp}$, Keuntungan Bersih = $+1$ citra ($b=36, c=35$), $\chi^2 = 0.0000$, **$p = 1.0000$ (Tidak Berbeda Signifikan / Paritas Prediktif)**.
+   - *Trade-off* Efisiensi Komputasi: Pada tingkat kepala pengklasifikasi hilir, LR terbukti **>1.000× lebih cepat dalam latensi inferensi** (**0.0046 ms** vs **4.6785 ms**; total latensi *end-to-end* GPU termasuk ekstraksi 3 ViT $\approx 124,505\text{ ms/citra}$ vs $\approx 129,179\text{ ms/citra}$) dan **>330× lebih ringkas dalam ukuran model** (0.11 MB vs 36.60 MB).
 
 ---
 
@@ -603,7 +604,7 @@ python scripts/auto_run_experiments.py
 ```
 
 #### Eksekusi Interaktif Langkah Demi Langkah:
-1. **Ekstraksi Fitur:** Jalankan notebook `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, dan `1.1_vit-age_demogpairs.ipynb` secara berurutan. Di bawah akselerasi CUDA GPU dengan in-memory processor caching, ekstraksi 10.800 citra selesai dalam ~7,6 menit per domain (~42 ms/citra). Waktu ekstraksi otomatis dicatat ke `times/features_vit-*.json`.
+1. **Ekstraksi Fitur:** Jalankan notebook `1.1_vit-face_demogpairs.ipynb`, `1.1_vit-emotion_demogpairs.ipynb`, dan `1.1_vit-age_demogpairs.ipynb` secara berurutan. Di bawah akselerasi CUDA GPU dengan in-memory processor caching, ekstraksi 10.800 citra selesai dalam **7,14–8,12 menit per domain** (**39,7–45,1 ms/citra**; total **22,41 menit** atau **124,5 ms/citra** untuk ketiga domain). Waktu ekstraksi otomatis dicatat ke `times/features_vit-*.json`.
 2. **Pelatihan & Optimasi Model:** Eksekusi notebook classifier aktif:
    - Logistic Regression: `2.5.1` sampai `2.5.7`
    - Support Vector Machine: `2.1.1` sampai `2.1.7`
@@ -638,8 +639,8 @@ Saat menyusun, merevisi, atau mengaudit draf manuskrip, menyusun outline makalah
 3. **Pengaturan Evaluasi Seimbang (Balanced Evaluation Setting):** Dataset yang seimbang tidak serta-merta menunjukkan bahwa bias demografis telah tereliminasi sepenuhnya; rujuklah kondisi ini sebagai "kondisi evaluasi seimbang (*balanced evaluation setting*)" atau "distribusi kelas yang seimbang antar-subkelompok."
 4. **Validasi Signifikansi Statistik (Statistical Significance Validation):** Klaim bahwa representasi multi-domain ViT melampaui performa domain tunggal biometrik wajah divalidasi secara formal melalui pengujian hipotesis Paired McNemar ($p = 3.46 \times 10^{-6} < 0.001$ untuk SVM; $p = 6.78 \times 10^{-6} < 0.001$ untuk LR). Selalu sebutkan nilai *p-value* eksak dan statistik uji saat menggunakan frasa "signifikan secara statistik."
 5. **Cakupan Akurat Tri-Domain (Accurate Tri-Domain Scope):** Fusi tri-domain meraih akurasi puncak pada 3 dari 4 classifier di bawah partisi *subject-disjoint* (LR: 88.66%, SVM: 88.61%, RF: 85.00%). Gaussian Naive Bayes mencapai performa puncak pada konfigurasi dual-domain `Emotion ⊕ Face` (84.31%).
-6. **Kontribusi Komplementer Fitur Usia (Complementary Age Features):** Posisikan fitur usia (*Age*) sebagai penyedia "kontribusi informasi komplementer" atau "informasi diskriminatif tambahan", yang sangat bermanfaat bagi classifier linear ($p = 0.0073$ pada LR), sementara pada SVM non-linear terjadi kejenuhan fitur asimtotik ($p = 0.7343$).
-7. **Pertukaran Komparatif LR vs. SVM (LR vs. SVM Trade-off):** Tekankan bahwa LR Tri-Domain dan SVM Tri-Domain setara secara statistik dalam hal akurasi prediktif ($p = 1.0000$), namun LR menawarkan keunggulan komputasi yang substansial (>800x lebih cepat dalam inferensi, >330x lebih ringkas dalam ukuran model).
+6. **Kontribusi Komplementer Fitur Usia (Complementary Age Features):** Posisikan fitur usia (*Age*) sebagai penyedia "kontribusi informasi komplementer" atau "informasi diskriminatif tambahan", yang sangat bermanfaat bagi classifier linear ($p = 0.0073$ pada LR) maupun saat digabungkan dengan domain wajah pada SVM (`Face ⊕ Age` ke Tri-Domain $p = 0.0086$), sementara saat ditambahkan ke kombinasi biometrik-afektif (`Emotion ⊕ Face`) pada SVM non-linear terjadi kejenuhan fitur asimtotik spesifik ($p = 0.7343$).
+7. **Pertukaran Komparatif LR vs. SVM (LR vs. SVM Trade-off):** Tekankan bahwa LR Tri-Domain dan SVM Tri-Domain tidak menunjukkan perbedaan performa prediktif yang signifikan secara statistik ($p = 1.0000$, paritas prediktif), namun kepala pengklasifikasi hilir LR menawarkan keunggulan efisiensi komputasi yang substansial (**>1.000× lebih cepat** dalam latensi inferensi hilir: **0.0046 ms** vs **4.6785 ms**; **>330× lebih ringkas** dalam ukuran model: **0.11 MB** vs **36.60 MB**; dengan total latensi *end-to-end* GPU termasuk ekstraksi 3 ViT $\approx 124,505\text{ ms/citra}$ vs $\approx 129,179\text{ ms/citra}$).
 8. **Pemisahan Temuan Empiris vs Teoretis (Empirical vs Theoretical Separation):** Pisahkan secara tegas antara temuan empiris (angka metrik eksperimental aktual) dari interpretasi atau hipotesis konseptual.
 9. **Hindari Hiperbola State-of-the-Art (No State-of-the-Art Hyperbole):** Gunakan rumusan kalimat "performa tertinggi di antara konfigurasi yang dievaluasi pada DemogPairs" — jangan pernah mengklaim "state-of-the-art" tanpa bukti perbandingan global yang menyeluruh.
 10. **Batasan Generalisasi Demografi (Demographic Generalization Scope):** Batasi klaim generalisasi secara eksplisit hanya pada 3 kelompok ras makro yang terwakili di dalam DemogPairs (Asian, Black, White).

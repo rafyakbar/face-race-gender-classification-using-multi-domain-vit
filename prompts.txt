@@ -28,6 +28,18 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang fokus pada "5. Rencana Tindakan Terpadu (Unified Action Plan)" yg belum tercentang. tolong kerjakan dengan sangat amat teliti
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "B. Temuan Mayor (Severity: High / Substansi Ilmiah & Konsistensi IEEE)" nomor "7. Deskripsi Pemisahan Data: train_test_split vs StratifiedGroupKFold (R2 #2)" dan nomor "8. Desinkronisasi Antara Berkas Dossier paper_reviews_ieee/ dan paper_outline_v1.1.md". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/). delegasikan ke banyak subagent agar cepat! jika sudah ok, maka perbaiki paper_outline_v1.1.md, jangan mengubah selain yg diminta. kemudian jangan lupa perbarui paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "B. Temuan Mayor (Severity: High / Substansi Ilmiah & Konsistensi IEEE)" nomor "6. Kualifikasi Klaim Generalisasi, Saturasi Fitur, dan Ekuivalensi Statistik (R2 #5 & R2 #10)". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/). delegasikan ke banyak subagent agar cepat! jika sudah ok, maka perbaiki paper_outline_v1.1.md, jangan mengubah selain yg diminta. kemudian jangan lupa perbarui paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "B. Temuan Mayor (Severity: High / Substansi Ilmiah & Konsistensi IEEE)" nomor "5. Sisa Klaim Kausal Spekulatif dan Batasan Fenotipik (R2 #9)". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/). delegasikan ke banyak subagent agar cepat! jika sudah ok, maka perbaiki paper_outline_v1.1.md, jangan mengubah selain yg diminta. kemudian jangan lupa perbarui paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "B. Temuan Mayor (Severity: High / Substansi Ilmiah & Konsistensi IEEE)" nomor "4. Diskrepansi Angka Latensi Inferensi & Konteks Komputasi End-to-End (R1 #5 & R2 #8)". coba audit ulang paper_outline_v1.1.md dengan kode aktual (experiment/code/md/). delegasikan ke banyak subagent agar cepat!
+
+fokus paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md pada "3. Penjabaran Temuan Bersama Berdasarkan Tingkat Keparahan" bagian "A. Temuan Kritis" nomor "3. Klaim Fiktif Deteksi dan Penyelarasan Wajah MTCNN (R2 #3)". coba audit ulang mengenai klaim paper_outline_v1.1.md dengan kode aktual (experiment/code/md/). delegasikan ke banyak subagent agar cepat!
+
 buat commit dan push
 
 baik, perbaiki paper_outline_v1.1.md, jangan mengubah selain yg diminta. kemudian jangan lupa perbarui paper_reviews_ieee/paper_outline_audit/2026-11-03_all.md

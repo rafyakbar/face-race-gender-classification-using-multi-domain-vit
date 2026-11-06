@@ -84,10 +84,10 @@ Dievaluasi pada partisi uji subject-disjoint held-out ($N = 2,160$ citra dari 12
 
 | Peringkat | Classifier | Skema Fitur Terbaik | Dimensi Fitur | Test Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | 95% Wilson Score CI | Latensi (ms/sampel) | Ukuran Model (MB) | Hyperparameter Terbaik |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| 🥇 | **Logistic Regression (LR)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | **0.0054 ms** | **0.11 MB** | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
-| 🥈 | **Support Vector Machine (SVM)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.4481 ms | 36.60 MB | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
-| 🥉 | **Random Forest (RF)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **85.00%** | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0537 ms | 6.19 MB | `n_estimators=200, max_depth=None, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=PCA(0.75), scaler=None` |
-| 4 | **Gaussian Naive Bayes (GNB)** | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | **84.31%** | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0083 ms | 0.78 MB | `var_smoothing=0.005878, pca=PCA(0.75), scaler=MinMaxScaler` |
+| 🥇 | **Logistic Regression (LR)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | **0.0046 ms** | **0.11 MB** | `C=0.1, solver='saga', max_iter=500, scaler=MinMaxScaler, pca=None` |
+| 🥈 | **Support Vector Machine (SVM)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.6785 ms | 36.60 MB | `C=10, kernel='rbf', gamma='scale', scaler=MinMaxScaler, pca=None` |
+| 🥉 | **Random Forest (RF)** | **Tri-Domain (`Face ⊕ Emotion ⊕ Age`)** | **2,304** | **85.00%** | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0334 ms | 6.19 MB | `n_estimators=200, max_depth=30, max_features='sqrt', min_samples_split=2, min_samples_leaf=1, pca=None, scaler=MinMaxScaler` |
+| 4 | **Gaussian Naive Bayes (GNB)** | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | **84.31%** | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0088 ms | 0.78 MB | `var_smoothing=1.1253e-02, pca=PCA(0.75), scaler=MinMaxScaler` |
 
 > [!NOTE]
 > Untuk Gaussian Naive Bayes, konfigurasi Tri-Domain mencapai **83.61%** (Macro F1: 0.8364), sedangkan akurasi puncak tercapai pada Dual-Domain `Emotion ⊕ Face` (84.31%).
@@ -96,34 +96,34 @@ Dievaluasi pada partisi uji subject-disjoint held-out ($N = 2,160$ citra dari 12
 
 | Peringkat | Classifier | Skema Fitur | Kategori | Dim | Test Accuracy | Precision | Recall | F1-Score | 95% CI (Wilson) | Latensi (ms) | Ukuran (MB) |
 |:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1 | **LR** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | 0.0054 | 0.11 |
-| 2 | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.4481 | 36.60 |
-| 3 | SVM | `vit-emotion-face` | Dual | 1,536 | 88.43% | 0.8850 | 0.8843 | 0.8844 | [87.01%, 89.71%] | 0.9707 | 15.27 |
-| 4 | SVM | `vit-face-age` | Dual | 1,536 | 87.55% | 0.8766 | 0.8755 | 0.8757 | [86.09%, 88.87%] | 2.2581 | 23.48 |
-| 5 | LR | `vit-emotion-face` | Dual | 1,536 | 87.45% | 0.8759 | 0.8745 | 0.8749 | [85.99%, 88.78%] | 0.0039 | 0.08 |
-| 6 | LR | `vit-face-age` | Dual | 1,536 | 87.41% | 0.8744 | 0.8741 | 0.8740 | [85.94%, 88.74%] | 0.0090 | 0.11 |
-| 7 | LR | `vit-emotion-age` | Dual | 1,536 | 86.67% | 0.8668 | 0.8667 | 0.8667 | [85.17%, 88.04%] | 0.0040 | 0.08 |
+| 1 | **LR** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.66%** | **0.8875** | **0.8866** | **0.8868** | **[87.25%, 89.93%]** | 0.0046 | 0.11 |
+| 2 | **SVM** | **`vit-face-emotion-age`** | **Tri** | **2,304** | **88.61%** | **0.8871** | **0.8861** | **0.8863** | **[87.20%, 89.88%]** | 4.6785 | 36.60 |
+| 3 | SVM | `vit-emotion-face` | Dual | 1,536 | 88.43% | 0.8850 | 0.8843 | 0.8844 | [87.01%, 89.71%] | 0.9490 | 15.27 |
+| 4 | SVM | `vit-face-age` | Dual | 1,536 | 87.55% | 0.8766 | 0.8755 | 0.8757 | [86.09%, 88.87%] | 2.5468 | 23.48 |
+| 5 | LR | `vit-emotion-face` | Dual | 1,536 | 87.45% | 0.8759 | 0.8745 | 0.8749 | [85.99%, 88.78%] | 0.0035 | 0.08 |
+| 6 | LR | `vit-face-age` | Dual | 1,536 | 87.41% | 0.8744 | 0.8741 | 0.8740 | [85.94%, 88.74%] | 0.0056 | 0.11 |
+| 7 | LR | `vit-emotion-age` | Dual | 1,536 | 86.67% | 0.8668 | 0.8667 | 0.8667 | [85.17%, 88.04%] | 0.0035 | 0.08 |
 | 8 | LR | `vit-face` | Single | 768 | 86.39% | 0.8646 | 0.8639 | 0.8640 | [84.88%, 87.77%] | 0.0008 | 0.04 |
-| 9 | SVM | `vit-emotion-age` | Dual | 1,536 | 86.25% | 0.8626 | 0.8625 | 0.8624 | [84.73%, 87.64%] | 3.1451 | 32.76 |
-| 10 | SVM | `vit-face` | Single | 768 | 86.16% | 0.8624 | 0.8616 | 0.8619 | [84.64%, 87.55%] | 3.0653 | 7.56 |
-| 11 | SVM | `vit-emotion` | Single | 768 | 85.79% | 0.8584 | 0.8579 | 0.8580 | [84.25%, 87.20%] | 1.8871 | 15.30 |
-| 12 | LR | `vit-emotion` | Single | 768 | 85.23% | 0.8535 | 0.8523 | 0.8527 | [83.67%, 86.67%] | 0.0037 | 0.06 |
-| 13 | RF | `vit-face-emotion-age` | Tri | 2,304 | 85.00% | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0537 | 6.19 |
-| 14 | RF | `vit-emotion-face` | Dual | 1,536 | 84.86% | 0.8493 | 0.8486 | 0.8479 | [83.29%, 86.31%] | 0.0316 | 8.58 |
-| 15 | RF | `vit-face-age` | Dual | 1,536 | 84.86% | 0.8488 | 0.8486 | 0.8478 | [83.29%, 86.31%] | 0.0310 | 6.19 |
-| 16 | GNB | `vit-emotion-face` | Dual | 1,536 | 84.31% | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0083 | 0.78 |
-| 17 | RF | `vit-face` | Single | 768 | 84.03% | 0.8413 | 0.8403 | 0.8403 | [82.42%, 85.51%] | 0.0314 | 5.99 |
-| 18 | GNB | `vit-face-emotion-age` | Tri | 2,304 | 83.61% | 0.8379 | 0.8361 | 0.8364 | [81.99%, 85.11%] | 0.0081 | 1.36 |
-| 19 | GNB | `vit-face-age` | Dual | 1,536 | 83.06% | 0.8347 | 0.8306 | 0.8310 | [81.42%, 84.58%] | 0.0080 | 0.75 |
-| 20 | SVM | `vit-age` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8258 | [80.89%, 84.09%] | 2.0104 | 18.22 |
-| 21 | GNB | `vit-face` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8250 | [80.89%, 84.09%] | 0.0031 | 0.19 |
-| 22 | LR | `vit-age` | Single | 768 | 81.48% | 0.8145 | 0.8148 | 0.8146 | [79.79%, 83.06%] | 0.0028 | 0.06 |
-| 23 | RF | `vit-emotion-age` | Dual | 1,536 | 77.31% | 0.7734 | 0.7731 | 0.7728 | [75.50%, 79.03%] | 0.0392 | 12.35 |
-| 24 | RF | `vit-emotion` | Single | 768 | 76.11% | 0.7602 | 0.7611 | 0.7603 | [74.27%, 77.86%] | 0.0316 | 10.34 |
-| 25 | GNB | `vit-emotion-age` | Dual | 1,536 | 75.88% | 0.7597 | 0.7588 | 0.7578 | [74.03%, 77.64%] | 0.0048 | 0.24 |
-| 26 | GNB | `vit-emotion` | Single | 768 | 72.13% | 0.7251 | 0.7213 | 0.7199 | [70.20%, 73.98%] | 0.0031 | 0.13 |
-| 27 | RF | `vit-age` | Single | 768 | 71.81% | 0.7176 | 0.7181 | 0.7170 | [69.87%, 73.66%] | 0.0327 | 11.21 |
-| 28 | GNB | `vit-age` | Single | 768 | 67.08% | 0.6691 | 0.6708 | 0.6686 | [65.07%, 69.03%] | 0.0045 | 0.37 |
+| 9 | SVM | `vit-emotion-age` | Dual | 1,536 | 86.25% | 0.8626 | 0.8625 | 0.8624 | [84.73%, 87.64%] | 3.7228 | 32.76 |
+| 10 | SVM | `vit-face` | Single | 768 | 86.16% | 0.8624 | 0.8616 | 0.8619 | [84.64%, 87.55%] | 0.3638 | 7.56 |
+| 11 | SVM | `vit-emotion` | Single | 768 | 85.79% | 0.8584 | 0.8579 | 0.8580 | [84.25%, 87.20%] | 1.7478 | 15.30 |
+| 12 | LR | `vit-emotion` | Single | 768 | 85.23% | 0.8535 | 0.8523 | 0.8527 | [83.67%, 86.67%] | 0.0032 | 0.06 |
+| 13 | RF | `vit-face-emotion-age` | Tri | 2,304 | 85.00% | 0.8506 | 0.8500 | 0.8493 | [83.43%, 86.44%] | 0.0334 | 6.19 |
+| 14 | RF | `vit-emotion-face` | Dual | 1,536 | 84.86% | 0.8493 | 0.8486 | 0.8479 | [83.29%, 86.31%] | 0.0286 | 8.58 |
+| 15 | RF | `vit-face-age` | Dual | 1,536 | 84.86% | 0.8488 | 0.8486 | 0.8478 | [83.29%, 86.31%] | 0.0312 | 6.19 |
+| 16 | GNB | `vit-emotion-face` | Dual | 1,536 | 84.31% | 0.8437 | 0.8431 | 0.8430 | [82.71%, 85.78%] | 0.0088 | 0.78 |
+| 17 | RF | `vit-face` | Single | 768 | 84.03% | 0.8413 | 0.8403 | 0.8403 | [82.42%, 85.51%] | 0.0332 | 5.99 |
+| 18 | GNB | `vit-face-emotion-age` | Tri | 2,304 | 83.61% | 0.8379 | 0.8361 | 0.8364 | [81.99%, 85.11%] | 0.0064 | 1.36 |
+| 19 | GNB | `vit-face-age` | Dual | 1,536 | 83.06% | 0.8347 | 0.8306 | 0.8310 | [81.42%, 84.58%] | 0.0069 | 0.75 |
+| 20 | SVM | `vit-age` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8258 | [80.89%, 84.09%] | 2.2188 | 18.22 |
+| 21 | GNB | `vit-face` | Single | 768 | 82.55% | 0.8268 | 0.8255 | 0.8250 | [80.89%, 84.09%] | 0.0035 | 0.19 |
+| 22 | LR | `vit-age` | Single | 768 | 81.48% | 0.8145 | 0.8148 | 0.8146 | [79.79%, 83.06%] | 0.0019 | 0.06 |
+| 23 | RF | `vit-emotion-age` | Dual | 1,536 | 77.31% | 0.7734 | 77.31% | 0.7728 | [75.50%, 79.03%] | 0.0325 | 12.35 |
+| 24 | RF | `vit-emotion` | Single | 768 | 76.11% | 0.7602 | 0.7611 | 0.7603 | [74.27%, 77.86%] | 0.0321 | 10.34 |
+| 25 | GNB | `vit-emotion-age` | Dual | 1,536 | 75.88% | 0.7597 | 0.7588 | 0.7578 | [74.03%, 77.64%] | 0.0042 | 0.24 |
+| 26 | GNB | `vit-emotion` | Single | 768 | 72.13% | 0.7251 | 0.7213 | 0.7199 | [70.20%, 73.98%] | 0.0024 | 0.13 |
+| 27 | RF | `vit-age` | Single | 768 | 71.81% | 0.7176 | 0.7181 | 0.7170 | [69.87%, 73.66%] | 0.0252 | 11.21 |
+| 28 | GNB | `vit-age` | Single | 768 | 67.08% | 0.6691 | 0.6708 | 0.6686 | [65.07%, 69.03%] | 0.0035 | 0.37 |
 
 ---
 
@@ -166,12 +166,12 @@ Perbandingan antara kedua skema partisi mengungkap wawasan empiris fundamental t
    - **SVM:** Tri-Domain (88.61%) mengungguli Single Face Biometrics (86.16%) secara signifikan dengan $\Delta = +2.45\%$ (+53 citra benar bersih, $\chi^2 = 20.9612$, **$p = 3.46 \times 10^{-6} < 0.001$**).
    - **Logistic Regression:** Tri-Domain (88.66%) mengungguli Single Face Biometrics (86.39%) secara signifikan dengan $\Delta = +2.27\%$ (+49 citra benar bersih, $\chi^2 = 19.6923$, **$p = 6.78 \times 10^{-6} < 0.001$**).
    - Peningkatan fusi multi-domain terbukti kokoh secara statistik dan tidak bergantung pada kebocoran identitas.
-3. **Saturasi Fitur Asimtotik vs. Komplementaritas Linier:**  
-   - Pada **Logistic Regression**, Tri-Domain (88.66%) meningkat secara signifikan dibandingkan Dual-Domain `Emotion ⊕ Face` (87.45%) dengan penambahan bersih +26 citra (**$p = 0.0073 < 0.01$**), membuktikan bahwa morfologi usia biologis memberikan sinyal diskriminatif ortogonal bagi hyperplane linier.
-   - Pada **SVM**, Tri-Domain (88.61%) dan Dual-Domain `Emotion ⊕ Face` (88.43%) menghasilkan selisih bersih +4 citra ($p = 0.7343 > 0.05$), mengonfirmasi terjadinya saturasi representasi asimtotik di bawah kernel RBF non-linier.
-4. **Ekuivalensi Prediktif & Efisiensi Komputasi Ekstrem (LR vs. SVM):**  
-   - Uji McNemar berpasangan antara LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) menunjukkan ekuivalensi prediktif persis ($p = 1.0000$, selisih bersih +1 citra).
-   - Namun, **LR memberikan inferensi >800× lebih cepat** (**0.0054 ms** vs. 4.4481 ms per citra) dan **ukuran model >330× lebih ringkas** (**0.11 MB** vs. 36.60 MB), menetapkan Logistic Regression sebagai model optimal untuk implementasi Edge AI pada perangkat dengan keterbatasan sumber daya.
+3. **Saturasi Fitur Spesifik vs. Komplementaritas Linier:**  
+   - Pada **Logistic Regression**, Tri-Domain (88.66%) meningkat secara signifikan dibandingkan Dual-Domain `Emotion ⊕ Face` (87.45%) dengan penambahan bersih +26 citra ($\Delta = +1.20\text{ pp}$, **$p = 0.0073 < 0.01$**), membuktikan bahwa morfologi usia biologis memberikan sinyal diskriminatif ortogonal bagi hyperplane linier.
+   - Pada **SVM**, peningkatan dari Dual-Domain `Face ⊕ Age` (87.55%) ke Tri-Domain (88.61%) tetap signifikan secara statistik (+23 citra bersih, $p = 0.0086 < 0.01$), namun transisi dari Dual-Domain `Emotion ⊕ Face` (88.43%) ke Tri-Domain (88.61%) menghasilkan selisih asimtotik +4 citra ($\Delta = +0.19\text{ pp}$, $p = 0.7343 > 0.05$), mengonfirmasi terjadinya saturasi representasi spesifik saat domain penuaan ditambahkan ke kombinasi biometrik-afektif di bawah kernel RBF non-linier.
+4. **Paritas Prediktif & Efisiensi Komputasi Kepala Klasifikasi (LR vs. SVM):**  
+   - Uji McNemar berpasangan antara LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) menunjukkan tidak adanya perbedaan performa prediktif yang signifikan secara statistik ($p = 1.0000$, selisih bersih +1 citra).
+   - Namun, pada tingkat pengklasifikasi hilir (*downstream classification head*), **LR memberikan latensi inferensi >1.000× lebih cepat** (**0.0046 ms** vs. **4.6785 ms** per sampel; total latensi *end-to-end* GPU termasuk ekstraksi 3 ViT $\approx 124.505\text{ ms/citra}$ vs. $\approx 129.179\text{ ms/citra}$) dan **ukuran model >330× lebih ringkas** (**0.11 MB** vs. 36.60 MB), menetapkan Logistic Regression sebagai kepala klasifikasi hilir paling efisien (sementara deployment *end-to-end* pada perangkat Edge AI berdaya rendah memerlukan kuantisasi atau distilasi pada ketiga backbone ViT).
 
 > [!NOTE]
 > **Temuan Kunci mengenai Independensi Multi-Domain ($p < 0.001$):**  
@@ -264,7 +264,7 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
   - *Dual-Domain (1,536-D):* `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`
   - *Tri-Domain (2,304-D):* `Face ⊕ Emotion ⊕ Age`
 - **Leakage-Free Cross-Validation:** Transformasi preprocessing (MinMaxScaler dan PCA) difitting secara ketat hanya pada training fold di dalam objek `scikit-learn.pipeline.Pipeline` untuk mencegah kebocoran data.
-- **Ruang Penjelajahan Grid Search:** Mengevaluasi total 1.086 kombinasi parameter ($38,010$ total cross-validation fits di seluruh 7 konfigurasi fitur dan 4 famili classifier).
+- **Ruang Penjelajahan Grid Search:** Mengevaluasi total **912 kombinasi parameter per skema fitur** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [108 konfigurasi unik efektif]}$, menghasilkan $4,560\text{ fits/skema}$ dan **$31,920$ total cross-validation fits** + 28 final refits di seluruh 7 konfigurasi fitur dan 4 famili classifier).
 
 ---
 
