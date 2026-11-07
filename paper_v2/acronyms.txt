@@ -1,49 +1,47 @@
 ======================================================================================================================================================
 DAFTAR REGISTRASI SINGKATAN & AKRONIM NASKAH (ACRONYM REGISTRY)
-Pedoman: Rule 1.3 (Dual-Context Rule IEEE Access: Abstrak & Batang Tubuh Utama Independen)
+Pedoman: Aturan Penyingkatan Naskah IEEE Access (Mulai dari Section I Introduction s.d. Section V Conclusion)
 Lokasi Berkas: paper_v2/acronyms.txt
 ======================================================================================================================================================
 
-Petunjuk Penggunaan & Dual-Context Rule:
-1. Sesuai standar IEEE Access, Abstrak dan Batang Tubuh Utama (Section I s.d. V) merupakan dua konteks
-   pembacaan independen.
-2. Setiap singkatan/akronim WAJIB didefinisikan kepanjangannya (first-mention full form) pada kemunculan
-   pertamanya di Abstrak (jika digunakan di Abstrak) DAN pada kemunculan pertamanya di Batang Tubuh Utama
-   (Section I Introduction atau seksi pemunculan perdananya), sekalipun telah didefinisikan di Abstrak.
-3. Setelah didefinisikan pada kemunculan pertama di Batang Tubuh Utama, pemunculan berikutnya di seksi-seksi
+Petunjuk Penggunaan & Aturan Akronim:
+1. Sesuai standar penulisan naskah, Abstrak tidak dihitung dalam pelacakan akronim naskah utama.
+2. Pelacakan dan registrasi singkatan/akronim dimulai sejak Section I (Introduction) hingga Section V (Conclusion).
+3. Setiap singkatan/akronim WAJIB didefinisikan bentuk lengkapnya (first-mention full form) pada kemunculan
+   pertamanya di batang tubuh naskah (Section I Introduction atau seksi pemunculan perdananya).
+4. Setelah didefinisikan pada kemunculan pertama di batang tubuh naskah, pemunculan berikutnya di seksi-seksi
    setelahnya CUKUP menggunakan bentuk singkatannya saja tanpa mengulang kepanjangannya.
-4. Seluruh singkatan yang digunakan dalam naskah wajib terdaftar dalam tabel registrasi di bawah ini.
+5. Seluruh singkatan yang digunakan dalam naskah wajib terdaftar dalam tabel registrasi di bawah ini.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)              | LOKASI PERTAMA DI ABSTRAK        | LOKASI PERTAMA DI BATANG TUBUH UTAMA
-----+---------------------+-----------------------------------------+----------------------------------+----------------------------------------------------
-1   | ViT                 | Vision Transformer                      | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P3)
-2   | RF                  | Random Forest                           | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P5)
-3   | GNB                 | Gaussian Naive Bayes                    | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P5)
-4   | LR                  | Logistic Regression                     | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P5)
-5   | SVM                 | Support Vector Machine                  | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P5)
-6   | GridSearchCV        | Grid Search Cross-Validation            | paper_v2/00_abstract.md (Abstract)  | paper_v2/03_materials-and-methods_0-overview.md (P1)
-7   | PCA                 | Principal Component Analysis            | paper_v2/00_abstract.md (Abstract)  | paper_v2/01_introduction.md (P5)
-8   | NIST                | National Institute of Standards and Tech| -                                | paper_v2/01_introduction.md (P1)
-9   | CNN                 | Convolutional Neural Network            | -                                | paper_v2/01_introduction.md (P3)
-10  | MHSA                | Multi-Head Self-Attention               | -                                | paper_v2/01_introduction.md (P3)
-11  | CV                  | Cross-Validation                        | -                                | paper_v2/01_introduction.md (P5)
-12  | KELM                | Kernel Extreme Learning Machine         | -                                | paper_v2/02_related-works.md (II-A P2)
-13  | RGB                 | Red, Green, Blue                        | -                                | paper_v2/03_materials-and-methods_a-dataset.md (P2)
-14  | LN                  | Layer Normalization                     | -                                | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
-15  | MLP                 | Multi-Layer Perceptron                  | -                                | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
-16  | GeLU                | Gaussian Error Linear Unit              | -                                | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
-17  | RBF                 | Radial Basis Function                   | -                                | paper_v2/03_materials-and-methods_f-support-vector-machine.md (P1)
-18  | OvR                 | One-vs-Rest                             | -                                | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P1)
-19  | TPR                 | True Positive Rate                      | -                                | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P1)
-20  | CI                  | Confidence Interval                     | -                                | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P2)
-21  | EOD                 | Equal Opportunity Difference            | -                                | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P2)
-22  | GPU                 | Graphics Processing Unit                | -                                | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
-23  | CPU                 | Central Processing Unit                 | -                                | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
-24  | RAM                 | Random Access Memory                    | -                                | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
-25  | VRAM                | Video Random Access Memory              | -                                | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
-26  | ROC                 | Receiver Operating Characteristic       | -                                | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
-27  | AUC                 | Area Under the Curve                    | -                                | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
-28  | AI                  | Artificial Intelligence                 | -                                | paper_v2/05_conclusion.md (P2)
-29  | XAI                 | Explainable Artificial Intelligence     | -                                | paper_v2/05_conclusion.md (P2)
+NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)                    | LOKASI PERTAMA DI BATANG TUBUH UTAMA (SECTION I s.d. V)
+----+---------------------+-----------------------------------------------+-----------------------------------------------------------------------
+1   | NIST                | National Institute of Standards and Technology| paper_v2/01_introduction.md (P1)
+2   | CNN                 | Convolutional Neural Network                  | paper_v2/01_introduction.md (P3)
+3   | ViT                 | Vision Transformer                            | paper_v2/01_introduction.md (P3)
+4   | MHSA                | Multi-Head Self-Attention                     | paper_v2/01_introduction.md (P3)
+5   | RF                  | Random Forest                                 | paper_v2/01_introduction.md (P5)
+6   | GNB                 | Gaussian Naive Bayes                          | paper_v2/01_introduction.md (P5)
+7   | LR                  | Logistic Regression                           | paper_v2/01_introduction.md (P5)
+8   | SVM                 | Support Vector Machine                        | paper_v2/01_introduction.md (P5)
+9   | PCA                 | Principal Component Analysis                  | paper_v2/01_introduction.md (P5)
+10  | KELM                | Kernel Extreme Learning Machine               | paper_v2/02_related-works.md (II-A P2)
+11  | GridSearchCV        | Grid Search Cross-Validation                  | paper_v2/03_materials-and-methods_0-overview.md (P1)
+12  | RGB                 | Red, Green, Blue                              | paper_v2/03_materials-and-methods_a-dataset.md (P2)
+13  | LN                  | Layer Normalization                           | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
+14  | MLP                 | Multi-Layer Perceptron                        | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
+15  | GeLU                | Gaussian Error Linear Unit                    | paper_v2/03_materials-and-methods_b-vision-transformer.md (P1)
+16  | RBF                 | Radial Basis Function                         | paper_v2/03_materials-and-methods_f-support-vector-machine.md (P1)
+17  | OvR                 | One-vs-Rest                                   | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P1)
+18  | TPR                 | True Positive Rate                            | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P1)
+19  | CI                  | Confidence Interval                           | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P2)
+20  | EOD                 | Equal Opportunity Difference                  | paper_v2/03_materials-and-methods_h-evaluation-metrics.md (P2)
+21  | GPU                 | Graphics Processing Unit                      | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
+22  | CPU                 | Central Processing Unit                       | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
+23  | RAM                 | Random Access Memory                          | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
+24  | VRAM                | Video Random Access Memory                    | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
+25  | ROC                 | Receiver Operating Characteristic             | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
+26  | AUC                 | Area Under the Curve                          | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
+27  | AI                  | Artificial Intelligence                       | paper_v2/05_conclusion.md (P2)
+28  | XAI                 | Explainable Artificial Intelligence           | paper_v2/05_conclusion.md (P2)
 ======================================================================================================================================================
