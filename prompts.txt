@@ -28,6 +28,8 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+penulisanmu salah, masih ada yang bahasa inggris di bagian introduction, dan tidak usah ada bold. kamu bisa menjadikan paper_latex_id/ sebagai tata cara penulisan acuan (bukan isinya ya)! cek juga tata cara penulisan yg lainnya juga! delegasikan ke banyak subagent!
+
 paper_latex_id sudah saya clone ke paper_latex_id_v2, sekarang perbaiki atau sesuaikan paper_latex_id_v2 agar sesuai dengan paper_v2, perhatikan:
 - rules/IEEE_citation_guidelines.md
 - rules/latex_rules.txt
