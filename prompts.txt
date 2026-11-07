@@ -28,6 +28,23 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+delegasikan subagent untuk audit ulang paper_v2/ untuk mengecek kesusuaian revisi dan kesesuaian target kata yang ada pada paper_outline_v1.1.md!
+- Delegasikan ke subagent agart hasil optimal.
+- Satu subagent hanya boleh audit satu file agar hasil optimal.
+
+dan juga audit ulang nomor referesi pada paper_v2/*.md, perhatikan:
+- sitasi harus sesuai dengan guide rules/IEEE_citation_guidelines.md
+- nomor referensi yang dipakai HARUS merujuk ke entri yang sudah ada di paper_v2/06_references.md, jangan membuat nomor baru
+- pastikan setiap kalimat yang mengutip sumber diberi nomor, dan tidak ada klaim luar tanpa sitasi (kecuali hasil dari eksperimen)
+- pastikan nomor yang sama dipakai ulang untuk sumber yang sama (jangan membuat nomor ganda untuk satu sumber)
+- periksa ulang seluruh paper/*.md agar tidak ada sitasi yang hilang, salah nomor, atau melompat
+- jangan mengubah isi kalimat, hanya menambahkan nomor referensi di posisi yang tepat (sebelum tanda baca)
+- delegasikan audit ke subagent secara paralel
+- satu subagent HANYA BOLEH AUDIT satu file pada folder paper/ agar hasilnya optimal
+- berikan instruksi ke subagent dengan jelas
+- pastikan audit memeriksa konsistensi nomor dengan paper/06_references.md, posisi sitasi sebelum tanda baca, dan tidak ada sitasi yang hilang/salah nomor
+- lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
 sekarang tolong sesuaikan paper_v2/ dengan paper_outline_v1.1.md, perhatikan:
 - rules/latex_rules.txt
 - rules/IEEE_citation_guidelines.md

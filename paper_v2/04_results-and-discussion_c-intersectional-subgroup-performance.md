@@ -1,18 +1,23 @@
 ## C. Intersectional Subgroup Performance
 
-Profil performa klasifikasi granular pada model terbaik Logistic Regression (LR) tri-domain Face ⊕ Emotion ⊕ Age dianalisis melintasi enam subkelompok demografis interseksional pada data uji subject-disjoint berukuran $N = 2.160$ citra (360 citra held-out per subkelompok) sebagaimana dirangkum pada [Table XIV](#tab14). Hasil evaluasi empiris menunjukkan bahwa model mencapai akurasi One-vs-Rest (OvR) rata-rata sebesar 96.26%, dengan rentang antara 95.88% pada White Females hingga 96.53% pada Black Males. Subkelompok Black Males mencatatkan sensitivitas klasifikasi tertinggi dengan Recall 92.50%, Presisi 87.17%, dan F1-Score 89.76%. Sebaliknya, subkelompok Black Females mencatatkan Recall terendah sebesar 84.44%, meskipun tetap mempertahankan Presisi tertinggi sebesar 90.48% serta F1-Score 87.36%. Pada kohort lainnya, subkelompok White Males meraih Recall 90.00%, Presisi 88.77%, dan F1-Score 89.38%, diikuti oleh Asian Males dengan Recall 89.17%, Presisi 89.42%, dan F1-Score 89.29%. Sementara itu, subkelompok White Females memperoleh Recall 88.06%, Presisi 87.57%, dan F1-Score 87.81%, sedangkan Asian Females mencatatkan Recall 87.78%, Presisi 89.04%, dan F1-Score 88.40%. Secara keseluruhan, seluruh subkelompok mencapai F1-Score di atas 87.00% dengan rata-rata agregat makro 88.68%, yang mengonfirmasi kestabilan representasi fitur tri-domain dalam memisahkan identitas demografis lintas kategori.
+Profil performa klasifikasi granular One-vs-Rest (OvR) pada model tri-domain terbaik (Logistic Regression dan Support Vector Machine) dievaluasi melintasi enam subkelompok demografis ($N = 360$ citra uji per subkelompok) sebagaimana disajikan pada [Table XIV](#tab14). Pada kedua model, subkelompok White Males mencatat performa tertinggi dengan Recall 94.44% (F1 94.84% pada LR; F1 94.18% pada SVM) dan False Negative Rate (FNR) terendah sebesar 5.56%. Sebaliknya, subkelompok Black Females mencatat Recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM) dengan FNR sebesar 15.28%. Subkelompok Asian Females meraih Recall 86.67% pada LR dan 86.11% pada SVM. Seluruh kohort subkelompok mempertahankan F1-Score di atas 84.90%, mengonfirmasi keandalan fusi fitur tri-domain dalam memisahkan batas demografis interseksional.
 
 <a id="tab14"></a>
 **Table XIV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
 
-| Subkelompok Demografis | Ukuran Sampel Uji ($N$) | Akurasi OvR (%) | Presisi (%) | Recall / TPR (%) | F1-Score (%) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Asian Females | 360 | 96.25 | 89.04 | 87.78 | 88.40 |
-| Asian Males | 360 | 96.48 | 89.42 | 89.17 | 89.29 |
-| Black Females | 360 | 95.97 | **90.48** | 84.44 | 87.36 |
-| Black Males | 360 | **96.53** | 87.17 | **92.50** | **89.76** |
-| White Females | 360 | 95.88 | 87.57 | 88.06 | 87.81 |
-| White Males | 360 | 96.44 | 88.77 | 90.00 | 89.38 |
-| **Rata-Rata Agregat** | **2.160** | **96.26** | **88.75** | **88.66** | **88.68** |
+| Classifier | Subgroup | Support | Precision | Recall (TPR) | F1-Score | FNR |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Logistic Regression (Tri)** | `White_Males` | 360 | 95.24% | 94.44% | 94.84% | 5.56% |
+| | `White_Females` | 360 | 91.32% | 90.56% | 90.93% | 9.44% |
+| | `Black_Males` | 360 | 91.59% | 87.78% | 89.65% | 12.22% |
+| | `Asian_Males` | 360 | 82.72% | 87.78% | 85.18% | 12.22% |
+| | `Asian_Females` | 360 | 86.43% | 86.67% | 86.55% | 13.33% |
+| | `Black_Females` | 360 | 85.20% | 84.72% | 84.96% | 15.28% |
+| **Support Vector Machine (Tri)** | `White_Males` | 360 | 93.92% | 94.44% | 94.18% | 5.56% |
+| | `White_Females` | 360 | 90.11% | 91.11% | 90.61% | 8.89% |
+| | `Asian_Males` | 360 | 82.34% | 88.06% | 85.10% | 11.94% |
+| | `Black_Males` | 360 | 92.35% | 87.22% | 89.71% | 12.78% |
+| | `Asian_Females` | 360 | 85.87% | 86.11% | 85.99% | 13.89% |
+| | `Black_Females` | 360 | 87.64% | 84.72% | 86.16% | 15.28% |
 
-Evaluasi disparitas keadilan algoritmik antarsubkelompok dikuantifikasi melalui metrik Equal Opportunity Difference (EOD) berdasarkan selisih True Positive Rate maksimum dan minimum ($\text{EOD} = \Delta \text{TPR} = \max \text{TPR} - \min \text{TPR} = 92.50\% - 84.44\% = 8.06\%$). Kesenjangan sebesar 8.06% ini merefleksikan variasi distribusi kesalahan empiris antarsubkelompok pada himpunan data uji held-out ($N = 2.160$ citra), di mana subkelompok Black Females mengalami tingkat kesalahan negatif palsu yang lebih tinggi dibandingkan Black Males. Sebagai bentuk pemenuhan transparansi ilmiah dan delimitasi ruang lingkup, pelaporan metrik keadilan ini disajikan secara objektif murni sebagai indikator disparitas performa empiris dalam domain terdistribusi dataset DemogPairs. Temuan ini secara tegas tidak diklaim sebagai jaminan tercapainya keadilan demografis yang sempurna atau absolut (no overclaim of complete demographic fairness) pada skenario dunia nyata di luar dataset uji. Pengukuran ini berfungsi sebagai kerangka audit komprehensif bagi etika kecerdasan buatan dalam memetakan sensitivitas deteksi secara bertanggung jawab.
+Evaluasi disparitas keadilan algoritmik antarsubkelompok dikuantifikasi melalui metrik Equal Opportunity Difference (EOD) berdasarkan selisih True Positive Rate maksimum dan minimum ($\text{EOD} = \Delta \text{TPR} = \max \text{TPR} - \min \text{TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$), yang bernilai identik pada model LR dan SVM. Kesenjangan ini merefleksikan variasi distribusi frekuensi kesalahan empiris antarsubkelompok pada data uji held-out ($N = 2.160$), di mana Black Females mencatat FNR tertinggi (15.28%) dan White Males terendah (5.56%). Sebagai komitmen etika kecerdasan buatan dan delimitasi ruang lingkup (Responsible AI), disparitas ini secara tegas tidak diklaim sebagai jaminan tercapainya keadilan demografis universal (no overclaim of complete demographic fairness), melainkan sebagai audit transparansi performa subkelompok empiris.
