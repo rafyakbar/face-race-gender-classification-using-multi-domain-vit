@@ -1,13 +1,13 @@
-# Hasil Audit dan Perbaikan Referensi [46] - [51]
+﻿# Hasil Audit dan Perbaikan Referensi [46] - [51]
 
-Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi nomor [46] sampai [51] pada berkas `paper/06_references.md`. Audit dilakukan terhadap berkas sumber asli di `paper/references/` dengan berpedoman pada kaidah IEEE di `rules/IEEE_citation_guidelines.md`.
+Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi nomor [46] sampai [51] pada berkas `paper_v2/06_references.md`. Audit dilakukan terhadap berkas sumber asli di `paper_v2/references/` dengan berpedoman pada kaidah IEEE di `rules/IEEE_citation_guidelines.md`.
 
 ---
 
 ## 1. Ringkasan Temuan Audit Tiap Referensi
 
 ### [46] Attention-gating for improved radio galaxy classification
-- **Berkas Sumber**: `paper/references/2021_Attention-gating for improved radio galaxy classification.bib`
+- **Berkas Sumber**: `paper_v2/references/2021_Attention-gating for improved radio galaxy classification.bib`
 - **Tipe Dokumen**: Artikel Jurnal (*Monthly Notices of the Royal Astronomical Society*)
 - **Penulis di Sumber**: Bowles, Micah; Scaife, Anna M M; Porter, Fiona; Tang, Hongming; Bastien, David J (Total: 5 penulis).
 - **Aturan Penulis**: Jumlah penulis <= 6, sehingga seluruh nama penulis wajib dicantumkan lengkap dengan format inisial dan nama keluarga (`M. Bowles, A. M. M. Scaife, F. Porter, H. Tang, and D. J. Bastien`).
@@ -19,7 +19,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 ---
 
 ### [47] On evaluation metrics for medical applications of artificial intelligence
-- **Berkas Sumber**: `paper/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris`
+- **Berkas Sumber**: `paper_v2/references/2022_On evaluation metrics for medical applications of artificial intelligence.ris`
 - **Tipe Dokumen**: Artikel Jurnal (*Scientific Reports*)
 - **Penulis di Sumber**: Hicks, Steven A.; Strümke, Inga; Thambawita, Vajira; Hammou, Malek; Riegler, Michael A.; Halvorsen, Pål; Parasa, Sravanthi (Total: 7 penulis).
 - **Aturan Penulis**: Jumlah penulis > 6, sehingga wajib disingkat menjadi penulis pertama diikuti 'et al.' (`S. A. Hicks et al.`).
@@ -31,7 +31,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 ---
 
 ### [48] Feature space reduction method for ultrahigh-dimensional, multiclass data: random forest-based multiround screening (RFMS)
-- **Berkas Sumber**: `paper/references/2023_Feature space reduction method for ultrahigh-dimensional, multiclass data random forest-based multiround screening (RFMS).bib`
+- **Berkas Sumber**: `paper_v2/references/2023_Feature space reduction method for ultrahigh-dimensional, multiclass data random forest-based multiround screening (RFMS).bib`
 - **Tipe Dokumen**: Artikel Jurnal (*Machine Learning: Science and Technology*)
 - **Penulis di Sumber**: Hanczár, Gergely; Stippinger, Marcell; Hanák, Dávid; Kurbucz, Marcell T; Törteli, Olivér M; Chripkó, Ágnes; Somogyvári, Zoltán (Total: 7 penulis).
 - **Aturan Penulis**: Jumlah penulis > 6, sehingga wajib disingkat menjadi penulis pertama diikuti 'et al.' (`G. Hanczár et al.`).
@@ -43,7 +43,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 ---
 
 ### [49] Functional multivariable logistic regression with an application to HIV viral suppression prediction
-- **Berkas Sumber**: `paper/references/2024_Functional Multivariable Logistic Regression With an Application to HIV Viral Suppression Prediction.bib`
+- **Berkas Sumber**: `paper_v2/references/2024_Functional Multivariable Logistic Regression With an Application to HIV Viral Suppression Prediction.bib`
 - **Tipe Dokumen**: Artikel Jurnal (*Biometrical Journal*)
 - **Penulis di Sumber**: Guo, Siyuan; Zhang, Jiajia; Wu, Yichao; McLain, Alexander C.; Hardin, James W.; Olatosi, Bankole; Li, Xiaoming (Total: 7 penulis).
 - **Aturan Penulis**: Jumlah penulis > 6, sehingga wajib disingkat menjadi penulis pertama diikuti 'et al.' (`S. Guo et al.`).
@@ -57,7 +57,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 ---
 
 ### [50] Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data
-- **Berkas Sumber**: `paper/references/2023_Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data.bib`
+- **Berkas Sumber**: `paper_v2/references/2023_Stable variable ranking and selection in regularized logistic regression for severely imbalanced big binary data.bib`
 - **Tipe Dokumen**: Artikel Jurnal (*PLOS ONE*)
 - **Penulis di Sumber**: Nadeem, Khurram; Jabri, Mehdi-Abderrahman (Total: 2 penulis).
 - **Aturan Penulis**: Jumlah penulis <= 6, keduanya dicantumkan (`K. Nadeem and M.-A. Jabri`).
@@ -69,7 +69,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 ---
 
 ### [51] SVC (Scikit-learn)
-- **Berkas Sumber**: `paper/references/2026_SVC.bib`
+- **Berkas Sumber**: `paper_v2/references/2026_SVC.bib`
 - **Tipe Dokumen**: Software / Dokumentasi Online
 - **Penulis di Sumber**: Scikit-learn developers.
 - **Aturan Format Web/Software**:
@@ -86,7 +86,7 @@ Dokumen ini memuat laporan audit rinci dan teks perbaikan final untuk referensi 
 
 ## 2. Teks Perbaikan Final [46] - [51]
 
-Berikut adalah teks referensi final yang siap disematkan pada berkas `paper/06_references.md`:
+Berikut adalah teks referensi final yang siap disematkan pada berkas `paper_v2/06_references.md`:
 
 ```markdown
 <a id="ref46"></a>

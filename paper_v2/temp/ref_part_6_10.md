@@ -1,13 +1,13 @@
-# Audit dan Pembetulan Referensi [6] - [10]
+﻿# Audit dan Pembetulan Referensi [6] - [10]
 
-Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [6] sampai [10] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan penulisan Markdown (`rules/md_rules.txt`), serta berkas sumber primer di `paper/references/`.
+Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [6] sampai [10] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan penulisan Markdown (`rules/md_rules.txt`), serta berkas sumber primer di `paper_v2/references/`.
 
 ---
 
 ## 1. Rincian Temuan Audit per Referensi
 
 ### [6] Liu et al. (2023)
-- **Berkas Sumber**: `paper/references/2023_Facial attribute classification by deep mining inter-attribute correlations.bib`
+- **Berkas Sumber**: `paper_v2/references/2023_Facial attribute classification by deep mining inter-attribute correlations.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Na Liu, Fan Zhang, Liang Chang, Fuqing Duan (total 4 penulis).
   - Evaluasi aturan: Karena jumlah penulis <= 6, seluruh nama penulis ditulis lengkap (inisial nama depan diikuti nama keluarga).
@@ -33,7 +33,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [7] Yoder-Himes et al. (2022)
-- **Berkas Sumber**: `paper/references/2022_Racial, skin tone, and sex disparities in automated proctoring software.bib`
+- **Berkas Sumber**: `paper_v2/references/2022_Racial, skin tone, and sex disparities in automated proctoring software.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Deborah R. Yoder-Himes, Alina Asif, Kaelin Kinney, Tiffany J. Brandt, Rhiannon E. Cecil, Paul R. Himes, Cara Cashon, Rachel M. P. Hopp, Edna Ross (total 9 penulis).
   - Evaluasi aturan: Karena jumlah penulis > 6, dicantumkan nama penulis pertama diikuti 'et al.'.
@@ -59,7 +59,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [8] Marzoog, Hasan, & Abbas (2022)
-- **Berkas Sumber**: `paper/references/2022_Gender and race classification using geodesic distance measurement.bib`
+- **Berkas Sumber**: `paper_v2/references/2022_Gender and race classification using geodesic distance measurement.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Zahraa Shahad Marzoog, Ashraf Dhannon Hasan, Hawraa Hassan Abbas (total 3 penulis).
   - Evaluasi aturan: Karena jumlah penulis <= 6, seluruh nama penulis ditulis lengkap (inisial nama depan diikuti nama keluarga).
@@ -85,7 +85,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [9] Robinson et al. (2023)
-- **Berkas Sumber**: `paper/references/2023_Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.nbib`
+- **Berkas Sumber**: `paper_v2/references/2023_Balancing Biases and Preserving Privacy on Balanced Faces in the Wild.nbib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Joseph P. Robinson, Can Qin, Yann Henon, Samson Timoner, Yun Fu (total 5 penulis).
   - Evaluasi aturan: Karena jumlah penulis <= 6, seluruh nama penulis ditulis lengkap (inisial nama depan diikuti nama keluarga).
@@ -113,7 +113,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [10] Sohail et al. (2022)
-- **Berkas Sumber**: `paper/references/2021_Racial Identity-Aware Facial Expression Recognition Using Deep Convolutional Neural Networks.bib`
+- **Berkas Sumber**: `paper_v2/references/2021_Racial Identity-Aware Facial Expression Recognition Using Deep Convolutional Neural Networks.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Muhammad Sohail, Ghulam Ali, Javed Rashid, Israr Ahmad, Sultan H. Almotiri, Mohammed A. AlGhamdi, Arfan A. Nagra, Khalid Masood (total 8 penulis).
   - Evaluasi aturan: Karena jumlah penulis > 6, dicantumkan nama penulis pertama diikuti 'et al.'.
@@ -142,7 +142,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 
 ## 2. Teks Final Entri Referensi [6] - [10]
 
-Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber metadata, dan disinkronkan ke dalam `paper/06_references.md`:
+Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber metadata, dan disinkronkan ke dalam `paper_v2/06_references.md`:
 
 ```markdown
 <a id="ref6"></a>

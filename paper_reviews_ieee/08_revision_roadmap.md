@@ -102,7 +102,7 @@ flowchart TD
 |:---|:---|:---:|:---:|
 | **Eksperimental & Statistik** | Ekstraksi angka *Subject-Disjoint*, McNemar, 95% CI, dan latensi komputasi | 1-2 Jam | **100% Selesai** (Tersedia di `experiment/code/md/` & `results/`) |
 | **Visualisasi Grafis** | Desain vektor Gambar 3 baru (ViT multi-domain) & ekspor matriks konfusi | 2-3 Jam | **Siap Dihasilkan** |
-| **Restrukturisasi Naskah Markdown** | Pemutakhiran Bab 01 s.d. 05 pada `paper/*.md` | 3-4 Jam | **Siap Dikerjakan** |
+| **Restrukturisasi Naskah Markdown** | Pemutakhiran Bab 01 s.d. 05 pada `paper_v2/*.md` | 3-4 Jam | **Siap Dikerjakan** |
 | **Kompilasi LaTeX Siap-Submit** | Sinkronisasi `paper_latex_en/access.tex` & kompilasi PDF bersih | 1-2 Jam | **Template & Lingkungan Siap** |
 | **Penyusunan Surat Tanggapan** | Finalisasi berkas `Response-to-Reviewers.pdf` dari rangka tanggapan | 2-3 Jam | **Rangka Lengkap Tersedia** |
 | **Total Estimasi** | **Seluruh Siklus Revisi Siap Unggah** | **~10-14 Jam Kerja Terfokus** | **Fondasi Data & Logika 100% Siap** |

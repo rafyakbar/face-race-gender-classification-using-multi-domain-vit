@@ -1,6 +1,6 @@
-# Laporan Audit dan Perbaikan Referensi [11] - [15]
+﻿# Laporan Audit dan Perbaikan Referensi [11] - [15]
 
-Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan untuk referensi nomor [11] sampai [15] pada naskah artikel ilmiah `paper/06_references.md`, disesuaikan dengan pedoman IEEE (`rules/IEEE_citation_guidelines.md`) dan berkas sumber BibTeX di `paper/references/`.
+Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan untuk referensi nomor [11] sampai [15] pada naskah artikel ilmiah `paper_v1/06_references.md`, disesuaikan dengan pedoman IEEE (`rules/IEEE_citation_guidelines.md`) dan berkas sumber BibTeX di `paper_v1/references/`.
 
 ---
 
@@ -19,7 +19,7 @@ Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan 
 ## 2. Rincian Audit per Referensi
 
 ### Referensi [11]
-- **Berkas Sumber**: `paper/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, MDPI *Informatics*)
 - **Penulis**: David Belcar, Petra Grd, dan Igor Tomičić (Total: 3 penulis $\le$ 6, seluruh penulis wajib dicantumkan).
   - Format IEEE: `D. Belcar, P. Grd, and I. Tomičić` (Sesuai).
@@ -36,7 +36,7 @@ Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan 
 ---
 
 ### Referensi [12]
-- **Berkas Sumber**: `paper/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, MDPI *Applied Sciences*)
 - **Penulis**: Haibin Liao, Li Yuan, Mou Wu, Liangji Zhong, Guonian Jin, dan Neal Xiong (Total: 6 penulis $\le$ 6, seluruh 6 penulis wajib dicantumkan).
   - Format IEEE: `H. Liao, L. Yuan, M. Wu, L. Zhong, G. Jin, and N. Xiong` (Sesuai, dilengkapi *Oxford comma*).
@@ -53,7 +53,7 @@ Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan 
 ---
 
 ### Referensi [13]
-- **Berkas Sumber**: `paper/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, Elsevier *Image and Vision Computing*)
 - **Penulis**: Gurram Sunitha, K. Geetha, S. Neelakandan, Aditya Kumar Singh Pundir, S. Hemalatha, dan Vinay Kumar (Total: 6 penulis $\le$ 6, seluruh 6 penulis wajib dicantumkan).
   - Format IEEE: `G. Sunitha, K. Geetha, S. Neelakandan, A. K. S. Pundir, S. Hemalatha, and V. Kumar` (Sesuai).
@@ -68,7 +68,7 @@ Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan 
 ---
 
 ### Referensi [14]
-- **Berkas Sumber**: `paper/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib`
+- **Berkas Sumber**: `paper_v1/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib`
 - **Tipe Publikasi**: Prosiding Konferensi (*InProceedings*, ICCV 2023)
 - **Penulis**: Jannik Brinkmann, Paul Swoboda, dan Christian Bartelt (Total: 3 penulis $\le$ 6).
   - Format IEEE: `J. Brinkmann, P. Swoboda, and C. Bartelt` (Sesuai).
@@ -83,7 +83,7 @@ Dokumen ini memuat hasil audit mendalam serta entri final yang telah dibetulkan 
 ---
 
 ### Referensi [15]
-- **Berkas Sumber**: `paper/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib`
+- **Berkas Sumber**: `paper_v1/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib`
 - **Tipe Publikasi**: Makalah Prosiding/Buku Koleksi Workshop Internasional (*InProceedings*, ICPR 2022 International Workshops and Challenges, diterbitkan oleh Springer)
 - **Penulis**: Sreeraj Ramachandran dan Ajita Rattani (Total: 2 penulis $\le$ 6).
   - Format IEEE: `S. Ramachandran and A. Rattani` (Sesuai).

@@ -21,10 +21,10 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
                                          ▼
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                       TAHAP 2: DRAF MODULAR MARKDOWN                             │
-│                                   (paper/)                                       │
+│                           (paper_v2/ & paper_v1/)                                │
 │   - Penulisan naskah narasi lengkap per sub-bagian dalam format Markdown (.md)   │
 │   - Struktur modular: 1 berkas untuk 1 sub-seksi spesifik                        │
-│   - Audit sitasi tingkat kalimat via paper/references.txt & paper/references/    │
+│   - Audit sitasi tingkat kalimat via paper_v2/references.txt & references/       │
 │   - Kepatuhan ketat terhadap target kata per paragraf & registri acronyms.txt    │
 │   - Integrasi tabel dan visualisasi data hasil eksperimen                        │
 └────────────────────────────────────────┬─────────────────────────────────────────┘
@@ -52,7 +52,7 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
 │                              (paper_reviews_ieee/)                               │
 │   - Langkah 5.1: Dekonstruksi Komentar & Pembuatan Matriks Tanggapan             │
 │   - Langkah 5.2: Eksekusi Eksperimen Komparatif & Validasi Bebas Kebocoran Data │
-│   - Langkah 5.3: Pembaruan Naskah Modular Markdown (paper/*.md) & Traceability   │
+│   - Langkah 5.3: Pembaruan Naskah Modular Markdown (paper_v2/*.md) & Traceability│
 │   - Langkah 5.4: Sinkronisasi LaTeX & Pembangkitan Dua Berkas PDF (Clean/Yellow) │
 │   - Langkah 5.5: Finalisasi Surat Tanggapan & Formulir Byline Change            │
 └──────────────────────────────────────────────────────────────────────────────────┘
@@ -73,12 +73,14 @@ Dokumen outline master berfungsi sebagai **kontrak ilmiah** yang mengunci:
 
 ---
 
-### 2. Tahap 2: Draf Modular Markdown (`paper/`)
-Semua draf naskah ditulis dalam direktori `paper/` secara terpisah per sub-bagian agar memudahkan fokus penulisan, audit berkas, dan pelacakan versi (*version control*).
+### 2. Tahap 2: Draf Modular Markdown (`paper_v1/` dan `paper_v2/`)
+Semua draf naskah dikelola secara modular per sub-bagian dalam format Markdown (.md):
+- **`paper_v1/`**: Draf naskah versi 1.0 (arsip historis pra-revisi IEEE Access berbasis `paper_outline_v1.0.md` / protokol *Subject-Overlap*).
+- **`paper_v2/`**: Draf naskah versi 2.0 aktif (definitif revisi IEEE Access berbasis `paper_outline_v1.1.md` / protokol *Strict Subject-Disjoint*).
 
-#### Struktur Direktori Draf Modular Markdown:
+#### Struktur Direktori Draf Modular Markdown (`paper_v2/`):
 ```
-paper/
+paper_v2/
 ├── 00_abstract.md                                      # Metadata, Judul, Abstrak, Kata Kunci
 ├── 01_introduction.md                                  # Section I: Latar belakang, urgensi, gap, kontribusi, organisasi
 ├── 02_related-works.md                                 # Section II: Tinjauan literatur tematik & posisi riset
@@ -100,7 +102,7 @@ paper/
 ├── 06_references.md                                    # Section VI: Daftar pustaka format IEEE (entri [1]-[51])
 ├── 07_biographies.md                                   # Section VII: Biografi akademik seluruh penulis
 ├── acronyms.txt                                        # Registri pelacakan singkatan & akronim pertama kali (Rule 1.3)
-├── ref_part_*.md                                       # 10 berkas log audit bibliografi modular (entri [1]-[51])
+├── temp/ref_part_*.md                                  # 10 berkas log audit bibliografi modular (entri [1]-[51])
 ├── references.txt                                      # Registri audit sitasi tingkat kalimat (Sentence-Level Citation)
 ├── references/                                         # Direktori 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
 └── images/                                             # Berkas aset visual gambar beresolusi tinggi untuk naskah
@@ -166,7 +168,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
                                             │
                                             ▼
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
-│             LANGKAH 5.3: PEMBARUAN NASKAH MODULAR MARKDOWN (paper/*.md)                 │
+│             LANGKAH 5.3: PEMBARUAN NASKAH MODULAR MARKDOWN (paper_v2/*.md)              │
 │             - Penyusutan Section I: Introduction (merespons R1 Komentar #1)             │
 │             - Restrukturisasi Section II & penambahan Eq. (1)-(3) (merespons R1 #2)     │
 │             - Redesain Figure 3 arsitektur ViT & presisi notasi (R1 #3 & #4)            │
@@ -215,7 +217,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
        2. *Subject Overlap & Cross-Subject Generalization:* Mengatasi cacat metodologis kebocoran data (*data leakage*) akibat kehadiran subjek yang sama pada train dan test set; validasi generalisasi sejati pada identitas wajah yang belum pernah dilihat (*unseen subjects*).
 3. **Penyusunan Rencana Aksi (*Remedy Action Plan*):**
    - Tetapkan solusi konkret untuk setiap butir masukan.
-   - Petakan modul berkas target di `paper/` dan `paper_latex_en/` yang akan dimodifikasi.
+   - Petakan modul berkas target di `paper_v2/` dan `paper_latex_en/` yang akan dimodifikasi.
 
 #### Langkah 5.2: Eksekusi Eksperimen Komparatif & Validasi Bebas Kebocoran Data (Dual-Benchmark)
 1. **Pembangunan Primary Benchmark (Subject-Disjoint Partitioning):**
@@ -239,7 +241,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
    - Ukuran bobot model: Logistic Regression hanya **0,11 MB** (>330x lebih ringkas dibanding SVM 36,60 MB), menjadikannya arsitektur optimal untuk *edge devices*.
    - Evaluasi *Equal Opportunity Difference* (EOD): Disparitas antara recall tertinggi (White_Males 94,44%) dan terendah (Black_Females 84,72%) tercatat sebesar **9,72 percentage points**.
 
-#### Langkah 5.3: Pembaruan Naskah Modular Markdown (`paper/*.md`) & Pelacakan Komitmen
+#### Langkah 5.3: Pembaruan Naskah Modular Markdown (`paper_v2/*.md`) & Pelacakan Komitmen
 1. **Pembaruan Isi Naskah Per Modul:**
    - `00_abstract.md`: Perbarui metrik utama menjadi 88,66% (LR) dan 88,61% (SVM) pada protokol bebas kebocoran subjek, serta sertakan baseline historis 93,70%.
    - `01_introduction.md`: Ringkas narasi pengantar sesuai R1 Komentar #1; perjelas butir kontribusi terkait dual-benchmark dan pembuktian bebas kebocoran identitas.
@@ -261,7 +263,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
 
 #### Langkah 5.4: Sinkronisasi LaTeX & Pembangkitan Dua Berkas PDF (Clean & Highlighted PDF)
 1. **Sinkronisasi Kode Sumber LaTeX:**
-   - Terapkan seluruh revisi teks dari `paper/*.md` ke berkas modular `paper_latex_en/sections/*.tex`.
+   - Terapkan seluruh revisi teks dari `paper_v2/*.md` ke berkas modular `paper_latex_en/sections/*.tex`.
    - Perbarui basis data `references.bib` dan metadata kepenulisan pada `00_title.tex`.
 2. **Kompilasi Naskah Bersih (Clean PDF):**
    - Kompilasi `access.tex` melalui urutan standar (`pdflatex` $\rightarrow$ `bibtex` $\rightarrow$ `pdflatex` $\rightarrow$ `pdflatex`).
@@ -300,7 +302,7 @@ Tahap 5 diaktifkan ketika keputusan editorial dari jurnal telah diterima (misal:
 
 ## 🔄 Matriks Pemetaan Universal (*Universal Mapping Matrix*)
 
-| Modul Manuskrip | Draf Markdown (`paper/`) | Berkas LaTeX (`sections/*.tex`) | Elemen Standar yang Terkandung |
+| Modul Manuskrip | Draf Markdown (`paper_v2/`) | Berkas LaTeX (`sections/*.tex`) | Elemen Standar yang Terkandung |
 |:---|:---|:---|:---|
 | **Judul & Penulis** | `00_abstract.md` | `00_title.tex` | Judul artikel, profil penulis, afiliasi, ORCID, korespondensi |
 | **Abstrak & Keywords**| `00_abstract.md` | `00_abstract.tex` | Blok abstrak ringkas, daftar kata kunci (IEEE Keywords) |
@@ -344,9 +346,9 @@ Untuk memastikan manuskrip memenuhi standar jurnal internasional bereputasi ting
 5. **Kepatuhan Struktur Sintaksis SPOK & Kesiapan Translasi SVO:**
    - Setiap kalimat dalam draf naskah wajib memiliki struktur Subjek (S) dan Predikat (P) yang definitif untuk mencegah kalimat menggantung (*dangling sentences*). Variasikan antara pola S-P-O-K murni, transisi K-S-P-O terukur, dan bentuk pasif akademis objektif pada metodologi untuk mempermudah pemetaan ke struktur SVO/SVOC pada naskah LaTeX Bahasa Inggris standar IEEE.
 6. **Sistem Audit Sitasi Tingkat Kalimat (Sentence-Level Citation Audit):**
-   - Seluruh klaim literatur dan fakta eksternal dalam naskah Markdown wajib dicatat secara granular pada `paper/references.txt` dan diverifikasi kecocokan teks kutipannya terhadap berkas sumber di `paper/references/` sebelum ditransformasikan ke berkas `references.bib` pada naskah LaTeX.
+   - Seluruh klaim literatur dan fakta eksternal dalam naskah Markdown wajib dicatat secara granular pada `paper_v2/references.txt` dan diverifikasi kecocokan teks kutipannya terhadap berkas sumber di `paper_v2/references/` sebelum ditransformasikan ke berkas `references.bib` pada naskah LaTeX.
 7. **Pelacakan Akronim Terpusat (Centralized Acronym Registry):**
-   - Seluruh singkatan teknis dicatat pada `paper/acronyms.txt` untuk memastikan kepatuhan aturan pemunculan pertama kali (*first-mention full form*) dan mencegah repetisi kepanjangan akronim pada paragraf-paragraf berikutnya.
+   - Seluruh singkatan teknis dicatat pada `paper_v2/acronyms.txt` untuk memastikan kepatuhan aturan pemunculan pertama kali (*first-mention full form*) dan mencegah repetisi kepanjangan akronim pada paragraf-paragraf berikutnya.
 8. **Format Sitasi Interaktif Naskah (Interactive In-Text Citations):**
    - Sitasi dalam draf naskah Markdown menggunakan tautan interaktif ganda `[[N]](06_references.md#refN)` yang terhubung langsung ke jangkar `<a id="refN"></a>` pada daftar pustaka Bagian VI. Sitasi jamak dipisahkan koma dan spasi (`[[1]](06_references.md#ref1), [[2]](06_references.md#ref2)`), diletakkan menempel tepat sebelum tanda baca terminal (`.` atau ` |`), dengan penomoran monotonik meningkat sesuai urutan kemunculan pertama pada naskah (IEEE style).
 9. **Protokol Resubmission Biner & Pelacakan Komitmen (Fail-Closed Revision Governance):**

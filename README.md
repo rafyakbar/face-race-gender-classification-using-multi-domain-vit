@@ -309,12 +309,13 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 │       ├── results/                       # 28 berkas hasil JSON mentah dari model aktif Subject-Disjoint
 │       └── images/                        # Plot kurva, confusion matrix, dan visualisasi 95% Wilson Score CI
 ├── images/                                # Diagram arsitektur beresolusi tinggi dan gambar ilustrasi
-├── paper/                                 # Draf naskah modular dalam format Markdown (gaya IEEE Access)
-│   ├── 00_abstract.md - 05_conclusion.md  # Bagian-bagian utama naskah artikel ilmiah
+├── paper_v1/                              # Draf naskah modular v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_v2/                              # Draf naskah modular v2.0 (Definitif revisi IEEE Access / Subject-Disjoint)
+│   ├── 00_abstract.md - 05_conclusion.md  # Bagian-bagian utama naskah artikel ilmiah revisi
 │   ├── 06_references.md                   # Repositori daftar pustaka IEEE terstandarisasi (entri [1]-[51])
 │   ├── 07_biographies.md                  # Bagian VII: Biografi penulis & aset foto potret
 │   ├── acronyms.txt                       # Registri akronim sentral naskah
-│   ├── ref_part_*.md                      # 10 log audit bibliografi modular (entri [1]-[51])
+│   ├── temp/ref_part_*.md                 # 10 log audit bibliografi modular (entri [1]-[51])
 │   ├── references.txt                     # Registri pelacakan & verifikasi sitasi tingkat kalimat
 │   └── references/                        # 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
 ├── paper_latex_en/                        # Paket LaTeX IEEE Access siap submit (Bahasa Inggris)

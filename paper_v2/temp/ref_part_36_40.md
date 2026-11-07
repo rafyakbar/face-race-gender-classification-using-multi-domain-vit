@@ -1,13 +1,13 @@
-# Audit dan Pembetulan Referensi [36] - [40]
+﻿# Audit dan Pembetulan Referensi [36] - [40]
 
-Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [36] sampai [40] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan Markdown (`rules/md_rules.txt`), serta berkas sumber BibTeX di `paper/references/`.
+Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [36] sampai [40] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan Markdown (`rules/md_rules.txt`), serta berkas sumber BibTeX di `paper_v2/references/`.
 
 ---
 
 ## 1. Rincian Temuan Audit per Referensi
 
 ### [36] Norrena et al. (2024)
-- **Berkas Sumber**: `paper/references/2024_Coupling of Solidification and Heat Transfer Simulations with Interpretable Machine Learning Algorithms to Predict Transverse Cracks in Continuous Cast.bibtex`
+- **Berkas Sumber**: `paper_v2/references/2024_Coupling of Solidification and Heat Transfer Simulations with Interpretable Machine Learning Algorithms to Predict Transverse Cracks in Continuous Cast.bibtex`
 - **Audit Penulis**:
   - Penulis pada sumber: Julius Norrena, Seppo Louhenkilpi, Ville-Valtteri Visuri, Tuomas Alatarvas, Agne Bogdanoff, Timo Fabritius (total 6 penulis).
   - Evaluasi aturan: Karena jumlah penulis $\le 6$, seluruh 6 nama penulis wajib ditulis lengkap (inisial nama depan diikuti nama keluarga).
@@ -34,7 +34,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [37] Molstad & Motwani (2023)
-- **Berkas Sumber**: `paper/references/2023_Multiresolution Categorical Regression for Interpretable Cell-Type Annotation.bibtex`
+- **Berkas Sumber**: `paper_v2/references/2023_Multiresolution Categorical Regression for Interpretable Cell-Type Annotation.bibtex`
 - **Audit Penulis**:
   - Penulis pada sumber: Aaron J. Molstad dan Keshav Motwani (total 2 penulis).
   - Evaluasi aturan: Jumlah penulis $\le 6$, ditulis lengkap.
@@ -61,7 +61,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [38] Zhang, Wang, & Xiu (2022)
-- **Berkas Sumber**: `paper/references/2022_Multinomial logistic regression classifier via 𝑙𝑞,0-proximal Newton algorithm.bib`
+- **Berkas Sumber**: `paper_v2/references/2022_Multinomial logistic regression classifier via 𝑙𝑞,0-proximal Newton algorithm.bib`
 - **Audit Penulis**:
   - Penulis pada sumber: Penghe Zhang, Rui Wang, Naihua Xiu (total 3 penulis).
   - Evaluasi aturan: Jumlah penulis $\le 6$, seluruh penulis dicantumkan.
@@ -85,7 +85,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [39] Zhang, Wei, & Liu (2022)
-- **Berkas Sumber**: `paper/references/2022_Group Logistic Regression Models with lp,q Regularization.bib`
+- **Berkas Sumber**: `paper_v2/references/2022_Group Logistic Regression Models with lp,q Regularization.bib`
 - **Audit Penulis**:
   - Penulis pada sumber: Yanfang Zhang, Chuanhua Wei, Xiaolin Liu (total 3 penulis).
   - Evaluasi aturan: Jumlah penulis $\le 6$, seluruh penulis dicantumkan.
@@ -112,7 +112,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [40] Lai et al. (2023)
-- **Berkas Sumber**: `paper/references/2023_Maximal Margin Support Vector Machine for Feature Representation and Classification.bib`
+- **Berkas Sumber**: `paper_v2/references/2023_Maximal Margin Support Vector Machine for Feature Representation and Classification.bib`
 - **Audit Penulis**:
   - Penulis pada sumber: Zhihui Lai, Xi Chen, Junhong Zhang, Heng Kong, Jiajun Wen (total 5 penulis).
   - Evaluasi aturan: Jumlah penulis $\le 6$, seluruh penulis dicantumkan.
@@ -140,7 +140,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 
 ## 2. Teks Final Entri Referensi [36] - [40]
 
-Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber BibTeX, dan disinkronkan ke dalam `paper/06_references.md`:
+Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber BibTeX, dan disinkronkan ke dalam `paper_v2/06_references.md`:
 
 ```markdown
 <a id="ref36"></a>

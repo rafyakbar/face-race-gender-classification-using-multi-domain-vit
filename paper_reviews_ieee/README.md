@@ -4,7 +4,7 @@ Repositori direktori ini memuat seluruh dokumentasi resmi, analisis telaah edito
 
 > [!TIP]
 > **Panduan Cepat Urutan Kerja:**  
-> Untuk mengetahui langkah-langkah yang wajib didahulukan dalam mengerjakan revisi, silakan buka dokumen otoritatif: **[`00_URUTAN_PRIORITAS_REVISI.md`](00_URUTAN_PRIORITAS_REVISI.md)** (memuat matriks prioritas P1, P2, P3 serta pemetaan berkas target di `paper/`).
+> Untuk mengetahui langkah-langkah yang wajib didahulukan dalam mengerjakan revisi, silakan buka dokumen otoritatif: **[`00_URUTAN_PRIORITAS_REVISI.md`](00_URUTAN_PRIORITAS_REVISI.md)** (memuat matriks prioritas P1, P2, P3 serta pemetaan berkas target di `paper_v2/`).
 
 ---
 
@@ -61,7 +61,7 @@ Seluruh 17 butir komentar dari penelaah independen (7 dari Reviewer 1 dan 10 dar
 ### B. Reviewer 1 #1: Pemadatan Narasi Pendahuluan (*Introduction Streamlining*)
 - **Isu Kritis:** Bagian *Section I: Introduction* dinilai terlalu panjang dan bertele-tele sehingga mengaburkan fokus masalah.
 - **Tindakan & Solusi:**
-  - Melakukan restrukturisasi dan peringkasan narasi secara signifikan pada `paper/01_introduction.md`.
+  - Melakukan restrukturisasi dan peringkasan narasi secara signifikan pada `paper_v2/01_introduction.md`.
   - Mengurangi pembahasan latar belakang demografi umum yang berulang; langsung memusatkan premis pada urgensi interseksionalitas (*intersectional fairness*), keterbatasan metode *single-domain*, serta merangkum kontribusi riset ke dalam 4 butir deklarasi ilmiah yang tegas dan padat.
 
 ### C. Reviewer 1 #2: Restrukturisasi Studi Terkait & Formulasi Matematis (*Related Works Formalization*)

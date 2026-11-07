@@ -1,6 +1,6 @@
-# Laporan Audit dan Perbaikan Referensi [31] - [35]
+﻿# Laporan Audit dan Perbaikan Referensi [31] - [35]
 
-Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampai [35] pada `paper/06_references.md` berdasarkan pedoman IEEE (`rules/IEEE_citation_guidelines.md`) serta berkas sumber primer di `paper/references/`.
+Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampai [35] pada `paper_v1/06_references.md` berdasarkan pedoman IEEE (`rules/IEEE_citation_guidelines.md`) serta berkas sumber primer di `paper_v1/references/`.
 
 ---
 
@@ -20,7 +20,7 @@ Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampa
 
 ### Referensi [31]
 
-- **Berkas Sumber**: `paper/references/2022_BoostTree and BoostForest for Ensemble Learning.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_BoostTree and BoostForest for Ensemble Learning.bib`
 - **Metadata Sumber**:
   - Tipe entri: `@ARTICLE`
   - Penulis: `Zhao, Changming and Wu, Dongrui and Huang, Jian and Yuan, Ye and Zhang, Hai-Tao and Peng, Ruimin and Shi, Zhenhua` (total 7 penulis)
@@ -53,7 +53,7 @@ Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampa
 
 ### Referensi [32]
 
-- **Berkas Sumber**: `paper/references/2025_Interpreting Deep Forest through Feature Contribution and MDI Feature Importance.bib`
+- **Berkas Sumber**: `paper_v1/references/2025_Interpreting Deep Forest through Feature Contribution and MDI Feature Importance.bib`
 - **Metadata Sumber**:
   - Tipe entri: `@article`
   - Penulis: `He, Yi-Xiao and Lyu, Shen-Huan and Jiang, Yuan` (total 3 penulis)
@@ -92,7 +92,7 @@ Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampa
 
 ### Referensi [33]
 
-- **Berkas Sumber**: `paper/references/2022_Optimization of the Random Forest Hyperparameters for Power Industrial Control Systems Intrusion Detection Using an Improved Grid Search Algorithm.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Optimization of the Random Forest Hyperparameters for Power Industrial Control Systems Intrusion Detection Using an Improved Grid Search Algorithm.bib`
 - **Metadata Sumber**:
   - Tipe entri: `@Article`
   - Penulis: `Zhu, Ningyuan and Zhu, Chaoyang and Zhou, Liang and Zhu, Yayun and Zhang, Xiaojuan` (total 5 penulis)
@@ -128,7 +128,7 @@ Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampa
 
 ### Referensi [34]
 
-- **Berkas Sumber**: `paper/references/2024_Data-driven multinomial random forest a new random forest variant with strong consistency.ris`
+- **Berkas Sumber**: `paper_v1/references/2024_Data-driven multinomial random forest a new random forest variant with strong consistency.ris`
 - **Metadata Sumber**:
   - Tipe entri: `TY - JOUR`
   - Penulis: `Chen, JunHao; Wang, XueLi; Lei, Fei` (total 3 penulis)
@@ -156,7 +156,7 @@ Dokumen ini menyajikan audit menyeluruh dan perbaikan referensi nomor [31] sampa
 
 ### Referensi [35]
 
-- **Berkas Sumber**: `paper/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris`
+- **Berkas Sumber**: `paper_v1/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris`
 - **Metadata Sumber**:
   - Tipe entri: `TY - JOUR`
   - Penulis: `Redivo, Edoardo; Viroli, Cinzia; Farcomeni, Alessio` (total 3 penulis)

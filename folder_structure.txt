@@ -62,12 +62,13 @@ face-race-gender-classification-using-multi-domain-vit/
 │       └── utils/                             # Modul pustaka Python (constants, dataset, evaluation, extraction, dll.)
 ├── folder_structure.txt                       # Berkas ini: diagram pohon direktori & glosarium berkas
 ├── images/                                    # Aset visual arsitektur beresolusi tinggi (Figure 1-4, sample demogpairs)
-├── paper/                                     # Draf naskah publikasi modular Markdown (IEEE style, [1]-[51])
-│   ├── 00_abstract.md s.d. 05_conclusion.md   # Bagian-bagian utama naskah ilmiah
+├── paper_v1/                                  # Draf naskah publikasi modular Markdown v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_v2/                                  # Draf naskah publikasi modular Markdown v2.0 (Definitif revisi IEEE Access / Subject-Disjoint)
+│   ├── 00_abstract.md s.d. 05_conclusion.md   # Bagian-bagian utama naskah ilmiah revisi
 │   ├── 06_references.md                       # Daftar pustaka standar IEEE (entri [1] s.d. [51])
 │   ├── 07_biographies.md                      # Biografi akademik dan foto seluruh penulis
 │   ├── acronyms.txt                           # Registri pelacakan singkatan pertama kali (Rule 1.3)
-│   ├── ref_part_*.md                          # 10 berkas log audit bibliografi modular [1] s.d. [51]
+│   ├── temp/ref_part_*.md                     # 10 berkas log audit bibliografi modular [1] s.d. [51]
 │   ├── references.txt                         # Registri pemetaan sitasi tingkat kalimat
 │   └── references/                            # 51 berkas sumber acuan primer (.bib, .ris, .pdf, .html)
 ├── paper_latex_en/                            # Paket naskah Bahasa Inggris resmi IEEE Access (Submission-Ready)
@@ -173,11 +174,13 @@ Sub-direktori experiment/code/:
   serialization.py, dan time_helpers.py.
 
 
-3. DIREKTORI PAPER/, PAPER_LATEX_EN/, & PAPER_LATEX_ID/ (MANUSKRIP ILMIAH)
+3. DIREKTORI PAPER_V1/, PAPER_V2/, PAPER_LATEX_EN/, & PAPER_LATEX_ID/ (MANUSKRIP ILMIAH)
 ----------------------------------------------------------------------------------------------------
-- paper/
-  Naskah artikel ilmiah modular dalam format Markdown (00_abstract s.d. 07_biographies, acronyms.txt,
-  registri sitasi tingkat kalimat references.txt, dan 51 berkas acuan primer di references/).
+- paper_v1/
+  Arsip draf naskah artikel ilmiah modular v1.0 dalam format Markdown (baseline historis pra-revisi / Subject-Overlap).
+- paper_v2/
+  Naskah artikel ilmiah modular definitif v2.0 dalam format Markdown (00_abstract s.d. 07_biographies, acronyms.txt,
+  registri sitasi tingkat kalimat references.txt, dan 51 berkas acuan primer di references/) untuk revisi IEEE Access.
 - paper_latex_en/
   Paket resmi naskah Bahasa Inggris IEEE Access siap submit (access.tex, access.pdf, ieeeaccess.cls,
   IEEEtran.bst, references.bib, dan 21 modul LaTeX di sections/).

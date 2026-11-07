@@ -1,13 +1,13 @@
-# Audit dan Pembetulan Referensi [1] - [5]
+﻿# Audit dan Pembetulan Referensi [1] - [5]
 
-Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [1] sampai [5] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan penulisan Markdown (`rules/md_rules.txt`), serta berkas sumber referensi di `paper/references/`.
+Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk referensi nomor [1] sampai [5] pada naskah artikel ilmiah, merujuk pada pedoman IEEE (`rules/IEEE_citation_guidelines.md`), aturan penulisan Markdown (`rules/md_rules.txt`), serta berkas sumber referensi di `paper_v1/references/`.
 
 ---
 
 ## 1. Rincian Temuan Audit per Referensi
 
 ### [1] Rusia & Singh (2023)
-- **Berkas Sumber**: `paper/references/2022_A comprehensive survey on techniques to handle face identity threats challenges and opportunities.ris`
+- **Berkas Sumber**: `paper_v1/references/2022_A comprehensive survey on techniques to handle face identity threats challenges and opportunities.ris`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Mayank Kumar Rusia dan Dushyant Kumar Singh (total 2 penulis).
   - Evaluasi aturan: Karena jumlah penulis $\le 6$, seluruh penulis ditulis lengkap (inisial nama depan diikuti nama keluarga).
@@ -33,7 +33,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [2] Meden et al. (2021)
-- **Berkas Sumber**: `paper/references/2021_Privacy–Enhancing Face Biometrics A Comprehensive Survey.bib`
+- **Berkas Sumber**: `paper_v1/references/2021_Privacy–Enhancing Face Biometrics A Comprehensive Survey.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Blaž Meden, Peter Rot, Philipp Terhörst, Naser Damer, Arjan Kuijper, Walter J. Scheirer, Arun Ross, Peter Peer, Vitomir Štruc (total 9 penulis).
   - Evaluasi aturan: Karena jumlah penulis $> 6$, dicantumkan nama penulis pertama diikuti 'et al.'.
@@ -63,7 +63,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [3] Birhane (2022)
-- **Berkas Sumber**: `paper/references/2022_The unseen Black faces of AI algorithms.nbib`
+- **Berkas Sumber**: `paper_v1/references/2022_The unseen Black faces of AI algorithms.nbib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Abeba Birhane (total 1 penulis).
   - Evaluasi aturan: Karena jumlah penulis $\le 6$, nama penulis ditulis lengkap.
@@ -94,7 +94,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [4] Overbye-Thompson, Hamilton, & Mastro (2024)
-- **Berkas Sumber**: `paper/references/2024_Reinvention mediates impacts of skin tone bias in algorithms implications for technology diffusion.bib`
+- **Berkas Sumber**: `paper_v1/references/2024_Reinvention mediates impacts of skin tone bias in algorithms implications for technology diffusion.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Hannah Overbye-Thompson, Kristy A Hamilton, Dana Mastro (total 3 penulis).
   - Evaluasi aturan: Karena jumlah penulis $\le 6$, seluruh 3 nama penulis ditulis lengkap. Nama keluarga ganda dengan tanda hubung dipertahankan (`Overbye-Thompson`).
@@ -120,7 +120,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 ---
 
 ### [5] Terhörst et al. (2022)
-- **Berkas Sumber**: `paper/references/2022_A Comprehensive Study on Face Recognition Biases Beyond Demographics.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_A Comprehensive Study on Face Recognition Biases Beyond Demographics.bib`
 - **Audit Penulis**:
   - Penulis pada berkas sumber: Philipp Terhörst, Jan Niklas Kolf, Marco Huber, Florian Kirchbuchner, Naser Damer, Aythami Morales Moreno, Julian Fierrez, Arjan Kuijper (total 8 penulis).
   - Evaluasi aturan: Karena jumlah penulis $> 6$, dicantumkan nama penulis pertama diikuti 'et al.'.
@@ -149,7 +149,7 @@ Dokumen ini memuat hasil audit komprehensif dan teks perbaikan final untuk refer
 
 ## 2. Teks Final Entri Referensi [1] - [5]
 
-Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber metadata, dan disinkronkan ke dalam `paper/06_references.md`:
+Berikut adalah teks entri final yang telah diaudit, diverifikasi terhadap berkas sumber metadata, dan disinkronkan ke dalam `paper_v1/06_references.md`:
 
 ```markdown
 <a id="ref1"></a>

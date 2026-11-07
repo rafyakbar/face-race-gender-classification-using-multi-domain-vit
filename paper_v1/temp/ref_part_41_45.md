@@ -1,13 +1,13 @@
 ﻿# Hasil Audit dan Perbaikan Referensi [41] - [45]
 
-Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk entri referensi nomor [41] sampai [45] pada berkas `paper/06_references.md`. Audit dilakukan secara teliti terhadap berkas sumber asli di `paper/references/` dengan berpedoman pada kaidah IEEE di `rules/IEEE_citation_guidelines.md` serta aturan format Markdown di `rules/md_rules.txt`.
+Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk entri referensi nomor [41] sampai [45] pada berkas `paper_v1/06_references.md`. Audit dilakukan secara teliti terhadap berkas sumber asli di `paper_v1/references/` dengan berpedoman pada kaidah IEEE di `rules/IEEE_citation_guidelines.md` serta aturan format Markdown di `rules/md_rules.txt`.
 
 ---
 
 ## 1. Rincian Temuan Audit Tiap Referensi
 
 ### [41] Yang et al. (2022)
-- **Berkas Sumber**: `paper/references/2022_Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications.bib`
 - **Tipe Dokumen**: Artikel Jurnal (*Expert Systems with Applications*)
 - **Penulis di Sumber**:
   - `Cheng Yang` -> `C. Yang`
@@ -37,7 +37,7 @@ Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk ent
 ---
 
 ### [42] Nguyen Nhu Y. et al. (2022)
-- **Berkas Sumber**: `paper/references/2022_Churn prediction in telecommunication industry using kernel Support Vector Machines.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Churn prediction in telecommunication industry using kernel Support Vector Machines.bib`
 - **Tipe Dokumen**: Artikel Jurnal (*PLOS ONE*)
 - **Penulis di Sumber**:
   - Sumber BibTeX: `Y., Nguyen Nhu AND Ly, Tran Van AND Son, Dao Vu Truong`
@@ -70,7 +70,7 @@ Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk ent
 ---
 
 ### [43] Guido, Groccia, & Conforti (2023)
-- **Berkas Sumber**: `paper/references/2022_A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers.ris`
+- **Berkas Sumber**: `paper_v1/references/2022_A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers.ris`
 - **Tipe Dokumen**: Artikel Jurnal (*Soft Computing*)
 - **Penulis di Sumber**:
   - `Guido, Rosita` -> `R. Guido`
@@ -99,7 +99,7 @@ Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk ent
 ---
 
 ### [44] Rashidi et al. (2023)
-- **Berkas Sumber**: `paper/references/2023_Common statistical concepts in the supervised Machine Learning arena.nbib`
+- **Berkas Sumber**: `paper_v1/references/2023_Common statistical concepts in the supervised Machine Learning arena.nbib`
 - **Tipe Dokumen**: Artikel Jurnal (*Frontiers in Oncology*)
 - **Penulis di Sumber**:
   - `Rashidi, Hooman H` -> `H. H. Rashidi`
@@ -131,7 +131,7 @@ Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk ent
 ---
 
 ### [45] De Diego et al. (2022)
-- **Berkas Sumber**: `paper/references/2022_General Performance Score for classification problems.ris`
+- **Berkas Sumber**: `paper_v1/references/2022_General Performance Score for classification problems.ris`
 - **Tipe Dokumen**: Artikel Jurnal (*Applied Intelligence*)
 - **Penulis di Sumber**:
   - `De Diego, Isaac Martín` -> `I. M. De Diego` (nama keluarga gabungan Spanyol)
@@ -165,7 +165,7 @@ Dokumen ini memuat laporan audit komprehensif dan teks perbaikan final untuk ent
 
 ## 2. Teks Final Entri Referensi [41] - [45]
 
-Berikut adalah teks referensi final yang telah diaudit, disesuaikan dengan seluruh aturan IEEE, diverifikasi terhadap berkas sumber, serta disinkronkan ke dalam `paper/06_references.md`:
+Berikut adalah teks referensi final yang telah diaudit, disesuaikan dengan seluruh aturan IEEE, diverifikasi terhadap berkas sumber, serta disinkronkan ke dalam `paper_v1/06_references.md`:
 
 ```markdown
 <a id="ref41"></a>

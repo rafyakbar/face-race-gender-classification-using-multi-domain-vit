@@ -510,12 +510,13 @@ D:\Research\face-race-gender-multi-vit\
 │       └── images/                        # Matriks konfusi dan grafik plot Wilson Score 95% CI
 │
 ├── images/                                # Diagram arsitektur resolusi tinggi dan figur ilustrasi
-├── paper/                                 # Draf manuskrip modular dalam format Markdown (gaya IEEE)
-│   ├── 00_abstract.md - 05_conclusion.md  # Seksi-seksi inti draf manuskrip
+├── paper_v1/                              # Draf naskah modular v1.0 (Arsip historis pra-revisi / Subject-Overlap)
+├── paper_v2/                              # Draf manuskrip modular v2.0 (Definitif revisi IEEE Access / Subject-Disjoint)
+│   ├── 00_abstract.md - 05_conclusion.md  # Seksi-seksi inti draf manuskrip revisi
 │   ├── 06_references.md                   # Repositori daftar pustaka IEEE terstandarisasi (entri [1]-[51])
 │   ├── 07_biographies.md                  # Seksi VII: Biografi penulis & aset foto potret
 │   ├── acronyms.txt                       # Glosarium akronim terpusat
-│   ├── ref_part_*.md                      # 10 log audit bibliografi modular (entri [1]-[51])
+│   ├── temp/ref_part_*.md                 # 10 log audit bibliografi modular (entri [1]-[51])
 │   ├── references.txt                     # Registri penelusuran sitasi tingkat kalimat & verifikasi
 │   └── references/                        # 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
 │
@@ -659,8 +660,8 @@ Saat menyusun, merevisi, atau mengaudit draf manuskrip, menyusun outline makalah
 20. **Konsistensi Terminologi, Notasi & Angka Akhir:** Verifikasi konsistensi notasi (simbol $\oplus$, rumus matematika, dan nilai metrik) di seluruh naskah.
 21. **Hupont & Fernández (IEEE FG 2019):** Merupakan makalah perintis pembuat dataset DemogPairs; disitir saat memperkenalkan spesifikasi dataset, bukan sebagai pesaing langsung perbandingan performa.
 22. **SOP Universal Pipeline Manuskrip (`WORKFLOW.md`):** Seluruh proses penulisan, penerjemahan, dan persiapan publikasi harus mengikuti pedoman operasional pada `WORKFLOW.md`.
-23. **Protokol Audit Sitasi Tingkat Kalimat (`paper/references.txt`):** Klaim faktual harus dapat dilacak langsung ke entri referensi yang terdaftar.
-24. **Standar Sitasi Teks Interaktif (`paper/*.md`):** Sitasi dalam teks draf Markdown wajib menggunakan format interaktif `[[N]](06_references.md#refN)`.
+23. **Protokol Audit Sitasi Tingkat Kalimat (`paper_v2/references.txt`):** Klaim faktual harus dapat dilacak langsung ke entri referensi yang terdaftar (dengan `paper_v1/references.txt` sebagai arsip historis).
+24. **Standar Sitasi Teks Interaktif (`paper_v2/*.md`):** Sitasi dalam teks draf Markdown wajib menggunakan format interaktif `[[N]](06_references.md#refN)` (dan `paper_v1/*.md` sebagai arsip historis).
 25. **Preservasi Direktori Arsip:** Dilarang keras menghapus atau mengubah berkas apa pun di dalam `experiment/code/archive/` atau `audit_ledger.json`.
 26. **Pemeliharaan Direktori Skrip:** Pertahankan seluruh skrip otomatisasi runner tetap rapi dan terisolasi di dalam `experiment/code/scripts/`.
 27. **Standar Penempatan Notebook:** Seluruh 33 notebook Jupyter aktif wajib dipertahankan posisinya langsung pada akar direktori `experiment/code/`.

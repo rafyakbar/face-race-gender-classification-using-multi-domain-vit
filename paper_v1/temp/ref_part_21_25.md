@@ -1,12 +1,12 @@
-# Laporan Audit dan Perbaikan Referensi [21] - [25]
+﻿# Laporan Audit dan Perbaikan Referensi [21] - [25]
 
-Dokumen ini memuat hasil audit mendalam serta perbaikan referensi [21] sampai [25] pada berkas `paper/06_references.md` berdasarkan pedoman sitasi IEEE (`rules/IEEE_citation_guidelines.md`) dan berkas sumber primer pada direktori `paper/references/`.
+Dokumen ini memuat hasil audit mendalam serta perbaikan referensi [21] sampai [25] pada berkas `paper_v1/06_references.md` berdasarkan pedoman sitasi IEEE (`rules/IEEE_citation_guidelines.md`) dan berkas sumber primer pada direktori `paper_v1/references/`.
 
 ---
 
 ## 1. Rekapitulasi Entri Final Referensi [21] - [25]
 
-Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `paper/06_references.md`:
+Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `paper_v1/06_references.md`:
 
 <a id="ref21"></a>
 [21] S. K. Gupta and N. Nain, "Review: single attribute and multi attribute facial gender and age estimation," *Multimedia Tools and Applications*, vol. 82, no. 1, pp. 1289-1311, 2023, doi: 10.1007/s11042-022-12678-6.
@@ -28,7 +28,7 @@ Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `pa
 ## 2. Rincian Temuan Audit per Referensi
 
 ### Referensi [21]
-- **Berkas Sumber**: `paper/references/2022_Review Single attribute and multi attribute facial gender and age estimation.nbib`
+- **Berkas Sumber**: `paper_v1/references/2022_Review Single attribute and multi attribute facial gender and age estimation.nbib`
 - **Teks Awal**:
   `<a id="ref21"></a>`
   `[21] S. K. Gupta and N. Nain, "Review: Single attribute and multi attribute facial gender and age estimation," *Multimedia Tools and Applications*, vol. 82, no. 1, pp. 1289-1311, 2023, doi: 10.1007/s11042-022-12678-6.`
@@ -46,7 +46,7 @@ Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `pa
 ---
 
 ### Referensi [22]
-- **Berkas Sumber**: `paper/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib`
+- **Berkas Sumber**: `paper_v1/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib`
 - **Teks Awal**:
   `<a id="ref22"></a>`
   `[22] Y. Deng, S. Teng, L. Fei, W. Zhang, and I. Rida, "A Multifeature Learning and Fusion Network for Facial Age Estimation," *Sensors*, vol. 21, no. 13, Art. no. 4597, 2021, doi: 10.3390/s21134597.`
@@ -64,7 +64,7 @@ Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `pa
 ---
 
 ### Referensi [23]
-- **Berkas Sumber**: `paper/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib`
+- **Berkas Sumber**: `paper_v1/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib`
 - **Teks Awal**:
   `<a id="ref23"></a>`
   `[23] Z. Wang, L. Xiao, Z. Cao, and H. Lu, "Vision transformer off-the-shelf: a surprising baseline for few-shot class-agnostic counting," in *Proc. AAAI Conf. Artif. Intell. (AAAI)*, 2024, Art. no. 648, doi: 10.1609/aaai.v38i6.28396.`
@@ -83,7 +83,7 @@ Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `pa
 ---
 
 ### Referensi [24]
-- **Berkas Sumber**: `paper/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib`
+- **Berkas Sumber**: `paper_v1/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib`
 - **Teks Awal**:
   `<a id="ref24"></a>`
   `[24] D. Wilimitis and C. G. Walsh, "Practical considerations and applied examples of cross-validation for model development and evaluation in health care: Tutorial," *JMIR AI*, vol. 2, 2023, doi: 10.2196/49023.`
@@ -101,7 +101,7 @@ Berikut adalah teks perbaikan final yang telah disesuaikan dan disimpan pada `pa
 ---
 
 ### Referensi [25]
-- **Berkas Sumber**: `paper/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib`
+- **Berkas Sumber**: `paper_v1/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib`
 - **Teks Awal**:
   `<a id="ref25"></a>`
   `[25] I. Hupont and C. Fernández, "DemogPairs: Quantifying the Impact of Demographic Imbalance in Deep Face Recognition," in *Proc. 2019 14th IEEE Int. Conf. Autom. Face Gesture Recognit. (FG)*, Lille, France, 2019, pp. 1-7, doi: 10.1109/FG.2019.8756625.`

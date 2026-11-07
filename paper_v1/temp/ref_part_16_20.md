@@ -1,6 +1,6 @@
-# Audit dan Perbaikan Referensi [16] - [20]
+﻿# Audit dan Perbaikan Referensi [16] - [20]
 
-Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomor [16] sampai [20] pada berkas `paper/06_references.md`, berdasarkan berkas sumber BibTeX di `paper/references/` dan pedoman IEEE di `rules/IEEE_citation_guidelines.md`.
+Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomor [16] sampai [20] pada berkas `paper_v1/06_references.md`, berdasarkan berkas sumber BibTeX di `paper_v1/references/` dan pedoman IEEE di `rules/IEEE_citation_guidelines.md`.
 
 ---
 
@@ -19,7 +19,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 ## 2. Rincian Audit Tiap Referensi
 
 ### Referensi [16]
-- **Berkas Sumber**: `paper/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib`
+- **Berkas Sumber**: `paper_v1/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib`
 - **Metadata Sumber**:
   - Penulis: Si Chen, Xinyu Lai, Yan Yan, Da-Han Wang, Shunzhi Zhu (5 orang).
   - Judul: "Learning an attention-aware parallel sharing network for facial attribute recognition"
@@ -43,7 +43,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 ---
 
 ### Referensi [17]
-- **Berkas Sumber**: `paper/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib`
+- **Berkas Sumber**: `paper_v1/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib`
 - **Metadata Sumber**:
   - Penulis: Ganjar Gingin Tahyudin, Mahmud Dwi Sulistiyo, Muhammad Arzaki, Ema Rachmawati (4 orang).
   - Judul: "Classifying Gender Based on Face Images Using Vision Transformer"
@@ -67,7 +67,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 ---
 
 ### Referensi [18]
-- **Berkas Sumber**: `paper/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib`
+- **Berkas Sumber**: `paper_v1/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib`
 - **Metadata Sumber**:
   - Penulis: Abdul-aziz Kalkatawi, Usman Saeed (2 orang).
   - Judul: "Ethnicity Classification Based on Facial Images using Deep Learning Approach"
@@ -90,7 +90,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 ---
 
 ### Referensi [19]
-- **Berkas Sumber**: `paper/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib`
+- **Berkas Sumber**: `paper_v1/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib`
 - **Metadata Sumber**:
   - Penulis: Rezky Arisanti Putri, Lilik Anifah, Ricky Eka Putra, Yuni Yamasari, Rafy Aulia Akbar (5 orang).
   - Judul: "Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images"
@@ -115,7 +115,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 ---
 
 ### Referensi [20]
-- **Berkas Sumber**: `paper/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib`
+- **Berkas Sumber**: `paper_v1/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib`
 - **Metadata Sumber**:
   - Penulis: Rezky Arisanti Putri, Ricky Eka Putra, Yuni Yamasari (3 orang).
   - Judul: "MD-ViT: Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition"
@@ -139,7 +139,7 @@ Dokumen ini memuat hasil audit mendalam dan perbaikan untuk entri referensi nomo
 
 ---
 
-## 3. Entri Final Bersih [16] sampai [20] untuk `paper/06_references.md`
+## 3. Entri Final Bersih [16] sampai [20] untuk `paper_v1/06_references.md`
 
 Berikut adalah blok entri final yang telah disesuaikan secara utuh:
 

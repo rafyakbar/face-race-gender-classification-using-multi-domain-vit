@@ -1,6 +1,6 @@
-# Laporan Audit dan Perbaikan Referensi [26] - [30]
+﻿# Laporan Audit dan Perbaikan Referensi [26] - [30]
 
-Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] sampai [30] pada naskah artikel ilmiah `paper/06_references.md`. Seluruh entri dicocokkan secara komparatif terhadap berkas sumber primer di direktori `paper/references/` dan diselaraskan dengan pedoman sitasi IEEE (`rules/IEEE_citation_guidelines.md`) serta aturan penulisan dokumen.
+Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] sampai [30] pada naskah artikel ilmiah `paper_v1/06_references.md`. Seluruh entri dicocokkan secara komparatif terhadap berkas sumber primer di direktori `paper_v1/references/` dan diselaraskan dengan pedoman sitasi IEEE (`rules/IEEE_citation_guidelines.md`) serta aturan penulisan dokumen.
 
 ---
 
@@ -19,7 +19,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 ## 2. Rincian Temuan Audit per Referensi
 
 ### Referensi [26]
-- **Berkas Sumber**: `paper/references/2026_Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction.ris`
+- **Berkas Sumber**: `paper_v1/references/2026_Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction.ris`
 - **Tipe Publikasi**: Artikel Jurnal (*Journal Article*, Nature Portfolio / *Scientific Reports*)
 - **Audit Penulis**:
   - Sumber RIS: `AU  - Yu, Liu`
@@ -54,7 +54,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 ---
 
 ### Referensi [27]
-- **Berkas Sumber**: `paper/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib`
+- **Berkas Sumber**: `paper_v1/references/2023_Mask usage recognition using vision transformer with transfer learning and data augmentation.nbib`
 - **Tipe Publikasi**: Artikel Jurnal (*Journal Article*, Elsevier / *Intelligent Systems with Applications*)
 - **Audit Penulis**:
   - Sumber NBIB:
@@ -91,7 +91,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 ---
 
 ### Referensi [28]
-- **Berkas Sumber**: `paper/references/2021_Vision Transformers for Remote Sensing Image Classification.bib`
+- **Berkas Sumber**: `paper_v1/references/2021_Vision Transformers for Remote Sensing Image Classification.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, MDPI / *Remote Sensing*)
 - **Audit Penulis**:
   - Sumber BibTeX: `AUTHOR = {Bazi, Yakoub and Bashmal, Laila and Rahhal, Mohamad M. Al and Dayil, Reham Al and Ajlan, Naif Al}`
@@ -127,7 +127,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 ---
 
 ### Referensi [29]
-- **Berkas Sumber**: `paper/references/2024_Visualizing and Understanding Patch Interactions in Vision Transformer.bib`
+- **Berkas Sumber**: `paper_v1/references/2024_Visualizing and Understanding Patch Interactions in Vision Transformer.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, IEEE / *IEEE Transactions on Neural Networks and Learning Systems*)
 - **Audit Penulis**:
   - Sumber BibTeX: `author={Ma, Jie and Bai, Yalong and Zhong, Bineng and Zhang, Wei and Yao, Ting and Mei, Tao}`
@@ -163,7 +163,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 ---
 
 ### Referensi [30]
-- **Berkas Sumber**: `paper/references/2022_Oblique and rotation double random forest.bib`
+- **Berkas Sumber**: `paper_v1/references/2022_Oblique and rotation double random forest.bib`
 - **Tipe Publikasi**: Artikel Jurnal (*Article*, Elsevier / *Neural Networks*)
 - **Audit Penulis**:
   - Sumber BibTeX: `author = {M.A. Ganaie and M. Tanveer and P.N. Suganthan and V. Snasel}`
@@ -199,7 +199,7 @@ Dokumen ini menyajikan hasil audit mendalam dan perbaikan referensi nomor [26] s
 
 ## 3. Teks Final Entri Referensi [26] - [30]
 
-Berikut adalah blok teks referensi final nomor [26] sampai [30] yang telah diverifikasi dan disinkronkan ke dalam `paper/06_references.md`:
+Berikut adalah blok teks referensi final nomor [26] sampai [30] yang telah diverifikasi dan disinkronkan ke dalam `paper_v1/06_references.md`:
 
 ```markdown
 <a id="ref26"></a>
