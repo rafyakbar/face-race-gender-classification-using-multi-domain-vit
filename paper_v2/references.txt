@@ -11,7 +11,7 @@ paper_v2/01_introduction.md: paragraf 1:
 paper_v2/01_introduction.md: paragraf 2:
 - "Praktik umum dalam literatur visi komputer memisahkan klasifikasi ras dan gender sebagai dua model komputasi independen yang berdiri sendiri":
   - paper_v2/references/2023_Facial attribute classification by deep mining inter-attribute correlations.bib
-- "Pendekatan terisolasi tersebut gagal menangkap dinamika interaksi dan kesalahan pada persilangan subkelompok demografis tertentu, seperti Black Females atau Asian Females":
+- "Pendekatan terisolasi tersebut gagal menangkap dinamika interaksi dan kesalahan pada persilangan subkelompok demografis tertentu, seperti wanita berkulit hitam atau wanita Asia":
   - paper_v2/references/2022_Racial, skin tone, and sex disparities in automated proctoring software.bib
   - paper_v2/references/2022_Gender and race classification using geodesic distance measurement.bib
 - "Akibatnya, penurunan performa klasifikasi pada irisan demografis spesifik tersebut sering kali luput dari audit metrik akurasi agregat konvensional":
@@ -55,9 +55,9 @@ paper_v2/01_introduction.md: paragraf 5:
 - "Untuk menjawab kesenjangan tersebut, penelitian ini mengusulkan fusi Tri-Domain ViT yang memadukan geometri biometrik statis (ViT-Face), ekspresi afektif dinamis (ViT-Emotion), dan morfologi penuaan biologis (ViT-Age) melalui operasi konkatenasi langsung (Face ⊕ Emotion ⊕ Age: 2.304 dimensi)":
   - paper_v2/references/2022_Review Single attribute and multi attribute facial gender and age estimation.nbib
   - paper_v2/references/2021_A Multifeature Learning and Fusion Network for Facial Age Estimation.bib
-- "Ekstraksi representasi laten visual dilakukan secara offline dari backbone ViT pra-latih yang dibekukan (frozen) untuk menjaga efisiensi komputasi tanpa fine-tuning ulang":
+- "Ekstraksi representasi laten visual dilakukan secara offline dari backbone ViT pra-latih yang dibekukan untuk menjaga efisiensi komputasi tanpa fine-tuning ulang":
   - paper_v2/references/2024_Vision Transformer Off-the-Shelf A Surprising Baseline for Few-Shot Class-Agnostic Counting.bib
-- "Pipeline modular penskalaan dan Principal Component Analysis (PCA) difitting secara terisolasi pada lipatan latih untuk mencegah kebocoran informasi dengan total 31.920 penyesuaian model":
+- "Pipeline modular penskalaan dan Principal Component Analysis (PCA) dipelajari secara terisolasi pada lipatan latih untuk mencegah kebocoran informasi dengan total 31.920 penyesuaian model":
   - paper_v2/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib
 
 paper_v2/02_related-works.md: paragraf 1:
