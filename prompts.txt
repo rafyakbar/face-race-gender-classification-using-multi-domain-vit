@@ -28,6 +28,18 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+paper_latex_id sudah saya clone ke paper_latex_id_v2, sekarang perbaiki atau sesuaikan paper_latex_id_v2 agar sesuai dengan paper_v2, perhatikan:
+- rules/IEEE_citation_guidelines.md
+- rules/latex_rules.txt
+- jika ada image/asset yang dibutuhkan, maka copy ke dalam paper_latex_id_v2/images
+- jangan mengubah isi kalimat, karena ini hanya mengubah yg awalnya md menjadi latex
+- delegasikan ke subagent secara paralel
+- satu subagent HANYA BOLEH memperbaiki satu file agar hasilnya optimal
+- berikan instruksi ke subagent dengan jelas
+- lakukan dengan sangat amat teliti
+- jika semuanya selesai, maka delegasikan banyak subagent untuk audit kesesuaian antara paper_latex_id_v2 dengan paper_v2/
+kerjakan dengan sangat amat teliti.
+
 delegasikan subagent untuk audit ulang paper_v2/ untuk mengecek kesusuaian revisi dan kesesuaian target kata yang ada pada paper_outline_v1.1.md!
 - Delegasikan ke subagent agart hasil optimal.
 - Satu subagent hanya boleh audit satu file agar hasil optimal.

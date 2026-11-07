@@ -1,0 +1,124 @@
+\section{Results and Discussion}
+\label{sec:results_and_discussion}
+
+\subsection{Global Performance}
+\label{sec:global_performance}
+\label{sec:global_performance_analysis}
+
+Evaluasi empiris Random Forest (RF) melintasi tujuh skema konfigurasi fitur pada dataset uji held-out dengan protokol Strict Subject-Disjoint ($N = 2.160$) dirangkum pada Table~\ref{tab:7}. Hasil pengujian menunjukkan bahwa konfigurasi Tri-Domain yang diusulkan mencapai performa klasifikasi tertinggi dengan Akurasi 85.00\%, Presisi 85.12\%, Recall 85.00\%, dan F1-Score 85.01\%. Capaian tersebut mengungguli skema dual-domain terbaik Emotion $\oplus$ Age yang meraih Akurasi 84.68\% dan F1-Score 84.69\%, serta melampaui baseline domain tunggal Face sebesar 82.13\%. Karakteristik dasar arsitektur pohon keputusan dalam ansambel RF bekerja melalui pembentukan batas pemisah ortogonal sejajar sumbu (axis-aligned orthogonal splits). Mekanisme partisi ini menghadapi tantangan dimensionalitas saat ruang representasi diperluas ke 2.304 dimensi, sehingga peningkatan akurasi dari domain ganda ke tri-domain berlangsung secara moderat sebesar 0.32 percentage points karena penambahan fitur kontinu meningkatkan varians pemilihan fitur acak pada setiap simpul pohon~\cite{ref48}.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Random Forest across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).}
+\label{tab:7}
+\label{tab:VII}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Konfigurasi Fitur & Dimensi & Akurasi (\%) & Presisi (\%) & Recall (\%) & F1-Score (\%) \\
+\midrule
+Single-Domain Face & 768 & 82.13 & 82.17 & 82.13 & 82.12 \\
+Single-Domain Emotion & 768 & 80.60 & 80.68 & 80.60 & 80.59 \\
+Single-Domain Age & 768 & 79.40 & 79.45 & 79.40 & 79.38 \\
+Dual-Domain Emotion $\oplus$ Face & 1.536 & 84.44 & 84.52 & 84.44 & 84.45 \\
+Dual-Domain Face $\oplus$ Age & 1.536 & 83.89 & 83.95 & 83.89 & 83.90 \\
+Dual-Domain Emotion $\oplus$ Age & 1.536 & 84.68 & 84.75 & 84.68 & 84.69 \\
+\textbf{Tri-Domain (Proposed)} & \textbf{2.304} & \textbf{85.00} & \textbf{85.12} & \textbf{85.00} & \textbf{85.01} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Evaluasi performa Gaussian Naive Bayes (GNB) melintasi tujuh konfigurasi fitur pada dataset uji held-out disajikan pada Table~\ref{tab:8}. Berbeda dengan tren peningkatan linear pada model lain, puncak performa GNB diraih oleh konfigurasi dual-domain Emotion $\oplus$ Face dengan Akurasi 84.31\%, Presisi 84.44\%, Recall 84.31\%, dan F1-Score 84.30\%. Pada konfigurasi Tri-Domain usulan berdimensi 2.304, performa klasifikasi justru mengalami penurunan menjadi Akurasi 82.31\% dan F1-Score 82.30\%. Degradasi performa ini merupakan konsekuensi langsung dari pelanggaran asumsi dasar independensi bersyarat fitur (class-conditional independence assumption) yang mendasari distribusi Gaussian. Ketika dimensi representasi ditingkatkan menjadi 2.304 melalui konkatenasi tiga domain, kovariansi serta korelasi laten antarfitur meningkat drastis, sehingga estimasi densitas probabilitas univariat menjadi bias. Sementara itu, pada kategori domain tunggal, fitur Face mencatatkan Akurasi 80.19\%, melampaui Emotion (79.03\%) dan Age (77.22\%).
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).}
+\label{tab:8}
+\label{tab:VIII}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Konfigurasi Fitur & Dimensi & Akurasi (\%) & Presisi (\%) & Recall (\%) & F1-Score (\%) \\
+\midrule
+Single-Domain Face & 768 & 80.19 & 80.25 & 80.19 & 80.18 \\
+Single-Domain Emotion & 768 & 79.03 & 79.10 & 79.03 & 79.02 \\
+Single-Domain Age & 768 & 77.22 & 77.30 & 77.22 & 77.20 \\
+\textbf{Dual-Domain Emotion $\oplus$ Face} & \textbf{1.536} & \textbf{84.31} & \textbf{84.44} & \textbf{84.31} & \textbf{84.30} \\
+Dual-Domain Face $\oplus$ Age & 1.536 & 81.67 & 81.75 & 81.67 & 81.65 \\
+Dual-Domain Emotion $\oplus$ Age & 1.536 & 81.39 & 81.45 & 81.39 & 81.38 \\
+Tri-Domain (Proposed) & 2.304 & 82.31 & 82.40 & 82.31 & 82.30 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Hasil benchmark empiris multinomial Logistic Regression (LR) melintasi tujuh konfigurasi fitur pada dataset uji held-out dipaparkan secara komprehensif pada Table~\ref{tab:9}. Sebagai model dengan performa tertinggi di antara seluruh arsitektur yang dievaluasi, LR Tri-Domain Face $\oplus$ Emotion $\oplus$ Age menempati posisi teratas dengan meraih Akurasi 88.66\%, Presisi 88.75\%, Recall 88.66\%, dan F1-Score 88.68\%. Capaian tersebut secara konsisten melampaui baseline domain tunggal Face (Akurasi 85.28\%, F1-Score 85.27\%), Emotion (83.15\%), dan Age (81.76\%), serta mengungguli konfigurasi dual-domain terbaik Emotion $\oplus$ Face (Akurasi 87.27\%, F1-Score 87.28\%) dan Face $\oplus$ Age (Akurasi 87.08\%, F1-Score 87.09\%). Keberhasilan model LR membuktikan adanya komplementaritas linier yang sangat kuat antarentang representasi laten ortogonal berdimensi 2.304. Melalui formulasi fungsi aktivasi Softmax ter-regularisasi penalti $L_2$, LR mampu mengeksploitasi seluruh dimensi fitur kontinu tanpa memerlukan reduksi dimensionalitas PCA~\cite{ref49}. Bobot linier model secara efektif memetakan interaksi sinergis antara geometri biometrik statis, ekspresi afektif dinamis, dan morfologi penuaan biologis, menghasilkan batas keputusan hiperplane pemisah multi-kelas yang sangat stabil dan presisi~\cite{ref50}.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Logistic Regression across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).}
+\label{tab:9}
+\label{tab:IX}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Konfigurasi Fitur & Dimensi & Akurasi (\%) & Presisi (\%) & Recall (\%) & F1-Score (\%) \\
+\midrule
+Single-Domain Face & 768 & 85.28 & 85.35 & 85.28 & 85.27 \\
+Single-Domain Emotion & 768 & 83.15 & 83.20 & 83.15 & 83.14 \\
+Single-Domain Age & 768 & 81.76 & 81.82 & 81.76 & 81.75 \\
+Dual-Domain Emotion $\oplus$ Face & 1.536 & 87.27 & 87.35 & 87.27 & 87.28 \\
+Dual-Domain Face $\oplus$ Age & 1.536 & 87.08 & 87.15 & 87.08 & 87.09 \\
+Dual-Domain Emotion $\oplus$ Age & 1.536 & 85.42 & 85.48 & 85.42 & 85.43 \\
+\textbf{Tri-Domain (Proposed)} & \textbf{2.304} & \textbf{88.66} & \textbf{88.75} & \textbf{88.66} & \textbf{88.68} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Perkembangan performa Support Vector Machine (SVM) teroptimasi melintasi seluruh tahapan konfigurasi fitur disajikan pada Table~\ref{tab:10}. Sebagai model runner-up terbaik, SVM Tri-Domain Face $\oplus$ Emotion $\oplus$ Age mencapai Akurasi 88.61\%, Presisi 88.66\%, Recall 88.61\%, dan F1-Score 88.63\% melalui penerapan kernel Radial Basis Function (RBF) teroptimasi dengan parameter penalti $C = 10$~\cite{ref51}. Evaluasi ablasi memperlihatkan lonjakan performa yang signifikan dari domain tunggal Face (Akurasi 85.74\%, F1-Score 85.73\%) menuju konfigurasi dual-domain Emotion $\oplus$ Face (Akurasi 88.47\%, F1-Score 88.48\%) dengan kenaikan bersih sebesar 2.73 percentage points. Namun demikian, penambahan domain usia biologis pada skema Tri-Domain di atas kombinasi biometrik-afektif tersebut hanya memberikan kenaikan marginal sebesar +0.14 percentage points (88.47\% ke 88.61\%). Fenomena ini mengindikasikan terjadinya kejenuhan representasi asimtotik (asymptotic feature saturation) pada pemetaan ruang Hilbert non-linier kernel RBF. Dalam konteks pemetaan kernel ini, manifold representasi gabungan biometrik dan emosi telah mengekstraksi hampir seluruh varians diskriminatif utama subkelompok interseksional, sehingga penambahan fitur usia memberikan kontribusi ortogonal yang relatif terbatas.
+
+\begin{table*}[htbp]
+\caption{Performance Benchmark of Support Vector Machine across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).}
+\label{tab:10}
+\label{tab:X}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Konfigurasi Fitur & Dimensi & Akurasi (\%) & Presisi (\%) & Recall (\%) & F1-Score (\%) \\
+\midrule
+Single-Domain Face & 768 & 85.74 & 85.80 & 85.74 & 85.73 \\
+Single-Domain Emotion & 768 & 84.17 & 84.25 & 84.17 & 84.16 \\
+Single-Domain Age & 768 & 82.50 & 82.58 & 82.50 & 82.49 \\
+Dual-Domain Emotion $\oplus$ Face & 1.536 & 88.47 & 88.52 & 88.47 & 88.48 \\
+Dual-Domain Face $\oplus$ Age & 1.536 & 87.59 & 87.65 & 87.59 & 87.60 \\
+Dual-Domain Emotion $\oplus$ Age & 1.536 & 86.30 & 86.38 & 86.30 & 86.31 \\
+\textbf{Tri-Domain (Proposed)} & \textbf{2.304} & \textbf{88.61} & \textbf{88.66} & \textbf{88.61} & \textbf{88.63} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Sintesis komparatif dari seluruh eksperimen pada Table~\ref{tab:7}, Table~\ref{tab:8}, Table~\ref{tab:9}, dan Table~\ref{tab:10} menegaskan bahwa efektivitas fusi representasi multi-domain bersifat sangat bergantung pada pengklasifikasi (classifier-dependent). Model linier Logistic Regression dan non-linier Support Vector Machine memimpin tolok ukur global dengan performa puncak yang kompetitif pada konfigurasi Tri-Domain (Akurasi 88.66\% vs 88.61\%), di mana selisih antara keduanya hanya sebesar satu citra uji dari total 2.160 sampel. Sebaliknya, Random Forest dan Gaussian Naive Bayes memperlihatkan dinamika batas keputusan yang berbeda. Random Forest mencapai akurasi 85.00\% pada Tri-Domain namun tertahan oleh kompleksitas partisi pohon acak berdimensi tinggi, sedangkan Gaussian Naive Bayes mencapai titik optimal pada skema dual-domain (84.31\%) akibat kendala asumsi independensi kovariansi. Secara agregat, hasil ini membuktikan bahwa fusi fitur laten multi-domain paling optimal dipetakan oleh pengklasifikasi berbasis optimasi batas keputusan global.
+
+Profil efisiensi komputasi dan kebutuhan sumber daya sistem dirangkum pada Table~\ref{tab:11}. Proses ekstraksi fitur Vision Transformer secara offline terakselerasi GPU mencatatkan durasi rata-rata 40.5 ms untuk domain Face, 41.2 ms untuk Emotion, dan 42.8 ms untuk Age, sehingga total waktu ekstraksi tri-domain adalah $\sim$124.5 ms per citra. Pada tahapan pelatihan serta penalaan hyperparameter melalui 5-fold cross-validation, GNB memerlukan waktu komputasi paling singkat sebesar 0.8 detik, disusul oleh LR sebesar 42.5 detik, RF sebesar 284.1 detik, dan SVM memerlukan waktu terlama sebesar 1.842.3 detik. Pada fase inferensi per sampel uji, kepala pengklasifikasi hilir LR menunjukkan keunggulan ekstrem dengan latensi hanya 0.0046 ms dibandingkan dengan SVM yang mencapai 4.6785 ms, mencerminkan kecepatan eksekusi lebih dari 1.000 kali lebih cepat. Dari aspek kebutuhan penyimpanan dan memori, LR hanya memerlukan ukuran berkas model 0.11 MB dibandingkan SVM yang memakan 36.60 MB (lebih hemat hingga lebih dari 330 kali lipat), serta memiliki alokasi RAM footprint parameter bobot sebesar 0.0002 MB berbanding 37.15 MB pada SVM. Temuan empiris ini menetapkan Logistic Regression sebagai model hilir paling ideal untuk deployment praktis berkinerja tinggi.
+
+\begin{table*}[htbp]
+\caption{Computational Efficiency and Resource Consumption Profile.}
+\label{tab:11}
+\label{tab:XI}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{lcccccX}
+\toprule
+Komponen/Model & Waktu Ekstraksi/Pelatihan & Latensi Inferensi (ms/sampel) & Ukuran Model (MB) & RAM Footprint (MB) & Efisiensi Komputasi \\
+\midrule
+ViT-Face (GPU) & 40.5 ms / citra & -- & 343.30 & -- & Ekstraksi fitur biometrik kraniofasial terakselerasi GPU \\
+ViT-Emotion (GPU) & 41.2 ms / citra & -- & 343.30 & -- & Ekstraksi ekspresi afektif dinamis terakselerasi GPU \\
+ViT-Age (GPU) & 42.8 ms / citra & -- & 343.30 & -- & Ekstraksi morfologi penuaan biologis terakselerasi GPU \\
+ViT Tri-Domain (Total GPU) & $\sim$124.5 ms / citra & 124.5000 & 1.029.90 & 92.40$^*$ & Ekstraksi representasi laten gabungan offline satu kali \\
+Gaussian Naive Bayes (GNB) & 0.8 s (CV 5-fold) & 0.0088 & 0.05 & 0.0001$^{**}$ & Pelatihan analitik tercepat, inferensi probabilistik ringan \\
+\textbf{Logistic Regression (LR)} & \textbf{42.5 s (CV 5-fold)} & \textbf{0.0046} & \textbf{0.11} & \textbf{0.0002$^{**}$} & \textbf{Inferensi $>$1.000$\times$ lebih cepat \& $>$330$\times$ lebih hemat memori} \\
+Random Forest (RF) & 284.1 s (CV 5-fold) & 0.0334 & 6.19 & 1.25$^{**}$ & Ansambel 200 pohon keputusan, evaluasi split ortogonal \\
+Support Vector Machine (SVM) & 1.842.3 s (CV 5-fold) & 4.6785 & 36.60 & 37.15$^{**}$ & Kernel RBF non-linier teroptimasi, komputasi margin global \\
+\bottomrule
+\end{tabularx}
+\vspace{1ex}
+\raggedright
+\footnotesize\textit{Catatan Table XI: Nilai ekstraksi fitur ViT diukur pada GPU dengan in-memory processor caching. Waktu pelatihan pengklasifikasi mencakup 5-fold cross-validation GridSearchCV pada CPU. Tanda (*) menunjukkan ukuran feature cache tri-domain lengkap dalam memori (30.8 MB per domain). Tanda (**) menunjukkan metodologi RAM footprint terhitung yang merepresentasikan alokasi memori murni array parameter bobot internal model (koefisien hyperplane/vektor pendukung), di mana LR hanya memerlukan alokasi bobot minimal sebesar 0.0002 MB berbanding 37.15 MB pada SVM untuk menyimpan 1.054 support vectors berdimensi 2.304 dalam memori kerja aktif.}
+\end{table*}

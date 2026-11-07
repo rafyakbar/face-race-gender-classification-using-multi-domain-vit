@@ -1,0 +1,37 @@
+\subsection{Classification Pipeline}
+\label{sec:classification_pipeline}
+
+Kerangka arsitektur pipeline terstruktur modular mengintegrasikan penskalaan fitur (None, MinMaxScaler), reduksi dimensi Principal Component Analysis (None, PCA 50\%, PCA 75\%), dan pengklasifikasi hilir ke dalam satu kesatuan rantai pemrosesan terpadu. Rantai transformasi berurutan tersebut dimodelkan secara formal pada \eqref{eq:12}, di mana vektor fitur masukan $\mathbf{x}$ ditransformasikan oleh modul penskalaan menjadi $\tilde{\mathbf{x}}$, direduksi dimensinya melalui proyeksi PCA menjadi $\hat{\mathbf{x}}$, lalu dipetakan oleh pengklasifikasi menuju estimasi label $\hat{y} \in \{0, \dots, K-1\}$ untuk $K = 6$ subkelompok demografis interseksional. Sebagai protokol pencegahan kebocoran informasi statistik maupun memorisasi identitas, seluruh transformasi penskalaan dan PCA di-fit secara ketat hanya pada lipatan latih pada tiap iterasi 5-Fold StratifiedGroupKFold GridSearchCV, di mana kelompok identitas subjek diisolasi penuh agar tidak terjadi tumpang tindih data antara partisi latih dan validasi. Penelusuran hyperparameter mengevaluasi 912 kombinasi konfigurasi grid (4.560 fits per skema fitur atau 31.920 total fits validasi silang), di mana model terbaik dengan konfigurasi hyperparameter optimal kemudian di-refit pada seluruh himpunan latih sebelum dievaluasi pada data uji held-out independen, sebagaimana dirinci pada Algorithm~\ref{alg:pipeline}.
+
+\begin{equation}
+\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, \dots, K-1\}
+\label{eq:12}
+\end{equation}
+
+\begin{algorithm}[htbp]
+\caption{Pseudocode of Leakage-Free StratifiedGroupKFold Hyperparameter Optimization and Evaluation Procedure.}
+\label{alg:pipeline}
+\label{alg:1}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\REQUIRE Multi-domain feature matrix $\mathbf{X} \in \mathbb{R}^{N \times D}$, labels $y \in \{0,\dots,5\}^N$, subject\_ids $g \in \{1,\dots,S\}^N$, hyperparameter grid $\Theta$
+\ENSURE Best model $\mathcal{M}^*$, optimal hyperparameters $\theta^*$, evaluation metrics on held-out test set
+\STATE Partition dataset into $\mathcal{D}_{\text{train}}$ (480 subjects, 80\%) and $\mathcal{D}_{\text{test}}$ (120 subjects, 20\%) via StratifiedGroupKFold
+\STATE Initialize outer cv = StratifiedGroupKFold($n\_splits=5$, $shuffle=\text{True}$, $random\_state=42$)
+\FOR{each configuration $\theta \in \Theta$}
+    \FOR{fold $k = 1$ \TO $5$}
+        \STATE Split $\mathcal{D}_{\text{train}}$ into $\text{train}_k$ and $\text{val}_k$ with zero subject overlap
+        \STATE Fit Scaler on $\text{train}_k$ and transform $\text{train}_k$, $\text{val}_k$
+        \STATE Fit PCA on $\text{train}_k$ and transform $\text{train}_k$, $\text{val}_k$
+        \STATE Train $\text{Classifier}(\theta)$ on transformed $\text{train}_k$
+        \STATE Evaluate accuracy on transformed $\text{val}_k$
+    \ENDFOR
+    \STATE Compute mean cross-validation score across 5 folds
+\ENDFOR
+\STATE Select optimal $\theta^* = \arg\max \text{mean\_cv\_score}$
+\STATE Refit Scaler, PCA, and $\text{Classifier}(\theta^*)$ on entire $\mathcal{D}_{\text{train}}$
+\STATE Transform held-out $\mathcal{D}_{\text{test}}$ using fitted Scaler and PCA
+\STATE Predict $y_{\text{pred}}$ on transformed $\mathcal{D}_{\text{test}}$ and compute Accuracy, F1, McNemar, Wilson CI, EOD
+\end{algorithmic}
+\end{algorithm}

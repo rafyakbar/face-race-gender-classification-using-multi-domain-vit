@@ -1,0 +1,50 @@
+\subsection{Evaluation Metrics}
+\label{sec:evaluation_metrics}
+
+Evaluasi performa klasifikasi multikelas interseksional ($K = 6$) pada tingkat subkelompok dirumuskan melalui skema One-vs-Rest (OvR) per kelompok demografis $c \in \{1, \dots, K\}$~\cite{ref44}. Skema ini memanfaatkan empat komponen matriks konfusi per kelas, yaitu $TP_c$ (True Positive), $TN_c$ (True Negative), $FP_c$ (False Positive), dan $FN_c$ (False Negative)~\cite{ref45}, \cite{ref46}. Akurasi subkelompok pada \eqref{eq:13} mengukur rasio prediksi benar terhadap seluruh sampel, sedangkan Presisi pada \eqref{eq:14} dan Recall atau True Positive Rate (TPR) pada \eqref{eq:15} memetakan ketepatan positif serta sensitivitas deteksi per subkelompok~\cite{ref47}. F1-Score pada \eqref{eq:16} merangkum rata-rata harmonik antara presisi dan sensitivitas. Untuk mengevaluasi efektivitas sistem secara menyeluruh pada data uji held-out independen berukuran $N = 2.160$ sampel, metrik subkelompok diagregasikan ke tingkat global. Akurasi Global pada \eqref{eq:17} menghitung rasio total prediksi benar terhadap $N$. Selanjutnya, Macro Precision pada \eqref{eq:18}, Macro Recall pada \eqref{eq:19}, dan Macro F1-Score pada \eqref{eq:20} dihitung melalui perataan makro tanpa bobot (unweighted macro average) melintasi $K = 6$ subkelompok untuk menjamin bobot evaluasi yang setara.
+\begin{equation}
+\text{Accuracy}_c = \frac{TP_c + TN_c}{TP_c + TN_c + FP_c + FN_c}
+\label{eq:13}
+\end{equation}
+\begin{equation}
+\text{Precision}_c = \frac{TP_c}{TP_c + FP_c}
+\label{eq:14}
+\end{equation}
+\begin{equation}
+\text{Recall}_c = \frac{TP_c}{TP_c + FN_c}
+\label{eq:15}
+\end{equation}
+\begin{equation}
+\text{F1-Score}_c = \frac{2 \cdot \text{Precision}_c \cdot \text{Recall}_c}{\text{Precision}_c + \text{Recall}_c}
+\label{eq:16}
+\end{equation}
+\begin{equation}
+\text{Accuracy}_{\text{Global}} = \frac{\sum_{c=1}^K TP_c}{N}
+\label{eq:17}
+\end{equation}
+\begin{equation}
+\text{Precision}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c
+\label{eq:18}
+\end{equation}
+\begin{equation}
+\text{Recall}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c
+\label{eq:19}
+\end{equation}
+\begin{equation}
+\text{F1-Score}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c
+\label{eq:20}
+\end{equation}
+
+Validasi signifikansi komparatif antarmodel klasifikasi dievaluasi melalui uji hipotesis inferensial berpasangan McNemar dengan koreksi kontinuitas Edwards pada \eqref{eq:21}~\cite{ref44}. Statistik uji $\chi^2$ dihitung berbasis tabel kontingensi 2 × 2 berpasangan pada pasangan prediksi diskordan, dengan $b$ menyatakan jumlah sampel uji yang diklasifikasikan secara benar oleh model pertama namun salah oleh model kedua, sedangkan $c$ merepresentasikan jumlah sampel yang salah diprediksi oleh model pertama namun benar oleh model kedua. Derajat ketidakpastian estimasi akurasi empiris pada himpunan data uji held-out berukuran $N = 2.160$ sampel diukur melalui estimasi Wilson Score 95\% Confidence Interval (CI) berdasarkan \eqref{eq:22}, di mana $\hat{p}$ merupakan proporsi akurasi empiris sampel dan $z = 1.96$ adalah nilai kritis distribusi normal standar pada tingkat kepercayaan 95\%. Sementara itu, evaluasi disparitas performa antarkelompok dikuantifikasi melalui metrik Equal Opportunity Difference (EOD) pada \eqref{eq:23} yang menghitung selisih absolut maksimum True Positive Rate (TPR) atau Recall antarpasangan subkelompok demografis $i, j \in \{1, \dots, K\}$. Metrik EOD tersebut dikalibrasi secara objektif murni sebagai indikator disparitas performa empiris antarsubkelompok, bukan sebagai jaminan matematis keadilan universal.
+\begin{equation}
+\chi^2 = \frac{(|b - c| - 1)^2}{b + c}
+\label{eq:21}
+\end{equation}
+\begin{equation}
+\text{CI}_{95\%} = \frac{\hat{p} + \frac{z^2}{2N} \pm z \sqrt{\frac{\hat{p}(1-\hat{p})}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}
+\label{eq:22}
+\end{equation}
+\begin{equation}
+\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR}
+\label{eq:23}
+\end{equation}
