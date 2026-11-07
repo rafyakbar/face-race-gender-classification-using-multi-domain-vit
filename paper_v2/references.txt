@@ -61,27 +61,27 @@ paper_v2/01_introduction.md: paragraf 5:
   - paper_v2/references/2023_Practical Considerations and Applied Examples of Cross-Validation for Model Development and Evaluation in Health Care Tutorial.bib
 
 paper_v2/02_related-works.md: paragraf 1:
-- "Pendekatan berbasis region lokal memanfaatkan geometri area wajah bagian tengah untuk mengenali etnisitas sekaligus menekan interferensi latar belakang citra":
+- "Pendekatan berbasis wilayah lokal memanfaatkan geometri area wajah tengah untuk mengenali etnisitas sekaligus menekan interferensi latar belakang citra":
   - paper_v2/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
-- "Peningkatan kedalaman arsitektur konvolusi terbukti mampu memperluas daya diskriminasi fitur visual dalam membedakan karakteristik populasi yang heterogen":
+- "Peningkatan kedalaman jaringan terbukti mampu memperluas daya diskriminasi fitur visual dalam membedakan populasi heterogen":
   - paper_v2/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
-- "Selain pendalaman lapisan, mekanisme berbagi fitur paralel yang diintegrasikan dengan modul atensi visual dikembangkan untuk menangkap korelasi antaratribut wajah":
+- "Selain pendalaman lapisan, mekanisme berbagi fitur paralel dengan modul atensi visual dikembangkan untuk menangkap korelasi antaratribut wajah, memperkuat transisi ke arah representasi yang lebih adaptif terhadap keragaman morfologi wajah":
   - paper_v2/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
 
 paper_v2/02_related-works.md: paragraf 2:
-- "Model konvensional umumnya mengandalkan lapisan SoftMax secara end-to-end untuk menghasilkan probabilitas kelas secara langsung":
+- "Model konvensional umumnya mengandalkan lapisan SoftMax secara end-to-end untuk menghasilkan probabilitas kelas":
   - paper_v2/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
   - paper_v2/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
-- "Namun, pendekatan pemetaan ruang fitur nonlinier seperti Kernel Extreme Learning Machine (KELM) dan Support Vector Machine (SVM) pada representasi beku menawarkan batas pemisahan kelas yang kokoh tanpa pembaruan bobot backbone":
+- "Namun, pemetaan nonlinier seperti Kernel Extreme Learning Machine (KELM) dan SVM pada representasi beku menawarkan batas pemisahan kokoh tanpa pembaruan bobot backbone":
   - paper_v2/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
   - paper_v2/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
 
 paper_v2/02_related-works.md: paragraf 4:
-- "Penerapan Vision Transformer (ViT) dalam analisis biometrik wajah menghadirkan pemodelan visual global yang mengatasi bias induktif lokal CNN":
+- "Penerapan ViT dalam biometrik wajah menghadirkan pemodelan global yang mengatasi bias induktif lokal CNN":
   - paper_v2/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
 
 paper_v2/02_related-works.md: paragraf 6:
-- "Mekanisme atensi ini efektif diterapkan pada klasifikasi gender wajah, sementara arsitektur multi-aksis seperti MaxViT memperkaya hierarki representasi lewat atensi blok dan kisi":
+- "Atensi ini efektif diterapkan pada klasifikasi gender wajah, sementara MaxViT memperkaya hierarki representasi lewat atensi blok dan kisi":
   - paper_v2/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
   - paper_v2/references/2024_Ethnicity Classification Based on Facial Images using Deep Learning Approach.bib
 
@@ -92,10 +92,10 @@ paper_v2/02_related-works.md: paragraf 7:
   - paper_v2/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
 
 paper_v2/02_related-works.md: paragraf 8:
-- "Pembelajaran multi-tugas terbukti efektif dalam memetakan korelasi antara estimasi usia dan klasifikasi gender secara terpadu, sedangkan skema berbagi representasi paralel memfasilitasi ekstraksi simultan berbagai atribut afektif wajah":
+- "Pembelajaran multi-tugas terbukti efektif memetakan korelasi estimasi usia dan gender secara terpadu, sementara skema berbagi representasi memfasilitasi ekstraksi simultan berbagai atribut afektif":
   - paper_v2/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
   - paper_v2/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
-- "Lebih lanjut, eksplorasi penggabungan fitur laten berbasis Vision Transformer memperlihatkan keunggulan integrasi ganda domain biometrik wajah dan ekspresi emosi, serta perpaduan fitur biometrik dengan estimasi usia biologis":
+- "Selanjutnya, integrasi fitur laten berbasis ViT membuktikan keunggulan penggabungan domain biometrik dengan ekspresi emosi serta usia biologis":
   - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
 

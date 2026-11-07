@@ -30,6 +30,17 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+audit paper_v2/02_related-works.md:
+- perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah
+- audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit
+- audit apakah sudah sesuai dengan paper_v2/references.txt dan paper_v2/06_references.md untuk penomoran referensinya dan kesesuaian sitasi/klaim nya:
+  * bisa didelegasikan ke subagent untuk audit
+  * bisa didelegasikan ke beberapa subagent jika memang dibutuhkan
+  * berikan instruksi yg jelas ke subagent
+- update juga paper_outline_v1.1.md jika dibutuhkan
+- langsung juga update paper_latex_id_v2
+- jangan lupa buat commit dan push setelah selesai
+
 oh iya, pada paper_v2/acronyms.txt hapus bagian abstrak, karena abstrak itu tidak dihitung, mulai diperhatikan itu ketika introduction
 
 perbaiki paper_v2/01_introduction.md:
