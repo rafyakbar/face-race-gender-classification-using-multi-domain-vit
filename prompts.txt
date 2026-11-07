@@ -28,6 +28,33 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang tolong sesuaikan paper_v2/ dengan paper_outline_v1.1.md, perhatikan:
+- rules/latex_rules.txt
+- rules/IEEE_citation_guidelines.md
+- paper_v2/acronyms.txt
+- jika mengubah kalimat maka yg ada dalam paper_v2/references.txt juga harus diubah
+- urutan dalam paper_v2/06_references.md harus diperhatikan
+- harus teliti mengenai target kata setiap paragraf
+- delegasikan ke banyak subagent
+- setiap section/subsection harus dikerjakan oleh 1 subagent agar hasilnya optimal, maksud saya adalah:
+  * 00_abstract.md => subagent A
+  * 01_introduction.md => subagent B
+  * 02_related-works.md => subagent C
+  * 03_materials-and-methods_0-overview.md => subagent D
+  * dan seterusnya
+  nama file juga harus sesuai dengan section/subsection yg ada pada paper_outline_v1.1.md
+- berikan instruksi yg jelas ke subagent dan harus hati-hati agar antar subagent tidak edit file yg sama di waktu yg sama
+- jika semuanya selesai, maka delegasikan banyak subagent untuk audit kesesuaian antara paper_outline_v1.1.md dengan paper_v2/
+kerjakan dengan sangat amat teliti. sebelum dikerjakan apakah ada yg ingin dikonfirmasi atau ditanyakan?
+
+maksud saya adalah:
+- 00_abstract.md => subagent A
+- 01_introduction.md => subagent B
+- 02_related-works.md => subagent C
+- 03_materials-and-methods_0-overview.md => subagent D
+- dan seterusnya
+nama file juga harus sesuai dengan section/subsection yg ada pada paper_outline_v1.1.md
+
 folder paper/ sudah rename ke paper_v1/ kemudian saya copy ke dalam paper_v2. tolong perbarui file-file pendukung seperti readme dll. lakukan dengan teliti!
 
 perbaiki paper_outline_v1.1.md:

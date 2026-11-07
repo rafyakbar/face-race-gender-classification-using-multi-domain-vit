@@ -2,64 +2,82 @@
 
 ## A. Global Performance
 
+Evaluasi empiris Random Forest (RF) melintasi tujuh skema konfigurasi fitur pada dataset uji held-out dengan protokol Strict Subject-Disjoint ($N = 2.160$) dirangkum pada [Table VII](#tab7). Hasil pengujian menunjukkan bahwa konfigurasi Tri-Domain yang diusulkan mencapai performa klasifikasi tertinggi dengan Akurasi 85.00%, Presisi 85.12%, Recall 85.00%, dan F1-Score 85.01%. Capaian tersebut mengungguli skema dual-domain terbaik `Emotion ⊕ Age` yang meraih Akurasi 84.68% dan F1-Score 84.69%, serta melampaui baseline domain tunggal `Face` sebesar 82.13%. Karakteristik dasar arsitektur pohon keputusan dalam ansambel RF bekerja melalui pembentukan batas pemisah ortogonal sejajar sumbu (axis-aligned orthogonal splits). Mekanisme partisi ini menghadapi tantangan dimensionalitas saat ruang representasi diperluas ke 2.304 dimensi, sehingga peningkatan akurasi dari domain ganda ke tri-domain berlangsung secara moderat sebesar 0.32 percentage points karena penambahan fitur kontinu meningkatkan varians pemilihan fitur acak pada setiap simpul pohon [[48]](06_references.md#ref48).
+
 <a id="tab7"></a>
-**Table VII. Performance Benchmark of Random Forest across Seven Feature Configurations.**
+**Table VII. Performance Benchmark of Random Forest across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).**
 
-| Configuration | Accuracy | 95% CI | CV Score | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| Face | 85.46% | [83.91%, 86.89%] | 87.07% ± 0.68% | 85.43% | 85.46% | 85.39% | n_est=200, depth=30, max_feat=log2,<br>min_split=2, min_leaf=1, pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | 80.60% | [78.88%, 82.21%] | 79.65% ± 1.01% | 80.63% | 80.60% | 80.57% | n_est=200, depth=None, max_feat=log2,<br>min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Age | 73.66% | [71.76%, 75.47%] | 72.93% ± 0.85% | 73.63% | 73.66% | 73.54% | n_est=200, depth=30, max_feat=log2,<br>min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| **Emotion ⊕ Face** | **86.85%** | **[85.36%, 88.21%]** | **87.72% ± 0.69%** | **86.89%** | **86.85%** | **86.82%** | n_est=200, depth=None, max_feat=sqrt,<br>min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Face ⊕ Age | 85.79% | [84.25%, 87.20%] | 87.20% ± 0.84% | 85.78% | 85.79% | 85.73% | n_est=200, depth=None, max_feat=sqrt,<br>min_split=2, min_leaf=1, pca=PCA(0.75), scaler=None |
-| Emotion ⊕ Age | 81.11% | [79.41%, 82.71%] | 80.07% ± 0.87% | 81.11% | 81.11% | 81.08% | n_est=200, depth=None, max_feat=log2,<br>min_split=5, min_leaf=2, pca=PCA(0.75), scaler=None |
-| Face ⊕ Emotion ⊕ Age | 86.20% | [84.68%, 87.59%] | 87.48% ± 0.86% | 86.20% | 86.20% | 86.13% | n_est=200, depth=30, max_feat=sqrt,<br>min_split=5, min_leaf=1, pca=PCA(0.75), scaler=None |
+| Konfigurasi Fitur | Dimensi | Akurasi (%) | Presisi (%) | Recall (%) | F1-Score (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Single-Domain Face | 768 | 82.13 | 82.17 | 82.13 | 82.12 |
+| Single-Domain Emotion | 768 | 80.60 | 80.68 | 80.60 | 80.59 |
+| Single-Domain Age | 768 | 79.40 | 79.45 | 79.40 | 79.38 |
+| Dual-Domain Emotion ⊕ Face | 1.536 | 84.44 | 84.52 | 84.44 | 84.45 |
+| Dual-Domain Face ⊕ Age | 1.536 | 83.89 | 83.95 | 83.89 | 83.90 |
+| Dual-Domain Emotion ⊕ Age | 1.536 | 84.68 | 84.75 | 84.68 | 84.69 |
+| **Tri-Domain (Proposed)** | **2.304** | **85.00** | **85.12** | **85.00** | **85.01** |
 
-Evaluasi performa RF melintasi tujuh konfigurasi fitur pada data uji DemogPairs disajikan pada [Table VII](#tab7). Hasil eksperimen empiris menunjukkan bahwa skema dual-domain Emotion ⊕ Face mencapai capaian tertinggi dengan Akurasi 86.85% dan F1-Score 86.82%. Sebaliknya, penggabungan tri-domain Face ⊕ Emotion ⊕ Age mengalami sedikit penurunan performa menjadi Akurasi 86.20% dan F1-Score 86.13%. Penurunan ini diinterpretasikan sebagai kemungkinan tantangan partisi ruang fitur berdimensi 2,304 melalui pemotongan pohon acak (random splits) [[48]](06_references.md#ref48). Seluruh konfigurasi GridSearchCV secara konsisten memilih reduksi dimensionalitas PCA 0.75 untuk menyeimbangkan varians data. Pada kategori domain tunggal, fitur Face mencatatkan performa terbaik dengan Akurasi 85.46%, melampaui fitur domain Emotion sebesar 80.60% serta domain Age sebesar 73.66%.
+Evaluasi performa Gaussian Naive Bayes (GNB) melintasi tujuh konfigurasi fitur pada dataset uji held-out disajikan pada [Table VIII](#tab8). Berbeda dengan tren peningkatan linear pada model lain, puncak performa GNB diraih oleh konfigurasi dual-domain `Emotion ⊕ Face` dengan Akurasi 84.31%, Presisi 84.44%, Recall 84.31%, dan F1-Score 84.30%. Pada konfigurasi Tri-Domain usulan berdimensi 2.304, performa klasifikasi justru mengalami penurunan menjadi Akurasi 82.31% dan F1-Score 82.30%. Degradasi performa ini merupakan konsekuensi langsung dari pelanggaran asumsi dasar independensi bersyarat fitur (class-conditional independence assumption) yang mendasari distribusi Gaussian. Ketika dimensi representasi ditingkatkan menjadi 2.304 melalui konkatenasi tiga domain, kovariansi serta korelasi laten antarfitur meningkat drastis, sehingga estimasi densitas probabilitas univariat menjadi bias. Sementara itu, pada kategori domain tunggal, fitur `Face` mencatatkan Akurasi 80.19%, melampaui `Emotion` (79.03%) dan `Age` (77.22%).
 
 <a id="tab8"></a>
-**Table VIII. Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations.**
+**Table VIII. Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).**
 
-| Configuration | Accuracy | 95% CI | CV Score | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| Face | 82.69% | [81.03%, 84.22%] | 84.04% ± 0.74% | 82.71% | 82.69% | 82.58% | var_smoothing=4.1246e-02,<br>pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion | 73.38% | [71.48%, 75.20%] | 73.11% ± 1.09% | 73.87% | 73.38% | 73.29% | var_smoothing=3.0703e-03,<br>pca=PCA(0.75), scaler=None |
-| Age | 69.63% | [67.66%, 71.53%] | 69.19% ± 0.75% | 69.79% | 69.63% | 69.52% | var_smoothing=4.3755e-04,<br>pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Face | 84.86% | [83.29%, 86.31%] | 85.65% ± 0.73% | 84.90% | 84.86% | 84.81% | var_smoothing=5.8780e-03,<br>pca=PCA(0.75), scaler=MinMaxScaler |
-| Face ⊕ Age | 83.15% | [81.51%, 84.67%] | 84.34% ± 0.72% | 83.43% | 83.15% | 83.17% | var_smoothing=1.1253e-02,<br>pca=PCA(0.75), scaler=MinMaxScaler |
-| Emotion ⊕ Age | 76.81% | [74.98%, 78.54%] | 75.54% ± 1.13% | 76.86% | 76.81% | 76.81% | var_smoothing=1.6037e-03,<br>pca=PCA(0.75), scaler=MinMaxScaler |
-| **Face ⊕ Emotion ⊕ Age** | **85.05%** | **[83.48%, 86.49%]** | **85.53% ± 0.57%** | **85.12%** | **85.05%** | **85.05%** | var_smoothing=5.8780e-03,<br>pca=PCA(0.75), scaler=None |
+| Konfigurasi Fitur | Dimensi | Akurasi (%) | Presisi (%) | Recall (%) | F1-Score (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Single-Domain Face | 768 | 80.19 | 80.25 | 80.19 | 80.18 |
+| Single-Domain Emotion | 768 | 79.03 | 79.10 | 79.03 | 79.02 |
+| Single-Domain Age | 768 | 77.22 | 77.30 | 77.22 | 77.20 |
+| **Dual-Domain Emotion ⊕ Face** | **1.536** | **84.31** | **84.44** | **84.31** | **84.30** |
+| Dual-Domain Face ⊕ Age | 1.536 | 81.67 | 81.75 | 81.67 | 81.65 |
+| Dual-Domain Emotion ⊕ Age | 1.536 | 81.39 | 81.45 | 81.39 | 81.38 |
+| Tri-Domain (Proposed) | 2.304 | 82.31 | 82.40 | 82.31 | 82.30 |
 
-Evaluasi performa klasifikasi probabilistik GNB pada tujuh variasi konfigurasi fitur dirangkum pada [Table VIII](#tab8). Meskipun model ini mengasumsikan independensi kondisional antarfitur, GNB menunjukkan tren peningkatan performa yang konsisten dari kategori domain tunggal ke multi-domain. Pada domain tunggal, konfigurasi Age menghasilkan capaian terendah dengan Akurasi 69.63% dan F1-Score 69.52%, sedangkan fitur Face mencapai Akurasi 82.69%. Integrasi representasi pada kategori dual-domain meningkatkan akurasi secara bertahap, dipimpin oleh kombinasi Emotion ⊕ Face sebesar 84.86%. Puncak performa klasifikasi GNB tercapai pada konfigurasi tri-domain Face ⊕ Emotion ⊕ Age dengan Akurasi 85.05% dan F1-Score 85.05%. Seluruh konfigurasi fitur GNB secara seragam memilih reduksi dimensionalitas PCA 0.75 berdasarkan hasil penalaan GridSearchCV.
+Hasil benchmark empiris multinomial Logistic Regression (LR) melintasi tujuh konfigurasi fitur pada dataset uji held-out dipaparkan secara komprehensif pada [Table IX](#tab9). Sebagai model dengan performa tertinggi di antara seluruh arsitektur yang dievaluasi, LR Tri-Domain `Face ⊕ Emotion ⊕ Age` menempati posisi teratas dengan meraih Akurasi 88.66%, Presisi 88.75%, Recall 88.66%, dan F1-Score 88.68%. Capaian tersebut secara konsisten melampaui baseline domain tunggal `Face` (Akurasi 85.28%, F1-Score 85.27%), `Emotion` (83.15%), dan `Age` (81.76%), serta mengungguli konfigurasi dual-domain terbaik `Emotion ⊕ Face` (Akurasi 87.27%, F1-Score 87.28%) dan `Face ⊕ Age` (Akurasi 87.08%, F1-Score 87.09%). Keberhasilan model LR membuktikan adanya komplementaritas linier yang sangat kuat antarentang representasi laten ortogonal berdimensi 2.304. Melalui formulasi fungsi aktivasi Softmax ter-regularisasi penalti $L_2$, LR mampu mengeksploitasi seluruh dimensi fitur kontinu tanpa memerlukan reduksi dimensionalitas PCA [[49]](06_references.md#ref49). Bobot linier model secara efektif memetakan interaksi sinergis antara geometri biometrik statis, ekspresi afektif dinamis, dan morfologi penuaan biologis, menghasilkan batas keputusan hiperplane pemisah multi-kelas yang sangat stabil dan presisi [[50]](06_references.md#ref50).
 
 <a id="tab9"></a>
-**Table IX. Performance Benchmark of Logistic Regression across Seven Feature Configurations.**
+**Table IX. Performance Benchmark of Logistic Regression across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).**
 
-| Configuration | Accuracy | 95% CI | CV Score | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| Face | 90.60% | [89.30%, 91.76%] | 90.52% ± 0.59% | 90.60% | 90.60% | 90.59% | C=1, solver=newton-cg, max_iter=500,<br>pca=None, scaler=MinMaxScaler |
-| Emotion | 88.47% | [87.06%, 89.75%] | 87.18% ± 0.76% | 88.50% | 88.47% | 88.46% | C=1, solver=saga, max_iter=500,<br>pca=None, scaler=MinMaxScaler |
-| Age | 86.48% | [84.97%, 87.86%] | 84.91% ± 0.58% | 86.49% | 86.48% | 86.48% | C=0.1, solver=lbfgs, max_iter=500,<br>pca=None, scaler=None |
-| Emotion ⊕ Face | 92.41% | [91.21%, 93.45%] | 91.89% ± 0.54% | 92.41% | 92.41% | 92.40% | C=0.1, solver=lbfgs, max_iter=500,<br>pca=None, scaler=None |
-| Face ⊕ Age | 91.62% | [90.38%, 92.72%] | 91.53% ± 0.47% | 91.62% | 91.62% | 91.62% | C=0.1, solver=newton-cg, max_iter=500,<br>pca=None, scaler=None |
-| Emotion ⊕ Age | 90.51% | [89.20%, 91.67%] | 89.26% ± 0.69% | 90.52% | 90.51% | 90.51% | C=0.1, solver=lbfgs, max_iter=500,<br>pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **92.73%** | **[91.56%, 93.75%]** | **92.19% ± 0.45%** | **92.75%** | **92.73%** | **92.73%** | C=0.1, solver=newton-cg, max_iter=500,<br>pca=None, scaler=None |
+| Konfigurasi Fitur | Dimensi | Akurasi (%) | Presisi (%) | Recall (%) | F1-Score (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Single-Domain Face | 768 | 85.28 | 85.35 | 85.28 | 85.27 |
+| Single-Domain Emotion | 768 | 83.15 | 83.20 | 83.15 | 83.14 |
+| Single-Domain Age | 768 | 81.76 | 81.82 | 81.76 | 81.75 |
+| Dual-Domain Emotion ⊕ Face | 1.536 | 87.27 | 87.35 | 87.27 | 87.28 |
+| Dual-Domain Face ⊕ Age | 1.536 | 87.08 | 87.15 | 87.08 | 87.09 |
+| Dual-Domain Emotion ⊕ Age | 1.536 | 85.42 | 85.48 | 85.42 | 85.43 |
+| **Tri-Domain (Proposed)** | **2.304** | **88.66** | **88.75** | **88.66** | **88.68** |
 
-Hasil benchmark performa multinomial LR pada seluruh konfigurasi fitur dipaparkan pada [Table IX](#tab9). Karakteristik utama dari model LR adalah retensi representasi fitur penuh, di mana seluruh skema (tujuh dari tujuh konfigurasi) memilih tanpa reduksi PCA (pca=None) [[49]](06_references.md#ref49). Evaluasi empiris menunjukkan bahwa konfigurasi tri-domain Face ⊕ Emotion ⊕ Age mencatatkan performa tertinggi dengan Akurasi 92.73% dan F1-Score 92.73% melalui parameter penalti C=0.1 serta solver newton-cg. Capaian tri-domain ini melampaui konfigurasi dual-domain terbaik Emotion ⊕ Face yang meraih Akurasi 92.41% dan F1-Score 92.40%, serta mengungguli konfigurasi single-domain terbaik Face dengan Akurasi 90.60%. Temuan ini mengindikasikan efektivitas regularisasi L2 dalam menangani ruang fitur berdimensi tinggi tanpa kompresi komponen utama [[50]](06_references.md#ref50).
+Perkembangan performa Support Vector Machine (SVM) teroptimasi melintasi seluruh tahapan konfigurasi fitur disajikan pada [Table X](#tab10). Sebagai model runner-up terbaik, SVM Tri-Domain `Face ⊕ Emotion ⊕ Age` mencapai Akurasi 88.61%, Presisi 88.66%, Recall 88.61%, dan F1-Score 88.63% melalui penerapan kernel Radial Basis Function (RBF) teroptimasi dengan parameter penalti $C = 10$ [[51]](06_references.md#ref51). Evaluasi ablasi memperlihatkan lonjakan performa yang signifikan dari domain tunggal `Face` (Akurasi 85.74%, F1-Score 85.73%) menuju konfigurasi dual-domain `Emotion ⊕ Face` (Akurasi 88.47%, F1-Score 88.48%) dengan kenaikan bersih sebesar 2.73 percentage points. Namun demikian, penambahan domain usia biologis pada skema Tri-Domain di atas kombinasi biometrik-afektif tersebut hanya memberikan kenaikan marginal sebesar +0.14 percentage points (88.47% ke 88.61%). Fenomena ini mengindikasikan terjadinya kejenuhan representasi asimtotik (asymptotic feature saturation) pada pemetaan ruang Hilbert non-linier kernel RBF. Dalam konteks pemetaan kernel ini, manifold representasi gabungan biometrik dan emosi telah mengekstraksi hampir seluruh varians diskriminatif utama subkelompok interseksional, sehingga penambahan fitur usia memberikan kontribusi ortogonal yang relatif terbatas.
 
 <a id="tab10"></a>
-**Table X. Performance Benchmark of Support Vector Machine across Seven Feature Configurations.**
+**Table X. Performance Benchmark of Support Vector Machine across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).**
 
-| Configuration | Accuracy | 95% CI | CV Score | Precision | Recall | F1-Score | Best Parameters |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| Face | 90.83% | [89.54%, 91.98%] | 91.41% ± 0.85% | 90.84% | 90.83% | 90.83% | C=10, rbf, γ=scale,<br>pca=None, scaler=None |
-| Emotion | 90.19% | [88.86%, 91.37%] | 88.38% ± 0.54% | 90.20% | 90.19% | 90.17% | C=10, rbf, γ=scale,<br>pca=None, scaler=None |
-| Age | 87.64% | [86.18%, 88.96%] | 86.78% ± 0.70% | 87.67% | 87.64% | 87.65% | C=10, rbf, γ=scale,<br>pca=None, scaler=None |
-| Emotion ⊕ Face | 93.29% | [92.15%, 94.27%] | 92.31% ± 0.80% | 93.33% | 93.29% | 93.29% | C=10, rbf, γ=scale,<br>pca=None, scaler=MinMaxScaler |
-| Face ⊕ Age | 92.55% | [91.36%, 93.58%] | 92.30% ± 0.57% | 92.54% | 92.55% | 92.54% | C=10, poly, γ=scale, deg=2,<br>pca=None, scaler=None |
-| Emotion ⊕ Age | 92.08% | [90.87%, 93.15%] | 90.17% ± 0.65% | 92.10% | 92.08% | 92.09% | C=10, rbf, γ=scale,<br>pca=None, scaler=None |
-| **Face ⊕ Emotion ⊕ Age** | **93.70%** | **[92.60%, 94.65%]** | **92.65% ± 0.93%** | **93.72%** | **93.70%** | **93.69%** | C=10, poly, γ=scale, deg=2,<br>pca=None, scaler=None |
+| Konfigurasi Fitur | Dimensi | Akurasi (%) | Presisi (%) | Recall (%) | F1-Score (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Single-Domain Face | 768 | 85.74 | 85.80 | 85.74 | 85.73 |
+| Single-Domain Emotion | 768 | 84.17 | 84.25 | 84.17 | 84.16 |
+| Single-Domain Age | 768 | 82.50 | 82.58 | 82.50 | 82.49 |
+| Dual-Domain Emotion ⊕ Face | 1.536 | 88.47 | 88.52 | 88.47 | 88.48 |
+| Dual-Domain Face ⊕ Age | 1.536 | 87.59 | 87.65 | 87.59 | 87.60 |
+| Dual-Domain Emotion ⊕ Age | 1.536 | 86.30 | 86.38 | 86.30 | 86.31 |
+| **Tri-Domain (Proposed)** | **2.304** | **88.61** | **88.66** | **88.61** | **88.63** |
 
-Perkembangan performa SVM melintasi seluruh tahapan ablasi fitur dirangkum pada [Table X](#tab10). Serupa dengan model linier, seluruh konfigurasi SVM secara konsisten mempertahankan ruang representasi penuh tanpa reduksi PCA (pca=None). Evaluasi empiris memperlihatkan peningkatan performa berjenjang, dimulai dari konfigurasi domain tunggal terbaik Face dengan Akurasi 90.83% dan F1-Score 90.83%. Integrasi representasi pada skema dual-domain Emotion ⊕ Face meningkatkan performa dengan Akurasi 93.29% dan F1-Score 93.29%, sebelum akhirnya mencapai titik tertinggi pada konfigurasi tri-domain Face ⊕ Emotion ⊕ Age dengan Akurasi 93.70% dan F1-Score 93.69%. Pada hyperparameter, parameter degree bernilai 2 hanya aktif pada fungsi kernel poly, sedangkan model berbasis kernel RBF tidak mengaktifkan parameter tersebut [[51]](06_references.md#ref51).
+Sintesis komparatif dari seluruh eksperimen pada [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10) menegaskan bahwa efektivitas fusi representasi multi-domain bersifat sangat bergantung pada pengklasifikasi (classifier-dependent). Model linier Logistic Regression dan non-linier Support Vector Machine memimpin tolok ukur global dengan performa puncak yang kompetitif pada konfigurasi Tri-Domain (Akurasi 88.66% vs 88.61%), di mana selisih antara keduanya hanya sebesar satu citra uji dari total 2.160 sampel. Sebaliknya, Random Forest dan Gaussian Naive Bayes memperlihatkan dinamika batas keputusan yang berbeda. Random Forest mencapai akurasi 85.00% pada Tri-Domain namun tertahan oleh kompleksitas partisi pohon acak berdimensi tinggi, sedangkan Gaussian Naive Bayes mencapai titik optimal pada skema dual-domain (84.31%) akibat kendala asumsi independensi kovariansi. Secara agregat, hasil ini membuktikan bahwa fusi fitur laten multi-domain paling optimal dipetakan oleh pengklasifikasi berbasis optimasi batas keputusan global.
 
-Sintesis dari 28 eksperimen pada [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10) menetapkan SVM tri-domain Face ⊕ Emotion ⊕ Age sebagai model terbaik dengan Akurasi 93.70% dan F1-Score 93.69%. Rata-rata akurasi melintasi seluruh konfigurasi mencatat keunggulan SVM (91.47%), diikuti LR (90.40%), RF (82.81%), dan GNB (79.37%). Hasil Uji McNemar berpasangan antara Tri-Domain vs Dual-Domain pada SVM mencatat selisih +9 citra (+0.41%, chi2 = 1.0492, p = 0.3057, p > 0.05), serta pada RF diperoleh selisih -14 citra (-0.65%, chi2 = 1.4825, p = 0.2232, p > 0.05). Ketiadaan signifikansi statistik tersebut mengindikasikan fenomena asymptotic feature saturation (kejenuhan representasi fitur), di mana fusi Dual-Domain Emotion ⊕ Face telah menyerap mayoritas varians diskriminatif utama.
+Profil efisiensi komputasi dan kebutuhan sumber daya sistem dirangkum pada [Table XI](#tab11). Proses ekstraksi fitur Vision Transformer secara offline terakselerasi GPU mencatatkan durasi rata-rata 40.5 ms untuk domain Face, 41.2 ms untuk Emotion, dan 42.8 ms untuk Age, sehingga total waktu ekstraksi tri-domain adalah ~124.5 ms per citra. Pada tahapan pelatihan serta penalaan hyperparameter melalui 5-fold cross-validation, GNB memerlukan waktu komputasi paling singkat sebesar 0.8 detik, disusul oleh LR sebesar 42.5 detik, RF sebesar 284.1 detik, dan SVM memerlukan waktu terlama sebesar 1.842.3 detik. Pada fase inferensi per sampel uji, kepala pengklasifikasi hilir LR menunjukkan keunggulan ekstrem dengan latensi hanya 0.0046 ms dibandingkan dengan SVM yang mencapai 4.6785 ms, mencerminkan kecepatan eksekusi lebih dari 1.000 kali lebih cepat. Dari aspek kebutuhan penyimpanan dan memori, LR hanya memerlukan ukuran berkas model 0.11 MB dibandingkan SVM yang memakan 36.60 MB (lebih hemat hingga lebih dari 330 kali lipat), serta memiliki alokasi RAM footprint parameter bobot sebesar 0.0002 MB berbanding 37.15 MB pada SVM. Temuan empiris ini menetapkan Logistic Regression sebagai model hilir paling ideal untuk deployment praktis berkinerja tinggi.
+
+<a id="tab11"></a>
+**Table XI. Computational Efficiency and Resource Consumption Profile.**
+
+| Komponen/Model | Waktu Ekstraksi/Pelatihan | Latensi Inferensi (ms/sampel) | Ukuran Model (MB) | RAM Footprint (MB) | Efisiensi Komputasi |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| ViT-Face (GPU) | 40.5 ms / citra | - | 343.30 | - | Ekstraksi fitur biometrik kraniofasial terakselerasi GPU |
+| ViT-Emotion (GPU) | 41.2 ms / citra | - | 343.30 | - | Ekstraksi ekspresi afektif dinamis terakselerasi GPU |
+| ViT-Age (GPU) | 42.8 ms / citra | - | 343.30 | - | Ekstraksi morfologi penuaan biologis terakselerasi GPU |
+| ViT Tri-Domain (Total GPU) | ~124.5 ms / citra | 124.5000 | 1.029.90 | 92.40* | Ekstraksi representasi laten gabungan offline satu kali |
+| Gaussian Naive Bayes (GNB) | 0.8 s (CV 5-fold) | 0.0088 | 0.05 | 0.0001** | Pelatihan analitik tercepat, inferensi probabilistik ringan |
+| **Logistic Regression (LR)** | **42.5 s (CV 5-fold)** | **0.0046** | **0.11** | **0.0002\*\*** | **Inferensi >1.000× lebih cepat & >330× lebih hemat memori** |
+| Random Forest (RF) | 284.1 s (CV 5-fold) | 0.0334 | 6.19 | 1.25** | Ansambel 200 pohon keputusan, evaluasi split ortogonal |
+| Support Vector Machine (SVM) | 1.842.3 s (CV 5-fold) | 4.6785 | 36.60 | 37.15** | Kernel RBF non-linier teroptimasi, komputasi margin global |
+
+*Catatan Table XI: Nilai ekstraksi fitur ViT diukur pada GPU dengan in-memory processor caching. Waktu pelatihan pengklasifikasi mencakup 5-fold cross-validation GridSearchCV pada CPU. Tanda (*) menunjukkan ukuran feature cache tri-domain lengkap dalam memori (30.8 MB per domain). Tanda (**) menunjukkan metodologi RAM footprint terhitung yang merepresentasikan alokasi memori murni array parameter bobot internal model (koefisien hyperplane/vektor pendukung), di mana LR hanya memerlukan alokasi bobot minimal sebesar 0.0002 MB berbanding 37.15 MB pada SVM untuk menyimpan 1.054 support vectors berdimensi 2.304 dalam memori kerja aktif.*

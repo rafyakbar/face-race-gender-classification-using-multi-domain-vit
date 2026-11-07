@@ -1,48 +1,45 @@
 ## B. Vision Transformer
 
 <a id="fig3"></a>
-**Figure 3. Architecture of the ViT Backbone and Patch Projection.**
+**Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
 
-![Figure 3. Architecture of the ViT Backbone and Patch Projection.](images/vit.png)
+![Figure 3. Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit.png)
 
-Arsitektur ekstraksi representasi visual penelitian ini mengadopsi ViT-Base sebagaimana diilustrasikan pada [Figure 3](#fig3) [[26]](06_references.md#ref26). Citra wajah masukan berukuran 224 × 224 piksel dengan 3 saluran warna dibagi menjadi 196 patch spasial non-overlapping $\mathbf{x}_p^i$ berukuran 16 × 16 piksel [[27]](06_references.md#ref27). Setiap patch diproyeksikan secara linier melalui matriks $\mathbf{E}$ ke ruang laten berdimensi $D = 768$, lalu dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}}$ dan embedding posisi $\mathbf{E}_{\text{pos}}$ sesuai [(1)](#eq1) [[27]](06_references.md#ref27). Vektor sekuens token awal $\mathbf{z}_0$ dialirkan ke tumpukan 12 layer transformer encoder identik. Setiap layer encoder $\ell$ memproses masukan $\mathbf{z}_{\ell-1}$ menjadi representasi antara $\mathbf{z}'_\ell$ melalui mekanisme MHSA setelah operasi Layer Normalization (LN) sesuai [(2)](#eq2), yang dilanjutkan menuju representasi luaran $\mathbf{z}_\ell$ melalui blok Multi-Layer Perceptron (MLP) dua lapis beraktivasi Gaussian Error Linear Unit (GeLU) berdasarkan [(3)](#eq3) [[28]](06_references.md#ref28). Mekanisme self-attention memungkinkan pemodelan hubungan global antarpatch wajah tanpa ketergantungan pada receptive field lokal seperti pada operasi konvolusi [[29]](06_references.md#ref29).
-
-<a id="eq1"></a>
-$$
-\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^{196}\mathbf{E}] + \mathbf{E}_{\text{pos}} \tag{1}
-$$
-
-<a id="eq2"></a>
-$$
-\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1} \tag{2}
-$$
-
-<a id="eq3"></a>
-$$
-\mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{3}
-$$
-
-<a id="tab2"></a>
-**Table II. Multi-Domain Feature Fusion and Ablation Configurations.**
-
-| # | Configuration | Domain Category | Dimension |
-|:---:|---|:---:|:---:|
-| 1 | `Face` | Single-Domain | 768 |
-| 2 | `Emotion` | Single-Domain | 768 |
-| 3 | `Age` | Single-Domain | 768 |
-| 4 | `Emotion ⊕ Face` | Dual-Domain | 1,536 |
-| 5 | `Face ⊕ Age` | Dual-Domain | 1,536 |
-| 6 | `Emotion ⊕ Age` | Dual-Domain | 1,536 |
-| 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | 2,304 |
-
-Untuk mempertahankan efisiensi komputasi dan mencegah variabilitas pelatihan ulang, ketiga model backbone ViT dibekukan (frozen) sebagai penyedia task-associated representations secara offline. Model ViT-Face (`skutaada/VIT-VGGFace`) menangkap representasi terkait geometri biometrik wajah, ViT-Emotion (`dima806/facial_emotions_image_detection`) menghasilkan representasi terkait ekspresi wajah, dan ViT-Age (`dima806/facial_age_image_detection`) mengekstraksi representasi terkait estimasi usia wajah. Dari setiap model domain, vektor fitur $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ diekstraksi dari representasi token $[\text{CLS}]$ pada layer encoder terakhir $L$ ($\mathbf{z}_L^0$) setelah operasi LN sesuai [(4)](#eq4). Ketiga representasi laten domain tunggal tersebut digabungkan menjadi vektor fusi tri-domain $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ melalui operasi konkatenasi fitur ($\oplus$) dari vektor $\mathbf{f}_{\text{face}}$, $\mathbf{f}_{\text{emotion}}$, dan $\mathbf{f}_{\text{age}}$ sebagaimana dirumuskan pada [(5)](#eq5). Eksplorasi sistematis mencakup tujuh skema ablasi fitur, yang meliputi tiga konfigurasi domain tunggal berdimensi 768, tiga konfigurasi domain ganda berdimensi 1,536, serta satu konfigurasi tri-domain berdimensi 2,304 seperti dirangkum pada [Table II](#tab2).
-
-<a id="eq4"></a>
-$$
-\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{4}
-$$
+Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model Vision Transformer baku rancangan Dosovitskiy et al. [[26]](06_references.md#ref26) sebagaimana diilustrasikan pada [Figure 3](#fig3). Setiap citra wajah masukan beresolusi 224 × 224 piksel dengan $C = 3$ kanal warna dibagi menjadi $N = 196$ patch spasial non-overlapping berdimensi $P \times P$ dengan $P = 16$ [[27]](06_references.md#ref27). Setiap patch diratakan menjadi $\mathbf{x}_p \in \mathbb{R}^{P^2 \cdot C}$ lalu diproyeksikan secara linier melalui matriks $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$ ke ruang laten berdimensi $D = 768$. Vektor patch tersebut dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan embedding posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai perumusan [(5)](#eq5) [[27]](06_references.md#ref27). Sekuens vektor token awal $\mathbf{z}_0$ selanjutnya diumpankan ke tumpukan $L = 12$ lapisan transformer encoder identik. Pada setiap lapisan encoder $\ell$ ($\ell = 1, \dots, L$), representasi fitur diproses melalui Multi-Head Self-Attention (MHSA) setelah operasi Layer Normalization (LN), lalu dialirkan menuju Multi-Layer Perceptron (MLP) dua lapis dengan fungsi aktivasi Gaussian Error Linear Unit (GeLU) berdasarkan [(6)](#eq6) [[28]](06_references.md#ref28). Mekanisme self-attention memungkinkan pemodelan relasi spasial global antarpatch wajah tanpa batasan receptive field lokal [[29]](06_references.md#ref29).
 
 <a id="eq5"></a>
 $$
-\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{5}
+\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}} \tag{5}
 $$
+
+<a id="eq6"></a>
+$$
+\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}, \quad \mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{6}
+$$
+
+Untuk memperoleh representasi visual wajah yang komplementer, kerangka kerja ini memanfaatkan tiga model backbone ViT-Base pra-latih yang dibekukan (frozen weights) secara terpisah. Model pertama merupakan `ViT-Face` (`skutaada/VIT-VGGFace`) yang memetakan pola geometri kraniofasial statis berbasis korpus VGGFace2. Model kedua adalah `ViT-Emotion` (`dima806/facial_emotions_image_detection`) untuk mengekstraksi dinamika ekspresi afektif wajah berdasarkan fine-tuning korpus FER-2013. Model ketiga yaitu `ViT-Age` (`dima806/facial_age_image_detection`) yang memetakan penanda morfologi usia biologis subjek berbasis dataset UTKFace dan IMDB-WIKI. Seluruh model domain mengadopsi struktur ViT-Base/16 dengan dimensi tersembunyi 768 dan 12 lapisan encoder. Citra masukan diformat ke ruang warna RGB, disesuaikan ke resolusi 224 × 224 piksel, serta dinormalisasi secara seragam lewat parameter statistik $\mu = [0.5, 0.5, 0.5]$ dan $\sigma = [0.5, 0.5, 0.5]$. Ekstraksi fitur memanfaatkan in-memory processor caching tanpa pembaruan gradien (frozen weights) demi menjamin efisiensi komputasi dan reproduktibilitas representasi.
+
+Representasi fitur laten tingkat tinggi diekstraksi dari setiap model domain melalui aktivasi token $[\text{CLS}]$ pada lapisan encoder terakhir ($\ell = 12$). Vektor keluaran token kelas tersebut kemudian distandardisasi melalui operasi Layer Normalization akhir untuk menghasilkan representasi domain teranormalisasi $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ sesuai perumusan [(7)](#eq7), di mana $\mathbf{z}_{12}^0$ melambangkan representasi token pertama pada lapisan kedua belas yang diekstraksi tanpa perhitungan gradien. Selanjutnya, ketiga representasi domain tunggal digabungkan melalui operasi fusi konkatenasi langsung (direct sum) $\oplus$ menjadi vektor representasi gabungan tri-domain $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ berdasarkan formulasi [(8)](#eq8). Ruang representasi gabungan ini memadukan informasi biometrik kraniofasial $\mathbf{f}_{\text{face}}$, ekspresi emosional afektif $\mathbf{f}_{\text{emotion}}$, serta estimasi usia biologis $\mathbf{f}_{\text{age}}$ secara simultan. Eksplorasi empiris dilakukan melalui pengujian ablasi sistematis yang mencakup tujuh skema konfigurasi fitur, meliputi tiga konfigurasi domain tunggal berdimensi 768, tiga konfigurasi domain ganda berdimensi 1.536, dan satu konfigurasi tri-domain usulan berdimensi 2.304 sebagaimana disajikan pada [Table II](#tab2).
+
+<a id="eq7"></a>
+$$
+\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_{12}^0) \in \mathbb{R}^{768} \tag{7}
+$$
+
+<a id="eq8"></a>
+$$
+\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}
+$$
+
+<a id="tab2"></a>
+**Table II. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
+
+| # | Feature Scheme | Category | Input Source Domains | Feature Dimension |
+| :---: | :--- | :---: | :--- | :---: |
+| 1 | `Face` | Single-Domain | Static Craniofacial Biometrics (`skutaada/VIT-VGGFace`) | 768 |
+| 2 | `Emotion` | Single-Domain | Dynamic Affective Expressions (`dima806/facial_emotions_image_detection`) | 768 |
+| 3 | `Age` | Single-Domain | Biological Aging Morphology (`dima806/facial_age_image_detection`) | 768 |
+| 4 | `Emotion ⊕ Face` | Dual-Domain | Affective Dynamics + Craniofacial Biometrics | 1,536 |
+| 5 | `Face ⊕ Age` | Dual-Domain | Craniofacial Biometrics + Aging Morphology | 1,536 |
+| 6 | `Emotion ⊕ Age` | Dual-Domain | Affective Dynamics + Aging Morphology | 1,536 |
+| 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | Biometrics + Affective Dynamics + Aging Morphology | 2,304 |

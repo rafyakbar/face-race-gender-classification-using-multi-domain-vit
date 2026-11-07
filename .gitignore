@@ -138,6 +138,9 @@ experiment/code/images-*/
 *.tmp
 *.temp
 *.bak
+scratch/
+scratch_*
+
 
 # ==============================================================================
 # Upload Packages

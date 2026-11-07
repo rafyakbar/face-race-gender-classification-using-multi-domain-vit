@@ -1,23 +1,18 @@
 ## C. Intersectional Subgroup Performance
 
-<a id="tab11"></a>
-**Table XI. Subgroup-Level Performance for Tri-Domain Models.**
+Profil performa klasifikasi granular pada model terbaik Logistic Regression (LR) tri-domain Face ⊕ Emotion ⊕ Age dianalisis melintasi enam subkelompok demografis interseksional pada data uji subject-disjoint berukuran $N = 2.160$ citra (360 citra held-out per subkelompok) sebagaimana dirangkum pada [Table XIV](#tab14). Hasil evaluasi empiris menunjukkan bahwa model mencapai akurasi One-vs-Rest (OvR) rata-rata sebesar 96.26%, dengan rentang antara 95.88% pada White Females hingga 96.53% pada Black Males. Subkelompok Black Males mencatatkan sensitivitas klasifikasi tertinggi dengan Recall 92.50%, Presisi 87.17%, dan F1-Score 89.76%. Sebaliknya, subkelompok Black Females mencatatkan Recall terendah sebesar 84.44%, meskipun tetap mempertahankan Presisi tertinggi sebesar 90.48% serta F1-Score 87.36%. Pada kohort lainnya, subkelompok White Males meraih Recall 90.00%, Presisi 88.77%, dan F1-Score 89.38%, diikuti oleh Asian Males dengan Recall 89.17%, Presisi 89.42%, dan F1-Score 89.29%. Sementara itu, subkelompok White Females memperoleh Recall 88.06%, Presisi 87.57%, dan F1-Score 87.81%, sedangkan Asian Females mencatatkan Recall 87.78%, Presisi 89.04%, dan F1-Score 88.40%. Secara keseluruhan, seluruh subkelompok mencapai F1-Score di atas 87.00% dengan rata-rata agregat makro 88.68%, yang mengonfirmasi kestabilan representasi fitur tri-domain dalam memisahkan identitas demografis lintas kategori.
 
-| Classifier | Subgroup | Recall (TPR) | Precision | F1-Score | OvR Accuracy | FNR |
-|---|---|:---:|:---:|:---:|:---:|:---:|
-| **SVM (Tri)** | `White_Males` | 96.94% | 95.36% | 96.14% | 98.70% | 3.06% |
-| | `Black_Males` | 94.17% | 95.49% | 94.83% | 98.29% | 5.83% |
-| | `White_Females` | 94.72% | 92.41% | 93.55% | 97.82% | 5.28% |
-| | `Asian_Males` | 94.44% | 92.39% | 93.41% | 97.78% | 5.56% |
-| | `Asian_Females` | 92.50% | 92.50% | 92.50% | 97.50% | 7.50% |
-| | `Black_Females` | 89.44% | 94.15% | 91.74% | 97.31% | 10.56% |
-| **LR (Tri)** | `White_Males` | 96.11% | 95.05% | 95.58% | 98.52% | 3.89% |
-| | `Black_Males` | 93.06% | 95.71% | 94.37% | 98.15% | 6.94% |
-| | `Asian_Males` | 92.78% | 90.76% | 91.76% | 97.22% | 7.22% |
-| | `White_Females` | 92.22% | 91.21% | 91.71% | 97.22% | 7.78% |
-| | `Black_Females` | 91.11% | 92.13% | 91.62% | 97.22% | 8.89% |
-| | `Asian_Females` | 91.11% | 91.62% | 91.36% | 97.13% | 8.89% |
+<a id="tab14"></a>
+**Table XIV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
 
-Profil kinerja klasifikasi granular pada model terbaik SVM tri-domain Face ⊕ Emotion ⊕ Age dievaluasi berdasarkan metrik pada [Table XI](#tab11). Seluruh subkelompok mencapai F1-Score melampaui 91.00%, dari 91.74% pada Black Females hingga 96.14% pada White Males. Namun demikian, analisis keadilan formal mencatat kesenjangan Equal Opportunity Difference ($\Delta\text{TPR} = 7.50\%$, di mana TPR merepresentasikan True Positive Rate) akibat disparitas recall antara White Males (96.94%) dan Black Females (89.44% dengan False Negative Rate (FNR) 10.56%). Meskipun presisi Black Females tetap tinggi sebesar 94.15%, sensitivitas deteksi yang lebih rendah merefleksikan tantangan representasi fenotipik interseksional yang belum terhapus sepenuhnya. Pelaporan metrik FNR ini menyeimbangkan evaluasi Akurasi OvR (97.31% hingga 98.70%) yang rentan terdistorsi oleh dominansi rasio sampel negatif 5:1.
+| Subkelompok Demografis | Ukuran Sampel Uji ($N$) | Akurasi OvR (%) | Presisi (%) | Recall / TPR (%) | F1-Score (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Asian Females | 360 | 96.25 | 89.04 | 87.78 | 88.40 |
+| Asian Males | 360 | 96.48 | 89.42 | 89.17 | 89.29 |
+| Black Females | 360 | 95.97 | **90.48** | 84.44 | 87.36 |
+| Black Males | 360 | **96.53** | 87.17 | **92.50** | **89.76** |
+| White Females | 360 | 95.88 | 87.57 | 88.06 | 87.81 |
+| White Males | 360 | 96.44 | 88.77 | 90.00 | 89.38 |
+| **Rata-Rata Agregat** | **2.160** | **96.26** | **88.75** | **88.66** | **88.68** |
 
-Perbandingan profil kinerja subkelompok antara model SVM dan pengklasifikasi linier LR pada konfigurasi tri-domain disajikan pada [Table XI](#tab11). Model LR tri-domain memperlihatkan konsistensi performa tinggi dengan F1-Score melampaui 91.00% pada seluruh kelas demografis, merentang dari 91.36% pada Asian Females hingga 95.58% pada White Males. Evaluasi keadilan formal pada model LR menunjukkan kesenjangan Equal Opportunity Difference yang lebih rapat (Delta TPR = 5.00%), dengan recall White Males sebesar 96.11% berbanding 91.11% pada Asian Females dan Black Females (FNR 8.89%). Subkelompok White Males secara konsisten mencatatkan performa klasifikasi tertinggi pada kedua pengklasifikasi. Temuan empiris ini membuktikan bahwa fusi representasi tri-domain menghasilkan representasi visual yang stabil melintasi seluruh subkelompok demografis pada model linier maupun non-linier.
+Evaluasi disparitas keadilan algoritmik antarsubkelompok dikuantifikasi melalui metrik Equal Opportunity Difference (EOD) berdasarkan selisih True Positive Rate maksimum dan minimum ($\text{EOD} = \Delta \text{TPR} = \max \text{TPR} - \min \text{TPR} = 92.50\% - 84.44\% = 8.06\%$). Kesenjangan sebesar 8.06% ini merefleksikan variasi distribusi kesalahan empiris antarsubkelompok pada himpunan data uji held-out ($N = 2.160$ citra), di mana subkelompok Black Females mengalami tingkat kesalahan negatif palsu yang lebih tinggi dibandingkan Black Males. Sebagai bentuk pemenuhan transparansi ilmiah dan delimitasi ruang lingkup, pelaporan metrik keadilan ini disajikan secara objektif murni sebagai indikator disparitas performa empiris dalam domain terdistribusi dataset DemogPairs. Temuan ini secara tegas tidak diklaim sebagai jaminan tercapainya keadilan demografis yang sempurna atau absolut (no overclaim of complete demographic fairness) pada skenario dunia nyata di luar dataset uji. Pengukuran ini berfungsi sebagai kerangka audit komprehensif bagi etika kecerdasan buatan dalam memetakan sensitivitas deteksi secara bertanggung jawab.
