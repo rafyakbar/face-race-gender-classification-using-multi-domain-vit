@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Redivo, Edoardo
+AU  - Viroli, Cinzia
+AU  - Farcomeni, Alessio
+PY  - 2023
+DA  - 2023/03/24
+TI  - Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers
+JO  - Statistics and Computing
+SP  - 55
+VL  - 33
+IS  - 2
+AB  - We develop a flexible parametric framework for the estimation of quantile functions. This involves the specification of an analytical quantile-distribution function. It is shown to adapt well to a wide range of distributions under reasonable assumptions. We derive a least-square type estimator, leading to computationally efficient inference. By-products include a test for comparing two distributions, a variable selection method, and an innovative naïve Bayes classifier. Properties of the estimator, of the asymptotic test and of the classifier are investigated through theoretical results and simulation studies, and illustrated through a real data example.
+SN  - 1573-1375
+UR  - https://doi.org/10.1007/s11222-023-10224-4
+DO  - 10.1007/s11222-023-10224-4
+ID  - Redivo2023
+ER  - 

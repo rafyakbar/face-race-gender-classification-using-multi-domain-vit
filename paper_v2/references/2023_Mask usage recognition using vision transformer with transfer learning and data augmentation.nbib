@@ -1,0 +1,80 @@
+PMID- 40478101
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20250607
+IS  - 2667-3053 (Electronic)
+IS  - 2667-3053 (Linking)
+VI  - 17
+DP  - 2023 Feb
+TI  - Mask usage recognition using vision transformer with transfer learning and data 
+      augmentation.
+PG  - 200186
+LID - 10.1016/j.iswa.2023.200186 [doi]
+AB  - The COVID-19 pandemic has disrupted various levels of society. The use of masks 
+      is essential in preventing the spread of COVID-19 by identifying an image of a 
+      person using a mask. Although only 23.1% of people use masks correctly, 
+      Artificial Neural Networks (ANN) can help classify the use of good masks to help 
+      slow the spread of the Covid-19 virus. However, it requires a large dataset to 
+      train an ANN that can classify the use of masks correctly. MaskedFace-Net is a 
+      suitable dataset consisting of 137016 digital images with 4 class labels, namely 
+      Mask, Mask Chin, Mask Mouth Chin, and Mask Nose Mouth. Mask classification 
+      training utilizes Vision Transformers (ViT) architecture with transfer learning 
+      method using pre-trained weights on ImageNet-21k, with random augmentation. In 
+      addition, the hyper-parameters of training of 20 epochs, an Stochastic Gradient 
+      Descent (SGD) optimizer with a learning rate of 0.03, a batch size of 64, a 
+      Gaussian Cumulative Distribution (GeLU) activation function, and a Cross-Entropy 
+      loss function are used to be applied on the training of three architectures of 
+      ViT, namely Base-16, Large-16, and Huge-14. Furthermore, comparisons of with and 
+      without augmentation and transfer learning are conducted. This study found that 
+      the best classification is transfer learning and augmentation using ViT Huge-14. 
+      Using this method on MaskedFace-Net dataset, the research reaches an accuracy of 
+      0.9601 on training data, 0.9412 on validation data, and 0.9534 on test data. This 
+      research shows that training the ViT model with data augmentation and transfer 
+      learning improves classification of the mask usage, even better than 
+      convolutional-based Residual Network (ResNet).
+CI  - © 2023 The Author(s).
+FAU - Jahja, Hensel D
+AU  - Jahja HD
+AD  - Informatics Department, Faculty of Computer Science, Brawijaya University, Jalan 
+      Veteran 8, Malang, 65145, Malang, Indonesia.
+FAU - Yudistira, Novanto
+AU  - Yudistira N
+AD  - Informatics Department, Faculty of Computer Science, Brawijaya University, Jalan 
+      Veteran 8, Malang, 65145, Malang, Indonesia.
+FAU - Sutrisno
+AU  - Sutrisno
+AD  - Informatics Department, Faculty of Computer Science, Brawijaya University, Jalan 
+      Veteran 8, Malang, 65145, Malang, Indonesia.
+LA  - eng
+PT  - Journal Article
+DEP - 20230120
+PL  - England
+TA  - Intell Syst Appl
+JT  - Intelligent systems with applications
+JID - 9918881388306676
+PMC - PMC9851995
+OTO - NOTNLM
+OT  - Data augmentation
+OT  - Mask classification
+OT  - Transfer learning
+OT  - Vision transformers
+COIS- The authors declare that they have no known competing financial interests or 
+      personal relationships that could have appeared to influence the work reported in 
+      this paper.
+EDAT- 2023/02/01 00:00
+MHDA- 2023/02/01 00:01
+PMCR- 2023/01/20
+CRDT- 2025/06/06 10:45
+PHST- 2022/04/14 00:00 [received]
+PHST- 2022/11/25 00:00 [revised]
+PHST- 2023/01/14 00:00 [accepted]
+PHST- 2023/02/01 00:01 [medline]
+PHST- 2023/02/01 00:00 [pubmed]
+PHST- 2025/06/06 10:45 [entrez]
+PHST- 2023/01/20 00:00 [pmc-release]
+AID - S2667-3053(23)00011-X [pii]
+AID - 200186 [pii]
+AID - 10.1016/j.iswa.2023.200186 [doi]
+PST - ppublish
+SO  - Intell Syst Appl. 2023 Feb;17:200186. doi: 10.1016/j.iswa.2023.200186. Epub 2023 
+      Jan 20.

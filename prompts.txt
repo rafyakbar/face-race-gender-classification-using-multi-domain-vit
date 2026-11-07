@@ -28,6 +28,35 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+folder paper/ sudah rename ke paper_v1/ kemudian saya copy ke dalam paper_v2. tolong perbarui file-file pendukung seperti readme dll. lakukan dengan teliti!
+
+perbaiki paper_outline_v1.1.md:
+Abstract:
+- tidak usah ada kata macro untuk f1-score
+- tidak usah ada n = 2160
+- tidak usah ada SVM (p = 1.0000), cukup svm saja
+- tidak usah ada (0.0046 ms/sampel, 0.11 MB)
+III. MATERIALS AND METHODS:
+I:
+- judulnya terlalu panjang
+- tidak usah ada narasi lengkap karena ini adalah outline
+IV. RESULTS AND DISCUSSION:
+A. Global Performance:
+Paragraph 6:
+- tidak usah mengulang device apa yang digunakan, karena sudah ada pada III. MATERIALS AND METHODS
+E. Comparison with Prior Studies:
+- Table XV.:
+  * kolom Comparability itu buat apa?
+  * seharusnya jangan hanya akurasi dan f1 (tidak usah ada macro), tapi yg lengkap (harus sangat amat teliti), dan yg tertinggi harus dibold, jadi boldnya ada 2: bold yg terbaik dari stratified dan subject-disjoint
+  * tabel harus full width dalam latex
+  * sebagaiknya Random stratified cukup stratified saja atau bagaimana?
+  * kolom part itu apakah diperlukan?
+perhatikan:
+- jangan mengubah diluar yang diminta.
+- perhatikan penomoran urutan seperti figure/table/equation/algorithm.
+- jika ingin cek-cek folder terkait bisa delegasi subagent.
+- perbaiki dengan sangat amat teliti.
+
 untuk Figure 1. (images/sample_demogpairs.png), buat agar ukuran width dan height setiap foto sama dan tulisan a b c d e f nya seharusnya berada di bawah foto, jangan hapus foto asli, tapi buat baru sample_demogpairs_v2.png
 
 coba audit paper_outline_v1.1.md pada I. INTRODUCTION - Paragraph 6: Four Key Scientific Contributions, apakah sudah sesuai klaim nya, atau sudah sesuai dengan codebase nya atau belum

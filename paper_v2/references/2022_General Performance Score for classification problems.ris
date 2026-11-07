@@ -1,0 +1,20 @@
+TY  - JOUR
+AU  - De Diego, Isaac Martín
+AU  - Redondo, Ana R.
+AU  - Fernández, Rubén R.
+AU  - Navarro, Jorge
+AU  - Moguerza, Javier M.
+PY  - 2022
+DA  - 2022/08/01
+TI  - General Performance Score for classification problems
+JO  - Applied Intelligence
+SP  - 12049
+EP  - 12063
+VL  - 52
+IS  - 10
+AB  - Several performance metrics are currently available to evaluate the performance of Machine Learning (ML) models in classification problems. ML models are usually assessed using a single measure because it facilitates the comparison between several models. However, there is no silver bullet since each performance metric emphasizes a different aspect of the classification. Thus, the choice depends on the particular requirements and characteristics of the problem. An additional problem arises in multi-class classification problems, since most of the well-known metrics are only directly applicable to binary classification problems. In this paper, we propose the General Performance Score (GPS), a methodological approach to build performance metrics for binary and multi-class classification problems. The basic idea behind GPS is to combine a set of individual metrics, penalising low values in any of them. Thus, users can combine several performance metrics that are relevant in the particular problem based on their preferences obtaining a conservative combination. Different GPS-based performance metrics are compared with alternatives in classification problems using real and simulated datasets. The metrics built using the proposed method improve the stability and explainability of the usual performance metrics. Finally, the GPS brings benefits in both new research lines and practical usage, where performance metrics tailored for each particular problem are considered.
+SN  - 1573-7497
+UR  - https://doi.org/10.1007/s10489-021-03041-7
+DO  - 10.1007/s10489-021-03041-7
+ID  - De Diego2022
+ER  - 

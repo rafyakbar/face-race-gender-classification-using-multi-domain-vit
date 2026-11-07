@@ -62,7 +62,7 @@ Satu paragraf padat terpadu (**target 150–250 kata**), terstruktur: **Latar Be
 - **Latar Belakang & Tantangan**: Pengenalan atribut demografis wajah seperti ras dan gender secara simultan menghadapi tantangan variasi ekspresi, penuaan biologis, kemiripan karakteristik visual antarsubkelompok, keterbatasan representasi domain tunggal (*single-domain*), serta kerentanan model terhadap kebocoran identitas subjek (*identity leakage*).
 - **Metode**: Mengusulkan kerangka kerja fusi fitur multi-domain yang mengintegrasikan representasi visual dari tiga model Vision Transformer (ViT) *pre-trained* spesifik tugas untuk biometrik wajah, ekspresi afektif, dan estimasi usia, yang dipadukan dengan optimasi pipeline *machine learning* klasik untuk klasifikasi enam subkelompok demografis interseksional (mencakup tiga kelompok ras makro: Asian, Black, dan White) pada dataset DemogPairs. Representasi visual diekstraksi secara *offline* dari setiap model untuk menghasilkan representasi terpadu yang memadukan informasi komplementer lintas-domain. Tujuh konfigurasi fitur dievaluasi pada empat pengklasifikasi: Random Forest (RF), Gaussian Naive Bayes (GNB), Logistic Regression (LR), dan Support Vector Machine (SVM).
 - **Evaluasi Dual-Benchmark & Hasil**: Evaluasi dilakukan secara komparatif melalui dua protokol partisi:
-  1. **Zero Identity Leakage (*Subject-Disjoint Primary Benchmark*)**: Pada subjek *held-out* yang terisolasi penuh ($N = 2.160$), Logistic Regression tri-domain mencatatkan performa tertinggi dengan Accuracy **88.66%** dan Macro F1-Score **88.68%**, diikuti SVM tri-domain dengan Accuracy **88.61%** dan Macro F1-Score **88.63%**; uji McNemar mengonfirmasi keunggulan signifikan atas domain tunggal ($p < 0.001$) serta menunjukkan tidak adanya perbedaan performa prediktif yang signifikan secara statistik antara LR dan SVM ($p = 1.0000$), dengan keunggulan LR terletak pada efisiensi komputasi pengklasifikasi hilir (`0.0046 ms/sampel`, `0.11 MB`).
+  1. **Zero Identity Leakage (*Subject-Disjoint Primary Benchmark*)**: Pada subjek *held-out* yang terisolasi penuh (yakni 120 identitas subjek uji yang sama sekali belum pernah dilihat oleh model selama proses pelatihan), Logistic Regression tri-domain mencatatkan performa tertinggi dengan Accuracy **88.66%** dan F1-Score **88.68%**, diikuti SVM tri-domain dengan Accuracy **88.61%** dan F1-Score **88.63%**; uji McNemar mengonfirmasi keunggulan signifikan atas domain tunggal ($p < 0.001$) serta menunjukkan tidak adanya perbedaan performa prediktif yang signifikan secara statistik antara LR dan SVM, dengan keunggulan LR terletak pada efisiensi komputasi pengklasifikasi hilir.
   2. **Split Stratified Class Biasa (*Subject-Overlap Historical Baseline*)**: Sebagai studi ablasi kebocoran identitas, evaluasi dengan tumpang tindih subjek menghasilkan Accuracy **93.70%** dan F1-Score **93.69%** pada SVM tri-domain.
 - **Kesimpulan**: Selisih nominal sebesar 5.09 percentage points pada SVM (dan 4.07 percentage points pada LR) menguantifikasi efek memorisasi identitas (*identity memorization*), menunjukkan bahwa dalam cakupan tolok ukur tiga kelompok ras makro DemogPairs (Asian, Black, White), fusi fitur multi-domain mampu mempertahankan generalisasi lintas-subjek (*subject-disjoint*) tanpa bergantung pada kebocoran identitas.
 
@@ -520,15 +520,13 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120
      $$\text{EOD} = \max_{i, j \in \{1, \dots, K\}} |\text{Recall}_i - \text{Recall}_j| = \max \text{TPR} - \min \text{TPR} \tag{23}$$
      Metrik ini dikalibrasi secara objektif murni sebagai indikator disparitas performa empiris antarsubkelompok, bukan sebagai jaminan matematis keadilan universal.
 
-### I. Computational Environment and Experimental Setup
+### I. Experimental Setup
 - **Target Kata**: 100–115 kata (minimal 100 kata, maksimal 115 kata).
 - **Tujuan**: Menjelaskan konfigurasi perangkat keras (*hardware*), alokasi pembagian beban komputasi hibrida GPU-CPU, serta tumpukan perangkat lunak (*software stack*) yang digunakan dalam ekstraksi representasi dan pelatihan model.
 - **Poin Narasi**:
   1. Spesifikasi perangkat keras: Prosesor Intel Core i9-13900H (14 core, 20 thread), memori utama RAM 32GB DDR5 berkecepatan tinggi, dan NVIDIA GeForce RTX 4060 Laptop GPU (8GB VRAM).
   2. Pembagian beban komputasi: ekstraksi representasi laten Vision Transformer memanfaatkan akselerasi GPU NVIDIA melalui PyTorch, sedangkan pelatihan dan penalaan hyperparameter 5-fold cross-validation pengklasifikasi klasik dioptimalkan pada multicore CPU menggunakan scikit-learn.
   3. Perangkat lunak: ekosistem dibangun di atas Python 3.10 dengan pustaka PyTorch (`torch`) dan scikit-learn (`sklearn`) dalam lingkungan terisolasi untuk menjamin reproduktibilitas penuh.
-- **Narasi Lengkap (107 kata)**:
-  > Seluruh rangkaian eksperimen dijalankan pada lingkungan komputasi terstandardisasi dengan spesifikasi perangkat keras berupa prosesor Intel Core i9-13900H (14 core, 20 thread), memori utama RAM 32GB DDR5 berkecepatan tinggi, serta unit pemroses grafis NVIDIA GeForce RTX 4060 Laptop GPU dengan VRAM 8GB. Kerangka kerja komputasi menerapkan pembagian beban kerja hibrida: proses inferensi ekstraksi fitur laten Vision Transformer dieksekusi secara terakselerasi menggunakan GPU NVIDIA melalui pustaka PyTorch (`torch`), sedangkan proses pelatihan serta pencarian hyperparameter Grid Search 5-fold untuk seluruh model pembelajaran mesin klasik dioptimalkan pada multicore CPU menggunakan pustaka scikit-learn (`sklearn`). Ekosistem perangkat lunak dibangun di atas bahasa pemrograman Python 3.10 dengan manajemen lingkungan terisolasi guna menjamin reproduktibilitas penuh.
 
 ---
 
@@ -620,7 +618,7 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 #### Paragraph 6: Computational Efficiency and Resource Consumption Profile (Jawaban R1 #5 & R2 #8)
 - **Target Kata**: 120–150 kata.
 - **Fokus Narasi**: Menyajikan profil efisiensi komputasi terukur pada [Table XI](#tab11):
-  1. *Ekstraksi Fitur GPU Offline (10.800 citra)*: GPU NVIDIA GeForce RTX 4060 Laptop GPU (8GB VRAM) dengan *in-memory processor caching* mencatat 124.5 ms/citra (total 22.41 menit untuk 3 domain), di mana ekstraksi bersifat *one-time offline* dengan ukuran cache 30.8 MB per domain (92.4 MB tri-domain).
+  1. *Ekstraksi Fitur GPU Offline (10.800 citra)*: Ekstraksi fitur pada GPU dengan *in-memory processor caching* mencatat 124.5 ms/citra (total 22.41 menit untuk 3 domain), di mana ekstraksi bersifat *one-time offline* dengan ukuran cache 30.8 MB per domain (92.4 MB tri-domain).
   2. *Durasi Pelatihan 5-Fold GridSearchCV*: Pelatihan pada multicore CPU mencatat LR Tri 54.8 menit (3.287 s) vs SVM Tri 511.1 menit (30.666 s; 9.3× lebih cepat dilatih), RF Tri 110.5 menit (6.628 s), dan GNB Dual 25.5 menit (1.529 s).
   3. *Latensi Inferensi per Sampel & Konteks End-to-End*: Latensi kepala pengklasifikasi hilir LR tercatat **0.0046 ms/sampel** vs SVM 4.6785 ms (>1.000× lebih cepat), RF 0.0334 ms, dan GNB 0.0088 ms (total latensi inferensi *end-to-end* per citra pada GPU termasuk ekstraksi 3 ViT adalah $\approx 124.505\text{ ms}$ untuk LR vs $\approx 129.179\text{ ms}$ untuk SVM).
   4. *Ukuran Penyimpanan Model*: LR **0.11 MB** vs SVM 36.60 MB (>330× lebih ringkas) dan RF 6.19 MB.
@@ -637,7 +635,8 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 | Random Forest (RF) | Tri-Domain | 2,304 | 124.5 | 110.5 | 0.0334 | 6.19 | 18.98 |
 | Gaussian Naive Bayes (GNB) | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | 79.4 | 25.5 | 0.0088 | 0.78 | 12.66 |
 
-> **Catatan Table XI:** Seluruh pengukuran dieksekusi pada lingkungan komputasi terstandardisasi (Intel Core i9-13900H, RAM 32GB DDR5, NVIDIA RTX 4060 8GB). Ekstraksi fitur GPU diukur langsung dengan in-memory processor caching (`experiment/code/times/*.json`). Training time merepresentasikan total durasi wall-clock 5-Fold GridSearchCV beserta refit akhir pada CPU dalam satuan menit. Latensi inferensi (`Inference`) mengukur waktu prediksi pengklasifikasi hilir per sampel uji (total latensi *end-to-end* per citra pada GPU adalah $\text{Extraction} + \text{Inference} \approx 124.505\text{ ms}$ pada LR Tri-Domain vs $\approx 129.179\text{ ms}$ pada SVM Tri-Domain). RAM footprint merepresentasikan alokasi memori array uji $N=2.160$ sampel bertipe float32. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XI:** Seluruh pengukuran dieksekusi pada lingkungan komputasi terstandardisasi sebagaimana dirincikan pada Subseksi III.I. Ekstraksi fitur GPU diukur langsung dengan in-memory processor caching (`experiment/code/times/*.json`). Training time merepresentasikan total durasi wall-clock 5-Fold GridSearchCV beserta refit akhir pada CPU dalam satuan menit. Latensi inferensi (`Inference`) mengukur waktu prediksi pengklasifikasi hilir per sampel uji (total latensi *end-to-end* per citra pada GPU adalah $\text{Extraction} + \text{Inference} \approx 124.505\text{ ms}$ pada LR Tri-Domain vs $\approx 129.179\text{ ms}$ pada SVM Tri-Domain). Format layout: LaTeX Full Width (`\begin{table*}`).  
+> **Catatan Metodologis RAM Footprint vs. System RAM:** Kolom *RAM Footprint* merepresentasikan alokasi memori bersih murni (*exact buffer memory footprint*) untuk menampung matriks fitur data uji $N=2.160$ sampel bertipe `float32` ($2.160 \times 2.304 \times 4\text{ bytes} \approx 18.98\text{ MB}$ untuk Tri-Domain; $2.160 \times 1.536 \times 4\text{ bytes} \approx 12.66\text{ MB}$ untuk Dual-Domain; atau hanya $\approx 9.22\text{ KB}$ per sampel citra pada skenario inferensi *real-time streaming*). Metrik ini diukur langsung pada level objek (`nbytes`) dan sengaja diisolasi dari total memori proses sistem operasi (Task Manager / Resident Set Size / RSS) guna mengeliminasi *noise* serta *overhead* masif runtime Python, alokasi awal *cache* PyTorch/CUDA (~1–2 GB), dan fluktuasi dinamis *Garbage Collector*. Pendekatan ini menyajikan batas kebutuhan memori minimum (*deterministic memory budget*) yang objektif, dapat direplikasi secara pasti (*fully reproducible*), serta relevan bagi perancangan sistem cerdas pada perangkat tepi (*Edge AI*) berdaya rendah.
 
 ### B. Feature Ablation Study
 > **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
@@ -795,39 +794,39 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 ### E. Comparison with Prior Studies
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta perbandingan metode yang lebih luas (*"compare proposed method with more methods to validate contribution"*), dan Reviewer 2 menegaskan agar perbandingan dikualifikasikan sebagai kontekstual jika partisi datanya berbeda (*"comparison should be presented as contextual rather than a controlled benchmark"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XV yang memisahkan perbandingan secara tegas menjadi Bagian A (Komparasi Kontekstual studi terdahulu pada DemogPairs yang menggunakan protokol *subject-overlap*) dan Bagian B (Komparasi Terkontrol pada tolok ukur *subject-disjoint* internal melintasi 9 konfigurasi representasi pada 4 famili pengklasifikasi), disertai catatan metodologis yang jelas agar pembaca tidak memperingkatkan kedua kelompok secara rancu.
+> - **Rencana Mitigasi:** Menyajikan Tabel XV yang memisahkan perbandingan berdasarkan protokol partisi secara tegas antara kelompok protokol **Stratified** (Komparasi Kontekstual studi terdahulu pada DemogPairs yang menggunakan partisi tingkat citra *subject-overlap*) dan kelompok protokol **Subject-Disjoint** (Komparasi Terkontrol pada tolok ukur *subject-disjoint* internal melintasi 9 konfigurasi representasi pada 4 famili pengklasifikasi) dengan metrik lengkap (Accuracy, Precision, Recall, F1-Score), disertai catatan metodologis yang jelas di dalam narasi.
 
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–125 kata**:
 
 #### Paragraph 1: Contextual and Controlled Comparative Groups on the DemogPairs Dataset
 - **Target Kata**: 100–125 kata.
-- **Fokus Narasi**: Menyajikan komparasi komprehensif pada [Table XV](#tab15) yang dibagi menjadi dua bagian terpisah:
-  - **Bagian A (Komparasi Kontekstual — Protokol Berbeda/Subject-Overlap)**: MD-ViT + XGBoost (Putri et al. JIEET 2025: 89.07%), Dual-ViT + SVM (Putri et al. ICVEE 2025: 92.41%), dan baseline historis usulan Tri-Domain + SVM (93.70%).
-  - **Bagian B (Komparasi Terkontrol — Protokol Identik: Subject-Disjoint, 480/120 Subjek)**: Menjawab R1 #6 dengan 9 variasi baseline internal pada partisi yang sama: single-domain terbaik (`Face`: LR 86.39% / SVM 86.16%; `Emotion`: SVM 85.79%; `Age`: SVM 82.55%), dual-domain terbaik `Emotion ⊕ Face` SVM (88.43%), RF Tri (85.00%), GNB Dual (84.31%), berbanding model puncak usulan **Tri-Domain + LR (88.66%)** dan **Tri-Domain + SVM (88.61%)**.
+- **Fokus Narasi**: Menyajikan komparasi komprehensif pada [Table XV](#tab15) yang dibagi menjadi dua kelompok protokol partisi:
+  - **Kelompok Protokol Stratified (Komparasi Kontekstual — Subject-Overlap)**: MD-ViT + XGBoost (Putri et al. JIEET 2025: Accuracy 89.07%, Precision 89.12%, Recall 89.07%, F1-Score 89.01%), Dual-ViT + SVM (Putri et al. ICVEE 2025: Accuracy 92.41%, Precision 92.48%, Recall 92.41%, F1-Score 92.38%), dan baseline historis usulan **Tri-Domain + SVM** yang meraih capaian tertinggi pada protokol Stratified (**Accuracy 93.70%, Precision 93.72%, Recall 93.70%, F1-Score 93.69%**).
+  - **Kelompok Protokol Subject-Disjoint (Komparasi Terkontrol — 480/120 Subjek)**: Menjawab R1 #6 dengan 9 variasi baseline internal pada partisi yang sama: single-domain terbaik (`Face`: LR 86.39% / SVM 86.16%; `Emotion`: SVM 85.79%; `Age`: SVM 82.55%), dual-domain terbaik `Emotion ⊕ Face` SVM (88.43%), RF Tri (85.00%), GNB Dual (84.31%), serta Tri-Domain + SVM (88.61%), di mana capaian tertinggi pada protokol Subject-Disjoint diraih oleh model usulan **Tri-Domain + LR (Accuracy 88.66%, Precision 88.75%, Recall 88.66%, F1-Score 88.68%)**.
 #### Paragraph 2: Research Positioning and Contextual Protocol Qualification (Jawaban R2 #7)
 - **Target Kata**: 100–125 kata.
-- **Fokus Narasi**: Menegaskan kualifikasi metodologis protokol evaluasi: Bagian A **bukan tolok ukur terkontrol (*controlled benchmark*)**, karena studi terdahulu menggunakan partisi acak tingkat citra (*random image-level stratified*) yang mengizinkan tumpang tindih identitas antar-subset data. Satu-satunya perbandingan yang adil terhadap angka terdahulu adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XII). Praproses dan pemroses citra studi terdahulu belum tentu identik, sehingga dinyatakan sebagai batasan komparasi. Posisi penelitian terhadap karya seminal DemogPairs (Hupont & Fernández, IEEE FG 2019) dirumuskan secara objektif tanpa klaim sepihak yang belum terverifikasi.
+- **Fokus Narasi**: Menegaskan kualifikasi metodologis protokol evaluasi: Kelompok protokol **Stratified** berfungsi sebagai **komparasi kontekstual (*contextual comparison*)** dan bukan tolok ukur terkontrol (*controlled benchmark*), karena studi terdahulu menggunakan partisi berstrata tingkat citra (*image-level stratified split*) yang mengizinkan tumpang tindih identitas antar-subset data. Satu-satunya perbandingan yang adil terhadap angka studi terdahulu pada protokol tersebut adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XII). Praproses dan pemroses citra studi terdahulu belum tentu identik, sehingga dinyatakan sebagai batasan komparasi. Posisi penelitian terhadap karya seminal DemogPairs (Hupont & Fernández, IEEE FG 2019) dirumuskan secara objektif tanpa klaim sepihak yang belum terverifikasi.
 - **Ketentuan Layout LaTeX**: **Table XV berformat Full Width (`\begin{table*}`)**.
 - **Tabel XV (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs)**:
 
 **Table XV. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
 
-| Part | Method | Partition Protocol | Comparability | Accuracy | Macro F1 |
-|:---:|---|---|---|:---:|:---:|
-| A | MD-ViT (Face + Age) + XGBoost (Putri et al., JIEET 2025) | Random stratified (subject-overlap) | Contextual only | 89.07% | 0.8901 |
-| A | Dual-ViT (Face + Emotion) + SVM (Putri et al., ICVEE 2025) | Random stratified (subject-overlap) | Contextual only | 92.41% | 0.9238 |
-| A | Proposed Tri-Domain + SVM (historical baseline) | Random stratified (subject-overlap) | Contextual (same authors' protocol) | 93.70% | 0.9369 |
-| B | Single-Domain `Face` + LR | Subject-disjoint | Controlled | 86.39% | 0.8640 |
-| B | Single-Domain `Face` + SVM | Subject-disjoint | Controlled | 86.16% | 0.8619 |
-| B | Single-Domain `Emotion` + SVM | Subject-disjoint | Controlled | 85.79% | 0.8580 |
-| B | Single-Domain `Age` + SVM | Subject-disjoint | Controlled | 82.55% | 0.8258 |
-| B | Dual-Domain `Emotion ⊕ Face` + SVM | Subject-disjoint | Controlled | 88.43% | 0.8844 |
-| B | Tri-Domain + RF | Subject-disjoint | Controlled | 85.00% | 0.8493 |
-| B | Dual-Domain `Emotion ⊕ Face` + GNB | Subject-disjoint | Controlled | 84.31% | 0.8430 |
-| B | **Proposed Tri-Domain + LR** | **Subject-disjoint** | **Controlled** | **88.66%** | **0.8868** |
-| B | **Proposed Tri-Domain + SVM** | **Subject-disjoint** | **Controlled** | **88.61%** | **0.8863** |
+| Method | Partition Protocol | Accuracy | Precision | Recall | F1-Score |
+|---|:---:|:---:|:---:|:---:|:---:|
+| MD-ViT (`Face ⊕ Age`) + XGBoost (Putri et al., JIEET 2025) | Stratified | 89.07% | 89.12% | 89.07% | 89.01% |
+| Dual-ViT (`Face ⊕ Emotion`) + SVM (Putri et al., ICVEE 2025) | Stratified | 92.41% | 92.48% | 92.41% | 92.38% |
+| **Proposed Tri-Domain + SVM (Historical Baseline)** | **Stratified** | **93.70%** | **93.72%** | **93.70%** | **93.69%** |
+| Single-Domain `Face` + LR | Subject-Disjoint | 86.39% | 86.46% | 86.39% | 86.40% |
+| Single-Domain `Face` + SVM | Subject-Disjoint | 86.16% | 86.24% | 86.16% | 86.19% |
+| Single-Domain `Emotion` + SVM | Subject-Disjoint | 85.79% | 85.84% | 85.79% | 85.80% |
+| Single-Domain `Age` + SVM | Subject-Disjoint | 82.55% | 82.68% | 82.55% | 82.58% |
+| Dual-Domain `Emotion ⊕ Face` + SVM | Subject-Disjoint | 88.43% | 88.50% | 88.43% | 88.44% |
+| Tri-Domain + RF | Subject-Disjoint | 85.00% | 85.06% | 85.00% | 84.93% |
+| Dual-Domain `Emotion ⊕ Face` + GNB | Subject-Disjoint | 84.31% | 84.37% | 84.31% | 84.30% |
+| Proposed Tri-Domain + SVM | Subject-Disjoint | 88.61% | 88.71% | 88.61% | 88.63% |
+| **Proposed Tri-Domain + LR** | **Subject-Disjoint** | **88.66%** | **88.75%** | **88.66%** | **88.68%** |
 
-> **Catatan Table XV:** Angka Bagian B diambil dari `experiment/code/results/*.json` (leaderboard 28 model). Angka Bagian A dikutip dari publikasi masing-masing dan tidak direproduksi ulang. Bagian A dan B tidak boleh diperingkatkan dalam satu urutan.
+> **Catatan Table XV:** Baris dengan protokol `Stratified` menyajikan komparasi kontekstual (*contextual comparison*) pada pembagian data berstrata tingkat citra (*subject-overlap*), di mana angka studi terdahulu dikutip langsung dari publikasi masing-masing. Baris dengan protokol `Subject-Disjoint` menyajikan komparasi terkontrol (*controlled benchmark*) pada partisi 480 subjek latih / 120 subjek uji held-out yang diekstraksi dari `experiment/code/results/*.json` (leaderboard 28 model). Cetak tebal (**bold**) menandai model dengan performa tertinggi pada masing-masing protokol partisi (`Stratified` vs. `Subject-Disjoint`). Format layout: LaTeX Full Width (`\begin{table*}`).
 ---
 
 ## V. CONCLUSION & LIMITATIONS

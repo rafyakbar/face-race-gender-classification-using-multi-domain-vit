@@ -1,0 +1,66 @@
+PMID- 35729932
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20230103
+IS  - 1380-7501 (Print)
+IS  - 1573-7721 (Electronic)
+IS  - 1380-7501 (Linking)
+VI  - 82
+IP  - 1
+DP  - 2023
+TI  - Review: Single attribute and multi attribute facial gender and age estimation.
+PG  - 1289-1311
+LID - 10.1007/s11042-022-12678-6 [doi]
+AB  - Facial age and gender recognition have vital applications as consumer profile 
+      prediction, social media advertisement, human-computer interaction, image 
+      retrieval system, demographic profiling, customized advertisement systems, 
+      security and surveillance. This paper presents a study on Single Attribute 
+      (Attribute: either Gender or Age) and Multi-Attribute (both Gender and Age) 
+      prediction model. We present a review for facial age estimation and gender 
+      classification methods based on conventional as well as deep learning approaches 
+      developed so far with analysis of their pros, cons and insights for future 
+      research. Moreover, this study also enlists the databases used for benchmarking 
+      results with their properties for both constrained and unconstrained environment.
+CI  - © The Author(s), under exclusive licence to Springer Science+Business Media, LLC, 
+      part of Springer Nature 2022.
+FAU - Gupta, Sandeep Kumar
+AU  - Gupta SK
+AUID- ORCID: 0000-0002-5911-1771
+AD  - Department of Computer Science & Engineering, Malaviya National Institute of 
+      Technology, Jaipur, 302017 Rajasthan India. GRID: grid.444471.6. ISNI: 0000 0004 
+      1764 2536
+FAU - Nain, Neeta
+AU  - Nain N
+AD  - Department of Computer Science & Engineering, Malaviya National Institute of 
+      Technology, Jaipur, 302017 Rajasthan India. GRID: grid.444471.6. ISNI: 0000 0004 
+      1764 2536
+LA  - eng
+PT  - Journal Article
+DEP - 20220615
+PL  - United States
+TA  - Multimed Tools Appl
+JT  - Multimedia tools and applications
+JID - 101555932
+PMC - PMC9200214
+OTO - NOTNLM
+OT  - Age estimation
+OT  - Face
+OT  - Gender classification
+OT  - Multi attribute
+OT  - Regression
+EDAT- 2022/06/23 06:00
+MHDA- 2022/06/23 06:01
+PMCR- 2022/06/15
+CRDT- 2022/06/22 01:46
+PHST- 2020/04/29 00:00 [received]
+PHST- 2021/03/05 00:00 [revised]
+PHST- 2022/02/21 00:00 [accepted]
+PHST- 2022/06/23 06:00 [pubmed]
+PHST- 2022/06/23 06:01 [medline]
+PHST- 2022/06/22 01:46 [entrez]
+PHST- 2022/06/15 00:00 [pmc-release]
+AID - 12678 [pii]
+AID - 10.1007/s11042-022-12678-6 [doi]
+PST - ppublish
+SO  - Multimed Tools Appl. 2023;82(1):1289-1311. doi: 10.1007/s11042-022-12678-6. Epub 
+      2022 Jun 15.

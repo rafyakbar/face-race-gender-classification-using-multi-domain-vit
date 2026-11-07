@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Rusia, Mayank Kumar
+AU  - Singh, Dushyant Kumar
+PY  - 2023
+DA  - 2023/01/01
+TI  - A comprehensive survey on techniques to handle face identity threats: challenges and opportunities
+JO  - Multimedia Tools and Applications
+SP  - 1669
+EP  - 1748
+VL  - 82
+IS  - 2
+AB  - The human face is considered the prime entity in recognizing a person’s identity in our society. Henceforth, the importance of face recognition systems is growing higher for many applications. Facial recognition systems are in huge demand, next to fingerprint-based systems. Face-biometric has a highly dominant role in various applications such as border surveillance, forensic investigations, crime detection, access management systems, information security, and many more. Facial recognition systems deliver highly meticulous results in every of these application domains. However, the face identity threats are evenly growing at the same rate and posing severe concerns on the use of face-biometrics. This paper significantly explores all types of face recognition techniques, their accountable challenges, and threats to face-biometric-based identity recognition. This survey paper proposes a novel taxonomy to represent potential face identity threats. These threats are described, considering their impact on the facial recognition system. State-of-the-art approaches available in the literature are discussed here to mitigate the impact of the identified threats. This paper provides a comparative analysis of countermeasure techniques focusing on their performance on different face datasets for each identified threat. This paper also highlights the characteristics of the benchmark face datasets representing unconstrained scenarios. In addition, we also discuss research gaps and future opportunities to tackle the facial identity threats for the information of researchers and readers.
+SN  - 1573-7721
+UR  - https://doi.org/10.1007/s11042-022-13248-6
+DO  - 10.1007/s11042-022-13248-6
+ID  - Rusia2023
+ER  - 

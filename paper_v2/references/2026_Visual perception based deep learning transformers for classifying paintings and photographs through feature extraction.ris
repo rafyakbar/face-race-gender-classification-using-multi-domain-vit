@@ -1,0 +1,15 @@
+TY  - JOUR
+AU  - Yu, Liu
+PY  - 2026
+DA  - 2026/01/16
+TI  - Visual perception based deep learning transformers for classifying paintings and photographs through feature extraction
+JO  - Scientific Reports
+SP  - 5326
+VL  - 16
+IS  - 1
+AB  - The application of computer vision techniques that have been used in various domains and artwork is not an exception. The latest models of deep learning are applied for processing and classification of digital images to analyze textures, color compositions, and lighting patterns across artistic and real-world imagery. In this research work, we aim to classify the given images to identify whether they are human artwork of paintings or captured photos. We apply state-of-the-art Vision Transformer (ViT) architecture to classify artistic images, achieving a classification accuracy of 95% outperforming existing relevant in the relevant literature. To validate and benchmark the approach, comprehensive experiments are carried out on the standard dataset using DenseNet, Convolutional Neural Networks (CNN), and Visual Geometry Group (VGG19) models. The results highlight the superior performance of ViT in capturing complex visual features, such as texture variation and compositional details. Grad-CAM further enhances the interpretability of the model by highlighting the specific visual regions influencing the model’s decisions, confirming that ViT able to capture meaningful artistic attributes such as brushstroke patterns, smoothness, and illumination gradients. This combination of high performance and transparency analysis of proposed model ensures a reliable and explainable solution for automated artwork classification.
+SN  - 2045-2322
+UR  - https://doi.org/10.1038/s41598-026-36298-4
+DO  - 10.1038/s41598-026-36298-4
+ID  - Yu2026
+ER  - 

@@ -1,0 +1,18 @@
+TY  - JOUR
+AU  - Guido, Rosita
+AU  - Groccia, Maria Carmela
+AU  - Conforti, Domenico
+PY  - 2023
+DA  - 2023/09/01
+TI  - A hyper-parameter tuning approach for cost-sensitive support vector machine classifiers
+JO  - Soft Computing
+SP  - 12863
+EP  - 12881
+VL  - 27
+IS  - 18
+AB  - In machine learning, hyperparameter tuning is strongly useful to improve model performance. In our research, we concentrate our attention on classifying imbalanced data by cost-sensitive support vector machines. We propose a multi-objective approach that optimizes model’s hyper-parameters. The approach is devised for imbalanced data. Three SVM model’s performance measures are optimized. We present the algorithm in a basic version based on genetic algorithms, and as an improved version based on genetic algorithms combined with decision trees. We tested the basic and the improved approach on benchmark datasets either as serial and parallel version. The improved version strongly reduces the computational time needed for finding optimized hyper-parameters. The results empirically show that suitable evaluation measures should be used in assessing the classification performance of classification models with imbalanced data.
+SN  - 1433-7479
+UR  - https://doi.org/10.1007/s00500-022-06768-8
+DO  - 10.1007/s00500-022-06768-8
+ID  - Guido2023
+ER  - 

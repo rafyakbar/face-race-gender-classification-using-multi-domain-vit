@@ -1,0 +1,21 @@
+TY  - JOUR
+AU  - Hicks, Steven A.
+AU  - Strümke, Inga
+AU  - Thambawita, Vajira
+AU  - Hammou, Malek
+AU  - Riegler, Michael A.
+AU  - Halvorsen, Pål
+AU  - Parasa, Sravanthi
+PY  - 2022
+DA  - 2022/04/08
+TI  - On evaluation metrics for medical applications of artificial intelligence
+JO  - Scientific Reports
+SP  - 5979
+VL  - 12
+IS  - 1
+AB  - Clinicians and software developers need to understand how proposed machine learning (ML) models could improve patient care. No single metric captures all the desirable properties of a model, which is why several metrics are typically reported to summarize a model’s performance. Unfortunately, these measures are not easily understandable by many clinicians. Moreover, comparison of models across studies in an objective manner is challenging, and no tool exists to compare models using the same performance metrics. This paper looks at previous ML studies done in gastroenterology, provides an explanation of what different metrics mean in the context of binary classification in the presented studies, and gives a thorough explanation of how different metrics should be interpreted. We also release an open source web-based tool that may be used to aid in calculating the most relevant metrics presented in this paper so that other researchers and clinicians may easily incorporate them into their research.
+SN  - 2045-2322
+UR  - https://doi.org/10.1038/s41598-022-09954-8
+DO  - 10.1038/s41598-022-09954-8
+ID  - Hicks2022
+ER  - 
