@@ -58,17 +58,16 @@
 5. **Assoc. Prof. Dr. Shukor Sanim Mohd Fauzi** ([ORCID: 0000-0003-4333-7853](https://orcid.org/0000-0003-4333-7853)) — *School of Computing Sciences, College of Computing, Informatics and Mathematics, Universiti Teknologi MARA, Cawangan Perlis, Kampus Arau, 02600 Arau, Perlis, Malaysia* (`shukorsanim@uitm.edu.my`)
 
 ### Abstract
-Satu paragraf padat terpadu (**target 150–250 kata**; aktual: 249 kata), terstruktur: **Latar Belakang & Tantangan → Metodologi yang Diusulkan → Evaluasi Subject-Disjoint Bebas Kebocoran → Hasil Empiris Lengkap & Uji Inferensial → Keadilan Interseksional & Efisiensi Deployment**.
-- **Latar Belakang & Tantangan**: Pengenalan atribut demografis wajah seperti ras dan gender secara simultan menghadapi tantangan variasi ekspresi, penuaan biologis, kemiripan karakteristik visual antarsubkelompok, keterbatasan representasi domain tunggal (*single-domain*), serta kerentanan model terhadap kebocoran identitas subjek akibat partisi citra acak.
-- **Metode**: Mengusulkan kerangka kerja fusi fitur multi-domain yang mengintegrasikan representasi biometrik wajah, ekspresi afektif, dan usia biologis dari tiga model Vision Transformer (ViT) *pre-trained* dengan bobot beku melalui konkatenasi langsung 2.304 dimensi, dipadukan dengan penskalaan fitur, PCA, dan empat pengklasifikasi pembelajaran mesin klasik (RF, GNB, LR, SVM) via 5-Fold StratifiedGroupKFold GridSearchCV tingkat-fold terisolasi pada dataset DemogPairs.
-- **Evaluasi & Hasil Lengkap (Subject-Disjoint Primary Benchmark)**:
-  - Tanpa penyebutan jumlah kuantitatif subjek/citra latih dan uji di dalam abstrak untuk menjaga fokus generalisasi independen.
+Satu paragraf padat terpadu (**target 150–250 kata**; aktual: 215 kata), terstruktur: **Latar Belakang & Tantangan → Metodologi yang Diusulkan → Evaluasi Dual-Benchmark (Subject-Disjoint vs. Stratified Split) → Keadilan Interseksional**.
+- **Latar Belakang & Tantangan**: Pengenalan atribut demografis wajah seperti ras dan gender secara simultan menghadapi tantangan variasi ekspresi, penuaan biologis, kemiripan karakteristik visual antarsubkelompok, keterbatasan representasi domain tunggal (*single-domain*), serta risiko kebocoran identitas subjek akibat partisi citra acak.
+- **Metode**: Mengusulkan kerangka kerja fusi fitur multi-domain yang mengintegrasikan representasi biometrik wajah, ekspresi emosi, dan usia biologis dari tiga model Vision Transformer (ViT) melalui konkatenasi 2.304 dimensi, dipadukan dengan penskalaan fitur, PCA, dan empat pengklasifikasi pembelajaran mesin klasik (RF, GNB, LR, SVM) pada dataset DemogPairs.
+- **Evaluasi Dual-Benchmark & Hasil**:
+  - Tanpa penyebutan data kuantitatif jumlah subjek/citra latih dan uji di dalam abstrak untuk menjaga fokus generalisasi independen.
   - Penulisan F1-score disajikan terpadu dalam kalimat tanpa tanda kurung.
-  - Metrik Lengkap Logistic Regression (LR) Tri-Domain: Akurasi **88.66%**, Presisi Makro **88.75%**, Recall Makro **88.66%**, F1-Score Makro **88.68%**, dan 95% Wilson Score CI **[87.25%, 89.93%]**.
-  - Metrik Lengkap Support Vector Machine (SVM) Tri-Domain: Akurasi **88.61%**, Presisi Makro **88.66%**, Recall Makro **88.61%**, F1-Score Makro **88.63%**, dan 95% Wilson Score CI **[87.20%, 89.88%]**.
-  - Signifikansi Inferensial: Uji McNemar membuktikan keunggulan fusi multi-domain atas representasi domain tunggal ($p < 0.001$) serta menegaskan paritas prediktif sempurna antara LR dan SVM ($p = 1.0000$).
-  - Efisiensi Komputasi: LR unggul ekstrem dengan latensi inferensi **0.0046 ms/sampel** (>1.000× lebih cepat) dan ukuran model **0.11 MB** (>330× lebih ringkas).
-  - Keadilan Interseksional: Rentang recall terverifikasi **84.72% hingga 94.44%** lintas enam kelompok demografis dengan kesenjangan Equal Opportunity Difference (**9.72 pp**).
+  - Bebas dari pelaporan Wilson Score dan metrik perangkat keras/efisiensi komputasi (latensi, ukuran model, memori).
+  - **Subject-Disjoint Primary Benchmark (Metrik Lengkap)**: Logistic Regression (LR) Tri-Domain mencatat Akurasi **88.66%**, Presisi Makro **88.75%**, Recall Makro **88.66%**, dan F1-Score Makro **88.68%**, setara secara inferensial dengan Support Vector Machine (SVM) Tri-Domain dengan Akurasi **88.61%**, Presisi Makro **88.66%**, Recall Makro **88.61%**, dan F1-Score Makro **88.63%**. Uji McNemar mengonfirmasi keunggulan signifikan atas domain tunggal ($p < 0.001$) serta paritas prediktif sempurna antara LR dan SVM ($p = 1.0000$).
+  - **Stratified Split Historical Baseline (Khusus Akurasi dan F1-Score)**: Sebagai studi ablasi kebocoran identitas dari arsip `md_old`, evaluasi dengan tumpang tindih subjek mencatatkan Akurasi **93.70%** dan F1-Score Makro **93.69%** pada SVM Tri-Domain, serta Akurasi **92.73%** dan F1-Score Makro **92.73%** pada LR Tri-Domain.
+  - **Keadilan Interseksional**: Rentang recall terverifikasi **84.72% hingga 94.44%** lintas enam subkelompok dengan kesenjangan Equal Opportunity Difference (**9.72 pp**).
 
 ### Keywords
 Biometrics, face recognition, feature extraction, intersectional demographic recognition, multi-domain feature fusion, Vision Transformer.
