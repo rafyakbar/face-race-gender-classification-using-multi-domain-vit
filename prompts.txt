@@ -28,6 +28,14 @@ Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibu
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+perbaiki paper_v2/00_abstract.md:
+- tidak usah ada data jumlah data/subjek latih dan uji
+- f1-score nya jangan dimasukkan di dalam kurung
+- jangan hanya menyebutkan akurasi dan f1 score saja, sebutkan yang lengkap (harus sangat amat teliti, delegasikan ke subagent untuk cek experiment/code/md)
+- perhatikan juga jumlah target kata yang ada pada paper_outline_v1.1.md
+- update juga paper_outline_v1.1.md jika dibutuhkan
+- langsung juga update paper_latex_id_v2
+
 penulisanmu salah, masih ada yang bahasa inggris di bagian introduction, dan tidak usah ada bold. kamu bisa menjadikan paper_latex_id/ sebagai tata cara penulisan acuan (bukan isinya ya)! cek juga tata cara penulisan yg lainnya juga! delegasikan ke banyak subagent!
 
 paper_latex_id sudah saya clone ke paper_latex_id_v2, sekarang perbaiki atau sesuaikan paper_latex_id_v2 agar sesuai dengan paper_v2, perhatikan:
