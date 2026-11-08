@@ -30,6 +30,10 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+tidak usah ada "(Scaler 
+ PCA 
+ Downstream Classifier)"
+
 audit paper_v2/03_materials-and-methods_0-overview.md:
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
 - audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
