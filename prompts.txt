@@ -30,6 +30,9 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+pada paper_v2/01_introduction.md paragraf 3 terdapat sitasi yg ada di dalam kalimat, seharusnya sitasi itu terletak sebelum tanda koma atau titik
+
+
 audit paper_v2/02_related-works.md:
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah
 - audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit

@@ -20,7 +20,7 @@ paper_v2/01_introduction.md: paragraf 2:
   - paper_v2/references/2021_Racial Identity-Aware Facial Expression Recognition Using Deep Convolutional Neural Networks.bib
 
 paper_v2/01_introduction.md: paragraf 3:
-- "Pada era CNN, penelitian terdahulu mengeksplorasi ekstraksi ciri demografis melalui pemanfaatan wilayah wajah tengah serta kerangka kerja multi-tugas multi-skala untuk estimasi usia dan gender":
+- "Pada era CNN, penelitian terdahulu mengeksplorasi ekstraksi ciri demografis melalui pemanfaatan wilayah wajah tengah, serta kerangka kerja multi-tugas multi-skala untuk estimasi usia dan gender":
   - paper_v2/references/2022_Automatic Ethnicity Classification from Middle Part of the Face Using Convolutional Neural Networks.bib
   - paper_v2/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
 - "Di samping itu, model CNN mendalam turut dikembangkan untuk meningkatkan akurasi pengenalan etnisitas berbasis citra wajah":
@@ -29,7 +29,7 @@ paper_v2/01_introduction.md: paragraf 3:
   - paper_v2/references/2023_A Multidimensional Analysis of Social Biases in Vision Transformers.bib
 - "Pendekatan representasi generatif sintetis juga dieksplorasi untuk memitigasi disparitas demografis lintas kelompok gender dan ras":
   - paper_v2/references/2023_Deep Generative Views to Mitigate Gender Classification Bias Across Gender-Race Groups.bib
-- "Perkembangan mutakhir mencakup integrasi modul atensi paralel serta pemanfaatan ViT untuk klasifikasi gender wajah":
+- "Perkembangan mutakhir mencakup integrasi modul atensi paralel, serta pemanfaatan ViT untuk klasifikasi gender wajah":
   - paper_v2/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
   - paper_v2/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
 - "Selain itu, eksplorasi arsitektur transformer multi-aksis diusulkan untuk memperkaya variasi pemodelan representasi visual hierarkis":
@@ -95,7 +95,7 @@ paper_v2/02_related-works.md: paragraf 8:
 - "Pembelajaran multi-tugas terbukti efektif memetakan korelasi estimasi usia dan gender secara terpadu, sementara skema berbagi representasi memfasilitasi ekstraksi simultan berbagai atribut afektif":
   - paper_v2/references/2022_Face Gender and Age Classification Based on Multi-Task, Multi-Instance and Multi-Scale Learning.bib
   - paper_v2/references/2023_Learning an attention-aware parallel sharing network for facial attribute recognition.bib
-- "Selanjutnya, integrasi fitur laten berbasis ViT membuktikan keunggulan penggabungan domain biometrik dengan ekspresi emosi serta usia biologis":
+- "Selanjutnya, integrasi fitur laten berbasis ViT membuktikan keunggulan penggabungan domain biometrik dengan ekspresi emosi, serta usia biologis":
   - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
 

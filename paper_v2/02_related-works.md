@@ -35,7 +35,7 @@ Karakteristik representasi global yang dihasilkan oleh arsitektur transformer me
 
 ## C. Multi-Domain Feature Fusion
 
-Keterbatasan representasi domain tunggal mendorong perkembangan pembelajaran multi-tugas dan fusi lintas representasi. Pembelajaran multi-tugas terbukti efektif memetakan korelasi estimasi usia dan gender secara terpadu [[12]](06_references.md#ref12), sementara skema berbagi representasi memfasilitasi ekstraksi simultan berbagai atribut afektif [[16]](06_references.md#ref16). Selanjutnya, integrasi fitur laten berbasis ViT membuktikan keunggulan penggabungan domain biometrik dengan ekspresi emosi [[19]](06_references.md#ref19) serta usia biologis [[20]](06_references.md#ref20). Fusi representasi multi-domain ortogonal tersebut diformulasikan melalui operasi direct sum pada [(4)](#eq4):
+Keterbatasan representasi domain tunggal mendorong perkembangan pembelajaran multi-tugas dan fusi lintas representasi. Pembelajaran multi-tugas terbukti efektif memetakan korelasi estimasi usia dan gender secara terpadu [[12]](06_references.md#ref12), sementara skema berbagi representasi memfasilitasi ekstraksi simultan berbagai atribut afektif [[16]](06_references.md#ref16). Selanjutnya, integrasi fitur laten berbasis ViT membuktikan keunggulan penggabungan domain biometrik dengan ekspresi emosi [[19]](06_references.md#ref19), serta usia biologis [[20]](06_references.md#ref20). Fusi representasi multi-domain ortogonal tersebut diformulasikan melalui operasi direct sum pada [(4)](#eq4):
 
 <a id="eq4"></a>
 $$
