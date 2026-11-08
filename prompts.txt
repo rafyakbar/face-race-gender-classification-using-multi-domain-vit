@@ -30,6 +30,20 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+audit & perbaiki paper_v2/03_materials-and-methods_b-vision-transformer.md:
+- letakkan table 2 sebelum paragraf terakhir
+- perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
+- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md. karena saya lihat belum ada perbaikan terkait checkpoint
+- audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
+- audit apakah sudah sesuai dengan paper_v2/references.txt dan paper_v2/06_references.md untuk penomoran referensinya dan kesesuaian sitasi/klaim nya:
+  * bisa didelegasikan ke subagent untuk audit
+  * bisa didelegasikan ke beberapa subagent jika memang dibutuhkan
+  * berikan instruksi yg jelas ke subagent
+  tapi jika tidak ada sitasi sama sekali maka biarkan.
+- update juga paper_outline_v1.1.md jika dibutuhkan.
+- langsung juga update paper_latex_id_v2.
+- jangan lupa buat commit dan push setelah selesai.
+
 seharusnya menggunakan images/sample_demogpairs_v2.png, copy dulu datanya, lakukan dengan cepat
 
 figure itu terletak di bawah gambar, bukan di atasnya

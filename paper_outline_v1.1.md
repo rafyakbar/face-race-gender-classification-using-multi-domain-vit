@@ -358,19 +358,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
      - `ViT-Age` (`dima806/facial_age_image_detection`, Git revision SHA: `ad35933`): Fine-tuned pada korpus gabungan UTKFace dan IMDB-WIKI untuk estimasi umur dan morfologi penuaan biologis (Putri et al., JIEET 2025).
   2. Parameter pra-pemrosesan citra terstandardisasi: Citra masukan diformat ke 3-channel RGB, di-resize menggunakan interpolasi bilinear ke resolusi $224 \times 224 \times 3$ piksel, dan dinormalisasi per kanal menggunakan nilai rata-rata dan deviasi standar yang seragam untuk ketiga model: $\mu = [0.5, 0.5, 0.5]$ dan $\sigma = [0.5, 0.5, 0.5]$ (diverifikasi dari `preprocessor_config.json`, bukan nilai bawaan ImageNet).
   3. Implementasi ekstraksi fitur memanfaatkan *in-memory processor caching* (`_PROCESSOR_CACHE` pada `utils/extraction.py`) untuk mengeliminasi disk I/O reload berulang pada 10.800 citra, serta mencatat instrumentasi latensi berpresisi tinggi ke berkas JSON `experiment/code/times/features_vit-*.json`.
-
-#### Paragraph 3: CLS Token Extraction and Multi-Domain Feature Fusion Design
-- **Target Kata**: 100–125 kata.
-- **Tujuan**: Menjelaskan formulasi matematis ekstraksi token representasi `[CLS]` Layer 12, pembentukan vektor representasi gabungan tri-domain $\mathbf{z}_{\text{tri}}$, serta desain sistematis studi ablasi melintasi 7 konfigurasi fitur pada [Table II](#tab2).
-- **Poin Narasi**:
-  1. Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
-     $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
-     *(di mana $\mathbf{z}_L^0$ diambil dari output `last_hidden_state[:, 0, :]` yang telah melewati LayerNorm akhir pada `ViTModel` dengan `torch.no_grad()`)*.
-  2. Fusi Tri-Domain via konkatenasi terurut (direct sum):
-     $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
-     menghasilkan ruang representasi komplementer 2.304 dimensi yang memadukan biometrik statis, ekspresi emosional, dan penuaan biologis.
-  3. Desain ablasi fitur sistematis dirancang melintasi 7 konfigurasi fitur: 3 skema *single-domain* (768 dimensi), 3 skema *dual-domain* (1.536 dimensi), dan 1 skema *tri-domain* usulan (2.304 dimensi) sebagaimana disajikan pada [Table II](#tab2).
-- **Ketentuan Layout LaTeX**: Table II berformat Column Width (`\begin{table}`).
+- **Ketentuan Layout LaTeX**: Table II diletakkan **sebelum Paragraf 3** berformat Column Width (`\begin{table}`).
 - **Tabel II (Skema Konfigurasi Fusi Fitur dan Desain Studi Ablasi)**:
 
 **Table II. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
@@ -384,6 +372,18 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 | 5 | `Face ⊕ Age` | Dual-Domain | 1,536 |
 | 6 | `Emotion ⊕ Age` | Dual-Domain | 1,536 |
 | 7 | `Face ⊕ Emotion ⊕ Age` | Tri-Domain (Proposed) | 2,304 |
+
+#### Paragraph 3: CLS Token Extraction and Multi-Domain Feature Fusion Design
+- **Target Kata**: 100–125 kata.
+- **Tujuan**: Menjelaskan formulasi matematis ekstraksi token representasi `[CLS]` Layer 12, pembentukan vektor representasi gabungan tri-domain $\mathbf{z}_{\text{tri}}$, serta desain sistematis studi ablasi melintasi 7 konfigurasi fitur pada [Table II](#tab2).
+- **Poin Narasi**:
+  1. Ekstraksi token `[CLS]` lapisan ke-12 ($\mathbf{z}_L^0$) dan normalisasi LayerNorm:
+     $$\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_L^0) \in \mathbb{R}^{768} \tag{7}$$
+     *(di mana $\mathbf{z}_L^0$ diambil dari output `last_hidden_state[:, 0, :]` yang telah melewati LayerNorm akhir pada `ViTModel` dengan `torch.no_grad()`)*.
+  2. Fusi Tri-Domain via konkatenasi terurut (direct sum):
+     $$\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304} \tag{8}$$
+     menghasilkan ruang representasi komplementer 2.304 dimensi yang memadukan biometrik statis, ekspresi emosional, dan penuaan biologis.
+  3. Desain ablasi fitur sistematis dirancang melintasi 7 konfigurasi fitur: 3 skema *single-domain* (768 dimensi), 3 skema *dual-domain* (1.536 dimensi), dan 1 skema *tri-domain* usulan (2.304 dimensi) sebagaimana disajikan pada [Table II](#tab2).
 
 ### C. Random Forest
 - **Target Kata**: 100-150 kata (minimal 100 kata, maksimal 150 kata).
@@ -866,7 +866,7 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Figure 2** | Gambar | Section III.A (Paragraph 1) | *Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.* | **Full Width (`figure*`)** |
 | **Table I** | Tabel | Section III.A (Paragraph 2) | *DemogPairs Dataset Partition and Subject-Disjoint Demographic Subgroup Distribution.* | Column Width (`table`) |
 | **Figure 3** | Gambar | Section III.B (Paragraph 1) | *Architecture of Multi-Domain ViT Feature Extraction and Fusion.* | **Full Width (`figure*`)** |
-| **Table II** | Tabel | Section III.B (Paragraph 3) | *Multi-Domain Feature Fusion and Systematic Ablation Configurations.* | Column Width (`table`) |
+| **Table II** | Tabel | Section III.B (Before Paragraph 3) | *Multi-Domain Feature Fusion and Systematic Ablation Configurations.* | Column Width (`table`) |
 | **Table III** | Tabel | Section III.C (Random Forest) | *Hyperparameter Search Space for Random Forest Classifier.* | **Full Width (`table*`)** |
 | **Table IV** | Tabel | Section III.D (Gaussian NB) | *Hyperparameter Search Space for Gaussian Naive Bayes Classifier.* | **Full Width (`table*`)** |
 | **Table V** | Tabel | Section III.E (Logistic Reg) | *Hyperparameter Search Space for Logistic Regression Classifier.* | **Full Width (`table*`)** |
