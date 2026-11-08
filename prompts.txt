@@ -30,6 +30,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+seharusnya menggunakan images/sample_demogpairs_v2.png, copy dulu datanya, lakukan dengan cepat
+
 figure itu terletak di bawah gambar, bukan di atasnya
 
 nama Figure 3. terlalu panjang

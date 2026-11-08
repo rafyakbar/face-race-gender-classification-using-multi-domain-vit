@@ -1,14 +1,7 @@
 ## A. Dataset
 
 <a id="fig2"></a>
-<p align="center">
-  <img src="images/sample_Asian_Females.jpg" width="16%" alt="(a) Asian Females" />
-  <img src="images/sample_Asian_Males.jpg" width="16%" alt="(b) Asian Males" />
-  <img src="images/sample_Black_Females.jpg" width="16%" alt="(c) Black Females" />
-  <img src="images/sample_Black_Males.jpg" width="16%" alt="(d) Black Males" />
-  <img src="images/sample_White_Females.jpg" width="16%" alt="(e) White Females" />
-  <img src="images/sample_White_Males.jpg" width="16%" alt="(f) White Males" />
-</p>
+![Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.](images/sample_demogpairs_v2.png)
 <p align="center"><strong>Figure 2. Sample Images of the DemogPairs Dataset across Six Intersectional Demographic Subgroups: (a) Asian Females, (b) Asian Males, (c) Black Females, (d) Black Males, (e) White Females, and (f) White Males.</strong></p>
 
 Eksperimen dalam penelitian ini memanfaatkan dataset DemogPairs yang dikembangkan oleh Hupont dan Fernández [[25]](06_references.md#ref25) sebagai tolok ukur pengujian biometrik verifikasi wajah untuk mengevaluasi dampak ketimpangan demografis. Korpus ini memuat total 10.800 citra wajah yang terdistribusi seimbang ke dalam enam subkelompok demografis interseksional, mencakup persilangan antara tiga ras makro (Asian, Black, White) dan dua kategori gender biner (Female, Male). Struktur dataset mencakup 600 identitas unik, dengan alokasi seragam 100 individu per subkelompok di mana setiap identitas diwakili 18 citra terkontrol bervariasi pose, ekspresi, dan pencahayaan. Distribusi seimbang ini menyediakan lingkungan evaluasi terkontrol demi menganalisis disparitas performa antarsubkelompok secara objektif tanpa distorsi jumlah sampel. Sampel citra disajikan pada [Figure 2](#fig2).
