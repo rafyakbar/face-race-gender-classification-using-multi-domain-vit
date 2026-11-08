@@ -1,14 +1,14 @@
-\subsection{Vision Transformer Feature Extraction}
+\subsection{Vision Transformer}
 \label{sec:vision_transformer}
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=\textwidth]{vit_v2.2.png}
-\caption{Redesigned High-Resolution Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.}
+\caption{Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.}
 \label{fig:3}
 \end{figure*}
 
-Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model Vision Transformer baku rancangan Dosovitskiy et al.~\cite{ref26} sebagaimana diilustrasikan pada Figure~\ref{fig:3}. Setiap citra wajah masukan beresolusi 224 $\times$ 224 piksel dengan $C = 3$ kanal warna dibagi menjadi $N = 196$ patch spasial non-overlapping berdimensi $P \times P$ dengan $P = 16$~\cite{ref27}. Setiap patch diratakan menjadi $\mathbf{x}_p \in \mathbb{R}^{P^2 \cdot C}$ lalu diproyeksikan secara linier melalui matriks $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$ ke ruang laten berdimensi $D = 768$. Vektor patch tersebut dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan embedding posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai perumusan \eqref{eq:5}~\cite{ref27}. Sekuens vektor token awal $\mathbf{z}_0$ selanjutnya diumpankan ke tumpukan $L = 12$ lapisan transformer encoder identik. Pada setiap lapisan encoder $\ell$ ($\ell = 1, \dots, L$), representasi fitur diproses melalui Multi-Head Self-Attention (MHSA) setelah operasi Layer Normalization (LN), lalu dialirkan menuju Multi-Layer Perceptron (MLP) dua lapis dengan fungsi aktivasi Gaussian Error Linear Unit (GeLU) berdasarkan \eqref{eq:6}~\cite{ref28}. Mekanisme self-attention memungkinkan pemodelan relasi spasial global antarpatch wajah tanpa batasan receptive field lokal~\cite{ref29}.
+Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model ViT standar~\cite{ref26} sebagaimana diilustrasikan pada Figure~\ref{fig:3}. Setiap citra masukan beresolusi 224 $\times$ 224 piksel dengan $C = 3$ kanal dibagi menjadi $N = 196$ patch non-overlapping berukuran $P \times P$ ($P = 16$). Patch diratakan menjadi $\mathbf{x}_p \in \mathbb{R}^{P^2 \cdot C}$ lalu diproyeksikan secara linier melalui $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$ ke ruang laten $D = 768$. Vektor patch dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan embedding posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai \eqref{eq:5}~\cite{ref27}. Sekuens token $\mathbf{z}_0$ dialirkan ke $L = 12$ lapisan transformer encoder identik. Pada setiap lapisan $\ell$, fitur diproses via MHSA setelah Layer Normalization (LN), lalu diumpankan ke Multi-Layer Perceptron (MLP) dua lapis beraktivasi Gaussian Error Linear Unit (GeLU) berdasarkan \eqref{eq:6}~\cite{ref28}. Mekanisme self-attention memodelkan relasi spasial global antarpatch tanpa batasan receptive field lokal~\cite{ref29}.
 
 \begin{equation}
 \mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \, \mathbf{x}_p^1\mathbf{E}; \, \dots; \, \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}
@@ -22,7 +22,7 @@ Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi mode
 
 Untuk memperoleh representasi visual wajah yang komplementer, kerangka kerja ini memanfaatkan tiga model backbone ViT-Base pra-latih yang dibekukan secara terpisah. Model pertama merupakan \texttt{ViT-Face} (\texttt{skutaada/VIT-VGGFace}) yang memetakan pola geometri kraniofasial statis berbasis korpus VGGFace2. Model kedua adalah \texttt{ViT-Emotion} (\texttt{dima806/facial\_emotions\_image\_detection}) untuk mengekstraksi dinamika ekspresi afektif wajah berdasarkan fine-tuning korpus FER-2013. Model ketiga yaitu \texttt{ViT-Age} (\texttt{dima806/facial\_age\_image\_detection}) yang memetakan penanda morfologi usia biologis subjek berbasis dataset UTKFace dan IMDB-WIKI. Seluruh model domain mengadopsi struktur ViT-Base/16 dengan dimensi tersembunyi 768 dan 12 lapisan encoder. Citra masukan diformat ke ruang warna RGB, disesuaikan ke resolusi 224 $\times$ 224 piksel, serta dinormalisasi secara seragam lewat parameter statistik $\mu = [0.5, 0.5, 0.5]$ dan $\sigma = [0.5, 0.5, 0.5]$. Ekstraksi fitur memanfaatkan in-memory processor caching tanpa pembaruan gradien demi menjamin efisiensi komputasi dan reproduktibilitas representasi.
 
-Representasi fitur laten tingkat tinggi diekstraksi dari setiap model domain melalui aktivasi token $[\text{CLS}]$ pada lapisan encoder terakhir ($\ell = 12$). Vektor keluaran token kelas tersebut kemudian distandardisasi melalui operasi Layer Normalization akhir untuk menghasilkan representasi domain teranormalisasi $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ sesuai perumusan \eqref{eq:7}, di mana $\mathbf{z}_{12}^0$ melambangkan representasi token pertama pada lapisan kedua belas yang diekstraksi tanpa perhitungan gradien. Selanjutnya, ketiga representasi domain tunggal digabungkan melalui operasi fusi konkatenasi langsung $\oplus$ menjadi vektor representasi gabungan tri-domain $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ berdasarkan formulasi \eqref{eq:8}. Ruang representasi gabungan ini memadukan informasi biometrik kraniofasial $\mathbf{f}_{\text{face}}$, ekspresi emosional afektif $\mathbf{f}_{\text{emotion}}$, serta estimasi usia biologis $\mathbf{f}_{\text{age}}$ secara simultan. Eksplorasi empiris dilakukan melalui pengujian ablasi sistematis yang mencakup tujuh skema konfigurasi fitur, meliputi tiga konfigurasi domain tunggal berdimensi 768, tiga konfigurasi domain ganda berdimensi 1.536, dan satu konfigurasi tri-domain usulan berdimensi 2.304 sebagaimana disajikan pada Table~\ref{tab:2}.
+Representasi fitur laten tingkat tinggi diekstraksi dari setiap model domain melalui aktivasi token $[\text{CLS}]$ pada lapisan encoder terakhir ($\ell = 12$). Vektor token kelas distandardisasi melalui operasi LN akhir untuk menghasilkan representasi teranormalisasi $\mathbf{f}_{\text{domain}} \in \mathbb{R}^{768}$ sesuai perumusan \eqref{eq:7}, di mana $\mathbf{z}_{12}^0$ menyatakan token pertama lapisan ke-12 tanpa pembaruan gradien. Selanjutnya, ketiga representasi digabungkan melalui fusi konkatenasi langsung $\oplus$ menjadi vektor tri-domain $\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$ berdasarkan formulasi \eqref{eq:8}. Ruang representasi ini memadukan informasi kraniofasial $\mathbf{f}_{\text{face}}$, ekspresi emosional $\mathbf{f}_{\text{emotion}}$, dan usia biologis $\mathbf{f}_{\text{age}}$. Eksplorasi empiris dilakukan melalui pengujian ablasi sistematis lintas tujuh konfigurasi fitur pada Table~\ref{tab:2}, mencakup tiga konfigurasi domain tunggal (768 dimensi), tiga konfigurasi domain ganda (1.536 dimensi), dan satu konfigurasi tri-domain usulan (2.304 dimensi).
 
 \begin{equation}
 \mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_{12}^0) \in \mathbb{R}^{768}
@@ -34,22 +34,22 @@ Representasi fitur laten tingkat tinggi diekstraksi dari setiap model domain mel
 \label{eq:8}
 \end{equation}
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \caption{Multi-Domain Feature Fusion and Systematic Ablation Configurations.}
 \label{tab:2}
 \label{tab:II}
 \centering
-\begin{tabular}{clclc}
+\begin{tabular}{clcc}
 \toprule
-\# & Feature Scheme & Category & Input Source Domains & Feature Dimension \\
+\# & Feature Scheme & Category & Feature Dimension \\
 \midrule
-1 & Face & Single-Domain & Static Craniofacial Biometrics (\texttt{skutaada/VIT-VGGFace}) & 768 \\
-2 & Emotion & Single-Domain & Dynamic Affective Expressions (\texttt{dima806/facial\_emotions\_image\_detection}) & 768 \\
-3 & Age & Single-Domain & Biological Aging Morphology (\texttt{dima806/facial\_age\_image\_detection}) & 768 \\
-4 & Emotion $\oplus$ Face & Dual-Domain & Affective Dynamics + Craniofacial Biometrics & 1,536 \\
-5 & Face $\oplus$ Age & Dual-Domain & Craniofacial Biometrics + Aging Morphology & 1,536 \\
-6 & Emotion $\oplus$ Age & Dual-Domain & Affective Dynamics + Aging Morphology & 1,536 \\
-7 & Face $\oplus$ Emotion $\oplus$ Age & Tri-Domain (Proposed) & Biometrics + Affective Dynamics + Aging Morphology & 2,304 \\
+1 & Face & Single-Domain & 768 \\
+2 & Emotion & Single-Domain & 768 \\
+3 & Age & Single-Domain & 768 \\
+4 & Emotion $\oplus$ Face & Dual-Domain & 1,536 \\
+5 & Face $\oplus$ Age & Dual-Domain & 1,536 \\
+6 & Emotion $\oplus$ Age & Dual-Domain & 1,536 \\
+7 & Face $\oplus$ Emotion $\oplus$ Age & Tri-Domain (Proposed) & 2,304 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}

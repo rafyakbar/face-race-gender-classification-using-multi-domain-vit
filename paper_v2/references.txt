@@ -103,8 +103,8 @@ paper_v2/03_materials-and-methods_a-dataset.md: paragraf 1:
 - "Eksperimen dalam penelitian ini memanfaatkan dataset DemogPairs yang dikembangkan oleh Hupont dan Fernández":
   - paper_v2/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
 
-paper_v2/03_materials-and-methods_b-vision-transformer.md: paragraf 2:
-- "Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model Vision Transformer baku rancangan Dosovitskiy et al. sebagaimana diilustrasikan pada [Figure 3](#fig3)":
+paper_v2/03_materials-and-methods_b-vision-transformer.md: paragraf 1:
+- "Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model ViT standar sebagaimana diilustrasikan pada [Figure 3](#fig3)":
   - paper_v2/references/2023_A Survey on Vision Transformer.bib
 - "Setiap citra wajah masukan beresolusi 224 × 224 piksel dengan $C = 3$ kanal warna dibagi menjadi $N = 196$ patch spasial non-overlapping berdimensi $P \times P$ dengan $P = 16$":
   - paper_v2/references/2022_Transformers in Vision A Survey.bib
