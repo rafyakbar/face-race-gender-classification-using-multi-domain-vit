@@ -338,9 +338,9 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
     $$\mathbf{z}'_\ell = \text{MHSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}, \quad \mathbf{z}_\ell = \text{MLP}(\text{LN}(\mathbf{z}'_\ell)) + \mathbf{z}'_\ell \tag{6}$$
 - **Sitasi Gambar Wajib**: Mensitasi diagram vektor resolusi tinggi arsitektur ekstraksi ViT paralel dan fusi konkatenasi pada file `images/vit_v2.2.png` (Figure 3).
 - **Ketentuan Layout LaTeX**: **Figure 3 berformat Full Width (`\begin{figure*}`)**.
-- **Caption Figure**: **Figure 3. Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
+- **Caption Figure**: **Figure 3. Architecture of Multi-Domain ViT Feature Extraction and Fusion.**
 - **Visual Markdown**:
-  ![Figure 3. Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
+  ![Figure 3. Architecture of Multi-Domain ViT Feature Extraction and Fusion.](images/vit_v2.2.png)
 - **Panduan Narasi Figure 3 (Jawaban R1 #3 *"explained in better way to show the novelty"*)**: Narasi wajib merujuk eksplisit ke nomor tahapan pada gambar:
   1. **Tahap ①–④ (Tokenisasi, Persamaan 5-6)**: Citra $224 \times 224 \times 3$ dipartisi menjadi 196 patch $16 \times 16$ (Tahap ②), diproyeksikan linier ke $D = 768$ (Tahap ③), lalu ditambah token `[CLS]` dan $\mathbf{E}_{\text{pos}}$ menjadi 197 token (Tahap ④).
   2. **Catatan Interpretasi Gambar (Wajib Ditulis)**: Tahap ①–④ digambar satu kali demi keringkasan, tetapi mekanisme tersebut berlangsung **secara independen di dalam masing-masing dari ketiga backbone ViT-Base** pada Tahap ⑤, karena setiap checkpoint memiliki bobot $\mathbf{E}$, $\mathbf{E}_{\text{pos}}$, dan 12 layer encoder sendiri. Citra masukan identik dan diproses melalui instans `AutoImageProcessor` masing-masing checkpoint (dengan parameter normalisasi seragam $\mu = \sigma = [0.5, 0.5, 0.5]$).

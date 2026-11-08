@@ -1,9 +1,9 @@
 ## B. Vision Transformer
 
 <a id="fig3"></a>
-**Figure 3. Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.**
+**Figure 3. Architecture of Multi-Domain ViT Feature Extraction and Fusion.**
 
-![Figure 3. Architecture of the Parallel Multi-Domain ViT Feature Extraction Backbones, Layer-12 CLS Token Extraction, and Direct Sum Feature Concatenation Pipeline.](images/vit_v2.2.png)
+![Figure 3. Architecture of Multi-Domain ViT Feature Extraction and Fusion.](images/vit_v2.2.png)
 
 Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model ViT standar [[26]](06_references.md#ref26) sebagaimana diilustrasikan pada [Figure 3](#fig3). Setiap citra masukan beresolusi 224 × 224 piksel dengan $C = 3$ kanal dibagi menjadi $N = 196$ patch non-overlapping berukuran $P \times P$ ($P = 16$). Patch diratakan menjadi $\mathbf{x}_p \in \mathbb{R}^{P^2 \cdot C}$ lalu diproyeksikan secara linier melalui $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$ ke ruang laten $D = 768$. Vektor patch dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan embedding posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai [(5)](#eq5) [[27]](06_references.md#ref27). Sekuens token $\mathbf{z}_0$ dialirkan ke $L = 12$ lapisan transformer encoder identik. Pada setiap lapisan $\ell$, fitur diproses via MHSA setelah Layer Normalization (LN), lalu diumpankan ke Multi-Layer Perceptron (MLP) dua lapis beraktivasi Gaussian Error Linear Unit (GeLU) berdasarkan [(6)](#eq6) [[28]](06_references.md#ref28). Mekanisme self-attention memodelkan relasi spasial global antarpatch tanpa batasan receptive field lokal [[29]](06_references.md#ref29).
 

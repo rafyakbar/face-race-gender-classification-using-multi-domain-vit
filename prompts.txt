@@ -30,6 +30,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+nama Figure 3. terlalu panjang
+
 audit & perbaiki paper_v2/03_materials-and-methods_b-vision-transformer.md:
 - nama Figure 3. tidak perlu ada Redesigned High-Resolution.
 - Table II. tidak perlu ada kolom Input Source Domains.
