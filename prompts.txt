@@ -30,6 +30,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+jika ada formula sederhana seperti 224 × 224 (seperti paper_v2/03_materials-and-methods_b-vision-transformer.md paragraf 1) tidak usah $224 \times 224$ seperti paragraf 2, dan sebangsanya, cek juga yg lain
+
 audit & perbaiki paper_v2/03_materials-and-methods_b-vision-transformer.md:
 - dalam paper akademik jangan menggunakan kata git sha.
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
