@@ -31,9 +31,9 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 
 audit & perbaiki paper_v2/03_materials-and-methods_b-vision-transformer.md:
-- letakkan table 2 sebelum paragraf terakhir
+- dalam paper akademik jangan menggunakan kata git sha.
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
-- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md. karena saya lihat belum ada perbaikan terkait checkpoint
+- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md.
 - audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
 - audit apakah sudah sesuai dengan paper_v2/references.txt dan paper_v2/06_references.md untuk penomoran referensinya dan kesesuaian sitasi/klaim nya:
   * bisa didelegasikan ke subagent untuk audit
