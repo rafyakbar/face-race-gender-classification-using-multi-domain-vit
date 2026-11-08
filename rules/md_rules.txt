@@ -168,15 +168,18 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
     intensitas piksel input teranormalisasi pada rentang $[0, 1]$, $I_{\text{out}}$ adalah intensitas
     piksel output, dan $\gamma$ menyatakan koefisien koreksi gamma."
 
-6.2. Penulisan Dimensi, Operasi & Simbol Sederhana dalam Teks
-  - Untuk penulisan ukuran dimensi, operasi aritmetika sederhana, rentang, atau simbol skalar deskriptif
-    di dalam kalimat, CUKUP gunakan teks biasa dengan simbol unicode standar tanpa mode matematika LaTeX ($...$):
-    * Dimensi / Resolusi      : 224 × 224, 518 × 518, 8 × 8 (gunakan simbol teks `×`, bukan `$\times$`)
-    * Penjumlahan / Fusi      : 1024 + 768 = 1792 (cukup teks biasa, bukan `$1024 + 768 = 1792$`)
-    * Rentang & Toleransi     : ±5%, ±15°, ±20% (gunakan simbol teks `±` dan `°`, bukan `$\pm$` atau `$^\circ$`)
-    * Rasio / Pembagian       : 80/10/10, 0.7 / 1.5 (cukup teks biasa)
+6.2. Penulisan Dimensi, Operasi & Simbol Sederhana dalam Teks (Simple Formula & Dimension Plaintext Rule)
+  - Untuk penulisan ukuran dimensi, resolusi spasial, partisi grid, ukuran patch, matriks konfusi, persilangan kelas, operasi aritmetika sederhana, rentang, atau simbol skalar deskriptif di dalam kalimat naratif, WAJIB menggunakan teks biasa dengan simbol unicode standar tanpa dibungkus mode matematika LaTeX ($...$):
+    * Dimensi / Resolusi Citra : 224 × 224, 224 × 224 × 3 (BENAR: `224 × 224 piksel`; SALAH: `$224 \times 224$ piksel`)
+    * Ukuran Patch Spasial     : 16 × 16 (BENAR: `patch 16 × 16`; SALAH: `patch $16 \times 16$`)
+    * Matriks / Grid Klasifikasi: 2 × 2, 6 × 6 (BENAR: `tabel kontingensi 2 × 2`, `matriks konfusi 6 × 6`; SALAH: `$2 \times 2$`, `$6 \times 6$`)
+    * Persilangan Kelas Atribut: 3 Ras × 2 Gender (BENAR: `(3 Ras × 2 Gender)`; SALAH: `(3 Ras $\times$ 2 Gender)`)
+    * Penjumlahan / Fusi       : 1024 + 768 = 1792 (cukup teks biasa, bukan `$1024 + 768 = 1792$`)
+    * Pengali / Skala          : >1.000×, >330× (gunakan teks biasa dengan `×`, bukan `$\times$`)
+    * Rentang & Toleransi      : ±5%, ±15°, ±20% (gunakan simbol teks `±` dan `°`, bukan `$\pm$` atau `$^\circ$`)
+    * Rasio / Pembagian        : 80/20, 80/10/10, 0.7 / 1.5 (cukup teks biasa)
   - Mode matematika (`$...$` atau `$$...$$`) DIKHUSUSKAN untuk ekspresi simbolik, fungsi aljabar, matriks,
-    dan variabel murni (contoh: $\gamma$, $\sigma$, $\mathbf{x}$, $\mathbf{W}$, $I_{\text{in}}$, $f(x)$).
+    dan variabel murni (contoh: $\gamma$, $\sigma$, $\mathbf{x}$, $\mathbf{W}$, $P \times P$, $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$, $1.0 \times 10^{-9}$, $f(x)$).
 
 6.3. Teks Subskrip Formula
   - Subskrip non-variabel wajib menggunakan `\text{...}`, contoh: `$I_{\text{combined}}$`, `$W_{\text{proj}}$`.
@@ -240,6 +243,16 @@ elemen atau berkas target yang sesuai menggunakan anchor HTML atau link Markdown
     * Gunakan bentuk pasif akademis objektif (S_terkena - P_pasif - K) khususnya pada seksi Materials and Methods untuk menjaga nada ilmiah yang impersonal.
   - Struktur SPOK yang tertib pada draf Bahasa Indonesia ini menjadi prasyarat mutlak untuk menghasilkan terjemahan yang akurat, presisi, dan luwes ke struktur SVO/SVOC (Subject-Verb-Object-Complement) pada naskah LaTeX Bahasa Inggris standar IEEE.
 
+7.10. Larangan Jargon Pengembang & Penulisan Versi Checkpoint (No Developer Jargon / Git SHA)
+  - DILARANG menggunakan istilah teknis pengembang informal repositori seperti `Git SHA`, `git sha`, `commit hash`, atau `git revision` di dalam teks naskah akademik formal.
+  - Untuk mendokumentasikan spesifikasi versi checkpoint model pra-latih (misalnya model Hugging Face) demi menjamin reprodusibilitas eksperimental, WAJIB menggunakan frasa akademik formal:
+    * BENAR : `(skutaada/VIT-VGGFace, versi e85f0c9)`
+              `(dima806/facial_emotions_image_detection, versi 747cf16)`
+              `(dima806/facial_age_image_detection, versi ad35933)`
+    * SALAH : `(skutaada/VIT-VGGFace, Git SHA: e85f0c9)`
+              `(skutaada/VIT-VGGFace, commit hash: e85f0c9)`
+              `(skutaada/VIT-VGGFace, git revision: e85f0c9)`
+
 
 ====================================================================================================
 8. DISIPLIN BATASAN KLAIM ILMIAH (GLOBAL SCIENTIFIC CLAIM DISCIPLINE)
@@ -280,7 +293,7 @@ Sebelum naskah Markdown dikonversi ke format LaTeX:
 [ ] 3. Seluruh tautan Markdown (`[Figure 1](#fig1)`, `[(1)](#eq1)`, dll.) berfungsi dan mengarah ke anchor yang tepat.
 [ ] 4. Setiap perujukan persamaan telah disertai kalimat penjelas definisi simbol variabelnya.
 [ ] 5. Urutan nomor Referensi [1]..[N], Figur 1..N, Tabel I..N, dan Persamaan (1)..(N) runtut kronologis.
-[ ] 6. Penulisan dimensi, operasi sederhana (seperti 224 × 224, 1024 + 768 = 1792, ±5%) menggunakan teks biasa, bukan math mode.
+[ ] 6. Penulisan dimensi, resolusi, operasi sederhana (seperti 224 × 224, 16 × 16, 2 × 2, 6 × 6, 1024 + 768 = 1792, ±5%) menggunakan teks biasa dengan simbol unicode ×, bukan math mode ($224 \times 224$).
 [ ] 7. Tidak ada satu pun karakter em dash (—) di seluruh naskah.
 [ ] 8. Tidak ada kata terlarang (`kendati`, `paradigma`, `guna`) di dalam teks.
 [ ] 9. Seluruh singkatan baru telah tercatat pada `paper_v2/acronyms.txt` dan singkatan lama tidak diulang kepanjangannya.
@@ -289,6 +302,7 @@ Sebelum naskah Markdown dikonversi ke format LaTeX:
 [ ] 12. Seluruh batasan klaim ilmiah telah dipatuhi secara objektif dan jujur.
 [ ] 13. Seluruh berkas gambar yang dirujuk telah disalin dan tersedia di dalam folder lokal `paper_v2/images/`.
 [ ] 14. Seluruh kalimat mematuhi kaidah SPOK dengan Subjek dan Predikat yang definitif, bebas dari kalimat menggantung (dangling sentences), serta memiliki variasi alur transisi yang alami.
+[ ] 15. Bebas dari jargon pengembang informal (misal: "Git SHA", "commit hash"); versi checkpoint ditulis formal sebagai `versi <hash>`.
 
 ====================================================================================================
 AKHIR DOKUMEN WRITING MD RULES

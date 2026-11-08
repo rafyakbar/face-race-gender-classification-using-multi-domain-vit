@@ -38,9 +38,12 @@
   - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formulir resmi perubahan susunan kepengarangan (author byline change form).
   - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Daftar periksa kepatuhan resubmisi 10 poin resmi.
   - [paper_outline_audit/](paper_reviews_ieee/paper_outline_audit/) — Berkas laporan audit multi-model independen dan sintesis terpadu terhadap kepatuhan ulasan IEEE Access.
-- **Panduan Operasional:**
+- **Panduan Operasional & Pedoman Standar Penulisan:**
   - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure (SOP) untuk siklus hidup naskah riset 5 tahap.
   - [`README.ai.md`](README.ai.md) — Panduan referensi teknis utama dan single source of truth untuk autonomous agents.
+  - [`rules/md_rules.txt`](rules/md_rules.txt) — Pedoman standar penulisan naskah modular Markdown (tata bahasa SPOK, format dimensi sederhana plaintext `224 × 224`, eliminasi jargon pengembang).
+  - [`rules/latex_rules.txt`](rules/latex_rules.txt) — Pedoman standar penulisan naskah LaTeX IEEE Access (format numerik dimensi `224 $\times$ 224`, versi checkpoint formal, kepatuhan tipografi).
+  - [`rules/IEEE_citation_guidelines.md`](rules/IEEE_citation_guidelines.md) — Pedoman sitasi dan referensi gaya IEEE.
 
 ---
 
@@ -341,7 +344,11 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 ├── prompts.txt                            # Catatan kronologis prompt dan instruksi rekayasa eksperimen
 ├── README.ai.md                           # Panduan operasional agen AI utama dan indeks ground-truth
 ├── README.md                              # Dokumentasi riset publik utama (BERKAS INI)
-├── sessions/                              # Log riwayat sesi kerja otonom AI agent (9 berkas konsolidasi per tanggal)
+├── rules/                                 # Pedoman standar penulisan naskah akademis, Markdown, dan LaTeX IEEE
+│   ├── IEEE_citation_guidelines.md        # Panduan sitasi dan referensi standar IEEE Access
+│   ├── latex_rules.txt                    # Aturan penulisan naskah LaTeX IEEE Access (format dimensi, versi checkpoint)
+│   └── md_rules.txt                       # Aturan penulisan naskah Markdown modular (SPOK, teks biasa dimensi, versi checkpoint)
+├── sessions/                              # Log riwayat sesi kerja otonom AI agent (10 berkas konsolidasi per tanggal)
 ├── WORKFLOW.md                            # Standard Operating Procedure (SOP) siklus pengembangan naskah
 └── upload/                                # Artefak paket pengajuan siap kirim (PDF dan arsip ZIP sumber)
 ```

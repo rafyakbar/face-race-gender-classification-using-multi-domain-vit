@@ -631,9 +631,9 @@ pdflatex access.tex
 
 ---
 
-## 15. Batasan Klaim Ilmiah & Direktif Penulisan Akademik (28 Aturan/Direktif)
+## 15. Batasan Klaim Ilmiah & Direktif Penulisan Akademik (30 Aturan/Direktif)
 
-Saat menyusun, merevisi, atau mengaudit draf manuskrip, menyusun outline makalah, maupun merancang naskah tanggapan komentar penelaah (*Response to Reviewers*), seluruh AI agent **WAJIB** mematuhi secara ketat 28 direktif berikut:
+Saat menyusun, merevisi, atau mengaudit draf manuskrip, menyusun outline makalah, maupun merancang naskah tanggapan komentar penelaah (*Response to Reviewers*), seluruh AI agent **WAJIB** mematuhi secara ketat 30 direktif berikut:
 
 1. **Kejelasan Partisi Ganda (Dual Partitioning Clarity):** Bedakan secara eksplisit antara *Subject-Disjoint Partitioning* (Benchmark Utama / Primary Benchmark, 0.00% kebocoran, 88.66% LR / 88.61% SVM) dan *Subject-Overlap Partitioning* (Baseline Historis, 100% kebocoran, 93.70% SVM). Bingkai hasil historis secara murni sebagai studi ablasi komparatif kebocoran data (*data leakage ablation study*).
 2. **Formulasi Hati-Hati terhadap Kebocoran Data (Cautious Data Leakage Formulation):** Nyatakan secara presisi bahwa "protokol partisi *subject-disjoint* mengisolasi seluruh 120 identitas subjek uji dari data latih, mengeliminasi kebocoran akibat memorisasi identitas (*identity memorization leakage*)."
@@ -666,6 +666,8 @@ Saat menyusun, merevisi, atau mengaudit draf manuskrip, menyusun outline makalah
 26. **Pemeliharaan Direktori Skrip:** Pertahankan seluruh skrip otomatisasi runner tetap rapi dan terisolasi di dalam `experiment/code/scripts/`.
 27. **Standar Penempatan Notebook:** Seluruh 33 notebook Jupyter aktif wajib dipertahankan posisinya langsung pada akar direktori `experiment/code/`.
 28. **Penyelarasan Respons Reviewer:** Saat merancang draf surat tanggapan untuk Komentar #2 Reviewer 2, manfaatkan tabel komparasi kebocoran data dan nilai *p-value* McNemar langsung dari Seksi 7 panduan manual ini.
+29. **Standarisasi Penulisan Dimensi & Formula Sederhana (Simple Formula & Dimension Plaintext Rule):** Untuk penulisan ukuran dimensi/resolusi spasial (`224 × 224`), ukuran patch spasial (`16 × 16`), dimensi tabel kontingensi (`2 × 2`), matriks konfusi (`6 × 6`), pembagian kelas demografis (`3 Ras × 2 Gender`), atau operasi aritmetika sederhana dalam kalimat teks naratif, WAJIB menggunakan teks biasa dengan simbol unicode standar `×` dan DILARANG dibungkus ke dalam format matematika LaTeX (`$224 \times 224$` atau `$16 \times 16$`). Mode matematika inline (`$...$`) secara ketat dikhususkan untuk variabel simbolik murni, fungsi aljabar, matriks, atau notasi ilmiah ($P \times P$, $\mathbf{E} \in \mathbb{R}^{...}$, $1.0 \times 10^{-9}$).
+30. **Larangan Jargon Pengembang & Dokumentasi Versi Checkpoint (*No Developer Jargon / Git SHA in Academic Papers*):** DILARANG menggunakan istilah teknis pengembang informal repositori seperti `Git SHA`, `git sha`, `commit hash`, atau `git revision` di dalam teks naskah akademik formal. Pelacakan spesifikasi checkpoint model pra-latih (misalnya dari Hugging Face) wajib menggunakan istilah akademik formal seperti `versi <hash>` atau `checkpoint version <hash>` (misalnya: `versi e85f0c9`) untuk menjaga nada ilmiah impersonal standar IEEE Access.
 
 ---
 
@@ -732,3 +734,4 @@ Seluruh sesi kerja terpadu otonom dicatat secara teliti ke dalam direktori `sess
 7. **`2026-10-31`**: Audit Latensi Ekstraksi CPU, Redesain Figure 3 ViT v2.2, Instrumentasi Waktu Ekstraksi, In-Memory Caching (30× speedup), dan Penyempurnaan Master Outline v1.1 (`session_2026-10-31_audit-latensi-instrumentasi-waktu-dan-penyempurnaan-outline.md`).
 8. **`2026-11-02`**: Unifikasi dan Simplifikasi Direktori Sesi Kerja Otonom (`sessions/`), Eliminasi Duplikasi Tanggal Ganda menjadi Satu Berkas per Tanggal (`session_2026-11-02_unifikasi-dan-simplifikasi-direktori-sessions.md`).
 9. **`2026-11-03`**: Penyempurnaan Section III-IV Master Outline v1.1, Audit Kepatuhan Multi-Model (`paper_outline_audit/`), Penyusunan Sintesis Meta-Audit Terpadu (`2026-11-03_all.md`), dan Pemutakhiran Berkas Pendukung Repositori (`session_2026-11-03_penyempurnaan-materials-methods-results-discussion-dan-paritas-tabel-outline.md`).
+10. **`2026-11-08`**: Audit Komprehensif Naskah Modular `paper_v2/` (Overview III, Dataset III-A, Vision Transformer III-B), Relokasi Tabel II, Standardisasi Versi Checkpoint Akademis (Eliminasi Jargon Git SHA), Penegakan Format Teks Polos Dimensi Sederhana (`224 × 224`), serta Kodifikasi Aturan Penulisan ke `rules/` (`rules/md_rules.txt`, `rules/latex_rules.txt`).

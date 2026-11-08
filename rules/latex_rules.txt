@@ -158,6 +158,11 @@ Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal 
   - Subskrip teks deskriptif wajib menggunakan `\text{...}`, contoh: `$I_{\text{combined}}$`, `$\mathbf{W}_{\text{proj}}$`.
   - Vektor dan matriks menggunakan huruf tebal `\mathbf{f}` atau `\bm{W}`.
 
+5.5. Penulisan Dimensi, Resolusi & Operasi Sederhana dalam Teks LaTeX
+  - Penulisan dimensi spasial atau partisi grid dalam teks naratif ditulis menggunakan angka teks biasa
+    dengan simbol perkalian math mode: `224 $\times$ 224 piksel`, `16 $\times$ 16`, `2 $\times$ 2`, `6 $\times$ 6`.
+  - DILARANG membungkus seluruh angka ke dalam mode matematika huruf miring (contoh SALAH: `$224 \times 224$ piksel`).
+
 
 ====================================================================================================
 6. ATURAN SITASI & DATABASE BIBTEX (references.bib)
@@ -321,6 +326,17 @@ Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal 
   - Pastikan tidak ada karakter em dash (—) di dalam berkas `.tex`. Gunakan tanda hubung (-)
     atau tanda kurung.
 
+9.5. Larangan Jargon Pengembang & Dokumentasi Versi Checkpoint (No Developer Jargon / Git SHA)
+  - DILARANG menggunakan istilah teknis pengembang/CLI repositori informal seperti `Git SHA: \texttt{...}`,
+    `commit hash: \texttt{...}`, atau `git revision` pada teks naratif naskah akademik formal.
+  - Untuk mendokumentasikan spesifikasi versi checkpoint model pra-latih (misalnya Hugging Face) demi menjamin
+    reprodusibilitas riset, WAJIB menggunakan frasa akademik formal:
+    * BENAR : `(\texttt{skutaada/VIT-VGGFace}, versi \texttt{e85f0c9})`
+              `(\texttt{dima806/facial\_emotions\_image\_detection}, versi \texttt{747cf16})`
+              `(\texttt{dima806/facial\_age\_image\_detection}, versi \texttt{ad35933})`
+    * SALAH : `(\texttt{skutaada/VIT-VGGFace}, Git SHA: \texttt{e85f0c9})`
+              `(\texttt{skutaada/VIT-VGGFace}, commit hash: \texttt{e85f0c9})`
+
 
 ====================================================================================================
 10. ALUR KOMPILASI & TROUBLESHOOTING
@@ -354,11 +370,12 @@ Seluruh elemen WAJIB memiliki urutan penomoran yang runtut kronologis dari awal 
 [ ] 3. Seluruh persamaan yang dirujuk dengan `\eqref{eq:X}` disertai kalimat penjelas definisi simbol variabel.
 [ ] 4. Seluruh tautan sitasi `[1]`, `[2]` dan rumus `(1)`, `(2)` berwarna biru dan melompat ke posisi yang tepat.
 [ ] 5. Urutan nomor Referensi [1]..[N], Figur 1..N, Tabel I..N, dan Persamaan (1)..(N) runtut kronologis.
-[ ] 6. Penulisan dimensi, operasi sederhana (seperti 224 × 224, 1024 + 768 = 1792, ±5%) menggunakan teks biasa, bukan math mode.
+[ ] 6. Penulisan dimensi dan operasi sederhana menggunakan angka teks dengan simbol perkalian (seperti 224 $\times$ 224, 16 $\times$ 16, 2 $\times$ 2, 6 $\times$ 6), bukan math mode penuh ($224 \times 224$).
 [ ] 7. Seluruh tabel menggunakan style booktabs tanpa garis vertikal.
 [ ] 8. Kompilasi bersih tanpa warning "Citation undefined" atau "Reference undefined".
 [ ] 9. Foto seluruh penulis tersemat rapi pada bagian biografi.
 [ ] 10. Berkas PDF akhir terkompilasi sempurna sesuai standar publikasi IEEE Access.
+[ ] 11. Bebas dari jargon pengembang informal (misal: "Git SHA", "commit hash"); versi checkpoint ditulis formal sebagai `versi \texttt{<hash>}`.
 
 ====================================================================================================
 AKHIR DOKUMEN WRITING LATEX RULES
