@@ -718,28 +718,28 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120
 
 #### Paragraph 1: Granular Subgroup Classification Profile in Top-Performing Tri-Domain Models
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) granular pada 6 subkelompok demografis ($N = 360$ citra uji *unseen* per subkelompok) untuk model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) berdasarkan [Table XVI](#tab16). Subkelompok White Males mencatat performa tertinggi (Recall 94.44%, F1 94.84% pada LR; Recall 94.44%, F1 94.18% pada SVM). Sebaliknya, subkelompok Black Females mencatat recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM; False Negative Rate 15.28%). Subkelompok Asian Females meraih recall 86.67% pada LR dan 86.11% pada SVM. Pelaporan metrik FNR menyeimbangkan evaluasi performa pada masing-masing kelompok demografis.
-- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) granular pada 6 subkelompok demografis ($N = 360$ citra uji *unseen* per subkelompok) untuk model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) berdasarkan [Table XV](#tab15). Subkelompok White Males mencatat performa tertinggi (Recall 94.44%, F1 94.84% pada LR; Recall 94.44%, F1 94.18% pada SVM). Sebaliknya, subkelompok Black Females mencatat recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM; False Negative Rate 15.28%). Subkelompok Asian Females meraih recall 86.67% pada LR dan 86.11% pada SVM. Pelaporan metrik FNR menyeimbangkan evaluasi performa pada masing-masing kelompok demografis.
+- **Ketentuan Layout LaTeX**: **Table XV berformat Full Width (`\begin{table*}`)**.
 - **Tabel XV (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint)**:
 
-**Table XV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
+**Table XV. Intersectional Subgroup Performance and Algorithmic Fairness Profile.**
 
-| Classifier | Subgroup | Support | Precision | Recall (TPR) | F1-Score | FNR |
+| Classifier | Subgroup | Recall (TPR) | Precision | F1-Score | OvR Accuracy | FNR |
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Logistic Regression (Tri)** | `White_Males` | 360 | 95.24% | 94.44% | 94.84% | 5.56% |
-| | `White_Females` | 360 | 91.32% | 90.56% | 90.93% | 9.44% |
-| | `Black_Males` | 360 | 91.59% | 87.78% | 89.65% | 12.22% |
-| | `Asian_Males` | 360 | 82.72% | 87.78% | 85.18% | 12.22% |
-| | `Asian_Females` | 360 | 86.43% | 86.67% | 86.55% | 13.33% |
-| | `Black_Females` | 360 | 85.20% | 84.72% | 84.96% | 15.28% |
-| **Support Vector Machine (Tri)** | `White_Males` | 360 | 93.92% | 94.44% | 94.18% | 5.56% |
-| | `White_Females` | 360 | 90.11% | 91.11% | 90.61% | 8.89% |
-| | `Asian_Males` | 360 | 82.34% | 88.06% | 85.10% | 11.94% |
-| | `Black_Males` | 360 | 92.35% | 87.22% | 89.71% | 12.78% |
-| | `Asian_Females` | 360 | 85.87% | 86.11% | 85.99% | 13.89% |
-| | `Black_Females` | 360 | 87.64% | 84.72% | 86.16% | 15.28% |
+| **Logistic Regression (Tri-Domain)** | `White_Males` | 94.44% | 95.24% | 94.84% | 98.29% | 5.56% |
+| | `White_Females` | 90.56% | 91.32% | 90.93% | 96.99% | 9.44% |
+| | `Black_Males` | 87.78% | 91.59% | 89.65% | 96.62% | 12.22% |
+| | `Asian_Males` | 87.78% | 82.72% | 85.18% | 94.91% | 12.22% |
+| | `Asian_Females` | 86.67% | 86.43% | 86.55% | 95.51% | 13.33% |
+| | `Black_Females` | 84.72% | 85.20% | 84.96% | 95.00% | 15.28% |
+| **Support Vector Machine (Tri-Domain)** | `White_Males` | 94.44% | 93.92% | 94.18% | 98.06% | 5.56% |
+| | `White_Females` | 91.11% | 90.11% | 90.61% | 96.85% | 8.89% |
+| | `Asian_Males` | 88.06% | 82.34% | 85.10% | 94.86% | 11.94% |
+| | `Black_Males` | 87.22% | 92.35% | 89.71% | 96.67% | 12.78% |
+| | `Asian_Females` | 86.11% | 85.87% | 85.99% | 95.32% | 13.89% |
+| | `Black_Females` | 84.72% | 87.64% | 86.16% | 95.46% | 15.28% |
 
-> **Catatan Table XVI:** Metrik One-vs-Rest dievaluasi pada 120 subjek held-out terisolasi ($N = 2.160$, 360 citra per subkelompok). False Negative Rate ($\text{FNR} = 1 - \text{Recall}$). Equal Opportunity Difference ($\text{EOD} = \max \text{TPR} - \min \text{TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$) identik pada kedua model. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XV:** Metrik One-vs-Rest dievaluasi pada 120 subjek held-out terisolasi ($N = 2,160$, 360 citra per subkelompok). False Negative Rate ($\text{FNR} = 1 - \text{Recall}$). Equal Opportunity Difference ($\text{EOD} = \max \text{TPR} - \min \text{TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$) identik pada kedua model. Format layout: LaTeX Full Width (`\begin{table*}`).
 
 #### Paragraph 2: Algorithmic Fairness Calibration and Scope Limitations (Jawaban R2 #6)
 - **Target Kata**: 100–120 kata.
