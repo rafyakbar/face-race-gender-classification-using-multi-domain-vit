@@ -18,8 +18,6 @@ pelajari:
 4. experiment/code/archive/md_old/
 5. experiment/code/md/
 6. paper_outline_v1.1.md (ini paper outline yang baru)
-7. paper_reviews_ieee/paper_outline_audit/
-8. sessions/
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -29,6 +27,21 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+audit & perbaiki paper_v2/03_materials-and-methods_c-random-forest.md, paper_v2/03_materials-and-methods_d-gaussian-naive-bayes.md, paper_v2/03_materials-and-methods_e-logistic-regression.md, paper_v2/03_materials-and-methods_f-support-vector-machine.md, paper_v2/03_materials-and-methods_g-classification-pipeline.md, paper_v2/03_materials-and-methods_h-evaluation-metrics.md:
+- delegasikan ke subageny untuk masing-masing file md.
+- perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
+- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md.
+- perhatikan rules/md_rules.txt.
+- audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
+- audit apakah sudah sesuai dengan paper_v2/references.txt dan paper_v2/06_references.md untuk penomoran referensinya dan kesesuaian sitasi/klaim nya, dan juga cek apakah sudah sesuai dengan experiment/code/md:
+  * bisa didelegasikan ke subagent untuk audit
+  * bisa didelegasikan ke beberapa subagent jika memang dibutuhkan
+  * berikan instruksi yg jelas ke subagent
+  tapi jika tidak ada sitasi sama sekali maka biarkan.
+- update juga paper_outline_v1.1.md jika dibutuhkan.
+- langsung juga update paper_latex_id_v2 (perhatikan juga rules/latex_rules.txt).
+- jangan lupa buat commit dan push setelah selesai.
 
 jika ada formula sederhana seperti 224 × 224 (seperti paper_v2/03_materials-and-methods_b-vision-transformer.md paragraf 1) tidak usah $224 \times 224$ seperti paragraf 2, dan sebangsanya, cek juga yg lain
 
