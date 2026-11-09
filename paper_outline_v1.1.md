@@ -616,31 +616,45 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 
 #### Paragraph 6: Computational Efficiency and Resource Consumption Profile (Jawaban R1 #5 & R2 #8)
 - **Target Kata**: 120–150 kata.
-- **Fokus Narasi**: Menyajikan profil efisiensi komputasi terukur pada [Table XI](#tab11):
-  1. *Ekstraksi Fitur GPU Offline (10.800 citra)*: Ekstraksi fitur pada GPU dengan *in-memory processor caching* mencatat 124.5 ms/citra (total 22.41 menit untuk 3 domain), di mana ekstraksi bersifat *one-time offline* dengan ukuran cache 30.8 MB per domain (92.4 MB tri-domain).
-  2. *Durasi Pelatihan 5-Fold GridSearchCV*: Pelatihan pada multicore CPU mencatat LR Tri 54.8 menit (3.287 s) vs SVM Tri 511.1 menit (30.666 s; 9.3× lebih cepat dilatih), RF Tri 110.5 menit (6.628 s), dan GNB Dual 25.5 menit (1.529 s).
-  3. *Latensi Inferensi per Sampel & Konteks End-to-End*: Latensi kepala pengklasifikasi hilir LR tercatat **0.0046 ms/sampel** vs SVM 4.6785 ms (>1.000× lebih cepat), RF 0.0334 ms, dan GNB 0.0088 ms (total latensi inferensi *end-to-end* per citra pada GPU termasuk ekstraksi 3 ViT adalah $\approx 124.505\text{ ms}$ untuk LR vs $\approx 129.179\text{ ms}$ untuk SVM).
+- **Fokus Narasi**: Menyajikan profil efisiensi komputasi terukur pada [Table XI](#tab11) dan [Table XII](#tab12):
+  1. *Ekstraksi Fitur GPU Offline (10.800 citra)*: Ekstraksi fitur pada GPU dengan *in-memory processor caching* mencatat 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total tri-domain 124.50 ms/citra (total 22.41 menit untuk 3 domain), di mana ekstraksi bersifat *one-time offline* dengan ukuran cache 30.8 MB per domain (92.4 MB tri-domain) pada disk.
+  2. *Durasi Pelatihan 5-Fold GridSearchCV*: Pelatihan pada multicore CPU mencatat LR Tri 54.78 menit (3.287,07 s) vs SVM Tri 511.10 menit (30.666,02 s; 9.3× lebih cepat dilatih), RF Tri 110.47 menit (6.628,03 s), dan GNB Dual 25.49 menit (1.529,50 s).
+  3. *Latensi Inferensi per Sampel & Konteks End-to-End*: Latensi kepala pengklasifikasi hilir LR tercatat **0.0046 ms/sampel** vs SVM 4.6785 ms (>1.000× [1.027×] lebih cepat), RF 0.0334 ms, dan GNB 0.0088 ms (total latensi inferensi *end-to-end* per citra pada GPU termasuk ekstraksi 3 ViT adalah $\approx 124.505\text{ ms}$ untuk LR vs $\approx 129.179\text{ ms}$ untuk SVM).
   4. *Ukuran Penyimpanan Model*: LR **0.11 MB** vs SVM 36.60 MB (>330× lebih ringkas) dan RF 6.19 MB.
   5. *Jejak Memori RAM & Kualifikasi Edge AI*: Array uji 2.160 sampel hanya memakan 18.98 MB, menetapkan LR sebagai kepala pengklasifikasi hilir (*downstream classifier*) paling efisien tanpa *overhead* memori/latensi di atas ekstraksi fitur ViT, sementara untuk penerapan *Edge AI* berdaya rendah secara *end-to-end* diperlukan kuantisasi atau distilasi pada ketiga backbone ViT.
-- **Ketentuan Layout LaTeX**: **Table XI berformat Full Width (`\begin{table*}`)**.
-- **Tabel XI (Profil Efisiensi Komputasi dan Konsumsi Sumber Daya)**:
+- **Ketentuan Layout LaTeX**: **Table XI dan Table XII berformat Full Width (`\begin{table*}`)**.
+- **Tabel XI (Profil Waktu Ekstraksi Fitur dan Penyimpanan Vision Transformer)**:
 
-**Table XI. Computational Efficiency and Resource Consumption Profile.**
+<a id="tab11"></a>
+**Table XI. Vision Transformer Feature Extraction Runtime and Storage Profile.**
 
-| Classifier | Feature Scheme | Dim. | Extraction (GPU, ms) | Training Time (min) | Inference (ms/sample) | Model Size (MB) | RAM Footprint (MB) |
-|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Logistic Regression (LR)** | **Tri-Domain** | **2,304** | **124.5** | **54.8** | **0.0046** | **0.11** | **18.98** |
-| Support Vector Machine (SVM) | Tri-Domain | 2,304 | 124.5 | 511.1 | 4.6785 | 36.60 | 18.98 |
-| Random Forest (RF) | Tri-Domain | 2,304 | 124.5 | 110.5 | 0.0334 | 6.19 | 18.98 |
-| Gaussian Naive Bayes (GNB) | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | 79.4 | 25.5 | 0.0088 | 0.78 | 12.66 |
+| Feature Domain | Pre-Trained Backbone Checkpoint | Latent Dim ($D$) | Execution Hardware | Latency (ms/img) | Throughput (img/s) | Total Extraction Duration | Backbone Size (MB) | Feature Cache (MB) |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Biometric Face | `skutaada/VIT-VGGFace` | 768 | NVIDIA RTX 4060 GPU | 39.74 | 25.16 | 429.22 s (7m 09s) | 371 | ≈30 (raw 31.64) |
+| Facial Emotion | `dima806/facial_emotions_image_detection` | 768 | NVIDIA RTX 4060 GPU | 39.65 | 25.22 | 428.24 s (7m 08s) | 343 | ≈30 (raw 31.64) |
+| Facial Age | `dima806/facial_age_image_detection` | 768 | NVIDIA RTX 4060 GPU | 45.11 | 22.17 | 487.17 s (8m 07s) | 343 | ≈30 (raw 31.64) |
+| **Tri-Domain Fusion** | **All Three ViT-Base Models** | **2,304** | **NVIDIA RTX 4060 GPU** | **124.50** | **8.03** | **1,344.64 s (22m 25s)** | **1,057** | **≈90 (raw 94.92)** |
 
-> **Catatan Table XI:** Seluruh pengukuran dieksekusi pada lingkungan komputasi terstandardisasi sebagaimana dirincikan pada Subseksi III.I. Ekstraksi fitur GPU diukur langsung dengan in-memory processor caching (`experiment/code/times/*.json`). Training time merepresentasikan total durasi wall-clock 5-Fold GridSearchCV beserta refit akhir pada CPU dalam satuan menit. Latensi inferensi (`Inference`) mengukur waktu prediksi pengklasifikasi hilir per sampel uji (total latensi *end-to-end* per citra pada GPU adalah $\text{Extraction} + \text{Inference} \approx 124.505\text{ ms}$ pada LR Tri-Domain vs $\approx 129.179\text{ ms}$ pada SVM Tri-Domain). Format layout: LaTeX Full Width (`\begin{table*}`).  
-> **Catatan Metodologis RAM Footprint vs. System RAM:** Kolom *RAM Footprint* merepresentasikan alokasi memori bersih murni (*exact buffer memory footprint*) untuk menampung matriks fitur data uji $N=2.160$ sampel bertipe `float32` ($2.160 \times 2.304 \times 4\text{ bytes} \approx 18.98\text{ MB}$ untuk Tri-Domain; $2.160 \times 1.536 \times 4\text{ bytes} \approx 12.66\text{ MB}$ untuk Dual-Domain; atau hanya $\approx 9.22\text{ KB}$ per sampel citra pada skenario inferensi *real-time streaming*). Metrik ini diukur langsung pada level objek (`nbytes`) dan sengaja diisolasi dari total memori proses sistem operasi (Task Manager / Resident Set Size / RSS) guna mengeliminasi *noise* serta *overhead* masif runtime Python, alokasi awal *cache* PyTorch/CUDA (~1–2 GB), dan fluktuasi dinamis *Garbage Collector*. Pendekatan ini menyajikan batas kebutuhan memori minimum (*deterministic memory budget*) yang objektif, dapat direplikasi secara pasti (*fully reproducible*), serta relevan bagi perancangan sistem cerdas pada perangkat tepi (*Edge AI*) berdaya rendah.
+> **Catatan Table XI:** Nilai ekstraksi fitur diukur langsung menggunakan akselerasi GPU NVIDIA RTX 4060 dengan batch inference torch.no_grad() dan input citra $224 \times 224$ piksel. Ukuran cache fitur pada penyimpanan sekunder menggunakan kompresi joblib level 9. Format layout: LaTeX Full Width (`\begin{table*}`).
+
+- **Tabel XII (Profil Waktu Pelatihan, Latensi Inferensi, dan Jejak Memori Pengklasifikasi Hilir)**:
+
+<a id="tab12"></a>
+**Table XII. Downstream Classifier Training Runtime, Inference Latency, and Memory Footprint Profile.**
+
+| Classifier | Feature Scheme | Latent Dim ($D$) | Accuracy (%) | Macro F1 (%) | 5-Fold CV Training Time (s) | Inference Latency (ms/sample) | Model Size (MB) | RAM Footprint (MB) |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Logistic Regression (LR)** | **Tri-Domain** | **2,304** | **88.66** | **88.68** | **3,287.07 (54.78 min)** | **0.0046** | **0.11** | **≈0.11 (buffer 18.98)** |
+| Support Vector Machine (SVM) | Tri-Domain | 2,304 | 88.61 | 88.63 | 30,666.02 (511.10 min) | 4.6785 | 36.60 | ≈36.60 (buffer 18.98) |
+| Random Forest (RF) | Tri-Domain | 2,304 | 85.00 | 84.93 | 6,628.03 (110.47 min) | 0.0334 | 6.19 | ≈6.19 (buffer 18.98) |
+| Gaussian Naive Bayes (GNB) | Dual-Domain (`Emotion ⊕ Face`) | 1,536 | 84.31 | 84.30 | 1,529.50 (25.49 min) | 0.0088 | 0.78 | ≈0.78 (buffer 12.66) |
+
+> **Catatan Table XVI:** Waktu pelatihan merepresentasikan durasi wall-clock GridSearchCV 5-fold pada CPU standar. Latensi inferensi mengukur waktu prediksi pengklasifikasi hilir per sampel uji pada set held-out ($N = 2.160$). Buffer RAM merepresentasikan alokasi memori deterministik nbytes untuk menampung matriks fitur data uji float32 ($2.160 \times 2.304 \times 4\text{ bytes} \approx 18.98\text{ MB}$). Total latensi end-to-end per citra pada GPU adalah penjumlahan waktu ekstraksi ViT dan latensi inferensi hilir ($\approx 124.505\text{ ms}$ untuk LR vs $\approx 129.179\text{ ms}$ untuk SVM). Format layout: LaTeX Full Width (`\begin{table*}`).
 
 ### B. Feature Ablation Study
 > **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi tumpang tindih identitas (*"clarify whether identity overlap exists and provide subject-disjoint evaluation"*), kualifikasi klaim keunggulan tri-domain (*"claims of tri-domain superiority and feature saturation should be appropriately qualified"*), serta uji signifikansi inferensial McNemar (*"claims should be appropriately qualified according to McNemar test"*).  
-> - **Rencana Mitigasi:** Menyajikan analisis progresif kontribusi fitur antardomain, studi komparatif ablasi kebocoran data pada Tabel XII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas), dan hasil uji signifikansi inferensial McNemar berpasangan dengan koreksi kontinuitas Edwards serta uji eksak binomial dua arah pada Tabel XIII yang mengualifikasikan secara transparan fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$) dan paritas prediktif LR vs SVM ($p = 1.0000$).
+> - **Rencana Mitigasi:** Menyajikan analisis progresif kontribusi fitur antardomain, studi komparatif ablasi kebocoran data pada Tabel XIII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas), dan hasil uji signifikansi inferensial McNemar berpasangan dengan koreksi kontinuitas Edwards serta uji eksak binomial dua arah pada Tabel XIV yang mengualifikasikan secara transparan fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$) dan paritas prediktif LR vs SVM ($p = 1.0000$).
 
 Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120 kata**:
 
@@ -652,10 +666,10 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 #### Paragraph 2: Comparative Ablation Study on Data Leakage: Subject-Overlap vs. Subject-Disjoint
 - **Target Kata**: 100–120 kata.
 - **Fokus Narasi**: Membandingkan hasil baseline historis (*Subject-Overlap*, 100% identity leakage) dengan tolok ukur utama (*Subject-Disjoint*, zero leakage) pada [Table XII](#tab12). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM ($93.70\% \to 88.61\%$) dan $\Delta = -4.07\text{ pp}$ pada LR ($92.73\% \to 88.66\%$) menguantifikasi secara empiris besaran efek memorisasi identitas wajah (*facial identity memorization effect*). Degradasi yang lebih terkendali pada model LR Tri menunjukkan stabilitas generalisasi lintas-subjek dalam-dataset (*within-dataset subject-disjoint generalization*) pada model linier ter-regularisasi terhadap identitas subjek uji yang terisolasi pada tolok ukur DemogPairs.
-- **Ketentuan Layout LaTeX**: **Table XII berformat Full Width (`\begin{table*}`)**.
-- **Tabel XII (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint)**:
+- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Tabel XIII (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint)**:
 
-**Table XII. Comparative Ablation Study on Data Leakage: Historical Baseline vs. Primary Benchmark.**
+**Table XIII. Comparative Ablation Study on Data Leakage: Historical Baseline vs. Primary Benchmark.**
 
 | Model | Protocol | Accuracy | Macro F1 | Leakage Status | Degradation (Δ) |
 |---|---|:---:|:---:|---|:---:|
@@ -664,18 +678,18 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 | LR Tri-Domain | Subject-Overlap (Historical) | 92.73% | 0.9273 | 100% Identity Overlap (593/600 subjects) | Baseline |
 | **LR Tri-Domain** | **Subject-Disjoint (Primary)** | **88.66%** | **0.8868** | **Zero Leakage (0% Overlap, 120 held-out)** | **-4.07 pp** |
 
-> **Catatan Table XII:** Protokol Subject-Overlap (baseline historis) membagi citra secara acak berstrata sehingga 593 dari 600 identitas unik subjek hadir di set latih dan uji secara bersamaan (100% identity leakage). Protokol Subject-Disjoint (tolok ukur utama) mengisolasi 120 subjek secara utuh di set uji held-out (0% identity leakage). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM dan $\Delta = -4.07\text{ pp}$ pada LR menguantifikasi efek memorisasi identitas wajah. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XVI:** Protokol Subject-Overlap (baseline historis) membagi citra secara acak berstrata sehingga 593 dari 600 identitas unik subjek hadir di set latih dan uji secara bersamaan (100% identity leakage). Protokol Subject-Disjoint (tolok ukur utama) mengisolasi 120 subjek secara utuh di set uji held-out (0% identity leakage). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM dan $\Delta = -4.07\text{ pp}$ pada LR menguantifikasi efek memorisasi identitas wajah. Format layout: LaTeX Full Width (`\begin{table*}`).
 
 #### Paragraph 3: Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test)
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Memaparkan hasil pengujian hipotesis statistik inferensial pada [Table XIII](#tab13):
+- **Fokus Narasi**: Memaparkan hasil pengujian hipotesis statistik inferensial pada [Table XVI](#tab16):
   1. *Multi-domain vs Single Face*: SVM Tri vs Face ($+2.45\text{ pp}$, $\chi^2 = 20.9612, p = 3.46 \times 10^{-6} < 0.001$) dan LR Tri vs Face ($+2.27\text{ pp}$, $\chi^2 = 19.6923, p = 6.78 \times 10^{-6} < 0.001$) signifikan secara statistik, menolak hipotesis bahwa keunggulan fusi atas domain tunggal hanyalah artefak kebocoran data.
   2. *Tri vs Dual (Kualifikasi Saturasi Fitur)*: Penambahan domain usia di atas `Emotion ⊕ Face` pada SVM Tri vs Dual ($+0.19\text{ pp}$, $p = 0.7343$) mengindikasikan kejenuhan fitur asimtotik pada kernel RBF (meskipun terhadap `Face ⊕ Age`, peningkatan ke SVM Tri signifikan dengan $+1.06\text{ pp}, \chi^2 = 6.8169, p = 0.0086 < 0.01$), sedangkan pada LR Tri vs Dual `Emotion ⊕ Face` ($+1.20\text{ pp}$, $p = 0.0073 < 0.01$) menunjukkan kontribusi signifikan fitur usia pada pengklasifikasi linier.
   3. *Paritas Prediktif LR vs SVM*: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.0000$ dan $p = 1.0000$ (selisih bersih +1 citra: 1.915 vs 1.914 dari $N = 2.160$). Karena uji McNemar menguji hipotesis nol kesamaan proporsi kesalahan marjinal ($p > 0.05$), hasil ini dikualifikasikan secara metodologis bahwa kedua model menunjukkan tidak adanya perbedaan performa yang signifikan secara statistik (*no statistically significant difference / predictive parity*). Nilai $p$ eksak binomial dua arah dilaporkan berdampingan dengan statistik $\chi^2$ berkoreksi Edwards.
-- **Ketentuan Layout LaTeX**: **Table XIII berformat Full Width (`\begin{table*}`)**.
-- **Tabel XIII (Hasil Uji McNemar Berpasangan dan Exact Binomial Test)**:
+- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Tabel XIV (Hasil Uji McNemar Berpasangan dan Exact Binomial Test)**:
 
-**Table XIII. Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test).**
+**Table XIV. Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test).**
 
 | Comparison Pair | Category | Acc. Diff. | Discordant ($b$ / $c$) | Edwards $\chi^2$ | Exact Binomial $p$-value | Statistical Inference |
 |---|---|:---:|:---:|:---:|:---:|---|
@@ -685,22 +699,22 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 | LR Tri vs. Dual (Emot+Face) | Tri-domain vs. Dual | +1.20 pp (+26) | 57 / 31 | 7.1023 | 0.0073 | Significant ($p < 0.01$) |
 | LR Tri vs. SVM Tri | Top Classifier Parity | +0.05 pp (+1) | 36 / 35 | 0.0000 | 1.0000 | Not Significant (Predictive Parity) |
 
-> **Catatan Table XIII:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XVI:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
 
 ### C. Intersectional Subgroup Performance
 > **Catatan Respons Reviewer (R2 Poin 6):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi ruang lingkup dan batasan analisis keadilan algoritmik (*"reported Equal Opportunity Difference values provide useful subgroup information but do not establish comprehensive demographic fairness... clarify scope and limitations"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XIV evaluasi performa granular 6 subkelompok demografis pada model tri-domain terbaik (LR dan SVM), melaporkan nilai EOD (9.72 pp) secara transparan, serta memberikan kalibrasi objektif bahwa metrik ini mencerminkan disparitas tingkat kesalahan prediksi empiris berdasarkan distribusi frekuensi kesalahan antarsubkelompok pada sampel uji ($N = 2.160$), bukan jaminan keadilan algoritmik universal.
+> - **Rencana Mitigasi:** Menyajikan Tabel XV evaluasi performa granular 6 subkelompok demografis pada model tri-domain terbaik (LR dan SVM), melaporkan nilai EOD (9.72 pp) secara transparan, serta memberikan kalibrasi objektif bahwa metrik ini mencerminkan disparitas tingkat kesalahan prediksi empiris berdasarkan distribusi frekuensi kesalahan antarsubkelompok pada sampel uji ($N = 2.160$), bukan jaminan keadilan algoritmik universal.
 
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120 kata**:
 
 #### Paragraph 1: Granular Subgroup Classification Profile in Top-Performing Tri-Domain Models
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) granular pada 6 subkelompok demografis ($N = 360$ citra uji *unseen* per subkelompok) untuk model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) berdasarkan [Table XIV](#tab14). Subkelompok White Males mencatat performa tertinggi (Recall 94.44%, F1 94.84% pada LR; Recall 94.44%, F1 94.18% pada SVM). Sebaliknya, subkelompok Black Females mencatat recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM; False Negative Rate 15.28%). Subkelompok Asian Females meraih recall 86.67% pada LR dan 86.11% pada SVM. Pelaporan metrik FNR menyeimbangkan evaluasi performa pada masing-masing kelompok demografis.
-- **Ketentuan Layout LaTeX**: **Table XIV berformat Full Width (`\begin{table*}`)**.
-- **Tabel XIV (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint)**:
+- **Fokus Narasi**: Menganalisis metrik One-vs-Rest (OvR) granular pada 6 subkelompok demografis ($N = 360$ citra uji *unseen* per subkelompok) untuk model LR Tri-Domain (88.66%) dan SVM Tri-Domain (88.61%) berdasarkan [Table XVI](#tab16). Subkelompok White Males mencatat performa tertinggi (Recall 94.44%, F1 94.84% pada LR; Recall 94.44%, F1 94.18% pada SVM). Sebaliknya, subkelompok Black Females mencatat recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM; False Negative Rate 15.28%). Subkelompok Asian Females meraih recall 86.67% pada LR dan 86.11% pada SVM. Pelaporan metrik FNR menyeimbangkan evaluasi performa pada masing-masing kelompok demografis.
+- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Tabel XV (Kinerja Klasifikasi per-Subkelompok Demografis Model Tri-Domain Subject-Disjoint)**:
 
-**Table XIV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
+**Table XV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
 
 | Classifier | Subgroup | Support | Precision | Recall (TPR) | F1-Score | FNR |
 |---|---|:---:|:---:|:---:|:---:|:---:|
@@ -717,7 +731,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120
 | | `Asian_Females` | 360 | 85.87% | 86.11% | 85.99% | 13.89% |
 | | `Black_Females` | 360 | 87.64% | 84.72% | 86.16% | 15.28% |
 
-> **Catatan Table XIV:** Metrik One-vs-Rest dievaluasi pada 120 subjek held-out terisolasi ($N = 2.160$, 360 citra per subkelompok). False Negative Rate ($\text{FNR} = 1 - \text{Recall}$). Equal Opportunity Difference ($\text{EOD} = \max \text{TPR} - \min \text{TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$) identik pada kedua model. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XVI:** Metrik One-vs-Rest dievaluasi pada 120 subjek held-out terisolasi ($N = 2.160$, 360 citra per subkelompok). False Negative Rate ($\text{FNR} = 1 - \text{Recall}$). Equal Opportunity Difference ($\text{EOD} = \max \text{TPR} - \min \text{TPR} = 94.44\% - 84.72\% = \mathbf{9.72\text{ pp}}$) identik pada kedua model. Format layout: LaTeX Full Width (`\begin{table*}`).
 
 #### Paragraph 2: Algorithmic Fairness Calibration and Scope Limitations (Jawaban R2 #6)
 - **Target Kata**: 100–120 kata.
@@ -793,22 +807,22 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 ### E. Comparison with Prior Studies
 > **Catatan Respons Reviewer (R1 Poin 6 & R2 Poin 7):**  
 > - **Komentar Reviewer:** Reviewer 1 meminta perbandingan metode yang lebih luas (*"compare proposed method with more methods to validate contribution"*), dan Reviewer 2 menegaskan agar perbandingan dikualifikasikan sebagai kontekstual jika partisi datanya berbeda (*"comparison should be presented as contextual rather than a controlled benchmark"*).  
-> - **Rencana Mitigasi:** Menyajikan Tabel XV yang memisahkan perbandingan berdasarkan protokol partisi secara tegas antara kelompok protokol **Stratified** (Komparasi Kontekstual studi terdahulu pada DemogPairs yang menggunakan partisi tingkat citra *subject-overlap*) dan kelompok protokol **Subject-Disjoint** (Komparasi Terkontrol pada tolok ukur *subject-disjoint* internal melintasi 9 konfigurasi representasi pada 4 famili pengklasifikasi) dengan metrik lengkap (Accuracy, Precision, Recall, F1-Score), disertai catatan metodologis yang jelas di dalam narasi.
+> - **Rencana Mitigasi:** Menyajikan Tabel XVI yang memisahkan perbandingan berdasarkan protokol partisi secara tegas antara kelompok protokol **Stratified** (Komparasi Kontekstual studi terdahulu pada DemogPairs yang menggunakan partisi tingkat citra *subject-overlap*) dan kelompok protokol **Subject-Disjoint** (Komparasi Terkontrol pada tolok ukur *subject-disjoint* internal melintasi 9 konfigurasi representasi pada 4 famili pengklasifikasi) dengan metrik lengkap (Accuracy, Precision, Recall, F1-Score), disertai catatan metodologis yang jelas di dalam narasi.
 
 Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–125 kata**:
 
 #### Paragraph 1: Contextual and Controlled Comparative Groups on the DemogPairs Dataset
 - **Target Kata**: 100–125 kata.
-- **Fokus Narasi**: Menyajikan komparasi komprehensif pada [Table XV](#tab15) yang dibagi menjadi dua kelompok protokol partisi:
+- **Fokus Narasi**: Menyajikan komparasi komprehensif pada [Table XVI](#tab16) yang dibagi menjadi dua kelompok protokol partisi:
   - **Kelompok Protokol Stratified (Komparasi Kontekstual — Subject-Overlap)**: MD-ViT + XGBoost (Putri et al. JIEET 2025: Accuracy 89.07%, Precision 89.12%, Recall 89.07%, F1-Score 89.01%), Dual-ViT + SVM (Putri et al. ICVEE 2025: Accuracy 92.41%, Precision 92.48%, Recall 92.41%, F1-Score 92.38%), dan baseline historis usulan **Tri-Domain + SVM** yang meraih capaian tertinggi pada protokol Stratified (**Accuracy 93.70%, Precision 93.72%, Recall 93.70%, F1-Score 93.69%**).
   - **Kelompok Protokol Subject-Disjoint (Komparasi Terkontrol — 480/120 Subjek)**: Menjawab R1 #6 dengan 9 variasi baseline internal pada partisi yang sama: single-domain terbaik (`Face`: LR 86.39% / SVM 86.16%; `Emotion`: SVM 85.79%; `Age`: SVM 82.55%), dual-domain terbaik `Emotion ⊕ Face` SVM (88.43%), RF Tri (85.00%), GNB Dual (84.31%), serta Tri-Domain + SVM (88.61%), di mana capaian tertinggi pada protokol Subject-Disjoint diraih oleh model usulan **Tri-Domain + LR (Accuracy 88.66%, Precision 88.75%, Recall 88.66%, F1-Score 88.68%)**.
 #### Paragraph 2: Research Positioning and Contextual Protocol Qualification (Jawaban R2 #7)
 - **Target Kata**: 100–125 kata.
-- **Fokus Narasi**: Menegaskan kualifikasi metodologis protokol evaluasi: Kelompok protokol **Stratified** berfungsi sebagai **komparasi kontekstual (*contextual comparison*)** dan bukan tolok ukur terkontrol (*controlled benchmark*), karena studi terdahulu menggunakan partisi berstrata tingkat citra (*image-level stratified split*) yang mengizinkan tumpang tindih identitas antar-subset data. Satu-satunya perbandingan yang adil terhadap angka studi terdahulu pada protokol tersebut adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XII). Praproses dan pemroses citra studi terdahulu belum tentu identik, sehingga dinyatakan sebagai batasan komparasi. Posisi penelitian terhadap karya seminal DemogPairs (Hupont & Fernández, IEEE FG 2019) dirumuskan secara objektif tanpa klaim sepihak yang belum terverifikasi.
-- **Ketentuan Layout LaTeX**: **Table XV berformat Full Width (`\begin{table*}`)**.
-- **Tabel XV (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs)**:
+- **Fokus Narasi**: Menegaskan kualifikasi metodologis protokol evaluasi: Kelompok protokol **Stratified** berfungsi sebagai **komparasi kontekstual (*contextual comparison*)** dan bukan tolok ukur terkontrol (*controlled benchmark*), karena studi terdahulu menggunakan partisi berstrata tingkat citra (*image-level stratified split*) yang mengizinkan tumpang tindih identitas antar-subset data. Satu-satunya perbandingan yang adil terhadap angka studi terdahulu pada protokol tersebut adalah baseline historis usulan sendiri (93.70% vs 88.61%, selisih 5.09 pp, Table XIII). Praproses dan pemroses citra studi terdahulu belum tentu identik, sehingga dinyatakan sebagai batasan komparasi. Posisi penelitian terhadap karya seminal DemogPairs (Hupont & Fernández, IEEE FG 2019) dirumuskan secara objektif tanpa klaim sepihak yang belum terverifikasi.
+- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Tabel XVI (Perbandingan Kontekstual dan Terkontrol terhadap Studi Terdahulu dan Baseline Internal pada DemogPairs)**:
 
-**Table XV. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
+**Table XVI. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
 
 | Method | Partition Protocol | Accuracy | Precision | Recall | F1-Score |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -825,7 +839,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–125
 | Proposed Tri-Domain + SVM | Subject-Disjoint | 88.61% | 88.71% | 88.61% | 88.63% |
 | **Proposed Tri-Domain + LR** | **Subject-Disjoint** | **88.66%** | **88.75%** | **88.66%** | **88.68%** |
 
-> **Catatan Table XV:** Baris dengan protokol `Stratified` menyajikan komparasi kontekstual (*contextual comparison*) pada pembagian data berstrata tingkat citra (*subject-overlap*), di mana angka studi terdahulu dikutip langsung dari publikasi masing-masing. Baris dengan protokol `Subject-Disjoint` menyajikan komparasi terkontrol (*controlled benchmark*) pada partisi 480 subjek latih / 120 subjek uji held-out yang diekstraksi dari `experiment/code/results/*.json` (leaderboard 28 model). Cetak tebal (**bold**) menandai model dengan performa tertinggi pada masing-masing protokol partisi (`Stratified` vs. `Subject-Disjoint`). Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XVI:** Baris dengan protokol `Stratified` menyajikan komparasi kontekstual (*contextual comparison*) pada pembagian data berstrata tingkat citra (*subject-overlap*), di mana angka studi terdahulu dikutip langsung dari publikasi masing-masing. Baris dengan protokol `Subject-Disjoint` menyajikan komparasi terkontrol (*controlled benchmark*) pada partisi 480 subjek latih / 120 subjek uji held-out yang diekstraksi dari `experiment/code/results/*.json` (leaderboard 28 model). Cetak tebal (**bold**) menandai model dengan performa tertinggi pada masing-masing protokol partisi (`Stratified` vs. `Subject-Disjoint`). Format layout: LaTeX Full Width (`\begin{table*}`).
 ---
 
 ## V. CONCLUSION & LIMITATIONS
@@ -875,12 +889,13 @@ Tabel master ini merekapitulasi seluruh urutan kronologis kemunculan elemen (Gam
 | **Table VIII** | Tabel | Section IV.A (Gaussian NB) | *Performance Benchmark of Gaussian Naive Bayes across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
 | **Table IX** | Tabel | Section IV.A (Logistic Reg) | *Performance Benchmark of Logistic Regression across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
 | **Table X** | Tabel | Section IV.A (Support Vector) | *Performance Benchmark of Support Vector Machine across Seven Feature Configurations on Subject-Disjoint Test Set ($N = 2,160$).* | **Full Width (`table*`)** |
-| **Table XI** | Tabel | Section IV.A (Komputasi) | *Computational Efficiency and Resource Consumption Profile.* | **Full Width (`table*`)** |
-| **Table XII** | Tabel | Section IV.B (Ablasi Leakage)| *Comparative Ablation Study on Data Leakage: Historical Baseline vs. Primary Benchmark.* | **Full Width (`table*`)** |
-| **Table XIII** | Tabel | Section IV.B (Uji Statistik) | *Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test).* | **Full Width (`table*`)** |
-| **Table XIV** | Tabel | Section IV.C (Subkelompok) | *Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).* | **Full Width (`table*`)** |
+| **Table XI** | Tabel | Section IV.A (Ekstraksi ViT) | *Vision Transformer Feature Extraction Runtime and Storage Profile.* | **Full Width (	able*)** |
+| **Table XII** | Tabel | Section IV.A (Komputasi Hilir) | *Downstream Classifier Training Runtime, Inference Latency, and Memory Footprint Profile.* | **Full Width (	able*)** |
+| **Table XIII** | Tabel | Section IV.B (Ablasi Leakage)| *Comparative Ablation Study on Data Leakage: Historical Baseline vs. Primary Benchmark.* | **Full Width (	able*)** |
+| **Table XIV** | Tabel | Section IV.B (Uji Statistik) | *Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test).* | **Full Width (	able*)** |
+| **Table XV** | Tabel | Section IV.C (Subkelompok) | *Intersectional Subgroup Performance and Algorithmic Fairness Profile ( = 2,160$).* | **Full Width (	able*)** |
 | **Figure 4** | Gambar | Section IV.D (Error Pattern) | *Comparative 6×6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.* | **Full Width (`figure*`)** |
-| **Table XV** | Tabel | Section IV.E (Studi Terdahulu)| *Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.* | **Full Width (`table*`)** |
+| **Table XVI** | Tabel | Section IV.E (Studi Terdahulu)| *Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.* | **Full Width (	able*)** |
 
 ### Daftar Lengkap Urutan Persamaan Matematika (Eq. 1 s.d. 23)
 

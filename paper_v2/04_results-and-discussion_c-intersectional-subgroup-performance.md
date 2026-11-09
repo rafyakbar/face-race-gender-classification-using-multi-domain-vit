@@ -1,9 +1,9 @@
 ## C. Intersectional Subgroup Performance
 
-Profil performa klasifikasi granular One-vs-Rest (OvR) pada model tri-domain terbaik (Logistic Regression dan Support Vector Machine) dievaluasi melintasi enam subkelompok demografis ($N = 360$ citra uji per subkelompok) sebagaimana disajikan pada [Table XIV](#tab14). Pada kedua model, subkelompok White Males mencatat performa tertinggi dengan Recall 94.44% (F1 94.84% pada LR; F1 94.18% pada SVM) dan False Negative Rate (FNR) terendah sebesar 5.56%. Sebaliknya, subkelompok Black Females mencatat Recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM) dengan FNR sebesar 15.28%. Subkelompok Asian Females meraih Recall 86.67% pada LR dan 86.11% pada SVM. Seluruh kohort subkelompok mempertahankan F1-Score di atas 84.90%, mengonfirmasi keandalan fusi fitur tri-domain dalam memisahkan batas demografis interseksional.
+Profil performa klasifikasi granular One-vs-Rest (OvR) pada model tri-domain terbaik (Logistic Regression dan Support Vector Machine) dievaluasi melintasi enam subkelompok demografis ($N = 360$ citra uji per subkelompok) sebagaimana disajikan pada [Table XV](#tab15). Pada kedua model, subkelompok White Males mencatat performa tertinggi dengan Recall 94.44% (F1 94.84% pada LR; F1 94.18% pada SVM) dan False Negative Rate (FNR) terendah sebesar 5.56%. Sebaliknya, subkelompok Black Females mencatat Recall 84.72% (F1 84.96% pada LR; F1 86.16% pada SVM) dengan FNR sebesar 15.28%. Subkelompok Asian Females meraih Recall 86.67% pada LR dan 86.11% pada SVM. Seluruh kohort subkelompok mempertahankan F1-Score di atas 84.90%, mengonfirmasi keandalan fusi fitur tri-domain dalam memisahkan batas demografis interseksional.
 
-<a id="tab14"></a>
-**Table XIV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
+<a id="tab15"></a>
+**Table XV. Intersectional Subgroup Performance and Algorithmic Fairness Profile ($N = 2,160$).**
 
 | Classifier | Subgroup | Support | Precision | Recall (TPR) | F1-Score | FNR |
 |---|---|:---:|:---:|:---:|:---:|:---:|
