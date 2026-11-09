@@ -1,6 +1,6 @@
 ## H. Evaluation Metrics
 
-Evaluasi performa klasifikasi multikelas interseksional ($K = 6$) pada tingkat subkelompok dirumuskan melalui skema One-vs-Rest (OvR) per kelompok demografis $c \in \{1, \dots, K\}$ [[44]](06_references.md#ref44). Skema ini memanfaatkan komponen matriks konfusi $TP_c$, $TN_c$, $FP_c$, dan $FN_c$ [[45]](06_references.md#ref45), [[46]](06_references.md#ref46). Akurasi subkelompok pada [(13)](#eq13) mengukur rasio prediksi benar, sedangkan Presisi pada [(14)](#eq14), Recall atau True Positive Rate (TPR) pada [(15)](#eq15), dan F1-Score pada [(16)](#eq16) memetakan ketepatan serta sensitivitas deteksi per subkelompok [[47]](06_references.md#ref47). Untuk mengevaluasi data uji held-out independen ($N = 2.160$), metrik subkelompok diagregasikan ke tingkat global. Akurasi Global pada [(17)](#eq17) menghitung rasio total prediksi benar, sedangkan Macro Precision pada [(18)](#eq18), Macro Recall pada [(19)](#eq19), dan Macro F1-Score pada [(20)](#eq20) dihitung melalui perataan makro tanpa bobot melintasi $K = 6$ subkelompok untuk memastikan bobot evaluasi yang setara.
+Evaluasi performa klasifikasi multikelas interseksional ($K = 6$) pada tingkat subkelompok dirumuskan melalui skema One-vs-Rest (OvR) per kelompok demografis $c \in \{1, \dots, K\}$ [[44]](06_references.md#ref44). Formulasi ini memanfaatkan komponen matriks konfusi $TP_c$, $TN_c$, $FP_c$, dan $FN_c$ [[45]](06_references.md#ref45), [[46]](06_references.md#ref46). Akurasi subkelompok pada [(13)](#eq13) mengukur rasio prediksi benar, sedangkan Presisi pada [(14)](#eq14), Recall atau True Positive Rate (TPR) pada [(15)](#eq15), dan F1-Score pada [(16)](#eq16) memetakan ketepatan serta sensitivitas deteksi [[47]](06_references.md#ref47). Untuk mengevaluasi data uji held-out ($N = 2.160$), metrik subkelompok diagregasikan ke tingkat global. Akurasi Global pada [(17)](#eq17) menghitung rasio total prediksi benar, sedangkan Macro Precision pada [(18)](#eq18), Macro Recall pada [(19)](#eq19), dan Macro F1-Score pada [(20)](#eq20) dirata-ratakan tanpa bobot melintasi $K = 6$ subkelompok demi menjamin kesetaraan evaluasi.
 
 <a id="eq13"></a>
 $$
@@ -29,20 +29,20 @@ $$
 
 <a id="eq18"></a>
 $$
-\text{Precision}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{18}
+\text{Precision}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Precision}_c \tag{18}
 $$
 
 <a id="eq19"></a>
 $$
-\text{Recall}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{19}
+\text{Recall}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{Recall}_c \tag{19}
 $$
 
 <a id="eq20"></a>
 $$
-\text{F1-Score}_{\text{Global}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{20}
+\text{F1-Score}_{\text{Macro}} = \frac{1}{K} \sum_{c=1}^K \text{F1-Score}_c \tag{20}
 $$
 
-Validasi signifikansi komparatif antarmodel dievaluasi melalui uji hipotesis inferensial berpasangan McNemar dengan koreksi kontinuitas Edwards pada [(21)](#eq21) [[44]](06_references.md#ref44). Statistik $\chi^2$ dihitung pada tabel kontingensi 2 × 2 berpasangan berbasis pasangan diskordan, di mana $b$ dan $c$ mencatat perbedaan klasifikasi benar-salah antara dua model pembanding yang diperkuat uji eksak binomial dua arah. Derajat ketidakpastian akurasi empiris pada data uji held-out ($N = 2.160$) diukur via estimasi Wilson Score 95% Confidence Interval (CI) pada [(22)](#eq22), dengan $\hat{p}$ sebagai proporsi akurasi dan $z = 1.96$ sebagai nilai kritis standar. Evaluasi disparitas performa dikuantifikasi melalui metrik Equal Opportunity Difference (EOD) pada [(23)](#eq23) sebagai selisih absolut maksimum True Positive Rate (TPR) antarpasangan subkelompok $i, j \in \{1, \dots, K\}$, yang dikalibrasi murni sebagai indikator disparitas performa empiris, bukan jaminan keadilan universal.
+Validasi signifikansi komparatif antarmodel dievaluasi melalui uji hipotesis inferensial berpasangan McNemar dengan koreksi kontinuitas Edwards pada [(21)](#eq21) [[44]](06_references.md#ref44). Statistik $\chi^2$ dihitung pada tabel kontingensi 2 × 2 berbasis pasangan diskordan, di mana $b$ dan $c$ mencatat perbedaan klasifikasi benar-salah antarmodel yang diperkuat uji eksak binomial dua arah. Ketidakpastian akurasi empiris pada data uji held-out ($N = 2.160$) diukur melalui estimasi Wilson Score 95% Confidence Interval (CI) pada [(22)](#eq22), dengan $\hat{p}$ sebagai proporsi akurasi dan $z = 1.96$ sebagai nilai kritis standar. Evaluasi disparitas performa dikuantifikasi melalui Equal Opportunity Difference (EOD) pada [(23)](#eq23) sebagai selisih absolut maksimum TPR antarpasangan subkelompok $i, j \in \{1, \dots, K\}$, yang dikalibrasi murni sebagai indikator disparitas empiris antarsubkelompok, bukan jaminan matematis keadilan universal.
 
 <a id="eq21"></a>
 $$

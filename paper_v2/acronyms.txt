@@ -40,8 +40,9 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)                    | LOKA
 22  | CPU                 | Central Processing Unit                       | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
 23  | RAM                 | Random Access Memory                          | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
 24  | VRAM                | Video Random Access Memory                    | paper_v2/03_materials-and-methods_i-experimental-setup.md (P1)
-25  | ROC                 | Receiver Operating Characteristic             | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
-26  | AUC                 | Area Under the Curve                          | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
-27  | AI                  | Artificial Intelligence                       | paper_v2/05_conclusion.md (P2)
-28  | XAI                 | Explainable Artificial Intelligence           | paper_v2/05_conclusion.md (P2)
+25  | FNR                 | False Negative Rate                           | paper_v2/04_results-and-discussion_c-intersectional-subgroup-performance.md (P1)
+26  | ROC                 | Receiver Operating Characteristic             | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
+27  | AUC                 | Area Under the Curve                          | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
+28  | AI                  | Artificial Intelligence                       | paper_v2/05_conclusion.md (P2)
+29  | XAI                 | Explainable Artificial Intelligence           | paper_v2/05_conclusion.md (P2)
 ======================================================================================================================================================
