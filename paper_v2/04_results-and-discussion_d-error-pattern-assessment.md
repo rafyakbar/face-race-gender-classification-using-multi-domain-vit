@@ -2,7 +2,7 @@
 
 <a id="fig4"></a>
 
-| <a id="fig4a"></a><img src="images/confusion_matrix_lr_single_v1.1.png" width="100%" alt="Confusion Matrix Single-Domain Face" /> | <a id="fig4b"></a><img src="images/confusion_matrix_lr_dual_v1.1.png" width="100%" alt="Confusion Matrix Dual-Domain Emotion+Face" /> | <a id="fig4c"></a><img src="images/confusion_matrix_lr_tri_v1.1.png" width="100%" alt="Confusion Matrix Tri-Domain" /> |
+| <img src="images/confusion_matrix_lr_single_v1.1.png" width="100%" alt="Confusion Matrix Single-Domain Face" /> | <img src="images/confusion_matrix_lr_dual_v1.1.png" width="100%" alt="Confusion Matrix Dual-Domain Emotion+Face" /> | <img src="images/confusion_matrix_lr_tri_v1.1.png" width="100%" alt="Confusion Matrix Tri-Domain" /> |
 | :---: | :---: | :---: |
 | *(a) Single-Domain Face Biometrics* | *(b) Dual-Domain Emotion ⊕ Face* | *(c) Tri-Domain Face ⊕ Emotion ⊕ Age* |
 
