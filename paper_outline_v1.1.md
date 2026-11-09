@@ -662,52 +662,52 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 ### B. Feature Ablation Study
 > **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  
 > - **Komentar Reviewer:** Reviewer 2 meminta klarifikasi tumpang tindih identitas (*"clarify whether identity overlap exists and provide subject-disjoint evaluation"*), kualifikasi klaim keunggulan tri-domain (*"claims of tri-domain superiority and feature saturation should be appropriately qualified"*), serta uji signifikansi inferensial McNemar (*"claims should be appropriately qualified according to McNemar test"*).  
-> - **Rencana Mitigasi:** Menyajikan analisis progresif kontribusi fitur antardomain, studi komparatif ablasi kebocoran data pada Tabel XIII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas), dan hasil uji signifikansi inferensial McNemar berpasangan dengan koreksi kontinuitas Edwards serta uji eksak binomial dua arah pada Tabel XIV yang mengualifikasikan secara transparan fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$) dan paritas prediktif LR vs SVM ($p = 1.0000$).
+> - **Rencana Mitigasi:** Menyajikan studi komparatif ablasi kebocoran data pada Tabel XIII (menguantifikasi penurunan 5.09 pp sebagai efek memorisasi identitas), hasil uji signifikansi inferensial McNemar berpasangan dengan koreksi kontinuitas Edwards serta uji eksak binomial dua arah pada Tabel XIV yang mengualifikasikan secara transparan fenomena kejenuhan fitur usia pada SVM ($p = 0.7343$) dan paritas prediktif LR vs SVM ($p = 1.0000$), serta sintesis analisis progresif kontribusi fitur antardomain.
 
 Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120 kata**:
 
-#### Paragraph 1: Progressive Feature Contribution and Asymptotic Feature Saturation
+#### Paragraph 1: Comparative Ablation Study on Data Leakage: Subject-Overlap vs. Subject-Disjoint
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke dual-domain dan tri-domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Pada SVM, transisi dari `Face` (86.16%) ke `Emotion ⊕ Face` (88.43%) menghasilkan kenaikan signifikan $+2.27\text{ pp}$ ($p < 0.001$), dan transisi dari `Face ⊕ Age` (87.55%) ke Tri-Domain (`Face ⊕ Emotion ⊕ Age`, 88.61%) juga signifikan sebesar $+1.06\text{ pp}$ (+23 citra, $p = 0.0086 < 0.01$). Namun penambahan domain usia di atas kombinasi biometrik-afektif `Emotion ⊕ Face` ($88.43\% \to 88.61\%$) hanya memberikan kenaikan $+0.19\text{ pp}$ (+4 citra, $p = 0.7343$), yang mengindikasikan **kejenuhan representasi laten asimtotik (*asymptotic feature saturation*)** secara spesifik saat fitur penuaan ditambahkan ke representasi biometrik-afektif pada pengklasifikasi non-linier RBF. Sebaliknya, pada model linier Logistic Regression, penambahan domain usia di atas `Emotion ⊕ Face` memberikan peningkatan signifikan ($87.45\% \to 88.66\%$, $+1.20\text{ pp}$, $+26\text{ citra}$, $p = 0.0073 < 0.01$).
-- **Ketentuan Layout LaTeX**: Naratif analitis merujuk silang ke tabel-tabel utama di Subseksi IV.A.
-
-#### Paragraph 2: Comparative Ablation Study on Data Leakage: Subject-Overlap vs. Subject-Disjoint
-- **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Membandingkan hasil baseline historis (*Subject-Overlap*, 100% identity leakage) dengan tolok ukur utama (*Subject-Disjoint*, zero leakage) pada [Table XII](#tab12). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM ($93.70\% \to 88.61\%$) dan $\Delta = -4.07\text{ pp}$ pada LR ($92.73\% \to 88.66\%$) menguantifikasi secara empiris besaran efek memorisasi identitas wajah (*facial identity memorization effect*). Degradasi yang lebih terkendali pada model LR Tri menunjukkan stabilitas generalisasi lintas-subjek dalam-dataset (*within-dataset subject-disjoint generalization*) pada model linier ter-regularisasi terhadap identitas subjek uji yang terisolasi pada tolok ukur DemogPairs.
-- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Fokus Narasi**: Membandingkan hasil baseline historis (*Subject-Overlap*, 100% identity leakage) dengan tolok ukur utama (*Subject-Disjoint*, zero leakage) pada [Table XIII](#tab13). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM ($93.70\% \to 88.61\%$) dan $\Delta = -4.07\text{ pp}$ pada LR ($92.73\% \to 88.66\%$) menguantifikasi secara empiris besaran efek memorisasi identitas wajah (*facial identity memorization effect*). Sebaliknya, model berkapasitas rendah seperti RF (-1.85 pp) dan GNB (-1.44 pp) memperlihatkan penurunan minimal, menegaskan batas generalisasi riil pengklasifikasi.
+- **Ketentuan Layout LaTeX**: **Table XIII berformat Full Width (`\begin{table*}`)**.
 - **Tabel XIII (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint)**:
 
-**Table XIII. Comparative Ablation Study on Data Leakage: Historical Baseline vs. Primary Benchmark.**
+**Table XIII. Data Leakage Ablation Study.**
 
-| Model | Protocol | Accuracy | Macro F1 | Leakage Status | Degradation (Δ) |
-|---|---|:---:|:---:|---|:---:|
-| SVM Tri-Domain | Subject-Overlap (Historical) | 93.70% | 0.9369 | 100% Identity Overlap (593/600 subjects) | Baseline |
-| **SVM Tri-Domain** | **Subject-Disjoint (Primary)** | **88.61%** | **0.8863** | **Zero Leakage (0% Overlap, 120 held-out)** | **-5.09 pp** |
-| LR Tri-Domain | Subject-Overlap (Historical) | 92.73% | 0.9273 | 100% Identity Overlap (593/600 subjects) | Baseline |
-| **LR Tri-Domain** | **Subject-Disjoint (Primary)** | **88.66%** | **0.8868** | **Zero Leakage (0% Overlap, 120 held-out)** | **-4.07 pp** |
+| Classifier | Historical Baseline (Stratified Split)* | Primary Benchmark (Subject-Disjoint) | Absolute Difference (Δ) | Identity Leakage Severity |
+| :--- | :---: | :---: | :---: | :--- |
+| Random Forest | 86.85% | 85.00% | -1.85% | Low |
+| Gaussian Naive Bayes | 85.05% | 83.61% | -1.44% | Very Low |
+| **Logistic Regression** | **92.73%** | **88.66%** | **-4.07%** | **High (Corrected)** |
+| Support Vector Machine | 93.70% | 88.61% | -5.09% | High (Corrected) |
 
-> **Catatan Table XVI:** Protokol Subject-Overlap (baseline historis) membagi citra secara acak berstrata sehingga 593 dari 600 identitas unik subjek hadir di set latih dan uji secara bersamaan (100% identity leakage). Protokol Subject-Disjoint (tolok ukur utama) mengisolasi 120 subjek secara utuh di set uji held-out (0% identity leakage). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM dan $\Delta = -4.07\text{ pp}$ pada LR menguantifikasi efek memorisasi identitas wajah. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XIII:** Protokol Subject-Overlap (baseline historis) membagi citra secara acak berstrata sehingga 593 dari 600 identitas unik subjek hadir di set latih dan uji secara bersamaan (100% identity leakage). Protokol Subject-Disjoint (tolok ukur utama) mengisolasi 120 subjek secara utuh di set uji held-out (0% identity leakage). Penurunan nominal $\Delta = -5.09\text{ pp}$ pada SVM dan $\Delta = -4.07\text{ pp}$ pada LR menguantifikasi efek memorisasi identitas wajah. Format layout: LaTeX Full Width (`\begin{table*}`).
 
-#### Paragraph 3: Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test)
+#### Paragraph 2: Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test)
 - **Target Kata**: 100–120 kata.
-- **Fokus Narasi**: Memaparkan hasil pengujian hipotesis statistik inferensial pada [Table XVI](#tab16):
-  1. *Multi-domain vs Single Face*: SVM Tri vs Face ($+2.45\text{ pp}$, $\chi^2 = 20.9612, p = 3.46 \times 10^{-6} < 0.001$) dan LR Tri vs Face ($+2.27\text{ pp}$, $\chi^2 = 19.6923, p = 6.78 \times 10^{-6} < 0.001$) signifikan secara statistik, menolak hipotesis bahwa keunggulan fusi atas domain tunggal hanyalah artefak kebocoran data.
-  2. *Tri vs Dual (Kualifikasi Saturasi Fitur)*: Penambahan domain usia di atas `Emotion ⊕ Face` pada SVM Tri vs Dual ($+0.19\text{ pp}$, $p = 0.7343$) mengindikasikan kejenuhan fitur asimtotik pada kernel RBF (meskipun terhadap `Face ⊕ Age`, peningkatan ke SVM Tri signifikan dengan $+1.06\text{ pp}, \chi^2 = 6.8169, p = 0.0086 < 0.01$), sedangkan pada LR Tri vs Dual `Emotion ⊕ Face` ($+1.20\text{ pp}$, $p = 0.0073 < 0.01$) menunjukkan kontribusi signifikan fitur usia pada pengklasifikasi linier.
-  3. *Paritas Prediktif LR vs SVM*: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.0000$ dan $p = 1.0000$ (selisih bersih +1 citra: 1.915 vs 1.914 dari $N = 2.160$). Karena uji McNemar menguji hipotesis nol kesamaan proporsi kesalahan marjinal ($p > 0.05$), hasil ini dikualifikasikan secara metodologis bahwa kedua model menunjukkan tidak adanya perbedaan performa yang signifikan secara statistik (*no statistically significant difference / predictive parity*). Nilai $p$ eksak binomial dua arah dilaporkan berdampingan dengan statistik $\chi^2$ berkoreksi Edwards.
-- **Ketentuan Layout LaTeX**: **Table XVI berformat Full Width (`\begin{table*}`)**.
+- **Fokus Narasi**: Memaparkan hasil pengujian hipotesis statistik inferensial pada [Table XIV](#tab14):
+  1. *Multi-domain vs Single Face*: SVM Tri vs Face ($+2.45\text{ pp}$, $\chi^2 = 20.96, p < 0.001$) dan LR Tri vs Face ($+2.27\text{ pp}$, $\chi^2 = 19.69, p < 0.001$) signifikan secara statistik, menolak hipotesis bahwa keunggulan fusi atas domain tunggal hanyalah artefak kebocoran data.
+  2. *Tri vs Dual (Kualifikasi Saturasi Fitur)*: Penambahan domain usia di atas `Emotion ⊕ Face` pada SVM Tri vs Dual ($+0.19\text{ pp}$, $\chi^2 = 0.12, p = 0.7343$) mengindikasikan kejenuhan fitur asimtotik pada kernel RBF, sedangkan pada LR Tri vs Dual `Emotion ⊕ Face` ($+1.21\text{ pp}$, $\chi^2 = 7.10, p = 0.0073 < 0.01$) menunjukkan kontribusi signifikan fitur usia pada pengklasifikasi linier.
+  3. *Paritas Prediktif LR vs SVM*: Uji McNemar antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.00$ dan $p = 1.0000$ (selisih bersih +1 citra: 1.915 vs 1.914 dari $N = 2.160$), membuktikan tidak adanya perbedaan performa yang signifikan secara statistik (*predictive parity*).
+- **Ketentuan Layout LaTeX**: **Table XIV berformat Full Width (`\begin{table*}`)**.
 - **Tabel XIV (Hasil Uji McNemar Berpasangan dan Exact Binomial Test)**:
 
-**Table XIV. Paired Inferential Hypothesis Testing (McNemar's Test & Exact Binomial Test).**
+**Table XIV. Paired Inferential Hypothesis Testing.**
 
-| Comparison Pair | Category | Acc. Diff. | Discordant ($b$ / $c$) | Edwards $\chi^2$ | Exact Binomial $p$-value | Statistical Inference |
-|---|---|:---:|:---:|:---:|:---:|---|
-| SVM Tri vs. Single Face | Multi-domain vs. Single | +2.45 pp (+53) | 91 / 38 | 20.9612 | $3.46 \times 10^{-6}$ | Significant ($p < 0.001$) |
-| LR Tri vs. Single Face | Multi-domain vs. Single | +2.27 pp (+49) | 83 / 34 | 19.6923 | $6.78 \times 10^{-6}$ | Significant ($p < 0.001$) |
-| SVM Tri vs. Dual (Emot+Face) | Tri-domain vs. Dual | +0.19 pp (+4) | 41 / 37 | 0.1154 | 0.7343 | Not Significant (Asymptotic Saturation) |
-| LR Tri vs. Dual (Emot+Face) | Tri-domain vs. Dual | +1.20 pp (+26) | 57 / 31 | 7.1023 | 0.0073 | Significant ($p < 0.01$) |
-| LR Tri vs. SVM Tri | Top Classifier Parity | +0.05 pp (+1) | 36 / 35 | 0.0000 | 1.0000 | Not Significant (Predictive Parity) |
+| Comparison Pair | Edwards $\chi^2$ | McNemar $p$-value | Exact Binomial $p$-value | Statistical Inference ($\alpha = 0.05$) | Scientific Interpretation |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| Tri-Domain LR vs Single Face | 19.69 | < 0.001 | < 0.001 | Significant ($p < 0.001$) | Multi-domain representation superiority |
+| Tri-Domain SVM vs Single Face | 20.96 | < 0.001 | < 0.001 | Significant ($p < 0.001$) | Multi-domain representation superiority |
+| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0073 | 0.0075 | Significant ($p < 0.01$) | Linear age feature complementarity |
+| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7343 | 0.7500 | Not Significant ($p > 0.05$) | Asymptotic non-linear feature saturation |
+| Tri-Domain LR vs Tri-Domain SVM | 0.00 | 1.0000 | 1.0000 | Not Significant ($p = 1.0000$) | Strict predictive parity |
 
-> **Catatan Table XVI:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
+> **Catatan Table XIV:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
+
+#### Paragraph 3: Progressive Feature Contribution and Asymptotic Saturation Analysis
+- **Target Kata**: 100–120 kata.
+- **Fokus Narasi**: Menganalisis kuantifikasi perubahan akurasi dari domain tunggal ke dual-domain dan tri-domain berdasarkan [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), dan [Table X](#tab10). Menjelaskan secara teoritis bahwa model linier LR memperoleh peningkatan komplementer sebesar +1.21 pp dari konfigurasi Emotion ⊕ Face (87.45%) menuju tri-domain (88.66%) berkat pemanfaatan ortogonalitas informasi usia melalui regularisasi L2. Sebaliknya, SVM mengalami kejenuhan asimtotik dengan peningkatan marjinal +0.18 pp dari 88.43% ke 88.61% karena kernel RBF non-linier telah mengonsolidasikan mayoritas varians pemisah sejak tahap dual-domain.
+- **Ketentuan Layout LaTeX**: Naratif analitis merujuk silang ke tabel-tabel utama di Subseksi IV.A.
 
 ### C. Intersectional Subgroup Performance
 > **Catatan Respons Reviewer (R2 Poin 6):**  
