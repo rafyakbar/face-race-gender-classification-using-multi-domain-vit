@@ -5,13 +5,13 @@
 Evaluasi komparatif kebocoran data disajikan secara transparan untuk memvalidasi kekokohan model terhadap telaah kritis tumpang tindih identitas subjek. Perbandingan antara protokol baseline historis pembagian acak berstrata tingkat citra dengan tumpang tindih subjek penuh dan protokol utama partisi ketat subjek independen dirangkum pada Table~\ref{tab:XIII}. Seluruh arsitektur mengalami penurunan akurasi pada protokol subjek independen, membuktikan keberadaan efek pembaur memorisasi identitas pada evaluasi acak. Koreksi performa terbesar terjadi pada model berkapasitas representasi tinggi, yaitu SVM yang terkoreksi dari 93.70\% ke 88.61\% (penurunan -5.09~pp) serta LR dari 92.73\% ke 88.66\% (penurunan -4.07~pp). Sebaliknya, model berkapasitas rendah menunjukkan penurunan minimal, seperti RF (-1.85~pp) dan GNB (-1.44~pp). Hasil ini membuktikan bahwa capaian 88.66\% pada LR mencerminkan batas generalisasi demografis riil.
 
 \begin{table*}[htbp]
-\caption{Data Leakage Ablation Study.}
+\caption{Data Leakage Ablation Study on Stratified Split and Subject-Disjoint Protocols.}
 \label{tab:13}
 \label{tab:XIII}
 \centering
 \begin{tabular}{lcccc}
 \toprule
-Classifier & Historical Baseline (Stratified Split)$^*$ & Primary Benchmark (Subject-Disjoint) & Absolute Difference ($\Delta$) & Identity Leakage Severity \\
+Classifier & Stratified Split$^*$ & Subject-Disjoint & Difference ($\Delta$) & Leakage Severity \\
 \midrule
 Random Forest & 86.85\% & 85.00\% & -1.85\% & Low \\
 Gaussian Naive Bayes & 85.05\% & 83.61\% & -1.44\% & Very Low \\
@@ -19,13 +19,13 @@ Gaussian Naive Bayes & 85.05\% & 83.61\% & -1.44\% & Very Low \\
 Support Vector Machine & 93.70\% & 88.61\% & -5.09\% & High (Corrected) \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\raggedright\footnotesize $^*$(Note: Historical baseline evaluated on random stratified image-level split with full subject overlap).\par
+\par\vspace{2pt}\raggedright\footnotesize $^*$(Note: Evaluated on random stratified image-level split with full subject overlap).\par
 \end{table*}
 
 Pengujian statistik inferensial berpasangan dilakukan pada seluruh 2.160 sampel uji independen menerapkan uji McNemar berkoreksi kontinuitas Edwards serta uji binomial eksak dua arah sebagaimana dirangkum pada Table~\ref{tab:XIV}. Keunggulan representasi tri-domain atas domain tunggal terbukti signifikan secara statistik pada LR ($\chi^2 = 19.69, p < 0.001$) maupun SVM ($\chi^2 = 20.96, p < 0.001$). Pada integrasi fitur usia di atas pasangan Emotion dan Face, LR memperoleh kenaikan signifikan ($\chi^2 = 7.10, p = 0.0073$). Sebaliknya, SVM mencatat hasil tidak signifikan ($\chi^2 = 0.12, p = 0.7343$), mengonfirmasi terjadinya kejenuhan fitur laten asimtotik. Selain itu, komparasi langsung antara LR Tri dan SVM Tri menghasilkan $\chi^2 = 0.00$ ($p = 1.0000$) dengan selisih hanya satu citra, membuktikan tercapainya paritas performa prediktif.
 
 \begin{table*}[htbp]
-\caption{Paired Inferential Hypothesis Testing.}
+\caption{Paired Inferential Hypothesis Testing Across Multi-Domain Configurations.}
 \label{tab:14}
 \label{tab:XIV}
 \centering

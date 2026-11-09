@@ -29,6 +29,13 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 
 audit & perbaiki ulang paper_v2/04_results-and-discussion_b-feature-ablation-study.md:
+- Table XIII: kolom-kolomnya cukup: Classifier, Stratified Split, Subject-Disjoint, ...
+- nama-nama tabelnya ya jangan terlalu pendek juga
+- update juga paper_outline_v1.1.md jika dibutuhkan.
+- langsung juga update paper_latex_id_v2 (perhatikan juga rules/latex_rules.txt).
+- jangan lupa buat commit dan push setelah selesai.
+
+audit & perbaiki ulang paper_v2/04_results-and-discussion_b-feature-ablation-study.md:
 - tabel nya seharusnya berbahasa inggris.
 - Table XIII.: letakkan setelah paragraf 1. dan nama tabel terlalu panjang.
 - Table XIV.: letakkan setelah paragraf 2. dan nama tabel terlalu panjang.

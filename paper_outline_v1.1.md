@@ -672,9 +672,9 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 - **Ketentuan Layout LaTeX**: **Table XIII berformat Full Width (`\begin{table*}`)**.
 - **Tabel XIII (Studi Komparatif Ablasi Kebocoran Data: Subject-Overlap vs Subject-Disjoint)**:
 
-**Table XIII. Data Leakage Ablation Study.**
+**Table XIII. Data Leakage Ablation Study on Stratified Split and Subject-Disjoint Protocols.**
 
-| Classifier | Historical Baseline (Stratified Split)* | Primary Benchmark (Subject-Disjoint) | Absolute Difference (Δ) | Identity Leakage Severity |
+| Classifier | Stratified Split* | Subject-Disjoint | Difference (Δ) | Leakage Severity |
 | :--- | :---: | :---: | :---: | :--- |
 | Random Forest | 86.85% | 85.00% | -1.85% | Low |
 | Gaussian Naive Bayes | 85.05% | 83.61% | -1.44% | Very Low |
@@ -692,7 +692,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 - **Ketentuan Layout LaTeX**: **Table XIV berformat Full Width (`\begin{table*}`)**.
 - **Tabel XIV (Hasil Uji McNemar Berpasangan dan Exact Binomial Test)**:
 
-**Table XIV. Paired Inferential Hypothesis Testing.**
+**Table XIV. Paired Inferential Hypothesis Testing Across Multi-Domain Configurations.**
 
 | Comparison Pair | Edwards $\chi^2$ | McNemar $p$-value | Exact Binomial $p$-value | Statistical Inference ($\alpha = 0.05$) | Scientific Interpretation |
 | :--- | :---: | :---: | :---: | :---: | :--- |
