@@ -523,9 +523,9 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–120
 - **Target Kata**: 100–115 kata (minimal 100 kata, maksimal 115 kata).
 - **Tujuan**: Menjelaskan konfigurasi perangkat keras (*hardware*), alokasi pembagian beban komputasi hibrida GPU-CPU, serta tumpukan perangkat lunak (*software stack*) yang digunakan dalam ekstraksi representasi dan pelatihan model.
 - **Poin Narasi**:
-  1. Spesifikasi perangkat keras: Prosesor Intel Core i9-13900H (14 core, 20 thread), memori utama RAM 32GB DDR5 berkecepatan tinggi, dan NVIDIA GeForce RTX 4060 Laptop GPU (8GB VRAM).
+  1. Spesifikasi perangkat keras: Prosesor Intel Core i9-13900H, memori utama RAM 32 GB DDR5, dan NVIDIA GeForce RTX 4060 Laptop GPU (8 GB VRAM).
   2. Pembagian beban komputasi: ekstraksi representasi laten Vision Transformer memanfaatkan akselerasi GPU NVIDIA melalui PyTorch, sedangkan pelatihan dan penalaan hyperparameter 5-fold cross-validation pengklasifikasi klasik dioptimalkan pada multicore CPU menggunakan scikit-learn.
-  3. Perangkat lunak: ekosistem dibangun di atas Python 3.10 dengan pustaka PyTorch (`torch`) dan scikit-learn (`sklearn`) dalam lingkungan terisolasi untuk menjamin reproduktibilitas penuh.
+  3. Perangkat lunak: ekosistem dibangun di atas Python dengan pustaka PyTorch dan scikit-learn dalam lingkungan terisolasi untuk menjamin reproduktibilitas penuh.
 
 ---
 

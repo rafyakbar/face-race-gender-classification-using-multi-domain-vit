@@ -28,6 +28,21 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+audit & perbaiki paper_v2/03_materials-and-methods_i-experimental-setup.md:
+- tidak kata:
+  * (14 core, 20 thread)
+  * berkecepatan tinggi
+  * (torch)
+  * (sklearn)
+- tidak usah menyebutkan versi python.
+- perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
+- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md dan apakah response pada paper_reviews_ieee/Response-to-Reviewers.md sudah tepat (jika memang bagaian ini dikomentari reviewer).
+- perhatikan rules/md_rules.txt.
+- audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
+- update juga paper_outline_v1.1.md jika dibutuhkan.
+- langsung juga update paper_latex_id_v2 (perhatikan juga rules/latex_rules.txt).
+- jangan lupa buat commit dan push setelah selesai.
+
 audit & perbaiki ulang paper_v2/03_materials-and-methods_c-random-forest.md, paper_v2/03_materials-and-methods_d-gaussian-naive-bayes.md, paper_v2/03_materials-and-methods_e-logistic-regression.md, paper_v2/03_materials-and-methods_f-support-vector-machine.md, paper_v2/03_materials-and-methods_g-classification-pipeline.md, paper_v2/03_materials-and-methods_h-evaluation-metrics.md:
 - delegasikan ke subageny untuk masing-masing file md.
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
