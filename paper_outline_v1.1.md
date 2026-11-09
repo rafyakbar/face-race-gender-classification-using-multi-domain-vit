@@ -757,14 +757,12 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 - **Fokus Narasi**: Menganalisis dinamika penurunan kesalahan klasifikasi pada model Logistic Regression di data uji *held-out* ($N = 2.160$) berdasarkan visualisasi matriks konfusi 6×6 [Figure 4](#fig4). Total sampel misklasifikasi menurun secara konsisten dari **294 citra** (Single `Face`, 86.39%) menjadi **271 citra** (Dual `Emotion ⊕ Face`, 87.45%) dan mencapai titik terendah **245 citra** (Tri-Domain `Face ⊕ Emotion ⊕ Age`, 88.66%). Komposisi kesalahan memperlihatkan reduksi berjenjang pada kesalahan intra-gender lintas-ras ($194 \to 185 \to 165$), lintas-gender ras sama ($76 \to 68 \to 62$), dan lintas-ras sekaligus lintas-gender ($24 \to 18 \to 18$).
 - **Sitasi Gambar Wajib**: Mensitasi diagram komparatif 3 matriks konfusi Logistic Regression pada file `images/confusion_matrix_lr_*_v1.1.png` (Figure 4a, 4b, 4c).
 - **Ketentuan Layout LaTeX**: **Figure 4 berformat Full Width (`\begin{figure*}`)**.
-- **Caption Figure**: **Figure 4. Comparative 6×6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.**
+- **Caption Figure**: **Figure 4. Comparative 6 × 6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.**
 - **Visual Markdown**:
-  - *(a) Single-Domain Face Biometrics:*  
-    ![Figure 4(a). Confusion Matrix Single-Domain Face](images/confusion_matrix_lr_single_v1.1.png)
-  - *(b) Dual-Domain Emotion ⊕ Face:*  
-    ![Figure 4(b). Confusion Matrix Dual-Domain Emotion+Face](images/confusion_matrix_lr_dual_v1.1.png)
-  - *(c) Tri-Domain Face ⊕ Emotion ⊕ Age:*  
-    ![Figure 4(c). Confusion Matrix Tri-Domain](images/confusion_matrix_lr_tri_v1.1.png)
+
+| <img src="images/confusion_matrix_lr_single_v1.1.png" width="100%" alt="Confusion Matrix Single-Domain Face" /> | <img src="images/confusion_matrix_lr_dual_v1.1.png" width="100%" alt="Confusion Matrix Dual-Domain Emotion+Face" /> | <img src="images/confusion_matrix_lr_tri_v1.1.png" width="100%" alt="Confusion Matrix Tri-Domain" /> |
+| :---: | :---: | :---: |
+| *(a) Single-Domain Face Biometrics* | *(b) Dual-Domain Emotion ⊕ Face* | *(c) Tri-Domain Face ⊕ Emotion ⊕ Age* |
 
 #### Paragraph 2: Dominance of Same-Gender Cross-Race Misclassifications and Gender Boundary Clarification
 - **Target Kata**: 100–120 kata.
