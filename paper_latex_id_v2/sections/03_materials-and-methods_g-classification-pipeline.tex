@@ -1,36 +1,9 @@
 \subsection{Classification Pipeline}
 \label{sec:classification_pipeline}
 
-Pipeline modular mengintegrasikan penskalaan fitur (None, MinMaxScaler), reduksi dimensi PCA (None, 50\%, 75\%), dan pengklasifikasi hilir ke dalam rantai pemrosesan terpadu. Rantai transformasi dimodelkan pada \eqref{eq:12}, di mana vektor masukan $\mathbf{x}$ diskalakan menjadi $\tilde{\mathbf{x}}$, direduksi via proyeksi PCA menjadi $\hat{\mathbf{x}}$, lalu dipetakan ke estimasi label $\hat{y} \in \{0, \dots, K-1\}$ untuk $K = 6$ subkelompok interseksional. Untuk menjamin zero identity leakage dan zero statistical leakage, penskalaan dan PCA di-fit ketat hanya pada lipatan latih 5-Fold StratifiedGroupKFold GridSearchCV pada subset latih (480 subjek, 8.640 citra) dengan isolasi groups = subject\_id. Penelusuran hyperparameter merekonsiliasi (SVM: 288 + LR: 96 + RF: 288 + GNB: 240) = 912 kombinasi hyperparameter per skema fitur $\times$ 5 folds = 4.560 fits per skema fitur $\times$ 7 skema fitur = 31.920 fits validasi silang + 28 refits akhir pada himpunan latih sebelum evaluasi held-out, sebagaimana dirinci pada Algorithm~\ref{alg:pipeline}.
+Pipeline modular mengintegrasikan penskalaan fitur (None, MinMaxScaler), reduksi dimensi PCA (None, 50\%, 75\%), dan pengklasifikasi hilir ke dalam rantai pemrosesan terpadu. Rantai transformasi dimodelkan pada \eqref{eq:12}, di mana vektor masukan $\mathbf{x}$ diskalakan menjadi $\tilde{\mathbf{x}}$, direduksi via proyeksi PCA menjadi $\hat{\mathbf{x}}$, lalu dipetakan ke estimasi label $\hat{y} \in \{0, \dots, K-1\}$ untuk $K = 6$ subkelompok interseksional. Untuk menjamin zero identity leakage dan zero statistical leakage, penskalaan dan PCA di-fit ketat hanya pada lipatan latih 5-Fold StratifiedGroupKFold GridSearchCV pada subset latih (480 subjek, 8.640 citra) dengan isolasi groups = subject\_id. Penelusuran hyperparameter merekonsiliasi (SVM: 288 + LR: 96 + RF: 288 + GNB: 240) = 912 kombinasi hyperparameter per skema fitur $\times$ 5 folds = 4.560 fits per skema fitur $\times$ 7 skema fitur = 31.920 fits validasi silang + 28 refits akhir pada himpunan latih sebelum evaluasi held-out.
 
 \begin{equation}
 \mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, \dots, K-1\}
 \label{eq:12}
 \end{equation}
-
-\begin{algorithm}[htbp]
-\caption{Pseudocode of Leakage-Free StratifiedGroupKFold Hyperparameter Optimization and Evaluation Procedure.}
-\label{alg:pipeline}
-\begin{algorithmic}[1]
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-\REQUIRE Multi-domain feature matrix $\mathbf{X} \in \mathbb{R}^{N \times D}$, labels $y \in \{0,\dots,5\}^N$, subject\_ids $g \in \{1,\dots,S\}^N$, hyperparameter grid $\Theta$
-\ENSURE Best model $\mathcal{M}^*$, optimal hyperparameters $\theta^*$, evaluation metrics on held-out test set
-\STATE Partition dataset into $\mathcal{D}_{\text{train}}$ (480 subjects, 8.640 images) and $\mathcal{D}_{\text{test}}$ (120 subjects, 2.160 images) via subject-disjoint split
-\STATE Initialize cv = StratifiedGroupKFold($n\_splits=5$, $shuffle=\text{True}$, $random\_state=42$) on $\mathcal{D}_{\text{train}}$ with groups = subject\_ids
-\FOR{each configuration $\theta \in \Theta$}
-    \FOR{fold $k = 1$ \TO $5$}
-        \STATE Split $\mathcal{D}_{\text{train}}$ into $\text{train}_k$ and $\text{val}_k$ with zero subject overlap
-        \STATE Fit Scaler on $\text{train}_k$ and transform $\text{train}_k$, $\text{val}_k$
-        \STATE Fit PCA on $\text{train}_k$ and transform $\text{train}_k$, $\text{val}_k$
-        \STATE Train $\text{Classifier}(\theta)$ on transformed $\text{train}_k$
-        \STATE Evaluate accuracy on transformed $\text{val}_k$
-    \ENDFOR
-    \STATE Compute mean cross-validation score across 5 folds
-\ENDFOR
-\STATE Select optimal $\theta^* = \arg\max \text{mean\_cv\_score}$
-\STATE Refit Scaler, PCA, and $\text{Classifier}(\theta^*)$ on entire $\mathcal{D}_{\text{train}}$
-\STATE Transform held-out $\mathcal{D}_{\text{test}}$ using fitted Scaler and PCA
-\STATE Predict $y_{\text{pred}}$ on transformed $\mathcal{D}_{\text{test}}$ and compute Accuracy, F1, McNemar, Wilson CI, EOD
-\end{algorithmic}
-\end{algorithm}
