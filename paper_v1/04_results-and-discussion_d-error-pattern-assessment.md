@@ -6,7 +6,7 @@
 | :---: | :---: | :---: |
 | *(a) Single-Domain Face Biometrics* | *(b) Dual-Domain Emotion ⊕ Face* | *(c) Tri-Domain Face ⊕ Emotion ⊕ Age* |
 
-<p align="center"><strong>Figure 4. Comparative 6 × 6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set ($N = 2,160$): (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.</strong></p>
+<p align="center"><strong>Figure 4. Comparative 6 × 6 Confusion Matrices of Logistic Regression on the Held-Out Subject-Disjoint Test Set: (a) Single-Domain Face Biometrics, (b) Dual-Domain Emotion ⊕ Face, and (c) Tri-Domain Face ⊕ Emotion ⊕ Age.</strong></p>
 
 Dinamika penurunan kesalahan klasifikasi pada model LR dievaluasi melintasi tiga tahapan skema fusi representasi pada data uji held-out subject-disjoint ($N = 2,160$) melalui matriks konfusi 6 × 6 sebagaimana disajikan pada [Figure 4](#fig4). Evaluasi empiris memperlihatkan reduksi kesalahan kumulatif yang konsisten seiring perluasan domain representasi laten. Model baseline domain tunggal Face menghasilkan 294 kesalahan prediksi dengan tingkat akurasi 86.39%. Integrasi representasi afektif pada konfigurasi dual-domain Emotion ⊕ Face menekan jumlah salah klasifikasi menjadi 271 sampel (akurasi 87.45%). Penambahan fitur morfologi penuaan biologis pada skema tri-domain Face ⊕ Emotion ⊕ Age berhasil mereduksi kesalahan hingga mencapai titik terendah sebesar 245 sampel dengan akurasi 88.66%. Pola reduksi berjenjang ini membuktikan keunggulan komplementer fusi multi-domain dalam mempertajam margin separasi antarsubkelompok demografis.
 

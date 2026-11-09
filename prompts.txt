@@ -1270,3 +1270,6 @@ AND (LIMIT-TO(PUBSTAGE, "final"))
 
 
 paper_v2/04_results-and-discussion_d-error-pattern-assessment.md gambar nya tidak muncul
+
+
+nama Figure 4. tidak perlu ada n = 2160
