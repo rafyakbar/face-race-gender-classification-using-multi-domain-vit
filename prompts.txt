@@ -29,6 +29,9 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 
 paper_v2/04_results-and-discussion_a-global-performance.md:
+- pindahkan Table XI. sebelum paragraf terakhir
+
+paper_v2/04_results-and-discussion_a-global-performance.md:
 - Table VII. hingga Table X.:
   * nama tidak usah ada "on Subject-Disjoint Test Set (N = 2,160)".
   * seharusnya juga ada kolom "95% CI" & "CV Score".

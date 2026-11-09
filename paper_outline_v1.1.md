@@ -614,6 +614,18 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 - **Target Kata**: 100–120 kata.
 - **Fokus Narasi**: Sintesis komparatif lintas 4 famili pengklasifikasi (28 eksperimen). Rata-rata akurasi lintas konfigurasi menunjukkan urutan performa: $\text{SVM } (86.47\%) > \text{LR } (86.18\%) > \text{RF } (80.57\%) > \text{GNB } (78.37\%)$. LR Tri dan SVM Tri mendominasi papan peringkat dengan akurasi puncak yang tidak berbeda secara signifikan secara statistik (88.66% vs 88.61%, $p = 1.0000$, selisih 1 citra: 1.915 vs 1.914 dari $N = 2.160$), sementara respons fusi bersifat spesifik-pengklasifikasi (*classifier-dependent*) di mana RF mencatat kenaikan marginal pada tri-domain (85.00% vs 84.86% dual-domain, $p = 0.8408$) dan GNB mencapai puncak pada dual-domain `Emotion ⊕ Face` (84.31% vs 83.61% tri-domain, $p = 0.2349$), menunjukkan bahwa pada evaluasi *subject-disjoint* dalam-dataset DemogPairs, fusi multi-domain efektif dieksploitasi oleh pengklasifikasi linier ter-regularisasi maupun kernel non-linier.
 
+- **Tabel XI (Profil Waktu Ekstraksi Fitur dan Penyimpanan Vision Transformer)**:
+
+<a id="tab11"></a>
+**Table XI. Vision Transformer Feature Extraction Runtime Profile.**
+
+| Feature Domain | Average Extraction Time per Image (ms) | Total Extraction Time (s) |
+| :--- | :---: | :---: |
+| Biometric Face | 39.74 | 429.22 (7m 09s) |
+| Facial Emotion | 39.65 | 428.24 (7m 08s) |
+| Facial Age | 45.11 | 487.17 (8m 07s) |
+| **Tri-Domain Fusion** | **124.50** | **1,344.64 (22m 25s)** |
+
 #### Paragraph 6: Computational Efficiency and Resource Consumption Profile (Jawaban R1 #5 & R2 #8)
 - **Target Kata**: 120–150 kata.
 - **Fokus Narasi**: Menyajikan profil efisiensi komputasi terukur pada [Table XI](#tab11) dan [Table XII](#tab12):

@@ -95,8 +95,6 @@ Emotion $\oplus$ Age & 1,536 & 87.12 & 86.25 & [84.73, 87.64] & 86.26 & 86.25 & 
 
 Sintesis komparatif antarmodel pada Table~\ref{tab:VII}, Table~\ref{tab:VIII}, Table~\ref{tab:IX}, dan Table~\ref{tab:X} menegaskan bahwa efektivitas fusi representasi multi-domain bersifat sangat bergantung pada arsitektur pengklasifikasi. Model linier LR dan non-linier SVM memimpin tolok ukur global dengan performa puncak kompetitif pada konfigurasi Tri-Domain (Akurasi 88.66\% berbanding 88.61\%), dengan selisih marjinal hanya satu citra uji dari total 2.160 sampel. Sebaliknya, RF dan GNB memperlihatkan dinamika batas keputusan yang berbeda. RF mencapai akurasi 85.00\% pada Tri-Domain namun tertahan oleh kompleksitas partisi pohon acak berdimensi tinggi, sedangkan GNB mencapai titik optimal pada skema dual-domain (84.31\%) akibat kendala asumsi independensi kovariansi. Temuan ini membuktikan bahwa fusi fitur laten multi-domain paling efektif dipetakan oleh pengklasifikasi dengan estimasi batas keputusan global.
 
-Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada Table~\ref{tab:XI} dan Table~\ref{tab:XII}. Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 90 MB). Pada pelatihan validasi silang 5-fold di CPU, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi kebutuhan penyimpanan, LR hanya membutuhkan berkas model 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
-
 \begin{table*}[htbp]
 \caption{Vision Transformer Feature Extraction Runtime Profile.}
 \label{tab:11}
@@ -114,6 +112,8 @@ Facial Age & 45.11 & 487.17 (8m 07s) \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada Table~\ref{tab:XI} dan Table~\ref{tab:XII}. Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 90 MB). Pada pelatihan validasi silang 5-fold di CPU, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi kebutuhan penyimpanan, LR hanya membutuhkan berkas model 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
 
 \begin{table*}[htbp]
 \caption{Downstream Classifier Training and Testing Computational Profile.}
