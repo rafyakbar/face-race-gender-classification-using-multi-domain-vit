@@ -45,4 +45,5 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)                    | LOKA
 27  | AUC                 | Area Under the Curve                          | paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md (P1)
 28  | AI                  | Artificial Intelligence                       | paper_v2/05_conclusion.md (P2)
 29  | XAI                 | Explainable Artificial Intelligence           | paper_v2/05_conclusion.md (P2)
+30  | CV                  | Cross-Validation                              | paper_v2/03_materials-and-methods_0-overview.md (P1)
 ======================================================================================================================================================
