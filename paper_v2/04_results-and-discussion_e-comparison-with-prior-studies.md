@@ -1,14 +1,14 @@
 ## E. Comparison with Prior Studies
 
-Perbandingan empiris kerangka kerja usulan terhadap studi terdahulu dan baseline internal pada dataset DemogPairs disajikan pada [Table XVI](#tab16). Evaluasi distrukturkan ke dalam dua kelompok protokol partisi data, yaitu kelompok protokol Stratified dan kelompok protokol Subject-Disjoint. Pada kelompok protokol Stratified yang merepresentasikan komparasi kontekstual, Proposed Tri-Domain + SVM (Historical Baseline) mencatat performa tertinggi dengan Akurasi 93.70%, Presisi 93.72%, Recall 93.70%, dan F1-Score 93.69%. Capaian tersebut melampaui model terdahulu Putri et al. (2025) [[19]](06_references.md#ref19) dengan Akurasi 92.41% dan Putri et al. (2025) [[20]](06_references.md#ref20) dengan 89.07%. Pada kelompok protokol Subject-Disjoint yang mengevaluasi generalisasi tanpa kebocoran identitas, Proposed Tri-Domain + LR memimpin tolok ukur dengan Akurasi 88.66%, disusul oleh Proposed Tri-Domain + SVM (88.61%). Fusi tri-domain secara konsisten mengungguli konfigurasi single-domain dan dual-domain.
+Perbandingan empiris kerangka kerja usulan terhadap studi terdahulu dan baseline internal pada dataset DemogPairs disajikan pada [Table XVI](#tab16). Evaluasi distrukturkan ke dalam dua kelompok protokol partisi data, yaitu kelompok protokol Stratified dan kelompok protokol Subject-Disjoint. Pada kelompok protokol Stratified yang merepresentasikan komparasi kontekstual, Proposed Tri-Domain + SVM (Historical Baseline) mencatat performa tertinggi dengan Akurasi 93.70%, Presisi 93.72%, Recall 93.70%, dan F1-Score 93.69%. Capaian tersebut melampaui model terdahulu Dual-ViT + SVM dengan Akurasi 92.41% [[19]](06_references.md#ref19) dan MD-ViT + XGBoost dengan Akurasi 89.07% [[20]](06_references.md#ref20). Pada kelompok protokol Subject-Disjoint yang mengevaluasi generalisasi tanpa kebocoran identitas, Proposed Tri-Domain + LR memimpin tolok ukur dengan Akurasi 88.66%, disusul oleh Proposed Tri-Domain + SVM (88.61%). Fusi tri-domain secara konsisten mengungguli konfigurasi single-domain dan dual-domain.
 
 <a id="tab16"></a>
 **Table XVI. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
 
 | Model | Data Split Protocol | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| MD-ViT (`Face ⊕ Age`) + XGBoost (Putri et al., JIEET 2025) [[20]](06_references.md#ref20) | Stratified | 89.07 | 89.12 | 89.07 | 89.01 |
-| Dual-ViT (`Face ⊕ Emotion`) + SVM (Putri et al., ICVEE 2025) [[19]](06_references.md#ref19) | Stratified | 92.41 | 92.48 | 92.41 | 92.38 |
+| MD-ViT + XGBoost [[20]](06_references.md#ref20) | Stratified | 89.07 | 89.12 | 89.07 | 89.01 |
+| Dual-ViT + SVM [[19]](06_references.md#ref19) | Stratified | 92.41 | 92.48 | 92.41 | 92.38 |
 | **Proposed Tri-Domain + SVM (Historical Baseline)** | **Stratified** | **93.70** | **93.72** | **93.70** | **93.69** |
 | Single-Domain `Face` + LR | Subject-Disjoint | 86.39 | 86.46 | 86.39 | 86.40 |
 | Single-Domain `Face` + SVM | Subject-Disjoint | 86.16 | 86.24 | 86.16 | 86.19 |

@@ -181,14 +181,14 @@ paper_v2/04_results-and-discussion_a-global-performance.md: paragraf 4:
   - paper_v2/references/2026_SVC.bib
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 1:
-- "Capaian tersebut melampaui model terdahulu Putri et al. (2025) dengan Akurasi 92.41% dan Putri et al. (2025) dengan 89.07%":
+- "Capaian tersebut melampaui model terdahulu Dual-ViT + SVM dengan Akurasi 92.41% dan MD-ViT + XGBoost dengan Akurasi 89.07%":
   - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: Tabel:
-- "| MD-ViT (`Face ⊕ Age`) + XGBoost (Putri et al., JIEET 2025) | Stratified | 89.07 | 89.12 | 89.07 | 89.01 |":
+- "| MD-ViT + XGBoost | Stratified | 89.07 | 89.12 | 89.07 | 89.01 |":
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
-- "| Dual-ViT (`Face ⊕ Emotion`) + SVM (Putri et al., ICVEE 2025) | Stratified | 92.41 | 92.48 | 92.41 | 92.38 |":
+- "| Dual-ViT + SVM | Stratified | 92.41 | 92.48 | 92.41 | 92.38 |":
   - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 2:

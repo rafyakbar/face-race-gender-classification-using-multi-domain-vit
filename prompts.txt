@@ -28,6 +28,10 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:
+- tidak usah ada seperti "Putri et al." atau nama dari peneliti sebelumnya
+- pada penelitian sebelumnya, pada tabel, tidak usah ada Face ⊕ ...
+
 audit & perbaiki ulang paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:
 - pada Table XVI.:
   * tidak usah ada kolom Feature Domain karena sudah ada informasinya pada kolom Model
