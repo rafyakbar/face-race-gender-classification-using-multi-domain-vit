@@ -100,23 +100,21 @@ paper_v2/02_related-works.md: paragraf 8:
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
 
 paper_v2/03_materials-and-methods_a-dataset.md: paragraf 1:
-- "Eksperimen dalam penelitian ini memanfaatkan dataset DemogPairs yang dikembangkan oleh Hupont dan Fernández":
+- "Eksperimen dalam penelitian ini memanfaatkan dataset DemogPairs yang dirancang sebagai tolok ukur pengujian biometrik verifikasi wajah untuk mengevaluasi dampak ketimpangan demografis":
   - paper_v2/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
 
 paper_v2/03_materials-and-methods_b-vision-transformer.md: paragraf 1:
-- "Arsitektur pengekstraksi representasi visual pada penelitian ini mengadopsi model ViT standar sebagaimana diilustrasikan pada [Figure 3](#fig3)":
+- "Arsitektur ekstraksi fitur visual mengadopsi model ViT standar pada [Figure 3](#fig3)":
   - paper_v2/references/2023_A Survey on Vision Transformer.bib
-- "Setiap citra wajah masukan beresolusi 224 × 224 piksel dengan $C = 3$ kanal warna dibagi menjadi $N = 196$ patch spasial non-overlapping berdimensi $P \times P$ dengan $P = 16$":
+- "Vektor patch digabungkan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan penyandian posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai [(5)](#eq5)":
   - paper_v2/references/2022_Transformers in Vision A Survey.bib
-- "Vektor patch tersebut dirangkaikan dengan token kelas $\mathbf{x}_{\text{class}} \in \mathbb{R}^D$ dan embedding posisi $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ sesuai perumusan [(5)](#eq5)":
-  - paper_v2/references/2022_Transformers in Vision A Survey.bib
-- "Pada setiap lapisan encoder $\ell$ ($\ell = 1, \dots, L$), representasi fitur diproses melalui Multi-Head Self-Attention (MHSA) setelah operasi Layer Normalization (LN), lalu dialirkan menuju Multi-Layer Perceptron (MLP) dua lapis dengan fungsi aktivasi Gaussian Error Linear Unit (GeLU) berdasarkan [(6)](#eq6)":
+- "Pada lapisan $\ell$, fitur diproses melalui MHSA setelah Layer Normalization (LN) serta Multi-Layer Perceptron (MLP) beraktivasi Gaussian Error Linear Unit (GeLU) menurut [(6)](#eq6)":
   - paper_v2/references/2024_A Survey of Visual Transformers.bib
-- "Mekanisme self-attention memungkinkan pemodelan relasi spasial global antarpatch wajah tanpa batasan receptive field lokal":
+- "Mekanisme self-attention memodelkan interaksi spasial global tanpa batasan receptive field lokal":
   - paper_v2/references/2024_Visualizing and Understanding Patch Interactions in Vision Transformer.bib
 
 paper_v2/03_materials-and-methods_c-random-forest.md: paragraf 1:
-- "Model ensemble Random Forest (RF) mengagregasikan prediksi sekumpulan pohon keputusan independen untuk mengklasifikasikan fitur wajah berdasarkan prinsip bootstrap aggregating (bagging) dan random subspace method":
+- "Model ensemble RF mengagregasikan prediksi sekumpulan pohon keputusan independen untuk mengklasifikasikan fitur wajah berdasarkan prinsip bootstrap aggregating (bagging) dan random subspace method":
   - paper_v2/references/2022_Oblique and rotation double random forest.bib
 - "Pendekatan ini mereduksi varians prediksi dengan membangun sebanyak $B$ pohon klasifikasi dari sampel acak data latih":
   - paper_v2/references/2022_BoostTree and BoostForest for Ensemble Learning.bib
@@ -128,7 +126,7 @@ paper_v2/03_materials-and-methods_c-random-forest.md: paragraf 1:
   - paper_v2/references/2024_Data-driven multinomial random forest a new random forest variant with strong consistency.ris
 
 paper_v2/03_materials-and-methods_d-gaussian-naive-bayes.md: paragraf 1:
-- "Berdasarkan Teorema Bayes, pengklasifikasi Gaussian Naive Bayes (GNB) mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat":
+- "Berdasarkan Teorema Bayes, pengklasifikasi GNB mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat":
   - paper_v2/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris
 - "Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada [(9)](#eq9), di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$":
   - paper_v2/references/2023_Quantile-distribution functions and their use for classification, with application to naïve Bayes classifiers.ris
@@ -136,7 +134,7 @@ paper_v2/03_materials-and-methods_d-gaussian-naive-bayes.md: paragraf 1:
   - paper_v2/references/2023_Artificial Intelligence Based Approach for Classification of Human Activities Using MEMS Sensors Data.bib
 
 paper_v2/03_materials-and-methods_e-logistic-regression.md: paragraf 1:
-- "Pendekatan regresi multinomial (Softmax regression) pada Logistic Regression (LR) memetakan representasi fitur laten ke dalam enam kategori demografis interseksional melalui estimasi probabilitas linier terpadu":
+- "Pendekatan regresi multinomial (Softmax regression) pada LR memetakan representasi fitur laten ke dalam enam kategori demografis interseksional melalui estimasi probabilitas linier terpadu":
   - paper_v2/references/2023_Multiresolution Categorical Regression for Interpretable Cell-Type Annotation.bibtex
 - "Fungsi probabilitas Softmax menghitung peluang bersyarat sampel terhadap kategori target sebagaimana didefinisikan pada [(10)](#eq10), di mana $\mathbf{x}$ merepresentasikan vektor fitur masukan, $y$ adalah variabel label kelas, $c$ menyatakan kategori kelas target, $\mathbf{w}_c$ dan $b_c$ masing-masing merupakan vektor bobot serta bias kelas $c$, sedangkan konstanta $K = 6$ menunjukkan jumlah total kelas interseksional":
   - paper_v2/references/2022_Multinomial logistic regression classifier via 𝑙𝑞,0-proximal Newton algorithm.bib
@@ -144,7 +142,7 @@ paper_v2/03_materials-and-methods_e-logistic-regression.md: paragraf 1:
   - paper_v2/references/2022_Group Logistic Regression Models with lp,q Regularization.bib
 
 paper_v2/03_materials-and-methods_f-support-vector-machine.md: paragraf 1:
-- "Pengklasifikasi Support Vector Machine (SVM) mengonstruksikan bidang pemisah berjarak terjauh (maximum margin hyperplane) untuk memisahkan enam kelas interseksional pada ruang representasi laten berdimensi tinggi":
+- "Pengklasifikasi SVM mengonstruksikan bidang pemisah berjarak terjauh (maximum margin hyperplane) untuk memisahkan enam kelas interseksional pada ruang laten berdimensi tinggi":
   - paper_v2/references/2023_Maximal Margin Support Vector Machine for Feature Representation and Classification.bib
 - "Fungsi kernel memproyeksikan distribusi data nonlinier dari fusi multi-domain ke ruang fitur berdimensi lebih tinggi, mencakup opsi kernel linear, Radial Basis Function (RBF), dan polinomial":
   - paper_v2/references/2022_Hybrid fuzzy multiple SVM classifier through feature fusion based on convolution neural networks and its practical applications.bib

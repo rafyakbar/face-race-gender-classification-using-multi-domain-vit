@@ -43,6 +43,6 @@ NO  | SINGKATAN / AKRONIM | BENTUK LENGKAP (FULL FORM)                    | LOKA
 25  | FNR                 | False Negative Rate                           | paper_v2/04_results-and-discussion_c-intersectional-subgroup-performance.md (P1)
 26  | AI                  | Artificial Intelligence                       | paper_v2/04_results-and-discussion_c-intersectional-subgroup-performance.md (P2)
 27  | XAI                 | Explainable Artificial Intelligence           | paper_v2/05_conclusion.md (P2)
-28  | CV                  | Cross-Validation                              | paper_v2/03_materials-and-methods_0-overview.md (P1)
-29  | pp                  | Percentage Points                             | paper_v2/04_results-and-discussion_b-feature-ablation-study.md (P1)
+28  | CV                  | Cross-Validation                              | paper_v2/03_materials-and-methods_c-random-forest.md (P1)
+29  | pp                  | Percentage Points                             | paper_v2/04_results-and-discussion_a-global-performance.md (P4)
 ======================================================================================================================================================
