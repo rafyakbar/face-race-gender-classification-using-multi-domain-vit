@@ -834,7 +834,7 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–125
 |---|:---:|:---:|:---:|:---:|:---:|
 | MD-ViT + XGBoost | Stratified | 89.07% | 89.12% | 89.07% | 89.01% |
 | Dual-ViT + SVM | Stratified | 92.41% | 92.48% | 92.41% | 92.38% |
-| **Proposed Tri-Domain + SVM (Historical Baseline)** | **Stratified** | **93.70%** | **93.72%** | **93.70%** | **93.69%** |
+| **Proposed Tri-Domain + SVM** | **Stratified** | **93.70%** | **93.72%** | **93.70%** | **93.69%** |
 | Single-Domain `Face` + LR | Subject-Disjoint | 86.39% | 86.46% | 86.39% | 86.40% |
 | Single-Domain `Face` + SVM | Subject-Disjoint | 86.16% | 86.24% | 86.16% | 86.19% |
 | Single-Domain `Emotion` + SVM | Subject-Disjoint | 85.79% | 85.84% | 85.79% | 85.80% |
