@@ -181,27 +181,16 @@ paper_v2/04_results-and-discussion_a-global-performance.md: paragraf 4:
   - paper_v2/references/2026_SVC.bib
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 1:
-- "Studi seminal oleh Hupont dan Fernández (2019) menguji verifikasi pasangan identitas berbasis kurva Receiver Operating Characteristic (ROC) dan Area Under the Curve (AUC), serta tidak mengevaluasi klasifikasi 6-kelas interseksional":
-  - paper_v2/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
-- "Capaian tersebut melampaui model terdahulu Putri et al. (2025) (Akurasi 91.15%) dan Putri et al. (2025) (90.85%)":
+- "Capaian tersebut melampaui model terdahulu Putri et al. (2025) dengan Akurasi 92.41% dan Putri et al. (2025) dengan 89.07%":
   - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
-- "Selain itu, hasil ini juga mengungguli baseline komparasi ViT-Base (85.40%) dan ResNet-50 (81.25%)":
-  - paper_v2/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
-  - paper_v2/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: Tabel:
-- "| Hupont & Fernández (2019) * | Single (Face Verification) | Pairwise ROC Verification | - | - | - | - |":
-  - paper_v2/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib
-- "| Baseline ResNet-50 | Single (Face) | Stratified | 81.25 | 81.30 | 81.25 | 81.20 |":
-  - paper_v2/references/2022_Intelligent deep learning based ethnicity recognition and classification using facial images.bib
-- "| Baseline ViT-Base | Single (Face) | Stratified | 85.40 | 85.45 | 85.40 | 85.38 |":
-  - paper_v2/references/2024_Classifying Gender Based on Face Images Using Vision Transformer.bib
-- "| Putri et al. (2025) | Dual (Face + Emotion) | Stratified | 91.15 | 91.20 | 91.15 | 91.12 |":
-  - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
-- "| Putri et al. (2025) | Dual (Face + Age) | Stratified | 90.85 | 90.90 | 90.85 | 90.82 |":
+- "| MD-ViT (`Face ⊕ Age`) + XGBoost (Putri et al., JIEET 2025) | Stratified | 89.07 | 89.12 | 89.07 | 89.01 |":
   - paper_v2/references/2025_MD-ViT Multidomain Vision Transformer Fusion for Fair Demographic Attribute Recognition.bib
+- "| Dual-ViT (`Face ⊕ Emotion`) + SVM (Putri et al., ICVEE 2025) | Stratified | 92.41 | 92.48 | 92.41 | 92.38 |":
+  - paper_v2/references/2025_Dual Vision Transformer Integration for Race and Gender Recognition Based on Facial Images.bib
 
-paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 3:
-- "Korpus DemogPairs orisinal yang diperkenalkan oleh Hupont dan Fernández sejatinya dirancang sebagai tolok ukur verifikasi identitas wajah berpasangan dan bukan klasifikasi atribut multi-kelas tertutup":
+paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md: paragraf 2:
+- "Penerapan protokol ketat Subject-Disjoint pada 480 subjek latih dan 120 subjek uji held-out pada korpus DemogPairs yang sejatinya dirancang untuk verifikasi pasangan identitas wajah menjamin eliminasi kebocoran identitas secara mutlak, sehingga menghasilkan evaluasi klasifikasi 6-kelas interseksional yang andal di dunia nyata":
   - paper_v2/references/2019_DemogPairs Quantifying the Impact of Demographic Imbalance in Deep Face Recognition.bib

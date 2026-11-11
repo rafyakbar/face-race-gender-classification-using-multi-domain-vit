@@ -28,6 +28,23 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+audit & perbaiki ulang paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:
+- pada Table XVI.:
+  * tidak usah ada kolom Feature Domain karena sudah ada informasinya pada kolom Model
+  * penelitian "Hupont & Fernández (2019) [25]", "Baseline ResNet-50 [13]", "Baseline ViT-Base [17]" sepertinya tidak menggunakan dataset demogpairs
+- perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
+- perhatikan juga apakah sudah sesuai dengan komentar reviewer yg ada pada paper_reviews_ieee/Comments.md dan apakah response pada paper_reviews_ieee/Response-to-Reviewers.md sudah tepat (jika memang bagaian ini dikomentari reviewer).
+- perhatikan rules/md_rules.txt.
+- audit terkait penggunaan singkatan pada paper_v2/acronyms.txt, bisa didelegasikan ke subagent untuk audit.
+- audit apakah sudah sesuai dengan paper_v2/references.txt dan paper_v2/06_references.md untuk penomoran referensinya dan kesesuaian sitasi/klaim nya, dan juga cek apakah sudah sesuai dengan experiment/code/md:
+  * bisa didelegasikan ke subagent untuk audit
+  * bisa didelegasikan ke beberapa subagent jika memang dibutuhkan
+  * berikan instruksi yg jelas ke subagent
+  tapi jika tidak ada sitasi sama sekali maka biarkan.
+- update juga paper_outline_v1.1.md jika dibutuhkan.
+- langsung juga update paper_latex_id_v2 (perhatikan juga rules/latex_rules.txt).
+- jangan lupa buat commit dan push setelah selesai.
+
 audit & perbaiki ulang paper_v1/04_results-and-discussion_d-error-pattern-assessment.md:
 - seharusnya di setiap gambar di bawahnya ada nama sub figure nya, (a) Single-Domain, ...
 - perhatikan jumlah target kata yang ada pada paper_outline_v1.1.md, jika sudah sesuai maka jangan diubah.
