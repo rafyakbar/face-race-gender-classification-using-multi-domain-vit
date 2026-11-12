@@ -78,13 +78,13 @@ Setiap persamaan dilengkapi dengan penjelasan naratif mengenai definisi simbol v
 
 **Tanggapan Penulis:**  
 Kami sepenuhnya setuju. Diagram pada naskah awal memiliki resolusi visual yang kurang optimal dan belum memvisualisasikan mekanisme ekstraksi paralel serta fusi representasi secara gamblang. Kami telah mendesain ulang Gambar 3 (`images/vit_v2.2.png`) secara profesional dalam format resolusi tinggi (300+ DPI). Diagram baru ini memetakan tujuh tahapan pemrosesan terpadu:
-1. Standardisasi citra masukan RGB berukuran 224 × 224 piksel dan pemotongan menjadi 196 patch spasial berukuran 16 × 16 piksel.
-2. Proyeksi linier patch ke dimensi laten 768 serta penambahan token kelas [CLS] dan embedding posisi.
-3. Ekstraksi fitur paralel melalui tiga model Vision Transformer pra-latih yang dibekukan bobotnya (ViT-Face untuk biometrik, ViT-Emotion untuk dinamika ekspresi, dan ViT-Age untuk morfologi penuaan).
-4. Pengambilan vektor representasi laten token [CLS] lapisan ke-12 dari masing-masing domain (3 × 768 dimensi).
-5. Penggabungan representasi melalui operasi konkatenasi langsung menjadi vektor fusi Tri-Domain 2.304 dimensi.
-6. Rantai pemrosesan modular terisolasi (penskalaan MinMaxScaler dan reduksi dimensi PCA).
-7. Optimasi hyperparameter empat famili pengklasifikasi klasik (RF, GNB, LR, SVM) di bawah protokol 5-Fold StratifiedGroupKFold untuk klasifikasi 6-kelas interseksional.  
+1. Standardisasi citra masukan RGB berukuran 224 × 224 piksel melalui pra-pemrosesan terstandardisasi (*Input image and preprocessing*).
+2. Pemotongan dan perataan citra menjadi 196 patch spasial non-overlapping berukuran 16 × 16 piksel (*Split into patches and flatten*).
+3. Proyeksi linier vektor patch ke dimensi laten 768 (*Linear projection to patch embeddings*).
+4. Penambahan token kelas [CLS] dan penyandian posisi (*Add [CLS] token and positional embeddings*). (Tahap 1–4 berlangsung secara independen pada masing-masing dari ketiga model ViT).
+5. Ekstraksi fitur paralel token [CLS] lapisan ke-12 dari tiga backbone Vision Transformer pra-latih yang dibekukan bobotnya: ViT-Face, ViT-Emotion, dan ViT-Age (*Extract [CLS] tokens from 3 frozen ViTs*, 3 × 768 dimensi).
+6. Penggabungan representasi lintas domain melalui operasi fusi konkatenasi langsung $\oplus$ menjadi vektor representasi Tri-Domain 2.304 dimensi (*Multi-domain feature fusion*).
+7. Klasifikasi hilir enam kelas interseksional menggunakan empat famili pengklasifikasi klasik (RF, GNB, LR, SVM) teroptimasi 5-Fold StratifiedGroupKFold (*Downstream classification*).  
 Penjelasan teks naratif pada Seksi III-B turut diperluas untuk mempertegas kebaruan kerangka kerja fusi fitur komplementer ini tanpa memerlukan proses pelatihan ulang (*fine-tuning*) yang mahal.
 
 **Tindakan pada Naskah:**  
@@ -99,7 +99,7 @@ Penjelasan teks naratif pada Seksi III-B turut diperluas untuk mempertegas kebar
 **Tanggapan Penulis:**  
 Kami mengucapkan terima kasih atas masukan ini. Pada Seksi IV-D (*Error Pattern Assessment*), kami memperdalam telaah empiris terhadap matriks konfusi 6 × 6 pada model terbaik Logistic Regression melintasi 2.160 citra uji held-out (Gambar 4a Domain Tunggal Wajah, Gambar 4b Domain Ganda Emosi+Wajah, dan Gambar 4c Tri-Domain Wajah+Emosi+Usia). Alih-alih sekadar membaca akurasi diagonal, kami melakukan dekomposisi kuantitatif terhadap sebaran sel kesalahan non-diagonal:
 1. **Penurunan Kesalahan Menyeluruh:** Total kesalahan klasifikasi menurun secara konsisten dari 294 citra (akurasi 86,39% pada domain tunggal) menjadi 271 citra (87,45% pada domain ganda) dan 245 citra (88,66% pada model tri-domain).
-2. **Dominasi Kesalahan Intra-Gender Lintas-Ras:** Pada model tri-domain (245 kesalahan), mayoritas kesalahan merupakan kebingungan intra-gender lintas-ras (67,35% dari seluruh error; atau 7,64% dari total sampel uji), turun signifikan dari 212 error pada domain tunggal. Sementara itu, kesalahan lintas-gender hanya mencakup 80 citra (32,65% dari total error; atau 3,70% dari total sampel uji).
+2. **Dominasi Kesalahan Intra-Gender Lintas-Ras:** Pada model tri-domain (245 kesalahan), mayoritas kesalahan merupakan kebingungan intra-gender lintas-ras (67,35% dari seluruh error; atau 7,64% dari total sampel uji), turun signifikan dari 194 kasus pada domain tunggal dan 185 kasus pada dual-domain. Sementara itu, kesalahan lintas-gender hanya mencakup 80 citra (32,65% dari total error; atau 3,70% dari total sampel uji).
 3. **Pola Kesalahan Spesifik Subkelompok:** Narasi menguraikan penurunan kesalahan nyata pada kelompok minoritas, seperti subkelompok wanita berkulit hitam (*Black Females*) yang mengalami penurunan kesalahan dari 73 citra pada domain tunggal menjadi 55 citra pada model tri-domain, dengan penjelasan berbasis data observasional tanpa membuat spekulasi fenotipik biologis yang tidak terverifikasi.
 
 **Tindakan pada Naskah:**  
