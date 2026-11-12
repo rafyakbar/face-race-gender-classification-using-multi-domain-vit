@@ -148,13 +148,14 @@ Perbandingan multi-domain yang diperluas ini memvalidasi keunggulan empiris mode
 
 **Tanggapan Penulis:**  
 Kami menyampaikan terima kasih atas telaah kritis ini. Bagian Kesimpulan (Seksi V) telah ditulis ulang sepenuhnya menjadi dua paragraf terstruktur yang menyajikan kontribusi ilmiah secara lugas dan berimbang:
-1. Merangkum efektivitas fusi representasi multi-domain ViT (Wajah + Emosi + Usia) pada tolok ukur bebas kebocoran DemogPairs, di mana Logistic Regression meraih akurasi 88,66%, presisi makro 88,75%, recall makro 88,66%, dan F1-score makro 88,68%, serta SVM meraih akurasi 88,61%, presisi makro 88,71%, recall makro 88,61%, dan F1-score makro 88,63%, dengan penegasan bahwa fusi fitur memberikan peningkatan yang signifikan secara statistik dibanding biometrik wajah tunggal (*p* < 0,001).
+1. Merangkum efektivitas fusi representasi multi-domain ViT (Face ⊕ Emotion ⊕ Age) pada tolok ukur bebas kebocoran DemogPairs, di mana Logistic Regression meraih akurasi 88,66%, presisi makro 88,75%, recall makro 88,66%, dan F1-score makro 88,68%, serta SVM meraih akurasi 88,61%, presisi makro 88,71%, recall makro 88,61%, dan F1-score makro 88,63%, dengan penegasan bahwa fusi fitur memberikan peningkatan yang signifikan secara statistik dibanding biometrik wajah tunggal (*p* < 0,001).
 2. Menjelaskan temuan kunci paritas prediktif antara model linier Logistic Regression dan model non-linier RBF SVM (*p* = 1,0000, selisih bersih 1 sampel dari 2.160 citra) serta stabilitas keadilan algoritmik antarsubkelompok dengan rentang recall 84,72% hingga 94,44% dan kesenjangan EOD sebesar 9,72 percentage points.
-3. Menyatakan secara transparan keterbatasan ruang lingkup penelitian (terbatas pada 3 ras makro DemogPairs dan ekstraksi tiga model backbone ViT-Base beku secara terpisah) serta menetapkan agenda riset lanjutan pada validasi dataset eksternal (FairFace, UTKFace), fusi atensi silang adaptif disertai kuantisasi atau *knowledge distillation*, dan metode visualisasi XAI untuk mendukung prinsip *Responsible AI*.
+3. Menegaskan efisiensi komputasi kepala pengklasifikasi hilir LR yang sangat ringan (latensi inferensi 0,0046 ms per sampel dan ukuran model 0,11 MB) untuk implementasi praktis.
+4. Menyatakan secara transparan keterbatasan ruang lingkup penelitian (terbatas pada 3 ras makro DemogPairs dan ekstraksi tiga model backbone ViT-Base beku secara terpisah) serta menetapkan agenda riset lanjutan pada validasi dataset eksternal (FairFace, UTKFace), fusi atensi silang adaptif disertai kuantisasi atau *knowledge distillation*, dan metode visualisasi XAI untuk mendukung prinsip *Responsible AI*.
 
 **Tindakan pada Naskah:**  
 - **Lokasi pada Naskah:** Seksi V (*Conclusion*), Paragraf 1–2.
-- **Rincian Perubahan:** Kesimpulan lama diganti dengan sintesis temuan empiris yang berbobot, objektif, dan memuat batas-batas penelitian yang jelas.
+- **Rincian Perubahan:** Kesimpulan lama diganti dengan sintesis empat pilar kontribusi empiris yang berbobot, objektif, dan memuat batas-batas penelitian yang jelas.
 
 ---
 
@@ -251,12 +252,12 @@ Kami sepenuhnya sepakat dengan ketegasan Reviewer 2 mengenai perlunya kualifikas
 > *"6. Fairness analysis: The reported Equal Opportunity Difference values provide useful subgroup information but do not establish comprehensive demographic fairness. Please clarify the scope and limitations of the fairness claims."*
 
 **Tanggapan Penulis:**  
-Kami menyampaikan apresiasi dan terima kasih yang mendalam kepada Reviewer 2 atas koreksi etis dan metodologis yang sangat penting ini. Kami telah merevisi Seksi IV-C (*Intersectional Subgroup Performance*, **Tabel XIV**) dan Seksi V (*Conclusion*) untuk mendelimitasi batas analisis keadilan algoritmik secara transparan:
-1. Kami melaporkan metrik Presisi, Recall (TPR), F1-Score, dan Akurasi One-vs-Rest (OvR) per subkelompok pada Tabel XIV, di mana nilai *Equal Opportunity Difference* (EOD = 9,72 percentage points antara *White Males* pada TPR 94,44% dan *Black Females* pada TPR 84,72%) disajikan murni sebagai alat ukur disparitas tingkat pengenalan empiris pada subset uji yang dievaluasi ($N = 2.160$).
+Kami menyampaikan apresiasi dan terima kasih yang mendalam kepada Reviewer 2 atas koreksi etis dan metodologis yang sangat penting ini. Kami telah merevisi Seksi IV-C (*Intersectional Subgroup Performance*, **Tabel XV**) dan Seksi V (*Conclusion*) untuk mendelimitasi batas analisis keadilan algoritmik secara transparan:
+1. Kami melaporkan metrik Presisi, Recall (TPR), F1-Score, dan Akurasi One-vs-Rest (OvR) per subkelompok pada Tabel XV, di mana nilai *Equal Opportunity Difference* (EOD = 9,72 percentage points antara *White Males* pada TPR 94,44% dan *Black Females* pada TPR 84,72%) disajikan murni sebagai alat ukur disparitas tingkat pengenalan empiris pada subset uji yang dievaluasi ($N = 2.160$).
 2. Kami menyatakan secara eksplisit di dalam teks naskah bahwa nilai EOD dan metrik OvR (dengan rasio ketidakseimbangan kelas 5:1 pada skema OvR biner 6-kelas) **tidak dapat disamakan dengan sertifikasi keadilan demografis komprehensif atau jaminan keadilan universal**, yang sejatinya menuntut evaluasi multidimensi mencakup *demographic parity*, *equalized odds*, kalibrasi probabilitas, dan *counterfactual fairness* pada populasi sosio-kultural terbuka.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi III-H (*Evaluation Metrics*); Seksi IV-C (*Intersectional Subgroup Performance*), Paragraf 1–2, Tabel XIV; Seksi V, Paragraf 2.
+- **Lokasi pada Naskah:** Seksi III-H (*Evaluation Metrics*); Seksi IV-C (*Intersectional Subgroup Performance*), Paragraf 1–2, Tabel XV; Seksi V, Paragraf 1.
 - **Rincian Perubahan:** Narasi Seksi IV-C dan batasan pada Seksi V diperjelas untuk memposisikan metrik EOD strictly sebagai evaluasi disparitas performa empiris, bukan klaim keadilan algoritmik mutlak.
 
 ---
