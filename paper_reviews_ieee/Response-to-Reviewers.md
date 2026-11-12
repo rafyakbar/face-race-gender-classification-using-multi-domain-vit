@@ -27,7 +27,7 @@ Berikut adalah ringkasan lima perbaikan metodologis dan empiris utama yang telah
    Kami menerapkan uji signifikansi statistik berpasangan McNemar dengan koreksi kontinuitas Edwards dan uji eksak binomial dua arah (*exact two-sided binomial test*) pada seluruh 2.160 sampel uji held-out (Tabel XIII). Fusi multi-domain ViT terbukti memberikan peningkatan performa yang signifikan secara statistik dibanding biometrik wajah domain tunggal (*p* < 0,001). Perbandingan antara model terbaik LR Tri-Domain (88,66%, 1.915 prediksi benar) dan SVM Tri-Domain (88,61%, 1.914 prediksi benar) menghasilkan nilai chi-square 0,0000 dan nilai *p* = 1,0000 (selisih diskordan hanya 1 citra), membuktikan **paritas prediktif (ketiadaan perbedaan signifikan dalam performa klasifikasi)**. Selain itu, kontribusi domain usia dikualifikasikan secara presisi: penambahan fitur usia di atas representasi emosi dan wajah memberikan peningkatan yang signifikan secara statistik pada model linier LR (*p* = 0,0073 < 0,01), sedangkan pada kernel non-linier RBF SVM terjadi **kejenuhan fitur asimtotik (*asymptotic feature saturation*)** (*p* = 0,7343 > 0,05). Karakteristik fusi ini juga dilaporkan bersifat bergantung pada algoritma (*classifier-dependent*) untuk Random Forest dan Gaussian Naive Bayes.
 
 3. **Profil Efisiensi Komputasi Terukur (Reviewer 1 #5 & Reviewer 2 #8):**  
-   Kami menyajikan tabel profil efisiensi komputasi terperinci (Seksi IV-A Paragraf 6, Tabel XI) yang diukur pada perangkat keras standar (Intel Core i9-13900H, RAM 32 GB DDR5, dan GPU NVIDIA GeForce RTX 4060 Laptop 8 GB VRAM):
+   Kami menyajikan tabel profil efisiensi komputasi terperinci (Seksi IV-A Paragraf 6, Tabel XI dan Tabel XII) yang diukur pada perangkat keras standar (Intel Core i9-13900H, RAM 32 GB DDR5, dan GPU NVIDIA GeForce RTX 4060 Laptop 8 GB VRAM):
    - Waktu ekstraksi fitur ViT secara *offline* pada GPU dengan *in-memory caching* membutuhkan **124,5 ms/citra** untuk fusi tri-domain (total 22,41 menit untuk 10.800 citra), mencatat **percepatan komputasi 11,9× lebih cepat** dibanding baseline CPU (~1.487 ms/citra; total 4,46 jam).
    - Durasi pelatihan *grid search* validasi silang pada 31.920 penyesuaian model (*fits*): LR Tri-Domain membutuhkan **54,8 menit**, sedangkan SVM Tri-Domain membutuhkan **511,1 menit** (pelatihan LR **9,3× lebih cepat**).
    - Latensi inferensi per sampel pengklasifikasi hilir: LR mencatat **0,0046 ms/sampel**, sedangkan SVM mencatat **4,6785 ms/sampel** (kepala pengklasifikasi hilir LR **>1.000× lebih cepat**).
@@ -115,15 +115,16 @@ Kami mengucapkan terima kasih atas masukan ini. Pada Seksi IV-D (*Error Pattern 
 Kami sangat mengapresiasi rekomendasi komprehensif ini dan telah menindaklanjutinya dalam tiga aspek:
 1. **Spesifikasi Rinci Dataset:** Pada Seksi III-A (Tabel I dan Gambar 2), kami mendokumentasikan komposisi 600 subjek independen DemogPairs (18 citra per subjek, total 10.800 citra seimbang melintasi 6 subkelompok) serta memformalkan protokol pemisahan data 80/20 berbasis subjek (480 subjek latih / 8.640 citra dan 120 subjek uji held-out / 2.160 citra).
 2. **Penegasan Kontribusi Metode:** Pada Seksi IV-A dan IV-B (Tabel VII hingga XIII), kami membuktikan kontribusi signifikan fusi tri-domain dibanding biometrik wajah tunggal (+2,27 percentage points pada LR dan +2,45 percentage points pada SVM, *p* < 0,001).
-3. **Evaluasi Biaya Waktu & Efisiensi Komputasi:** Pada Seksi IV-A Paragraf 6, kami menambahkan **Tabel XI** yang memuat profil efisiensi komputasi terukur secara empiris:
-   - Durasi ekstraksi fitur ViT pada GPU NVIDIA RTX 4060: **124,5 ms/citra** untuk tri-domain (total 22,41 menit untuk 10.800 citra), mencatat akselerasi **11,9× lebih cepat** dibanding CPU (~1.487 ms/citra; total 4,46 jam).
-   - Durasi pelatihan *grid search* 5-fold CV: LR Tri-Domain membutuhkan **54,8 menit**, jauh lebih efisien dibanding SVM Tri-Domain yang membutuhkan **511,1 menit** (pelatihan LR **9,3× lebih cepat**).
-   - Latensi inferensi per sampel pengklasifikasi hilir: LR mencatat **0,0046 ms**, sedangkan SVM membutuhkan **4,6785 ms** (kepala pengklasifikasi LR **>1.000× lebih cepat**).
-   - Ukuran penyimpanan model: LR hanya membutuhkan **0,11 MB**, sedangkan SVM memerlukan **36,60 MB** (LR **>330× lebih ringkas**).
+3. **Evaluasi Biaya Waktu & Efisiensi Komputasi:** Pada Seksi IV-A Paragraf 6, kami menambahkan **Tabel XI dan Tabel XII** yang memuat profil efisiensi komputasi terukur secara empiris:
+   - **Tabel XI (Profil Waktu Ekstraksi Fitur ViT):** Durasi ekstraksi fitur pada GPU NVIDIA RTX 4060 mencatat rata-rata **39,74 ms** (Face), **39,65 ms** (Emotion), dan **45,11 ms** (Age), dengan total **124,50 ms/citra** untuk fusi tri-domain (total 22,41 menit untuk 10.800 citra dengan ukuran cache 92,4 MB / 30,8 MB per domain, serta jejak memori RAM array uji sebesar 18,98 MB). Capaian ini mencatat akselerasi **11,9× lebih cepat** dibanding baseline ekstraksi sekuensial CPU (~1.487 ms/citra; total 4,46 jam).
+   - **Tabel XII (Profil Komputasi Pelatihan dan Pengujian Pengklasifikasi Hilir):**
+     - Durasi pelatihan *grid search* 5-fold CV: LR Tri-Domain membutuhkan **3.287,07 detik (54,78 menit)**, jauh lebih efisien dibanding SVM Tri-Domain yang membutuhkan **30.666,02 detik (511,10 menit)** (pelatihan LR **9,3× lebih cepat**).
+     - Latensi inferensi per sampel pengklasifikasi hilir: LR mencatat **0,0046 ms**, sedangkan SVM membutuhkan **4,6785 ms** (kepala pengklasifikasi LR **1.027× lebih cepat**).
+     - Ukuran penyimpanan model: LR hanya membutuhkan berkas model **0,11 MB**, sedangkan SVM memerlukan **36,60 MB** (LR **>330× lebih ringkas**).
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi III-A (*Dataset*), Tabel I; Seksi IV-A (*Global Performance*), Paragraf 6, Tabel XI.
-- **Rincian Perubahan:** Karakteristik dataset diperinci secara terstruktur dan Tabel XI mengenai profil efisiensi komputasi kuantitatif diintegrasikan penuh.
+- **Lokasi pada Naskah:** Seksi III-A (*Dataset*), Tabel I; Seksi IV-A (*Global Performance*), Paragraf 6, Tabel XI dan Tabel XII.
+- **Rincian Perubahan:** Karakteristik dataset diperinci secara terstruktur serta Tabel XI dan Tabel XII mengenai profil efisiensi komputasi kuantitatif diintegrasikan penuh.
 
 ---
 
@@ -278,7 +279,7 @@ Kami sependapat dengan distingsi ilmiah yang diajukan oleh Reviewer 2. Pada Seks
 > *"8. Computational efficiency: Please report feature extraction time, classifier training time, inference latency, memory consumption, and model storage requirements to substantiate the efficiency claims."*
 
 **Tanggapan Penulis:**  
-Kami berterima kasih atas dorongan pengujian praktis ini. Pada Seksi IV-A Paragraf 6, kami telah menambahkan **Tabel XI** (*Computational Efficiency and Resource Consumption Profile*) yang melaporkan kelima dimensi komputasi yang diukur pada spesifikasi perangkat keras standar (**CPU Intel Core i9-13900H, RAM 32 GB DDR5, dan GPU NVIDIA GeForce RTX 4060 Laptop 8 GB VRAM**):
+Kami berterima kasih atas dorongan pengujian praktis ini. Pada Seksi IV-A Paragraf 6, kami telah menambahkan **Tabel XI dan Tabel XII** (*Computational Efficiency and Resource Consumption Profile*) yang melaporkan kelima dimensi komputasi yang diukur pada spesifikasi perangkat keras standar (**CPU Intel Core i9-13900H, RAM 32 GB DDR5, dan GPU NVIDIA GeForce RTX 4060 Laptop 8 GB VRAM**):
 1. **Durasi Waktu Ekstraksi Fitur ViT (10.800 citra):** Pada GPU NVIDIA RTX 4060 dengan *in-memory processor caching*, ekstraksi membutuhkan **39,7 ms/citra** (`ViT-Face`), **39,7 ms/citra** (`ViT-Emotion`), dan **45,1 ms/citra** (`ViT-Age`), dengan total **124,5 ms/citra** (total **22,41 menit** untuk ketiga domain), mencatat percepatan **11,9× lebih cepat** dibanding baseline CPU (~1.487 ms/citra; total 4,46 jam).
 2. **Waktu Pelatihan Pengklasifikasi (Grid Search 5-Fold CV pada CPU):** Logistic Regression Tri-Domain membutuhkan **54,8 menit** (3.287,07 detik); SVM Tri-Domain membutuhkan **511,1 menit** (30.666,02 detik; LR **9,3× lebih cepat dilatih**); Random Forest Tri-Domain membutuhkan **110,5 menit**; dan GNB Dual-Domain membutuhkan **25,5 menit**.
 3. **Latensi Inferensi Pengklasifikasi Hilir per Sampel:** Logistic Regression Tri-Domain mencatat **0,0046 ms/sampel**; SVM Tri-Domain mencatat **4,6785 ms/sampel** (kepala pengklasifikasi hilir LR **>1.000× [1.027×] lebih cepat**); Random Forest Tri-Domain mencatat **0,0334 ms**; dan GNB Dual-Domain mencatat **0,0088 ms**. Jika memperhitungkan durasi ekstraksi fitur ViT pada GPU (124,5 ms), total latensi ujung-ke-ujung (*end-to-end GPU latency*) adalah sekitar **124,505 ms/citra untuk LR** dibanding **129,179 ms/citra untuk SVM**.
@@ -287,8 +288,8 @@ Kami berterima kasih atas dorongan pengujian praktis ini. Pada Seksi IV-A Paragr
 Kami menegaskan secara objektif pada Seksi IV-A Paragraf 6 dan Seksi V bahwa efisiensi tinggi LR (`0,11 MB`, `0,0046 ms`) berlaku pada **kepala pengklasifikasi hilir (*downstream head*)**, sedangkan deployment menyeluruh pada perangkat *low-power Edge AI* di masa depan membutuhkan kompresi atau kuantisasi backbone transformer.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi III-I (*Experimental Setup*); Seksi IV-A (*Global Performance*), Paragraf 6, Tabel XI; Seksi V, Paragraf 1–2.
-- **Rincian Perubahan:** Tabel XI terintegrasi penuh memuat rincian kuantitatif kelima metrik efisiensi, disertai kualifikasi pembeda antara kepala pengklasifikasi hilir dan pemrosesan ujung-ke-ujung.
+- **Lokasi pada Naskah:** Seksi III-I (*Experimental Setup*); Seksi IV-A (*Global Performance*), Paragraf 6, Tabel XI dan Tabel XII.
+- **Rincian Perubahan:** Tabel XI dan Tabel XII terintegrasi penuh memuat rincian kuantitatif kelima metrik efisiensi, disertai kualifikasi pembeda antara kepala pengklasifikasi hilir dan pemrosesan ujung-ke-ujung.
 
 ---
 
