@@ -848,31 +848,31 @@ Bagian ini disusun dalam **2 paragraf**, masing-masing dengan target **100–125
 > **Catatan Table XVI:** Baris dengan protokol `Stratified` menyajikan komparasi kontekstual (*contextual comparison*) pada pembagian data berstrata tingkat citra (*subject-overlap*), di mana angka studi terdahulu dikutip langsung dari publikasi masing-masing. Baris dengan protokol `Subject-Disjoint` menyajikan komparasi terkontrol (*controlled benchmark*) pada partisi 480 subjek latih / 120 subjek uji held-out yang diekstraksi dari `experiment/code/results/*.json` (leaderboard 28 model). Cetak tebal (**bold**) menandai model dengan performa tertinggi pada masing-masing protokol partisi (`Stratified` vs. `Subject-Disjoint`). Format layout: LaTeX Full Width (`\begin{table*}`).
 ---
 
-## V. CONCLUSION & LIMITATIONS
+## V. CONCLUSION
 > **Catatan Respons Reviewer (R1 Poin 7 & R2 Poin 10):**  
 > - **Komentar Reviewer:** Reviewer 1 menilai kesimpulan belum menampilkan kontribusi secara optimal (*"conclusion part does not show the contribution in good way"*), dan Reviewer 2 meminta pembatasan kesimpulan pada tolok ukur DemogPairs (*"conclusions should be restricted to evaluated DemogPairs benchmark"*).  
-> - **Rencana Mitigasi:** Merangkum temuan kunci secara padat pada Paragraf 1 (keberhasilan fusi, paritas prediktif LR vs SVM, efisiensi Edge AI), dan mendedikasikan Paragraf 2 untuk pernyataan jujur batasan cakupan 3 kelompok ras makro DemogPairs serta arah riset validasi eksternal (*in-the-wild datasets*).
+> - **Rencana Mitigasi:** Merangkum temuan kunci secara padat pada Paragraf 1 (keberhasilan fusi, metrik lengkap Akurasi, Presisi, Recall, dan F1-Score tanpa kurung, paritas prediktif LR vs SVM, dan stabilitas keadilan algoritmik EOD tanpa mencantumkan angka ukuran model/latensi), dan mendedikasikan Paragraf 2 untuk pernyataan jujur batasan cakupan 3 kelompok ras makro DemogPairs serta arah riset validasi eksternal (*in-the-wild datasets*).
 
-Bagian ini disusun dalam **2 paragraf terpadu tanpa sub-seksi**:
+Bagian ini disusun dalam **2 paragraf terpadu** diikuti **Data Availability Statement**:
 
 ### Paragraph 1: Concluding Remarks and Scientific Findings
 - **Target Kata**: 120–150 kata.
 - **Poin Narasi**:
-  1. Penelitian ini menunjukkan efektivitas fusi representasi multi-domain Vision Transformer (`Face ⊕ Emotion ⊕ Age`) untuk klasifikasi 6 kelas interseksional demografis wajah dalam cakupan 3 kelompok ras makro (Asian, Black, White) pada tolok ukur dataset DemogPairs.
-  2. Di bawah protokol ketat **Subject-Disjoint Partitioning (Zero Data Leakage)** pada 120 subjek uji *held-out* ($N = 2.160$), Logistic Regression Tri-Domain meraih akurasi puncak **88.66%** (Macro F1: **0.8868**) dan SVM Tri-Domain meraih **88.61%** (Macro F1: **0.8863**), sementara pada pengklasifikasi generatif/pohon keputusan respons fusi bersifat spesifik-pengklasifikasi (GNB mencapai puncak pada konfigurasi dual-domain `Emotion ⊕ Face` sebesar 84.31% dan RF mencapai 85.00% pada tri-domain).
-  3. Uji McNemar berpasangan mengonfirmasi peningkatan yang signifikan secara statistik dari fusi tri-domain terhadap baseline domain tunggal `Face` ($p < 0.001$), di mana penambahan domain usia di atas kombinasi `Emotion ⊕ Face` memberikan peningkatan signifikan pada pengklasifikasi linier LR ($p = 0.0073 < 0.01$) namun mengindikasikan kejenuhan representasi asimtotik pada SVM berkernel RBF ($p = 0.7343 > 0.05$, meskipun tetap signifikan terhadap dual-domain `Face ⊕ Age` pada $p = 0.0086$).
-  4. Logistic Regression menunjukkan tidak adanya perbedaan performa prediktif yang signifikan secara statistik terhadap SVM ($p = 1.0000$, selisih bersih 1 citra: 1.915 vs 1.914 dari $N = 2.160$), namun kepala pengklasifikasi LR menawarkan inferensi >1.000× lebih cepat (**0.0046 ms/sampel** vs 4.6785 ms; total *end-to-end* GPU $\approx 124.505\text{ ms/citra}$) dan penyimpanan >330× lebih hemat (**0.11 MB** vs 36.60 MB), menetapkannya sebagai pengklasifikasi hilir paling optimal untuk penerapan praktis.
+  1. Penelitian ini membuktikan efektivitas fusi representasi multi-domain ViT (`Face ⊕ Emotion ⊕ Age`: 2.304 dimensi) untuk klasifikasi 6 kelas interseksional demografis wajah dari 3 kelompok ras makro (Asian, Black, White) pada dataset DemogPairs.
+  2. Di bawah protokol ketat **Strict Subject-Disjoint Partitioning** dengan 0% kebocoran identitas (480 subjek latih dan 120 subjek uji *held-out*), pengklasifikasi LR meraih performa puncak dengan akurasi **88.66%**, presisi makro **88.75%**, recall makro **88.66%**, dan F1-score makro **88.68%**, disusul pengklasifikasi SVM dengan akurasi **88.61%**, presisi makro **88.71%**, recall makro **88.61%**, dan F1-score makro **88.63%** (disajikan terpadu tanpa tanda kurung).
+  3. Pengujian hipotesis McNemar berpasangan membuktikan signifikansi fusi tri-domain terhadap representasi domain tunggal `Face` ($p < 0.001$) serta mengonfirmasi paritas prediktif antara LR dan SVM ($p = 1.0000$, dengan selisih bersih satu sampel dari 2.160 citra).
+  4. Evaluasi keadilan algoritmik antarsubkelompok menunjukkan stabilitas prediksi dengan rentang recall **84.72% hingga 94.44%** serta kesenjangan EOD sebesar **9.72 pp** pada kedua model teratas (tanpa menyertakan angka ukuran model MB atau kecepatan/latensi ms).
 
 ### Paragraph 2: Honest Limitations and Future Research Directions
 - **Target Kata**: 150–200 kata.
 - **Poin Narasi**:
   - **Limitations (Batasan Penelitian)**:
-    1. *Cakupan Demografis*: Kesimpulan penelitian ini dibatasi secara eksplisit pada 3 kelompok ras makro dataset DemogPairs (Asian, Black, White); generalisasi ke kelompok multirasial lain (seperti Hispanik atau Timur Tengah) memerlukan pengujian empiris tambahan.
-    2. *Ekstraksi Fitur Statis & Beban Backbone*: Ekstraksi representasi dilakukan secara *offline* menggunakan tiga backbone ViT-Base yang dibekukan tanpa *fine-tuning* terpadu, di mana beban komputasi *end-to-end* masih didominasi oleh ekstraksi ketiga backbone ViT (124.5 ms/citra pada GPU).
+    1. *Cakupan Demografis*: Kesimpulan penelitian ini dibatasi secara eksplisit pada 3 kelompok ras makro dataset DemogPairs (Asian, Black, White); generalisasi ke kelompok multirasial maupun populasi etnisitas lain memerlukan pengujian empiris tambahan.
+    2. *Ekstraksi Fitur Terpisah*: Proses ekstraksi representasi multi-domain masih dijalankan secara terpisah (*offline*) memanfaatkan tiga model backbone ViT-Base beku tanpa *fine-tuning end-to-end* terpadu, sehingga memerlukan tahapan pemrosesan fitur tersendiri sebelum klasifikasi hilir (tanpa mencantumkan angka kecepatan ekstraksi ms/citra).
   - **Future Directions (Arah Riset Mendatang)**:
-    1. *Cross-Dataset Validation*: Menguji kerangka fusi pada dataset eksternal skala liar (*in-the-wild*, seperti FairFace atau UTKFace).
-    2. *End-to-End Cross-Attention Fusion & Edge Compression*: Mengembangkan mekanisme atensi silang adaptif antardomain serta menerapkan kuantisasi atau *knowledge distillation* pada backbone ViT untuk deployment perangkat tepi (*Edge AI*) berdaya rendah.
-    3. *Explainable AI (XAI)*: Menerapkan visualisasi atensi (*Attention Rollout*) untuk transparansi pertanggungjawaban etika AI (Responsible AI).
+    1. *Cross-Dataset Validation*: Menguji kerangka fusi pada korpus eksternal berskala besar *in-the-wild*, seperti FairFace atau UTKFace, terhadap variasi pose ekstrem, oklusi, dan pencahayaan dinamis.
+    2. *End-to-End Cross-Attention Fusion & Model Compression*: Mengembangkan mekanisme fusi atensi silang adaptif antardomain (*end-to-end cross-attention fusion*) serta menerapkan teknik kuantisasi atau *knowledge distillation*.
+    3. *Explainable Artificial Intelligence (XAI)*: Mengintegrasikan metode visualisasi XAI, seperti *Attention Rollout*, untuk menyediakan transparansi representasi fitur serta mendukung prinsip *Responsible AI*.
 
 ---
 
