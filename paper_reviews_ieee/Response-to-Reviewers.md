@@ -132,14 +132,14 @@ Kami sangat mengapresiasi rekomendasi komprehensif ini dan telah menindaklanjuti
 > *"6. the authors need to compare their proposed method with more methods to validate their contribution."*
 
 **Tanggapan Penulis:**  
-Kami sependapat dengan Reviewer 1. Pada naskah revisi, perbandingan literatur pada **Seksi IV-E, Tabel XV** telah diperluas secara signifikan menjadi 12 entri komparasi yang dikelompokkan secara transparan ke dalam dua bagian:
-1. **Part A: Perbandingan Kontekstual (Studi Terdahulu pada DemogPairs):** Membandingkan model terdahulu yang dievaluasi di bawah pembagian acak tingkat citra (Putri et al. *JIEET* 2025 fusi Wajah+Usia dengan XGBoost [89,07%], Putri et al. *IEEE ICVEE* 2025 fusi Emosi+Wajah dengan SVM [92,41%], dan baseline historis kami [93,70%]).
-2. **Part B: Tolok Ukur Terkontrol (Protokol Subject-Disjoint 6-Kelas):** Membandingkan model usulan Tri-Domain LR (88,66%) dan SVM (88,61%) terhadap beragam baseline arsitektur transfer learning CNN (ResNet-50 [81,25%], VGG-16 [79,81%], MobileNetV2 [78,43%], EfficientNet-B0 [80,14%]) serta model ViT domain tunggal dan ganda yang seluruhnya dievaluasi pada 120 subjek uji held-out yang sama persis ($N = 2.160$).  
-Hasil ini menegaskan keunggulan empiris model usulan atas arsitektur CNN konvensional maupun model domain tunggal.
+Kami sependapat dengan Reviewer 1. Pada naskah revisi, perbandingan literatur pada **Seksi IV-E, Tabel XVI** telah diperluas secara komprehensif menjadi 12 entri komparasi empiris yang distrukturkan ke dalam dua kelompok protokol evaluasi:
+1. **Kelompok Protokol Stratified (Komparasi Kontekstual Studi Terdahulu):** Membandingkan kerangka kerja usulan terhadap studi literatur terdahulu yang dievaluasi pada dataset DemogPairs di bawah pembagian acak tingkat citra (*subject-overlap*), yaitu Putri et al. (*JIEET* 2025) fusi Wajah+Usia dengan XGBoost (89,07%), Putri et al. (*IEEE ICVEE* 2025) fusi Emosi+Wajah dengan SVM (92,41%), serta baseline historis Tri-Domain kami (93,70%).
+2. **Kelompok Protokol Subject-Disjoint (Tolok Ukur Terkontrol Tanpa Kebocoran Identitas):** Membandingkan model usulan Tri-Domain LR (88,66%) dan SVM (88,61%) secara terkontrol terhadap 7 baseline konfigurasi domain tunggal (`Face` 86,39% LR / 86,16% SVM, `Emotion` 85,79% SVM, `Age` 82,55% SVM), konfigurasi domain ganda (`Emotion ⊕ Face` 88,43% SVM, `Emotion ⊕ Face` 84,31% GNB), serta konfigurasi tri-domain lintas famili algoritma (Tri-Domain 85,00% RF). Seluruh 9 model pembanding ini dievaluasi pada partisi data *subject-disjoint* yang identik (120 subjek uji held-out, $N = 2.160$ citra).  
+Perbandingan multi-domain yang diperluas ini memvalidasi keunggulan empiris model usulan atas seluruh variasi representasi domain tunggal maupun ganda di bawah protokol evaluasi ketat bebas kebocoran identitas.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi IV-E (*Comparison with Prior Studies*), Paragraf 1–3, Tabel XV.
-- **Rincian Perubahan:** Tabel XV diperluas menjadi dua panel terpisah (Part A Kontekstual dan Part B Terkontrol) dengan anotasi protokol partisi yang jelas.
+- **Lokasi pada Naskah:** Seksi IV-E (*Comparison with Prior Studies*), Paragraf 1–2, Tabel XVI.
+- **Rincian Perubahan:** Tabel XVI diperluas menjadi 12 entri komparasi komprehensif yang membedakan perbandingan kontekstual studi terdahulu dan tolok ukur terkontrol bebas kebocoran identitas.
 
 ---
 
