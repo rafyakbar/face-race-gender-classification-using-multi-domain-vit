@@ -28,6 +28,12 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang fokus pada paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md bagian "B. Komentar Reviewer 2" (R2-2). tolong:
+- perbaiki paper_v2/images/method.pptx, jangan dimodif tapi copy ke paper_v2/images/method_v2.pptx kemudian baru perbaiki. jangan edit terlalu banyak.
+- perbaiki paper_reviews_ieee/Response-to-Reviewers.md agar sesuai.
+- setelah selesai jangan lupa update paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md.
+- kemudian commit & push.
+
 sekarang fokus pada paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md bagian "A. Komentar Reviewer 1" (R1-7). perbaiki paper_reviews_ieee/Response-to-Reviewers.md agar sesuai. setelah selesai jangan lupa update paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md dan commit & push.
 
 sekarang fokus pada paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md bagian "A. Komentar Reviewer 1" (R1-6). perbaiki paper_reviews_ieee/Response-to-Reviewers.md agar sesuai. setelah selesai jangan lupa update paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md dan commit & push.
