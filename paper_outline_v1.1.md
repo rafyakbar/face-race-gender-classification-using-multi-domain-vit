@@ -255,11 +255,11 @@ Sintesis literatur disusun dalam **3 subseksi tematik**, masing-masing terdiri a
 ### Overview
 - **Target Kata**: 150–200 kata (minimal 150 kata hingga 200 kata).
 - **Tujuan**: Menjelaskan arsitektur keseluruhan kerangka kerja penelitian yang diusulkan (*end-to-end framework*) dari masukan citra wajah mentah, pemisahan partisi data subjek terisolasi (*Strict Subject-Disjoint*), ekstraksi fitur tri-domain ViT *offline*, fusi konkatenasi $\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}}$, hingga *pipeline* optimasi 5-Fold StratifiedGroupKFold GridSearchCV *classical classifier*.
-- **Sitasi Gambar Wajib**: Mensitasi diagram metode keseluruhan pada file `images/method.png` (Figure 1).
+- **Sitasi Gambar Wajib**: Mensitasi diagram metode keseluruhan pada file `images/method_v2.png` (Figure 1).
 - **Ketentuan Layout LaTeX**: Figure 1 harus berformat **full width (span two columns)** menggunakan environment `\begin{figure*} ... \end{figure*}`.
 - **Caption Figure**: **Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.**
 - **Visual Markdown**:  
-  ![Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.](images/method.png)
+  ![Figure 1. End-to-End Framework of the Proposed Multi-Domain Vision Transformer Feature Fusion and Classical Classifier Optimization for Intersectional Race and Gender Classification.](images/method_v2.png)
 - **Narasi Pendukung**: Menjelaskan alur pemrosesan: citra wajah berukuran 224 × 224 piksel dialirkan ke tiga model ViT-Base pra-latih yang dibekukan (*frozen*), representasi laten diekstraksi secara *offline*, digabungkan menjadi vektor fusi 2.304 dimensi, diproses melalui *pipeline* modular Scaler-PCA, dan diklasifikasikan ke dalam 6 kelas interseksional melalui 5-Fold StratifiedGroupKFold Cross-Validation pada empat pengklasifikasi (RF, GNB, LR, SVM).
 
 ### A. Dataset
