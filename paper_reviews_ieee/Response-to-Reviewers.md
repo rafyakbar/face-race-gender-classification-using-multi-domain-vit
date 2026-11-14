@@ -200,16 +200,25 @@ Untuk menyelesaikan permasalahan ini secara definitif dan tuntas, kami merestruk
 > *"3. Preprocessing and reproducibility: Please specify the exact checkpoint versions, image processors, normalization parameters, and feature extraction procedures used for all three pretrained ViT models."*
 
 **Tanggapan Penulis:**  
-Kami sepenuhnya setuju dengan tuntutan reproduktibilitas ini. Pada Seksi III-A Paragraf 2 dan Seksi III-B Paragraf 2–3, kami telah mendokumentasikan spesifikasi teknis prapemrosesan dan ekstraksi fitur yang diverifikasi langsung dari kode implementasi repositori:
-- **ViT-Face:** Checkpoint HuggingFace `skutaada/VIT-VGGFace` (versi commit SHA: `e85f0c9`, arsitektur ViT-Base/16 yang di-*fine-tune* pada VGGFace2).
-- **ViT-Emotion:** Checkpoint HuggingFace `dima806/facial_emotions_image_detection` (versi commit SHA: `747cf16`, arsitektur ViT-Base/16 yang di-*fine-tune* pada FER-2013).
-- **ViT-Age:** Checkpoint HuggingFace `dima806/facial_age_image_detection` (versi commit SHA: `ad35933`, arsitektur ViT-Base/16 yang di-*fine-tune* pada UTKFace dan IMDB-WIKI).
-- **Prapemrosesan & Normalisasi Standar:** Citra DemogPairs telah dipotong berpusat pada wajah dari sumber aslinya, sehingga tidak ada deteksi atau penyelarasan wajah MTCNN tambahan yang diterapkan. Citra dikonversi ke RGB 3-kanal, diubah ukurannya menggunakan interpolasi bilinear menjadi 224 × 224 piksel melalui `AutoImageProcessor` masing-masing model, diskalakan ke rentang [0, 1], dan dinormalisasi per kanal warna menggunakan **rata-rata seragam $\mu = [0.5, 0.5, 0.5]$ dan deviasi standar $\sigma = [0.5, 0.5, 0.5]$** ke rentang [-1, 1] melintasi ketiga model.
-- **Prosedur Ekstraksi Token [CLS]:** Tensor teranormalisasi diumpankan ke encoder 12-lapisan ViT-Base dalam mode inferensi beku (`torch.no_grad()`), dan representasi 768 dimensi diekstrak dari output LayerNorm akhir token [CLS] (`last_hidden_state[:, 0, :]`, Persamaan 7). Seluruh konfigurasi ablasi fitur diringkas pada **Tabel II**.
+Kami sepenuhnya setuju dengan tuntutan reproduktibilitas ini. Pada naskah revisi (Seksi III-A Paragraf 2 dan Seksi III-B Paragraf 2–3), kami telah mendokumentasikan secara rinci spesifikasi teknis prapemrosesan citra, identifikasi checkpoint model, serta alur ekstraksi representasi laten, yang didukung verifikasi implementasi kode pada repositori riset kami:
+1. **Identifikasi Checkpoint & Versi Git Commit SHA (Seksi III-B, Paragraf 2):**  
+   Ketiga model menggunakan arsitektur ViT-Base/16 (12 layer encoder, dimensi laten $D = 768$, 12 attention heads) yang di-*fine-tune* dari `google/vit-base-patch16-224-in21k`:
+   - **ViT-Face:** Checkpoint HuggingFace `skutaada/VIT-VGGFace` (versi git commit SHA: `e85f0c9`), di-*fine-tune* pada korpus VGGFace2 untuk memetakan geometri kraniofasial biometrik statis.
+   - **ViT-Emotion:** Checkpoint HuggingFace `dima806/facial_emotions_image_detection` (versi git commit SHA: `747cf16`), di-*fine-tune* pada korpus FER-2013 untuk mengekstraksi ekspresi afektif dinamis.
+   - **ViT-Age:** Checkpoint HuggingFace `dima806/facial_age_image_detection` (versi git commit SHA: `ad35933`), di-*fine-tune* pada korpus gabungan UTKFace dan IMDB-WIKI untuk estimasi morfologi penuaan biologis.
+2. **Spesifikasi Prapemrosesan & Normalisasi Citra (Seksi III-A Paragraf 2 & Seksi III-B Paragraf 2):**  
+   - Pada naskah, dijelaskan bahwa dataset DemogPairs telah berformat citra wajah terpusat (*pre-cropped*), sehingga tidak memerlukan tahapan deteksi atau penyelarasan wajah eksternal (seperti MTCNN).
+   - Citra masukan dikonversi ke format 3-kanal RGB dan diubah resolusinya menjadi $224 \times 224$ piksel menggunakan `AutoImageProcessor` masing-masing model (dengan interpolasi bilinear dan penskalaan intensitas $1/255$).
+   - Normalisasi intensitas piksel per kanal warna diverifikasi secara konsisten menggunakan nilai seragam **rata-rata $\mu = [0.5, 0.5, 0.5]$ dan deviasi standar $\sigma = [0.5, 0.5, 0.5]$** (menghasilkan rentang dinamis $[-1, 1]$ pada ketiga model, terverifikasi langsung dari berkas `preprocessor_config.json` masing-masing checkpoint dan bukan nilai bawaan ImageNet).
+   - Untuk efisiensi komputasi, ekstraksi memanfaatkan *in-memory processor caching* guna mengeliminasi beban *reload* disk I/O berulang pada 10.800 citra.
+3. **Prosedur Ekstraksi Token [CLS] & Fusi Multi-Domain (Seksi III-B Paragraf 3, Persamaan 7–8):**  
+   - Ketiga backbone ViT dibekukan (*frozen weights*) dan dijalankan dalam mode evaluasi tanpa pembaruan gradien (diimplementasikan dengan `torch.no_grad()` pada kode ekstraksi `utils/extraction.py`).
+   - Representasi laten berdimensi 768 diekstrak secara paralel dari aktivasi token kelas $[\text{CLS}]$ pada lapisan encoder ke-12 ($\ell = 12$) setelah melalui *Layer Normalization* akhir ($\mathbf{f}_{\text{domain}} = \text{LN}(\mathbf{z}_{12}^0) \in \mathbb{R}^{768}$, Persamaan 7; bersumber dari irisan `last_hidden_state[:, 0, :]`).
+   - Representasi dari ketiga domain kemudian digabungkan secara konkatenasi langsung (*direct sum*) menghasilkan vektor tri-domain $\mathbf{z}_{\text{tri}} = \mathbf{f}_{\text{face}} \oplus \mathbf{f}_{\text{emotion}} \oplus \mathbf{f}_{\text{age}} \in \mathbb{R}^{2304}$ (Persamaan 8). Seluruh 7 konfigurasi ablasi fitur diringkas pada **Tabel II**.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi III-A, Paragraf 2; Seksi III-B, Paragraf 2–3, Persamaan (7), Tabel II.
-- **Rincian Perubahan:** Nama checkpoint HuggingFace, versi git commit, parameter normalisasi seragam, dan alur ekstraksi token [CLS] didokumentasikan secara presisi.
+- **Lokasi pada Naskah:** Seksi III-A (*Dataset*), Paragraf 2; Seksi III-B (*Vision Transformer*), Paragraf 2–3, Persamaan (7)–(8), Tabel II.
+- **Rincian Perubahan:** Menambahkan dokumentasi eksplisit mencakup nama checkpoint HuggingFace beserta git commit SHA, korpus fine-tuning, resolusi RGB $224 \times 224$, parameter pemroses citra `AutoImageProcessor` dengan normalisasi seragam $\mu = \sigma = [0.5, 0.5, 0.5]$ dan *in-memory caching*, formulasi matematis ekstraksi token $[\text{CLS}]$ Layer 12 dengan LayerNorm [Persamaan (7)], dan desain 7 skema ablasi fitur pada Tabel II.
 
 ---
 
