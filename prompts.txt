@@ -28,6 +28,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sudah dijalankan pada laptop di rumah, sekarang lakukan git pull dan pelajari perubahan yg terjadi
+
 Jalankan notebook experiment/code/3.2_memory_consumption.ipynb pada laptop rumah (di mana direktori models/ dan features/ tersedia lengkap) dan update file-file yang sesuai.
 Ketentuan:
 1. Pastikan dependensi eksekusi terpasang di environment Python laptop: pympler, psutil, joblib, scikit-learn, imbalanced-learn, dan jupyter/nbformat.
