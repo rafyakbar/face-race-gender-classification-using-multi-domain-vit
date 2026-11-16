@@ -1,4 +1,4 @@
-\subsection{Logistic Regression}
+\subsection{Logistic Regression Classifier}
 \label{sec:logistic_regression}
 
 \begin{table*}[htbp]
@@ -27,5 +27,4 @@ Pendekatan regresi multinomial (Softmax regression) pada LR memetakan representa
 P(y = c \mid \mathbf{x}) = \frac{e^{\mathbf{w}_c^T \mathbf{x} + b_c}}{\sum_{j=1}^K e^{\mathbf{w}_j^T \mathbf{x} + b_j}}
 \label{eq:10}
 \end{equation}
-
 Proses pembelajaran model meminimalkan fungsi kerugian cross-entropy dengan menyertakan penalti regularisasi $L_2$ untuk mengendalikan kompleksitas bobot pada ruang representasi berdimensi tinggi~\cite{ref39}. Pencarian hyperparameter terstruktur mengevaluasi variasi kekuatan regularisasi $C$, algoritma solver optimasi ('lbfgs', 'saga'), batas iterasi max\_iter, serta integrasi penskalaan dan PCA, menghasilkan 96 kombinasi evaluasi atau 480 total fits pada protokol 5-Fold StratifiedGroupKFold CV yang disajikan pada Table~\ref{tab:5}.

@@ -1,9 +1,10 @@
 \section{Results and Discussion}
 \label{sec:results_and_discussion}
 
-\subsection{Global Performance}
+\subsection{Global Classification Performance}
 \label{sec:global_performance}
 \label{sec:global_performance_analysis}
+\label{sec:global_classification_performance}
 
 Evaluasi empiris pengklasifikasi RF melintasi tujuh skema konfigurasi fitur pada dataset uji held-out dengan protokol Strict Subject-Disjoint ($N = 2.160$) dirangkum pada Table~\ref{tab:VII}. Hasil pengujian menunjukkan bahwa konfigurasi Tri-Domain mencapai performa tertinggi dengan Akurasi 85.00\%, Presisi 85.06\%, Recall 85.00\%, dan F1-Score 84.93\%. Capaian tersebut mengungguli skema dual-domain Emotion $\oplus$ Face (Akurasi 84.86\% dan F1-Score 84.79\%) serta melampaui baseline domain tunggal Face sebesar 84.03\%. Domain Age mencatat akurasi terendah (71.81\%), mencerminkan tantangan partisi fitur kontinu berdimensi tinggi melalui pemotongan pohon acak ortogonal. Mayoritas konfigurasi memilih reduksi PCA 0.75, menegaskan bahwa penambahan dimensi fitur tanpa seleksi representasi meningkatkan varians pemilihan fitur acak pada simpul pohon~\cite{ref48}.
 
@@ -14,7 +15,7 @@ Evaluasi empiris pengklasifikasi RF melintasi tujuh skema konfigurasi fitur pada
 \centering
 \begin{tabularx}{\textwidth}{lccccccccX}
 \toprule
-\textbf{Feature Configuration} & \textbf{Latent Dim} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
+\textbf{Feature Configuration} & \textbf{Latent Dimension} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
 Face & 768 & 85.97 & 84.03 & [82.42, 85.51] & 84.13 & 84.03 & 84.03 & n\_est=200, depth=20, max\_feat=log2, min\_split=5, min\_leaf=1, pca=PCA(0.75), scaler=None \\
 Emotion & 768 & 77.41 & 76.11 & [74.27, 77.86] & 76.02 & 76.11 & 76.03 & n\_est=200, depth=None, max\_feat=sqrt, min\_split=2, min\_leaf=2, pca=PCA(0.75), scaler=None \\
@@ -36,7 +37,7 @@ Evaluasi performa pengklasifikasi GNB melintasi tujuh konfigurasi fitur pada dat
 \centering
 \begin{tabularx}{\textwidth}{lccccccccX}
 \toprule
-\textbf{Feature Configuration} & \textbf{Latent Dim} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
+\textbf{Feature Configuration} & \textbf{Latent Dimension} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
 Face & 768 & 83.43 & 82.55 & [80.89, 84.09] & 82.68 & 82.55 & 82.50 & var\_smoothing=4.1246e-02, pca=PCA(0.75), scaler=MinMaxScaler \\
 Emotion & 768 & 71.42 & 72.13 & [70.20, 73.98] & 72.51 & 72.13 & 71.99 & var\_smoothing=5.8780e-03, pca=PCA(0.75), scaler=MinMaxScaler \\
@@ -58,7 +59,7 @@ Hasil benchmark empiris pengklasifikasi multinomial LR melintasi tujuh konfigura
 \centering
 \begin{tabularx}{\textwidth}{lccccccccX}
 \toprule
-\textbf{Feature Configuration} & \textbf{Latent Dim} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
+\textbf{Feature Configuration} & \textbf{Latent Dimension} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
 Face & 768 & 87.99 & 86.39 & [84.88, 87.77] & 86.46 & 86.39 & 86.40 & C=0.1, solver=saga, max\_iter=500, pca=None, scaler=None \\
 Emotion & 768 & 85.61 & 85.23 & [83.67, 86.67] & 85.35 & 85.23 & 85.27 & C=0.1, solver=lbfgs, max\_iter=500, pca=None, scaler=None \\
@@ -80,7 +81,7 @@ Perkembangan performa pengklasifikasi SVM melintasi seluruh konfigurasi fitur di
 \centering
 \begin{tabularx}{\textwidth}{lccccccccX}
 \toprule
-\textbf{Feature Configuration} & \textbf{Latent Dim} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
+\textbf{Feature Configuration} & \textbf{Latent Dimension} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
 Face & 768 & 88.39 & 86.16 & [84.64, 87.55] & 86.24 & 86.16 & 86.19 & C=0.01, poly, $\gamma$=scale, deg=3, pca=None, scaler=MinMaxScaler \\
 Emotion & 768 & 85.90 & 85.79 & [84.25, 87.20] & 85.84 & 85.79 & 85.80 & C=10, rbf, $\gamma$=scale, pca=None, scaler=None \\
@@ -113,7 +114,7 @@ Facial Age & 45.11 & 487.17 (8m 07s) \\
 \end{tabular}
 \end{table*}
 
-Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada Table~\ref{tab:XI} dan Table~\ref{tab:XII}. Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 92.4 MB atau 30.8 MB per domain, serta konsumsi RAM array uji sebesar 18.98 MB). Capaian ini menghasilkan akselerasi 11.9 kali lebih cepat dibandingkan baseline ekstraksi sekuensial CPU (~1.487 ms per citra; total 4.46 jam). Pada pelatihan validasi silang 5-fold, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit, menegaskan pelatihan LR 9.3 kali lebih cepat dibanding SVM. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi konsumsi memori dan penyimpanan model, array uji held-out ($N = 2.160$) mengonsumsi RAM sebesar 18.98 MB pada konfigurasi tri-domain dan 12.66 MB pada dual-domain, sedangkan berkas model serial LR hanya membutuhkan 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
+Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada Table~\ref{tab:XI} dan Table~\ref{tab:XII}. Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 92.4 MB atau 30.8 MB per domain, serta konsumsi RAM array uji sebesar 18.98 MB). Capaian ini menghasilkan akselerasi 11.9 kali lebih cepat dibandingkan baseline ekstraksi sekuensial CPU ($\sim$1.487 ms per citra; total 4.46 jam). Pada pelatihan validasi silang 5-fold, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit, menegaskan pelatihan LR 9.3 kali lebih cepat dibanding SVM. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi konsumsi memori dan penyimpanan model, array uji held-out ($N = 2.160$) mengonsumsi RAM sebesar 18.98 MB pada konfigurasi tri-domain dan 12.66 MB pada dual-domain, sedangkan berkas model serial LR hanya membutuhkan 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
 
 \begin{table*}[htbp]
 \caption{Downstream Classifier Training and Testing Computational Profile.}
