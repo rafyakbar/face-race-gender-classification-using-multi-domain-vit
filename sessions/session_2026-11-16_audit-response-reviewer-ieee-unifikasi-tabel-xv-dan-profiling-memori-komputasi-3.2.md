@@ -60,6 +60,8 @@ Sesi kerja intensif pada 16 November 2026 difokuskan pada penyelesaian tuntas au
 | 14 | `experiment/code/3.2_memory_consumption.ipynb` | Refactoring total: eliminasi simulasi acak, integrasi Scikit-learn acuan, profiling `psutil` & `pympler`, kepatuhan satuan MiB vs MB | [`a839aaf`](https://github.com/rafyakbar/face-race-gender-classification-using-multi-domain-vit/commit/a839aaf) |
 | 15 | `experiment/code/md/3.2_memory_consumption.md` | Kompilasi markdown hasil eksekusi notebook ter-refactor via `nbconvert` | [`a839aaf`](https://github.com/rafyakbar/face-race-gender-classification-using-multi-domain-vit/commit/a839aaf) |
 | 16 | `prompts.txt` | Pencatatan riwayat instruksi prompt di bawah header rule | [`a839aaf`](https://github.com/rafyakbar/face-race-gender-classification-using-multi-domain-vit/commit/a839aaf) |
+| 17 | `experiment/code/3.2_memory_consumption.ipynb` | Eksekusi notebook in-place via `jupyter nbconvert` dengan model biner dan fitur representasi riil (Pympler heap traversal & psutil threaded peak RSS monitoring) | Terkini |
+| 18 | `experiment/code/md/3.2_memory_consumption.md` | Rekompilasi cermin markdown dengan hasil pengukuran empiris model biner fisik aktual lengkap | Terkini |
 
 ---
 
@@ -101,10 +103,26 @@ Berikut adalah data tolok ukur 4 classifier primer yang dipublikasikan pada Tabl
 | **Random Forest** | Tri-Domain (Face $\oplus$ Emotion $\oplus$ Age) | 85.00% | 84.93% | 110.47 min | 0.0334 ms | 18.98 MB | 6.19 MB |
 | **Gaussian Naive Bayes** | Dual-Domain (Emotion $\oplus$ Face) | 84.31% | 84.30% | 25.49 min | 0.0088 ms | 12.66 MB | 0.78 MB |
 
+### 3.4 Pengukuran Empiris Model Fisik In-Memory (`pympler.asizeof`) dan Dinamika RAM Riil (`psutil`)
+Setelah verifikasi lengkap ketersediaan seluruh berkas model biner `models/clf_demogpairs_*.pkl` dan representasi fitur `features/demogpairs_vit-*.pkl` di lingkungan lokal (Conda `torch-gpu`), notebook `3.2_memory_consumption.ipynb` dieksekusi secara in-place via `jupyter nbconvert --to notebook --execute --inplace` menghasilkan data empiris fisik:
+
+| Model Classifier | Skema Domain Fitur | Akurasi (%) | F1-Score (%) | Ukuran Disk (`joblib`) | In-Memory Grid (`asizeof`) | Best Estimator Heap (`asizeof`) | Baseline RSS (`psutil`) | Peak RSS (`psutil`) | Peak Delta RSS (`psutil`) |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Logistic Regression** | Tri-Domain (Face $\oplus$ Emotion $\oplus$ Age) | **88.66%** | **88.68%** | **0.11 MB** | **0.20 MiB** | **0.10 MiB** | 916.60 MiB | **960.06 MiB** | **23.14 MiB** |
+| **Support Vector Machine** | Tri-Domain (Face $\oplus$ Emotion $\oplus$ Age) | 88.61% | 88.63% | 36.60 MB | 73.71 MiB | 73.44 MiB | 994.77 MiB | 1072.31 MiB | 57.46 MiB |
+| **Random Forest** | Tri-Domain (Face $\oplus$ Emotion $\oplus$ Age) | 85.00% | 84.93% | 6.19 MB | 0.45 MiB | 0.19 MiB | 959.45 MiB | 1009.27 MiB | 19.76 MiB |
+| **Gaussian Naive Bayes** | Dual-Domain (Emotion $\oplus$ Face) | 84.31% | 84.30% | 0.78 MB | 1.73 MiB | 1.54 MiB | 880.99 MiB | 911.59 MiB | 16.36 MiB |
+
+*Analisis Temuan Fisik*:
+1. **In-Memory Heap vs Serialized Disk**: Objek pipeline terbaik Logistic Regression di heap Python (`best_estimator_`) hanya menempati **0.10 MiB** (~0.11 MB desimal), selaras sempurna dengan ukuran serialisasi disk **0.11 MB**. Sebaliknya, SVM RBF menempati **73.44 MiB** di memori heap akibat penyimpanan matriks support vectors presisi ganda (`float64`), sedangkan berkas disk terkompresi dengan `joblib.dump(compress=9)` bernilai **36.60 MB**.
+2. **Dinamika RAM Fisik (`psutil`)**: Peak Delta RSS selama inferensi held-out test set ($N = 2.160$) untuk Logistic Regression tercatat **23.14 MiB**, yang secara presisi mengakomodasi alokasi array fitur tri-domain ($18.98\text{ MiB}$) ditambah buffer prediksi probabilitas Scikit-learn tanpa memory leak tersembunyi.
+3. **Preservasi Metrik Evaluasi**: 100% nilai akurasi, F1-score, waktu latih, dan latensi inferensi tetap identik dengan nilai resmi pada `results/*.json` dan Table XII naskah.
+
 ---
 
 ## 4. KESIMPULAN & STATUS ARSIP
 1. **Audit Tanggapan Reviewer Selesai & Sinkron**: Seluruh butir R2-4, R2-5, R2-6, dan R2-8 pada `Response-to-Reviewers.md` dan berkas audit `paper_audit/` telah 100% tersinkronisasi dan tuntas.
-2. **Reproduksibilitas Notebook Terverifikasi**: Notebook [3.2_memory_consumption.ipynb](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/experiment/code/3.2_memory_consumption.ipynb) dan cermin markdown [3.2_memory_consumption.md](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/experiment/code/md/3.2_memory_consumption.md) berhasil dieksekusi tanpa error dengan menggunakan pipeline Scikit-learn aktual, `psutil`, dan `pympler`.
-3. **Kesiapan Eksekusi di Lingkungan Laptop Rumah**: Pipeline eksekusi pada fungsi `profile_classifier()` telah disempurnakan dengan logika ekstraksi data uji riil `X_test` dan pengukuran RSS selama `model.predict(X_test)`. Sebuah instruksi prompt operasional terstruktur telah ditambahkan ke `prompts.txt` untuk memandu eksekusi dan pembaruan berkas terkait saat repositori dibuka pada laptop rumah (di mana direktori biner `models/` dan `features/` tersedia).
+2. **Eksekusi Pengukuran Fisik Selesai**: Notebook [3.2_memory_consumption.ipynb](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/experiment/code/3.2_memory_consumption.ipynb) dan cermin markdown [3.2_memory_consumption.md](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/experiment/code/md/3.2_memory_consumption.md) berhasil dieksekusi in-place pada lingkungan Conda `torch-gpu` dengan model biner dan fitur fisik riil. Seluruh pengukuran in-memory (`asizeof`) dan dinamika OS RAM (`psutil`) tercatat secara transparan.
+3. **Integritas Metrik Terjaga Penuh**: Tidak ada perubahan pada nilai akurasi, F1-score, waktu pelatihan, maupun latensi inferensi yang telah dipublikasikan pada Table XII naskah IEEE Access.
+4. **Pohon Kerja Bersih**: Semua berkas telah diperbarui, diverifikasi, dan siap untuk komit Git serta push ke remote `main`.
 4. **Pohon Kerja Bersih**: Semua komit telah didorong ke repositori remote `main` (`origin/main`).
