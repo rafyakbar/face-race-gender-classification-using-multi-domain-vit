@@ -28,6 +28,17 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+Perbaiki notebook 3.2_memory_consumption dengan menjadikan experiment/code/md/{gnb,lr,rf,svm} sebagai referensi implementasi eksperimen classifier yang sebenarnya.
+Ketentuan:
+1. Pertahankan pengukuran kapasitas array NumPy menggunakan `.nbytes`, tetapi perbaiki konsistensi satuan MB dan MiB.
+2. Jangan menggunakan classifier atau bobot simulasi. Gunakan model Scikit-learn hasil eksperimen yang tersimpan di direktori `models/` dan data uji aktual `X_test`.
+3. Ukur penggunaan RAM menggunakan `psutil`, meliputi baseline RSS, peak RSS, dan tambahan RAM selama `model.predict(X_test)`.
+4. Ukur estimasi ukuran objek model menggunakan `pympler.asizeof`.
+5. Pertahankan `model_size_mb` sebagai ukuran serialisasi model yang terpisah.
+6. Terapkan pengukuran pada Logistic Regression, SVM, Random Forest, dan Gaussian Naive Bayes sesuai model eksperimen masing-masing.
+7. Perbarui file-file yg sesuai berdasarkan hasil pengukuran aktual.
+Perhatikan struktur pipeline, mekanisme penyimpanan model, dan pemuatan data pada notebook referensi. Jangan mengarang angka atau menggunakan data sintetis. Jika model atau data tidak tersedia, laporkan secara eksplisit. Jangan mengubah hasil evaluasi akurasi, F1-score, maupun eksperimen sebelumnya.
+
 ya
 
 bagaimana jika membuat notebook untuk cek memory consumption?
