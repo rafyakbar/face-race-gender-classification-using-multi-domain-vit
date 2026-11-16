@@ -652,12 +652,12 @@ Bagian ini disusun dalam **6 paragraf**, masing-masing dengan target **100–120
 <a id="tab12"></a>
 **Table XII. Downstream Classifier Training and Testing Computational Profile.**
 
-| Classifier | Feature Scheme | 5-Fold CV Training Time (s) | Inference Latency (ms/sample) | Model Size (MB) |
-| :--- | :--- | :---: | :---: | :---: |
-| **Logistic Regression** | **Tri-Domain** | **3,287.07 (54.78 min)** | **0.0046** | **0.11** |
-| Support Vector Machine | Tri-Domain | 30,666.02 (511.10 min) | 4.6785 | 36.60 |
-| Random Forest | Tri-Domain | 6,628.03 (110.47 min) | 0.0334 | 6.19 |
-| Gaussian Naive Bayes | Dual-Domain (`Emotion ⊕ Face`) | 1,529.50 (25.49 min) | 0.0088 | 0.78 |
+| Classifier | Feature Scheme | 5-Fold CV Training Time (s) | Inference Latency (ms/sample) | RAM Consumption (MB) | Model Size (MB) |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | **Tri-Domain** | **3,287.07 (54.78 min)** | **0.0046** | **18.98** | **0.11** |
+| Support Vector Machine | Tri-Domain | 30,666.02 (511.10 min) | 4.6785 | 18.98 | 36.60 |
+| Random Forest | Tri-Domain | 6,628.03 (110.47 min) | 0.0334 | 18.98 | 6.19 |
+| Gaussian Naive Bayes | Dual-Domain (`Emotion ⊕ Face`) | 1,529.50 (25.49 min) | 0.0088 | 12.66 | 0.78 |
 
 ### B. Feature Ablation Study
 > **Catatan Respons Reviewer (R2 Poin 2 & R2 Poin 5):**  

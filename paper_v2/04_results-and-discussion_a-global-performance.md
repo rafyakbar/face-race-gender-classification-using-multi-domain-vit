@@ -74,14 +74,14 @@ Sintesis komparatif antarmodel pada [Table VII](#tab7), [Table VIII](#tab8), [Ta
 | Facial Age | 45.11 | 487.17 (8m 07s) |
 | **Tri-Domain Fusion** | **124.50** | **1,344.64 (22m 25s)** |
 
-Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada [Table XI](#tab11) dan [Table XII](#tab12). Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 92.4 MB atau 30.8 MB per domain, serta konsumsi RAM array uji sebesar 18.98 MB). Capaian ini menghasilkan akselerasi 11.9 kali lebih cepat dibandingkan baseline ekstraksi sekuensial CPU (~1.487 ms per citra; total 4.46 jam). Pada pelatihan validasi silang 5-fold, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit, menegaskan pelatihan LR 9.3 kali lebih cepat dibanding SVM. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi kebutuhan penyimpanan, LR hanya membutuhkan berkas model 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
+Profil efisiensi komputasi dievaluasi melalui dua aspek terukur pada [Table XI](#tab11) dan [Table XII](#tab12). Ekstraksi fitur ViT secara offline terakselerasi GPU mencatatkan durasi 39.74 ms untuk Face, 39.65 ms untuk Emotion, dan 45.11 ms untuk Age, dengan total durasi tri-domain sebesar 124.50 ms per citra (total 22.41 menit untuk 10.800 citra dengan ukuran cache 92.4 MB atau 30.8 MB per domain, serta konsumsi RAM array uji sebesar 18.98 MB). Capaian ini menghasilkan akselerasi 11.9 kali lebih cepat dibandingkan baseline ekstraksi sekuensial CPU (~1.487 ms per citra; total 4.46 jam). Pada pelatihan validasi silang 5-fold, GNB memerlukan 25.49 menit pada dual-domain, disusul LR sebesar 54.78 menit, RF sebesar 110.47 menit, dan SVM mencapai 511.10 menit, menegaskan pelatihan LR 9.3 kali lebih cepat dibanding SVM. Pada tahap pengujian, kepala pengklasifikasi hilir LR menunjukkan keunggulan dengan latensi hanya 0.0046 ms per sampel, 1.027 kali lebih cepat dibandingkan SVM (4.6785 ms). Dari segi konsumsi memori dan penyimpanan model, array uji held-out ($N = 2.160$) mengonsumsi RAM sebesar 18.98 MB pada konfigurasi tri-domain dan 12.66 MB pada dual-domain, sedangkan berkas model serial LR hanya membutuhkan 0.11 MB, 330 kali lebih ringkas dibandingkan SVM (36.60 MB), menetapkan LR sebagai arsitektur hilir paling optimal untuk implementasi praktis.
 
 <a id="tab12"></a>
 **Table XII. Downstream Classifier Training and Testing Computational Profile.**
 
-| Classifier | Feature Scheme | 5-Fold CV Training Time (s) | Inference Latency (ms/sample) | Model Size (MB) |
-| :--- | :--- | :---: | :---: | :---: |
-| **Logistic Regression** | **Tri-Domain** | **3,287.07 (54.78 min)** | **0.0046** | **0.11** |
-| Support Vector Machine | Tri-Domain | 30,666.02 (511.10 min) | 4.6785 | 36.60 |
-| Random Forest | Tri-Domain | 6,628.03 (110.47 min) | 0.0334 | 6.19 |
-| Gaussian Naive Bayes | Dual-Domain (`Emotion ⊕ Face`) | 1,529.50 (25.49 min) | 0.0088 | 0.78 |
+| Classifier | Feature Scheme | 5-Fold CV Training Time (s) | Inference Latency (ms/sample) | RAM Consumption (MB) | Model Size (MB) |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | **Tri-Domain** | **3,287.07 (54.78 min)** | **0.0046** | **18.98** | **0.11** |
+| Support Vector Machine | Tri-Domain | 30,666.02 (511.10 min) | 4.6785 | 18.98 | 36.60 |
+| Random Forest | Tri-Domain | 6,628.03 (110.47 min) | 0.0334 | 18.98 | 6.19 |
+| Gaussian Naive Bayes | Dual-Domain (`Emotion ⊕ Face`) | 1,529.50 (25.49 min) | 0.0088 | 12.66 | 0.78 |
