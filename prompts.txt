@@ -28,6 +28,18 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+pada paper_latex_id_v2/:
+- Global:
+  * untuk tulisan seperti "AutoImageProcessor", "google/vit-base-patch16-224-in21k", "e85f0c9" dan sejenisnya sepertinya teks biasa saja
+  * banyak tabel yang melebihi halaman seperti TABLE 8., TABLE 9., dll. coba cek paper_latex_id/ sebagai referensi.
+- B. VISION TRANSFORMER FEATURE EXTRACTION:
+  * tulisan google/vit-base-patch16-224-in21k tidak rapih dan keluar dari margin/padding dari paragraf. begitu juga dengan " ViT-Face (skutaada/VIT-VGGFace...", " ViT-Emotion (dima806/facial_emotions_im...", "dima806/facial_age_image_detection"
+- A. Dataset:
+  * padahal pada paper_v2/ figure 2 itu hanya 1, kenapa jadi kacau di latex
+- TABLE 2. Multi-Domain Feature Fusion and Systematic Ablation Configurations.:
+  * width nya melebihi paragraf, sepertinya nama kolom "Feature Dimension" terlalu panjang. jangan lupa update juga paper_outline_v1.1.md dan paper_v2/
+DELEGASIKAN KE BANYAK SUBAGENT!!! AUDIT ULANG DAN PERBAIKI DENGAN SANGAT TELITI!!!
+
 sekarang perbarui paper_latex_id_v2 agar sesuai dengan paper_v2, perhatikan:
 - rules/IEEE_citation_guidelines.md
 - rules/latex_rules.txt

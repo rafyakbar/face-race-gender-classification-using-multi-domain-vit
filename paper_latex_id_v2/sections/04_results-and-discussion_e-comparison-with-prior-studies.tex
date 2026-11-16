@@ -9,9 +9,12 @@ Perbandingan empiris kerangka kerja usulan terhadap studi terdahulu dan baseline
 \label{tab:16}
 \label{tab:XVI}
 \centering
+\small
+\setlength{\tabcolsep}{6pt}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-Model & Data Split Protocol & Accuracy (\%) & Precision (\%) & Recall (\%) & F1-Score (\%) \\
+\textbf{Model} & \textbf{Data Split Protocol} & \textbf{Accuracy (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} \\
 \midrule
 MD-ViT + XGBoost~\cite{ref20} & Stratified & 89.07 & 89.12 & 89.07 & 89.01 \\
 Dual-ViT + SVM~\cite{ref19} & Stratified & 92.41 & 92.48 & 92.41 & 92.38 \\
@@ -27,7 +30,8 @@ Dual-Domain \textit{Emotion} $\oplus$ \textit{Face} + GNB & Subject-Disjoint & 8
 Proposed Tri-Domain + SVM & Subject-Disjoint & 88.61 & 88.71 & 88.61 & 88.63 \\
 \textbf{Proposed Tri-Domain + LR} & \textbf{Subject-Disjoint} & \textbf{88.66} & \textbf{88.75} & \textbf{88.66} & \textbf{88.68} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 Penetapan posisi riset ini menegaskan kualifikasi metodologis yang krusial antara kedua protokol evaluasi tersebut. Hasil pada protokol Stratified diklasifikasikan murni sebagai komparasi kontekstual karena pemisahan acak tingkat citra membiarkan identitas subjek tumpang-tindih antara set latih dan uji, ditambah potensi variasi prapemrosesan antarstudi. Perbedaan performa antara evaluasi protokol Stratified (93.70\%) dan benchmark primer Subject-Disjoint (88.66\%) mengindikasikan adanya optimisme semu akibat kebocoran data identitas sebesar 5.09~pp. Penerapan protokol ketat Subject-Disjoint pada 480 subjek latih dan 120 subjek uji held-out pada korpus DemogPairs~\cite{ref25} yang sejatinya dirancang untuk verifikasi pasangan identitas wajah menjamin eliminasi kebocoran identitas secara mutlak, sehingga menghasilkan evaluasi klasifikasi 6-kelas interseksional yang andal di dunia nyata.

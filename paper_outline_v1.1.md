@@ -363,7 +363,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 
 **Table II. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
 
-| # | Feature Scheme | Category | Feature Dimension |
+| # | Feature Scheme | Category | Dimension |
 |:---:|---|:---:|:---:|
 | 1 | `Face` | Single-Domain | 768 |
 | 2 | `Emotion` | Single-Domain | 768 |

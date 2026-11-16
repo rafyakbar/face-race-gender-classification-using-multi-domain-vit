@@ -21,7 +21,7 @@ Untuk memperoleh representasi visual komplementer, kerangka kerja ini memanfaatk
 <a id="tab2"></a>
 **Table II. Multi-Domain Feature Fusion and Systematic Ablation Configurations.**
 
-| # | Feature Scheme | Category | Feature Dimension |
+| # | Feature Scheme | Category | Dimension |
 | :---: | :--- | :---: | :---: |
 | 1 | `Face` | Single-Domain | 768 |
 | 2 | `Emotion` | Single-Domain | 768 |

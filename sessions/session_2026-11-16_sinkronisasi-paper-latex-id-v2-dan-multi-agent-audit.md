@@ -109,24 +109,38 @@ Setelah seluruh 19 berkas bagian diperbarui, 7 Audit Subagent independen dikerah
 
 ---
 
-## 4. INSTALASI MIKTEX & KOMPILASI PDF LOKAL
+## 4. INSTALASI MIKTEX, AUDIT ULANG MULTI-AGENT, & PENYEMPURNAAN VISUAL FINAL
 
-Sesuai preferensi lingkungan kerja baku pengguna (*"biasanya pakai miktex"*), telah dilakukan instalasi MiKTeX resmi secara lokal pada PC ini:
-1. **Instalasi MiKTeX**: Mengunduh dan memasang paket distribusi MiKTeX resmi versi 25.12 (`basic-miktex-25.12-x64.exe`) via `winget` ke direktori lokal: `C:\Users\Rafy\AppData\Local\Programs\MiKTeX\miktex\bin\x64\`.
-2. **Konfigurasi Auto-Install Paket**: Mengaktifkan konfigurasi `[MPM]AutoInstall=1` via `initexmf` agar seluruh dependensi dan font terinstal otomatis tanpa dialog blocking.
-3. **Siklus Kompilasi Baku**:
-   - `pdflatex -interaction=nonstopmode access.tex` (Pass 1)
-   - `bibtex access` (Memproses seluruh 51 pustaka via `IEEEtran.bst` — Status: Sukses 100%)
-   - `pdflatex -interaction=nonstopmode access.tex` (Pass 2)
-   - `pdflatex -interaction=nonstopmode access.tex` (Pass 3)
-4. **Hasil Kompilasi**:
-   - Berkas target: `paper_latex_id_v2/access.pdf`
-   - Ukuran: 3.047.359 bytes (3.05 MB)
-   - Jumlah Halaman: 16 halaman penuh (sesuai template resmi IEEE Access)
-   - Status Referensi & Cross-Refs: Bersih tanpa unresolved references (`LaTeX Warning: There were undefined references` nihil).
+Berdasarkan umpan balik evaluasi visual naskah terkompilasi, telah dilakukan audit ulang dan perbaikan mendalam melalui 6 subagent spesialis:
+
+1. **Eliminasi Margin Overflow pada Teks (ViT Section 03_b)**:
+   - Menghapus seluruh format `\texttt{...}` pada nama checkpoint, repositori, dan processor: `google/vit-base-patch16-224-in21k`, `ViT-Face (skutaada/VIT-VGGFace, versi e85f0c9)`, `ViT-Emotion (dima806/facial_emotions_image_detection, versi 747cf16)`, `ViT-Age (dima806/facial_age_image_detection, versi ad35933)`, dan `AutoImageProcessor`.
+   - Mengubah seluruhnya menjadi teks biasa dengan pembungkus `\allowbreak` sehingga teks ter-wrap secara natural dan rapi di dalam batas margin paragraf (mengeliminasi 108.7pt overfull \hbox).
+
+2. **Perbaikan Figure 2 & Table I (Dataset Section 03_a)**:
+   - Mengembalikan Figure 2 menjadi 1 gambar utuh lebar penuh (`figure*`) menggunakan `sample_demogpairs_v2.png` (`\width=\textwidth`), mengeliminasi susunan subfigure terpecah yang merusak tata letak halaman.
+   - Menata ulang header Table I secara elegan menggunakan `booktabs` dengan subkolom berjenjang (`\cmidrule(lr)`), merampingkan lebar dari 593pt menjadi 372pt (pas di dalam `\textwidth` 505pt).
+
+3. **Optimalisasi Table 2 & Sinkronisasi Lintas Dokumen**:
+   - Memperpendek nama kolom ke-4 Table II dari `Feature Dimension` menjadi **`Dimension`** pada:
+     * `paper_latex_id_v2/sections/03_materials-and-methods_b-vision-transformer.tex`
+     * `paper_v2/03_materials-and-methods_b-vision-transformer.md`
+     * `paper_outline_v1.1.md`
+   - Menerapkan `\small` dan `\setlength{\tabcolsep}{3.5pt}` sehingga Table II pas di dalam kolom tanpa meluap ke luar margin (mengeliminasi 22.56pt overfull \hbox).
+
+4. **Optimalisasi Seluruh Tabel Benchmark & Hasil Lanjutan**:
+   - Tabel VII (RF), VIII (GNB), IX (LR), X (SVM), XI (Runtime), dan XII (Profil Komputasi) pada Bagian 04_a dikunci tepat selebar halaman menggunakan `\resizebox{\textwidth}{!}{...}`, font `\footnotesize`, dan penataan padding `\tabcolsep{2.5pt}`, mengeliminasi seluruh overflow keluar margin halaman.
+   - Tabel XIII, XIV (mengeliminasi 112.3pt overflow), XV (mengeliminasi 13.67pt overflow serta membersihkan underscore nama subkelompok menjadi teks ilmiah), dan XVI pada Bagian 04_b s.d. 04_e distandardisasi dengan `\resizebox{\textwidth}{!}{...}`.
+
+5. **Hasil Kompilasi MiKTeX Final**:
+   - Siklus kompilasi lengkap: `pdflatex` (Pass 1) $\rightarrow$ `bibtex` $\rightarrow$ `pdflatex` (Pass 2) $\rightarrow$ `pdflatex` (Pass 3) berjalan sukses tanpa error (Exit code: 0).
+   - Berkas target: [paper_latex_id_v2/access.pdf](file:///D:/Research/face-race-gender-classification-using-multi-domain-vit/paper_latex_id_v2/access.pdf).
+   - Ukuran: 10.325.072 bytes (10.3 MB).
+   - Jumlah Halaman: 15 halaman penuh tertata sempurna sesuai standar IEEE Access.
+   - Seluruh tabel, gambar, sitasi interaktif biru `[1]`–`[51]`, dan referensi persamaan terkompilasi bersih tanpa *undefined references*.
 
 ---
 
 ## 5. KESIMPULAN AKHIR
 
-Pembaruan direktori `paper_latex_id_v2/` telah selesai dengan sempurna melalui pendelegasian paralel 19 subagent pembaruan (1 subagent per 1 berkas), diverifikasi secara independen oleh 7 subagent audit, serta berhasil dikompilasi langsung menggunakan MiKTeX menjadi `access.pdf`. Naskah LaTeX IEEE Access beserta dokumen PDF hasil kompilasi kini berada dalam kondisi **100% sinkron, lossless terhadap naskah Markdown `paper_v2/`, mematuhi aturan baku IEEE Access, dan siap untuk proses submission**.
+Pembaruan, penyelarasan lossless dari Markdown `paper_v2/`, penyempurnaan tipografi tabel/gambar, audit ulang multi-agent, serta kompilasi PDF menggunakan MiKTeX telah berhasil diselesaikan secara sempurna. Repositori berada dalam kondisi siap publikasi IEEE Access.
