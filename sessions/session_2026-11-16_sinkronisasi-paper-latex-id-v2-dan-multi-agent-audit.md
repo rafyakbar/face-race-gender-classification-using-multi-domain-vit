@@ -109,6 +109,24 @@ Setelah seluruh 19 berkas bagian diperbarui, 7 Audit Subagent independen dikerah
 
 ---
 
-## 4. KESIMPULAN AKHIR
+## 4. INSTALASI MIKTEX & KOMPILASI PDF LOKAL
 
-Pembaruan direktori `paper_latex_id_v2/` telah selesai dengan sempurna melalui pendelegasian paralel 19 subagent pembaruan (1 subagent per 1 berkas) dan diverifikasi secara independen oleh 7 subagent audit. Naskah LaTeX IEEE Access kini berada dalam kondisi **100% sinkron, lossless terhadap naskah Markdown `paper_v2/`, mematuhi aturan baku IEEE Access, dan siap untuk proses submission**.
+Sesuai preferensi lingkungan kerja baku pengguna (*"biasanya pakai miktex"*), telah dilakukan instalasi MiKTeX resmi secara lokal pada PC ini:
+1. **Instalasi MiKTeX**: Mengunduh dan memasang paket distribusi MiKTeX resmi versi 25.12 (`basic-miktex-25.12-x64.exe`) via `winget` ke direktori lokal: `C:\Users\Rafy\AppData\Local\Programs\MiKTeX\miktex\bin\x64\`.
+2. **Konfigurasi Auto-Install Paket**: Mengaktifkan konfigurasi `[MPM]AutoInstall=1` via `initexmf` agar seluruh dependensi dan font terinstal otomatis tanpa dialog blocking.
+3. **Siklus Kompilasi Baku**:
+   - `pdflatex -interaction=nonstopmode access.tex` (Pass 1)
+   - `bibtex access` (Memproses seluruh 51 pustaka via `IEEEtran.bst` — Status: Sukses 100%)
+   - `pdflatex -interaction=nonstopmode access.tex` (Pass 2)
+   - `pdflatex -interaction=nonstopmode access.tex` (Pass 3)
+4. **Hasil Kompilasi**:
+   - Berkas target: `paper_latex_id_v2/access.pdf`
+   - Ukuran: 3.047.359 bytes (3.05 MB)
+   - Jumlah Halaman: 16 halaman penuh (sesuai template resmi IEEE Access)
+   - Status Referensi & Cross-Refs: Bersih tanpa unresolved references (`LaTeX Warning: There were undefined references` nihil).
+
+---
+
+## 5. KESIMPULAN AKHIR
+
+Pembaruan direktori `paper_latex_id_v2/` telah selesai dengan sempurna melalui pendelegasian paralel 19 subagent pembaruan (1 subagent per 1 berkas), diverifikasi secara independen oleh 7 subagent audit, serta berhasil dikompilasi langsung menggunakan MiKTeX menjadi `access.pdf`. Naskah LaTeX IEEE Access beserta dokumen PDF hasil kompilasi kini berada dalam kondisi **100% sinkron, lossless terhadap naskah Markdown `paper_v2/`, mematuhi aturan baku IEEE Access, dan siap untuk proses submission**.
