@@ -28,6 +28,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+tuliskan semua session ini pada sessions/
+
 Perbaiki notebook 3.2_memory_consumption dengan menjadikan experiment/code/md/{gnb,lr,rf,svm} sebagai referensi implementasi eksperimen classifier yang sebenarnya.
 Ketentuan:
 1. Pertahankan pengukuran kapasitas array NumPy menggunakan `.nbytes`, tetapi perbaiki konsistensi satuan MB dan MiB.
