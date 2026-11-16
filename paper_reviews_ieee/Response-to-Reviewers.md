@@ -34,7 +34,7 @@ Berikut adalah ringkasan lima perbaikan metodologis dan empiris utama yang telah
    - Ukuran model pada penyimpanan: LR berukuran **0,11 MB**, sedangkan SVM berukuran **36,60 MB** (LR **>330× lebih ringkas**). Kami menegaskan secara jujur bahwa efisiensi tinggi ini berada pada kepala pengklasifikasi hilir, sedangkan implementasi menyeluruh pada perangkat *Edge AI* berdaya rendah membutuhkan kompresi atau kuantisasi backbone transformer di masa mendatang.
 
 4. **Penyempurnaan Arsitektur, Rumus, dan Transparansi Reproduksibilitas (Reviewer 1 #2, #3 & Reviewer 2 #1, #3, #4):**  
-   Gambar 3 telah didesain ulang menjadi diagram arsitektur beresolusi tinggi (300+ DPI, format vektor) yang memperlihatkan 7 tahapan alur sistem secara visual. Landasan teoretis naskah diperkuat melalui penyajian formulasi matematis formal (Persamaan 1 hingga 23) yang terdistribusi secara runtut pada Seksi II dan Seksi III. Spesifikasi versi checkpoint HuggingFace dicantumkan secara lengkap beserta parameter normalisasi seragam (nilai *mean* dan *std* [0.5, 0.5, 0.5] ke rentang [-1, 1] tanpa deteksi MTCNN tambahan). Selain itu, ruang pencarian hyperparameter telah direkonsiliasi secara konsisten: **912 kombinasi per skema fitur**, **4.560 fits per skema**, **31.920 fits validasi silang total**, dan **28 refits akhir** melintasi Tabel III hingga VI.
+   Gambar 3 telah didesain ulang menjadi diagram arsitektur beresolusi tinggi (300+ DPI, format vektor) yang memperlihatkan 7 tahapan alur sistem secara visual. Landasan teoretis naskah diperkuat melalui penyajian formulasi matematis formal (Persamaan 1 hingga 23) yang terdistribusi secara runtut pada Seksi II dan Seksi III. Spesifikasi versi checkpoint HuggingFace dicantumkan secara lengkap beserta parameter normalisasi seragam (nilai *mean* dan *std* [0.5, 0.5, 0.5] ke rentang [-1, 1] tanpa deteksi MTCNN tambahan). Selain itu, ruang pencarian hyperparameter telah direkonsiliasi secara konsisten: **912 kombinasi per skema fitur**, **4.560 fits per skema**, **31.920 fits validasi silang total**, dan **28 refits akhir** melintasi Tabel III hingga VI (merekonsiliasi pelaporan awal 1.086 konfigurasi dan 38.010 fits melalui koreksi ruang pencarian Logistic Regression aktual [96 kombinasi] dan catatan 108 konfigurasi unik efektif pada SVM).
 
 5. **Kalibrasi Batasan Klaim Keadilan & Ruang Lingkup Generalisasi (Reviewer 1 #1, #7 & Reviewer 2 #6, #7, #9, #10):**  
    Bagian Pendahuluan telah diringkas sekitar 28% agar terfokus langsung pada permasalahan klasifikasi interseksional. Metrik keadilan *Equal Opportunity Difference* (EOD = 9,72 percentage points pada Tabel XIV) dikualifikasikan secara objektif sebagai indikator disparitas performa empiris antar-subkelompok, bukan sebagai jaminan matematis keadilan universal. Tabel komparasi literatur (Tabel XVI) dipisahkan ke dalam kelompok protokol Stratified (komparasi kontekstual untuk studi terdahulu dengan tumpang tindih identitas) dan kelompok protokol Subject-Disjoint (tolok ukur terkontrol). Seluruh spekulasi kausal biologis maupun kontras pencahayaan dihapus dari pembahasan, dan kesimpulan dibatasi secara tegas pada 3 ras makro DemogPairs (Asian, Black, White).
@@ -226,18 +226,47 @@ Kami sepenuhnya setuju dengan tuntutan reproduktibilitas ini. Pada naskah revisi
 > *"4. Hyperparameter search consistency: The reported totals of 1,086 configurations, 38,010 cross-validation fits, and 28 final refits should be reconciled with the individual search spaces reported in Tables 3–6."*
 
 **Tanggapan Penulis:**  
-Kami menyampaikan terima kasih yang mendalam kepada Reviewer 2 atas ketelitian audit aritmatika ini. Setelah memeriksa kode eksekusi aktual (`experiment/code/md/`), kami menemukan bahwa draf awal salah mencatat kombinasi Logistic Regression dengan menghitung parameter yang sebenarnya tidak dievaluasi. Pada naskah revisi (Seksi III-C hingga III-G, **Tabel III–VI**), seluruh ruang pencarian parameter telah direkonsiliasi secara transparan dan tepat:
-- **Random Forest (Tabel III):** 2 opsi scaler × 3 opsi PCA × 2 n_estimators ({100, 200}) × 3 max_depth ({None, 20, 30}) × 2 max_features ({'sqrt', 'log2'}) × 2 min_samples_split ({2, 5}) × 2 min_samples_leaf ({1, 2}) = **288 kombinasi** (1.440 fits per skema fitur).
-- **Gaussian Naive Bayes (Tabel IV):** 2 opsi scaler × 3 opsi PCA × 40 nilai var_smoothing logaritmik ($1.0 \times 10^{-9}$ hingga $1.0 \times 10^{2}$) = **240 kombinasi** (1.200 fits per skema fitur).
-- **Logistic Regression (Tabel V):** 2 opsi scaler × 3 opsi PCA × 4 nilai kekuatan regularisasi $C$ ({0.01, 0.1, 1, 10}) × 2 solver ({'lbfgs', 'saga'}) × 2 max_iter ({500, 1000}) = **96 kombinasi** (480 fits per skema fitur).
-- **Support Vector Machine (Tabel VI):** Grid evaluasi Cartesian scikit-learn penuh dari 2 opsi scaler × 3 opsi PCA × 4 nilai penalti $C$ ({0.01, 0.1, 1, 10}) × 3 fungsi kernel ({'linear', 'rbf', 'poly'}) × 2 koefisien gamma ({'scale', 'auto'}) × 2 derajat polinomial ({2, 3}) = **288 evaluasi Cartesian** (1.440 fits per skema fitur). Kami mencantumkan catatan penjelas pada Tabel VI bahwa 288 evaluasi Cartesian ini setara dengan **108 konfigurasi unik efektif** secara fungsional (karena parameter derajat hanya aktif pada kernel polinomial dan gamma tidak berpengaruh pada kernel linier).
-- **Total Kombinasi per Skema Fitur:** 288 + 240 + 96 + 288 = **912 kombinasi** (× 5 folds = **4.560 fits per skema fitur**).
-- **Total Validasi Silang melintasi 7 Skema Fitur:** 4.560 × 7 = **31.920 fits validasi silang total**.
-- **Refits Akhir:** 4 algoritma × 7 skema fitur = **28 refits akhir** pada keseluruhan 480 subjek data latih.
+Kami menyampaikan terima kasih yang mendalam kepada Reviewer 2 atas ketelitian audit aritmatika ini. Kami telah menelusuri secara komprehensif akar penyebab perbedaan angka antara draf naskah awal (*paper v1*) dan kode eksekusi aktual (`experiment/code/md/`). Pada naskah revisi (Seksi I Paragraf 5, Seksi III-C hingga III-F [**Tabel III–VI**], Seksi III-G Paragraf 1, dan Seksi IV-A Paragraf 6), seluruh ruang pencarian parameter telah direkonsiliasi secara transparan, konsisten, dan terbukti matematis:
+
+1. **Penjelasan Asal-Usul Angka Draf Awal (1.086 Konfigurasi & 38.010 Fits):**  
+   Pada draf awal, tabel ruang pencarian Logistic Regression (Tabel 5) mencantumkan parameter yang terhitung berlebih (*overcounted*), yaitu menyertakan parameter fiktif yang tidak dieksekusi dalam eksperimen: kekuatan regularisasi $C \in \{0.01, 0.1, 1, 10, 100\}$ (5 nilai), solver $\in \{\text{'lbfgs'}, \text{'saga'}, \text{'newton-cg'}\}$ (3 opsi), dan max_iter $\in \{500, 1000, 2000\}$ (3 nilai), sehingga menghasilkan $2 \text{ (scaler)} \times 3 \text{ (PCA)} \times 5 \times 3 \times 3 = 270\text{ kombinasi}$.  
+   Akibatnya, total ruang pencarian draf awal terhitung: $288\text{ (RF)} + 240\text{ (GNB)} + 270\text{ (LR)} + 288\text{ (SVM)} = \mathbf{1.086\text{ kombinasi per skema}}$. Dengan 5-fold cross-validation pada 7 skema fitur, angka tersebut menghasilkan $1.086 \times 5 = 5.430\text{ fits/skema} \times 7\text{ skema} = \mathbf{38.010\text{ cross-validation fits}}$ serta **28 refits akhir** ($4\text{ pengklasifikasi} \times 7\text{ skema}$).
+
+2. **Rekonsiliasi Empiris Berdasarkan Kode Sumber Eksperimen Aktual (`experiment/code/md/`):**  
+   Verifikasi terhadap skrip dan notebook implementasi aktual (`experiment/code/md/lr/2.5.1` s.d. `2.5.7`) membuktikan bahwa parameter grid Logistic Regression yang sesungguhnya dieksekusi adalah:
+   - Feature Scaler: `None`, `MinMaxScaler` (2 opsi)
+   - PCA: `None`, `0.50`, `0.75` (3 opsi)
+   - Regularization Strength $C$: `0.01`, `0.1`, `1`, `10` (4 opsi; tanpa $C=100$)
+   - Optimization Solver: `'lbfgs'`, `'saga'` (2 opsi; tanpa `'newton-cg'`)
+   - Maximum Iterations: `500`, `1000` (2 opsi; tanpa `2000`)  
+   Total kombinasi LR yang sebenarnya dievaluasi adalah $2 \times 3 \times 4 \times 2 \times 2 = \mathbf{96\text{ kombinasi}}$ (480 fits per skema fitur; 3.360 fits total pada 7 skema).
+
+3. **Tabel Rekonsiliasi Komparatif Ruang Pencarian (Draf Awal vs Naskah Revisi):**  
+   Berikut adalah tabel rekonsiliasi matematis lengkap yang menghubungkan ruang pencarian individual pada Tabel III–VI dengan total validasi silang pada naskah revisi:
+
+| Pengklasifikasi & Tabel | Draf Awal (Paper v1) | Naskah Revisi (Paper v2) | Fits per Skema Fitur (× 5 Folds) | Total CV Fits (× 7 Skema Fitur) | Catatan Penyesuaian Ruang Pencarian |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Random Forest (Tabel III)** | 288 | **288** | 1.440 | 10.080 | 2 scaler × 3 PCA × 2 n_est × 3 depth × 2 feat × 2 split × 2 leaf |
+| **Gaussian Naive Bayes (Tabel IV)** | 240 | **240** | 1.200 | 8.400 | 2 scaler × 3 PCA × 40 var_smoothing logaritmik |
+| **Logistic Regression (Tabel V)** | 270 | **96** | **480** | **3.360** | **Dikoreksi:** Eliminasi $C=100$, 'newton-cg', dan max_iter=2000 |
+| **Support Vector Machine (Tabel VI)** | 288 | **288** | 1.440 | 10.080 | 288 evaluasi Cartesian scikit-learn (**108 unik efektif**) |
+| **Total per Skema Fitur** | **1.086** | **912** | **4.560** | - | **Direkonsiliasi:** $288 + 240 + 96 + 288 = \mathbf{912\text{ kombinasi}}$ |
+| **Total Validasi Silang (7 Skema)** | **38.010** | **31.920** | - | **31.920 fits** | $4.560\text{ fits/skema} \times 7\text{ skema} = \mathbf{31.920\text{ CV fits}}$ |
+| **Refits Akhir (Data Latih Penuh)** | **28** | **28** | - | **28 refits** | 4 pengklasifikasi × 7 skema fitur pada 480 subjek latih |
+
+4. **Klarifikasi Dependensi Parameter SVM (288 Evaluasi Cartesian vs 108 Konfigurasi Unik Efektif):**  
+   Evaluasi `GridSearchCV` scikit-learn mengeksekusi penuh seluruh 288 kombinasi Cartesian parameter grid (1.440 fits per skema fitur): 2 scaler × 3 PCA × 4 nilai $C$ × 3 kernel × 2 koefisien gamma × 2 derajat polinomial = 288 evaluasi. Namun secara fungsional unik, terdapat **108 konfigurasi unik efektif** karena parameter derajat ({2, 3}) hanya aktif pada kernel `'poly'` dan gamma ({'scale', 'auto'}) tidak berpengaruh pada kernel `'linear'`. Catatan penjelas ini telah kami cantumkan secara eksplisit pada bagian bawah Tabel VI naskah revisi.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Seksi I, Paragraf 5; Seksi III-C hingga III-F, Tabel III–VI; Seksi III-G, Paragraf 1.
-- **Rincian Perubahan:** Tabel V diselaraskan menjadi 96 kombinasi, Tabel VI dilengkapi penjelasan 108 konfigurasi unik efektif, dan angka global diperbarui menjadi 912 kombinasi per skema fitur dan 31.920 fits validasi silang total.
+- **Lokasi pada Naskah:**  
+  - Seksi I (*Introduction*), Paragraf 5: Menyatakan secara eksplisit total 31.920 penyesuaian model (*fits*).  
+  - Seksi III-C (*Random Forest*), Tabel III: Mencantumkan 288 kombinasi grid (1.440 fits per skema fitur).  
+  - Seksi III-D (*Gaussian Naive Bayes*), Tabel IV: Mencantumkan 240 kombinasi grid (1.200 fits per skema fitur).  
+  - Seksi III-E (*Logistic Regression*), Tabel V: Memperbarui dan menyelaraskan menjadi tepat 96 kombinasi grid (480 fits per skema fitur).  
+  - Seksi III-F (*Support Vector Machine*), Tabel VI: Mempertahankan 288 evaluasi Cartesian (1.440 fits per skema fitur) dan menyematkan catatan kaki mengenai 108 konfigurasi unik efektif.  
+  - Seksi III-G (*Classification Pipeline*), Paragraf 1: Menguraikan formulasi rekonsiliasi aritmatika secara eksplisit: $(\text{SVM: } 288 + \text{LR: } 96 + \text{RF: } 288 + \text{GNB: } 240) = 912\text{ kombinasi/skema} \times 5\text{ folds} = 4.560\text{ fits/skema} \times 7\text{ skema} = \mathbf{31.920\text{ CV fits}} + \mathbf{28\text{ refits akhir}}$.  
+  - Seksi IV-A (*Global Performance*), Paragraf 6: Melaporkan durasi pelatihan validasi silang pada 31.920 penyesuaian model.  
+- **Rincian Perubahan:** Tabel V telah diselaraskan menjadi 96 kombinasi, Tabel VI dilengkapi penjelasan 108 konfigurasi unik efektif, dan angka total global di seluruh bab naskah telah diperbarui secara konsisten menjadi **912 kombinasi per skema fitur** dan **31.920 fits validasi silang total** (+ 28 refits akhir).
 
 ---
 
