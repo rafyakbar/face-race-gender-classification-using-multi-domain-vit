@@ -28,6 +28,12 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+sekarang fokus pada paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md bagian "B. Komentar Reviewer 2" (R2-10). tolong:
+- sebutkan juga di abstrak, tapi jangan lupa cek target kata pada paper_outline_v1.1.md.
+- perbaiki paper_reviews_ieee/Response-to-Reviewers.md agar sesuai.
+- setelah selesai jangan lupa update paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md.
+- kemudian commit & push.
+
 sudah dijalankan pada laptop di rumah, sekarang lakukan git pull dan pelajari perubahan yg terjadi
 
 Jalankan notebook experiment/code/3.2_memory_consumption.ipynb pada laptop rumah (di mana direktori models/ dan features/ tersedia lengkap) dan update file-file yang sesuai.

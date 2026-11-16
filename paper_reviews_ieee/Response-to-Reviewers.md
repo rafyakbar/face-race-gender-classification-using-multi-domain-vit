@@ -372,12 +372,15 @@ Kami menerima kritik ini dengan penuh keterbukaan ilmiah. Pada Abstrak, Seksi IV
 > *"10. Conclusion and limitations: The conclusions should be restricted to the evaluated DemogPairs benchmark unless additional cross-identity or external-dataset validation is provided."*
 
 **Tanggapan Penulis:**  
-Kami sepenuhnya sependapat dengan Reviewer 2. Pada **Abstrak** dan **Seksi V (*Conclusion*, Paragraf 1–2)**, kami telah membatasi ruang lingkup kesimpulan penelitian secara eksplisit hanya berlaku pada 6 subkelompok interseksional yang mencakup **3 kategori ras makro (Asian, Black, White)** dalam tolok ukur DemogPairs *subject-disjoint*.  
-Selain itu, pada Seksi V Paragraf 2, kami menyajikan paragraf khusus mengenai keterbatasan penelitian yang menegaskan bahwa generalisasi model pada populasi multirasial yang lebih luas (seperti komunitas Hispanik, Timur Tengah, Asia Selatan, atau kelompok Pribumi) serta kondisi akuisisi liar (*in-the-wild*) memerlukan validasi eksperimental lanjutan pada dataset eksternal independen seperti FairFace dan UTKFace.
+Kami sepenuhnya sependapat dengan Reviewer 2. Kami telah membatasi ruang lingkup klaim dan kesimpulan penelitian secara eksplisit hanya berlaku pada 6 subkelompok interseksional yang mencakup **3 kategori ras makro (Asian, Black, White)** dan dua gender dalam tolok ukur DemogPairs *subject-disjoint*. Pembatasan ini dicantumkan secara tegas pada:
+1. **Abstrak (Kalimat 2)**: Secara eksplisit menyebutkan cakupan demografis *"enam kelas interseksional dari tiga kelompok ras makro (Asian, Black, White) dan dua gender pada tolok ukur DemogPairs"*, dengan tetap mematuhi batas target panjang abstrak IEEE Access (235 kata dari rentang target 150–250 kata pada `paper_outline_v1.1.md`), serta menyelaraskan presisi makro SVM menjadi 88.71% agar konsisten secara global dengan Seksi IV-A (Tabel X), Seksi IV-E (Tabel XVI), dan Seksi V.
+2. **Seksi V (*Conclusion*, Paragraf 1–2)**: Menegaskan bahwa efektivitas fusi representasi multi-domain dievaluasi pada dataset DemogPairs dan secara gamblang menyajikan paragraf khusus keterbatasan (*limitations*) pada Paragraf 2, yang menyatakan bahwa generalisasi model pada populasi multirasial yang lebih luas (seperti komunitas Hispanik, Timur Tengah, Asia Selatan, atau kelompok Pribumi) serta kondisi akuisisi liar (*in-the-wild*) memerlukan validasi eksperimental lanjutan pada dataset eksternal independen seperti FairFace dan UTKFace.
 
 **Tindakan pada Naskah:**  
-- **Lokasi pada Naskah:** Abstrak; Seksi V (*Conclusion*), Paragraf 1–2.
-- **Rincian Perubahan:** Klaim generalisasi dibatasi secara eksplisit pada 3 ras makro DemogPairs pada Abstrak dan Kesimpulan, dengan validasi lintas-dataset ditetapkan sebagai arah penelitian masa depan.
+- **Lokasi pada Naskah:** Abstrak; Seksi V (*Conclusion*), Paragraf 1–2; `paper_outline_v1.1.md`.
+- **Rincian Perubahan:** 
+  1. Pada Abstrak, menyisipkan rujukan spesifik tolok ukur DemogPairs serta tiga kategori ras makro `(Asian, Black, White)` (panjang 235 kata, target 150–250 kata) dan mengoreksi presisi makro SVM menjadi 88.71%.
+  2. Pada Seksi V Paragraf 1 dan 2, klaim generalisasi dibatasi secara eksplisit pada 3 ras makro DemogPairs, dengan validasi lintas-dataset eksternal ditetapkan sebagai arah riset masa depan.
 
 ---
 
