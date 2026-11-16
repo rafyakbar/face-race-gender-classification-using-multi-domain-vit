@@ -28,6 +28,19 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+Jalankan notebook experiment/code/3.2_memory_consumption.ipynb pada laptop rumah (di mana direktori models/ dan features/ tersedia lengkap) dan update file-file yang sesuai.
+Ketentuan:
+1. Pastikan dependensi eksekusi terpasang di environment Python laptop: pympler, psutil, joblib, scikit-learn, imbalanced-learn, dan jupyter/nbformat.
+2. Verifikasi keberadaan model biner di direktori `models/` (clf_demogpairs_*.pkl) dan fitur representasi di `features/` (demogpairs_vit-*.pkl).
+3. Jalankan notebook secara in-place menggunakan jupyter nbconvert untuk melakukan pengukuran riil:
+   - Estimasi ukuran objek model in-memory (heap Python) menggunakan `pympler.asizeof`.
+   - Pengukuran RAM tingkat OS menggunakan `psutil`, mencakup baseline RSS, peak RSS, dan delta RSS selama eksekusi `model.predict(X_test)` pada held-out test set (N = 2.160).
+4. Konversikan kembali notebook yang telah dieksekusi ke Markdown:
+   `jupyter nbconvert --to markdown experiment/code/3.2_memory_consumption.ipynb --output-dir="experiment/code/md"`
+5. Audit dan perbarui file-file yang relevan (seperti narasi atau tabel di paper_v2/, paper_latex_id_v2/, paper_outline_v1.1.md, Response-to-Reviewers.md, atau berkas dokumentasi lainnya) jika hasil pengukuran in-memory/RAM aktual dari model fisik memerlukan catatan atau penyesuaian.
+6. Jangan mengubah nilai akurasi, F1-score, waktu latih, maupun metrik evaluasi eksperimen sebelumnya.
+7. Setelah selesai, commit dan push ke repository.
+
 tuliskan semua session ini pada sessions/
 
 Perbaiki notebook 3.2_memory_consumption dengan menjadikan experiment/code/md/{gnb,lr,rf,svm} sebagai referensi implementasi eksperimen classifier yang sebenarnya.
