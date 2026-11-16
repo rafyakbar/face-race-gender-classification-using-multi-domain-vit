@@ -29,6 +29,11 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 
 pada paper_latex_id_v2/:
+- ukuran font tabel tidak konsisten
+- TABLE 7., TABLE 8., TABLE 9., TABLE 10., terlalu kecil, sepertinya isi dari kolom "Best Hyperparameters" terlalu panjang, bisa dibuat menjadi 2 hingga 3 row
+setelah selesai jgn lupa commit dan push!
+
+pada paper_latex_id_v2/:
 - Global:
   * untuk tulisan seperti "AutoImageProcessor", "google/vit-base-patch16-224-in21k", "e85f0c9" dan sejenisnya sepertinya teks biasa saja
   * banyak tabel yang melebihi halaman seperti TABLE 8., TABLE 9., dll. coba cek paper_latex_id/ sebagai referensi.

@@ -144,3 +144,23 @@ Berdasarkan umpan balik evaluasi visual naskah terkompilasi, telah dilakukan aud
 ## 5. KESIMPULAN AKHIR
 
 Pembaruan, penyelarasan lossless dari Markdown `paper_v2/`, penyempurnaan tipografi tabel/gambar, audit ulang multi-agent, serta kompilasi PDF menggunakan MiKTeX telah berhasil diselesaikan secara sempurna. Repositori berada dalam kondisi siap publikasi IEEE Access.
+
+---
+
+## 7. Standarisasi Ukuran Font Tabel & Perbaikan Multibaris Hyperparameters (Turn 10)
+
+### 7.1 Identifikasi Masalah & Solusi
+1. **Ukuran Font Tabel Tidak Konsisten:**
+   - Ditemukan variasi ukuran font di seluruh naskah: Tabel I, III, IV, V, VI menggunakan default `\normalsize` (10 pt); Tabel II, XIII, XIV, XV, XVI menggunakan `\small` (9 pt); Tabel XI menggunakan `\footnotesize` (8 pt).
+   - Seluruh 16 tabel di `paper_latex_id_v2/` kini distandarisasi secara seragam menjadi `\footnotesize` (standar resmi publikasi IEEE Access untuk teks badan tabel).
+
+2. **Tabel VII, VIII, IX, X Terlalu Kecil (Microscopic Font):**
+   - **Akar Masalah:** Kolom "Best Hyperparameters" sebelumnya ditulis dalam satu baris panjang (>350 pt). Akibatnya, `\resizebox{\textwidth}{!}{...}` memampatkan lebar tabel secara ekstrem (skala ~59%), menjadikan font sangat kecil (~4.7 pt) dan tidak proporsional.
+   - **Solusi:** Seluruh entri pada kolom "Best Hyperparameters" pada Tabel VII (RF), Tabel VIII (GNB), Tabel IX (LR), dan Tabel X (SVM) dipecah menjadi 2 hingga 3 baris terstruktur menggunakan `\begin{tabular}[t]{@{}l@{}} ... \end{tabular}`.
+   - Kolom "Latent Dimension" diselaraskan menjadi "Dimension" (konsisten dengan Tabel II).
+   - Skala `\resizebox` kini berada pada rasio alami (~97%), menghasilkan font yang proporsional, tajam, dan seragam dengan tabel-tabel lainnya.
+
+### 7.2 Hasil Verifikasi Kompilasi
+- Menggunakan engine MiKTeX `pdflatex.exe` + `bibtex.exe` 4-tahap.
+- Status kompilasi: 0 error, 0 undefined references, 0 overfull hbox pada seluruh tabel.
+- Visual PDF telah diverifikasi via rendering PNG resolusi tinggi: seluruh tabel terlihat rapi, seimbang, dan mudah dibaca.
