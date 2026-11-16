@@ -28,6 +28,12 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+ya
+
+bagaimana jika membuat notebook untuk cek memory consumption?
+
+apakah ada .ipynb untuk cek Memory consumption?
+
 sekarang fokus pada paper_reviews_ieee/paper_audit/2026-11-12_paper-v2-and-response-audit.md bagian "B. Komentar Reviewer 2" (R2-8). tolong:
 - tambahkan Memory consumption, sebelum menambahkan bisa cek dulu experiment/code/md/ (delegasikan subagent untuk cek).
 - perbaiki paper_reviews_ieee/Response-to-Reviewers.md agar sesuai.
