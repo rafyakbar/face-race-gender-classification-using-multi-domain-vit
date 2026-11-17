@@ -28,6 +28,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+tabelnya jadi terlalu kecil, seharusnya full width, letakkan di atas judul subsection saja
+
 masalahnya adalah tabel 16 pada latex terletak pada halaman references, seharusnya tidak
 
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:

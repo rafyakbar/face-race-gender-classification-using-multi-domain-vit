@@ -16,4 +16,35 @@ Dinamika penurunan kesalahan klasifikasi pada model LR dievaluasi melintasi tiga
 
 Dekomposisi kuantitatif terhadap sel-sel off-diagonal matriks konfusi mengungkap bahwa pola kesalahan klasifikasi didominasi oleh misklasifikasi antarras dalam gender yang sama (same-gender cross-race). Pada model tri-domain (245 kesalahan), kebingungan intra-gender lintas-ras mencakup 165 citra (67.35\% dari total kesalahan; 7.64\% dari $N$), menurun signifikan dari 194 kasus pada domain tunggal. Sel konfusi terbesar teramati pada Black Males ke Asian Males (23 citra), Black Females ke White Females (23 citra), dan Asian Females ke Black Females (23 citra). Sebaliknya, kesalahan lintas-gender hanya berjumlah 80 citra (32.65\% dari total kesalahan; 3.70\% dari $N$). Pola ini selaras dengan profil recall Black Females (84.72\%), di mana 37 dari 55 kesalahannya terjadi secara intra-gender menuju White Females (23) dan Asian Females (14).
 
+% Table 16: Double-column float queued here (Page 12) so it renders full-width at the top of Page 13, directly above Subsection IV-E and off the References page.
+\begin{table*}[t]
+\caption{Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.}
+\label{tab:16}
+\label{tab:XVI}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{Data Split Protocol} & \textbf{Accuracy (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} \\
+\midrule
+MD-ViT + XGBoost~\cite{ref20} & Stratified & 89.07 & 89.12 & 89.07 & 89.01 \\
+Dual-ViT + SVM~\cite{ref19} & Stratified & 92.41 & 92.48 & 92.41 & 92.38 \\
+\textbf{Proposed Tri-Domain + SVM} & \textbf{Stratified} & \textbf{93.70} & \textbf{93.72} & \textbf{93.70} & \textbf{93.69} \\
+\midrule
+Single-Domain \textit{Face} + LR & Subject-Disjoint & 86.39 & 86.46 & 86.39 & 86.40 \\
+Single-Domain \textit{Face} + SVM & Subject-Disjoint & 86.16 & 86.24 & 86.16 & 86.19 \\
+Single-Domain \textit{Emotion} + SVM & Subject-Disjoint & 85.79 & 85.84 & 85.79 & 85.80 \\
+Single-Domain \textit{Age} + SVM & Subject-Disjoint & 82.55 & 82.68 & 82.55 & 82.58 \\
+Dual-Domain \textit{Emotion} $\oplus$ \textit{Face} + SVM & Subject-Disjoint & 88.43 & 88.50 & 88.43 & 88.44 \\
+Tri-Domain + RF & Subject-Disjoint & 85.00 & 85.06 & 85.00 & 84.93 \\
+Dual-Domain \textit{Emotion} $\oplus$ \textit{Face} + GNB & Subject-Disjoint & 84.31 & 84.37 & 84.31 & 84.30 \\
+Proposed Tri-Domain + SVM & Subject-Disjoint & 88.61 & 88.71 & 88.61 & 88.63 \\
+\textbf{Proposed Tri-Domain + LR} & \textbf{Subject-Disjoint} & \textbf{88.66} & \textbf{88.75} & \textbf{88.66} & \textbf{88.68} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
 Fenomena tumpang tindih visual antarras yang melandasi pola misklasifikasi tersebut dikaji secara objektif murni berdasarkan distribusi variasi visual citra, tanpa menyertakan asumsi kausal biologis yang tidak teruji secara mandiri. Evaluasi empiris menunjukkan bahwa matriks konfusi merefleksikan karakteristik sebaran data observasional pada korpus yang dievaluasi. Penambahan representasi penuaan usia biologis terbukti memberikan kontribusi terukur dalam menekan kebingungan intra-gender lintas-ras dari 185 menjadi 165 kasus, selaras dengan signifikansi statistik uji McNemar ($p = 0.0073$). Kualifikasi ini menegaskan bahwa keunggulan fusi multi-domain bersumber dari pengayaan kovariat fitur laten yang saling melengkapi, sehingga mampu mengurai ambiguitas visual pada ruang representasi tanpa bertumpu pada spekulasi fenotipik atau kondisi pencahayaan.

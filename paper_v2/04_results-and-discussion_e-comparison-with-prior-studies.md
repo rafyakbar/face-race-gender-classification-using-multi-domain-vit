@@ -1,5 +1,3 @@
-## E. Comparison with Prior Studies
-
 <a id="tab16"></a>
 **Table XVI. Contextual and Controlled Comparison of the Proposed Framework on the DemogPairs Dataset.**
 
@@ -17,6 +15,8 @@
 | Dual-Domain `Emotion ⊕ Face` + GNB | Subject-Disjoint | 84.31 | 84.37 | 84.31 | 84.30 |
 | Proposed Tri-Domain + SVM | Subject-Disjoint | 88.61 | 88.71 | 88.61 | 88.63 |
 | **Proposed Tri-Domain + LR** | **Subject-Disjoint** | **88.66** | **88.75** | **88.66** | **88.68** |
+
+## E. Comparison with Prior Studies
 
 Perbandingan empiris kerangka kerja usulan terhadap studi terdahulu dan baseline internal pada dataset DemogPairs disajikan pada [Table XVI](#tab16). Evaluasi distrukturkan ke dalam dua kelompok protokol partisi data, yaitu kelompok protokol Stratified dan kelompok protokol Subject-Disjoint. Pada kelompok protokol Stratified yang merepresentasikan komparasi kontekstual, Proposed Tri-Domain + SVM mencatat performa tertinggi dengan Akurasi 93.70%, Presisi 93.72%, Recall 93.70%, dan F1-Score 93.69%. Capaian tersebut melampaui model terdahulu Dual-ViT + SVM dengan Akurasi 92.41% [[19]](06_references.md#ref19) dan MD-ViT + XGBoost dengan Akurasi 89.07% [[20]](06_references.md#ref20). Pada kelompok protokol Subject-Disjoint yang mengevaluasi generalisasi tanpa kebocoran identitas, Proposed Tri-Domain + LR memimpin tolok ukur dengan Akurasi 88.66%, disusul oleh Proposed Tri-Domain + SVM (88.61%). Fusi tri-domain secara konsisten mengungguli konfigurasi single-domain dan dual-domain.
 
