@@ -28,6 +28,11 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:
+- letakkan tabel sebelum paragraf pertama.
+- jangan lupa update paper_latex_id_v2.
+- buat commit dan push.
+
 pada paper_latex_id_v2/:
 - ukuran font tabel tidak konsisten
 - TABLE 7., TABLE 8., TABLE 9., TABLE 10., terlalu kecil, sepertinya isi dari kolom "Best Hyperparameters" terlalu panjang, bisa dibuat menjadi 2 hingga 3 row
