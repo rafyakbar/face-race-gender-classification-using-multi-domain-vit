@@ -28,6 +28,8 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+masalahnya adalah tabel 16 pada latex terletak pada halaman references, seharusnya tidak
+
 paper_v2/04_results-and-discussion_e-comparison-with-prior-studies.md:
 - letakkan tabel sebelum paragraf pertama.
 - jangan lupa update paper_latex_id_v2.
