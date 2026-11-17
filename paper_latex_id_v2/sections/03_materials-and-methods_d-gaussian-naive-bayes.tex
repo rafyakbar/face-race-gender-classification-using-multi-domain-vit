@@ -1,14 +1,13 @@
 \subsection{Gaussian Naive Bayes}
 \label{sec:gaussian_naive_bayes}
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \caption{Hyperparameter Search Space for Gaussian Naive Bayes Classifier.}
 \label{tab:4}
 \label{tab:IV}
 \label{tab:gnb_params}
 \centering
 \footnotesize
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llc}
 \toprule
 Component / Hyperparameter & Evaluated Values & Count \\
@@ -19,9 +18,8 @@ Variance Smoothing & $\text{logspace}(-9, 2, 40)$ ($1.0 \times 10^{-9}$ to $1.0 
 \midrule
 \multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{240 (1,200 fits)} \\
 \bottomrule
-\end{tabular}%
-}
-\end{table}
+\end{tabular}
+\end{table*}
 
 Berdasarkan Teorema Bayes, pengklasifikasi GNB mengestimasi probabilitas posterior kelas demografis interseksional dengan asumsi bahwa seluruh dimensi fitur kontinu bersifat independen secara bersyarat~\cite{ref35}. Fungsi kerapatan probabilitas distribusi normal memodelkan likelihood fitur kontinu terhadap kelas target sesuai formulasi pada \eqref{eq:9}, di mana $x_i$ menyatakan nilai fitur kontinu ke-$i$, $y$ adalah variabel label kelas, $c$ merupakan kategori kelas target, serta $\mu_{c,i}$ dan $\sigma_{c,i}^2$ masing-masing merepresentasikan rata-rata (mean) dan varians fitur ke-$i$ pada kelas $c$~\cite{ref35}:
 \begin{equation}

@@ -28,6 +28,17 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+pada paper_latex_id_v2:
+- saya ingin TABLE 3. dan TABLE 4. berada pada halaman 6.
+- jangan ubah yg lain selain yg diminta.
+- buat commit dan push jika selesai.
+
+paper_v2/03_materials-and-methods_0-overview.md:
+- letakkan figure sebelum judul "III. MATERIALS AND METHODS", agar pada latex (paper_latex_id_v2/) figure tersebut terletak di halaman 4.
+paper_latex_id_v2:
+- audit judul dari section/subsection, karena banyak yang tidak sama dengan paper_v2
+
+
 tabelnya jadi terlalu kecil, seharusnya full width, letakkan di atas judul subsection saja
 
 masalahnya adalah tabel 16 pada latex terletak pada halaman references, seharusnya tidak
