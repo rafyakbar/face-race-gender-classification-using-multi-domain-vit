@@ -1,0 +1,49 @@
+\subsection{Feature Ablation Study}
+\label{sec:feature_ablation}
+\label{sec:feature_ablation_study}
+
+A comparative evaluation of data leakage is transparently presented to validate model robustness against critical scrutiny of subject identity overlap. The comparison between the Stratified Split protocol, based on image-level stratified random partitioning with full subject overlap, and the primary strict subject-disjoint partitioning protocol is summarized in Table~\ref{tab:XIII}. All architectures experience an accuracy drop under the subject-disjoint protocol, substantiating the existence of identity memorization confounding effects in random evaluations. The largest performance corrections occur in high-representation-capacity models, namely SVM, which is corrected from 93.70\% to 88.61\% (a decrease of -5.09~pp), and LR from 92.73\% to 88.66\% (a decrease of -4.07~pp). Conversely, low-capacity models exhibit minimal declines, such as RF (-1.85~pp) and GNB (-1.44~pp). These results demonstrate that the 88.66\% achievement by LR reflects the genuine demographic generalization bound.
+
+\begin{table*}[htbp]
+\caption{Data Leakage Ablation Study on Stratified Split and Subject-Disjoint Protocols.}
+\label{tab:13}
+\label{tab:XIII}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Classifier} & \textbf{Stratified Split} & \textbf{Subject-Disjoint} & \textbf{Difference ($\Delta$)} & \textbf{Leakage Severity} \\
+\midrule
+Random Forest & 86.85\% & 85.00\% & -1.85\% & Low \\
+Gaussian Naive Bayes & 85.05\% & 83.61\% & -1.44\% & Very Low \\
+Logistic Regression & 92.73\% & 88.66\% & -4.07\% & High (Corrected) \\
+Support Vector Machine & 93.70\% & 88.61\% & -5.09\% & High (Corrected) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Paired inferential statistical testing was conducted across all 2,160 independent test samples using Edwards' continuity-corrected McNemar test and the two-sided exact binomial test, as summarized in Table~\ref{tab:XIV}. This inferential analysis reveals four fundamental scientific interpretations concerning the dynamics of the multi-domain representation space. First, multi-domain representation superiority is convincingly confirmed over the single-domain Face baseline for both the LR classifier ($\chi^2 = 19.69, p < 0.001$) and the SVM classifier ($\chi^2 = 20.96, p < 0.001$), proving that cross-domain integration substantially enriches latent demographic features. Second, linear age feature complementarity is demonstrably evident in LR when integrating biological age representations on top of the Emotion and Face pair ($\chi^2 = 7.10, p = 0.0073$), where aging variance provides orthogonal information that is optimally leveraged by the linear separator. Third, conversely in the non-linear SVM model, integrating the age domain on top of the Emotion and Face pair yields no significant difference ($\chi^2 = 0.12, p = 0.7343$), confirming the occurrence of asymptotic non-linear feature saturation due to the capability of the RBF kernel to absorb the majority of discriminative variance already from the dual-domain configuration. Fourth, a direct comparison between Tri-Domain LR and Tri-Domain SVM yields $\chi^2 = 0.00$ ($p = 1.0000$) with a classification discordance of only a single image, proving the attainment of strict predictive parity between the two classifier architectures.
+
+\begin{table*}[htbp]
+\caption{Paired Inferential Hypothesis Testing Across Multi-Domain Configurations.}
+\label{tab:14}
+\label{tab:XIV}
+\centering
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Comparison Pair} & \textbf{Edwards $\chi^2$} & \textbf{McNemar $p$-value} & \textbf{Exact Binomial $p$-value} & \textbf{Statistical Inference ($\alpha = 0.05$)} \\
+\midrule
+Tri-Domain LR vs Single Face & 19.69 & $< 0.001$ & $< 0.001$ & Significant ($p < 0.001$) \\
+Tri-Domain SVM vs Single Face & 20.96 & $< 0.001$ & $< 0.001$ & Significant ($p < 0.001$) \\
+Tri-Domain LR vs Dual Emotion $\oplus$ Face & 7.10 & 0.0073 & 0.0075 & Significant ($p < 0.01$) \\
+Tri-Domain SVM vs Dual Emotion $\oplus$ Face & 0.12 & 0.7343 & 0.7500 & Not Significant ($p > 0.05$) \\
+Tri-Domain LR vs Tri-Domain SVM & 0.00 & 1.0000 & 1.0000 & Not Significant ($p = 1.0000$) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+The dynamics of progressive fusion contributions from single-domain to dual-domain and tri-domain representations in Table~\ref{tab:VII}, Table~\ref{tab:VIII}, Table~\ref{tab:IX}, and Table~\ref{tab:X} demonstrate fundamentally distinct feature-space responses across classifiers. In the linear LR model, integrating biological age representations on top of the Emotion and Face pair yields a complementary improvement of +1.21~pp from 87.45\% to 88.66\%. Conversely, the non-linear SVM classifier exhibits asymptotic saturation, where adding the age domain from the Emotion and Face combination (88.43\%) to the tri-domain (88.61\%) produces only a marginal gain of +0.18~pp. This discrepancy in response underscores that the non-linear decision boundary of the RBF kernel has absorbed the majority of discriminative variance as early as the dual-domain stage, whereas $L_2$ regularization in LR effectively leverages the orthogonality of aging information.

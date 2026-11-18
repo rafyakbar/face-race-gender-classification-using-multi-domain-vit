@@ -1,0 +1,4 @@
+\subsection{Experimental Setup}
+\label{sec:experimental_setup}
+
+All computational experiments in this study were conducted on a hardware infrastructure comprising an Intel Core i9-13900H processor, 32~GB DDR5 Random Access Memory (RAM) main memory, and an NVIDIA GeForce RTX 4060 Laptop Graphics Processing Unit (GPU) with 8~GB Video Random Access Memory (VRAM). The computational workload allocation implemented a coordinated hybrid scheme to ensure data processing execution efficiency. The ViT latent representation extraction stage leveraged NVIDIA GPU acceleration via PyTorch, whereas model training and 5-Fold CV hyperparameter tuning for classical classifiers were optimized on a multicore Central Processing Unit (CPU) using scikit-learn. The software stack was built on Python with the PyTorch and scikit-learn libraries within an isolated environment to guarantee full reproducibility across all experimental procedures.

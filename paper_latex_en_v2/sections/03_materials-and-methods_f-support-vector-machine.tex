@@ -1,0 +1,33 @@
+\subsection{Support Vector Machine}
+\label{sec:support_vector_machine_classifier}
+\label{sec:support_vector_machine}
+
+\begin{table*}[htbp]
+\caption{Hyperparameter Search Space for Support Vector Machine Classifier.}
+\label{tab:6}
+\label{tab:VI}
+\label{tab:svm_params}
+\centering
+\footnotesize
+\begin{tabular}{llc}
+\toprule
+Component / Hyperparameter & Evaluated Values & Count \\
+\midrule
+Feature Scaler & None, MinMaxScaler & 2 \\
+Dimensionality Reduction (PCA) & None, 0.50, 0.75 & 3 \\
+Regularization Parameter & 0.01, 0.1, 1, 10 & 4 \\
+Kernel Function & 'linear', 'rbf', 'poly' & 3 \\
+Polynomial Degree & 2, 3 & 2 \\
+Kernel Coefficient & 'scale', 'auto' & 2 \\
+\midrule
+\multicolumn{2}{r}{\textbf{Total Grid Combinations}} & \textbf{288 (1,440 fits)} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The SVM classifier constructs a maximum margin hyperplane to separate the six intersectional classes in the high-dimensional latent space~\cite{ref40}. Kernel functions project the nonlinear distribution of multi-domain features into a higher-dimensional space, encompassing linear, Radial Basis Function (RBF), and polynomial kernels~\cite{ref41}. The polynomial kernel formulation in \eqref{eq:11} computes the dot product $\langle \mathbf{x}_i, \mathbf{x}_j \rangle$ between feature vectors $\mathbf{x}_i$ and $\mathbf{x}_j$, where $\gamma$ denotes the kernel scale, $d \in \{2, 3\}$ determines the mapping degree, and the intercept constant $\text{coef0} = 0.0$ follows the scikit-learn default value~\cite{ref42}:
+\begin{equation}
+K(\mathbf{x}_i, \mathbf{x}_j) = (\gamma \langle \mathbf{x}_i, \mathbf{x}_j \rangle + \text{coef0})^d, \quad d \in \{2, 3\}
+\label{eq:11}
+\end{equation}
+This polynomial mapping facilitates the efficient capture of nonlinear interactions across visual dimensions~\cite{ref43}. Hyperparameter optimization evaluates the penalty parameter $C \in \{0.01, 0.1, 1, 10\}$, kernel variations, kernel coefficient $\gamma$, polynomial degrees, as well as scaling and PCA options, yielding 288 Cartesian grid combinations (108 effective unique configurations) or 1,440 total fits under 5-Fold StratifiedGroupKFold CV with subject isolation as summarized in Table~\ref{tab:6}.

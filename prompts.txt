@@ -28,6 +28,19 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+perbaiki abstrak pada paper_latex_en_v2 agar berada dalam target kata, jangan terlalu mengubah banyak. jangan mengubah yg lain.
+
+coba audit paper_latex_en_v2, apakah sudah sesuai dengan target kata yg ada pada paper_outline_v1.1.md. delegasikan ke banyak subagent untuk cek.
+jangan ubah file apapun dulu, cukup jawab dulu.
+
+terjemahkan paper_latex_id_v2 (Bahasa Indonesia) ke dalam paper_latex_en_v2 (Bahasa Inggris):
+- jangan mengubah kalimat, struktur, atau makna apapun, hanya translate!
+- elemen yang TIDAK boleh diubah: \cite/\label/\ref (key), persamaan matematika, angka & metrik, path gambar, nama tabel/gambar, hyperparameter, dan seluruh isi references.bib.
+- preamble access.tex, urutan section, dan struktur file harus identik dengan paper_latex_id.
+- cek juga style templatenya (konformansi template/ACCESS_latex_template_20260513), lalu build pdf nya.
+- delegasi ke subagent, satu file section satu subagent agar optimal, berikan instruksi yang jelas.
+lakukan dengan sangat amat teliti, jika ada yang ingin dikonfirmasi atau ditanyakan silahkan!
+
 I. INTRODUCTION:
 - pada kontribusi ilmiah poin ke 3, jangan menggunakan kata hipotesis, karena serem dan bebannya berat.
 III. MATERIALS AND METHODS - Overview:
