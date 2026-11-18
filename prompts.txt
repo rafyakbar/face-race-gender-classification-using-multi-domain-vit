@@ -28,6 +28,40 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+I. INTRODUCTION:
+- pada kontribusi ilmiah poin ke 3, jangan menggunakan kata hipotesis, karena serem dan bebannya berat.
+III. MATERIALS AND METHODS - Overview:
+- pada bagian overview yang menjelaskan Figure 1, tidak usah ada rumus di dalam paragrafnya "ztri = fface ⊕ femotion ⊕ fage".
+III. MATERIALS AND METHODS - B. VISION TRANSFORMER:
+- seharusnya nomor tahap tidak usah diletakkan di dalam kurung.
+III. MATERIALS AND METHODS - H. EVALUATION METRICS:
+- tidak usah ada "(N = 2.160)".
+IV. RESULTS AND DISCUSSION - A. GLOBAL PERFORMANCE:
+- tidak usah ada "(N = 2.160)".
+- TABLE 7., TABLE 8., TABLE 9., TABLE 10. tidak usah ada kolom "Dimension".
+- paragraf 6 tidak usah ada perbandingan kecepatan ekstraksi fitur dengan cpu.
+IV. RESULTS AND DISCUSSION - B. FEATURE ABLATION STUDY:
+- tidak usah ada * untuk kolom Stratified Split pada TABLE 13.
+- TABLE 13. tidak usah ada yang dibold rows nya dan tidak usah ada note.
+- pada TABLE 14. tidak usah ada kolom "Scientific Interpretation", karena seharusnya dijelaskan pada paragraf. jika perlu bisa menambah 1 paragraf.
+IV. RESULTS AND DISCUSSION - C. Intersectional Subgroup Performance:
+- tidak usah ada "(N = 2.160)".
+- TABLE 15. tidak usah ada yang dibold.
+- usahakan jangan ada karakter ";".
+IV. RESULTS AND DISCUSSION - D. ERROR PATTERN ASSESSMENT:
+- tidak usah ada "(N = 2.160)".
+- usahakan jangan ada karakter ";".
+V. CONCLUSION:
+- tidak usah ada "2.304 dimensi".
+tolong lakukan perbaikan yang saya instruksikan seperti di atas, perhatikan:
+- perbaiki paper_v2/ dan paper_latex_id_v2/.
+- jika diperlukan bisa update paper_outline_v1.1.md dan/atau paper_reviews_ieee/Response-to-Reviewers.md.
+- delegasikan ke banyak subagent secara paralel agar optimal.
+- berikan instruksi ke subagent dengan jelas.
+jika ada yang mau dikonfirmasi silahkan bertanya.
+
+jika saya melakukan perubahan di atas, apakah ada potensi untuk merusak jawaban dari komentar reviewer? jangan ubah file apapun dulu, jawab dulu.
+
 pada paper_latex_id_v2:
 - saya ingin TABLE 3. dan TABLE 4. berada pada halaman 6.
 - jangan ubah yg lain selain yg diminta.

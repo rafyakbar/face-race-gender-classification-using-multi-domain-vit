@@ -160,7 +160,7 @@ Struktur narasi direorganisasi menjadi 7 paragraf terfokus yang memadukan kejela
 - **Poin Narasi**:
   1. Formulasi kerangka kerja ablasi tujuh skema fitur yang mengintegrasikan backbone Vision Transformer pra-latih yang dibekukan dengan prapemrosesan tingkat-fold bebas kebocoran serta optimasi hyperparameter lintas empat famili pengklasifikasi untuk klasifikasi demografis interseksional.
   2. Penetapan tolok ukur evaluasi bebas kebocoran identitas pada dataset DemogPairs dan studi komparatif ablasi kebocoran data untuk menguantifikasi efek memorisasi identitas wajah.
-  3. Pengujian hipotesis inferensial berpasangan yang memvalidasi keunggulan signifikan representasi multi-domain atas baseline domain tunggal, membuktikan paritas prediktif model linier dan non-linier teratas, serta mengungkap komplementaritas fitur usia linier versus kejenuhan representasi asimtotik non-linier.
+  3. Evaluasi signifikansi statistik inferensial berpasangan yang memvalidasi keunggulan signifikan representasi multi-domain atas baseline domain tunggal, membuktikan paritas prediktif model linier dan non-linier teratas, serta mengungkap komplementaritas fitur usia linier versus kejenuhan representasi asimtotik non-linier.
   4. Penyajian profil efisiensi komputasi komprehensif mencakup waktu ekstraksi ViT, biaya pelatihan, latensi inferensi, dan jejak memori yang merealisasikan kepala pengklasifikasi hilir berbobot sangat ringan untuk implementasi praktis.
 
 ### Paragraph 7: Paper Organization
@@ -694,13 +694,13 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 
 **Table XIV. Paired Inferential Hypothesis Testing Across Multi-Domain Configurations.**
 
-| Comparison Pair | Edwards $\chi^2$ | McNemar $p$-value | Exact Binomial $p$-value | Statistical Inference ($\alpha = 0.05$) | Scientific Interpretation |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| Tri-Domain LR vs Single Face | 19.69 | < 0.001 | < 0.001 | Significant ($p < 0.001$) | Multi-domain representation superiority |
-| Tri-Domain SVM vs Single Face | 20.96 | < 0.001 | < 0.001 | Significant ($p < 0.001$) | Multi-domain representation superiority |
-| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0073 | 0.0075 | Significant ($p < 0.01$) | Linear age feature complementarity |
-| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7343 | 0.7500 | Not Significant ($p > 0.05$) | Asymptotic non-linear feature saturation |
-| Tri-Domain LR vs Tri-Domain SVM | 0.00 | 1.0000 | 1.0000 | Not Significant ($p = 1.0000$) | Strict predictive parity |
+| Comparison Pair | Edwards $\chi^2$ | McNemar $p$-value | Exact Binomial $p$-value | Statistical Inference ($\alpha = 0.05$) |
+| :--- | :---: | :---: | :---: | :---: |
+| Tri-Domain LR vs Single Face | 19.69 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
+| Tri-Domain SVM vs Single Face | 20.96 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
+| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0073 | 0.0075 | Significant ($p < 0.01$) |
+| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7343 | 0.7500 | Not Significant ($p > 0.05$) |
+| Tri-Domain LR vs Tri-Domain SVM | 0.00 | 1.0000 | 1.0000 | Not Significant ($p = 1.0000$) |
 
 > **Catatan Table XIV:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
 
@@ -858,9 +858,9 @@ Bagian ini disusun dalam **2 paragraf terpadu** diikuti **Data Availability Stat
 ### Paragraph 1: Concluding Remarks and Scientific Findings
 - **Target Kata**: 120–150 kata.
 - **Poin Narasi**:
-  1. Penelitian ini membuktikan efektivitas fusi representasi multi-domain ViT (`Face ⊕ Emotion ⊕ Age`: 2.304 dimensi) untuk klasifikasi 6 kelas interseksional demografis wajah dari 3 kelompok ras makro (Asian, Black, White) pada dataset DemogPairs.
+  1. Penelitian ini membuktikan efektivitas fusi representasi multi-domain ViT (`Face ⊕ Emotion ⊕ Age`) untuk klasifikasi 6 kelas interseksional demografis wajah dari 3 kelompok ras makro (Asian, Black, White) pada dataset DemogPairs.
   2. Di bawah protokol ketat **Strict Subject-Disjoint Partitioning** dengan 0% kebocoran identitas (480 subjek latih dan 120 subjek uji *held-out*), pengklasifikasi LR meraih performa puncak dengan akurasi **88.66%**, presisi makro **88.75%**, recall makro **88.66%**, dan F1-score makro **88.68%**, disusul pengklasifikasi SVM dengan akurasi **88.61%**, presisi makro **88.71%**, recall makro **88.61%**, dan F1-score makro **88.63%** (disajikan terpadu tanpa tanda kurung).
-  3. Pengujian hipotesis McNemar berpasangan membuktikan signifikansi fusi tri-domain terhadap representasi domain tunggal `Face` ($p < 0.001$) serta mengonfirmasi paritas prediktif antara LR dan SVM ($p = 1.0000$, dengan selisih bersih satu sampel dari 2.160 citra).
+  3. Pengujian signifikansi statistik inferensial McNemar berpasangan membuktikan signifikansi fusi tri-domain terhadap representasi domain tunggal `Face` ($p < 0.001$) serta mengonfirmasi paritas prediktif antara LR dan SVM ($p = 1.0000$, dengan selisih bersih satu sampel dari 2.160 citra).
   4. Evaluasi keadilan algoritmik antarsubkelompok menunjukkan stabilitas prediksi dengan rentang recall **84.72% hingga 94.44%** serta kesenjangan EOD sebesar **9.72 pp** pada kedua model teratas (tanpa menyertakan angka ukuran model MB atau kecepatan/latensi ms).
 
 ### Paragraph 2: Honest Limitations and Future Research Directions
