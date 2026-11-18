@@ -28,6 +28,14 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+I. INTRODUCTION:
+- tidak usah ada informasi mengenai total 31.920.
+perhatikan:
+- jangan mengubah banyak kata.
+- perbaiki paper_v2/, paper_latex_id_v2/, dan paper_latex_en_v2/.
+- compile ulang pdf nya.
+- buat commit dan push.
+
 perbaiki abstrak pada paper_latex_en_v2 agar berada dalam target kata, jangan terlalu mengubah banyak. jangan mengubah yg lain.
 
 coba audit paper_latex_en_v2, apakah sudah sesuai dengan target kata yg ada pada paper_outline_v1.1.md. delegasikan ke banyak subagent untuk cek.
