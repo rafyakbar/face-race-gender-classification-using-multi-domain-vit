@@ -13,11 +13,12 @@ perhatikan:
 
 pelajari:
 1. README.md
-2. paper/
+2. paper_v2/
 3. paper_reviews_ieee/
 4. experiment/code/archive/md_old/
 5. experiment/code/md/
 6. paper_outline_v1.1.md (ini paper outline yang baru)
+7. "D:\Research\ieee-access_response-to-reviewer_example_id.txt" (contoh membuat response untuk reviewer)
 pelajari dengan cepat
 
 Identifikasi dan pelajari perubahan yang telah terjadi dilakukan, jika bisa dibuat menjadi beberapa commit, maka buat menjadi beberapa commit! Sekarang buat commit untuk perubahan-perubahan tersebut dan PUSH! Gunakan skill 'git-commit' atau sesuai dengan best practice!
@@ -27,6 +28,19 @@ jupyter lab --ContentsManager.allow_hidden=True
 # ==============================================================================
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
+
+coba audit kesesuaian antara:
+- paper_reviews_ieee/Response-to-Reviewers.md,
+- paper_reviews_ieee/Comments.md,
+- paper_v2/,
+- dengan paper_reviews_ieee/Response-to-Reviewers.md
+lakukan dengan sangat amat teliti.
+hasilnya tuliskan pada "D:\Research\face-race-gender-classification-using-multi-domain-vit\paper_reviews_ieee\response_audit\".
+tidak usah menggunakan skill apapun.
+
+ini adalah template asli mengenai response to reviewer dari ieee paper_reviews_ieee/raw/_ IEEE-Access-Response-to-Reviewers-template-6.26.23.docx.
+apakah paper_reviews_ieee/Response-to-Reviewers.md tidak terlalu panjang? ataukah sudah sesuai?
+coba cari referensi di internet mengenai tata cara memberi response ke reviewer ieee access dengan baik.
 
 I. INTRODUCTION:
 - tidak usah ada informasi mengenai total 31.920.
