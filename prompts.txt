@@ -29,6 +29,41 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+2.1 Reviewer 1:
+- R1-1	Pemadatan Seksi I (Introduction): lakukan sesuai rekomendasi.
+- R1-2	Restrukturisasi Seksi II (Related Works) & Persamaan: lakukan sesuai rekomendasi.
+- R1-3	Redesain & Penjelasan Figure 3: lakukan sesuai rekomendasi.
+- R1-4	Pembahasan Grafik Figure 4 (Matriks Konfusi): lakukan sesuai rekomendasi.
+- R1-5	Detail Dataset, Kontribusi, & Biaya Waktu (Time Cost): tidak usah ada perbandingan dengan cpu, berarti cukup perbaiki response dan/atau comments saja.
+- R1-6	Perbandingan dengan Lebih Banyak Metode: lakukan sesuai rekomendasi. tapi ini harus di audit dulu mengenai perhitungan-perhitungannya, delegasikan ke subagent.
+2.2 Reviewer 2:
+- R2-2	Kebocoran Data & Generalisasi Subjek (Kritis)
+- R2-3	Spesifikasi Prapemrosesan & Reproduktibilitas ViT
+- R2-4	Rekonsiliasi Ruang Pencarian Hyperparameter
+- R2-5	Interpretasi Signifikansi Statistik & Uji McNemar
+- R2-6	Batasan Ruang Lingkup Analisis Keadilan Algoritmik
+- R2-7	Kualifikasi Perbandingan dengan Metode Terdahulu
+- R2-8	Pelaporan 5 Dimensi Efisiensi Komputasi
+- R2-9	Penguatan Bukti Interpretasi Fenotipik & Pola Kesalahan
+- R2-10	Pembatasan Cakupan Kesimpulan & Generalisasi
+
+coba audit kesesuaian antara:
+- paper_reviews_ieee/Response-to-Reviewers.md,
+- paper_reviews_ieee/Comments.md,
+- paper_v2/,
+- dengan paper_reviews_ieee/Response-to-Reviewers.md
+perhatikan:
+- bisa delegasi ke beberapa subagent untuk melakukan audit.
+- hasilnya tuliskan pada "D:\Research\face-race-gender-classification-using-multi-domain-vit\paper_reviews_ieee\response_audit\".
+- tidak usah menggunakan skill apapun.
+- usahakan tidak mengubah paper_v2/ (isi dari paper_latex_id_v2/ dan paper_latex_en_v2/ sama dengan paper_v2/). kecuali jika kritikal seperti angka-angka yg salah.
+- untuk verifikasi halaman harus sesuai dengan pdf dari paper_latex_en_v2/.
+- susun dalam bentuk seperti tabel dengan kolom: Kode	Aspek yang Diaudit	Temuan Kesesuaian / Ketidaksesuaian	Keparahan	Rekomendasi Perbaikan.
+- lakukan dengan teliti.
+jika ada yang ingin dikonfirmasi silahkan bertanya.
+
+berikan kolom rekomendasi perbaikan pada tabel 2.1 dan 2.2
+
 coba audit kesesuaian antara:
 - paper_reviews_ieee/Response-to-Reviewers.md,
 - paper_reviews_ieee/Comments.md,
