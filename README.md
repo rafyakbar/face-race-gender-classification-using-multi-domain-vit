@@ -36,7 +36,9 @@
   - [`IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md`](paper_reviews_ieee/IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md) — Surat keputusan editorial resmi.
   - [`IEEE-Access_Response-to-Reviewers-template.md`](paper_reviews_ieee/IEEE-Access_Response-to-Reviewers-template.md) — Templat resmi surat tanggapan butir-per-butir (point-by-point response letter).
   - [`Request-for-Byline-Change.md`](paper_reviews_ieee/Request-for-Byline-Change.md) — Formulir resmi perubahan susunan kepengarangan (author byline change form).
+  - [`Response-to-Reviewers.md`](paper_reviews_ieee/Response-to-Reviewers.md) — Surat tanggapan resmi point-by-point terhadap komentar Editor, Reviewer 1, dan Reviewer 2.
   - [`Resubmission-Checklist.md`](paper_reviews_ieee/Resubmission-Checklist.md) — Daftar periksa kepatuhan resubmisi 10 poin resmi.
+  - [`paper_latex_v2_en_audit.md`](paper_reviews_ieee/paper_latex_v2_en_audit.md) — Laporan audit kesesuaian target jumlah kata `paper_latex_en_v2/` terhadap `paper_outline_v1.1.md`.
   - [paper_outline_audit/](paper_reviews_ieee/paper_outline_audit/) — Berkas laporan audit multi-model independen dan sintesis terpadu terhadap kepatuhan ulasan IEEE Access.
 - **Panduan Operasional & Pedoman Standar Penulisan:**
   - [`WORKFLOW.md`](WORKFLOW.md) — Standard Operating Procedure (SOP) untuk siklus hidup naskah riset 5 tahap.
@@ -321,15 +323,17 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 │   ├── temp/ref_part_*.md                 # 10 log audit bibliografi modular (entri [1]-[51])
 │   ├── references.txt                     # Registri pelacakan & verifikasi sitasi tingkat kalimat
 │   └── references/                        # 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
-├── paper_latex_en/                        # Paket LaTeX IEEE Access siap submit (Bahasa Inggris)
+├── paper_latex_en/                        # Paket LaTeX IEEE Access Bahasa Inggris (v1.0 pra-revisi)
+├── paper_latex_en_v2/                     # Paket LaTeX IEEE Access Bahasa Inggris siap submit (v2.0 Revisi, 16 hlm.)
 │   ├── access.tex                         # Entrypoint LaTeX master dengan perintah \input{} modular
 │   ├── access.pdf                         # Berkas PDF naskah Bahasa Inggris hasil kompilasi dua kolom
 │   ├── ieeeaccess.cls / IEEEtran.bst      # Kelas dokumen resmi IEEE Access dan format bibliografi
 │   ├── references.bib                     # Basis data terpadu BibTeX
 │   └── sections/                          # 21 berkas section LaTeX modular (00_title.tex s.d. 07_biographies.tex)
-├── paper_latex_id/                        # Paket LaTeX IEEE Access versi referensi Bahasa Indonesia
+├── paper_latex_id/                        # Paket LaTeX IEEE Access Bahasa Indonesia (v1.0 pra-revisi)
+├── paper_latex_id_v2/                     # Paket LaTeX IEEE Access Bahasa Indonesia definitif (v2.0 Revisi)
 │   ├── access.tex / access.pdf            # Berkas sumber LaTeX & hasil kompilasi PDF Bahasa Indonesia
-│   └── sections/                          # Bagian-bagian naskah terjemahan Bahasa Indonesia
+│   └── sections/                          # 21 berkas section LaTeX modular Bahasa Indonesia
 ├── paper_outline_v1.0.md                  # Master outline naskah v1.0 (Arsip historis pra-revisi / Subject-Overlap)
 ├── paper_outline_v1.1.md                  # Master outline naskah v1.1 (Definitif revisi IEEE Access / Subject-Disjoint)
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review internal multi-agent (Round 1 & 2)
@@ -338,7 +342,9 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Keputusan resmi & komentar reviewer
 │   ├── IEEE-Access_Response-to-Reviewers-template.md              # Templat tanggapan butir-per-butir
 │   ├── Request-for-Byline-Change.md                               # Formulir resmi perubahan susunan kepengarangan
+│   ├── Response-to-Reviewers.md                                   # Surat tanggapan resmi point-by-point (final)
 │   ├── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+│   ├── paper_latex_v2_en_audit.md                                 # Audit kesesuaian jumlah kata paper_latex_en_v2/
 │   └── paper_outline_audit/                                       # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                      # Berkas pengemasan submisi formal & laporan kepatuhan IEEE
 ├── prompts.txt                            # Catatan kronologis prompt dan instruksi rekayasa eksperimen

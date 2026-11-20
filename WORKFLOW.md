@@ -33,7 +33,7 @@ Pedoman ini bersifat **agnostik terhadap topik penelitian** (*project-independen
                     ▼                                         ▼
 ┌───────────────────────────────────────┐ ┌───────────────────────────────────────┐
 │     TAHAP 3: LATEX BAHASA INDONESIA   │ │      TAHAP 4: LATEX BAHASA INGGRIS    │
-│           (paper_latex_id/)           │ │           (paper_latex_en/)           │
+│    (paper_latex_id_v2/ & _id/ v1)     │ │    (paper_latex_en_v2/ & _en/ v1)     │
 │ - Implementasi templat IEEE Access    │ │ - Implementasi templat IEEE Access    │
 │   (ieeeaccess.cls & IEEEtran.bst)     │ │   (ieeeaccess.cls & IEEEtran.bst)     │
 │ - Modularisasi naskah (sections/*.tex)│ │ - Naskah final submission (Camera-    │
@@ -110,12 +110,12 @@ paper_v2/
 
 ---
 
-### 3. Tahap 3 & 4: Modular LaTeX (`paper_latex_id/` & `paper_latex_en/`)
+### 3. Tahap 3 & 4: Modular LaTeX (`paper_latex_id_v2/` & `paper_latex_en_v2/`, serta arsip v1 `paper_latex_id/` & `paper_latex_en/`)
 Direktori LaTeX mengimplementasikan templat resmi penerbit IEEE Access (`ieeeaccess.cls` dan `IEEEtran.bst`).
 
 #### Struktur Direktori LaTeX:
 ```
-paper_latex_[id|en]/
+paper_latex_[id|en]_v2/               # Versi aktif revisi v2.0 (arsip v1: paper_latex_[id|en]/)
 ├── access.tex                        # Berkas induk LaTeX (memuat preamble, paket, dan perintah \input{})
 ├── access.pdf                        # Berkas PDF hasil kompilasi dua kolom standar IEEE Access
 ├── ieeeaccess.cls                    # Kelas dokumen resmi IEEE Access

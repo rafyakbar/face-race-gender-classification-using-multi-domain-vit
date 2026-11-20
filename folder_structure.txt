@@ -71,14 +71,16 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── temp/ref_part_*.md                     # 10 berkas log audit bibliografi modular [1] s.d. [51]
 │   ├── references.txt                         # Registri pemetaan sitasi tingkat kalimat
 │   └── references/                            # 51 berkas sumber acuan primer (.bib, .ris, .pdf, .html)
-├── paper_latex_en/                            # Paket naskah Bahasa Inggris resmi IEEE Access (Submission-Ready)
+├── paper_latex_en/                            # Paket naskah Bahasa Inggris IEEE Access (v1.0 pra-revisi)
+├── paper_latex_en_v2/                         # Paket naskah Bahasa Inggris resmi IEEE Access siap submit (v2.0 Revisi, 16 hlm.)
 │   ├── access.tex / access.pdf                # Master berkas sumber LaTeX & naskah terkompilasi
 │   ├── ieeeaccess.cls / IEEEtran.bst          # Berkas kelas dan gaya bibliografi resmi IEEE Access
 │   ├── references.bib                         # Basis data BibTeX terintegrasi
 │   └── sections/                              # 21 modul LaTeX individual (00_title.tex s.d. 07_biographies.tex)
-├── paper_latex_id/                            # Paket naskah Bahasa Indonesia IEEE Access (Rujukan Internal)
+├── paper_latex_id/                            # Paket naskah Bahasa Indonesia IEEE Access (v1.0 pra-revisi)
+├── paper_latex_id_v2/                         # Paket naskah Bahasa Indonesia IEEE Access definitif (v2.0 Revisi)
 │   ├── access.tex / access.pdf                # Master sumber LaTeX & PDF Bahasa Indonesia
-│   └── sections/                              # Modul LaTeX terjemahan Bahasa Indonesia
+│   └── sections/                              # 21 modul LaTeX terjemahan Bahasa Indonesia
 ├── paper_outline_v1.0.md                      # Master outline naskah v1.0 (Arsip historis pra-revisi / Subject-Overlap)
 ├── paper_outline_v1.1.md                      # Master outline naskah v1.1 (Definitif revisi IEEE Access / Subject-Disjoint)
 ├── paper_reviews/                             # Arsip simulasi internal mock peer review (Round 1 & 2)
@@ -88,7 +90,9 @@ face-race-gender-classification-using-multi-domain-vit/
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Surat keputusan editorial resmi
 │   ├── IEEE-Access_Response-to-Reviewers-template.md # Template resmi surat tanggapan point-by-point
 │   ├── Request-for-Byline-Change.md           # Formulir administratif penambahan/perubahan susunan penulis
+│   ├── Response-to-Reviewers.md               # Surat tanggapan resmi point-by-point (final)
 │   ├── Resubmission-Checklist.md              # 10-point compliance checklist resubmission IEEE Access
+│   ├── paper_latex_v2_en_audit.md             # Laporan audit target kata paper_latex_en_v2/
 │   └── paper_outline_audit/                   # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                          # Laporan penjaminan mutu dan audit kepatuhan submit
 ├── prompts.txt                                # Catatan riwayat prompt dan instruksi pengguna kronologis
@@ -174,18 +178,18 @@ Sub-direktori experiment/code/:
   serialization.py, dan time_helpers.py.
 
 
-3. DIREKTORI PAPER_V1/, PAPER_V2/, PAPER_LATEX_EN/, & PAPER_LATEX_ID/ (MANUSKRIP ILMIAH)
+3. DIREKTORI PAPER_V1/, PAPER_V2/, PAPER_LATEX_EN[_V2]/, & PAPER_LATEX_ID[_V2]/ (MANUSKRIP ILMIAH)
 ----------------------------------------------------------------------------------------------------
 - paper_v1/
   Arsip draf naskah artikel ilmiah modular v1.0 dalam format Markdown (baseline historis pra-revisi / Subject-Overlap).
 - paper_v2/
   Naskah artikel ilmiah modular definitif v2.0 dalam format Markdown (00_abstract s.d. 07_biographies, acronyms.txt,
   registri sitasi tingkat kalimat references.txt, dan 51 berkas acuan primer di references/) untuk revisi IEEE Access.
-- paper_latex_en/
-  Paket resmi naskah Bahasa Inggris IEEE Access siap submit (access.tex, access.pdf, ieeeaccess.cls,
-  IEEEtran.bst, references.bib, dan 21 modul LaTeX di sections/).
-- paper_latex_id/
-  Paket naskah rujukan Bahasa Indonesia dalam format IEEE Access LaTeX untuk penelaahan internal tim.
+- paper_latex_en/ & paper_latex_en_v2/
+  Paket naskah Bahasa Inggris IEEE Access (v1.0 arsip pra-revisi dan v2.0 siap submit revisi: access.tex,
+  access.pdf 16 halaman, ieeeaccess.cls, IEEEtran.bst, references.bib, dan 21 modul LaTeX di sections/).
+- paper_latex_id/ & paper_latex_id_v2/
+  Paket naskah rujukan Bahasa Indonesia dalam format IEEE Access LaTeX (v1.0 arsip dan v2.0 revisi) untuk penelaahan internal tim.
 
 
 4. DIREKTORI PAPER_REVIEWS_IEEE/, PAPER_REVIEWS/, & .AGENTS/

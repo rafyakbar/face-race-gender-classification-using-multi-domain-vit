@@ -520,24 +520,28 @@ D:\Research\face-race-gender-multi-vit\
 │   ├── references.txt                     # Registri penelusuran sitasi tingkat kalimat & verifikasi
 │   └── references/                        # 51 berkas sumber bibliografi (.bib, .ris, .nbib, .bibtex)
 │
-├── paper_latex_en/                        # Paket LaTeX IEEE Access Bahasa Inggris siap-submit
-│   ├── access.tex / access.pdf            # Master entrypoint LaTeX & hasil kompilasi PDF
+├── paper_latex_en/                        # Paket LaTeX IEEE Access Bahasa Inggris (v1.0 pra-revisi)
+├── paper_latex_en_v2/                     # Paket LaTeX IEEE Access Bahasa Inggris siap-submit (v2.0 Revisi, 16 hlm.)
+│   ├── access.tex / access.pdf            # Master entrypoint LaTeX & hasil kompilasi PDF (abstrak 248 kata)
 │   ├── ieeeaccess.cls / IEEEtran.bst      # Berkas kelas dan gaya resmi IEEE Access
 │   ├── references.bib                     # Basis data pustaka BibTeX terkonsolidasi
 │   ├── sections/                          # 21 seksi modular LaTeX
 │   └── images/                            # Aset figur grafis untuk kompilasi
 │
-├── paper_latex_id/                        # Paket referensi LaTeX IEEE Access Bahasa Indonesia
+├── paper_latex_id/                        # Paket referensi LaTeX IEEE Access Bahasa Indonesia (v1.0 pra-revisi)
+├── paper_latex_id_v2/                     # Paket referensi LaTeX IEEE Access Bahasa Indonesia aktif (v2.0 Revisi)
 ├── paper_reviews/                         # Sistem audit simulasi mock peer review multi-agent (Round 1 & 2)
 ├── paper_reviews_ieee/                    # Dossier keputusan editorial & review resmi IEEE Access
 │   ├── Comments.md                        # Umpan balik reviewer yang didekonstruksi dan matriks tanggapan
 │   ├── IEEE-Access_Decision-on-Manuscript-ID-Access-2026-50857.md # Keputusan resmi & komentar reviewer
 │   ├── IEEE-Access_Response-to-Reviewers-template.md              # Templat tanggapan butir-per-butir
 │   ├── Request-for-Byline-Change.md                               # Formulir resmi perubahan susunan kepengarangan
+│   ├── Response-to-Reviewers.md                                   # Surat tanggapan resmi point-by-point (final)
 │   ├── Resubmission-Checklist.md                                  # Daftar periksa kepatuhan 10 poin resubmission
+│   ├── paper_latex_v2_en_audit.md                                 # Audit kesesuaian target kata paper_latex_en_v2/
 │   └── paper_outline_audit/               # Direktori audit multi-model kepatuhan outline terhadap ulasan
 ├── paper_submission/                      # Paket formal submission & laporan kepatuhan IEEE Access
-├── sessions/                              # Log riwayat sesi kerja otonom AI agent (9 berkas konsolidasi per tanggal)
+├── sessions/                              # Log riwayat sesi kerja otonom AI agent (berkas konsolidasi per tanggal)
 ├── template/                              # Distribusi paket template LaTeX mentah resmi IEEE Access
 └── upload/                                # Artefak berkas akhir siap unggah (PDF dan ZIP kode sumber)
 ```
@@ -621,8 +625,8 @@ python scripts/auto_run_experiments.py
 
 ### 14.3 Kompilasi Manuskrip LaTeX
 ```bash
-# Kompilasi Manuskrip LaTeX Bahasa Inggris Siap-Submit
-cd paper_latex_en
+# Kompilasi Manuskrip LaTeX Bahasa Inggris Siap-Submit (v2.0)
+cd paper_latex_en_v2
 pdflatex access.tex
 bibtex access
 pdflatex access.tex
@@ -736,3 +740,6 @@ Seluruh sesi kerja terpadu otonom dicatat secara teliti ke dalam direktori `sess
 9. **`2026-11-03`**: Penyempurnaan Section III-IV Master Outline v1.1, Audit Kepatuhan Multi-Model (`paper_outline_audit/`), Penyusunan Sintesis Meta-Audit Terpadu (`2026-11-03_all.md`), dan Pemutakhiran Berkas Pendukung Repositori (`session_2026-11-03_penyempurnaan-materials-methods-results-discussion-dan-paritas-tabel-outline.md`).
 10. **`2026-11-08`**: Audit Komprehensif Naskah Modular `paper_v2/` (Overview III, Dataset III-A, Vision Transformer III-B), Relokasi Tabel II, Standardisasi Versi Checkpoint Akademis (Eliminasi Jargon Git SHA), Penegakan Format Teks Polos Dimensi Sederhana (`224 × 224`), serta Kodifikasi Aturan Penulisan ke `rules/` (`rules/md_rules.txt`, `rules/latex_rules.txt`).
 11. **`2026-11-16`**: Audit Tanggapan Reviewer IEEE Access (R2-4, R2-5, R2-6, R2-8), Unifikasi Rujukan Analisis Fairness ke Table XV, Penambahan Metrik Efisiensi Komputasi Kelima (RAM Consumption) pada Table XII, serta Pembuatan dan Standardisasi Notebook Pengukuran Memori `3.2_memory_consumption` Berbasis Pipeline Scikit-learn, `psutil`, dan `pympler` (`session_2026-11-16_audit-response-reviewer-ieee-unifikasi-tabel-xv-dan-profiling-memori-komputasi-3.2.md`).
+12. **`2026-11-16`**: Sinkronisasi Naskah LaTeX Bahasa Indonesia v2.0 (`paper_latex_id_v2/`) dan Audit Multi-Agent (`session_2026-11-16_sinkronisasi-paper-latex-id-v2-dan-multi-agent-audit.md`).
+13. **`2026-11-17`**: Relokasi Tabel XVI ke Halaman 13 Sebelum Paragraf Pertama Subbab IV-E pada `paper_latex_id_v2/` (`session_2026-11-17_relokasi-tabel-xvi-sebelum-paragraf-pertama.md`).
+14. **`2026-11-18` – `2026-11-20`**: Penyempurnaan Terminologi & Layout `paper_v2/` dan `paper_latex_id_v2/`, Penerjemahan Naskah Lengkap ke Bahasa Inggris (`paper_latex_en_v2/`), Audit Target Kata (`paper_reviews_ieee/paper_latex_v2_en_audit.md`), Kalibrasi Abstrak (248 kata), Eliminasi Angka `31.920` pada Section I & III-G, Kompilasi PDF 16 Halaman, dan Pemutakhiran Dokumentasi Pendukung (`session_2026-11-18_translasi-paper-latex-en-v2-audit-dan-sinkronisasi.md`).
