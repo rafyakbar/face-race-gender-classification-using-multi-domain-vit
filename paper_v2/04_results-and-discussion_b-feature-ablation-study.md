@@ -21,8 +21,8 @@ Pengujian statistik inferensial berpasangan dilakukan pada seluruh 2.160 sampel 
 | :--- | :---: | :---: | :---: | :---: |
 | Tri-Domain LR vs Single Face | 19.69 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
 | Tri-Domain SVM vs Single Face | 20.96 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
-| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0073 | 0.0075 | Significant ($p < 0.01$) |
-| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7343 | 0.7500 | Not Significant ($p > 0.05$) |
+| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0077 | 0.0073 | Significant ($p < 0.01$) |
+| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7341 | 0.7343 | Not Significant ($p > 0.05$) |
 | Tri-Domain LR vs Tri-Domain SVM | 0.00 | 1.0000 | 1.0000 | Not Significant ($p = 1.0000$) |
 
 Dinamika kontribusi fusi bertahap dari representasi domain tunggal menuju domain ganda dan tri-domain pada [Table VII](#tab7), [Table VIII](#tab8), [Table IX](#tab9), serta [Table X](#tab10) menunjukkan respons ruang fitur yang berbeda secara fundamental antarpengklasifikasi. Pada model linier LR, integrasi representasi usia biologis di atas pasangan Emotion dan Face menghasilkan peningkatan komplementer sebesar +1.21 pp dari 87.45% menuju 88.66%. Sebaliknya, pengklasifikasi non-linier SVM memperlihatkan kejenuhan asimtotik, di mana penambahan domain usia dari kombinasi Emotion dan Face (88.43%) ke tri-domain (88.61%) hanya menghasilkan kenaikan marjinal +0.18 pp. Perbedaan respons ini menegaskan bahwa batas keputusan non-linier kernel RBF telah menyerap mayoritas varians diskriminatif sejak tahap dual-domain, sedangkan regularisasi L2 pada LR efektif memanfaatkan ortogonalitas informasi penuaan.

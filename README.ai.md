@@ -48,7 +48,7 @@ Penelitian ini mengusulkan sebuah kerangka kerja *offline feature fusion* untuk 
 2. **ViT-Emotion** (`dima806/facial_emotions_image_detection`): Menangkap ekspresi afektif dinamis dan *facial action units* terdelokalisasi.
 3. **ViT-Age** (`dima806/facial_age_image_detection`): Menangkap morfologi penuaan biologis dan pola tekstur epidermal.
 
-Vektor token `[CLS]` tingkat tinggi (768-d per domain) digabungkan (*concatenated*) menjadi **representasi Tri-Domain** ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$) dan diumpankan ke *classifier* klasik hilir yang dioptimasi secara menyeluruh melalui 5-Fold StratifiedGroupKFold GridSearchCV (mengevaluasi **912 kombinasi *hyperparameter* per skema** [RF: 288, GNB: 240, LR: 96, SVM: 288 Cartesian / 108 unik efektif] dan total **31.920 *cross-validation fits*** + 28 *final refits* pada 4 famili *classifier*: SVM, Logistic Regression, Random Forest, dan Gaussian Naive Bayes).
+Vektor token `[CLS]` tingkat tinggi (768-d per domain) digabungkan (*concatenated*) menjadi **representasi Tri-Domain** ($\mathbf{z}_{\text{tri}} \in \mathbb{R}^{2304}$) dan diumpankan ke *classifier* klasik hilir yang dioptimasi secara menyeluruh melalui 5-Fold StratifiedGroupKFold GridSearchCV (mengevaluasi **912 kombinasi *hyperparameter* per skema** [RF: 288, GNB: 240, LR: 96, SVM: 288 Cartesian / 168 unik efektif] dan total **31.920 *cross-validation fits*** + 28 *final refits* pada 4 famili *classifier*: SVM, Logistic Regression, Random Forest, dan Gaussian Naive Bayes).
 
 ### 1.3 Arsitektur Dual Benchmark & Pencapaian Utama
 
@@ -137,7 +137,7 @@ Manuskrip ini diajukan secara resmi ke IEEE Access dan memperoleh surat keputusa
 1. **Kebaruan & Kontribusi Metodologi:** Perjelas kontribusi metodologis fusi fitur tri-domain dibandingkan sekadar konkatenasi vektor sederhana.
 2. **Data Leakage & Generalisasi Subject-Disjoint:** **(PERHATIAN KRITIS / CRITICAL CONCERN)** Mempertanyakan apakah citra dari identitas yang sama muncul di kedua partisi latih dan uji akibat pembagian acak (*random splitting*); meminta evaluasi di bawah kondisi *subject-disjoint* yang ketat.
 3. **Pra-pemrosesan & Reproduksibilitas:** Sebutkan *checkpoint identifier* resmi HuggingFace, parameter *image processor*, dan prosedur normalisasi secara presisi.
-4. **Konsistensi Ruang Pencarian Hyperparameter:** Rekonsiliasikan metrik ruang pencarian yang dilaporkan menjadi **912 kombinasi per skema** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [108 unik efektif]}$), **4.560 *fits* per skema**, dan **31.920 *cross-validation fits*** + 28 *final refits*.
+4. **Konsistensi Ruang Pencarian Hyperparameter:** Rekonsiliasikan metrik ruang pencarian yang dilaporkan menjadi **912 kombinasi per skema** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [168 unik efektif]}$), **4.560 *fits* per skema**, dan **31.920 *cross-validation fits*** + 28 *final refits*.
 5. **Signifikansi Statistik & Uji McNemar:** Laporkan pengujian hipotesis statistik inferensial (uji McNemar) untuk memvalidasi perbedaan performa dan menguji klaim keunggulan tri-domain secara sahih.
 6. **Cakupan Analisis Keadilan (Fairness):** Perbaiki cakupan klaim keadilan; tegaskan bahwa EOD memberikan wawasan disparitas subkelompok namun bukan audit keadilan algoritmik yang komprehensif/lengkap.
 7. **Kondisi Benchmark Baseline Literatur:** Perjelas apakah metode-metode terdahulu yang dievaluasi pada DemogPairs menggunakan partisi identik; perlakukan perbandingan tersebut secara kontekstual.
@@ -266,7 +266,7 @@ Setiap berkas JSON memuat `model_name`, `feature_name`, `device`, `total_images`
 $$\mathbf{x} \xrightarrow{\text{Scaler}} \tilde{\mathbf{x}} \xrightarrow{\text{PCA}} \hat{\mathbf{x}} \xrightarrow{\text{Classifier}} \hat{y} \in \{0, 1, 2, 3, 4, 5\}$$
 
 ### 6.2 Ruang Pencarian Hyperparameter per Classifier
-- **Support Vector Machine (SVM) – 288 evaluasi Cartesian per skema (108 konfigurasi unik efektif):**
+- **Support Vector Machine (SVM) – 288 evaluasi Cartesian per skema (168 konfigurasi unik efektif):**
   - `scaler`: `[None, MinMaxScaler()]` (2)
   - `pca`: `[None, PCA(n_components=0.50), PCA(n_components=0.75)]` (3)
   - `classifier__C`: `[0.01, 0.1, 1, 10]` (4)

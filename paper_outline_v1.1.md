@@ -461,7 +461,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
 | Kernel Coefficient | `'scale'`, `'auto'` | 2 |
 | **Total Grid Combinations** | - | **288 (1,440 fits)** |
 
-> **Catatan Table VI:** Evaluasi GridSearchCV scikit-learn mengeksekusi penuh seluruh 288 kombinasi Cartesian parameter grid (1.440 fits per skema). Secara fungsional unik, terdapat 108 konfigurasi efektif karena parameter polynomial degree hanya aktif pada kernel poly dan gamma tidak berpengaruh pada kernel linear.
+> **Catatan Table VI:** Evaluasi GridSearchCV scikit-learn mengeksekusi penuh seluruh 288 kombinasi Cartesian parameter grid (1.440 fits per skema). Secara fungsional unik, terdapat 168 konfigurasi unik efektif karena parameter polynomial degree hanya aktif pada kernel poly dan gamma tidak berpengaruh pada kernel linear.
 
 ### G. Classification Pipeline
 > **Catatan Respons Reviewer (R2 Poin 4):**  
@@ -476,7 +476,7 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–125
   2. Protokol validasi menggunakan 5-Fold `StratifiedGroupKFold` (`n_splits=5`, `shuffle=True`, `random_state=42`) pada set latih 480 subjek (8.640 citra) dengan pengelompokan ketat berbasis identitas (`groups = subject_id`), menjamin citra dari subjek yang sama tidak pernah terbagi di antara fold latih dan validasi.
   3. Penskalaan fitur dan proyeksi PCA di-fit secara eksklusif hanya pada fold latih di setiap iterasi cross-validation, menjamin pencegahan kebocoran data identitas maupun informasi statistik (*zero data leakage*).
   4. Rekonsiliasi aritmatika ruang pencarian:
-     - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits (108 konfigurasi unik efektif)
+     - SVM: 288 kombinasi $\times$ 5 folds = 1.440 fits (168 konfigurasi unik efektif)
      - LR: 96 kombinasi $\times$ 5 folds = 480 fits
      - RF: 288 kombinasi $\times$ 5 folds = 1.440 fits
      - GNB: 240 kombinasi $\times$ 5 folds = 1.200 fits
@@ -698,8 +698,8 @@ Bagian ini disusun dalam **3 paragraf**, masing-masing dengan target **100–120
 | :--- | :---: | :---: | :---: | :---: |
 | Tri-Domain LR vs Single Face | 19.69 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
 | Tri-Domain SVM vs Single Face | 20.96 | < 0.001 | < 0.001 | Significant ($p < 0.001$) |
-| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0073 | 0.0075 | Significant ($p < 0.01$) |
-| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7343 | 0.7500 | Not Significant ($p > 0.05$) |
+| Tri-Domain LR vs Dual Emotion $\oplus$ Face | 7.10 | 0.0077 | 0.0073 | Significant ($p < 0.01$) |
+| Tri-Domain SVM vs Dual Emotion $\oplus$ Face | 0.12 | 0.7341 | 0.7343 | Not Significant ($p > 0.05$) |
 | Tri-Domain LR vs Tri-Domain SVM | 0.00 | 1.0000 | 1.0000 | Not Significant ($p = 1.0000$) |
 
 > **Catatan Table XIV:** Pasangan diskordan $b$ merepresentasikan sampel yang diprediksi benar oleh Model 1 dan salah oleh Model 2; $c$ merepresentasikan kebalikannya. Uji McNemar dihitung dengan koreksi kontinuitas Edwards $\chi^2 = (|b - c| - 1)^2 / (b + c)$. Nilai $p$ dihitung melalui uji eksak binomial dua arah pada $N=2.160$ data uji subject-disjoint. Format layout: LaTeX Full Width (`\begin{table*}`).
