@@ -269,7 +269,7 @@ Dievaluasi pada 6 subkelompok demografis interseksional ($N = 360$ citra uji uns
   - *Dual-Domain (1,536-D):* `Emotion ⊕ Face`, `Face ⊕ Age`, `Emotion ⊕ Age`
   - *Tri-Domain (2,304-D):* `Face ⊕ Emotion ⊕ Age`
 - **Leakage-Free Cross-Validation:** Transformasi preprocessing (MinMaxScaler dan PCA) difitting secara ketat hanya pada training fold di dalam objek `scikit-learn.pipeline.Pipeline` untuk mencegah kebocoran data.
-- **Ruang Penjelajahan Grid Search:** Mengevaluasi total **912 kombinasi parameter per skema fitur** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [108 konfigurasi unik efektif]}$, menghasilkan $4,560\text{ fits/skema}$ dan **$31,920$ total cross-validation fits** + 28 final refits di seluruh 7 konfigurasi fitur dan 4 famili classifier).
+- **Ruang Penjelajahan Grid Search:** Mengevaluasi total **912 kombinasi parameter per skema fitur** ($\text{RF: } 288 + \text{GNB: } 240 + \text{LR: } 96 + \text{SVM: } 288\text{ Cartesian [168 konfigurasi unik efektif]}$, menghasilkan $4,560\text{ fits/skema}$ dan **$31,920$ total cross-validation fits** + 28 final refits di seluruh 7 konfigurasi fitur dan 4 famili classifier).
 
 ---
 
