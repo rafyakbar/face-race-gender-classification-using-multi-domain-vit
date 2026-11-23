@@ -16,7 +16,7 @@ Evaluasi empiris pengklasifikasi RF melintasi tujuh skema konfigurasi fitur pada
 \footnotesize
 \setlength{\tabcolsep}{2.5pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccccc}
+\begin{tabular}{lccccccl}
 \toprule
 \textbf{Feature Configuration} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
@@ -42,7 +42,7 @@ Evaluasi performa pengklasifikasi GNB melintasi tujuh konfigurasi fitur pada dat
 \footnotesize
 \setlength{\tabcolsep}{2.5pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccccc}
+\begin{tabular}{lccccccl}
 \toprule
 \textbf{Feature Configuration} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
@@ -68,7 +68,7 @@ Hasil benchmark empiris pengklasifikasi multinomial LR melintasi tujuh konfigura
 \footnotesize
 \setlength{\tabcolsep}{2.5pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccccc}
+\begin{tabular}{lccccccl}
 \toprule
 \textbf{Feature Configuration} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
@@ -94,7 +94,7 @@ Perkembangan performa pengklasifikasi SVM melintasi seluruh konfigurasi fitur di
 \footnotesize
 \setlength{\tabcolsep}{2.5pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccccc}
+\begin{tabular}{lccccccl}
 \toprule
 \textbf{Feature Configuration} & \textbf{CV Score (\%)} & \textbf{Accuracy (\%)} & \textbf{95\% CI} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{F1-Score (\%)} & \textbf{Best Hyperparameters} \\
 \midrule
@@ -104,7 +104,7 @@ Age & 83.67 & 82.55 & [80.89, 84.09] & 82.68 & 82.55 & 82.58 & \begin{tabular}[t
 Emotion $\oplus$ Face & 89.39 & 88.43 & [87.01, 89.71] & 88.50 & 88.43 & 88.44 & \begin{tabular}[t]{@{}l@{}}C=0.1, poly, $\gamma$=scale, deg=2, \\ pca=None, scaler=MinMaxScaler\end{tabular} \\
 Face $\oplus$ Age & 89.24 & 87.55 & [86.09, 88.87] & 87.66 & 87.55 & 87.57 & \begin{tabular}[t]{@{}l@{}}C=10, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
 Emotion $\oplus$ Age & 87.12 & 86.25 & [84.73, 87.64] & 86.26 & 86.25 & 86.24 & \begin{tabular}[t]{@{}l@{}}C=10, rbf, $\gamma$=scale, \\ pca=None, scaler=None\end{tabular} \\
-\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{89.86} & \textbf{88.61} & \textbf{[87.20, 89.88]} & \textbf{88.71} & \textbf{88.61} & \textbf{88.63} & \begin{tabular}[t]{@{}l@{}}\textbf{C=10, rbf, $\gamma$=scale,} \\ \textbf{pca=None, scaler=MinMaxScaler}\end{tabular} \\
+\textbf{Face $\oplus$ Emotion $\oplus$ Age} & \textbf{89.86} & \textbf{88.61} & \textbf{[87.20, 89.88]} & \textbf{88.71} & \textbf{88.61} & \textbf{88.63} & \begin{tabular}[t]{@{}l@{}}\textbf{C=10, rbf, $\boldsymbol{\gamma}$=scale,} \\ \textbf{pca=None, scaler=MinMaxScaler}\end{tabular} \\
 \bottomrule
 \end{tabular}%
 }
