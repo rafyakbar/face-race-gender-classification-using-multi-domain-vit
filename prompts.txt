@@ -29,13 +29,30 @@ jupyter lab --ContentsManager.allow_hidden=True
 # DAFTAR RIWAYAT PROMPT (PROMPT TERBARU / AKTIF DI BAWAH INI):
 # ==============================================================================
 
+RA-FMT-03:
+- gunakan internasional meski draft nya masih berupa bahasa indonesia
+RA-FMT-04:
+- tolong susun Response-to-Reviewers_EN.md
+RA-HAL-03:
+- sesuaikan
+RA-R1-07:
+- sesuaikan
+RA-R2-02:
+- sesuaikan
+RA-R2-04:
+- sesuaikan
+RA-R2-08:
+- sesuaikan
+perhatikan:
+- bisa delegasi ke beberapa subagent untuk pembetulan
+
 sekarang perbaiki sesuai rekomendasi.
 khusus untuk paper_outline_v1.1.md, paper_v2/, paper_latex_id_v2/, dan paper_latex_en_v2/ usahakan jangan terlalu banyak perubahan, ubah yg diperlukan.
 delegasikan ke banyak subagent untuk membenahi agar optimal dan cepat.
 jika sudah maka buat commit dan push.
 
 
-coba audit kesesuaian antara:
+coba audit ulang kesesuaian antara:
 - paper_reviews_ieee/Response-to-Reviewers.md,
 - paper_reviews_ieee/Comments.md,
 - paper_v2/,
